@@ -1,4 +1,4 @@
-package cloud_manager
+package analyzer
 
 import (
 	"encoding/json"
@@ -10,10 +10,11 @@ import (
 )
 
 type CloudAPIAnalyzer struct {
-	Kind       string
-	client     interface{}
-	methodMap  map[string]reflect.Method
-	requestMap map[string]reflect.Type
+	Kind         string
+	client       interface{}
+	MethodMap    map[string]reflect.Method
+	RequestMap   map[string]reflect.Type
+	RequestInfos []RequestInfo
 }
 
 func (c *CloudAPIAnalyzer) Init() {
@@ -24,8 +25,8 @@ func (c *CloudAPIAnalyzer) Init() {
 		fmt.Println("error!, you need to provide a cloud type")
 		panic("cloud type is nil")
 	}
-	c.methodMap = make(map[string]reflect.Method)
-	c.requestMap = make(map[string]reflect.Type)
+	c.MethodMap = make(map[string]reflect.Method)
+	c.RequestMap = make(map[string]reflect.Type)
 }
 
 func (c *CloudAPIAnalyzer) ExtractCloudAPIs() {
@@ -43,7 +44,7 @@ func (c *CloudAPIAnalyzer) ExtractCloudAPIs() {
 			c.ExtractMethodParameters(method)
 		}
 	}
-	//fmt.Println("num of methods: ", len(methodMap))
+	//fmt.Println("num of methods: ", len(MethodMap))
 
 }
 
@@ -54,10 +55,10 @@ func (c *CloudAPIAnalyzer) ExtractMethodParameters(method reflect.Method) {
 		paraType = paraType.Elem()
 	}
 	// filter by parameter name
-	if _, ok := c.requestMap[paraType.Name()]; !ok && strings.HasSuffix(paraType.Name(), "Request") {
+	if _, ok := c.RequestMap[paraType.Name()]; !ok && strings.HasSuffix(paraType.Name(), "Request") {
 		fmt.Printf("extract parameter type for method:%v, num parameters:%v, package path: %v\n", method.Name, method.Type.NumIn(), method.Type.String())
-		c.methodMap[method.Name] = method
-		c.requestMap[paraType.Name()] = paraType
+		c.MethodMap[method.Name] = method
+		c.RequestMap[paraType.Name()] = paraType
 	}
 }
 
@@ -87,9 +88,17 @@ func (c *CloudAPIAnalyzer) ExtractType(dataType reflect.Type) interface{} {
 	}
 }
 
+// 需要在调用了extractCloudAPIs之后再使用，
+func (c *CloudAPIAnalyzer) ExtractRequestInfos() []RequestInfo {
+	for requestTypeName, requestType := range c.RequestMap {
+		c.RequestInfos = append(c.RequestInfos, *NewRequestInfo(requestTypeName, requestType))
+	}
+	return c.RequestInfos
+}
+
 func (c *CloudAPIAnalyzer) SaveToJson() {
 	paraInfoMap := make(map[string]interface{})
-	for paraName, paraType := range c.requestMap {
+	for paraName, paraType := range c.RequestMap {
 		typeInfo := c.ExtractType(paraType)
 		paraInfoMap[paraName] = typeInfo
 	}

@@ -1,0 +1,10 @@
+package {{param "packageName"}}
+import (
+    "{{.importPath}}",
+)
+
+var CreateRequestRegistry = map[string]interface{}{
+{{- range .requestInfos}}
+	"{{.RequestName}}":{{.CreateFunctionName}},
+{{- end}}
+}
