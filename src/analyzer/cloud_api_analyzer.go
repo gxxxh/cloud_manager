@@ -55,7 +55,7 @@ func (c *CloudAPIAnalyzer) ExtractMethodParameters(method reflect.Method) {
 		paraType = paraType.Elem()
 	}
 	// filter by parameter name
-	if _, ok := c.RequestMap[paraType.Name()]; !ok && strings.HasSuffix(paraType.Name(), "Request") {
+	if _, ok := c.RequestMap[paraType.Name()]; !ok && strings.HasSuffix(paraType.Name(), "Request") && paraType.Name() != "CommonRequest" {
 		fmt.Printf("extract parameter type for method:%v, num parameters:%v, package path: %v\n", method.Name, method.Type.NumIn(), method.Type.String())
 		c.MethodMap[method.Name] = method
 		c.RequestMap[paraType.Name()] = paraType

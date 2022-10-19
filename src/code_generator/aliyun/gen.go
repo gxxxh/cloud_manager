@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-func GenCreateRequestRegistry(templatePath string, requestInfos []analyzer.RequestInfo, importPath string) ([]byte, error) {
+func GenCreateRequestRegistry(templatePath string, requestInfos []analyzer.RequestInfo, importPaths []string, packagePath string) ([]byte, error) {
 	createRequestRegistryTemplate, err := code_generator.NewCustomerTemplate(templatePath)
 	if err != nil {
 		log.Println(err)
@@ -15,10 +15,10 @@ func GenCreateRequestRegistry(templatePath string, requestInfos []analyzer.Reque
 	code, err := code_generator.GenerateTemplate(createRequestRegistryTemplate.GetTemplateBody(),
 		map[string]interface{}{
 			"requestInfos": requestInfos,
-			"importPath":   importPath,
+			"importPaths":  importPaths,
 		},
 		map[string]interface{}{
-			"packageName":    "test",
+			"packageName":    packagePath,
 			"templateHeader": createRequestRegistryTemplate.GetTemplateHeader(),
 		})
 	if err != nil {

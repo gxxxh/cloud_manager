@@ -14,12 +14,13 @@ func TestGenCreateRequestRegistry(t *testing.T) {
 	analyzer.ExtractCloudAPIs()
 	requestInfos := analyzer.ExtractRequestInfos()
 	templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\aliyun\\templates\\request_map.tmpl"
-	code, err := aliyun.GenCreateRequestRegistry(templatePath, requestInfos, "github.com/aliyun/alibaba-cloud-sdk-go/services/ecs")
+	importPaths := []string{"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"}
+	code, err := aliyun.GenCreateRequestRegistry(templatePath, requestInfos, importPaths, "aliyun")
 	if err != nil {
 		t.Error(err)
 	}
 
-	filePtr, err := os.Create("create_request_registry.go")
+	filePtr, err := os.Create("E:\\gopath\\src\\cloud_manager\\src\\codegen\\aliyun\\create_request_registry.go")
 	if err != nil {
 		fmt.Println(err)
 		t.Error(err)

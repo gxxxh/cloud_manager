@@ -1,6 +1,8 @@
 package {{param "packageName"}}
 import (
-    "{{.importPath}}",
+{{- range .importPaths}}
+    "{{.}}"
+{{- end}}
 )
 
 var CreateRequestRegistry = map[string]interface{}{
