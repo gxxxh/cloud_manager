@@ -2,7 +2,7 @@ package utils
 
 import (
 	"encoding/json"
-	"fmt"
+	"log"
 	"reflect"
 )
 
@@ -13,7 +13,7 @@ func ConstructStructOfPtr(structPtr interface{}, content []byte) error {
 	//CreateRequest function return a pointer to the request
 	err := json.Unmarshal(content, structPtr)
 	if err != nil {
-		fmt.Println("ConstructStructOfPtr error : ", err)
+		log.Println("ConstructStructOfPtr error : ", err)
 	}
 	return err
 }
@@ -25,7 +25,7 @@ func ConstructStructOfValue(structValue reflect.Value, content []byte) error {
 	structInterface := structValue.Interface()
 	err := json.Unmarshal(content, structInterface)
 	if err != nil {
-		fmt.Println("ConstructStructOfValue error : ", err)
+		log.Println("ConstructStructOfValue error : ", err)
 	}
 	return err
 }

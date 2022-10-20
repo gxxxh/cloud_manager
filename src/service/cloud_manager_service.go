@@ -5,9 +5,9 @@ import (
 	"cloud_manager/src/utils"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
+	"log"
 )
 
-// todo using log instead of fmt.Println
 type MultiCloudManager struct {
 	Kind            string
 	Client          interface{}
@@ -29,14 +29,14 @@ func (m *MultiCloudManager) Init(params ...string) error {
 	case "aliyun":
 		client, err := ecs.NewClientWithAccessKey(params[0], params[1], params[2])
 		if err != nil {
-			fmt.Println("Init MultiCloudManager error: ", err)
+			log.Println("Init MultiCloudManager error: ", err)
 			return err
 		}
 		m.Client = client
 		m.requestRegistry = aliyun.CreateRequestRegistry
 	default:
 		err := fmt.Errorf("unsupport cloud type")
-		fmt.Println("Init MultiCloudManager error: ", err)
+		log.Println("Init MultiCloudManager error: ", err)
 		return err
 	}
 	return nil
@@ -50,7 +50,7 @@ func (m *MultiCloudManager) HandleRequest(actionName string, requestParameters [
 	request, err := utils.CallFunction(requestName, m.requestRegistry)
 	if len(request) != 1 {
 		err := fmt.Errorf("error, CreateRequestFunction return more than one value!, actionName is:%v", actionName)
-		fmt.Println("HandleRequest error: ", err)
+		log.Println("HandleRequest error: ", err)
 		return "", err
 	}
 	if err != nil {
@@ -73,13 +73,13 @@ func (m *MultiCloudManager) doRequest(actionName string, request interface{}) (s
 	}
 	if len(ret) != 2 {
 		err = fmt.Errorf("the action %s should only return two result\n", actionName)
-		fmt.Println("doRequest Error: ", err)
+		log.Println("doRequest Error: ", err)
 		return "", err
 	}
 	//ret[1] should be a error
 	if ret[1] != nil {
 		err = ret[1].(error)
-		fmt.Println("sdk do request error: ", err)
+		log.Println("sdk do request error: ", err)
 	}
 	str := fmt.Sprintf("%v", ret[0])
 	return str, err

@@ -2,8 +2,8 @@ package analyzer
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
+	"log"
 	"os"
 	"reflect"
 	"strings"
@@ -17,19 +17,27 @@ type CloudAPIAnalyzer struct {
 	RequestInfos []RequestInfo
 }
 
+func NewCloudAPIAnalyzer(kind string) (*CloudAPIAnalyzer, error) {
+	ca := &CloudAPIAnalyzer{
+		Kind: kind,
+	}
+	ca.Init()
+	return ca, nil
+}
+
 func (c *CloudAPIAnalyzer) Init() {
 	switch c.Kind {
 	case "aliyun":
-		c.client, _ = ecs.NewClientWithAccessKey("cn-beijing", "11111111111111", "222222222222222222222")
+		c.client = &ecs.Client{}
 	default:
-		fmt.Println("error!, you need to provide a cloud type")
-		panic("cloud type is nil")
+		log.Panic("error!, you need to provide a cloud type")
 	}
 	c.MethodMap = make(map[string]reflect.Method)
 	c.RequestMap = make(map[string]reflect.Type)
 }
 
 func (c *CloudAPIAnalyzer) ExtractCloudAPIs() {
+	log.Println("CloudAPIAnalyzer: analyzer client's method")
 	// Notice the *Type can access all the Type Methods. But Type cannot access to *Type Methods.
 	clientType := reflect.TypeOf(c.client)
 	//use reflect.PtrTo(Type) to convert from Type to *Type
@@ -56,12 +64,15 @@ func (c *CloudAPIAnalyzer) ExtractMethodParameters(method reflect.Method) {
 	}
 	// filter by parameter name
 	if _, ok := c.RequestMap[paraType.Name()]; !ok && strings.HasSuffix(paraType.Name(), "Request") && paraType.Name() != "CommonRequest" {
-		fmt.Printf("extract parameter type for method:%v, num parameters:%v, package path: %v\n", method.Name, method.Type.NumIn(), method.Type.String())
+		log.Printf("extract parameter type for method:%v, num parameters:%v, package path: %v\n", method.Name, method.Type.NumIn(), method.Type.String())
 		c.MethodMap[method.Name] = method
 		c.RequestMap[paraType.Name()] = paraType
 	}
 }
 
+/*
+this function is used to extract a type eecursively to basic golang type
+*/
 func (c *CloudAPIAnalyzer) ExtractType(dataType reflect.Type) interface{} {
 	for dataType.Kind() == reflect.Ptr {
 		dataType = dataType.Elem()
@@ -106,13 +117,11 @@ func (c *CloudAPIAnalyzer) SaveToJson() {
 	}
 	paraInfoJson, err := json.Marshal(paraInfoMap)
 	if err != nil {
-		fmt.Println(err)
-		panic(err)
+		log.Panicf("SaveToJson Error: %v \n", err)
 	}
 	filePtr, err := os.Create("create_image.json")
 	if err != nil {
-		fmt.Println(err)
-		panic(err)
+		log.Panicf("SaveToJson Error: %v \n", err)
 	}
 	defer filePtr.Close()
 	filePtr.Write(paraInfoJson)

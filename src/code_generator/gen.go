@@ -2,7 +2,7 @@ package code_generator
 
 import (
 	"bytes"
-	"fmt"
+	"log"
 	"strings"
 	"text/template"
 	"time"
@@ -27,12 +27,12 @@ func GenerateTemplate(templateText string, templateData interface{}, params map[
 		},
 	}).Parse(templateText)
 	if err != nil {
-		fmt.Println("GenTemplateError: ", err)
+		log.Println("GenTemplateError: ", err)
 		return nil, err
 	}
 	var buf bytes.Buffer
 	if err := t.Execute(&buf, templateData); err != nil {
-		fmt.Println("GenTemplateError: ", err)
+		log.Println("GenTemplateError: ", err)
 		return nil, err
 	}
 

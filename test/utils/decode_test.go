@@ -20,7 +20,7 @@ func TestConstructStruct(t *testing.T) {
 	}
 	jsonBytes, _ := json.Marshal(a)
 	b := &Animal{}
-	err := utils.ConstructStructByPtr(b, jsonBytes)
+	err := utils.ConstructStructOfPtr(b, jsonBytes)
 	if err != nil {
 		t.Error(err)
 	}
@@ -28,7 +28,7 @@ func TestConstructStruct(t *testing.T) {
 		t.Error("a and b are not equal")
 	}
 	c := reflect.New(reflect.TypeOf(a))
-	err = utils.ConstructStructByValue(c, jsonBytes)
+	err = utils.ConstructStructOfValue(c, jsonBytes)
 	if err != nil {
 		t.Error(err)
 	}

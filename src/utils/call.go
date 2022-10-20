@@ -2,6 +2,7 @@ package utils
 
 import (
 	"fmt"
+	"log"
 	"reflect"
 )
 
@@ -12,13 +13,13 @@ func CallFunction(funcName string, functionRegistry map[string]interface{}, para
 	funcInterface, ok := functionRegistry[funcName]
 	if !ok {
 		err = fmt.Errorf("can't find function %s", funcName)
-		fmt.Println("Call Function error: ", err)
+		log.Println("Call Function error: ", err)
 		return
 	}
 	f := reflect.ValueOf(funcInterface)
 	if len(params) != f.Type().NumIn() {
 		err = fmt.Errorf("The number of params is out of index.")
-		fmt.Println("Call Function error: ", err)
+		log.Println("Call Function error: ", err)
 		return
 	}
 	//construct prarmeter
@@ -46,7 +47,7 @@ func CallMethod(instance interface{}, methodName string, params ...interface{}) 
 
 	if !method.IsValid() {
 		err = fmt.Errorf("instance %v doesn't have method %s\n", reflect.ValueOf(instance), methodName)
-		fmt.Println("Call Method error: ", err)
+		log.Println("Call Method error: ", err)
 		return
 	}
 	in := make([]reflect.Value, len(params))
