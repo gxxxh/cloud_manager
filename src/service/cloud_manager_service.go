@@ -7,32 +7,36 @@ import (
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 )
 
-// todo err 在哪儿产生就在哪儿打印
+// todo using log instead of fmt.Println
 type MultiCloudManager struct {
 	Kind            string
 	Client          interface{}
 	requestRegistry map[string]interface{}
 }
 
-func NewMultiCloudManager(kind string, params ...string) *MultiCloudManager {
+func NewMultiCloudManager(kind string, params ...string) (*MultiCloudManager, error) {
 	mcm := &MultiCloudManager{
 		Kind: kind,
 	}
-	mcm.Init(params...)
-	return mcm
+	err := mcm.Init(params...)
+	if err != nil {
+		return nil, err
+	}
+	return mcm, err
 }
 func (m *MultiCloudManager) Init(params ...string) error {
 	switch m.Kind {
 	case "aliyun":
 		client, err := ecs.NewClientWithAccessKey(params[0], params[1], params[2])
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println("Init MultiCloudManager error: ", err)
 			return err
 		}
 		m.Client = client
 		m.requestRegistry = aliyun.CreateRequestRegistry
 	default:
 		err := fmt.Errorf("unsupport cloud type")
+		fmt.Println("Init MultiCloudManager error: ", err)
 		return err
 	}
 	return nil
@@ -46,6 +50,7 @@ func (m *MultiCloudManager) HandleRequest(actionName string, requestParameters [
 	request, err := utils.CallFunction(requestName, m.requestRegistry)
 	if len(request) != 1 {
 		err := fmt.Errorf("error, CreateRequestFunction return more than one value!, actionName is:%v", actionName)
+		fmt.Println("HandleRequest error: ", err)
 		return "", err
 	}
 	if err != nil {
@@ -55,7 +60,7 @@ func (m *MultiCloudManager) HandleRequest(actionName string, requestParameters [
 	if err != nil {
 		return "", err
 	}
-	fmt.Printf("%v", request)
+	//fmt.Printf("%v", request)
 	//createRequest only has one return value
 	return m.doRequest(actionName, request[0])
 }
@@ -67,11 +72,14 @@ func (m *MultiCloudManager) doRequest(actionName string, request interface{}) (s
 		return "", err
 	}
 	if len(ret) != 2 {
-		return "", fmt.Errorf("the action %s should only return two result\n", actionName)
+		err = fmt.Errorf("the action %s should only return two result\n", actionName)
+		fmt.Println("doRequest Error: ", err)
+		return "", err
 	}
 	//ret[1] should be a error
 	if ret[1] != nil {
 		err = ret[1].(error)
+		fmt.Println("sdk do request error: ", err)
 	}
 	str := fmt.Sprintf("%v", ret[0])
 	return str, err
