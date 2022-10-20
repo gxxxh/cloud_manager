@@ -71,7 +71,9 @@ func (c *CloudAPIAnalyzer) ExtractType(dataType reflect.Type) interface{} {
 		typeInfo := make(map[string]interface{})
 		for i := 0; i < dataType.NumField(); i++ {
 			structFiled := dataType.Field(i)
-			typeInfo[structFiled.Name] = c.ExtractType(structFiled.Type)
+			if structFiled.Name != "RpcRequest" {
+				typeInfo[structFiled.Name] = c.ExtractType(structFiled.Type)
+			}
 		}
 		return typeInfo
 	case reflect.Array, reflect.Slice:
