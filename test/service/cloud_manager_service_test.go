@@ -4,21 +4,16 @@ import (
 	"cloud_manager/src/service"
 	"encoding/json"
 	"fmt"
-	"github.com/aliyun/alibaba-cloud-sdk-go/sdk/requests"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	"testing"
 )
 
 func TestHandleRequest(t *testing.T) {
-	mcm := service.NewMultiCloudManager("aliyun")
+	regionId := "cn-beijing"
+	accessKeyId := "LTAI5tJKWj6qWB7t4VooErRx"
+	accessKeySecret := "FsCABqUiecxe2NQmjlJl1321RcfxFV"
+	mcm := service.NewMultiCloudManager("aliyun", regionId, accessKeyId, accessKeySecret)
 	request := ecs.CreateDescribeRegionsRequest()
-	request.ResourceOwnerId = requests.Integer("1")
-	request.InstanceChargeType = "instance charge type"
-	request.ResourceOwnerAccount = "resource owner account"
-	request.OwnerAccount = "owner account"
-	request.OwnerId = requests.Integer("1")
-	request.ResourceType = "resource type"
-	request.AcceptLanguage = "accept language"
 	jsonBytes, err := json.Marshal(request)
 	if err != nil {
 		t.Error(err)
@@ -28,6 +23,5 @@ func TestHandleRequest(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-
 	fmt.Println(ret)
 }

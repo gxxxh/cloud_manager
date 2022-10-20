@@ -5,26 +5,26 @@ import (
 	"cloud_manager/src/utils"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
-	"reflect"
 )
 
+// todo err 在哪儿产生就在哪儿打印
 type MultiCloudManager struct {
 	Kind            string
 	Client          interface{}
 	requestRegistry map[string]interface{}
 }
 
-func NewMultiCloudManager(kind string) *MultiCloudManager {
+func NewMultiCloudManager(kind string, params ...string) *MultiCloudManager {
 	mcm := &MultiCloudManager{
 		Kind: kind,
 	}
-	mcm.Init()
+	mcm.Init(params...)
 	return mcm
 }
-func (m *MultiCloudManager) Init() error {
+func (m *MultiCloudManager) Init(params ...string) error {
 	switch m.Kind {
 	case "aliyun":
-		client, err := ecs.NewClientWithAccessKey("cn-beijing", "11111111111111", "222222222222222222222")
+		client, err := ecs.NewClientWithAccessKey(params[0], params[1], params[2])
 		if err != nil {
 			fmt.Println(err)
 			return err
@@ -51,7 +51,7 @@ func (m *MultiCloudManager) HandleRequest(actionName string, requestParameters [
 	if err != nil {
 		return "", err
 	}
-	err = utils.ConstructStructByPtr(request, requestParameters)
+	err = utils.ConstructStructOfPtr(request[0], requestParameters)
 	if err != nil {
 		return "", err
 	}
@@ -66,8 +66,13 @@ func (m *MultiCloudManager) doRequest(actionName string, request interface{}) (s
 	if err != nil {
 		return "", err
 	}
-	if len(ret) != 1 {
-		return "", fmt.Errorf("the action %s should only return one result\n", actionName)
+	if len(ret) != 2 {
+		return "", fmt.Errorf("the action %s should only return two result\n", actionName)
 	}
-	return fmt.Sprintf("%v", reflect.ValueOf(ret[0])), err
+	//ret[1] should be a error
+	if ret[1] != nil {
+		err = ret[1].(error)
+	}
+	str := fmt.Sprintf("%v", ret[0])
+	return str, err
 }
