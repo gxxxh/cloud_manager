@@ -85,6 +85,9 @@ func (ma *ModuleAnalyzer) FunctionParameterFilter(fn *ast.FuncDecl) bool {
 }
 
 // analyze packages and parse info
+// todo 1. 判断是否是基本类型
+// todo 2. 基于拼接生成参数和返回值类型
+// todo 3. 生成代码
 func (ma *ModuleAnalyzer) AnalyzeAST(f *ast.File) {
 	for _, d := range f.Decls {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
@@ -92,6 +95,10 @@ func (ma *ModuleAnalyzer) AnalyzeAST(f *ast.File) {
 				for _, paraExpr := range fn.Type.Params.List {
 					paraName, paraTypeName := ma.ParseParameters(paraExpr)
 					fmt.Println(paraName, paraTypeName)
+				}
+				for _, returnExpr := range fn.Type.Results.List {
+					returnName, returnTypeName := ma.ParseParameters(returnExpr)
+					fmt.Println(returnName, returnTypeName)
 				}
 			}
 		}
@@ -101,7 +108,6 @@ func (ma *ModuleAnalyzer) AnalyzeAST(f *ast.File) {
 /*
 get the parameter/return name and type
 */
-
 func (ma *ModuleAnalyzer) ParseExprName(paraExpr ast.Expr) string {
 	switch tyExpr := (paraExpr).(type) {
 	case *ast.StarExpr:
@@ -116,7 +122,10 @@ func (ma *ModuleAnalyzer) ParseExprName(paraExpr ast.Expr) string {
 }
 
 func (ma *ModuleAnalyzer) ParseParameters(paraExpr *ast.Field) (string, string) {
-	paraName := paraExpr.Names[0].Name
+	paraName := ""
+	if paraExpr.Names != nil {
+		paraName = paraExpr.Names[0].Name
+	}
 	paraTypeName := ma.ParseExprName(paraExpr.Type)
 	return paraName, paraTypeName
 }
