@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"go/ast"
 	"go/token"
-	"go/types"
 	"golang.org/x/tools/go/packages"
 	"log"
 	"strings"
@@ -44,7 +43,7 @@ func (ma *ModuleAnalyzer) DoAnalyze() error {
 	for _, pkg := range pkgs {
 		requestAST := ma.GetRequestAST(pkg)
 		if requestAST != nil {
-			ma.AnalyzeAST(requestAST, pkg.TypesInfo)
+			ma.AnalyzeAST(requestAST)
 		}
 	}
 	return err
@@ -86,12 +85,12 @@ func (ma *ModuleAnalyzer) FunctionParameterFilter(fn *ast.FuncDecl) bool {
 }
 
 // analyze packages and parse info
-func (ma *ModuleAnalyzer) AnalyzeAST(f *ast.File, tinfo *types.Info) {
+func (ma *ModuleAnalyzer) AnalyzeAST(f *ast.File) {
 	for _, d := range f.Decls {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
 			if ma.FunctionParameterFilter(fn) {
 				for _, paraExpr := range fn.Type.Params.List {
-					paraName, paraTypeName := ma.ParseParameters(paraExpr, tinfo)
+					paraName, paraTypeName := ma.ParseParameters(paraExpr)
 					fmt.Println(paraName, paraTypeName)
 				}
 			}
@@ -116,27 +115,9 @@ func (ma *ModuleAnalyzer) ParseExprName(paraExpr ast.Expr) string {
 	}
 }
 
-/*
-返回
-*/
-//func (ma *ModuleAnalyzer)ParseTypeInfo(ty *types.Type)(string, string){
-//	var packagePath = ""
-//	var typeName = ""
-//	switch tyType := ty.(type){
-//	case *types.Pointer:
-//		return "", ""
-//	case *types.Named:
-//
-//	}
-//}
-func (ma *ModuleAnalyzer) ParseParameters(paraExpr *ast.Field, tinfo *types.Info) (string, string) {
+func (ma *ModuleAnalyzer) ParseParameters(paraExpr *ast.Field) (string, string) {
 	paraName := paraExpr.Names[0].Name
 	paraTypeName := ma.ParseExprName(paraExpr.Type)
-	ty := tinfo.Types[paraExpr.Type].Type
-	fmt.Println(ty.Underlying())
-	tyNamed := (ty.(*types.Pointer).Elem()).(*types.Named)
-	tyNamed.Obj().Name() // ServiceClient
-	tyNamed.Obj().Pkg()
 	return paraName, paraTypeName
 }
 
