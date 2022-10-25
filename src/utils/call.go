@@ -42,9 +42,7 @@ func CallFunction(funcName string, functionRegistry map[string]interface{}, para
 this function is used to call a struct's method
 */
 func CallMethod(instance interface{}, methodName string, params ...interface{}) (result []interface{}, err error) {
-
 	method := reflect.ValueOf(instance).MethodByName(methodName)
-
 	if !method.IsValid() {
 		err = fmt.Errorf("instance %v doesn't have method %s\n", reflect.ValueOf(instance), methodName)
 		log.Println("Call Method error: ", err)

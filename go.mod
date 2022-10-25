@@ -2,7 +2,11 @@ module cloud_manager
 
 go 1.19
 
-require github.com/aliyun/alibaba-cloud-sdk-go v1.61.1815
+require (
+	github.com/aliyun/alibaba-cloud-sdk-go v1.61.1815
+	github.com/gophercloud/gophercloud v1.0.0
+	golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e
+)
 
 require (
 	github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af // indirect

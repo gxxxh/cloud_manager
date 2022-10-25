@@ -9,6 +9,9 @@ import (
 	"strings"
 )
 
+// todo, 是针对每个ecs生成一个代码，编译后只能针对该云操作，
+// 还是将所有云的包编译在一起
+
 type CloudAPIAnalyzer struct {
 	Kind         string
 	client       interface{}

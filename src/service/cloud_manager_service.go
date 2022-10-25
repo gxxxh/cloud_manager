@@ -24,6 +24,7 @@ func NewMultiCloudManager(kind string, params ...string) (*MultiCloudManager, er
 	}
 	return mcm, err
 }
+
 func (m *MultiCloudManager) Init(params ...string) error {
 	switch m.Kind {
 	case "aliyun":
@@ -81,6 +82,14 @@ func (m *MultiCloudManager) doRequest(actionName string, request interface{}) (s
 		err = ret[1].(error)
 		log.Println("sdk do request error: ", err)
 	}
+	//retValue := reflect.ValueOf(ret[0]).Elem()
+	//fmt.Println(retValue.NumField())
+	//tmp1 := retValue.Field(0).Interface()
+	////fmt.Println(tmp1)
+	//tmp2 := reflect.ValueOf(tmp1).Elem()
+	//fmt.Println(tmp2.Kind())
+	//fmt.Println(tmp2.NumField())
+	//fmt.Println(tmp2.Interface())
 	str := fmt.Sprintf("%v", ret[0])
 	return str, err
 }
