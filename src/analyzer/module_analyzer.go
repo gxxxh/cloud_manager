@@ -1,4 +1,4 @@
-package openstack
+package analyzer
 
 import (
 	"fmt"
@@ -10,11 +10,13 @@ import (
 	"strings"
 )
 
+// using to analyze openstack module staticly
+// info was saved to openstack_resource_info
 type ModuleAnalyzer struct {
 	*packages.Config
 }
 
-func NewModuleAnalyzer(dir string) *ModuleAnalyzer {
+func NewModuleAnalyzer() *ModuleAnalyzer {
 	ma := &ModuleAnalyzer{
 		&packages.Config{
 			Mode: packages.LoadSyntax |
@@ -23,7 +25,7 @@ func NewModuleAnalyzer(dir string) *ModuleAnalyzer {
 				packages.LoadAllSyntax |
 				packages.LoadImports,
 			Context:    nil,
-			Dir:        dir,
+			Dir:        "",
 			Env:        nil,
 			BuildFlags: nil,
 			Fset:       token.NewFileSet(),
@@ -35,65 +37,73 @@ func NewModuleAnalyzer(dir string) *ModuleAnalyzer {
 }
 
 // parse all the packages in the module
-func (ma *ModuleAnalyzer) DoAnalyze() error {
+func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackResourceInfo, error) {
+	resourceInfos := make([]*OpenstackResourceInfo, 0)
+	ma.Config.Dir = dir
 	pkgs, err := packages.Load(ma.Config, "./...")
 	if err != nil {
 		log.Println(err)
-		return err
+		return resourceInfos, err
 	}
+	packageAnalyzer := NewPackageAnalyzer()
 	for _, pkg := range pkgs {
-		packageAnalyzer := NewPackageAnalyzer(pkg)
-		if packageAnalyzer.ASTFile != nil {
-			packageAnalyzer.DoAnalyze()
+		if resourceInfo := packageAnalyzer.DoAnalyze(pkg); resourceInfo != nil {
+			resourceInfos = append(resourceInfos, resourceInfo)
 		}
 	}
-	return err
+	return resourceInfos, err
 }
 
 type PackageAnalyzer struct {
-	Pkg     *packages.Package
-	ASTFile *ast.File
 }
 
-func NewPackageAnalyzer(pkg *packages.Package) *PackageAnalyzer {
-	pa := &PackageAnalyzer{
-		Pkg:     pkg,
-		ASTFile: nil,
-	}
-	//get the ast for file requests.go
-	for idx, file := range pkg.CompiledGoFiles {
-		if strings.HasSuffix(file, "requests.go") {
-			pa.ASTFile = pkg.Syntax[idx]
-		}
-	}
+func NewPackageAnalyzer() *PackageAnalyzer {
+	pa := &PackageAnalyzer{}
 	return pa
 }
 
+// get the ast for file requests.go
+func (pa *PackageAnalyzer) GetASTFile(pkg *packages.Package) *ast.File {
+	for idx, file := range pkg.CompiledGoFiles {
+		if strings.HasSuffix(file, "requests.go") {
+			return pkg.Syntax[idx]
+		}
+	}
+	return nil
+}
+
 // analyze packages and parse info
-// todo 1. 判断是否是基本类型
-// todo 2. 基于拼接生成参数和返回值类型
-// todo 3. 生成代码
-func (pa *PackageAnalyzer) DoAnalyze() {
-	for _, d := range pa.ASTFile.Decls {
+func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceInfo {
+	log.Printf("*********************************analyze %s*****************************", pkg.Name)
+	resourceInfo := NewOpenstackResourceInfo(pkg.Name, pkg.PkgPath)
+	astFile := pa.GetASTFile(pkg)
+	if astFile == nil {
+		return nil
+	}
+	for _, d := range astFile.Decls {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
 			if pa.checkValidFunction(fn) {
-				fmt.Println("handle function :", fn.Name)
-				for _, paraExpr := range fn.Type.Params.List {
-					paraName, paraTypeName := pa.parseField(paraExpr)
-					fmt.Println(paraName, paraTypeName)
-					typeName, packagePath := pa.parseExprTypeInfo(paraExpr.Type, pa.Pkg.TypesInfo)
-					fmt.Println(typeName, packagePath)
+				actionInfo := NewOpenstackActionInfo(fn.Name.String())
+				log.Println("******************handle function***************** :", fn.Name)
+				parseFieldList := func(fieldList []*ast.Field, kind string) {
+					log.Printf("-----------------%v------------------/n", kind)
+					for _, expr := range fieldList {
+						name, _ := pa.parseFieldInfo(expr)
+						typeName, packagePath := pa.parseExprTypeInfo(expr.Type, pkg.TypesInfo)
+						actionInfo.AddVarInfo(name, typeName, kind)
+						if packagePath != "" {
+							resourceInfo.ImportPaths.Insert(packagePath)
+						}
+						log.Println(name, typeName, packagePath)
+					}
 				}
-				fmt.Println("-----------------return------------------")
-				for _, returnExpr := range fn.Type.Results.List {
-					returnName, returnTypeName := pa.parseField(returnExpr)
-					fmt.Println(returnName, returnTypeName)
-					typeName, packagePath := pa.parseExprTypeInfo(returnExpr.Type, pa.Pkg.TypesInfo)
-					fmt.Println(typeName, packagePath)
-				}
+				parseFieldList(fn.Type.Params.List, "parameters")
+				parseFieldList(fn.Type.Results.List, "returns")
+				resourceInfo.AddAction(actionInfo)
 			}
 		}
 	}
+	return resourceInfo
 }
 
 /*
@@ -163,15 +173,11 @@ func (pa *PackageAnalyzer) parseExprName(expr ast.Expr) string {
 /*
 parse field's name and type
 */
-func (pa *PackageAnalyzer) parseField(field *ast.Field) (string, string) {
+func (pa *PackageAnalyzer) parseFieldInfo(field *ast.Field) (string, string) {
 	paraName := ""
 	if field.Names != nil {
 		paraName = field.Names[0].Name
 	}
 	paraTypeName := pa.parseExprName(field.Type)
 	return paraName, paraTypeName
-}
-
-func (ma *ModuleAnalyzer) AnalyzeFunction(fn *ast.FuncDecl) {
-	fmt.Println(fn)
 }

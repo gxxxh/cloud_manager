@@ -20,3 +20,15 @@ func NewRequestInfo(requestTypeName string, requestType reflect.Type) *RequestIn
 		CreateFunctionName: utils.GetPackageName(packageName) + ".Create" + requestTypeName,
 	}
 }
+
+type RequestRegistryInfo struct {
+	RequestInfos []*RequestInfo
+	ImportPaths  []string
+}
+
+func NewRequestRegistryInfo() *RequestRegistryInfo {
+	return &RequestRegistryInfo{
+		RequestInfos: make([]*RequestInfo, 0),
+		ImportPaths:  make([]string, 0),
+	}
+}

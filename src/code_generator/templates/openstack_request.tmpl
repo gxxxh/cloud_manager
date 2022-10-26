@@ -1,0 +1,17 @@
+package {{param "packageName"}}
+{{GetCodeHeader}}
+
+{{$ResourceName := .ResourceName}}
+{{$ResourcePackageName := .ResourcePackageName}}
+
+import (
+{{- range $Key, $Value := .ImportPaths}}
+    "{{$Key}}"
+{{- end}}
+)
+
+{{- range .Actions}}
+func (oc *OpenstackClient) {{.ActionName}}{{$ResourceName}}({{GenParams .}})({{GenReturns .}}){
+    return {{$ResourcePackageName}}.{{.ActionName}}({{GenParamsCall .}})
+}
+{{- end}}

@@ -11,7 +11,7 @@ import (
 
 // todo, 是针对每个ecs生成一个代码，编译后只能针对该云操作，
 // 还是将所有云的包编译在一起
-
+// using to analyze cloudapi by reflect(dynamically)
 type CloudAPIAnalyzer struct {
 	Kind         string
 	client       interface{}
@@ -105,11 +105,12 @@ func (c *CloudAPIAnalyzer) ExtractType(dataType reflect.Type) interface{} {
 }
 
 // 需要在调用了extractCloudAPIs之后再使用，
-func (c *CloudAPIAnalyzer) ExtractRequestInfos() []RequestInfo {
+func (c *CloudAPIAnalyzer) ExtractRequestInfos() *RequestRegistryInfo {
+	requestRegistryInfo := NewRequestRegistryInfo()
 	for requestTypeName, requestType := range c.RequestMap {
-		c.RequestInfos = append(c.RequestInfos, *NewRequestInfo(requestTypeName, requestType))
+		requestRegistryInfo.RequestInfos = append(requestRegistryInfo.RequestInfos, NewRequestInfo(requestTypeName, requestType))
 	}
-	return c.RequestInfos
+	return requestRegistryInfo
 }
 
 func (c *CloudAPIAnalyzer) SaveToJson() {
