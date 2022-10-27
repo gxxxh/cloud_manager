@@ -1,8 +1,8 @@
 package {{param "packageName"}}
 {{GetCodeHeader}}
 
-{{$ResourceName := .ResourceName}}
 {{$ResourcePackageName := .ResourcePackageName}}
+{{$ResourceName := UpperFirst .ResourcePackageName}}
 
 import (
 {{- range $Key, $Value := .ImportPaths}}
@@ -11,7 +11,35 @@ import (
 )
 
 {{- range .Actions}}
-func (oc *OpenstackClient) {{.ActionName}}{{$ResourceName}}({{GenParams .}})({{GenReturns .}}){
-    return {{$ResourcePackageName}}.{{.ActionName}}(oc.client, {{GenParamsCall .}})
+//request struct for the {{.ActionName}}{{$ResourceName}}
+type {{.ActionName}}{{$ResourceName}}Request struct{
+{{- range .ActionParameters}}
+    {{.Name}} {{.TypeName}}
+{{- end}}
+}
+
+func New{{.ActionName}}{{$ResourceName}}Request()*{{.ActionName}}{{$ResourceName}}Request{
+    return &{{.ActionName}}{{$ResourceName}}Request{}
+}
+
+//response struct for the {{.ActionName}}{{$ResourceName}}
+type {{.ActionName}}{{$ResourceName}}Response struct{
+{{- range .ActionReturns}}
+    {{GenMemberName .TypeName}} {{.TypeName}}
+{{- end}}
+}
+
+func New{{.ActionName}}{{$ResourceName}}Response({{- range .ActionReturns}}{{GenLocalVarName .TypeName}} {{.TypeName}},{{- end}})*{{.ActionName}}{{$ResourceName}}Response {
+    return &{{.ActionName}}{{$ResourceName}}Response{
+        {{- range .ActionReturns}}
+            {{GenMemberName .TypeName}}:{{GenLocalVarName .TypeName}},
+        {{- end}}
+    }
+}
+
+// action function
+func (oc *OpenstackClient) {{.ActionName}}{{$ResourceName}}(request *{{.ActionName}}{{$ResourceName}}Request)(*{{.ActionName}}{{$ResourceName}}Response){
+    return New{{.ActionName}}{{$ResourceName}}Response({{$ResourcePackageName}}.{{.ActionName}}(oc.client,{{- range .ActionParameters}}request.{{.Name}},{{- end}} ))
+
 }
 {{- end}}

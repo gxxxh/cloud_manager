@@ -94,7 +94,10 @@ func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceIn
 						//a field may contain two name with the same type
 						names, _ := pa.parseFieldInfo(expr)
 						typeName, packagePath := pa.parseExprTypeInfo(expr.Type, pkg.TypesInfo)
-						if len(names) == 1 && names[0] == "client" { //client was defined in another file
+						//if len(names) == 1 && names[0] == "client" { //client was defined in another file
+						//	continue
+						//}
+						if typeName == "*gophercloud.ServiceClient" {
 							continue
 						}
 						for _, name := range names {

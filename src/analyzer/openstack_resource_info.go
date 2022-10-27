@@ -8,7 +8,6 @@ import (
 // resource in openstack
 // server, img ...
 type OpenstackResourceInfo struct {
-	ResourceName        string //packageName is the resource Name
 	ResourcePackageName string
 	ResourcePath        string //dir to save the resource Code
 	Actions             []*OpenStackActionInfo
@@ -16,9 +15,7 @@ type OpenstackResourceInfo struct {
 }
 
 func NewOpenstackResourceInfo(resourcePackageName string, resourcePath string) *OpenstackResourceInfo {
-	resourceName := strings.ToUpper(resourcePackageName[0:1])
 	ri := &OpenstackResourceInfo{
-		ResourceName:        resourceName + resourcePackageName[1:],
 		ResourcePackageName: resourcePackageName,
 		ResourcePath:        resourcePath,
 	}
@@ -68,30 +65,30 @@ func (ai *OpenStackActionInfo) AddVarInfo(name, typeName, kind string) {
 	}
 }
 
-func GetParas(actionInfo *OpenStackActionInfo) string {
+func GetParasList(paraInfo []VarInfo) string {
 	var paras = ""
-	for i := 0; i < len(actionInfo.ActionParameters); i++ {
-		name := actionInfo.ActionParameters[i].Name
-		typeName := actionInfo.ActionParameters[i].TypeName
+	for i := 0; i < len(paraInfo); i++ {
+		name := paraInfo[i].Name
+		typeName := paraInfo[i].TypeName
 		paras += name + " " + typeName + ","
 	}
 	return paras[:len(paras)-1]
 }
 
-func GetParasCall(actionInfo *OpenStackActionInfo) string {
+func GetParasCallList(paraInfo []VarInfo) string {
 	var paras = ""
-	for i := 0; i < len(actionInfo.ActionParameters); i++ {
-		name := actionInfo.ActionParameters[i].Name
+	for i := 0; i < len(paraInfo); i++ {
+		name := paraInfo[i].Name
 		paras += name + ","
 	}
 	return paras[:len(paras)-1]
 }
 
-func GetReturns(actionInfo *OpenStackActionInfo) string {
+func GetReturnsList(returnInfo []VarInfo) string {
 	var paras = ""
-	for i := 0; i < len(actionInfo.ActionReturns); i++ {
-		name := actionInfo.ActionReturns[i].Name
-		typeName := actionInfo.ActionReturns[i].TypeName
+	for i := 0; i < len(returnInfo); i++ {
+		name := returnInfo[i].Name
+		typeName := returnInfo[i].TypeName
 		if name == "" {
 			paras += typeName + ","
 		} else {
@@ -99,4 +96,18 @@ func GetReturns(actionInfo *OpenStackActionInfo) string {
 		}
 	}
 	return paras[:len(paras)-1]
+}
+
+func TypeName2MemberName(typeName string) string {
+	return utils.UpperFirst(TypeName2LocalVarName(typeName))
+}
+
+func TypeName2LocalVarName(typeName string) string {
+	//todo check basic type
+	var localVarName string
+	if strings.Contains(typeName, ".") {
+		tmp := strings.Split(typeName, ".")
+		localVarName = tmp[len(tmp)-1]
+	}
+	return utils.LowerFirst(localVarName)
 }

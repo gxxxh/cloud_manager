@@ -33,8 +33,8 @@ func TestGenCreateRequestRegistry(t *testing.T) {
 }
 
 func TestGenOpenstackCode(t *testing.T) {
-	//dir := "D:\\gh\\cloud\\gophercloud-master\\openstack\\compute"
-	dir := "D:\\gh\\cloud\\gophercloud-master\\openstack\\compute\\v2\\servers"
+	dir := "D:\\gh\\cloud\\gophercloud-master\\openstack\\compute"
+	//dir := "D:\\gh\\cloud\\gophercloud-master\\openstack\\compute\\v2\\servers"
 	ma := cloud_manager.NewModuleAnalyzer()
 	resourceInfos, err := ma.DoAnalyze(dir)
 	if err != nil {
@@ -47,8 +47,8 @@ func TestGenOpenstackCode(t *testing.T) {
 		if err != nil {
 			t.Error(err)
 		}
-
-		filePtr, err := os.Create("E:\\gopath\\src\\cloud_manager\\src\\codegen\\openstack\\test_request.go")
+		filePath := fmt.Sprintf("E:\\gopath\\src\\cloud_manager\\src\\codegen\\openstack\\%s.go", resourceInfo.ResourcePackageName)
+		filePtr, err := os.Create(filePath)
 		if err != nil {
 			fmt.Println(err)
 			t.Error(err)
