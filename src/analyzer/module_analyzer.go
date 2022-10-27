@@ -85,16 +85,28 @@ func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceIn
 			if pa.checkValidFunction(fn) {
 				actionInfo := NewOpenstackActionInfo(fn.Name.String())
 				log.Println("******************handle function***************** :", fn.Name)
+				if fn.Name.String() == "ListAddressesByNetwork" {
+					fmt.Println(fn.Name)
+				}
 				parseFieldList := func(fieldList []*ast.Field, kind string) {
-					log.Printf("-----------------%v------------------/n", kind)
+					log.Printf("-----------------%v:%d------------------/n", kind, len(fieldList))
 					for _, expr := range fieldList {
-						name, _ := pa.parseFieldInfo(expr)
+						//a field may contain two name with the same type
+						names, _ := pa.parseFieldInfo(expr)
 						typeName, packagePath := pa.parseExprTypeInfo(expr.Type, pkg.TypesInfo)
-						actionInfo.AddVarInfo(name, typeName, kind)
+						if len(names) == 1 && names[0] == "client" { //client was defined in another file
+							continue
+						}
+						for _, name := range names {
+							actionInfo.AddVarInfo(name, typeName, kind)
+							log.Println(name, typeName, packagePath)
+						}
+						if len(names) == 0 { //return has no names
+							actionInfo.AddVarInfo("", typeName, kind)
+						}
 						if packagePath != "" {
 							resourceInfo.ImportPaths.Insert(packagePath)
 						}
-						log.Println(name, typeName, packagePath)
 					}
 				}
 				parseFieldList(fn.Type.Params.List, "parameters")
@@ -173,11 +185,12 @@ func (pa *PackageAnalyzer) parseExprName(expr ast.Expr) string {
 /*
 parse field's name and type
 */
-func (pa *PackageAnalyzer) parseFieldInfo(field *ast.Field) (string, string) {
-	paraName := ""
-	if field.Names != nil {
-		paraName = field.Names[0].Name
+func (pa *PackageAnalyzer) parseFieldInfo(field *ast.Field) ([]string, []string) {
+	names := make([]string, len(field.Names), len(field.Names))
+	typeNames := make([]string, len(field.Names), len(field.Names))
+	for idx, fieldName := range field.Names {
+		names[idx] = fieldName.Name
+		typeNames[idx] = pa.parseExprName(field.Type)
 	}
-	paraTypeName := pa.parseExprName(field.Type)
-	return paraName, paraTypeName
+	return names, typeNames
 }

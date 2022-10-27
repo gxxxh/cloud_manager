@@ -7,76 +7,75 @@ package openstack
 
 
 import (
-    "github.com/gophercloud/gophercloud"
     "github.com/gophercloud/gophercloud/openstack/compute/v2/servers"
     "github.com/gophercloud/gophercloud/pagination"
 )
-func (oc *OpenstackClient) ListServers(client *gophercloud.ServiceClient,opts servers.ListOptsBuilder)( pagination.Pager,){
-    return servers.List(client,opts)
+func (oc *OpenstackClient) ListServers(opts servers.ListOptsBuilder)(pagination.Pager){
+    return servers.List(oc.client, opts)
 }
-func (oc *OpenstackClient) CreateServers(client *gophercloud.ServiceClient,opts servers.CreateOptsBuilder)(r servers.CreateResult,){
-    return servers.Create(client,opts)
+func (oc *OpenstackClient) CreateServers(opts servers.CreateOptsBuilder)(r servers.CreateResult){
+    return servers.Create(oc.client, opts)
 }
-func (oc *OpenstackClient) DeleteServers(client *gophercloud.ServiceClient,id string)(r servers.DeleteResult,){
-    return servers.Delete(client,id)
+func (oc *OpenstackClient) DeleteServers(id string)(r servers.DeleteResult){
+    return servers.Delete(oc.client, id)
 }
-func (oc *OpenstackClient) ForceDeleteServers(client *gophercloud.ServiceClient,id string)(r servers.ActionResult,){
-    return servers.ForceDelete(client,id)
+func (oc *OpenstackClient) ForceDeleteServers(id string)(r servers.ActionResult){
+    return servers.ForceDelete(oc.client, id)
 }
-func (oc *OpenstackClient) GetServers(client *gophercloud.ServiceClient,id string)(r servers.GetResult,){
-    return servers.Get(client,id)
+func (oc *OpenstackClient) GetServers(id string)(r servers.GetResult){
+    return servers.Get(oc.client, id)
 }
-func (oc *OpenstackClient) UpdateServers(client *gophercloud.ServiceClient,id string,opts servers.UpdateOptsBuilder)(r servers.UpdateResult,){
-    return servers.Update(client,id,opts)
+func (oc *OpenstackClient) UpdateServers(id string,opts servers.UpdateOptsBuilder)(r servers.UpdateResult){
+    return servers.Update(oc.client, id,opts)
 }
-func (oc *OpenstackClient) ChangeAdminPasswordServers(client *gophercloud.ServiceClient,id string)(r servers.ActionResult,){
-    return servers.ChangeAdminPassword(client,id)
+func (oc *OpenstackClient) ChangeAdminPasswordServers(id string,newPassword string)(r servers.ActionResult){
+    return servers.ChangeAdminPassword(oc.client, id,newPassword)
 }
-func (oc *OpenstackClient) RebootServers(client *gophercloud.ServiceClient,id string,opts servers.RebootOptsBuilder)(r servers.ActionResult,){
-    return servers.Reboot(client,id,opts)
+func (oc *OpenstackClient) RebootServers(id string,opts servers.RebootOptsBuilder)(r servers.ActionResult){
+    return servers.Reboot(oc.client, id,opts)
 }
-func (oc *OpenstackClient) RebuildServers(client *gophercloud.ServiceClient,id string,opts servers.RebuildOptsBuilder)(r servers.RebuildResult,){
-    return servers.Rebuild(client,id,opts)
+func (oc *OpenstackClient) RebuildServers(id string,opts servers.RebuildOptsBuilder)(r servers.RebuildResult){
+    return servers.Rebuild(oc.client, id,opts)
 }
-func (oc *OpenstackClient) ResizeServers(client *gophercloud.ServiceClient,id string,opts servers.ResizeOptsBuilder)(r servers.ActionResult,){
-    return servers.Resize(client,id,opts)
+func (oc *OpenstackClient) ResizeServers(id string,opts servers.ResizeOptsBuilder)(r servers.ActionResult){
+    return servers.Resize(oc.client, id,opts)
 }
-func (oc *OpenstackClient) ConfirmResizeServers(client *gophercloud.ServiceClient,id string)(r servers.ActionResult,){
-    return servers.ConfirmResize(client,id)
+func (oc *OpenstackClient) ConfirmResizeServers(id string)(r servers.ActionResult){
+    return servers.ConfirmResize(oc.client, id)
 }
-func (oc *OpenstackClient) RevertResizeServers(client *gophercloud.ServiceClient,id string)(r servers.ActionResult,){
-    return servers.RevertResize(client,id)
+func (oc *OpenstackClient) RevertResizeServers(id string)(r servers.ActionResult){
+    return servers.RevertResize(oc.client, id)
 }
-func (oc *OpenstackClient) ResetMetadataServers(client *gophercloud.ServiceClient,id string,opts servers.ResetMetadataOptsBuilder)(r servers.ResetMetadataResult,){
-    return servers.ResetMetadata(client,id,opts)
+func (oc *OpenstackClient) ResetMetadataServers(id string,opts servers.ResetMetadataOptsBuilder)(r servers.ResetMetadataResult){
+    return servers.ResetMetadata(oc.client, id,opts)
 }
-func (oc *OpenstackClient) MetadataServers(client *gophercloud.ServiceClient,id string)(r servers.GetMetadataResult,){
-    return servers.Metadata(client,id)
+func (oc *OpenstackClient) MetadataServers(id string)(r servers.GetMetadataResult){
+    return servers.Metadata(oc.client, id)
 }
-func (oc *OpenstackClient) UpdateMetadataServers(client *gophercloud.ServiceClient,id string,opts servers.UpdateMetadataOptsBuilder)(r servers.UpdateMetadataResult,){
-    return servers.UpdateMetadata(client,id,opts)
+func (oc *OpenstackClient) UpdateMetadataServers(id string,opts servers.UpdateMetadataOptsBuilder)(r servers.UpdateMetadataResult){
+    return servers.UpdateMetadata(oc.client, id,opts)
 }
-func (oc *OpenstackClient) CreateMetadatumServers(client *gophercloud.ServiceClient,id string,opts servers.MetadatumOptsBuilder)(r servers.CreateMetadatumResult,){
-    return servers.CreateMetadatum(client,id,opts)
+func (oc *OpenstackClient) CreateMetadatumServers(id string,opts servers.MetadatumOptsBuilder)(r servers.CreateMetadatumResult){
+    return servers.CreateMetadatum(oc.client, id,opts)
 }
-func (oc *OpenstackClient) MetadatumServers(client *gophercloud.ServiceClient,id string)(r servers.GetMetadatumResult,){
-    return servers.Metadatum(client,id)
+func (oc *OpenstackClient) MetadatumServers(id string,key string)(r servers.GetMetadatumResult){
+    return servers.Metadatum(oc.client, id,key)
 }
-func (oc *OpenstackClient) DeleteMetadatumServers(client *gophercloud.ServiceClient,id string)(r servers.DeleteMetadatumResult,){
-    return servers.DeleteMetadatum(client,id)
+func (oc *OpenstackClient) DeleteMetadatumServers(id string,key string)(r servers.DeleteMetadatumResult){
+    return servers.DeleteMetadatum(oc.client, id,key)
 }
-func (oc *OpenstackClient) ListAddressesServers(client *gophercloud.ServiceClient,id string)( pagination.Pager,){
-    return servers.ListAddresses(client,id)
+func (oc *OpenstackClient) ListAddressesServers(id string)(pagination.Pager){
+    return servers.ListAddresses(oc.client, id)
 }
-func (oc *OpenstackClient) ListAddressesByNetworkServers(client *gophercloud.ServiceClient,id string)( pagination.Pager,){
-    return servers.ListAddressesByNetwork(client,id)
+func (oc *OpenstackClient) ListAddressesByNetworkServers(id string,network string)(pagination.Pager){
+    return servers.ListAddressesByNetwork(oc.client, id,network)
 }
-func (oc *OpenstackClient) CreateImageServers(client *gophercloud.ServiceClient,id string,opts servers.CreateImageOptsBuilder)(r servers.CreateImageResult,){
-    return servers.CreateImage(client,id,opts)
+func (oc *OpenstackClient) CreateImageServers(id string,opts servers.CreateImageOptsBuilder)(r servers.CreateImageResult){
+    return servers.CreateImage(oc.client, id,opts)
 }
-func (oc *OpenstackClient) GetPasswordServers(client *gophercloud.ServiceClient,serverId string)(r servers.GetPasswordResult,){
-    return servers.GetPassword(client,serverId)
+func (oc *OpenstackClient) GetPasswordServers(serverId string)(r servers.GetPasswordResult){
+    return servers.GetPassword(oc.client, serverId)
 }
-func (oc *OpenstackClient) ShowConsoleOutputServers(client *gophercloud.ServiceClient,id string,opts servers.ShowConsoleOutputOptsBuilder)(r servers.ShowConsoleOutputResult,){
-    return servers.ShowConsoleOutput(client,id,opts)
+func (oc *OpenstackClient) ShowConsoleOutputServers(id string,opts servers.ShowConsoleOutputOptsBuilder)(r servers.ShowConsoleOutputResult){
+    return servers.ShowConsoleOutput(oc.client, id,opts)
 }

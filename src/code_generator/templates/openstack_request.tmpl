@@ -12,6 +12,6 @@ import (
 
 {{- range .Actions}}
 func (oc *OpenstackClient) {{.ActionName}}{{$ResourceName}}({{GenParams .}})({{GenReturns .}}){
-    return {{$ResourcePackageName}}.{{.ActionName}}({{GenParamsCall .}})
+    return {{$ResourcePackageName}}.{{.ActionName}}(oc.client, {{GenParamsCall .}})
 }
 {{- end}}

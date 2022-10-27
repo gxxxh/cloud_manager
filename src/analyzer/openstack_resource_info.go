@@ -92,11 +92,11 @@ func GetReturns(actionInfo *OpenStackActionInfo) string {
 	for i := 0; i < len(actionInfo.ActionReturns); i++ {
 		name := actionInfo.ActionReturns[i].Name
 		typeName := actionInfo.ActionReturns[i].TypeName
-		if name == " " {
+		if name == "" {
 			paras += typeName + ","
 		} else {
 			paras += name + " " + typeName + ","
 		}
 	}
-	return paras
+	return paras[:len(paras)-1]
 }
