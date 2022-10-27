@@ -6,6 +6,7 @@ import (
 	"cloud_manager/src/utils"
 	"fmt"
 	"os"
+	"path/filepath"
 	"testing"
 )
 
@@ -33,21 +34,27 @@ func TestGenCreateRequestRegistry(t *testing.T) {
 }
 
 func TestGenOpenstackCode(t *testing.T) {
-	dir := "D:\\gh\\cloud\\gophercloud-master\\openstack\\compute"
-	//dir := "D:\\gh\\cloud\\gophercloud-master\\openstack\\compute\\v2\\servers"
+	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack"
+	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute\\v2\\servers"
 	ma := cloud_manager.NewModuleAnalyzer()
 	resourceInfos, err := ma.DoAnalyze(dir)
 	if err != nil {
 		t.Error(err)
 	}
 	for _, resourceInfo := range resourceInfos {
+		if len(resourceInfo.Actions) == 0 {
+			continue
+		}
+		fmt.Printf("gen code for actions in resource %s\n", resourceInfo.ResourcePackageName)
 		templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\openstack_request.tmpl"
 		data := utils.Struct2Map(resourceInfo)
 		code, err := code_generator.GenCode(templatePath, data, "openstack")
 		if err != nil {
 			t.Error(err)
 		}
-		filePath := fmt.Sprintf("E:\\gopath\\src\\cloud_manager\\src\\codegen\\openstack\\%s.go", resourceInfo.ResourcePackageName)
+		basePath := "E:\\gopath\\src\\cloud_manager\\src\\codegen\\openstack"
+		fileName := utils.JoinName(resourceInfo.ResourcePath, "openstack", "_") + ".go"
+		filePath := filepath.Join(basePath, fileName)
 		filePtr, err := os.Create(filePath)
 		if err != nil {
 			fmt.Println(err)

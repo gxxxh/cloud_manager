@@ -9,6 +9,7 @@ import (
 // server, img ...
 type OpenstackResourceInfo struct {
 	ResourcePackageName string
+	ResourceName        string
 	ResourcePath        string //dir to save the resource Code
 	Actions             []*OpenStackActionInfo
 	ImportPaths         utils.Set
@@ -19,8 +20,10 @@ func NewOpenstackResourceInfo(resourcePackageName string, resourcePath string) *
 		ResourcePackageName: resourcePackageName,
 		ResourcePath:        resourcePath,
 	}
+	ri.ResourceName = utils.JoinName(resourcePath, "openstack", "")
 	ri.Actions = make([]*OpenStackActionInfo, 0)
 	ri.ImportPaths = utils.NewSet()
+	ri.ImportPaths.Insert(resourcePath)
 	return ri
 }
 
@@ -104,7 +107,7 @@ func TypeName2MemberName(typeName string) string {
 
 func TypeName2LocalVarName(typeName string) string {
 	//todo check basic type
-	var localVarName string
+	localVarName := typeName
 	if strings.Contains(typeName, ".") {
 		tmp := strings.Split(typeName, ".")
 		localVarName = tmp[len(tmp)-1]

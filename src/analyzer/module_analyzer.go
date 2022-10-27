@@ -94,9 +94,6 @@ func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceIn
 						//a field may contain two name with the same type
 						names, _ := pa.parseFieldInfo(expr)
 						typeName, packagePath := pa.parseExprTypeInfo(expr.Type, pkg.TypesInfo)
-						//if len(names) == 1 && names[0] == "client" { //client was defined in another file
-						//	continue
-						//}
 						if typeName == "*gophercloud.ServiceClient" {
 							continue
 						}
@@ -126,6 +123,11 @@ check if the function is required(List, Create, Delete, Get...)
 1. the first parameter should be * gophercloud.ServiceClient
 */
 func (pa *PackageAnalyzer) checkValidFunction(fn *ast.FuncDecl) bool {
+	funcName := fn.Name.String()
+	//check if the function is exported
+	if funcName[0] >= 'a' && funcName[0] <= 'z' {
+		return false
+	}
 	if fn.Recv == nil { //function's Recv filed is nil, method is not
 		if len(fn.Type.Params.List) != 0 {
 			//the first parameter should be a star expr(pointer)
@@ -154,8 +156,11 @@ func (pa *PackageAnalyzer) parseTypeInfo(ty types.Type) (string, string) {
 		return "*" + typeName, packagePath
 	case *types.Named:
 		tmp := tyType.Obj()
-		typeName := tmp.Pkg().Name() + "." + tmp.Name()
-		return typeName, tmp.Pkg().Path()
+		if tmp.Pkg() != nil {
+			return tmp.Pkg().Name() + "." + tmp.Name(), tmp.Pkg().Path()
+		} else {
+			return tmp.Name(), ""
+		}
 	case *types.Basic:
 		return tyType.Name(), ""
 	default:

@@ -28,8 +28,8 @@ func GenerateTemplate(templateText string, templateData interface{}, params map[
 		"now": func() string {
 			return time.Now().Format(time.RFC3339)
 		},
-		"GenMemberName":   analyzer.TypeName2MemberName,   //todo 大写首字母作为成员变量
-		"GenLocalVarName": analyzer.TypeName2LocalVarName, //todo 针对返回值生成针对类型的成员变量名称
+		"GenMemberName":   analyzer.TypeName2MemberName,   // 大写首字母作为成员变量
+		"GenLocalVarName": analyzer.TypeName2LocalVarName, // 针对返回值生成针对类型的成员变量名称
 		"UpperFirst":      utils.UpperFirst,
 		"param": func(name string) interface{} {
 			if v, ok := params[name]; ok {

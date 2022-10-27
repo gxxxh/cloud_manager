@@ -2,8 +2,12 @@ package utils
 
 import (
 	"errors"
+	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
+	"path/filepath"
+	"strings"
 )
 
 // 判断所给路径文件/文件夹是否存在
@@ -40,4 +44,51 @@ func GetPackageName(name string) string {
 		packageName += string(ch)
 	}
 	return packageName
+}
+
+func JoinName(packagePath, packageName, split string) string {
+	dirs := strings.Split(packagePath, "/")
+	flag := false
+	name := ""
+	for _, dirName := range dirs {
+		if dirName == packageName {
+			flag = true
+			continue
+		}
+		if flag {
+			if name != "" {
+				name += split
+			}
+			name += UpperFirst(dirName)
+		}
+	}
+	return name
+}
+
+func CreateDirByPackagePath(basePath, packagePath, packageName string) string {
+	dirs := strings.Split(packagePath, "/")
+	flag := false
+	curPath := basePath
+	for _, dirName := range dirs {
+
+		if dirName == packageName {
+			flag = true
+			continue
+		}
+		if flag {
+			curPath = filepath.Join(curPath, dirName)
+			pathExists, err := PathExists(curPath)
+			if err != nil {
+				log.Println(err)
+			}
+			if pathExists == false {
+				err = os.Mkdir(curPath, 0750)
+				if err != nil {
+					fmt.Println(err)
+				}
+			}
+
+		}
+	}
+	return curPath
 }

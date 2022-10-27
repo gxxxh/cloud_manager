@@ -2,7 +2,7 @@ package {{param "packageName"}}
 {{GetCodeHeader}}
 
 {{$ResourcePackageName := .ResourcePackageName}}
-{{$ResourceName := UpperFirst .ResourcePackageName}}
+{{$ResourceName := .ResourceName}}
 
 import (
 {{- range $Key, $Value := .ImportPaths}}
@@ -14,7 +14,7 @@ import (
 //request struct for the {{.ActionName}}{{$ResourceName}}
 type {{.ActionName}}{{$ResourceName}}Request struct{
 {{- range .ActionParameters}}
-    {{.Name}} {{.TypeName}}
+    {{UpperFirst .Name}} {{.TypeName}}
 {{- end}}
 }
 
@@ -39,7 +39,7 @@ func New{{.ActionName}}{{$ResourceName}}Response({{- range .ActionReturns}}{{Gen
 
 // action function
 func (oc *OpenstackClient) {{.ActionName}}{{$ResourceName}}(request *{{.ActionName}}{{$ResourceName}}Request)(*{{.ActionName}}{{$ResourceName}}Response){
-    return New{{.ActionName}}{{$ResourceName}}Response({{$ResourcePackageName}}.{{.ActionName}}(oc.client,{{- range .ActionParameters}}request.{{.Name}},{{- end}} ))
+    return New{{.ActionName}}{{$ResourceName}}Response({{$ResourcePackageName}}.{{.ActionName}}(oc.client,{{- range .ActionParameters}}request.{{UpperFirst .Name}},{{- end}} ))
 
 }
 {{- end}}
