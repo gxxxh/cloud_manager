@@ -30,7 +30,7 @@ func NewGetComputeV2ExtensionsLimitsResponse(getResult limits.GetResult,)*GetCom
 }
 
 // action function
-func (oc *OpenstackClient) GetComputeV2ExtensionsLimits(request *GetComputeV2ExtensionsLimitsRequest)(*GetComputeV2ExtensionsLimitsResponse){
-    return NewGetComputeV2ExtensionsLimitsResponse(limits.Get(oc.client,request.Opts, ))
+func (oc *OpenstackClient) GetComputeV2ExtensionsLimits(req *GetComputeV2ExtensionsLimitsRequest)(*GetComputeV2ExtensionsLimitsResponse){
+    return NewGetComputeV2ExtensionsLimitsResponse(limits.Get(oc.client,req.Opts, ))
 
 }

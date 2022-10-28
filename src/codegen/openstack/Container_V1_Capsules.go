@@ -31,8 +31,8 @@ func NewGetContainerV1CapsulesResponse(getResult capsules.GetResult,)*GetContain
 }
 
 // action function
-func (oc *OpenstackClient) GetContainerV1Capsules(request *GetContainerV1CapsulesRequest)(*GetContainerV1CapsulesResponse){
-    return NewGetContainerV1CapsulesResponse(capsules.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetContainerV1Capsules(req *GetContainerV1CapsulesRequest)(*GetContainerV1CapsulesResponse){
+    return NewGetContainerV1CapsulesResponse(capsules.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateContainerV1Capsules
@@ -56,8 +56,8 @@ func NewCreateContainerV1CapsulesResponse(createResult capsules.CreateResult,)*C
 }
 
 // action function
-func (oc *OpenstackClient) CreateContainerV1Capsules(request *CreateContainerV1CapsulesRequest)(*CreateContainerV1CapsulesResponse){
-    return NewCreateContainerV1CapsulesResponse(capsules.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateContainerV1Capsules(req *CreateContainerV1CapsulesRequest)(*CreateContainerV1CapsulesResponse){
+    return NewCreateContainerV1CapsulesResponse(capsules.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the ListContainerV1Capsules
@@ -81,8 +81,8 @@ func NewListContainerV1CapsulesResponse(pager pagination.Pager,)*ListContainerV1
 }
 
 // action function
-func (oc *OpenstackClient) ListContainerV1Capsules(request *ListContainerV1CapsulesRequest)(*ListContainerV1CapsulesResponse){
-    return NewListContainerV1CapsulesResponse(capsules.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListContainerV1Capsules(req *ListContainerV1CapsulesRequest)(*ListContainerV1CapsulesResponse){
+    return NewListContainerV1CapsulesResponse(capsules.List(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteContainerV1Capsules
@@ -106,7 +106,7 @@ func NewDeleteContainerV1CapsulesResponse(deleteResult capsules.DeleteResult,)*D
 }
 
 // action function
-func (oc *OpenstackClient) DeleteContainerV1Capsules(request *DeleteContainerV1CapsulesRequest)(*DeleteContainerV1CapsulesResponse){
-    return NewDeleteContainerV1CapsulesResponse(capsules.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteContainerV1Capsules(req *DeleteContainerV1CapsulesRequest)(*DeleteContainerV1CapsulesResponse){
+    return NewDeleteContainerV1CapsulesResponse(capsules.Delete(oc.client,req.Id, ))
 
 }

@@ -31,8 +31,8 @@ func NewCreateNetworkingV2ExtensionsVpnaasServicesResponse(createResult services
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasServices(request *CreateNetworkingV2ExtensionsVpnaasServicesRequest)(*CreateNetworkingV2ExtensionsVpnaasServicesResponse){
-    return NewCreateNetworkingV2ExtensionsVpnaasServicesResponse(services.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasServices(req *CreateNetworkingV2ExtensionsVpnaasServicesRequest)(*CreateNetworkingV2ExtensionsVpnaasServicesResponse){
+    return NewCreateNetworkingV2ExtensionsVpnaasServicesResponse(services.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsVpnaasServices
@@ -56,8 +56,8 @@ func NewDeleteNetworkingV2ExtensionsVpnaasServicesResponse(deleteResult services
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasServices(request *DeleteNetworkingV2ExtensionsVpnaasServicesRequest)(*DeleteNetworkingV2ExtensionsVpnaasServicesResponse){
-    return NewDeleteNetworkingV2ExtensionsVpnaasServicesResponse(services.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasServices(req *DeleteNetworkingV2ExtensionsVpnaasServicesRequest)(*DeleteNetworkingV2ExtensionsVpnaasServicesResponse){
+    return NewDeleteNetworkingV2ExtensionsVpnaasServicesResponse(services.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsVpnaasServices
@@ -82,8 +82,8 @@ func NewUpdateNetworkingV2ExtensionsVpnaasServicesResponse(updateResult services
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasServices(request *UpdateNetworkingV2ExtensionsVpnaasServicesRequest)(*UpdateNetworkingV2ExtensionsVpnaasServicesResponse){
-    return NewUpdateNetworkingV2ExtensionsVpnaasServicesResponse(services.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasServices(req *UpdateNetworkingV2ExtensionsVpnaasServicesRequest)(*UpdateNetworkingV2ExtensionsVpnaasServicesResponse){
+    return NewUpdateNetworkingV2ExtensionsVpnaasServicesResponse(services.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ListNetworkingV2ExtensionsVpnaasServices
@@ -107,8 +107,8 @@ func NewListNetworkingV2ExtensionsVpnaasServicesResponse(pager pagination.Pager,
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasServices(request *ListNetworkingV2ExtensionsVpnaasServicesRequest)(*ListNetworkingV2ExtensionsVpnaasServicesResponse){
-    return NewListNetworkingV2ExtensionsVpnaasServicesResponse(services.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasServices(req *ListNetworkingV2ExtensionsVpnaasServicesRequest)(*ListNetworkingV2ExtensionsVpnaasServicesResponse){
+    return NewListNetworkingV2ExtensionsVpnaasServicesResponse(services.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsVpnaasServices
@@ -132,7 +132,7 @@ func NewGetNetworkingV2ExtensionsVpnaasServicesResponse(getResult services.GetRe
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasServices(request *GetNetworkingV2ExtensionsVpnaasServicesRequest)(*GetNetworkingV2ExtensionsVpnaasServicesResponse){
-    return NewGetNetworkingV2ExtensionsVpnaasServicesResponse(services.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasServices(req *GetNetworkingV2ExtensionsVpnaasServicesRequest)(*GetNetworkingV2ExtensionsVpnaasServicesResponse){
+    return NewGetNetworkingV2ExtensionsVpnaasServicesResponse(services.Get(oc.client,req.Id, ))
 
 }

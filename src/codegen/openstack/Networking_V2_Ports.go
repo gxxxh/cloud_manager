@@ -31,8 +31,8 @@ func NewListNetworkingV2PortsResponse(pager pagination.Pager,)*ListNetworkingV2P
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2Ports(request *ListNetworkingV2PortsRequest)(*ListNetworkingV2PortsResponse){
-    return NewListNetworkingV2PortsResponse(ports.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2Ports(req *ListNetworkingV2PortsRequest)(*ListNetworkingV2PortsResponse){
+    return NewListNetworkingV2PortsResponse(ports.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2Ports
@@ -56,8 +56,8 @@ func NewGetNetworkingV2PortsResponse(getResult ports.GetResult,)*GetNetworkingV2
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2Ports(request *GetNetworkingV2PortsRequest)(*GetNetworkingV2PortsResponse){
-    return NewGetNetworkingV2PortsResponse(ports.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2Ports(req *GetNetworkingV2PortsRequest)(*GetNetworkingV2PortsResponse){
+    return NewGetNetworkingV2PortsResponse(ports.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateNetworkingV2Ports
@@ -81,8 +81,8 @@ func NewCreateNetworkingV2PortsResponse(createResult ports.CreateResult,)*Create
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2Ports(request *CreateNetworkingV2PortsRequest)(*CreateNetworkingV2PortsResponse){
-    return NewCreateNetworkingV2PortsResponse(ports.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2Ports(req *CreateNetworkingV2PortsRequest)(*CreateNetworkingV2PortsResponse){
+    return NewCreateNetworkingV2PortsResponse(ports.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2Ports
@@ -107,8 +107,8 @@ func NewUpdateNetworkingV2PortsResponse(updateResult ports.UpdateResult,)*Update
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2Ports(request *UpdateNetworkingV2PortsRequest)(*UpdateNetworkingV2PortsResponse){
-    return NewUpdateNetworkingV2PortsResponse(ports.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2Ports(req *UpdateNetworkingV2PortsRequest)(*UpdateNetworkingV2PortsResponse){
+    return NewUpdateNetworkingV2PortsResponse(ports.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2Ports
@@ -132,7 +132,7 @@ func NewDeleteNetworkingV2PortsResponse(deleteResult ports.DeleteResult,)*Delete
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2Ports(request *DeleteNetworkingV2PortsRequest)(*DeleteNetworkingV2PortsResponse){
-    return NewDeleteNetworkingV2PortsResponse(ports.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2Ports(req *DeleteNetworkingV2PortsRequest)(*DeleteNetworkingV2PortsResponse){
+    return NewDeleteNetworkingV2PortsResponse(ports.Delete(oc.client,req.Id, ))
 
 }

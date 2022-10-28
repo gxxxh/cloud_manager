@@ -30,8 +30,8 @@ func NewMigrateComputeV2ExtensionsMigrateResponse(migrateResult migrate.MigrateR
 }
 
 // action function
-func (oc *OpenstackClient) MigrateComputeV2ExtensionsMigrate(request *MigrateComputeV2ExtensionsMigrateRequest)(*MigrateComputeV2ExtensionsMigrateResponse){
-    return NewMigrateComputeV2ExtensionsMigrateResponse(migrate.Migrate(oc.client,request.Id, ))
+func (oc *OpenstackClient) MigrateComputeV2ExtensionsMigrate(req *MigrateComputeV2ExtensionsMigrateRequest)(*MigrateComputeV2ExtensionsMigrateResponse){
+    return NewMigrateComputeV2ExtensionsMigrateResponse(migrate.Migrate(oc.client,req.Id, ))
 
 }
 //request struct for the LiveMigrateComputeV2ExtensionsMigrate
@@ -56,7 +56,7 @@ func NewLiveMigrateComputeV2ExtensionsMigrateResponse(migrateResult migrate.Migr
 }
 
 // action function
-func (oc *OpenstackClient) LiveMigrateComputeV2ExtensionsMigrate(request *LiveMigrateComputeV2ExtensionsMigrateRequest)(*LiveMigrateComputeV2ExtensionsMigrateResponse){
-    return NewLiveMigrateComputeV2ExtensionsMigrateResponse(migrate.LiveMigrate(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) LiveMigrateComputeV2ExtensionsMigrate(req *LiveMigrateComputeV2ExtensionsMigrateRequest)(*LiveMigrateComputeV2ExtensionsMigrateResponse){
+    return NewLiveMigrateComputeV2ExtensionsMigrateResponse(migrate.LiveMigrate(oc.client,req.Id,req.Opts, ))
 
 }

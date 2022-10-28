@@ -31,8 +31,8 @@ func NewCreateNetworkingV2ExtensionsLbaas_v2L7policiesResponse(createResult l7po
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaas_v2L7policies(request *CreateNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*CreateNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
-    return NewCreateNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaas_v2L7policies(req *CreateNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*CreateNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
+    return NewCreateNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the ListNetworkingV2ExtensionsLbaas_v2L7policies
@@ -56,8 +56,8 @@ func NewListNetworkingV2ExtensionsLbaas_v2L7policiesResponse(pager pagination.Pa
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaas_v2L7policies(request *ListNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*ListNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
-    return NewListNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaas_v2L7policies(req *ListNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*ListNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
+    return NewListNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLbaas_v2L7policies
@@ -81,8 +81,8 @@ func NewGetNetworkingV2ExtensionsLbaas_v2L7policiesResponse(getResult l7policies
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaas_v2L7policies(request *GetNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*GetNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
-    return NewGetNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaas_v2L7policies(req *GetNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*GetNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
+    return NewGetNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.Get(oc.client,req.Id, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLbaas_v2L7policies
@@ -106,8 +106,8 @@ func NewDeleteNetworkingV2ExtensionsLbaas_v2L7policiesResponse(deleteResult l7po
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaas_v2L7policies(request *DeleteNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*DeleteNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
-    return NewDeleteNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaas_v2L7policies(req *DeleteNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*DeleteNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
+    return NewDeleteNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLbaas_v2L7policies
@@ -132,8 +132,8 @@ func NewUpdateNetworkingV2ExtensionsLbaas_v2L7policiesResponse(updateResult l7po
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaas_v2L7policies(request *UpdateNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*UpdateNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
-    return NewUpdateNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaas_v2L7policies(req *UpdateNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*UpdateNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
+    return NewUpdateNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the CreateRuleNetworkingV2ExtensionsLbaas_v2L7policies
@@ -158,8 +158,8 @@ func NewCreateRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(createRuleRes
 }
 
 // action function
-func (oc *OpenstackClient) CreateRuleNetworkingV2ExtensionsLbaas_v2L7policies(request *CreateRuleNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*CreateRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
-    return NewCreateRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.CreateRule(oc.client,request.PolicyID,request.Opts, ))
+func (oc *OpenstackClient) CreateRuleNetworkingV2ExtensionsLbaas_v2L7policies(req *CreateRuleNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*CreateRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
+    return NewCreateRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.CreateRule(oc.client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the ListRulesNetworkingV2ExtensionsLbaas_v2L7policies
@@ -184,8 +184,8 @@ func NewListRulesNetworkingV2ExtensionsLbaas_v2L7policiesResponse(pager paginati
 }
 
 // action function
-func (oc *OpenstackClient) ListRulesNetworkingV2ExtensionsLbaas_v2L7policies(request *ListRulesNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*ListRulesNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
-    return NewListRulesNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.ListRules(oc.client,request.PolicyID,request.Opts, ))
+func (oc *OpenstackClient) ListRulesNetworkingV2ExtensionsLbaas_v2L7policies(req *ListRulesNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*ListRulesNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
+    return NewListRulesNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.ListRules(oc.client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the GetRuleNetworkingV2ExtensionsLbaas_v2L7policies
@@ -210,8 +210,8 @@ func NewGetRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(getRuleResult l7
 }
 
 // action function
-func (oc *OpenstackClient) GetRuleNetworkingV2ExtensionsLbaas_v2L7policies(request *GetRuleNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*GetRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
-    return NewGetRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.GetRule(oc.client,request.PolicyID,request.RuleID, ))
+func (oc *OpenstackClient) GetRuleNetworkingV2ExtensionsLbaas_v2L7policies(req *GetRuleNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*GetRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
+    return NewGetRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.GetRule(oc.client,req.PolicyID,req.RuleID, ))
 
 }
 //request struct for the DeleteRuleNetworkingV2ExtensionsLbaas_v2L7policies
@@ -236,8 +236,8 @@ func NewDeleteRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(deleteRuleRes
 }
 
 // action function
-func (oc *OpenstackClient) DeleteRuleNetworkingV2ExtensionsLbaas_v2L7policies(request *DeleteRuleNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*DeleteRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
-    return NewDeleteRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.DeleteRule(oc.client,request.PolicyID,request.RuleID, ))
+func (oc *OpenstackClient) DeleteRuleNetworkingV2ExtensionsLbaas_v2L7policies(req *DeleteRuleNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*DeleteRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
+    return NewDeleteRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.DeleteRule(oc.client,req.PolicyID,req.RuleID, ))
 
 }
 //request struct for the UpdateRuleNetworkingV2ExtensionsLbaas_v2L7policies
@@ -263,7 +263,7 @@ func NewUpdateRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(updateRuleRes
 }
 
 // action function
-func (oc *OpenstackClient) UpdateRuleNetworkingV2ExtensionsLbaas_v2L7policies(request *UpdateRuleNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*UpdateRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
-    return NewUpdateRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.UpdateRule(oc.client,request.PolicyID,request.RuleID,request.Opts, ))
+func (oc *OpenstackClient) UpdateRuleNetworkingV2ExtensionsLbaas_v2L7policies(req *UpdateRuleNetworkingV2ExtensionsLbaas_v2L7policiesRequest)(*UpdateRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse){
+    return NewUpdateRuleNetworkingV2ExtensionsLbaas_v2L7policiesResponse(l7policies.UpdateRule(oc.client,req.PolicyID,req.RuleID,req.Opts, ))
 
 }

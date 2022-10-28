@@ -30,7 +30,7 @@ func NewGetComputeV2ExtensionsDiagnosticsResponse(serverDiagnosticsResult diagno
 }
 
 // action function
-func (oc *OpenstackClient) GetComputeV2ExtensionsDiagnostics(request *GetComputeV2ExtensionsDiagnosticsRequest)(*GetComputeV2ExtensionsDiagnosticsResponse){
-    return NewGetComputeV2ExtensionsDiagnosticsResponse(diagnostics.Get(oc.client,request.ServerId, ))
+func (oc *OpenstackClient) GetComputeV2ExtensionsDiagnostics(req *GetComputeV2ExtensionsDiagnosticsRequest)(*GetComputeV2ExtensionsDiagnosticsResponse){
+    return NewGetComputeV2ExtensionsDiagnosticsResponse(diagnostics.Get(oc.client,req.ServerId, ))
 
 }

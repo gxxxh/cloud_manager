@@ -31,8 +31,8 @@ func NewCreateBlockstorageExtensionsBackupsResponse(createResult backups.CreateR
 }
 
 // action function
-func (oc *OpenstackClient) CreateBlockstorageExtensionsBackups(request *CreateBlockstorageExtensionsBackupsRequest)(*CreateBlockstorageExtensionsBackupsResponse){
-    return NewCreateBlockstorageExtensionsBackupsResponse(backups.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateBlockstorageExtensionsBackups(req *CreateBlockstorageExtensionsBackupsRequest)(*CreateBlockstorageExtensionsBackupsResponse){
+    return NewCreateBlockstorageExtensionsBackupsResponse(backups.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageExtensionsBackups
@@ -56,8 +56,8 @@ func NewDeleteBlockstorageExtensionsBackupsResponse(deleteResult backups.DeleteR
 }
 
 // action function
-func (oc *OpenstackClient) DeleteBlockstorageExtensionsBackups(request *DeleteBlockstorageExtensionsBackupsRequest)(*DeleteBlockstorageExtensionsBackupsResponse){
-    return NewDeleteBlockstorageExtensionsBackupsResponse(backups.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteBlockstorageExtensionsBackups(req *DeleteBlockstorageExtensionsBackupsRequest)(*DeleteBlockstorageExtensionsBackupsResponse){
+    return NewDeleteBlockstorageExtensionsBackupsResponse(backups.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the GetBlockstorageExtensionsBackups
@@ -81,8 +81,8 @@ func NewGetBlockstorageExtensionsBackupsResponse(getResult backups.GetResult,)*G
 }
 
 // action function
-func (oc *OpenstackClient) GetBlockstorageExtensionsBackups(request *GetBlockstorageExtensionsBackupsRequest)(*GetBlockstorageExtensionsBackupsResponse){
-    return NewGetBlockstorageExtensionsBackupsResponse(backups.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetBlockstorageExtensionsBackups(req *GetBlockstorageExtensionsBackupsRequest)(*GetBlockstorageExtensionsBackupsResponse){
+    return NewGetBlockstorageExtensionsBackupsResponse(backups.Get(oc.client,req.Id, ))
 
 }
 //request struct for the ListBlockstorageExtensionsBackups
@@ -106,8 +106,8 @@ func NewListBlockstorageExtensionsBackupsResponse(pager pagination.Pager,)*ListB
 }
 
 // action function
-func (oc *OpenstackClient) ListBlockstorageExtensionsBackups(request *ListBlockstorageExtensionsBackupsRequest)(*ListBlockstorageExtensionsBackupsResponse){
-    return NewListBlockstorageExtensionsBackupsResponse(backups.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListBlockstorageExtensionsBackups(req *ListBlockstorageExtensionsBackupsRequest)(*ListBlockstorageExtensionsBackupsResponse){
+    return NewListBlockstorageExtensionsBackupsResponse(backups.List(oc.client,req.Opts, ))
 
 }
 //request struct for the ListDetailBlockstorageExtensionsBackups
@@ -131,8 +131,8 @@ func NewListDetailBlockstorageExtensionsBackupsResponse(pager pagination.Pager,)
 }
 
 // action function
-func (oc *OpenstackClient) ListDetailBlockstorageExtensionsBackups(request *ListDetailBlockstorageExtensionsBackupsRequest)(*ListDetailBlockstorageExtensionsBackupsResponse){
-    return NewListDetailBlockstorageExtensionsBackupsResponse(backups.ListDetail(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListDetailBlockstorageExtensionsBackups(req *ListDetailBlockstorageExtensionsBackupsRequest)(*ListDetailBlockstorageExtensionsBackupsResponse){
+    return NewListDetailBlockstorageExtensionsBackupsResponse(backups.ListDetail(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateBlockstorageExtensionsBackups
@@ -157,8 +157,8 @@ func NewUpdateBlockstorageExtensionsBackupsResponse(updateResult backups.UpdateR
 }
 
 // action function
-func (oc *OpenstackClient) UpdateBlockstorageExtensionsBackups(request *UpdateBlockstorageExtensionsBackupsRequest)(*UpdateBlockstorageExtensionsBackupsResponse){
-    return NewUpdateBlockstorageExtensionsBackupsResponse(backups.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateBlockstorageExtensionsBackups(req *UpdateBlockstorageExtensionsBackupsRequest)(*UpdateBlockstorageExtensionsBackupsResponse){
+    return NewUpdateBlockstorageExtensionsBackupsResponse(backups.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the RestoreFromBackupBlockstorageExtensionsBackups
@@ -183,8 +183,8 @@ func NewRestoreFromBackupBlockstorageExtensionsBackupsResponse(restoreResult bac
 }
 
 // action function
-func (oc *OpenstackClient) RestoreFromBackupBlockstorageExtensionsBackups(request *RestoreFromBackupBlockstorageExtensionsBackupsRequest)(*RestoreFromBackupBlockstorageExtensionsBackupsResponse){
-    return NewRestoreFromBackupBlockstorageExtensionsBackupsResponse(backups.RestoreFromBackup(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) RestoreFromBackupBlockstorageExtensionsBackups(req *RestoreFromBackupBlockstorageExtensionsBackupsRequest)(*RestoreFromBackupBlockstorageExtensionsBackupsResponse){
+    return NewRestoreFromBackupBlockstorageExtensionsBackupsResponse(backups.RestoreFromBackup(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ExportBlockstorageExtensionsBackups
@@ -208,8 +208,8 @@ func NewExportBlockstorageExtensionsBackupsResponse(exportResult backups.ExportR
 }
 
 // action function
-func (oc *OpenstackClient) ExportBlockstorageExtensionsBackups(request *ExportBlockstorageExtensionsBackupsRequest)(*ExportBlockstorageExtensionsBackupsResponse){
-    return NewExportBlockstorageExtensionsBackupsResponse(backups.Export(oc.client,request.Id, ))
+func (oc *OpenstackClient) ExportBlockstorageExtensionsBackups(req *ExportBlockstorageExtensionsBackupsRequest)(*ExportBlockstorageExtensionsBackupsResponse){
+    return NewExportBlockstorageExtensionsBackupsResponse(backups.Export(oc.client,req.Id, ))
 
 }
 //request struct for the ImportBlockstorageExtensionsBackups
@@ -233,7 +233,7 @@ func NewImportBlockstorageExtensionsBackupsResponse(importResult backups.ImportR
 }
 
 // action function
-func (oc *OpenstackClient) ImportBlockstorageExtensionsBackups(request *ImportBlockstorageExtensionsBackupsRequest)(*ImportBlockstorageExtensionsBackupsResponse){
-    return NewImportBlockstorageExtensionsBackupsResponse(backups.Import(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ImportBlockstorageExtensionsBackups(req *ImportBlockstorageExtensionsBackupsRequest)(*ImportBlockstorageExtensionsBackupsResponse){
+    return NewImportBlockstorageExtensionsBackupsResponse(backups.Import(oc.client,req.Opts, ))
 
 }

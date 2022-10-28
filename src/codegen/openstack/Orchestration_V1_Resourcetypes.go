@@ -30,8 +30,8 @@ func NewListOrchestrationV1ResourcetypesResponse(listResult resourcetypes.ListRe
 }
 
 // action function
-func (oc *OpenstackClient) ListOrchestrationV1Resourcetypes(request *ListOrchestrationV1ResourcetypesRequest)(*ListOrchestrationV1ResourcetypesResponse){
-    return NewListOrchestrationV1ResourcetypesResponse(resourcetypes.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListOrchestrationV1Resourcetypes(req *ListOrchestrationV1ResourcetypesRequest)(*ListOrchestrationV1ResourcetypesResponse){
+    return NewListOrchestrationV1ResourcetypesResponse(resourcetypes.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetSchemaOrchestrationV1Resourcetypes
@@ -55,8 +55,8 @@ func NewGetSchemaOrchestrationV1ResourcetypesResponse(getSchemaResult resourcety
 }
 
 // action function
-func (oc *OpenstackClient) GetSchemaOrchestrationV1Resourcetypes(request *GetSchemaOrchestrationV1ResourcetypesRequest)(*GetSchemaOrchestrationV1ResourcetypesResponse){
-    return NewGetSchemaOrchestrationV1ResourcetypesResponse(resourcetypes.GetSchema(oc.client,request.ResourceType, ))
+func (oc *OpenstackClient) GetSchemaOrchestrationV1Resourcetypes(req *GetSchemaOrchestrationV1ResourcetypesRequest)(*GetSchemaOrchestrationV1ResourcetypesResponse){
+    return NewGetSchemaOrchestrationV1ResourcetypesResponse(resourcetypes.GetSchema(oc.client,req.ResourceType, ))
 
 }
 //request struct for the GenerateTemplateOrchestrationV1Resourcetypes
@@ -81,7 +81,7 @@ func NewGenerateTemplateOrchestrationV1ResourcetypesResponse(templateResult reso
 }
 
 // action function
-func (oc *OpenstackClient) GenerateTemplateOrchestrationV1Resourcetypes(request *GenerateTemplateOrchestrationV1ResourcetypesRequest)(*GenerateTemplateOrchestrationV1ResourcetypesResponse){
-    return NewGenerateTemplateOrchestrationV1ResourcetypesResponse(resourcetypes.GenerateTemplate(oc.client,request.ResourceType,request.Opts, ))
+func (oc *OpenstackClient) GenerateTemplateOrchestrationV1Resourcetypes(req *GenerateTemplateOrchestrationV1ResourcetypesRequest)(*GenerateTemplateOrchestrationV1ResourcetypesResponse){
+    return NewGenerateTemplateOrchestrationV1ResourcetypesResponse(resourcetypes.GenerateTemplate(oc.client,req.ResourceType,req.Opts, ))
 
 }

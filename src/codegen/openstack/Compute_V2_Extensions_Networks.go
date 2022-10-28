@@ -30,7 +30,7 @@ func NewListComputeV2ExtensionsNetworksResponse(pager pagination.Pager,)*ListCom
 }
 
 // action function
-func (oc *OpenstackClient) ListComputeV2ExtensionsNetworks(request *ListComputeV2ExtensionsNetworksRequest)(*ListComputeV2ExtensionsNetworksResponse){
+func (oc *OpenstackClient) ListComputeV2ExtensionsNetworks(req *ListComputeV2ExtensionsNetworksRequest)(*ListComputeV2ExtensionsNetworksResponse){
     return NewListComputeV2ExtensionsNetworksResponse(networks.List(oc.client, ))
 
 }
@@ -55,7 +55,7 @@ func NewGetComputeV2ExtensionsNetworksResponse(getResult networks.GetResult,)*Ge
 }
 
 // action function
-func (oc *OpenstackClient) GetComputeV2ExtensionsNetworks(request *GetComputeV2ExtensionsNetworksRequest)(*GetComputeV2ExtensionsNetworksResponse){
-    return NewGetComputeV2ExtensionsNetworksResponse(networks.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetComputeV2ExtensionsNetworks(req *GetComputeV2ExtensionsNetworksRequest)(*GetComputeV2ExtensionsNetworksResponse){
+    return NewGetComputeV2ExtensionsNetworksResponse(networks.Get(oc.client,req.Id, ))
 
 }

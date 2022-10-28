@@ -31,8 +31,8 @@ func NewCreateBlockstorageV1VolumesResponse(createResult volumes.CreateResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) CreateBlockstorageV1Volumes(request *CreateBlockstorageV1VolumesRequest)(*CreateBlockstorageV1VolumesResponse){
-    return NewCreateBlockstorageV1VolumesResponse(volumes.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateBlockstorageV1Volumes(req *CreateBlockstorageV1VolumesRequest)(*CreateBlockstorageV1VolumesResponse){
+    return NewCreateBlockstorageV1VolumesResponse(volumes.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageV1Volumes
@@ -56,8 +56,8 @@ func NewDeleteBlockstorageV1VolumesResponse(deleteResult volumes.DeleteResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) DeleteBlockstorageV1Volumes(request *DeleteBlockstorageV1VolumesRequest)(*DeleteBlockstorageV1VolumesResponse){
-    return NewDeleteBlockstorageV1VolumesResponse(volumes.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteBlockstorageV1Volumes(req *DeleteBlockstorageV1VolumesRequest)(*DeleteBlockstorageV1VolumesResponse){
+    return NewDeleteBlockstorageV1VolumesResponse(volumes.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the GetBlockstorageV1Volumes
@@ -81,8 +81,8 @@ func NewGetBlockstorageV1VolumesResponse(getResult volumes.GetResult,)*GetBlocks
 }
 
 // action function
-func (oc *OpenstackClient) GetBlockstorageV1Volumes(request *GetBlockstorageV1VolumesRequest)(*GetBlockstorageV1VolumesResponse){
-    return NewGetBlockstorageV1VolumesResponse(volumes.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetBlockstorageV1Volumes(req *GetBlockstorageV1VolumesRequest)(*GetBlockstorageV1VolumesResponse){
+    return NewGetBlockstorageV1VolumesResponse(volumes.Get(oc.client,req.Id, ))
 
 }
 //request struct for the ListBlockstorageV1Volumes
@@ -106,8 +106,8 @@ func NewListBlockstorageV1VolumesResponse(pager pagination.Pager,)*ListBlockstor
 }
 
 // action function
-func (oc *OpenstackClient) ListBlockstorageV1Volumes(request *ListBlockstorageV1VolumesRequest)(*ListBlockstorageV1VolumesResponse){
-    return NewListBlockstorageV1VolumesResponse(volumes.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListBlockstorageV1Volumes(req *ListBlockstorageV1VolumesRequest)(*ListBlockstorageV1VolumesResponse){
+    return NewListBlockstorageV1VolumesResponse(volumes.List(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateBlockstorageV1Volumes
@@ -132,7 +132,7 @@ func NewUpdateBlockstorageV1VolumesResponse(updateResult volumes.UpdateResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) UpdateBlockstorageV1Volumes(request *UpdateBlockstorageV1VolumesRequest)(*UpdateBlockstorageV1VolumesResponse){
-    return NewUpdateBlockstorageV1VolumesResponse(volumes.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateBlockstorageV1Volumes(req *UpdateBlockstorageV1VolumesRequest)(*UpdateBlockstorageV1VolumesResponse){
+    return NewUpdateBlockstorageV1VolumesResponse(volumes.Update(oc.client,req.Id,req.Opts, ))
 
 }

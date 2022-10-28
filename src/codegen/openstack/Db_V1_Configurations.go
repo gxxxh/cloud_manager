@@ -30,7 +30,7 @@ func NewListDbV1ConfigurationsResponse(pager pagination.Pager,)*ListDbV1Configur
 }
 
 // action function
-func (oc *OpenstackClient) ListDbV1Configurations(request *ListDbV1ConfigurationsRequest)(*ListDbV1ConfigurationsResponse){
+func (oc *OpenstackClient) ListDbV1Configurations(req *ListDbV1ConfigurationsRequest)(*ListDbV1ConfigurationsResponse){
     return NewListDbV1ConfigurationsResponse(configurations.List(oc.client, ))
 
 }
@@ -55,8 +55,8 @@ func NewCreateDbV1ConfigurationsResponse(createResult configurations.CreateResul
 }
 
 // action function
-func (oc *OpenstackClient) CreateDbV1Configurations(request *CreateDbV1ConfigurationsRequest)(*CreateDbV1ConfigurationsResponse){
-    return NewCreateDbV1ConfigurationsResponse(configurations.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateDbV1Configurations(req *CreateDbV1ConfigurationsRequest)(*CreateDbV1ConfigurationsResponse){
+    return NewCreateDbV1ConfigurationsResponse(configurations.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetDbV1Configurations
@@ -80,8 +80,8 @@ func NewGetDbV1ConfigurationsResponse(getResult configurations.GetResult,)*GetDb
 }
 
 // action function
-func (oc *OpenstackClient) GetDbV1Configurations(request *GetDbV1ConfigurationsRequest)(*GetDbV1ConfigurationsResponse){
-    return NewGetDbV1ConfigurationsResponse(configurations.Get(oc.client,request.ConfigID, ))
+func (oc *OpenstackClient) GetDbV1Configurations(req *GetDbV1ConfigurationsRequest)(*GetDbV1ConfigurationsResponse){
+    return NewGetDbV1ConfigurationsResponse(configurations.Get(oc.client,req.ConfigID, ))
 
 }
 //request struct for the UpdateDbV1Configurations
@@ -106,8 +106,8 @@ func NewUpdateDbV1ConfigurationsResponse(updateResult configurations.UpdateResul
 }
 
 // action function
-func (oc *OpenstackClient) UpdateDbV1Configurations(request *UpdateDbV1ConfigurationsRequest)(*UpdateDbV1ConfigurationsResponse){
-    return NewUpdateDbV1ConfigurationsResponse(configurations.Update(oc.client,request.ConfigID,request.Opts, ))
+func (oc *OpenstackClient) UpdateDbV1Configurations(req *UpdateDbV1ConfigurationsRequest)(*UpdateDbV1ConfigurationsResponse){
+    return NewUpdateDbV1ConfigurationsResponse(configurations.Update(oc.client,req.ConfigID,req.Opts, ))
 
 }
 //request struct for the ReplaceDbV1Configurations
@@ -132,8 +132,8 @@ func NewReplaceDbV1ConfigurationsResponse(replaceResult configurations.ReplaceRe
 }
 
 // action function
-func (oc *OpenstackClient) ReplaceDbV1Configurations(request *ReplaceDbV1ConfigurationsRequest)(*ReplaceDbV1ConfigurationsResponse){
-    return NewReplaceDbV1ConfigurationsResponse(configurations.Replace(oc.client,request.ConfigID,request.Opts, ))
+func (oc *OpenstackClient) ReplaceDbV1Configurations(req *ReplaceDbV1ConfigurationsRequest)(*ReplaceDbV1ConfigurationsResponse){
+    return NewReplaceDbV1ConfigurationsResponse(configurations.Replace(oc.client,req.ConfigID,req.Opts, ))
 
 }
 //request struct for the DeleteDbV1Configurations
@@ -157,8 +157,8 @@ func NewDeleteDbV1ConfigurationsResponse(deleteResult configurations.DeleteResul
 }
 
 // action function
-func (oc *OpenstackClient) DeleteDbV1Configurations(request *DeleteDbV1ConfigurationsRequest)(*DeleteDbV1ConfigurationsResponse){
-    return NewDeleteDbV1ConfigurationsResponse(configurations.Delete(oc.client,request.ConfigID, ))
+func (oc *OpenstackClient) DeleteDbV1Configurations(req *DeleteDbV1ConfigurationsRequest)(*DeleteDbV1ConfigurationsResponse){
+    return NewDeleteDbV1ConfigurationsResponse(configurations.Delete(oc.client,req.ConfigID, ))
 
 }
 //request struct for the ListInstancesDbV1Configurations
@@ -182,8 +182,8 @@ func NewListInstancesDbV1ConfigurationsResponse(pager pagination.Pager,)*ListIns
 }
 
 // action function
-func (oc *OpenstackClient) ListInstancesDbV1Configurations(request *ListInstancesDbV1ConfigurationsRequest)(*ListInstancesDbV1ConfigurationsResponse){
-    return NewListInstancesDbV1ConfigurationsResponse(configurations.ListInstances(oc.client,request.ConfigID, ))
+func (oc *OpenstackClient) ListInstancesDbV1Configurations(req *ListInstancesDbV1ConfigurationsRequest)(*ListInstancesDbV1ConfigurationsResponse){
+    return NewListInstancesDbV1ConfigurationsResponse(configurations.ListInstances(oc.client,req.ConfigID, ))
 
 }
 //request struct for the ListDatastoreParamsDbV1Configurations
@@ -208,8 +208,8 @@ func NewListDatastoreParamsDbV1ConfigurationsResponse(pager pagination.Pager,)*L
 }
 
 // action function
-func (oc *OpenstackClient) ListDatastoreParamsDbV1Configurations(request *ListDatastoreParamsDbV1ConfigurationsRequest)(*ListDatastoreParamsDbV1ConfigurationsResponse){
-    return NewListDatastoreParamsDbV1ConfigurationsResponse(configurations.ListDatastoreParams(oc.client,request.DatastoreID,request.VersionID, ))
+func (oc *OpenstackClient) ListDatastoreParamsDbV1Configurations(req *ListDatastoreParamsDbV1ConfigurationsRequest)(*ListDatastoreParamsDbV1ConfigurationsResponse){
+    return NewListDatastoreParamsDbV1ConfigurationsResponse(configurations.ListDatastoreParams(oc.client,req.DatastoreID,req.VersionID, ))
 
 }
 //request struct for the GetDatastoreParamDbV1Configurations
@@ -235,8 +235,8 @@ func NewGetDatastoreParamDbV1ConfigurationsResponse(paramResult configurations.P
 }
 
 // action function
-func (oc *OpenstackClient) GetDatastoreParamDbV1Configurations(request *GetDatastoreParamDbV1ConfigurationsRequest)(*GetDatastoreParamDbV1ConfigurationsResponse){
-    return NewGetDatastoreParamDbV1ConfigurationsResponse(configurations.GetDatastoreParam(oc.client,request.DatastoreID,request.VersionID,request.ParamID, ))
+func (oc *OpenstackClient) GetDatastoreParamDbV1Configurations(req *GetDatastoreParamDbV1ConfigurationsRequest)(*GetDatastoreParamDbV1ConfigurationsResponse){
+    return NewGetDatastoreParamDbV1ConfigurationsResponse(configurations.GetDatastoreParam(oc.client,req.DatastoreID,req.VersionID,req.ParamID, ))
 
 }
 //request struct for the ListGlobalParamsDbV1Configurations
@@ -260,8 +260,8 @@ func NewListGlobalParamsDbV1ConfigurationsResponse(pager pagination.Pager,)*List
 }
 
 // action function
-func (oc *OpenstackClient) ListGlobalParamsDbV1Configurations(request *ListGlobalParamsDbV1ConfigurationsRequest)(*ListGlobalParamsDbV1ConfigurationsResponse){
-    return NewListGlobalParamsDbV1ConfigurationsResponse(configurations.ListGlobalParams(oc.client,request.VersionID, ))
+func (oc *OpenstackClient) ListGlobalParamsDbV1Configurations(req *ListGlobalParamsDbV1ConfigurationsRequest)(*ListGlobalParamsDbV1ConfigurationsResponse){
+    return NewListGlobalParamsDbV1ConfigurationsResponse(configurations.ListGlobalParams(oc.client,req.VersionID, ))
 
 }
 //request struct for the GetGlobalParamDbV1Configurations
@@ -286,7 +286,7 @@ func NewGetGlobalParamDbV1ConfigurationsResponse(paramResult configurations.Para
 }
 
 // action function
-func (oc *OpenstackClient) GetGlobalParamDbV1Configurations(request *GetGlobalParamDbV1ConfigurationsRequest)(*GetGlobalParamDbV1ConfigurationsResponse){
-    return NewGetGlobalParamDbV1ConfigurationsResponse(configurations.GetGlobalParam(oc.client,request.VersionID,request.ParamID, ))
+func (oc *OpenstackClient) GetGlobalParamDbV1Configurations(req *GetGlobalParamDbV1ConfigurationsRequest)(*GetGlobalParamDbV1ConfigurationsResponse){
+    return NewGetGlobalParamDbV1ConfigurationsResponse(configurations.GetGlobalParam(oc.client,req.VersionID,req.ParamID, ))
 
 }

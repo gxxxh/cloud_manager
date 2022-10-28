@@ -31,8 +31,8 @@ func NewListKeymanagerV1OrdersResponse(pager pagination.Pager,)*ListKeymanagerV1
 }
 
 // action function
-func (oc *OpenstackClient) ListKeymanagerV1Orders(request *ListKeymanagerV1OrdersRequest)(*ListKeymanagerV1OrdersResponse){
-    return NewListKeymanagerV1OrdersResponse(orders.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListKeymanagerV1Orders(req *ListKeymanagerV1OrdersRequest)(*ListKeymanagerV1OrdersResponse){
+    return NewListKeymanagerV1OrdersResponse(orders.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetKeymanagerV1Orders
@@ -56,8 +56,8 @@ func NewGetKeymanagerV1OrdersResponse(getResult orders.GetResult,)*GetKeymanager
 }
 
 // action function
-func (oc *OpenstackClient) GetKeymanagerV1Orders(request *GetKeymanagerV1OrdersRequest)(*GetKeymanagerV1OrdersResponse){
-    return NewGetKeymanagerV1OrdersResponse(orders.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetKeymanagerV1Orders(req *GetKeymanagerV1OrdersRequest)(*GetKeymanagerV1OrdersResponse){
+    return NewGetKeymanagerV1OrdersResponse(orders.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateKeymanagerV1Orders
@@ -81,8 +81,8 @@ func NewCreateKeymanagerV1OrdersResponse(createResult orders.CreateResult,)*Crea
 }
 
 // action function
-func (oc *OpenstackClient) CreateKeymanagerV1Orders(request *CreateKeymanagerV1OrdersRequest)(*CreateKeymanagerV1OrdersResponse){
-    return NewCreateKeymanagerV1OrdersResponse(orders.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateKeymanagerV1Orders(req *CreateKeymanagerV1OrdersRequest)(*CreateKeymanagerV1OrdersResponse){
+    return NewCreateKeymanagerV1OrdersResponse(orders.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteKeymanagerV1Orders
@@ -106,7 +106,7 @@ func NewDeleteKeymanagerV1OrdersResponse(deleteResult orders.DeleteResult,)*Dele
 }
 
 // action function
-func (oc *OpenstackClient) DeleteKeymanagerV1Orders(request *DeleteKeymanagerV1OrdersRequest)(*DeleteKeymanagerV1OrdersResponse){
-    return NewDeleteKeymanagerV1OrdersResponse(orders.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteKeymanagerV1Orders(req *DeleteKeymanagerV1OrdersRequest)(*DeleteKeymanagerV1OrdersResponse){
+    return NewDeleteKeymanagerV1OrdersResponse(orders.Delete(oc.client,req.Id, ))
 
 }

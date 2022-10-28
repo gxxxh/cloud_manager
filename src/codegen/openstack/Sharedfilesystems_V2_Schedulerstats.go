@@ -31,8 +31,8 @@ func NewListSharedfilesystemsV2SchedulerstatsResponse(pager pagination.Pager,)*L
 }
 
 // action function
-func (oc *OpenstackClient) ListSharedfilesystemsV2Schedulerstats(request *ListSharedfilesystemsV2SchedulerstatsRequest)(*ListSharedfilesystemsV2SchedulerstatsResponse){
-    return NewListSharedfilesystemsV2SchedulerstatsResponse(schedulerstats.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListSharedfilesystemsV2Schedulerstats(req *ListSharedfilesystemsV2SchedulerstatsRequest)(*ListSharedfilesystemsV2SchedulerstatsResponse){
+    return NewListSharedfilesystemsV2SchedulerstatsResponse(schedulerstats.List(oc.client,req.Opts, ))
 
 }
 //request struct for the ListDetailSharedfilesystemsV2Schedulerstats
@@ -56,7 +56,7 @@ func NewListDetailSharedfilesystemsV2SchedulerstatsResponse(pager pagination.Pag
 }
 
 // action function
-func (oc *OpenstackClient) ListDetailSharedfilesystemsV2Schedulerstats(request *ListDetailSharedfilesystemsV2SchedulerstatsRequest)(*ListDetailSharedfilesystemsV2SchedulerstatsResponse){
-    return NewListDetailSharedfilesystemsV2SchedulerstatsResponse(schedulerstats.ListDetail(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListDetailSharedfilesystemsV2Schedulerstats(req *ListDetailSharedfilesystemsV2SchedulerstatsRequest)(*ListDetailSharedfilesystemsV2SchedulerstatsResponse){
+    return NewListDetailSharedfilesystemsV2SchedulerstatsResponse(schedulerstats.ListDetail(oc.client,req.Opts, ))
 
 }

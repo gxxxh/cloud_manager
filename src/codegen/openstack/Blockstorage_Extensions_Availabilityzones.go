@@ -30,7 +30,7 @@ func NewListBlockstorageExtensionsAvailabilityzonesResponse(pager pagination.Pag
 }
 
 // action function
-func (oc *OpenstackClient) ListBlockstorageExtensionsAvailabilityzones(request *ListBlockstorageExtensionsAvailabilityzonesRequest)(*ListBlockstorageExtensionsAvailabilityzonesResponse){
+func (oc *OpenstackClient) ListBlockstorageExtensionsAvailabilityzones(req *ListBlockstorageExtensionsAvailabilityzonesRequest)(*ListBlockstorageExtensionsAvailabilityzonesResponse){
     return NewListBlockstorageExtensionsAvailabilityzonesResponse(availabilityzones.List(oc.client, ))
 
 }

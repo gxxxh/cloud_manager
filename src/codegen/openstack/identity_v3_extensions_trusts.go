@@ -31,8 +31,8 @@ func NewCreateIdentityV3ExtensionsTrustsResponse(createResult trusts.CreateResul
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3ExtensionsTrusts(request *CreateIdentityV3ExtensionsTrustsRequest)(*CreateIdentityV3ExtensionsTrustsResponse){
-    return NewCreateIdentityV3ExtensionsTrustsResponse(trusts.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV3ExtensionsTrusts(req *CreateIdentityV3ExtensionsTrustsRequest)(*CreateIdentityV3ExtensionsTrustsResponse){
+    return NewCreateIdentityV3ExtensionsTrustsResponse(trusts.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3ExtensionsTrusts
@@ -56,8 +56,8 @@ func NewDeleteIdentityV3ExtensionsTrustsResponse(deleteResult trusts.DeleteResul
 }
 
 // action function
-func (oc *OpenstackClient) DeleteIdentityV3ExtensionsTrusts(request *DeleteIdentityV3ExtensionsTrustsRequest)(*DeleteIdentityV3ExtensionsTrustsResponse){
-    return NewDeleteIdentityV3ExtensionsTrustsResponse(trusts.Delete(oc.client,request.TrustID, ))
+func (oc *OpenstackClient) DeleteIdentityV3ExtensionsTrusts(req *DeleteIdentityV3ExtensionsTrustsRequest)(*DeleteIdentityV3ExtensionsTrustsResponse){
+    return NewDeleteIdentityV3ExtensionsTrustsResponse(trusts.Delete(oc.client,req.TrustID, ))
 
 }
 //request struct for the ListIdentityV3ExtensionsTrusts
@@ -81,8 +81,8 @@ func NewListIdentityV3ExtensionsTrustsResponse(pager pagination.Pager,)*ListIden
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV3ExtensionsTrusts(request *ListIdentityV3ExtensionsTrustsRequest)(*ListIdentityV3ExtensionsTrustsResponse){
-    return NewListIdentityV3ExtensionsTrustsResponse(trusts.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListIdentityV3ExtensionsTrusts(req *ListIdentityV3ExtensionsTrustsRequest)(*ListIdentityV3ExtensionsTrustsResponse){
+    return NewListIdentityV3ExtensionsTrustsResponse(trusts.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3ExtensionsTrusts
@@ -106,8 +106,8 @@ func NewGetIdentityV3ExtensionsTrustsResponse(getResult trusts.GetResult,)*GetId
 }
 
 // action function
-func (oc *OpenstackClient) GetIdentityV3ExtensionsTrusts(request *GetIdentityV3ExtensionsTrustsRequest)(*GetIdentityV3ExtensionsTrustsResponse){
-    return NewGetIdentityV3ExtensionsTrustsResponse(trusts.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetIdentityV3ExtensionsTrusts(req *GetIdentityV3ExtensionsTrustsRequest)(*GetIdentityV3ExtensionsTrustsResponse){
+    return NewGetIdentityV3ExtensionsTrustsResponse(trusts.Get(oc.client,req.Id, ))
 
 }
 //request struct for the ListRolesIdentityV3ExtensionsTrusts
@@ -131,8 +131,8 @@ func NewListRolesIdentityV3ExtensionsTrustsResponse(pager pagination.Pager,)*Lis
 }
 
 // action function
-func (oc *OpenstackClient) ListRolesIdentityV3ExtensionsTrusts(request *ListRolesIdentityV3ExtensionsTrustsRequest)(*ListRolesIdentityV3ExtensionsTrustsResponse){
-    return NewListRolesIdentityV3ExtensionsTrustsResponse(trusts.ListRoles(oc.client,request.Id, ))
+func (oc *OpenstackClient) ListRolesIdentityV3ExtensionsTrusts(req *ListRolesIdentityV3ExtensionsTrustsRequest)(*ListRolesIdentityV3ExtensionsTrustsResponse){
+    return NewListRolesIdentityV3ExtensionsTrustsResponse(trusts.ListRoles(oc.client,req.Id, ))
 
 }
 //request struct for the GetRoleIdentityV3ExtensionsTrusts
@@ -157,8 +157,8 @@ func NewGetRoleIdentityV3ExtensionsTrustsResponse(getRoleResult trusts.GetRoleRe
 }
 
 // action function
-func (oc *OpenstackClient) GetRoleIdentityV3ExtensionsTrusts(request *GetRoleIdentityV3ExtensionsTrustsRequest)(*GetRoleIdentityV3ExtensionsTrustsResponse){
-    return NewGetRoleIdentityV3ExtensionsTrustsResponse(trusts.GetRole(oc.client,request.Id,request.RoleID, ))
+func (oc *OpenstackClient) GetRoleIdentityV3ExtensionsTrusts(req *GetRoleIdentityV3ExtensionsTrustsRequest)(*GetRoleIdentityV3ExtensionsTrustsResponse){
+    return NewGetRoleIdentityV3ExtensionsTrustsResponse(trusts.GetRole(oc.client,req.Id,req.RoleID, ))
 
 }
 //request struct for the CheckRoleIdentityV3ExtensionsTrusts
@@ -183,7 +183,7 @@ func NewCheckRoleIdentityV3ExtensionsTrustsResponse(checkRoleResult trusts.Check
 }
 
 // action function
-func (oc *OpenstackClient) CheckRoleIdentityV3ExtensionsTrusts(request *CheckRoleIdentityV3ExtensionsTrustsRequest)(*CheckRoleIdentityV3ExtensionsTrustsResponse){
-    return NewCheckRoleIdentityV3ExtensionsTrustsResponse(trusts.CheckRole(oc.client,request.Id,request.RoleID, ))
+func (oc *OpenstackClient) CheckRoleIdentityV3ExtensionsTrusts(req *CheckRoleIdentityV3ExtensionsTrustsRequest)(*CheckRoleIdentityV3ExtensionsTrustsResponse){
+    return NewCheckRoleIdentityV3ExtensionsTrustsResponse(trusts.CheckRole(oc.client,req.Id,req.RoleID, ))
 
 }

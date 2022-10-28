@@ -31,8 +31,8 @@ func NewListDriversBaremetalV1DriversResponse(pager pagination.Pager,)*ListDrive
 }
 
 // action function
-func (oc *OpenstackClient) ListDriversBaremetalV1Drivers(request *ListDriversBaremetalV1DriversRequest)(*ListDriversBaremetalV1DriversResponse){
-    return NewListDriversBaremetalV1DriversResponse(drivers.ListDrivers(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListDriversBaremetalV1Drivers(req *ListDriversBaremetalV1DriversRequest)(*ListDriversBaremetalV1DriversResponse){
+    return NewListDriversBaremetalV1DriversResponse(drivers.ListDrivers(oc.client,req.Opts, ))
 
 }
 //request struct for the GetDriverDetailsBaremetalV1Drivers
@@ -56,8 +56,8 @@ func NewGetDriverDetailsBaremetalV1DriversResponse(getDriverResult drivers.GetDr
 }
 
 // action function
-func (oc *OpenstackClient) GetDriverDetailsBaremetalV1Drivers(request *GetDriverDetailsBaremetalV1DriversRequest)(*GetDriverDetailsBaremetalV1DriversResponse){
-    return NewGetDriverDetailsBaremetalV1DriversResponse(drivers.GetDriverDetails(oc.client,request.DriverName, ))
+func (oc *OpenstackClient) GetDriverDetailsBaremetalV1Drivers(req *GetDriverDetailsBaremetalV1DriversRequest)(*GetDriverDetailsBaremetalV1DriversResponse){
+    return NewGetDriverDetailsBaremetalV1DriversResponse(drivers.GetDriverDetails(oc.client,req.DriverName, ))
 
 }
 //request struct for the GetDriverPropertiesBaremetalV1Drivers
@@ -81,8 +81,8 @@ func NewGetDriverPropertiesBaremetalV1DriversResponse(getPropertiesResult driver
 }
 
 // action function
-func (oc *OpenstackClient) GetDriverPropertiesBaremetalV1Drivers(request *GetDriverPropertiesBaremetalV1DriversRequest)(*GetDriverPropertiesBaremetalV1DriversResponse){
-    return NewGetDriverPropertiesBaremetalV1DriversResponse(drivers.GetDriverProperties(oc.client,request.DriverName, ))
+func (oc *OpenstackClient) GetDriverPropertiesBaremetalV1Drivers(req *GetDriverPropertiesBaremetalV1DriversRequest)(*GetDriverPropertiesBaremetalV1DriversResponse){
+    return NewGetDriverPropertiesBaremetalV1DriversResponse(drivers.GetDriverProperties(oc.client,req.DriverName, ))
 
 }
 //request struct for the GetDriverDiskPropertiesBaremetalV1Drivers
@@ -106,7 +106,7 @@ func NewGetDriverDiskPropertiesBaremetalV1DriversResponse(getDiskPropertiesResul
 }
 
 // action function
-func (oc *OpenstackClient) GetDriverDiskPropertiesBaremetalV1Drivers(request *GetDriverDiskPropertiesBaremetalV1DriversRequest)(*GetDriverDiskPropertiesBaremetalV1DriversResponse){
-    return NewGetDriverDiskPropertiesBaremetalV1DriversResponse(drivers.GetDriverDiskProperties(oc.client,request.DriverName, ))
+func (oc *OpenstackClient) GetDriverDiskPropertiesBaremetalV1Drivers(req *GetDriverDiskPropertiesBaremetalV1DriversRequest)(*GetDriverDiskPropertiesBaremetalV1DriversResponse){
+    return NewGetDriverDiskPropertiesBaremetalV1DriversResponse(drivers.GetDriverDiskProperties(oc.client,req.DriverName, ))
 
 }

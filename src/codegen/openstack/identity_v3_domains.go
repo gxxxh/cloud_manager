@@ -31,8 +31,8 @@ func NewListIdentityV3DomainsResponse(pager pagination.Pager,)*ListIdentityV3Dom
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV3Domains(request *ListIdentityV3DomainsRequest)(*ListIdentityV3DomainsResponse){
-    return NewListIdentityV3DomainsResponse(domains.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListIdentityV3Domains(req *ListIdentityV3DomainsRequest)(*ListIdentityV3DomainsResponse){
+    return NewListIdentityV3DomainsResponse(domains.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Domains
@@ -56,8 +56,8 @@ func NewGetIdentityV3DomainsResponse(getResult domains.GetResult,)*GetIdentityV3
 }
 
 // action function
-func (oc *OpenstackClient) GetIdentityV3Domains(request *GetIdentityV3DomainsRequest)(*GetIdentityV3DomainsResponse){
-    return NewGetIdentityV3DomainsResponse(domains.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetIdentityV3Domains(req *GetIdentityV3DomainsRequest)(*GetIdentityV3DomainsResponse){
+    return NewGetIdentityV3DomainsResponse(domains.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateIdentityV3Domains
@@ -81,8 +81,8 @@ func NewCreateIdentityV3DomainsResponse(createResult domains.CreateResult,)*Crea
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3Domains(request *CreateIdentityV3DomainsRequest)(*CreateIdentityV3DomainsResponse){
-    return NewCreateIdentityV3DomainsResponse(domains.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV3Domains(req *CreateIdentityV3DomainsRequest)(*CreateIdentityV3DomainsResponse){
+    return NewCreateIdentityV3DomainsResponse(domains.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Domains
@@ -106,8 +106,8 @@ func NewDeleteIdentityV3DomainsResponse(deleteResult domains.DeleteResult,)*Dele
 }
 
 // action function
-func (oc *OpenstackClient) DeleteIdentityV3Domains(request *DeleteIdentityV3DomainsRequest)(*DeleteIdentityV3DomainsResponse){
-    return NewDeleteIdentityV3DomainsResponse(domains.Delete(oc.client,request.DomainID, ))
+func (oc *OpenstackClient) DeleteIdentityV3Domains(req *DeleteIdentityV3DomainsRequest)(*DeleteIdentityV3DomainsResponse){
+    return NewDeleteIdentityV3DomainsResponse(domains.Delete(oc.client,req.DomainID, ))
 
 }
 //request struct for the UpdateIdentityV3Domains
@@ -132,7 +132,7 @@ func NewUpdateIdentityV3DomainsResponse(updateResult domains.UpdateResult,)*Upda
 }
 
 // action function
-func (oc *OpenstackClient) UpdateIdentityV3Domains(request *UpdateIdentityV3DomainsRequest)(*UpdateIdentityV3DomainsResponse){
-    return NewUpdateIdentityV3DomainsResponse(domains.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateIdentityV3Domains(req *UpdateIdentityV3DomainsRequest)(*UpdateIdentityV3DomainsResponse){
+    return NewUpdateIdentityV3DomainsResponse(domains.Update(oc.client,req.Id,req.Opts, ))
 
 }

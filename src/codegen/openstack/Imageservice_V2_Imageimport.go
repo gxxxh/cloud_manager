@@ -29,7 +29,7 @@ func NewGetImageserviceV2ImageimportResponse(getResult imageimport.GetResult,)*G
 }
 
 // action function
-func (oc *OpenstackClient) GetImageserviceV2Imageimport(request *GetImageserviceV2ImageimportRequest)(*GetImageserviceV2ImageimportResponse){
+func (oc *OpenstackClient) GetImageserviceV2Imageimport(req *GetImageserviceV2ImageimportRequest)(*GetImageserviceV2ImageimportResponse){
     return NewGetImageserviceV2ImageimportResponse(imageimport.Get(oc.client, ))
 
 }
@@ -55,7 +55,7 @@ func NewCreateImageserviceV2ImageimportResponse(createResult imageimport.CreateR
 }
 
 // action function
-func (oc *OpenstackClient) CreateImageserviceV2Imageimport(request *CreateImageserviceV2ImageimportRequest)(*CreateImageserviceV2ImageimportResponse){
-    return NewCreateImageserviceV2ImageimportResponse(imageimport.Create(oc.client,request.ImageID,request.Opts, ))
+func (oc *OpenstackClient) CreateImageserviceV2Imageimport(req *CreateImageserviceV2ImageimportRequest)(*CreateImageserviceV2ImageimportResponse){
+    return NewCreateImageserviceV2ImageimportResponse(imageimport.Create(oc.client,req.ImageID,req.Opts, ))
 
 }

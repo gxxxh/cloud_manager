@@ -30,8 +30,8 @@ func NewGetNetworkingV2ExtensionsQuotasResponse(getResult quotas.GetResult,)*Get
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsQuotas(request *GetNetworkingV2ExtensionsQuotasRequest)(*GetNetworkingV2ExtensionsQuotasResponse){
-    return NewGetNetworkingV2ExtensionsQuotasResponse(quotas.Get(oc.client,request.ProjectID, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsQuotas(req *GetNetworkingV2ExtensionsQuotasRequest)(*GetNetworkingV2ExtensionsQuotasResponse){
+    return NewGetNetworkingV2ExtensionsQuotasResponse(quotas.Get(oc.client,req.ProjectID, ))
 
 }
 //request struct for the GetDetailNetworkingV2ExtensionsQuotas
@@ -55,8 +55,8 @@ func NewGetDetailNetworkingV2ExtensionsQuotasResponse(getDetailResult quotas.Get
 }
 
 // action function
-func (oc *OpenstackClient) GetDetailNetworkingV2ExtensionsQuotas(request *GetDetailNetworkingV2ExtensionsQuotasRequest)(*GetDetailNetworkingV2ExtensionsQuotasResponse){
-    return NewGetDetailNetworkingV2ExtensionsQuotasResponse(quotas.GetDetail(oc.client,request.ProjectID, ))
+func (oc *OpenstackClient) GetDetailNetworkingV2ExtensionsQuotas(req *GetDetailNetworkingV2ExtensionsQuotasRequest)(*GetDetailNetworkingV2ExtensionsQuotasResponse){
+    return NewGetDetailNetworkingV2ExtensionsQuotasResponse(quotas.GetDetail(oc.client,req.ProjectID, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsQuotas
@@ -81,7 +81,7 @@ func NewUpdateNetworkingV2ExtensionsQuotasResponse(updateResult quotas.UpdateRes
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsQuotas(request *UpdateNetworkingV2ExtensionsQuotasRequest)(*UpdateNetworkingV2ExtensionsQuotasResponse){
-    return NewUpdateNetworkingV2ExtensionsQuotasResponse(quotas.Update(oc.client,request.ProjectID,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsQuotas(req *UpdateNetworkingV2ExtensionsQuotasRequest)(*UpdateNetworkingV2ExtensionsQuotasResponse){
+    return NewUpdateNetworkingV2ExtensionsQuotasResponse(quotas.Update(oc.client,req.ProjectID,req.Opts, ))
 
 }

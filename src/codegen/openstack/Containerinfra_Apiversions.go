@@ -30,7 +30,7 @@ func NewListContainerinfraApiversionsResponse(pager pagination.Pager,)*ListConta
 }
 
 // action function
-func (oc *OpenstackClient) ListContainerinfraApiversions(request *ListContainerinfraApiversionsRequest)(*ListContainerinfraApiversionsResponse){
+func (oc *OpenstackClient) ListContainerinfraApiversions(req *ListContainerinfraApiversionsRequest)(*ListContainerinfraApiversionsResponse){
     return NewListContainerinfraApiversionsResponse(apiversions.List(oc.client, ))
 
 }
@@ -55,7 +55,7 @@ func NewGetContainerinfraApiversionsResponse(getResult apiversions.GetResult,)*G
 }
 
 // action function
-func (oc *OpenstackClient) GetContainerinfraApiversions(request *GetContainerinfraApiversionsRequest)(*GetContainerinfraApiversionsResponse){
-    return NewGetContainerinfraApiversionsResponse(apiversions.Get(oc.client,request.V, ))
+func (oc *OpenstackClient) GetContainerinfraApiversions(req *GetContainerinfraApiversionsRequest)(*GetContainerinfraApiversionsResponse){
+    return NewGetContainerinfraApiversionsResponse(apiversions.Get(oc.client,req.V, ))
 
 }

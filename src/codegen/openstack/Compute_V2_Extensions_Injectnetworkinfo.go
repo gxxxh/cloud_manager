@@ -30,7 +30,7 @@ func NewInjectNetworkInfoComputeV2ExtensionsInjectnetworkinfoResponse(injectNetw
 }
 
 // action function
-func (oc *OpenstackClient) InjectNetworkInfoComputeV2ExtensionsInjectnetworkinfo(request *InjectNetworkInfoComputeV2ExtensionsInjectnetworkinfoRequest)(*InjectNetworkInfoComputeV2ExtensionsInjectnetworkinfoResponse){
-    return NewInjectNetworkInfoComputeV2ExtensionsInjectnetworkinfoResponse(injectnetworkinfo.InjectNetworkInfo(oc.client,request.Id, ))
+func (oc *OpenstackClient) InjectNetworkInfoComputeV2ExtensionsInjectnetworkinfo(req *InjectNetworkInfoComputeV2ExtensionsInjectnetworkinfoRequest)(*InjectNetworkInfoComputeV2ExtensionsInjectnetworkinfoResponse){
+    return NewInjectNetworkInfoComputeV2ExtensionsInjectnetworkinfoResponse(injectnetworkinfo.InjectNetworkInfo(oc.client,req.Id, ))
 
 }

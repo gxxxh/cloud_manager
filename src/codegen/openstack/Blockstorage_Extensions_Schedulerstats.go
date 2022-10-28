@@ -31,7 +31,7 @@ func NewListBlockstorageExtensionsSchedulerstatsResponse(pager pagination.Pager,
 }
 
 // action function
-func (oc *OpenstackClient) ListBlockstorageExtensionsSchedulerstats(request *ListBlockstorageExtensionsSchedulerstatsRequest)(*ListBlockstorageExtensionsSchedulerstatsResponse){
-    return NewListBlockstorageExtensionsSchedulerstatsResponse(schedulerstats.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListBlockstorageExtensionsSchedulerstats(req *ListBlockstorageExtensionsSchedulerstatsRequest)(*ListBlockstorageExtensionsSchedulerstatsResponse){
+    return NewListBlockstorageExtensionsSchedulerstatsResponse(schedulerstats.List(oc.client,req.Opts, ))
 
 }

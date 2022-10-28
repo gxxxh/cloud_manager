@@ -31,8 +31,8 @@ func NewListPlacementV1ResourceprovidersResponse(pager pagination.Pager,)*ListPl
 }
 
 // action function
-func (oc *OpenstackClient) ListPlacementV1Resourceproviders(request *ListPlacementV1ResourceprovidersRequest)(*ListPlacementV1ResourceprovidersResponse){
-    return NewListPlacementV1ResourceprovidersResponse(resourceproviders.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListPlacementV1Resourceproviders(req *ListPlacementV1ResourceprovidersRequest)(*ListPlacementV1ResourceprovidersResponse){
+    return NewListPlacementV1ResourceprovidersResponse(resourceproviders.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreatePlacementV1Resourceproviders
@@ -56,8 +56,8 @@ func NewCreatePlacementV1ResourceprovidersResponse(createResult resourceprovider
 }
 
 // action function
-func (oc *OpenstackClient) CreatePlacementV1Resourceproviders(request *CreatePlacementV1ResourceprovidersRequest)(*CreatePlacementV1ResourceprovidersResponse){
-    return NewCreatePlacementV1ResourceprovidersResponse(resourceproviders.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreatePlacementV1Resourceproviders(req *CreatePlacementV1ResourceprovidersRequest)(*CreatePlacementV1ResourceprovidersResponse){
+    return NewCreatePlacementV1ResourceprovidersResponse(resourceproviders.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeletePlacementV1Resourceproviders
@@ -81,8 +81,8 @@ func NewDeletePlacementV1ResourceprovidersResponse(deleteResult resourceprovider
 }
 
 // action function
-func (oc *OpenstackClient) DeletePlacementV1Resourceproviders(request *DeletePlacementV1ResourceprovidersRequest)(*DeletePlacementV1ResourceprovidersResponse){
-    return NewDeletePlacementV1ResourceprovidersResponse(resourceproviders.Delete(oc.client,request.ResourceProviderID, ))
+func (oc *OpenstackClient) DeletePlacementV1Resourceproviders(req *DeletePlacementV1ResourceprovidersRequest)(*DeletePlacementV1ResourceprovidersResponse){
+    return NewDeletePlacementV1ResourceprovidersResponse(resourceproviders.Delete(oc.client,req.ResourceProviderID, ))
 
 }
 //request struct for the GetPlacementV1Resourceproviders
@@ -106,8 +106,8 @@ func NewGetPlacementV1ResourceprovidersResponse(getResult resourceproviders.GetR
 }
 
 // action function
-func (oc *OpenstackClient) GetPlacementV1Resourceproviders(request *GetPlacementV1ResourceprovidersRequest)(*GetPlacementV1ResourceprovidersResponse){
-    return NewGetPlacementV1ResourceprovidersResponse(resourceproviders.Get(oc.client,request.ResourceProviderID, ))
+func (oc *OpenstackClient) GetPlacementV1Resourceproviders(req *GetPlacementV1ResourceprovidersRequest)(*GetPlacementV1ResourceprovidersResponse){
+    return NewGetPlacementV1ResourceprovidersResponse(resourceproviders.Get(oc.client,req.ResourceProviderID, ))
 
 }
 //request struct for the UpdatePlacementV1Resourceproviders
@@ -132,8 +132,8 @@ func NewUpdatePlacementV1ResourceprovidersResponse(updateResult resourceprovider
 }
 
 // action function
-func (oc *OpenstackClient) UpdatePlacementV1Resourceproviders(request *UpdatePlacementV1ResourceprovidersRequest)(*UpdatePlacementV1ResourceprovidersResponse){
-    return NewUpdatePlacementV1ResourceprovidersResponse(resourceproviders.Update(oc.client,request.ResourceProviderID,request.Opts, ))
+func (oc *OpenstackClient) UpdatePlacementV1Resourceproviders(req *UpdatePlacementV1ResourceprovidersRequest)(*UpdatePlacementV1ResourceprovidersResponse){
+    return NewUpdatePlacementV1ResourceprovidersResponse(resourceproviders.Update(oc.client,req.ResourceProviderID,req.Opts, ))
 
 }
 //request struct for the GetUsagesPlacementV1Resourceproviders
@@ -157,8 +157,8 @@ func NewGetUsagesPlacementV1ResourceprovidersResponse(getUsagesResult resourcepr
 }
 
 // action function
-func (oc *OpenstackClient) GetUsagesPlacementV1Resourceproviders(request *GetUsagesPlacementV1ResourceprovidersRequest)(*GetUsagesPlacementV1ResourceprovidersResponse){
-    return NewGetUsagesPlacementV1ResourceprovidersResponse(resourceproviders.GetUsages(oc.client,request.ResourceProviderID, ))
+func (oc *OpenstackClient) GetUsagesPlacementV1Resourceproviders(req *GetUsagesPlacementV1ResourceprovidersRequest)(*GetUsagesPlacementV1ResourceprovidersResponse){
+    return NewGetUsagesPlacementV1ResourceprovidersResponse(resourceproviders.GetUsages(oc.client,req.ResourceProviderID, ))
 
 }
 //request struct for the GetInventoriesPlacementV1Resourceproviders
@@ -182,8 +182,8 @@ func NewGetInventoriesPlacementV1ResourceprovidersResponse(getInventoriesResult 
 }
 
 // action function
-func (oc *OpenstackClient) GetInventoriesPlacementV1Resourceproviders(request *GetInventoriesPlacementV1ResourceprovidersRequest)(*GetInventoriesPlacementV1ResourceprovidersResponse){
-    return NewGetInventoriesPlacementV1ResourceprovidersResponse(resourceproviders.GetInventories(oc.client,request.ResourceProviderID, ))
+func (oc *OpenstackClient) GetInventoriesPlacementV1Resourceproviders(req *GetInventoriesPlacementV1ResourceprovidersRequest)(*GetInventoriesPlacementV1ResourceprovidersResponse){
+    return NewGetInventoriesPlacementV1ResourceprovidersResponse(resourceproviders.GetInventories(oc.client,req.ResourceProviderID, ))
 
 }
 //request struct for the GetAllocationsPlacementV1Resourceproviders
@@ -207,8 +207,8 @@ func NewGetAllocationsPlacementV1ResourceprovidersResponse(getAllocationsResult 
 }
 
 // action function
-func (oc *OpenstackClient) GetAllocationsPlacementV1Resourceproviders(request *GetAllocationsPlacementV1ResourceprovidersRequest)(*GetAllocationsPlacementV1ResourceprovidersResponse){
-    return NewGetAllocationsPlacementV1ResourceprovidersResponse(resourceproviders.GetAllocations(oc.client,request.ResourceProviderID, ))
+func (oc *OpenstackClient) GetAllocationsPlacementV1Resourceproviders(req *GetAllocationsPlacementV1ResourceprovidersRequest)(*GetAllocationsPlacementV1ResourceprovidersResponse){
+    return NewGetAllocationsPlacementV1ResourceprovidersResponse(resourceproviders.GetAllocations(oc.client,req.ResourceProviderID, ))
 
 }
 //request struct for the GetTraitsPlacementV1Resourceproviders
@@ -232,7 +232,7 @@ func NewGetTraitsPlacementV1ResourceprovidersResponse(getTraitsResult resourcepr
 }
 
 // action function
-func (oc *OpenstackClient) GetTraitsPlacementV1Resourceproviders(request *GetTraitsPlacementV1ResourceprovidersRequest)(*GetTraitsPlacementV1ResourceprovidersResponse){
-    return NewGetTraitsPlacementV1ResourceprovidersResponse(resourceproviders.GetTraits(oc.client,request.ResourceProviderID, ))
+func (oc *OpenstackClient) GetTraitsPlacementV1Resourceproviders(req *GetTraitsPlacementV1ResourceprovidersRequest)(*GetTraitsPlacementV1ResourceprovidersResponse){
+    return NewGetTraitsPlacementV1ResourceprovidersResponse(resourceproviders.GetTraits(oc.client,req.ResourceProviderID, ))
 
 }

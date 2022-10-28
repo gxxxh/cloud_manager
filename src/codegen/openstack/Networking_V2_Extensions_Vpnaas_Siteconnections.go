@@ -31,8 +31,8 @@ func NewCreateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(createResult s
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasSiteconnections(request *CreateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*CreateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
-    return NewCreateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasSiteconnections(req *CreateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*CreateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
+    return NewCreateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsVpnaasSiteconnections
@@ -56,8 +56,8 @@ func NewDeleteNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(deleteResult s
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasSiteconnections(request *DeleteNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*DeleteNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
-    return NewDeleteNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasSiteconnections(req *DeleteNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*DeleteNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
+    return NewDeleteNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsVpnaasSiteconnections
@@ -81,8 +81,8 @@ func NewGetNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(getResult sitecon
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasSiteconnections(request *GetNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*GetNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
-    return NewGetNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasSiteconnections(req *GetNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*GetNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
+    return NewGetNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Get(oc.client,req.Id, ))
 
 }
 //request struct for the ListNetworkingV2ExtensionsVpnaasSiteconnections
@@ -106,8 +106,8 @@ func NewListNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(pager pagination
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasSiteconnections(request *ListNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*ListNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
-    return NewListNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasSiteconnections(req *ListNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*ListNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
+    return NewListNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.List(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsVpnaasSiteconnections
@@ -132,7 +132,7 @@ func NewUpdateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(updateResult s
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasSiteconnections(request *UpdateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*UpdateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
-    return NewUpdateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasSiteconnections(req *UpdateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*UpdateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
+    return NewUpdateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Update(oc.client,req.Id,req.Opts, ))
 
 }

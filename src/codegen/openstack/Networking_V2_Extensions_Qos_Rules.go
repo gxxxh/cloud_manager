@@ -32,8 +32,8 @@ func NewListBandwidthLimitRulesNetworkingV2ExtensionsQosRulesResponse(pager pagi
 }
 
 // action function
-func (oc *OpenstackClient) ListBandwidthLimitRulesNetworkingV2ExtensionsQosRules(request *ListBandwidthLimitRulesNetworkingV2ExtensionsQosRulesRequest)(*ListBandwidthLimitRulesNetworkingV2ExtensionsQosRulesResponse){
-    return NewListBandwidthLimitRulesNetworkingV2ExtensionsQosRulesResponse(rules.ListBandwidthLimitRules(oc.client,request.PolicyID,request.Opts, ))
+func (oc *OpenstackClient) ListBandwidthLimitRulesNetworkingV2ExtensionsQosRules(req *ListBandwidthLimitRulesNetworkingV2ExtensionsQosRulesRequest)(*ListBandwidthLimitRulesNetworkingV2ExtensionsQosRulesResponse){
+    return NewListBandwidthLimitRulesNetworkingV2ExtensionsQosRulesResponse(rules.ListBandwidthLimitRules(oc.client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the GetBandwidthLimitRuleNetworkingV2ExtensionsQosRules
@@ -58,8 +58,8 @@ func NewGetBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(getBandwidth
 }
 
 // action function
-func (oc *OpenstackClient) GetBandwidthLimitRuleNetworkingV2ExtensionsQosRules(request *GetBandwidthLimitRuleNetworkingV2ExtensionsQosRulesRequest)(*GetBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewGetBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(rules.GetBandwidthLimitRule(oc.client,request.PolicyID,request.RuleID, ))
+func (oc *OpenstackClient) GetBandwidthLimitRuleNetworkingV2ExtensionsQosRules(req *GetBandwidthLimitRuleNetworkingV2ExtensionsQosRulesRequest)(*GetBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewGetBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(rules.GetBandwidthLimitRule(oc.client,req.PolicyID,req.RuleID, ))
 
 }
 //request struct for the CreateBandwidthLimitRuleNetworkingV2ExtensionsQosRules
@@ -84,8 +84,8 @@ func NewCreateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(createBan
 }
 
 // action function
-func (oc *OpenstackClient) CreateBandwidthLimitRuleNetworkingV2ExtensionsQosRules(request *CreateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesRequest)(*CreateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewCreateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(rules.CreateBandwidthLimitRule(oc.client,request.PolicyID,request.Opts, ))
+func (oc *OpenstackClient) CreateBandwidthLimitRuleNetworkingV2ExtensionsQosRules(req *CreateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesRequest)(*CreateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewCreateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(rules.CreateBandwidthLimitRule(oc.client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the UpdateBandwidthLimitRuleNetworkingV2ExtensionsQosRules
@@ -111,8 +111,8 @@ func NewUpdateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(updateBan
 }
 
 // action function
-func (oc *OpenstackClient) UpdateBandwidthLimitRuleNetworkingV2ExtensionsQosRules(request *UpdateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesRequest)(*UpdateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewUpdateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(rules.UpdateBandwidthLimitRule(oc.client,request.PolicyID,request.RuleID,request.Opts, ))
+func (oc *OpenstackClient) UpdateBandwidthLimitRuleNetworkingV2ExtensionsQosRules(req *UpdateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesRequest)(*UpdateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewUpdateBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(rules.UpdateBandwidthLimitRule(oc.client,req.PolicyID,req.RuleID,req.Opts, ))
 
 }
 //request struct for the DeleteBandwidthLimitRuleNetworkingV2ExtensionsQosRules
@@ -137,8 +137,8 @@ func NewDeleteBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(deleteBan
 }
 
 // action function
-func (oc *OpenstackClient) DeleteBandwidthLimitRuleNetworkingV2ExtensionsQosRules(request *DeleteBandwidthLimitRuleNetworkingV2ExtensionsQosRulesRequest)(*DeleteBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewDeleteBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(rules.DeleteBandwidthLimitRule(oc.client,request.PolicyID,request.RuleID, ))
+func (oc *OpenstackClient) DeleteBandwidthLimitRuleNetworkingV2ExtensionsQosRules(req *DeleteBandwidthLimitRuleNetworkingV2ExtensionsQosRulesRequest)(*DeleteBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewDeleteBandwidthLimitRuleNetworkingV2ExtensionsQosRulesResponse(rules.DeleteBandwidthLimitRule(oc.client,req.PolicyID,req.RuleID, ))
 
 }
 //request struct for the ListDSCPMarkingRulesNetworkingV2ExtensionsQosRules
@@ -163,8 +163,8 @@ func NewListDSCPMarkingRulesNetworkingV2ExtensionsQosRulesResponse(pager paginat
 }
 
 // action function
-func (oc *OpenstackClient) ListDSCPMarkingRulesNetworkingV2ExtensionsQosRules(request *ListDSCPMarkingRulesNetworkingV2ExtensionsQosRulesRequest)(*ListDSCPMarkingRulesNetworkingV2ExtensionsQosRulesResponse){
-    return NewListDSCPMarkingRulesNetworkingV2ExtensionsQosRulesResponse(rules.ListDSCPMarkingRules(oc.client,request.PolicyID,request.Opts, ))
+func (oc *OpenstackClient) ListDSCPMarkingRulesNetworkingV2ExtensionsQosRules(req *ListDSCPMarkingRulesNetworkingV2ExtensionsQosRulesRequest)(*ListDSCPMarkingRulesNetworkingV2ExtensionsQosRulesResponse){
+    return NewListDSCPMarkingRulesNetworkingV2ExtensionsQosRulesResponse(rules.ListDSCPMarkingRules(oc.client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the GetDSCPMarkingRuleNetworkingV2ExtensionsQosRules
@@ -189,8 +189,8 @@ func NewGetDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(getDSCPMarkingR
 }
 
 // action function
-func (oc *OpenstackClient) GetDSCPMarkingRuleNetworkingV2ExtensionsQosRules(request *GetDSCPMarkingRuleNetworkingV2ExtensionsQosRulesRequest)(*GetDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewGetDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(rules.GetDSCPMarkingRule(oc.client,request.PolicyID,request.RuleID, ))
+func (oc *OpenstackClient) GetDSCPMarkingRuleNetworkingV2ExtensionsQosRules(req *GetDSCPMarkingRuleNetworkingV2ExtensionsQosRulesRequest)(*GetDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewGetDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(rules.GetDSCPMarkingRule(oc.client,req.PolicyID,req.RuleID, ))
 
 }
 //request struct for the CreateDSCPMarkingRuleNetworkingV2ExtensionsQosRules
@@ -215,8 +215,8 @@ func NewCreateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(createDSCPMa
 }
 
 // action function
-func (oc *OpenstackClient) CreateDSCPMarkingRuleNetworkingV2ExtensionsQosRules(request *CreateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesRequest)(*CreateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewCreateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(rules.CreateDSCPMarkingRule(oc.client,request.PolicyID,request.Opts, ))
+func (oc *OpenstackClient) CreateDSCPMarkingRuleNetworkingV2ExtensionsQosRules(req *CreateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesRequest)(*CreateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewCreateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(rules.CreateDSCPMarkingRule(oc.client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the UpdateDSCPMarkingRuleNetworkingV2ExtensionsQosRules
@@ -242,8 +242,8 @@ func NewUpdateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(updateDSCPMa
 }
 
 // action function
-func (oc *OpenstackClient) UpdateDSCPMarkingRuleNetworkingV2ExtensionsQosRules(request *UpdateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesRequest)(*UpdateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewUpdateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(rules.UpdateDSCPMarkingRule(oc.client,request.PolicyID,request.RuleID,request.Opts, ))
+func (oc *OpenstackClient) UpdateDSCPMarkingRuleNetworkingV2ExtensionsQosRules(req *UpdateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesRequest)(*UpdateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewUpdateDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(rules.UpdateDSCPMarkingRule(oc.client,req.PolicyID,req.RuleID,req.Opts, ))
 
 }
 //request struct for the DeleteDSCPMarkingRuleNetworkingV2ExtensionsQosRules
@@ -268,8 +268,8 @@ func NewDeleteDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(deleteDSCPMa
 }
 
 // action function
-func (oc *OpenstackClient) DeleteDSCPMarkingRuleNetworkingV2ExtensionsQosRules(request *DeleteDSCPMarkingRuleNetworkingV2ExtensionsQosRulesRequest)(*DeleteDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewDeleteDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(rules.DeleteDSCPMarkingRule(oc.client,request.PolicyID,request.RuleID, ))
+func (oc *OpenstackClient) DeleteDSCPMarkingRuleNetworkingV2ExtensionsQosRules(req *DeleteDSCPMarkingRuleNetworkingV2ExtensionsQosRulesRequest)(*DeleteDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewDeleteDSCPMarkingRuleNetworkingV2ExtensionsQosRulesResponse(rules.DeleteDSCPMarkingRule(oc.client,req.PolicyID,req.RuleID, ))
 
 }
 //request struct for the ListMinimumBandwidthRulesNetworkingV2ExtensionsQosRules
@@ -294,8 +294,8 @@ func NewListMinimumBandwidthRulesNetworkingV2ExtensionsQosRulesResponse(pager pa
 }
 
 // action function
-func (oc *OpenstackClient) ListMinimumBandwidthRulesNetworkingV2ExtensionsQosRules(request *ListMinimumBandwidthRulesNetworkingV2ExtensionsQosRulesRequest)(*ListMinimumBandwidthRulesNetworkingV2ExtensionsQosRulesResponse){
-    return NewListMinimumBandwidthRulesNetworkingV2ExtensionsQosRulesResponse(rules.ListMinimumBandwidthRules(oc.client,request.PolicyID,request.Opts, ))
+func (oc *OpenstackClient) ListMinimumBandwidthRulesNetworkingV2ExtensionsQosRules(req *ListMinimumBandwidthRulesNetworkingV2ExtensionsQosRulesRequest)(*ListMinimumBandwidthRulesNetworkingV2ExtensionsQosRulesResponse){
+    return NewListMinimumBandwidthRulesNetworkingV2ExtensionsQosRulesResponse(rules.ListMinimumBandwidthRules(oc.client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the GetMinimumBandwidthRuleNetworkingV2ExtensionsQosRules
@@ -320,8 +320,8 @@ func NewGetMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(getMinimum
 }
 
 // action function
-func (oc *OpenstackClient) GetMinimumBandwidthRuleNetworkingV2ExtensionsQosRules(request *GetMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesRequest)(*GetMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewGetMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(rules.GetMinimumBandwidthRule(oc.client,request.PolicyID,request.RuleID, ))
+func (oc *OpenstackClient) GetMinimumBandwidthRuleNetworkingV2ExtensionsQosRules(req *GetMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesRequest)(*GetMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewGetMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(rules.GetMinimumBandwidthRule(oc.client,req.PolicyID,req.RuleID, ))
 
 }
 //request struct for the CreateMinimumBandwidthRuleNetworkingV2ExtensionsQosRules
@@ -346,8 +346,8 @@ func NewCreateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(createM
 }
 
 // action function
-func (oc *OpenstackClient) CreateMinimumBandwidthRuleNetworkingV2ExtensionsQosRules(request *CreateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesRequest)(*CreateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewCreateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(rules.CreateMinimumBandwidthRule(oc.client,request.PolicyID,request.Opts, ))
+func (oc *OpenstackClient) CreateMinimumBandwidthRuleNetworkingV2ExtensionsQosRules(req *CreateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesRequest)(*CreateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewCreateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(rules.CreateMinimumBandwidthRule(oc.client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the UpdateMinimumBandwidthRuleNetworkingV2ExtensionsQosRules
@@ -373,8 +373,8 @@ func NewUpdateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(updateM
 }
 
 // action function
-func (oc *OpenstackClient) UpdateMinimumBandwidthRuleNetworkingV2ExtensionsQosRules(request *UpdateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesRequest)(*UpdateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewUpdateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(rules.UpdateMinimumBandwidthRule(oc.client,request.PolicyID,request.RuleID,request.Opts, ))
+func (oc *OpenstackClient) UpdateMinimumBandwidthRuleNetworkingV2ExtensionsQosRules(req *UpdateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesRequest)(*UpdateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewUpdateMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(rules.UpdateMinimumBandwidthRule(oc.client,req.PolicyID,req.RuleID,req.Opts, ))
 
 }
 //request struct for the DeleteMinimumBandwidthRuleNetworkingV2ExtensionsQosRules
@@ -399,7 +399,7 @@ func NewDeleteMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(deleteM
 }
 
 // action function
-func (oc *OpenstackClient) DeleteMinimumBandwidthRuleNetworkingV2ExtensionsQosRules(request *DeleteMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesRequest)(*DeleteMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse){
-    return NewDeleteMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(rules.DeleteMinimumBandwidthRule(oc.client,request.PolicyID,request.RuleID, ))
+func (oc *OpenstackClient) DeleteMinimumBandwidthRuleNetworkingV2ExtensionsQosRules(req *DeleteMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesRequest)(*DeleteMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse){
+    return NewDeleteMinimumBandwidthRuleNetworkingV2ExtensionsQosRulesResponse(rules.DeleteMinimumBandwidthRule(oc.client,req.PolicyID,req.RuleID, ))
 
 }

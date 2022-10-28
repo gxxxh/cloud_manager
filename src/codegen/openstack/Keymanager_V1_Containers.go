@@ -31,8 +31,8 @@ func NewListKeymanagerV1ContainersResponse(pager pagination.Pager,)*ListKeymanag
 }
 
 // action function
-func (oc *OpenstackClient) ListKeymanagerV1Containers(request *ListKeymanagerV1ContainersRequest)(*ListKeymanagerV1ContainersResponse){
-    return NewListKeymanagerV1ContainersResponse(containers.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListKeymanagerV1Containers(req *ListKeymanagerV1ContainersRequest)(*ListKeymanagerV1ContainersResponse){
+    return NewListKeymanagerV1ContainersResponse(containers.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetKeymanagerV1Containers
@@ -56,8 +56,8 @@ func NewGetKeymanagerV1ContainersResponse(getResult containers.GetResult,)*GetKe
 }
 
 // action function
-func (oc *OpenstackClient) GetKeymanagerV1Containers(request *GetKeymanagerV1ContainersRequest)(*GetKeymanagerV1ContainersResponse){
-    return NewGetKeymanagerV1ContainersResponse(containers.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetKeymanagerV1Containers(req *GetKeymanagerV1ContainersRequest)(*GetKeymanagerV1ContainersResponse){
+    return NewGetKeymanagerV1ContainersResponse(containers.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateKeymanagerV1Containers
@@ -81,8 +81,8 @@ func NewCreateKeymanagerV1ContainersResponse(createResult containers.CreateResul
 }
 
 // action function
-func (oc *OpenstackClient) CreateKeymanagerV1Containers(request *CreateKeymanagerV1ContainersRequest)(*CreateKeymanagerV1ContainersResponse){
-    return NewCreateKeymanagerV1ContainersResponse(containers.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateKeymanagerV1Containers(req *CreateKeymanagerV1ContainersRequest)(*CreateKeymanagerV1ContainersResponse){
+    return NewCreateKeymanagerV1ContainersResponse(containers.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteKeymanagerV1Containers
@@ -106,8 +106,8 @@ func NewDeleteKeymanagerV1ContainersResponse(deleteResult containers.DeleteResul
 }
 
 // action function
-func (oc *OpenstackClient) DeleteKeymanagerV1Containers(request *DeleteKeymanagerV1ContainersRequest)(*DeleteKeymanagerV1ContainersResponse){
-    return NewDeleteKeymanagerV1ContainersResponse(containers.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteKeymanagerV1Containers(req *DeleteKeymanagerV1ContainersRequest)(*DeleteKeymanagerV1ContainersResponse){
+    return NewDeleteKeymanagerV1ContainersResponse(containers.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the ListConsumersKeymanagerV1Containers
@@ -132,8 +132,8 @@ func NewListConsumersKeymanagerV1ContainersResponse(pager pagination.Pager,)*Lis
 }
 
 // action function
-func (oc *OpenstackClient) ListConsumersKeymanagerV1Containers(request *ListConsumersKeymanagerV1ContainersRequest)(*ListConsumersKeymanagerV1ContainersResponse){
-    return NewListConsumersKeymanagerV1ContainersResponse(containers.ListConsumers(oc.client,request.ContainerID,request.Opts, ))
+func (oc *OpenstackClient) ListConsumersKeymanagerV1Containers(req *ListConsumersKeymanagerV1ContainersRequest)(*ListConsumersKeymanagerV1ContainersResponse){
+    return NewListConsumersKeymanagerV1ContainersResponse(containers.ListConsumers(oc.client,req.ContainerID,req.Opts, ))
 
 }
 //request struct for the CreateConsumerKeymanagerV1Containers
@@ -158,8 +158,8 @@ func NewCreateConsumerKeymanagerV1ContainersResponse(createConsumerResult contai
 }
 
 // action function
-func (oc *OpenstackClient) CreateConsumerKeymanagerV1Containers(request *CreateConsumerKeymanagerV1ContainersRequest)(*CreateConsumerKeymanagerV1ContainersResponse){
-    return NewCreateConsumerKeymanagerV1ContainersResponse(containers.CreateConsumer(oc.client,request.ContainerID,request.Opts, ))
+func (oc *OpenstackClient) CreateConsumerKeymanagerV1Containers(req *CreateConsumerKeymanagerV1ContainersRequest)(*CreateConsumerKeymanagerV1ContainersResponse){
+    return NewCreateConsumerKeymanagerV1ContainersResponse(containers.CreateConsumer(oc.client,req.ContainerID,req.Opts, ))
 
 }
 //request struct for the DeleteConsumerKeymanagerV1Containers
@@ -184,8 +184,8 @@ func NewDeleteConsumerKeymanagerV1ContainersResponse(deleteConsumerResult contai
 }
 
 // action function
-func (oc *OpenstackClient) DeleteConsumerKeymanagerV1Containers(request *DeleteConsumerKeymanagerV1ContainersRequest)(*DeleteConsumerKeymanagerV1ContainersResponse){
-    return NewDeleteConsumerKeymanagerV1ContainersResponse(containers.DeleteConsumer(oc.client,request.ContainerID,request.Opts, ))
+func (oc *OpenstackClient) DeleteConsumerKeymanagerV1Containers(req *DeleteConsumerKeymanagerV1ContainersRequest)(*DeleteConsumerKeymanagerV1ContainersResponse){
+    return NewDeleteConsumerKeymanagerV1ContainersResponse(containers.DeleteConsumer(oc.client,req.ContainerID,req.Opts, ))
 
 }
 //request struct for the CreateSecretRefKeymanagerV1Containers
@@ -210,8 +210,8 @@ func NewCreateSecretRefKeymanagerV1ContainersResponse(createSecretRefResult cont
 }
 
 // action function
-func (oc *OpenstackClient) CreateSecretRefKeymanagerV1Containers(request *CreateSecretRefKeymanagerV1ContainersRequest)(*CreateSecretRefKeymanagerV1ContainersResponse){
-    return NewCreateSecretRefKeymanagerV1ContainersResponse(containers.CreateSecretRef(oc.client,request.ContainerID,request.Opts, ))
+func (oc *OpenstackClient) CreateSecretRefKeymanagerV1Containers(req *CreateSecretRefKeymanagerV1ContainersRequest)(*CreateSecretRefKeymanagerV1ContainersResponse){
+    return NewCreateSecretRefKeymanagerV1ContainersResponse(containers.CreateSecretRef(oc.client,req.ContainerID,req.Opts, ))
 
 }
 //request struct for the DeleteSecretRefKeymanagerV1Containers
@@ -236,7 +236,7 @@ func NewDeleteSecretRefKeymanagerV1ContainersResponse(deleteSecretRefResult cont
 }
 
 // action function
-func (oc *OpenstackClient) DeleteSecretRefKeymanagerV1Containers(request *DeleteSecretRefKeymanagerV1ContainersRequest)(*DeleteSecretRefKeymanagerV1ContainersResponse){
-    return NewDeleteSecretRefKeymanagerV1ContainersResponse(containers.DeleteSecretRef(oc.client,request.ContainerID,request.Opts, ))
+func (oc *OpenstackClient) DeleteSecretRefKeymanagerV1Containers(req *DeleteSecretRefKeymanagerV1ContainersRequest)(*DeleteSecretRefKeymanagerV1ContainersResponse){
+    return NewDeleteSecretRefKeymanagerV1ContainersResponse(containers.DeleteSecretRef(oc.client,req.ContainerID,req.Opts, ))
 
 }

@@ -31,8 +31,8 @@ func NewListLoadbalancerV2MonitorsResponse(pager pagination.Pager,)*ListLoadbala
 }
 
 // action function
-func (oc *OpenstackClient) ListLoadbalancerV2Monitors(request *ListLoadbalancerV2MonitorsRequest)(*ListLoadbalancerV2MonitorsResponse){
-    return NewListLoadbalancerV2MonitorsResponse(monitors.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListLoadbalancerV2Monitors(req *ListLoadbalancerV2MonitorsRequest)(*ListLoadbalancerV2MonitorsResponse){
+    return NewListLoadbalancerV2MonitorsResponse(monitors.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateLoadbalancerV2Monitors
@@ -56,8 +56,8 @@ func NewCreateLoadbalancerV2MonitorsResponse(createResult monitors.CreateResult,
 }
 
 // action function
-func (oc *OpenstackClient) CreateLoadbalancerV2Monitors(request *CreateLoadbalancerV2MonitorsRequest)(*CreateLoadbalancerV2MonitorsResponse){
-    return NewCreateLoadbalancerV2MonitorsResponse(monitors.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateLoadbalancerV2Monitors(req *CreateLoadbalancerV2MonitorsRequest)(*CreateLoadbalancerV2MonitorsResponse){
+    return NewCreateLoadbalancerV2MonitorsResponse(monitors.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetLoadbalancerV2Monitors
@@ -81,8 +81,8 @@ func NewGetLoadbalancerV2MonitorsResponse(getResult monitors.GetResult,)*GetLoad
 }
 
 // action function
-func (oc *OpenstackClient) GetLoadbalancerV2Monitors(request *GetLoadbalancerV2MonitorsRequest)(*GetLoadbalancerV2MonitorsResponse){
-    return NewGetLoadbalancerV2MonitorsResponse(monitors.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetLoadbalancerV2Monitors(req *GetLoadbalancerV2MonitorsRequest)(*GetLoadbalancerV2MonitorsResponse){
+    return NewGetLoadbalancerV2MonitorsResponse(monitors.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateLoadbalancerV2Monitors
@@ -107,8 +107,8 @@ func NewUpdateLoadbalancerV2MonitorsResponse(updateResult monitors.UpdateResult,
 }
 
 // action function
-func (oc *OpenstackClient) UpdateLoadbalancerV2Monitors(request *UpdateLoadbalancerV2MonitorsRequest)(*UpdateLoadbalancerV2MonitorsResponse){
-    return NewUpdateLoadbalancerV2MonitorsResponse(monitors.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateLoadbalancerV2Monitors(req *UpdateLoadbalancerV2MonitorsRequest)(*UpdateLoadbalancerV2MonitorsResponse){
+    return NewUpdateLoadbalancerV2MonitorsResponse(monitors.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteLoadbalancerV2Monitors
@@ -132,7 +132,7 @@ func NewDeleteLoadbalancerV2MonitorsResponse(deleteResult monitors.DeleteResult,
 }
 
 // action function
-func (oc *OpenstackClient) DeleteLoadbalancerV2Monitors(request *DeleteLoadbalancerV2MonitorsRequest)(*DeleteLoadbalancerV2MonitorsResponse){
-    return NewDeleteLoadbalancerV2MonitorsResponse(monitors.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteLoadbalancerV2Monitors(req *DeleteLoadbalancerV2MonitorsRequest)(*DeleteLoadbalancerV2MonitorsResponse){
+    return NewDeleteLoadbalancerV2MonitorsResponse(monitors.Delete(oc.client,req.Id, ))
 
 }

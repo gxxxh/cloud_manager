@@ -31,8 +31,8 @@ func NewListDetailComputeV2FlavorsResponse(pager pagination.Pager,)*ListDetailCo
 }
 
 // action function
-func (oc *OpenstackClient) ListDetailComputeV2Flavors(request *ListDetailComputeV2FlavorsRequest)(*ListDetailComputeV2FlavorsResponse){
-    return NewListDetailComputeV2FlavorsResponse(flavors.ListDetail(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListDetailComputeV2Flavors(req *ListDetailComputeV2FlavorsRequest)(*ListDetailComputeV2FlavorsResponse){
+    return NewListDetailComputeV2FlavorsResponse(flavors.ListDetail(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateComputeV2Flavors
@@ -56,8 +56,8 @@ func NewCreateComputeV2FlavorsResponse(createResult flavors.CreateResult,)*Creat
 }
 
 // action function
-func (oc *OpenstackClient) CreateComputeV2Flavors(request *CreateComputeV2FlavorsRequest)(*CreateComputeV2FlavorsResponse){
-    return NewCreateComputeV2FlavorsResponse(flavors.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateComputeV2Flavors(req *CreateComputeV2FlavorsRequest)(*CreateComputeV2FlavorsResponse){
+    return NewCreateComputeV2FlavorsResponse(flavors.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetComputeV2Flavors
@@ -81,8 +81,8 @@ func NewGetComputeV2FlavorsResponse(getResult flavors.GetResult,)*GetComputeV2Fl
 }
 
 // action function
-func (oc *OpenstackClient) GetComputeV2Flavors(request *GetComputeV2FlavorsRequest)(*GetComputeV2FlavorsResponse){
-    return NewGetComputeV2FlavorsResponse(flavors.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetComputeV2Flavors(req *GetComputeV2FlavorsRequest)(*GetComputeV2FlavorsResponse){
+    return NewGetComputeV2FlavorsResponse(flavors.Get(oc.client,req.Id, ))
 
 }
 //request struct for the DeleteComputeV2Flavors
@@ -106,8 +106,8 @@ func NewDeleteComputeV2FlavorsResponse(deleteResult flavors.DeleteResult,)*Delet
 }
 
 // action function
-func (oc *OpenstackClient) DeleteComputeV2Flavors(request *DeleteComputeV2FlavorsRequest)(*DeleteComputeV2FlavorsResponse){
-    return NewDeleteComputeV2FlavorsResponse(flavors.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteComputeV2Flavors(req *DeleteComputeV2FlavorsRequest)(*DeleteComputeV2FlavorsResponse){
+    return NewDeleteComputeV2FlavorsResponse(flavors.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the ListAccessesComputeV2Flavors
@@ -131,8 +131,8 @@ func NewListAccessesComputeV2FlavorsResponse(pager pagination.Pager,)*ListAccess
 }
 
 // action function
-func (oc *OpenstackClient) ListAccessesComputeV2Flavors(request *ListAccessesComputeV2FlavorsRequest)(*ListAccessesComputeV2FlavorsResponse){
-    return NewListAccessesComputeV2FlavorsResponse(flavors.ListAccesses(oc.client,request.Id, ))
+func (oc *OpenstackClient) ListAccessesComputeV2Flavors(req *ListAccessesComputeV2FlavorsRequest)(*ListAccessesComputeV2FlavorsResponse){
+    return NewListAccessesComputeV2FlavorsResponse(flavors.ListAccesses(oc.client,req.Id, ))
 
 }
 //request struct for the AddAccessComputeV2Flavors
@@ -157,8 +157,8 @@ func NewAddAccessComputeV2FlavorsResponse(addAccessResult flavors.AddAccessResul
 }
 
 // action function
-func (oc *OpenstackClient) AddAccessComputeV2Flavors(request *AddAccessComputeV2FlavorsRequest)(*AddAccessComputeV2FlavorsResponse){
-    return NewAddAccessComputeV2FlavorsResponse(flavors.AddAccess(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) AddAccessComputeV2Flavors(req *AddAccessComputeV2FlavorsRequest)(*AddAccessComputeV2FlavorsResponse){
+    return NewAddAccessComputeV2FlavorsResponse(flavors.AddAccess(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the RemoveAccessComputeV2Flavors
@@ -183,8 +183,8 @@ func NewRemoveAccessComputeV2FlavorsResponse(removeAccessResult flavors.RemoveAc
 }
 
 // action function
-func (oc *OpenstackClient) RemoveAccessComputeV2Flavors(request *RemoveAccessComputeV2FlavorsRequest)(*RemoveAccessComputeV2FlavorsResponse){
-    return NewRemoveAccessComputeV2FlavorsResponse(flavors.RemoveAccess(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) RemoveAccessComputeV2Flavors(req *RemoveAccessComputeV2FlavorsRequest)(*RemoveAccessComputeV2FlavorsResponse){
+    return NewRemoveAccessComputeV2FlavorsResponse(flavors.RemoveAccess(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ListExtraSpecsComputeV2Flavors
@@ -208,8 +208,8 @@ func NewListExtraSpecsComputeV2FlavorsResponse(listExtraSpecsResult flavors.List
 }
 
 // action function
-func (oc *OpenstackClient) ListExtraSpecsComputeV2Flavors(request *ListExtraSpecsComputeV2FlavorsRequest)(*ListExtraSpecsComputeV2FlavorsResponse){
-    return NewListExtraSpecsComputeV2FlavorsResponse(flavors.ListExtraSpecs(oc.client,request.FlavorID, ))
+func (oc *OpenstackClient) ListExtraSpecsComputeV2Flavors(req *ListExtraSpecsComputeV2FlavorsRequest)(*ListExtraSpecsComputeV2FlavorsResponse){
+    return NewListExtraSpecsComputeV2FlavorsResponse(flavors.ListExtraSpecs(oc.client,req.FlavorID, ))
 
 }
 //request struct for the GetExtraSpecComputeV2Flavors
@@ -234,8 +234,8 @@ func NewGetExtraSpecComputeV2FlavorsResponse(getExtraSpecResult flavors.GetExtra
 }
 
 // action function
-func (oc *OpenstackClient) GetExtraSpecComputeV2Flavors(request *GetExtraSpecComputeV2FlavorsRequest)(*GetExtraSpecComputeV2FlavorsResponse){
-    return NewGetExtraSpecComputeV2FlavorsResponse(flavors.GetExtraSpec(oc.client,request.FlavorID,request.Key, ))
+func (oc *OpenstackClient) GetExtraSpecComputeV2Flavors(req *GetExtraSpecComputeV2FlavorsRequest)(*GetExtraSpecComputeV2FlavorsResponse){
+    return NewGetExtraSpecComputeV2FlavorsResponse(flavors.GetExtraSpec(oc.client,req.FlavorID,req.Key, ))
 
 }
 //request struct for the CreateExtraSpecsComputeV2Flavors
@@ -260,8 +260,8 @@ func NewCreateExtraSpecsComputeV2FlavorsResponse(createExtraSpecsResult flavors.
 }
 
 // action function
-func (oc *OpenstackClient) CreateExtraSpecsComputeV2Flavors(request *CreateExtraSpecsComputeV2FlavorsRequest)(*CreateExtraSpecsComputeV2FlavorsResponse){
-    return NewCreateExtraSpecsComputeV2FlavorsResponse(flavors.CreateExtraSpecs(oc.client,request.FlavorID,request.Opts, ))
+func (oc *OpenstackClient) CreateExtraSpecsComputeV2Flavors(req *CreateExtraSpecsComputeV2FlavorsRequest)(*CreateExtraSpecsComputeV2FlavorsResponse){
+    return NewCreateExtraSpecsComputeV2FlavorsResponse(flavors.CreateExtraSpecs(oc.client,req.FlavorID,req.Opts, ))
 
 }
 //request struct for the UpdateExtraSpecComputeV2Flavors
@@ -286,8 +286,8 @@ func NewUpdateExtraSpecComputeV2FlavorsResponse(updateExtraSpecResult flavors.Up
 }
 
 // action function
-func (oc *OpenstackClient) UpdateExtraSpecComputeV2Flavors(request *UpdateExtraSpecComputeV2FlavorsRequest)(*UpdateExtraSpecComputeV2FlavorsResponse){
-    return NewUpdateExtraSpecComputeV2FlavorsResponse(flavors.UpdateExtraSpec(oc.client,request.FlavorID,request.Opts, ))
+func (oc *OpenstackClient) UpdateExtraSpecComputeV2Flavors(req *UpdateExtraSpecComputeV2FlavorsRequest)(*UpdateExtraSpecComputeV2FlavorsResponse){
+    return NewUpdateExtraSpecComputeV2FlavorsResponse(flavors.UpdateExtraSpec(oc.client,req.FlavorID,req.Opts, ))
 
 }
 //request struct for the DeleteExtraSpecComputeV2Flavors
@@ -312,7 +312,7 @@ func NewDeleteExtraSpecComputeV2FlavorsResponse(deleteExtraSpecResult flavors.De
 }
 
 // action function
-func (oc *OpenstackClient) DeleteExtraSpecComputeV2Flavors(request *DeleteExtraSpecComputeV2FlavorsRequest)(*DeleteExtraSpecComputeV2FlavorsResponse){
-    return NewDeleteExtraSpecComputeV2FlavorsResponse(flavors.DeleteExtraSpec(oc.client,request.FlavorID,request.Key, ))
+func (oc *OpenstackClient) DeleteExtraSpecComputeV2Flavors(req *DeleteExtraSpecComputeV2FlavorsRequest)(*DeleteExtraSpecComputeV2FlavorsResponse){
+    return NewDeleteExtraSpecComputeV2FlavorsResponse(flavors.DeleteExtraSpec(oc.client,req.FlavorID,req.Key, ))
 
 }

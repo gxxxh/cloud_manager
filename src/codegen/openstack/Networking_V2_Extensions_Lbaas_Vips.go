@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsLbaasVipsResponse(pager pagination.Pager,)*Lis
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaasVips(request *ListNetworkingV2ExtensionsLbaasVipsRequest)(*ListNetworkingV2ExtensionsLbaasVipsResponse){
-    return NewListNetworkingV2ExtensionsLbaasVipsResponse(vips.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaasVips(req *ListNetworkingV2ExtensionsLbaasVipsRequest)(*ListNetworkingV2ExtensionsLbaasVipsResponse){
+    return NewListNetworkingV2ExtensionsLbaasVipsResponse(vips.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLbaasVips
@@ -56,8 +56,8 @@ func NewCreateNetworkingV2ExtensionsLbaasVipsResponse(createResult vips.CreateRe
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaasVips(request *CreateNetworkingV2ExtensionsLbaasVipsRequest)(*CreateNetworkingV2ExtensionsLbaasVipsResponse){
-    return NewCreateNetworkingV2ExtensionsLbaasVipsResponse(vips.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaasVips(req *CreateNetworkingV2ExtensionsLbaasVipsRequest)(*CreateNetworkingV2ExtensionsLbaasVipsResponse){
+    return NewCreateNetworkingV2ExtensionsLbaasVipsResponse(vips.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLbaasVips
@@ -81,8 +81,8 @@ func NewGetNetworkingV2ExtensionsLbaasVipsResponse(getResult vips.GetResult,)*Ge
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaasVips(request *GetNetworkingV2ExtensionsLbaasVipsRequest)(*GetNetworkingV2ExtensionsLbaasVipsResponse){
-    return NewGetNetworkingV2ExtensionsLbaasVipsResponse(vips.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaasVips(req *GetNetworkingV2ExtensionsLbaasVipsRequest)(*GetNetworkingV2ExtensionsLbaasVipsResponse){
+    return NewGetNetworkingV2ExtensionsLbaasVipsResponse(vips.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLbaasVips
@@ -107,8 +107,8 @@ func NewUpdateNetworkingV2ExtensionsLbaasVipsResponse(updateResult vips.UpdateRe
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaasVips(request *UpdateNetworkingV2ExtensionsLbaasVipsRequest)(*UpdateNetworkingV2ExtensionsLbaasVipsResponse){
-    return NewUpdateNetworkingV2ExtensionsLbaasVipsResponse(vips.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaasVips(req *UpdateNetworkingV2ExtensionsLbaasVipsRequest)(*UpdateNetworkingV2ExtensionsLbaasVipsResponse){
+    return NewUpdateNetworkingV2ExtensionsLbaasVipsResponse(vips.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLbaasVips
@@ -132,7 +132,7 @@ func NewDeleteNetworkingV2ExtensionsLbaasVipsResponse(deleteResult vips.DeleteRe
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaasVips(request *DeleteNetworkingV2ExtensionsLbaasVipsRequest)(*DeleteNetworkingV2ExtensionsLbaasVipsResponse){
-    return NewDeleteNetworkingV2ExtensionsLbaasVipsResponse(vips.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaasVips(req *DeleteNetworkingV2ExtensionsLbaasVipsRequest)(*DeleteNetworkingV2ExtensionsLbaasVipsResponse){
+    return NewDeleteNetworkingV2ExtensionsLbaasVipsResponse(vips.Delete(oc.client,req.Id, ))
 
 }

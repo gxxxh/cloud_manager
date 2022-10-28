@@ -31,8 +31,8 @@ func NewListIdentityV3GroupsResponse(pager pagination.Pager,)*ListIdentityV3Grou
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV3Groups(request *ListIdentityV3GroupsRequest)(*ListIdentityV3GroupsResponse){
-    return NewListIdentityV3GroupsResponse(groups.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListIdentityV3Groups(req *ListIdentityV3GroupsRequest)(*ListIdentityV3GroupsResponse){
+    return NewListIdentityV3GroupsResponse(groups.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Groups
@@ -56,8 +56,8 @@ func NewGetIdentityV3GroupsResponse(getResult groups.GetResult,)*GetIdentityV3Gr
 }
 
 // action function
-func (oc *OpenstackClient) GetIdentityV3Groups(request *GetIdentityV3GroupsRequest)(*GetIdentityV3GroupsResponse){
-    return NewGetIdentityV3GroupsResponse(groups.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetIdentityV3Groups(req *GetIdentityV3GroupsRequest)(*GetIdentityV3GroupsResponse){
+    return NewGetIdentityV3GroupsResponse(groups.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateIdentityV3Groups
@@ -81,8 +81,8 @@ func NewCreateIdentityV3GroupsResponse(createResult groups.CreateResult,)*Create
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3Groups(request *CreateIdentityV3GroupsRequest)(*CreateIdentityV3GroupsResponse){
-    return NewCreateIdentityV3GroupsResponse(groups.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV3Groups(req *CreateIdentityV3GroupsRequest)(*CreateIdentityV3GroupsResponse){
+    return NewCreateIdentityV3GroupsResponse(groups.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateIdentityV3Groups
@@ -107,8 +107,8 @@ func NewUpdateIdentityV3GroupsResponse(updateResult groups.UpdateResult,)*Update
 }
 
 // action function
-func (oc *OpenstackClient) UpdateIdentityV3Groups(request *UpdateIdentityV3GroupsRequest)(*UpdateIdentityV3GroupsResponse){
-    return NewUpdateIdentityV3GroupsResponse(groups.Update(oc.client,request.GroupID,request.Opts, ))
+func (oc *OpenstackClient) UpdateIdentityV3Groups(req *UpdateIdentityV3GroupsRequest)(*UpdateIdentityV3GroupsResponse){
+    return NewUpdateIdentityV3GroupsResponse(groups.Update(oc.client,req.GroupID,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Groups
@@ -132,7 +132,7 @@ func NewDeleteIdentityV3GroupsResponse(deleteResult groups.DeleteResult,)*Delete
 }
 
 // action function
-func (oc *OpenstackClient) DeleteIdentityV3Groups(request *DeleteIdentityV3GroupsRequest)(*DeleteIdentityV3GroupsResponse){
-    return NewDeleteIdentityV3GroupsResponse(groups.Delete(oc.client,request.GroupID, ))
+func (oc *OpenstackClient) DeleteIdentityV3Groups(req *DeleteIdentityV3GroupsRequest)(*DeleteIdentityV3GroupsResponse){
+    return NewDeleteIdentityV3GroupsResponse(groups.Delete(oc.client,req.GroupID, ))
 
 }

@@ -30,7 +30,7 @@ func NewListIdentityV2ExtensionsAdminRolesResponse(pager pagination.Pager,)*List
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV2ExtensionsAdminRoles(request *ListIdentityV2ExtensionsAdminRolesRequest)(*ListIdentityV2ExtensionsAdminRolesResponse){
+func (oc *OpenstackClient) ListIdentityV2ExtensionsAdminRoles(req *ListIdentityV2ExtensionsAdminRolesRequest)(*ListIdentityV2ExtensionsAdminRolesResponse){
     return NewListIdentityV2ExtensionsAdminRolesResponse(roles.List(oc.client, ))
 
 }
@@ -57,8 +57,8 @@ func NewAddUserIdentityV2ExtensionsAdminRolesResponse(userRoleResult roles.UserR
 }
 
 // action function
-func (oc *OpenstackClient) AddUserIdentityV2ExtensionsAdminRoles(request *AddUserIdentityV2ExtensionsAdminRolesRequest)(*AddUserIdentityV2ExtensionsAdminRolesResponse){
-    return NewAddUserIdentityV2ExtensionsAdminRolesResponse(roles.AddUser(oc.client,request.TenantID,request.UserID,request.RoleID, ))
+func (oc *OpenstackClient) AddUserIdentityV2ExtensionsAdminRoles(req *AddUserIdentityV2ExtensionsAdminRolesRequest)(*AddUserIdentityV2ExtensionsAdminRolesResponse){
+    return NewAddUserIdentityV2ExtensionsAdminRolesResponse(roles.AddUser(oc.client,req.TenantID,req.UserID,req.RoleID, ))
 
 }
 //request struct for the DeleteUserIdentityV2ExtensionsAdminRoles
@@ -84,7 +84,7 @@ func NewDeleteUserIdentityV2ExtensionsAdminRolesResponse(userRoleResult roles.Us
 }
 
 // action function
-func (oc *OpenstackClient) DeleteUserIdentityV2ExtensionsAdminRoles(request *DeleteUserIdentityV2ExtensionsAdminRolesRequest)(*DeleteUserIdentityV2ExtensionsAdminRolesResponse){
-    return NewDeleteUserIdentityV2ExtensionsAdminRolesResponse(roles.DeleteUser(oc.client,request.TenantID,request.UserID,request.RoleID, ))
+func (oc *OpenstackClient) DeleteUserIdentityV2ExtensionsAdminRoles(req *DeleteUserIdentityV2ExtensionsAdminRolesRequest)(*DeleteUserIdentityV2ExtensionsAdminRolesResponse){
+    return NewDeleteUserIdentityV2ExtensionsAdminRolesResponse(roles.DeleteUser(oc.client,req.TenantID,req.UserID,req.RoleID, ))
 
 }

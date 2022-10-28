@@ -31,7 +31,7 @@ func NewListSharedfilesystemsV2ServicesResponse(pager pagination.Pager,)*ListSha
 }
 
 // action function
-func (oc *OpenstackClient) ListSharedfilesystemsV2Services(request *ListSharedfilesystemsV2ServicesRequest)(*ListSharedfilesystemsV2ServicesResponse){
-    return NewListSharedfilesystemsV2ServicesResponse(services.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListSharedfilesystemsV2Services(req *ListSharedfilesystemsV2ServicesRequest)(*ListSharedfilesystemsV2ServicesResponse){
+    return NewListSharedfilesystemsV2ServicesResponse(services.List(oc.client,req.Opts, ))
 
 }

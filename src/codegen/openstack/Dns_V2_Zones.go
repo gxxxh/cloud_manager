@@ -31,8 +31,8 @@ func NewListDnsV2ZonesResponse(pager pagination.Pager,)*ListDnsV2ZonesResponse {
 }
 
 // action function
-func (oc *OpenstackClient) ListDnsV2Zones(request *ListDnsV2ZonesRequest)(*ListDnsV2ZonesResponse){
-    return NewListDnsV2ZonesResponse(zones.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListDnsV2Zones(req *ListDnsV2ZonesRequest)(*ListDnsV2ZonesResponse){
+    return NewListDnsV2ZonesResponse(zones.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetDnsV2Zones
@@ -56,8 +56,8 @@ func NewGetDnsV2ZonesResponse(getResult zones.GetResult,)*GetDnsV2ZonesResponse 
 }
 
 // action function
-func (oc *OpenstackClient) GetDnsV2Zones(request *GetDnsV2ZonesRequest)(*GetDnsV2ZonesResponse){
-    return NewGetDnsV2ZonesResponse(zones.Get(oc.client,request.ZoneID, ))
+func (oc *OpenstackClient) GetDnsV2Zones(req *GetDnsV2ZonesRequest)(*GetDnsV2ZonesResponse){
+    return NewGetDnsV2ZonesResponse(zones.Get(oc.client,req.ZoneID, ))
 
 }
 //request struct for the CreateDnsV2Zones
@@ -81,8 +81,8 @@ func NewCreateDnsV2ZonesResponse(createResult zones.CreateResult,)*CreateDnsV2Zo
 }
 
 // action function
-func (oc *OpenstackClient) CreateDnsV2Zones(request *CreateDnsV2ZonesRequest)(*CreateDnsV2ZonesResponse){
-    return NewCreateDnsV2ZonesResponse(zones.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateDnsV2Zones(req *CreateDnsV2ZonesRequest)(*CreateDnsV2ZonesResponse){
+    return NewCreateDnsV2ZonesResponse(zones.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateDnsV2Zones
@@ -107,8 +107,8 @@ func NewUpdateDnsV2ZonesResponse(updateResult zones.UpdateResult,)*UpdateDnsV2Zo
 }
 
 // action function
-func (oc *OpenstackClient) UpdateDnsV2Zones(request *UpdateDnsV2ZonesRequest)(*UpdateDnsV2ZonesResponse){
-    return NewUpdateDnsV2ZonesResponse(zones.Update(oc.client,request.ZoneID,request.Opts, ))
+func (oc *OpenstackClient) UpdateDnsV2Zones(req *UpdateDnsV2ZonesRequest)(*UpdateDnsV2ZonesResponse){
+    return NewUpdateDnsV2ZonesResponse(zones.Update(oc.client,req.ZoneID,req.Opts, ))
 
 }
 //request struct for the DeleteDnsV2Zones
@@ -132,7 +132,7 @@ func NewDeleteDnsV2ZonesResponse(deleteResult zones.DeleteResult,)*DeleteDnsV2Zo
 }
 
 // action function
-func (oc *OpenstackClient) DeleteDnsV2Zones(request *DeleteDnsV2ZonesRequest)(*DeleteDnsV2ZonesResponse){
-    return NewDeleteDnsV2ZonesResponse(zones.Delete(oc.client,request.ZoneID, ))
+func (oc *OpenstackClient) DeleteDnsV2Zones(req *DeleteDnsV2ZonesRequest)(*DeleteDnsV2ZonesResponse){
+    return NewDeleteDnsV2ZonesResponse(zones.Delete(oc.client,req.ZoneID, ))
 
 }

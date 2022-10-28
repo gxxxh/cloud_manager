@@ -31,8 +31,8 @@ func NewListComputeV2ServersResponse(pager pagination.Pager,)*ListComputeV2Serve
 }
 
 // action function
-func (oc *OpenstackClient) ListComputeV2Servers(request *ListComputeV2ServersRequest)(*ListComputeV2ServersResponse){
-    return NewListComputeV2ServersResponse(servers.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListComputeV2Servers(req *ListComputeV2ServersRequest)(*ListComputeV2ServersResponse){
+    return NewListComputeV2ServersResponse(servers.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateComputeV2Servers
@@ -56,8 +56,8 @@ func NewCreateComputeV2ServersResponse(createResult servers.CreateResult,)*Creat
 }
 
 // action function
-func (oc *OpenstackClient) CreateComputeV2Servers(request *CreateComputeV2ServersRequest)(*CreateComputeV2ServersResponse){
-    return NewCreateComputeV2ServersResponse(servers.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateComputeV2Servers(req *CreateComputeV2ServersRequest)(*CreateComputeV2ServersResponse){
+    return NewCreateComputeV2ServersResponse(servers.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteComputeV2Servers
@@ -81,8 +81,8 @@ func NewDeleteComputeV2ServersResponse(deleteResult servers.DeleteResult,)*Delet
 }
 
 // action function
-func (oc *OpenstackClient) DeleteComputeV2Servers(request *DeleteComputeV2ServersRequest)(*DeleteComputeV2ServersResponse){
-    return NewDeleteComputeV2ServersResponse(servers.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteComputeV2Servers(req *DeleteComputeV2ServersRequest)(*DeleteComputeV2ServersResponse){
+    return NewDeleteComputeV2ServersResponse(servers.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the ForceDeleteComputeV2Servers
@@ -106,8 +106,8 @@ func NewForceDeleteComputeV2ServersResponse(actionResult servers.ActionResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) ForceDeleteComputeV2Servers(request *ForceDeleteComputeV2ServersRequest)(*ForceDeleteComputeV2ServersResponse){
-    return NewForceDeleteComputeV2ServersResponse(servers.ForceDelete(oc.client,request.Id, ))
+func (oc *OpenstackClient) ForceDeleteComputeV2Servers(req *ForceDeleteComputeV2ServersRequest)(*ForceDeleteComputeV2ServersResponse){
+    return NewForceDeleteComputeV2ServersResponse(servers.ForceDelete(oc.client,req.Id, ))
 
 }
 //request struct for the GetComputeV2Servers
@@ -131,8 +131,8 @@ func NewGetComputeV2ServersResponse(getResult servers.GetResult,)*GetComputeV2Se
 }
 
 // action function
-func (oc *OpenstackClient) GetComputeV2Servers(request *GetComputeV2ServersRequest)(*GetComputeV2ServersResponse){
-    return NewGetComputeV2ServersResponse(servers.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetComputeV2Servers(req *GetComputeV2ServersRequest)(*GetComputeV2ServersResponse){
+    return NewGetComputeV2ServersResponse(servers.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateComputeV2Servers
@@ -157,8 +157,8 @@ func NewUpdateComputeV2ServersResponse(updateResult servers.UpdateResult,)*Updat
 }
 
 // action function
-func (oc *OpenstackClient) UpdateComputeV2Servers(request *UpdateComputeV2ServersRequest)(*UpdateComputeV2ServersResponse){
-    return NewUpdateComputeV2ServersResponse(servers.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateComputeV2Servers(req *UpdateComputeV2ServersRequest)(*UpdateComputeV2ServersResponse){
+    return NewUpdateComputeV2ServersResponse(servers.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ChangeAdminPasswordComputeV2Servers
@@ -183,8 +183,8 @@ func NewChangeAdminPasswordComputeV2ServersResponse(actionResult servers.ActionR
 }
 
 // action function
-func (oc *OpenstackClient) ChangeAdminPasswordComputeV2Servers(request *ChangeAdminPasswordComputeV2ServersRequest)(*ChangeAdminPasswordComputeV2ServersResponse){
-    return NewChangeAdminPasswordComputeV2ServersResponse(servers.ChangeAdminPassword(oc.client,request.Id,request.NewPassword, ))
+func (oc *OpenstackClient) ChangeAdminPasswordComputeV2Servers(req *ChangeAdminPasswordComputeV2ServersRequest)(*ChangeAdminPasswordComputeV2ServersResponse){
+    return NewChangeAdminPasswordComputeV2ServersResponse(servers.ChangeAdminPassword(oc.client,req.Id,req.NewPassword, ))
 
 }
 //request struct for the RebootComputeV2Servers
@@ -209,8 +209,8 @@ func NewRebootComputeV2ServersResponse(actionResult servers.ActionResult,)*Reboo
 }
 
 // action function
-func (oc *OpenstackClient) RebootComputeV2Servers(request *RebootComputeV2ServersRequest)(*RebootComputeV2ServersResponse){
-    return NewRebootComputeV2ServersResponse(servers.Reboot(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) RebootComputeV2Servers(req *RebootComputeV2ServersRequest)(*RebootComputeV2ServersResponse){
+    return NewRebootComputeV2ServersResponse(servers.Reboot(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the RebuildComputeV2Servers
@@ -235,8 +235,8 @@ func NewRebuildComputeV2ServersResponse(rebuildResult servers.RebuildResult,)*Re
 }
 
 // action function
-func (oc *OpenstackClient) RebuildComputeV2Servers(request *RebuildComputeV2ServersRequest)(*RebuildComputeV2ServersResponse){
-    return NewRebuildComputeV2ServersResponse(servers.Rebuild(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) RebuildComputeV2Servers(req *RebuildComputeV2ServersRequest)(*RebuildComputeV2ServersResponse){
+    return NewRebuildComputeV2ServersResponse(servers.Rebuild(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ResizeComputeV2Servers
@@ -261,8 +261,8 @@ func NewResizeComputeV2ServersResponse(actionResult servers.ActionResult,)*Resiz
 }
 
 // action function
-func (oc *OpenstackClient) ResizeComputeV2Servers(request *ResizeComputeV2ServersRequest)(*ResizeComputeV2ServersResponse){
-    return NewResizeComputeV2ServersResponse(servers.Resize(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) ResizeComputeV2Servers(req *ResizeComputeV2ServersRequest)(*ResizeComputeV2ServersResponse){
+    return NewResizeComputeV2ServersResponse(servers.Resize(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ConfirmResizeComputeV2Servers
@@ -286,8 +286,8 @@ func NewConfirmResizeComputeV2ServersResponse(actionResult servers.ActionResult,
 }
 
 // action function
-func (oc *OpenstackClient) ConfirmResizeComputeV2Servers(request *ConfirmResizeComputeV2ServersRequest)(*ConfirmResizeComputeV2ServersResponse){
-    return NewConfirmResizeComputeV2ServersResponse(servers.ConfirmResize(oc.client,request.Id, ))
+func (oc *OpenstackClient) ConfirmResizeComputeV2Servers(req *ConfirmResizeComputeV2ServersRequest)(*ConfirmResizeComputeV2ServersResponse){
+    return NewConfirmResizeComputeV2ServersResponse(servers.ConfirmResize(oc.client,req.Id, ))
 
 }
 //request struct for the RevertResizeComputeV2Servers
@@ -311,8 +311,8 @@ func NewRevertResizeComputeV2ServersResponse(actionResult servers.ActionResult,)
 }
 
 // action function
-func (oc *OpenstackClient) RevertResizeComputeV2Servers(request *RevertResizeComputeV2ServersRequest)(*RevertResizeComputeV2ServersResponse){
-    return NewRevertResizeComputeV2ServersResponse(servers.RevertResize(oc.client,request.Id, ))
+func (oc *OpenstackClient) RevertResizeComputeV2Servers(req *RevertResizeComputeV2ServersRequest)(*RevertResizeComputeV2ServersResponse){
+    return NewRevertResizeComputeV2ServersResponse(servers.RevertResize(oc.client,req.Id, ))
 
 }
 //request struct for the ResetMetadataComputeV2Servers
@@ -337,8 +337,8 @@ func NewResetMetadataComputeV2ServersResponse(resetMetadataResult servers.ResetM
 }
 
 // action function
-func (oc *OpenstackClient) ResetMetadataComputeV2Servers(request *ResetMetadataComputeV2ServersRequest)(*ResetMetadataComputeV2ServersResponse){
-    return NewResetMetadataComputeV2ServersResponse(servers.ResetMetadata(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) ResetMetadataComputeV2Servers(req *ResetMetadataComputeV2ServersRequest)(*ResetMetadataComputeV2ServersResponse){
+    return NewResetMetadataComputeV2ServersResponse(servers.ResetMetadata(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the MetadataComputeV2Servers
@@ -362,8 +362,8 @@ func NewMetadataComputeV2ServersResponse(getMetadataResult servers.GetMetadataRe
 }
 
 // action function
-func (oc *OpenstackClient) MetadataComputeV2Servers(request *MetadataComputeV2ServersRequest)(*MetadataComputeV2ServersResponse){
-    return NewMetadataComputeV2ServersResponse(servers.Metadata(oc.client,request.Id, ))
+func (oc *OpenstackClient) MetadataComputeV2Servers(req *MetadataComputeV2ServersRequest)(*MetadataComputeV2ServersResponse){
+    return NewMetadataComputeV2ServersResponse(servers.Metadata(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateMetadataComputeV2Servers
@@ -388,8 +388,8 @@ func NewUpdateMetadataComputeV2ServersResponse(updateMetadataResult servers.Upda
 }
 
 // action function
-func (oc *OpenstackClient) UpdateMetadataComputeV2Servers(request *UpdateMetadataComputeV2ServersRequest)(*UpdateMetadataComputeV2ServersResponse){
-    return NewUpdateMetadataComputeV2ServersResponse(servers.UpdateMetadata(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateMetadataComputeV2Servers(req *UpdateMetadataComputeV2ServersRequest)(*UpdateMetadataComputeV2ServersResponse){
+    return NewUpdateMetadataComputeV2ServersResponse(servers.UpdateMetadata(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the CreateMetadatumComputeV2Servers
@@ -414,8 +414,8 @@ func NewCreateMetadatumComputeV2ServersResponse(createMetadatumResult servers.Cr
 }
 
 // action function
-func (oc *OpenstackClient) CreateMetadatumComputeV2Servers(request *CreateMetadatumComputeV2ServersRequest)(*CreateMetadatumComputeV2ServersResponse){
-    return NewCreateMetadatumComputeV2ServersResponse(servers.CreateMetadatum(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) CreateMetadatumComputeV2Servers(req *CreateMetadatumComputeV2ServersRequest)(*CreateMetadatumComputeV2ServersResponse){
+    return NewCreateMetadatumComputeV2ServersResponse(servers.CreateMetadatum(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the MetadatumComputeV2Servers
@@ -440,8 +440,8 @@ func NewMetadatumComputeV2ServersResponse(getMetadatumResult servers.GetMetadatu
 }
 
 // action function
-func (oc *OpenstackClient) MetadatumComputeV2Servers(request *MetadatumComputeV2ServersRequest)(*MetadatumComputeV2ServersResponse){
-    return NewMetadatumComputeV2ServersResponse(servers.Metadatum(oc.client,request.Id,request.Key, ))
+func (oc *OpenstackClient) MetadatumComputeV2Servers(req *MetadatumComputeV2ServersRequest)(*MetadatumComputeV2ServersResponse){
+    return NewMetadatumComputeV2ServersResponse(servers.Metadatum(oc.client,req.Id,req.Key, ))
 
 }
 //request struct for the DeleteMetadatumComputeV2Servers
@@ -466,8 +466,8 @@ func NewDeleteMetadatumComputeV2ServersResponse(deleteMetadatumResult servers.De
 }
 
 // action function
-func (oc *OpenstackClient) DeleteMetadatumComputeV2Servers(request *DeleteMetadatumComputeV2ServersRequest)(*DeleteMetadatumComputeV2ServersResponse){
-    return NewDeleteMetadatumComputeV2ServersResponse(servers.DeleteMetadatum(oc.client,request.Id,request.Key, ))
+func (oc *OpenstackClient) DeleteMetadatumComputeV2Servers(req *DeleteMetadatumComputeV2ServersRequest)(*DeleteMetadatumComputeV2ServersResponse){
+    return NewDeleteMetadatumComputeV2ServersResponse(servers.DeleteMetadatum(oc.client,req.Id,req.Key, ))
 
 }
 //request struct for the ListAddressesComputeV2Servers
@@ -491,8 +491,8 @@ func NewListAddressesComputeV2ServersResponse(pager pagination.Pager,)*ListAddre
 }
 
 // action function
-func (oc *OpenstackClient) ListAddressesComputeV2Servers(request *ListAddressesComputeV2ServersRequest)(*ListAddressesComputeV2ServersResponse){
-    return NewListAddressesComputeV2ServersResponse(servers.ListAddresses(oc.client,request.Id, ))
+func (oc *OpenstackClient) ListAddressesComputeV2Servers(req *ListAddressesComputeV2ServersRequest)(*ListAddressesComputeV2ServersResponse){
+    return NewListAddressesComputeV2ServersResponse(servers.ListAddresses(oc.client,req.Id, ))
 
 }
 //request struct for the ListAddressesByNetworkComputeV2Servers
@@ -517,8 +517,8 @@ func NewListAddressesByNetworkComputeV2ServersResponse(pager pagination.Pager,)*
 }
 
 // action function
-func (oc *OpenstackClient) ListAddressesByNetworkComputeV2Servers(request *ListAddressesByNetworkComputeV2ServersRequest)(*ListAddressesByNetworkComputeV2ServersResponse){
-    return NewListAddressesByNetworkComputeV2ServersResponse(servers.ListAddressesByNetwork(oc.client,request.Id,request.Network, ))
+func (oc *OpenstackClient) ListAddressesByNetworkComputeV2Servers(req *ListAddressesByNetworkComputeV2ServersRequest)(*ListAddressesByNetworkComputeV2ServersResponse){
+    return NewListAddressesByNetworkComputeV2ServersResponse(servers.ListAddressesByNetwork(oc.client,req.Id,req.Network, ))
 
 }
 //request struct for the CreateImageComputeV2Servers
@@ -543,8 +543,8 @@ func NewCreateImageComputeV2ServersResponse(createImageResult servers.CreateImag
 }
 
 // action function
-func (oc *OpenstackClient) CreateImageComputeV2Servers(request *CreateImageComputeV2ServersRequest)(*CreateImageComputeV2ServersResponse){
-    return NewCreateImageComputeV2ServersResponse(servers.CreateImage(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) CreateImageComputeV2Servers(req *CreateImageComputeV2ServersRequest)(*CreateImageComputeV2ServersResponse){
+    return NewCreateImageComputeV2ServersResponse(servers.CreateImage(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the GetPasswordComputeV2Servers
@@ -568,8 +568,8 @@ func NewGetPasswordComputeV2ServersResponse(getPasswordResult servers.GetPasswor
 }
 
 // action function
-func (oc *OpenstackClient) GetPasswordComputeV2Servers(request *GetPasswordComputeV2ServersRequest)(*GetPasswordComputeV2ServersResponse){
-    return NewGetPasswordComputeV2ServersResponse(servers.GetPassword(oc.client,request.ServerId, ))
+func (oc *OpenstackClient) GetPasswordComputeV2Servers(req *GetPasswordComputeV2ServersRequest)(*GetPasswordComputeV2ServersResponse){
+    return NewGetPasswordComputeV2ServersResponse(servers.GetPassword(oc.client,req.ServerId, ))
 
 }
 //request struct for the ShowConsoleOutputComputeV2Servers
@@ -594,7 +594,7 @@ func NewShowConsoleOutputComputeV2ServersResponse(showConsoleOutputResult server
 }
 
 // action function
-func (oc *OpenstackClient) ShowConsoleOutputComputeV2Servers(request *ShowConsoleOutputComputeV2ServersRequest)(*ShowConsoleOutputComputeV2ServersResponse){
-    return NewShowConsoleOutputComputeV2ServersResponse(servers.ShowConsoleOutput(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) ShowConsoleOutputComputeV2Servers(req *ShowConsoleOutputComputeV2ServersRequest)(*ShowConsoleOutputComputeV2ServersResponse){
+    return NewShowConsoleOutputComputeV2ServersResponse(servers.ShowConsoleOutput(oc.client,req.Id,req.Opts, ))
 
 }

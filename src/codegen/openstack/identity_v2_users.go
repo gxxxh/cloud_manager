@@ -30,7 +30,7 @@ func NewListIdentityV2UsersResponse(pager pagination.Pager,)*ListIdentityV2Users
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV2Users(request *ListIdentityV2UsersRequest)(*ListIdentityV2UsersResponse){
+func (oc *OpenstackClient) ListIdentityV2Users(req *ListIdentityV2UsersRequest)(*ListIdentityV2UsersResponse){
     return NewListIdentityV2UsersResponse(users.List(oc.client, ))
 
 }
@@ -55,8 +55,8 @@ func NewCreateIdentityV2UsersResponse(createResult users.CreateResult,)*CreateId
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV2Users(request *CreateIdentityV2UsersRequest)(*CreateIdentityV2UsersResponse){
-    return NewCreateIdentityV2UsersResponse(users.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV2Users(req *CreateIdentityV2UsersRequest)(*CreateIdentityV2UsersResponse){
+    return NewCreateIdentityV2UsersResponse(users.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV2Users
@@ -80,8 +80,8 @@ func NewGetIdentityV2UsersResponse(getResult users.GetResult,)*GetIdentityV2User
 }
 
 // action function
-func (oc *OpenstackClient) GetIdentityV2Users(request *GetIdentityV2UsersRequest)(*GetIdentityV2UsersResponse){
-    return NewGetIdentityV2UsersResponse(users.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetIdentityV2Users(req *GetIdentityV2UsersRequest)(*GetIdentityV2UsersResponse){
+    return NewGetIdentityV2UsersResponse(users.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateIdentityV2Users
@@ -106,8 +106,8 @@ func NewUpdateIdentityV2UsersResponse(updateResult users.UpdateResult,)*UpdateId
 }
 
 // action function
-func (oc *OpenstackClient) UpdateIdentityV2Users(request *UpdateIdentityV2UsersRequest)(*UpdateIdentityV2UsersResponse){
-    return NewUpdateIdentityV2UsersResponse(users.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateIdentityV2Users(req *UpdateIdentityV2UsersRequest)(*UpdateIdentityV2UsersResponse){
+    return NewUpdateIdentityV2UsersResponse(users.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV2Users
@@ -131,8 +131,8 @@ func NewDeleteIdentityV2UsersResponse(deleteResult users.DeleteResult,)*DeleteId
 }
 
 // action function
-func (oc *OpenstackClient) DeleteIdentityV2Users(request *DeleteIdentityV2UsersRequest)(*DeleteIdentityV2UsersResponse){
-    return NewDeleteIdentityV2UsersResponse(users.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteIdentityV2Users(req *DeleteIdentityV2UsersRequest)(*DeleteIdentityV2UsersResponse){
+    return NewDeleteIdentityV2UsersResponse(users.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the ListRolesIdentityV2Users
@@ -157,7 +157,7 @@ func NewListRolesIdentityV2UsersResponse(pager pagination.Pager,)*ListRolesIdent
 }
 
 // action function
-func (oc *OpenstackClient) ListRolesIdentityV2Users(request *ListRolesIdentityV2UsersRequest)(*ListRolesIdentityV2UsersResponse){
-    return NewListRolesIdentityV2UsersResponse(users.ListRoles(oc.client,request.TenantID,request.UserID, ))
+func (oc *OpenstackClient) ListRolesIdentityV2Users(req *ListRolesIdentityV2UsersRequest)(*ListRolesIdentityV2UsersResponse){
+    return NewListRolesIdentityV2UsersResponse(users.ListRoles(oc.client,req.TenantID,req.UserID, ))
 
 }

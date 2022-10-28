@@ -30,8 +30,8 @@ func NewSuspendComputeV2ExtensionsSuspendresumeResponse(suspendResult suspendres
 }
 
 // action function
-func (oc *OpenstackClient) SuspendComputeV2ExtensionsSuspendresume(request *SuspendComputeV2ExtensionsSuspendresumeRequest)(*SuspendComputeV2ExtensionsSuspendresumeResponse){
-    return NewSuspendComputeV2ExtensionsSuspendresumeResponse(suspendresume.Suspend(oc.client,request.Id, ))
+func (oc *OpenstackClient) SuspendComputeV2ExtensionsSuspendresume(req *SuspendComputeV2ExtensionsSuspendresumeRequest)(*SuspendComputeV2ExtensionsSuspendresumeResponse){
+    return NewSuspendComputeV2ExtensionsSuspendresumeResponse(suspendresume.Suspend(oc.client,req.Id, ))
 
 }
 //request struct for the ResumeComputeV2ExtensionsSuspendresume
@@ -55,7 +55,7 @@ func NewResumeComputeV2ExtensionsSuspendresumeResponse(unsuspendResult suspendre
 }
 
 // action function
-func (oc *OpenstackClient) ResumeComputeV2ExtensionsSuspendresume(request *ResumeComputeV2ExtensionsSuspendresumeRequest)(*ResumeComputeV2ExtensionsSuspendresumeResponse){
-    return NewResumeComputeV2ExtensionsSuspendresumeResponse(suspendresume.Resume(oc.client,request.Id, ))
+func (oc *OpenstackClient) ResumeComputeV2ExtensionsSuspendresume(req *ResumeComputeV2ExtensionsSuspendresumeRequest)(*ResumeComputeV2ExtensionsSuspendresumeResponse){
+    return NewResumeComputeV2ExtensionsSuspendresumeResponse(suspendresume.Resume(oc.client,req.Id, ))
 
 }

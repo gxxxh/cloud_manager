@@ -29,7 +29,7 @@ func NewGetBlockstorageExtensionsLimitsResponse(getResult limits.GetResult,)*Get
 }
 
 // action function
-func (oc *OpenstackClient) GetBlockstorageExtensionsLimits(request *GetBlockstorageExtensionsLimitsRequest)(*GetBlockstorageExtensionsLimitsResponse){
+func (oc *OpenstackClient) GetBlockstorageExtensionsLimits(req *GetBlockstorageExtensionsLimitsRequest)(*GetBlockstorageExtensionsLimitsResponse){
     return NewGetBlockstorageExtensionsLimitsResponse(limits.Get(oc.client, ))
 
 }

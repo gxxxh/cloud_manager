@@ -31,7 +31,7 @@ func NewTriggerClusteringV1WebhooksResponse(triggerResult webhooks.TriggerResult
 }
 
 // action function
-func (oc *OpenstackClient) TriggerClusteringV1Webhooks(request *TriggerClusteringV1WebhooksRequest)(*TriggerClusteringV1WebhooksResponse){
-    return NewTriggerClusteringV1WebhooksResponse(webhooks.Trigger(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) TriggerClusteringV1Webhooks(req *TriggerClusteringV1WebhooksRequest)(*TriggerClusteringV1WebhooksResponse){
+    return NewTriggerClusteringV1WebhooksResponse(webhooks.Trigger(oc.client,req.Id,req.Opts, ))
 
 }

@@ -30,8 +30,8 @@ func NewGetBlockstorageExtensionsQuotasetsResponse(getResult quotasets.GetResult
 }
 
 // action function
-func (oc *OpenstackClient) GetBlockstorageExtensionsQuotasets(request *GetBlockstorageExtensionsQuotasetsRequest)(*GetBlockstorageExtensionsQuotasetsResponse){
-    return NewGetBlockstorageExtensionsQuotasetsResponse(quotasets.Get(oc.client,request.ProjectID, ))
+func (oc *OpenstackClient) GetBlockstorageExtensionsQuotasets(req *GetBlockstorageExtensionsQuotasetsRequest)(*GetBlockstorageExtensionsQuotasetsResponse){
+    return NewGetBlockstorageExtensionsQuotasetsResponse(quotasets.Get(oc.client,req.ProjectID, ))
 
 }
 //request struct for the GetDefaultsBlockstorageExtensionsQuotasets
@@ -55,8 +55,8 @@ func NewGetDefaultsBlockstorageExtensionsQuotasetsResponse(getResult quotasets.G
 }
 
 // action function
-func (oc *OpenstackClient) GetDefaultsBlockstorageExtensionsQuotasets(request *GetDefaultsBlockstorageExtensionsQuotasetsRequest)(*GetDefaultsBlockstorageExtensionsQuotasetsResponse){
-    return NewGetDefaultsBlockstorageExtensionsQuotasetsResponse(quotasets.GetDefaults(oc.client,request.ProjectID, ))
+func (oc *OpenstackClient) GetDefaultsBlockstorageExtensionsQuotasets(req *GetDefaultsBlockstorageExtensionsQuotasetsRequest)(*GetDefaultsBlockstorageExtensionsQuotasetsResponse){
+    return NewGetDefaultsBlockstorageExtensionsQuotasetsResponse(quotasets.GetDefaults(oc.client,req.ProjectID, ))
 
 }
 //request struct for the GetUsageBlockstorageExtensionsQuotasets
@@ -80,8 +80,8 @@ func NewGetUsageBlockstorageExtensionsQuotasetsResponse(getUsageResult quotasets
 }
 
 // action function
-func (oc *OpenstackClient) GetUsageBlockstorageExtensionsQuotasets(request *GetUsageBlockstorageExtensionsQuotasetsRequest)(*GetUsageBlockstorageExtensionsQuotasetsResponse){
-    return NewGetUsageBlockstorageExtensionsQuotasetsResponse(quotasets.GetUsage(oc.client,request.ProjectID, ))
+func (oc *OpenstackClient) GetUsageBlockstorageExtensionsQuotasets(req *GetUsageBlockstorageExtensionsQuotasetsRequest)(*GetUsageBlockstorageExtensionsQuotasetsResponse){
+    return NewGetUsageBlockstorageExtensionsQuotasetsResponse(quotasets.GetUsage(oc.client,req.ProjectID, ))
 
 }
 //request struct for the UpdateBlockstorageExtensionsQuotasets
@@ -106,8 +106,8 @@ func NewUpdateBlockstorageExtensionsQuotasetsResponse(updateResult quotasets.Upd
 }
 
 // action function
-func (oc *OpenstackClient) UpdateBlockstorageExtensionsQuotasets(request *UpdateBlockstorageExtensionsQuotasetsRequest)(*UpdateBlockstorageExtensionsQuotasetsResponse){
-    return NewUpdateBlockstorageExtensionsQuotasetsResponse(quotasets.Update(oc.client,request.ProjectID,request.Opts, ))
+func (oc *OpenstackClient) UpdateBlockstorageExtensionsQuotasets(req *UpdateBlockstorageExtensionsQuotasetsRequest)(*UpdateBlockstorageExtensionsQuotasetsResponse){
+    return NewUpdateBlockstorageExtensionsQuotasetsResponse(quotasets.Update(oc.client,req.ProjectID,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageExtensionsQuotasets
@@ -131,7 +131,7 @@ func NewDeleteBlockstorageExtensionsQuotasetsResponse(deleteResult quotasets.Del
 }
 
 // action function
-func (oc *OpenstackClient) DeleteBlockstorageExtensionsQuotasets(request *DeleteBlockstorageExtensionsQuotasetsRequest)(*DeleteBlockstorageExtensionsQuotasetsResponse){
-    return NewDeleteBlockstorageExtensionsQuotasetsResponse(quotasets.Delete(oc.client,request.ProjectID, ))
+func (oc *OpenstackClient) DeleteBlockstorageExtensionsQuotasets(req *DeleteBlockstorageExtensionsQuotasetsRequest)(*DeleteBlockstorageExtensionsQuotasetsResponse){
+    return NewDeleteBlockstorageExtensionsQuotasetsResponse(quotasets.Delete(oc.client,req.ProjectID, ))
 
 }

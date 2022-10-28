@@ -31,8 +31,8 @@ func NewCreateIdentityV3EndpointsResponse(createResult endpoints.CreateResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3Endpoints(request *CreateIdentityV3EndpointsRequest)(*CreateIdentityV3EndpointsResponse){
-    return NewCreateIdentityV3EndpointsResponse(endpoints.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV3Endpoints(req *CreateIdentityV3EndpointsRequest)(*CreateIdentityV3EndpointsResponse){
+    return NewCreateIdentityV3EndpointsResponse(endpoints.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the ListIdentityV3Endpoints
@@ -56,8 +56,8 @@ func NewListIdentityV3EndpointsResponse(pager pagination.Pager,)*ListIdentityV3E
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV3Endpoints(request *ListIdentityV3EndpointsRequest)(*ListIdentityV3EndpointsResponse){
-    return NewListIdentityV3EndpointsResponse(endpoints.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListIdentityV3Endpoints(req *ListIdentityV3EndpointsRequest)(*ListIdentityV3EndpointsResponse){
+    return NewListIdentityV3EndpointsResponse(endpoints.List(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateIdentityV3Endpoints
@@ -82,8 +82,8 @@ func NewUpdateIdentityV3EndpointsResponse(updateResult endpoints.UpdateResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) UpdateIdentityV3Endpoints(request *UpdateIdentityV3EndpointsRequest)(*UpdateIdentityV3EndpointsResponse){
-    return NewUpdateIdentityV3EndpointsResponse(endpoints.Update(oc.client,request.EndpointID,request.Opts, ))
+func (oc *OpenstackClient) UpdateIdentityV3Endpoints(req *UpdateIdentityV3EndpointsRequest)(*UpdateIdentityV3EndpointsResponse){
+    return NewUpdateIdentityV3EndpointsResponse(endpoints.Update(oc.client,req.EndpointID,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Endpoints
@@ -107,7 +107,7 @@ func NewDeleteIdentityV3EndpointsResponse(deleteResult endpoints.DeleteResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) DeleteIdentityV3Endpoints(request *DeleteIdentityV3EndpointsRequest)(*DeleteIdentityV3EndpointsResponse){
-    return NewDeleteIdentityV3EndpointsResponse(endpoints.Delete(oc.client,request.EndpointID, ))
+func (oc *OpenstackClient) DeleteIdentityV3Endpoints(req *DeleteIdentityV3EndpointsRequest)(*DeleteIdentityV3EndpointsResponse){
+    return NewDeleteIdentityV3EndpointsResponse(endpoints.Delete(oc.client,req.EndpointID, ))
 
 }

@@ -32,8 +32,8 @@ func NewListNetworkingV2ExtensionsLayer3PortforwardingResponse(pager pagination.
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsLayer3Portforwarding(request *ListNetworkingV2ExtensionsLayer3PortforwardingRequest)(*ListNetworkingV2ExtensionsLayer3PortforwardingResponse){
-    return NewListNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.List(oc.client,request.Opts,request.Id, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsLayer3Portforwarding(req *ListNetworkingV2ExtensionsLayer3PortforwardingRequest)(*ListNetworkingV2ExtensionsLayer3PortforwardingResponse){
+    return NewListNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.List(oc.client,req.Opts,req.Id, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLayer3Portforwarding
@@ -58,8 +58,8 @@ func NewGetNetworkingV2ExtensionsLayer3PortforwardingResponse(getResult portforw
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsLayer3Portforwarding(request *GetNetworkingV2ExtensionsLayer3PortforwardingRequest)(*GetNetworkingV2ExtensionsLayer3PortforwardingResponse){
-    return NewGetNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Get(oc.client,request.FloatingIpId,request.PfId, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsLayer3Portforwarding(req *GetNetworkingV2ExtensionsLayer3PortforwardingRequest)(*GetNetworkingV2ExtensionsLayer3PortforwardingResponse){
+    return NewGetNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Get(oc.client,req.FloatingIpId,req.PfId, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLayer3Portforwarding
@@ -84,8 +84,8 @@ func NewCreateNetworkingV2ExtensionsLayer3PortforwardingResponse(createResult po
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLayer3Portforwarding(request *CreateNetworkingV2ExtensionsLayer3PortforwardingRequest)(*CreateNetworkingV2ExtensionsLayer3PortforwardingResponse){
-    return NewCreateNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Create(oc.client,request.FloatingIpId,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLayer3Portforwarding(req *CreateNetworkingV2ExtensionsLayer3PortforwardingRequest)(*CreateNetworkingV2ExtensionsLayer3PortforwardingResponse){
+    return NewCreateNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Create(oc.client,req.FloatingIpId,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLayer3Portforwarding
@@ -111,8 +111,8 @@ func NewUpdateNetworkingV2ExtensionsLayer3PortforwardingResponse(updateResult po
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLayer3Portforwarding(request *UpdateNetworkingV2ExtensionsLayer3PortforwardingRequest)(*UpdateNetworkingV2ExtensionsLayer3PortforwardingResponse){
-    return NewUpdateNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Update(oc.client,request.FipID,request.PfID,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLayer3Portforwarding(req *UpdateNetworkingV2ExtensionsLayer3PortforwardingRequest)(*UpdateNetworkingV2ExtensionsLayer3PortforwardingResponse){
+    return NewUpdateNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Update(oc.client,req.FipID,req.PfID,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLayer3Portforwarding
@@ -137,7 +137,7 @@ func NewDeleteNetworkingV2ExtensionsLayer3PortforwardingResponse(deleteResult po
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLayer3Portforwarding(request *DeleteNetworkingV2ExtensionsLayer3PortforwardingRequest)(*DeleteNetworkingV2ExtensionsLayer3PortforwardingResponse){
-    return NewDeleteNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Delete(oc.client,request.FloatingIpId,request.PfId, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLayer3Portforwarding(req *DeleteNetworkingV2ExtensionsLayer3PortforwardingRequest)(*DeleteNetworkingV2ExtensionsLayer3PortforwardingResponse){
+    return NewDeleteNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Delete(oc.client,req.FloatingIpId,req.PfId, ))
 
 }

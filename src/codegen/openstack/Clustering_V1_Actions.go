@@ -31,8 +31,8 @@ func NewListClusteringV1ActionsResponse(pager pagination.Pager,)*ListClusteringV
 }
 
 // action function
-func (oc *OpenstackClient) ListClusteringV1Actions(request *ListClusteringV1ActionsRequest)(*ListClusteringV1ActionsResponse){
-    return NewListClusteringV1ActionsResponse(actions.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListClusteringV1Actions(req *ListClusteringV1ActionsRequest)(*ListClusteringV1ActionsResponse){
+    return NewListClusteringV1ActionsResponse(actions.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetClusteringV1Actions
@@ -56,7 +56,7 @@ func NewGetClusteringV1ActionsResponse(getResult actions.GetResult,)*GetClusteri
 }
 
 // action function
-func (oc *OpenstackClient) GetClusteringV1Actions(request *GetClusteringV1ActionsRequest)(*GetClusteringV1ActionsResponse){
-    return NewGetClusteringV1ActionsResponse(actions.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetClusteringV1Actions(req *GetClusteringV1ActionsRequest)(*GetClusteringV1ActionsResponse){
+    return NewGetClusteringV1ActionsResponse(actions.Get(oc.client,req.Id, ))
 
 }

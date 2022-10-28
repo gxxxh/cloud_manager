@@ -31,8 +31,8 @@ func NewCreateBlockstorageV3VolumetypesResponse(createResult volumetypes.CreateR
 }
 
 // action function
-func (oc *OpenstackClient) CreateBlockstorageV3Volumetypes(request *CreateBlockstorageV3VolumetypesRequest)(*CreateBlockstorageV3VolumetypesResponse){
-    return NewCreateBlockstorageV3VolumetypesResponse(volumetypes.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateBlockstorageV3Volumetypes(req *CreateBlockstorageV3VolumetypesRequest)(*CreateBlockstorageV3VolumetypesResponse){
+    return NewCreateBlockstorageV3VolumetypesResponse(volumetypes.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageV3Volumetypes
@@ -56,8 +56,8 @@ func NewDeleteBlockstorageV3VolumetypesResponse(deleteResult volumetypes.DeleteR
 }
 
 // action function
-func (oc *OpenstackClient) DeleteBlockstorageV3Volumetypes(request *DeleteBlockstorageV3VolumetypesRequest)(*DeleteBlockstorageV3VolumetypesResponse){
-    return NewDeleteBlockstorageV3VolumetypesResponse(volumetypes.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteBlockstorageV3Volumetypes(req *DeleteBlockstorageV3VolumetypesRequest)(*DeleteBlockstorageV3VolumetypesResponse){
+    return NewDeleteBlockstorageV3VolumetypesResponse(volumetypes.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the GetBlockstorageV3Volumetypes
@@ -81,8 +81,8 @@ func NewGetBlockstorageV3VolumetypesResponse(getResult volumetypes.GetResult,)*G
 }
 
 // action function
-func (oc *OpenstackClient) GetBlockstorageV3Volumetypes(request *GetBlockstorageV3VolumetypesRequest)(*GetBlockstorageV3VolumetypesResponse){
-    return NewGetBlockstorageV3VolumetypesResponse(volumetypes.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetBlockstorageV3Volumetypes(req *GetBlockstorageV3VolumetypesRequest)(*GetBlockstorageV3VolumetypesResponse){
+    return NewGetBlockstorageV3VolumetypesResponse(volumetypes.Get(oc.client,req.Id, ))
 
 }
 //request struct for the ListBlockstorageV3Volumetypes
@@ -106,8 +106,8 @@ func NewListBlockstorageV3VolumetypesResponse(pager pagination.Pager,)*ListBlock
 }
 
 // action function
-func (oc *OpenstackClient) ListBlockstorageV3Volumetypes(request *ListBlockstorageV3VolumetypesRequest)(*ListBlockstorageV3VolumetypesResponse){
-    return NewListBlockstorageV3VolumetypesResponse(volumetypes.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListBlockstorageV3Volumetypes(req *ListBlockstorageV3VolumetypesRequest)(*ListBlockstorageV3VolumetypesResponse){
+    return NewListBlockstorageV3VolumetypesResponse(volumetypes.List(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateBlockstorageV3Volumetypes
@@ -132,8 +132,8 @@ func NewUpdateBlockstorageV3VolumetypesResponse(updateResult volumetypes.UpdateR
 }
 
 // action function
-func (oc *OpenstackClient) UpdateBlockstorageV3Volumetypes(request *UpdateBlockstorageV3VolumetypesRequest)(*UpdateBlockstorageV3VolumetypesResponse){
-    return NewUpdateBlockstorageV3VolumetypesResponse(volumetypes.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateBlockstorageV3Volumetypes(req *UpdateBlockstorageV3VolumetypesRequest)(*UpdateBlockstorageV3VolumetypesResponse){
+    return NewUpdateBlockstorageV3VolumetypesResponse(volumetypes.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ListExtraSpecsBlockstorageV3Volumetypes
@@ -157,8 +157,8 @@ func NewListExtraSpecsBlockstorageV3VolumetypesResponse(listExtraSpecsResult vol
 }
 
 // action function
-func (oc *OpenstackClient) ListExtraSpecsBlockstorageV3Volumetypes(request *ListExtraSpecsBlockstorageV3VolumetypesRequest)(*ListExtraSpecsBlockstorageV3VolumetypesResponse){
-    return NewListExtraSpecsBlockstorageV3VolumetypesResponse(volumetypes.ListExtraSpecs(oc.client,request.VolumeTypeID, ))
+func (oc *OpenstackClient) ListExtraSpecsBlockstorageV3Volumetypes(req *ListExtraSpecsBlockstorageV3VolumetypesRequest)(*ListExtraSpecsBlockstorageV3VolumetypesResponse){
+    return NewListExtraSpecsBlockstorageV3VolumetypesResponse(volumetypes.ListExtraSpecs(oc.client,req.VolumeTypeID, ))
 
 }
 //request struct for the GetExtraSpecBlockstorageV3Volumetypes
@@ -183,8 +183,8 @@ func NewGetExtraSpecBlockstorageV3VolumetypesResponse(getExtraSpecResult volumet
 }
 
 // action function
-func (oc *OpenstackClient) GetExtraSpecBlockstorageV3Volumetypes(request *GetExtraSpecBlockstorageV3VolumetypesRequest)(*GetExtraSpecBlockstorageV3VolumetypesResponse){
-    return NewGetExtraSpecBlockstorageV3VolumetypesResponse(volumetypes.GetExtraSpec(oc.client,request.VolumeTypeID,request.Key, ))
+func (oc *OpenstackClient) GetExtraSpecBlockstorageV3Volumetypes(req *GetExtraSpecBlockstorageV3VolumetypesRequest)(*GetExtraSpecBlockstorageV3VolumetypesResponse){
+    return NewGetExtraSpecBlockstorageV3VolumetypesResponse(volumetypes.GetExtraSpec(oc.client,req.VolumeTypeID,req.Key, ))
 
 }
 //request struct for the CreateExtraSpecsBlockstorageV3Volumetypes
@@ -209,8 +209,8 @@ func NewCreateExtraSpecsBlockstorageV3VolumetypesResponse(createExtraSpecsResult
 }
 
 // action function
-func (oc *OpenstackClient) CreateExtraSpecsBlockstorageV3Volumetypes(request *CreateExtraSpecsBlockstorageV3VolumetypesRequest)(*CreateExtraSpecsBlockstorageV3VolumetypesResponse){
-    return NewCreateExtraSpecsBlockstorageV3VolumetypesResponse(volumetypes.CreateExtraSpecs(oc.client,request.VolumeTypeID,request.Opts, ))
+func (oc *OpenstackClient) CreateExtraSpecsBlockstorageV3Volumetypes(req *CreateExtraSpecsBlockstorageV3VolumetypesRequest)(*CreateExtraSpecsBlockstorageV3VolumetypesResponse){
+    return NewCreateExtraSpecsBlockstorageV3VolumetypesResponse(volumetypes.CreateExtraSpecs(oc.client,req.VolumeTypeID,req.Opts, ))
 
 }
 //request struct for the UpdateExtraSpecBlockstorageV3Volumetypes
@@ -235,8 +235,8 @@ func NewUpdateExtraSpecBlockstorageV3VolumetypesResponse(updateExtraSpecResult v
 }
 
 // action function
-func (oc *OpenstackClient) UpdateExtraSpecBlockstorageV3Volumetypes(request *UpdateExtraSpecBlockstorageV3VolumetypesRequest)(*UpdateExtraSpecBlockstorageV3VolumetypesResponse){
-    return NewUpdateExtraSpecBlockstorageV3VolumetypesResponse(volumetypes.UpdateExtraSpec(oc.client,request.VolumeTypeID,request.Opts, ))
+func (oc *OpenstackClient) UpdateExtraSpecBlockstorageV3Volumetypes(req *UpdateExtraSpecBlockstorageV3VolumetypesRequest)(*UpdateExtraSpecBlockstorageV3VolumetypesResponse){
+    return NewUpdateExtraSpecBlockstorageV3VolumetypesResponse(volumetypes.UpdateExtraSpec(oc.client,req.VolumeTypeID,req.Opts, ))
 
 }
 //request struct for the DeleteExtraSpecBlockstorageV3Volumetypes
@@ -261,8 +261,8 @@ func NewDeleteExtraSpecBlockstorageV3VolumetypesResponse(deleteExtraSpecResult v
 }
 
 // action function
-func (oc *OpenstackClient) DeleteExtraSpecBlockstorageV3Volumetypes(request *DeleteExtraSpecBlockstorageV3VolumetypesRequest)(*DeleteExtraSpecBlockstorageV3VolumetypesResponse){
-    return NewDeleteExtraSpecBlockstorageV3VolumetypesResponse(volumetypes.DeleteExtraSpec(oc.client,request.VolumeTypeID,request.Key, ))
+func (oc *OpenstackClient) DeleteExtraSpecBlockstorageV3Volumetypes(req *DeleteExtraSpecBlockstorageV3VolumetypesRequest)(*DeleteExtraSpecBlockstorageV3VolumetypesResponse){
+    return NewDeleteExtraSpecBlockstorageV3VolumetypesResponse(volumetypes.DeleteExtraSpec(oc.client,req.VolumeTypeID,req.Key, ))
 
 }
 //request struct for the ListAccessesBlockstorageV3Volumetypes
@@ -286,8 +286,8 @@ func NewListAccessesBlockstorageV3VolumetypesResponse(pager pagination.Pager,)*L
 }
 
 // action function
-func (oc *OpenstackClient) ListAccessesBlockstorageV3Volumetypes(request *ListAccessesBlockstorageV3VolumetypesRequest)(*ListAccessesBlockstorageV3VolumetypesResponse){
-    return NewListAccessesBlockstorageV3VolumetypesResponse(volumetypes.ListAccesses(oc.client,request.Id, ))
+func (oc *OpenstackClient) ListAccessesBlockstorageV3Volumetypes(req *ListAccessesBlockstorageV3VolumetypesRequest)(*ListAccessesBlockstorageV3VolumetypesResponse){
+    return NewListAccessesBlockstorageV3VolumetypesResponse(volumetypes.ListAccesses(oc.client,req.Id, ))
 
 }
 //request struct for the AddAccessBlockstorageV3Volumetypes
@@ -312,8 +312,8 @@ func NewAddAccessBlockstorageV3VolumetypesResponse(addAccessResult volumetypes.A
 }
 
 // action function
-func (oc *OpenstackClient) AddAccessBlockstorageV3Volumetypes(request *AddAccessBlockstorageV3VolumetypesRequest)(*AddAccessBlockstorageV3VolumetypesResponse){
-    return NewAddAccessBlockstorageV3VolumetypesResponse(volumetypes.AddAccess(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) AddAccessBlockstorageV3Volumetypes(req *AddAccessBlockstorageV3VolumetypesRequest)(*AddAccessBlockstorageV3VolumetypesResponse){
+    return NewAddAccessBlockstorageV3VolumetypesResponse(volumetypes.AddAccess(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the RemoveAccessBlockstorageV3Volumetypes
@@ -338,7 +338,7 @@ func NewRemoveAccessBlockstorageV3VolumetypesResponse(removeAccessResult volumet
 }
 
 // action function
-func (oc *OpenstackClient) RemoveAccessBlockstorageV3Volumetypes(request *RemoveAccessBlockstorageV3VolumetypesRequest)(*RemoveAccessBlockstorageV3VolumetypesResponse){
-    return NewRemoveAccessBlockstorageV3VolumetypesResponse(volumetypes.RemoveAccess(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) RemoveAccessBlockstorageV3Volumetypes(req *RemoveAccessBlockstorageV3VolumetypesRequest)(*RemoveAccessBlockstorageV3VolumetypesResponse){
+    return NewRemoveAccessBlockstorageV3VolumetypesResponse(volumetypes.RemoveAccess(oc.client,req.Id,req.Opts, ))
 
 }

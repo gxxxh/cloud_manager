@@ -31,8 +31,8 @@ func NewListImageserviceV2TasksResponse(pager pagination.Pager,)*ListImageservic
 }
 
 // action function
-func (oc *OpenstackClient) ListImageserviceV2Tasks(request *ListImageserviceV2TasksRequest)(*ListImageserviceV2TasksResponse){
-    return NewListImageserviceV2TasksResponse(tasks.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListImageserviceV2Tasks(req *ListImageserviceV2TasksRequest)(*ListImageserviceV2TasksResponse){
+    return NewListImageserviceV2TasksResponse(tasks.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetImageserviceV2Tasks
@@ -56,8 +56,8 @@ func NewGetImageserviceV2TasksResponse(getResult tasks.GetResult,)*GetImageservi
 }
 
 // action function
-func (oc *OpenstackClient) GetImageserviceV2Tasks(request *GetImageserviceV2TasksRequest)(*GetImageserviceV2TasksResponse){
-    return NewGetImageserviceV2TasksResponse(tasks.Get(oc.client,request.TaskID, ))
+func (oc *OpenstackClient) GetImageserviceV2Tasks(req *GetImageserviceV2TasksRequest)(*GetImageserviceV2TasksResponse){
+    return NewGetImageserviceV2TasksResponse(tasks.Get(oc.client,req.TaskID, ))
 
 }
 //request struct for the CreateImageserviceV2Tasks
@@ -81,7 +81,7 @@ func NewCreateImageserviceV2TasksResponse(createResult tasks.CreateResult,)*Crea
 }
 
 // action function
-func (oc *OpenstackClient) CreateImageserviceV2Tasks(request *CreateImageserviceV2TasksRequest)(*CreateImageserviceV2TasksResponse){
-    return NewCreateImageserviceV2TasksResponse(tasks.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateImageserviceV2Tasks(req *CreateImageserviceV2TasksRequest)(*CreateImageserviceV2TasksResponse){
+    return NewCreateImageserviceV2TasksResponse(tasks.Create(oc.client,req.Opts, ))
 
 }

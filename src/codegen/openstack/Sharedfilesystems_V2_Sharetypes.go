@@ -31,8 +31,8 @@ func NewCreateSharedfilesystemsV2SharetypesResponse(createResult sharetypes.Crea
 }
 
 // action function
-func (oc *OpenstackClient) CreateSharedfilesystemsV2Sharetypes(request *CreateSharedfilesystemsV2SharetypesRequest)(*CreateSharedfilesystemsV2SharetypesResponse){
-    return NewCreateSharedfilesystemsV2SharetypesResponse(sharetypes.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateSharedfilesystemsV2Sharetypes(req *CreateSharedfilesystemsV2SharetypesRequest)(*CreateSharedfilesystemsV2SharetypesResponse){
+    return NewCreateSharedfilesystemsV2SharetypesResponse(sharetypes.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteSharedfilesystemsV2Sharetypes
@@ -56,8 +56,8 @@ func NewDeleteSharedfilesystemsV2SharetypesResponse(deleteResult sharetypes.Dele
 }
 
 // action function
-func (oc *OpenstackClient) DeleteSharedfilesystemsV2Sharetypes(request *DeleteSharedfilesystemsV2SharetypesRequest)(*DeleteSharedfilesystemsV2SharetypesResponse){
-    return NewDeleteSharedfilesystemsV2SharetypesResponse(sharetypes.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteSharedfilesystemsV2Sharetypes(req *DeleteSharedfilesystemsV2SharetypesRequest)(*DeleteSharedfilesystemsV2SharetypesResponse){
+    return NewDeleteSharedfilesystemsV2SharetypesResponse(sharetypes.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the ListSharedfilesystemsV2Sharetypes
@@ -81,8 +81,8 @@ func NewListSharedfilesystemsV2SharetypesResponse(pager pagination.Pager,)*ListS
 }
 
 // action function
-func (oc *OpenstackClient) ListSharedfilesystemsV2Sharetypes(request *ListSharedfilesystemsV2SharetypesRequest)(*ListSharedfilesystemsV2SharetypesResponse){
-    return NewListSharedfilesystemsV2SharetypesResponse(sharetypes.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListSharedfilesystemsV2Sharetypes(req *ListSharedfilesystemsV2SharetypesRequest)(*ListSharedfilesystemsV2SharetypesResponse){
+    return NewListSharedfilesystemsV2SharetypesResponse(sharetypes.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetDefaultSharedfilesystemsV2Sharetypes
@@ -105,7 +105,7 @@ func NewGetDefaultSharedfilesystemsV2SharetypesResponse(getDefaultResult sharety
 }
 
 // action function
-func (oc *OpenstackClient) GetDefaultSharedfilesystemsV2Sharetypes(request *GetDefaultSharedfilesystemsV2SharetypesRequest)(*GetDefaultSharedfilesystemsV2SharetypesResponse){
+func (oc *OpenstackClient) GetDefaultSharedfilesystemsV2Sharetypes(req *GetDefaultSharedfilesystemsV2SharetypesRequest)(*GetDefaultSharedfilesystemsV2SharetypesResponse){
     return NewGetDefaultSharedfilesystemsV2SharetypesResponse(sharetypes.GetDefault(oc.client, ))
 
 }
@@ -130,8 +130,8 @@ func NewGetExtraSpecsSharedfilesystemsV2SharetypesResponse(getExtraSpecsResult s
 }
 
 // action function
-func (oc *OpenstackClient) GetExtraSpecsSharedfilesystemsV2Sharetypes(request *GetExtraSpecsSharedfilesystemsV2SharetypesRequest)(*GetExtraSpecsSharedfilesystemsV2SharetypesResponse){
-    return NewGetExtraSpecsSharedfilesystemsV2SharetypesResponse(sharetypes.GetExtraSpecs(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetExtraSpecsSharedfilesystemsV2Sharetypes(req *GetExtraSpecsSharedfilesystemsV2SharetypesRequest)(*GetExtraSpecsSharedfilesystemsV2SharetypesResponse){
+    return NewGetExtraSpecsSharedfilesystemsV2SharetypesResponse(sharetypes.GetExtraSpecs(oc.client,req.Id, ))
 
 }
 //request struct for the SetExtraSpecsSharedfilesystemsV2Sharetypes
@@ -156,8 +156,8 @@ func NewSetExtraSpecsSharedfilesystemsV2SharetypesResponse(setExtraSpecsResult s
 }
 
 // action function
-func (oc *OpenstackClient) SetExtraSpecsSharedfilesystemsV2Sharetypes(request *SetExtraSpecsSharedfilesystemsV2SharetypesRequest)(*SetExtraSpecsSharedfilesystemsV2SharetypesResponse){
-    return NewSetExtraSpecsSharedfilesystemsV2SharetypesResponse(sharetypes.SetExtraSpecs(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) SetExtraSpecsSharedfilesystemsV2Sharetypes(req *SetExtraSpecsSharedfilesystemsV2SharetypesRequest)(*SetExtraSpecsSharedfilesystemsV2SharetypesResponse){
+    return NewSetExtraSpecsSharedfilesystemsV2SharetypesResponse(sharetypes.SetExtraSpecs(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the UnsetExtraSpecsSharedfilesystemsV2Sharetypes
@@ -182,8 +182,8 @@ func NewUnsetExtraSpecsSharedfilesystemsV2SharetypesResponse(unsetExtraSpecsResu
 }
 
 // action function
-func (oc *OpenstackClient) UnsetExtraSpecsSharedfilesystemsV2Sharetypes(request *UnsetExtraSpecsSharedfilesystemsV2SharetypesRequest)(*UnsetExtraSpecsSharedfilesystemsV2SharetypesResponse){
-    return NewUnsetExtraSpecsSharedfilesystemsV2SharetypesResponse(sharetypes.UnsetExtraSpecs(oc.client,request.Id,request.Key, ))
+func (oc *OpenstackClient) UnsetExtraSpecsSharedfilesystemsV2Sharetypes(req *UnsetExtraSpecsSharedfilesystemsV2SharetypesRequest)(*UnsetExtraSpecsSharedfilesystemsV2SharetypesResponse){
+    return NewUnsetExtraSpecsSharedfilesystemsV2SharetypesResponse(sharetypes.UnsetExtraSpecs(oc.client,req.Id,req.Key, ))
 
 }
 //request struct for the ShowAccessSharedfilesystemsV2Sharetypes
@@ -207,8 +207,8 @@ func NewShowAccessSharedfilesystemsV2SharetypesResponse(showAccessResult sharety
 }
 
 // action function
-func (oc *OpenstackClient) ShowAccessSharedfilesystemsV2Sharetypes(request *ShowAccessSharedfilesystemsV2SharetypesRequest)(*ShowAccessSharedfilesystemsV2SharetypesResponse){
-    return NewShowAccessSharedfilesystemsV2SharetypesResponse(sharetypes.ShowAccess(oc.client,request.Id, ))
+func (oc *OpenstackClient) ShowAccessSharedfilesystemsV2Sharetypes(req *ShowAccessSharedfilesystemsV2SharetypesRequest)(*ShowAccessSharedfilesystemsV2SharetypesResponse){
+    return NewShowAccessSharedfilesystemsV2SharetypesResponse(sharetypes.ShowAccess(oc.client,req.Id, ))
 
 }
 //request struct for the AddAccessSharedfilesystemsV2Sharetypes
@@ -233,8 +233,8 @@ func NewAddAccessSharedfilesystemsV2SharetypesResponse(addAccessResult sharetype
 }
 
 // action function
-func (oc *OpenstackClient) AddAccessSharedfilesystemsV2Sharetypes(request *AddAccessSharedfilesystemsV2SharetypesRequest)(*AddAccessSharedfilesystemsV2SharetypesResponse){
-    return NewAddAccessSharedfilesystemsV2SharetypesResponse(sharetypes.AddAccess(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) AddAccessSharedfilesystemsV2Sharetypes(req *AddAccessSharedfilesystemsV2SharetypesRequest)(*AddAccessSharedfilesystemsV2SharetypesResponse){
+    return NewAddAccessSharedfilesystemsV2SharetypesResponse(sharetypes.AddAccess(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the RemoveAccessSharedfilesystemsV2Sharetypes
@@ -259,7 +259,7 @@ func NewRemoveAccessSharedfilesystemsV2SharetypesResponse(removeAccessResult sha
 }
 
 // action function
-func (oc *OpenstackClient) RemoveAccessSharedfilesystemsV2Sharetypes(request *RemoveAccessSharedfilesystemsV2SharetypesRequest)(*RemoveAccessSharedfilesystemsV2SharetypesResponse){
-    return NewRemoveAccessSharedfilesystemsV2SharetypesResponse(sharetypes.RemoveAccess(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) RemoveAccessSharedfilesystemsV2Sharetypes(req *RemoveAccessSharedfilesystemsV2SharetypesRequest)(*RemoveAccessSharedfilesystemsV2SharetypesResponse){
+    return NewRemoveAccessSharedfilesystemsV2SharetypesResponse(sharetypes.RemoveAccess(oc.client,req.Id,req.Opts, ))
 
 }

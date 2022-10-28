@@ -30,8 +30,8 @@ func NewShelveComputeV2ExtensionsShelveunshelveResponse(shelveResult shelveunshe
 }
 
 // action function
-func (oc *OpenstackClient) ShelveComputeV2ExtensionsShelveunshelve(request *ShelveComputeV2ExtensionsShelveunshelveRequest)(*ShelveComputeV2ExtensionsShelveunshelveResponse){
-    return NewShelveComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.Shelve(oc.client,request.Id, ))
+func (oc *OpenstackClient) ShelveComputeV2ExtensionsShelveunshelve(req *ShelveComputeV2ExtensionsShelveunshelveRequest)(*ShelveComputeV2ExtensionsShelveunshelveResponse){
+    return NewShelveComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.Shelve(oc.client,req.Id, ))
 
 }
 //request struct for the ShelveOffloadComputeV2ExtensionsShelveunshelve
@@ -55,8 +55,8 @@ func NewShelveOffloadComputeV2ExtensionsShelveunshelveResponse(shelveOffloadResu
 }
 
 // action function
-func (oc *OpenstackClient) ShelveOffloadComputeV2ExtensionsShelveunshelve(request *ShelveOffloadComputeV2ExtensionsShelveunshelveRequest)(*ShelveOffloadComputeV2ExtensionsShelveunshelveResponse){
-    return NewShelveOffloadComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.ShelveOffload(oc.client,request.Id, ))
+func (oc *OpenstackClient) ShelveOffloadComputeV2ExtensionsShelveunshelve(req *ShelveOffloadComputeV2ExtensionsShelveunshelveRequest)(*ShelveOffloadComputeV2ExtensionsShelveunshelveResponse){
+    return NewShelveOffloadComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.ShelveOffload(oc.client,req.Id, ))
 
 }
 //request struct for the UnshelveComputeV2ExtensionsShelveunshelve
@@ -81,7 +81,7 @@ func NewUnshelveComputeV2ExtensionsShelveunshelveResponse(unshelveResult shelveu
 }
 
 // action function
-func (oc *OpenstackClient) UnshelveComputeV2ExtensionsShelveunshelve(request *UnshelveComputeV2ExtensionsShelveunshelveRequest)(*UnshelveComputeV2ExtensionsShelveunshelveResponse){
-    return NewUnshelveComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.Unshelve(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UnshelveComputeV2ExtensionsShelveunshelve(req *UnshelveComputeV2ExtensionsShelveunshelveRequest)(*UnshelveComputeV2ExtensionsShelveunshelveResponse){
+    return NewUnshelveComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.Unshelve(oc.client,req.Id,req.Opts, ))
 
 }

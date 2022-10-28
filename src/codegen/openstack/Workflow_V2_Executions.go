@@ -31,8 +31,8 @@ func NewCreateWorkflowV2ExecutionsResponse(createResult executions.CreateResult,
 }
 
 // action function
-func (oc *OpenstackClient) CreateWorkflowV2Executions(request *CreateWorkflowV2ExecutionsRequest)(*CreateWorkflowV2ExecutionsResponse){
-    return NewCreateWorkflowV2ExecutionsResponse(executions.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateWorkflowV2Executions(req *CreateWorkflowV2ExecutionsRequest)(*CreateWorkflowV2ExecutionsResponse){
+    return NewCreateWorkflowV2ExecutionsResponse(executions.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetWorkflowV2Executions
@@ -56,8 +56,8 @@ func NewGetWorkflowV2ExecutionsResponse(getResult executions.GetResult,)*GetWork
 }
 
 // action function
-func (oc *OpenstackClient) GetWorkflowV2Executions(request *GetWorkflowV2ExecutionsRequest)(*GetWorkflowV2ExecutionsResponse){
-    return NewGetWorkflowV2ExecutionsResponse(executions.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetWorkflowV2Executions(req *GetWorkflowV2ExecutionsRequest)(*GetWorkflowV2ExecutionsResponse){
+    return NewGetWorkflowV2ExecutionsResponse(executions.Get(oc.client,req.Id, ))
 
 }
 //request struct for the DeleteWorkflowV2Executions
@@ -81,8 +81,8 @@ func NewDeleteWorkflowV2ExecutionsResponse(deleteResult executions.DeleteResult,
 }
 
 // action function
-func (oc *OpenstackClient) DeleteWorkflowV2Executions(request *DeleteWorkflowV2ExecutionsRequest)(*DeleteWorkflowV2ExecutionsResponse){
-    return NewDeleteWorkflowV2ExecutionsResponse(executions.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteWorkflowV2Executions(req *DeleteWorkflowV2ExecutionsRequest)(*DeleteWorkflowV2ExecutionsResponse){
+    return NewDeleteWorkflowV2ExecutionsResponse(executions.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the ListWorkflowV2Executions
@@ -106,7 +106,7 @@ func NewListWorkflowV2ExecutionsResponse(pager pagination.Pager,)*ListWorkflowV2
 }
 
 // action function
-func (oc *OpenstackClient) ListWorkflowV2Executions(request *ListWorkflowV2ExecutionsRequest)(*ListWorkflowV2ExecutionsResponse){
-    return NewListWorkflowV2ExecutionsResponse(executions.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListWorkflowV2Executions(req *ListWorkflowV2ExecutionsRequest)(*ListWorkflowV2ExecutionsResponse){
+    return NewListWorkflowV2ExecutionsResponse(executions.List(oc.client,req.Opts, ))
 
 }

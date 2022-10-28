@@ -31,8 +31,8 @@ func NewRescueComputeV2ExtensionsRescueunrescueResponse(rescueResult rescueunres
 }
 
 // action function
-func (oc *OpenstackClient) RescueComputeV2ExtensionsRescueunrescue(request *RescueComputeV2ExtensionsRescueunrescueRequest)(*RescueComputeV2ExtensionsRescueunrescueResponse){
-    return NewRescueComputeV2ExtensionsRescueunrescueResponse(rescueunrescue.Rescue(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) RescueComputeV2ExtensionsRescueunrescue(req *RescueComputeV2ExtensionsRescueunrescueRequest)(*RescueComputeV2ExtensionsRescueunrescueResponse){
+    return NewRescueComputeV2ExtensionsRescueunrescueResponse(rescueunrescue.Rescue(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the UnrescueComputeV2ExtensionsRescueunrescue
@@ -56,7 +56,7 @@ func NewUnrescueComputeV2ExtensionsRescueunrescueResponse(unrescueResult rescueu
 }
 
 // action function
-func (oc *OpenstackClient) UnrescueComputeV2ExtensionsRescueunrescue(request *UnrescueComputeV2ExtensionsRescueunrescueRequest)(*UnrescueComputeV2ExtensionsRescueunrescueResponse){
-    return NewUnrescueComputeV2ExtensionsRescueunrescueResponse(rescueunrescue.Unrescue(oc.client,request.Id, ))
+func (oc *OpenstackClient) UnrescueComputeV2ExtensionsRescueunrescue(req *UnrescueComputeV2ExtensionsRescueunrescueRequest)(*UnrescueComputeV2ExtensionsRescueunrescueResponse){
+    return NewUnrescueComputeV2ExtensionsRescueunrescueResponse(rescueunrescue.Unrescue(oc.client,req.Id, ))
 
 }

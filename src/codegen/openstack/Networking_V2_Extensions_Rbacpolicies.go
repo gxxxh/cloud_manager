@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsRbacpoliciesResponse(pager pagination.Pager,)*
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsRbacpolicies(request *ListNetworkingV2ExtensionsRbacpoliciesRequest)(*ListNetworkingV2ExtensionsRbacpoliciesResponse){
-    return NewListNetworkingV2ExtensionsRbacpoliciesResponse(rbacpolicies.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsRbacpolicies(req *ListNetworkingV2ExtensionsRbacpoliciesRequest)(*ListNetworkingV2ExtensionsRbacpoliciesResponse){
+    return NewListNetworkingV2ExtensionsRbacpoliciesResponse(rbacpolicies.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsRbacpolicies
@@ -56,8 +56,8 @@ func NewGetNetworkingV2ExtensionsRbacpoliciesResponse(getResult rbacpolicies.Get
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsRbacpolicies(request *GetNetworkingV2ExtensionsRbacpoliciesRequest)(*GetNetworkingV2ExtensionsRbacpoliciesResponse){
-    return NewGetNetworkingV2ExtensionsRbacpoliciesResponse(rbacpolicies.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsRbacpolicies(req *GetNetworkingV2ExtensionsRbacpoliciesRequest)(*GetNetworkingV2ExtensionsRbacpoliciesResponse){
+    return NewGetNetworkingV2ExtensionsRbacpoliciesResponse(rbacpolicies.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsRbacpolicies
@@ -81,8 +81,8 @@ func NewCreateNetworkingV2ExtensionsRbacpoliciesResponse(createResult rbacpolici
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsRbacpolicies(request *CreateNetworkingV2ExtensionsRbacpoliciesRequest)(*CreateNetworkingV2ExtensionsRbacpoliciesResponse){
-    return NewCreateNetworkingV2ExtensionsRbacpoliciesResponse(rbacpolicies.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsRbacpolicies(req *CreateNetworkingV2ExtensionsRbacpoliciesRequest)(*CreateNetworkingV2ExtensionsRbacpoliciesResponse){
+    return NewCreateNetworkingV2ExtensionsRbacpoliciesResponse(rbacpolicies.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsRbacpolicies
@@ -106,8 +106,8 @@ func NewDeleteNetworkingV2ExtensionsRbacpoliciesResponse(deleteResult rbacpolici
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsRbacpolicies(request *DeleteNetworkingV2ExtensionsRbacpoliciesRequest)(*DeleteNetworkingV2ExtensionsRbacpoliciesResponse){
-    return NewDeleteNetworkingV2ExtensionsRbacpoliciesResponse(rbacpolicies.Delete(oc.client,request.RbacPolicyID, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsRbacpolicies(req *DeleteNetworkingV2ExtensionsRbacpoliciesRequest)(*DeleteNetworkingV2ExtensionsRbacpoliciesResponse){
+    return NewDeleteNetworkingV2ExtensionsRbacpoliciesResponse(rbacpolicies.Delete(oc.client,req.RbacPolicyID, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsRbacpolicies
@@ -132,7 +132,7 @@ func NewUpdateNetworkingV2ExtensionsRbacpoliciesResponse(updateResult rbacpolici
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsRbacpolicies(request *UpdateNetworkingV2ExtensionsRbacpoliciesRequest)(*UpdateNetworkingV2ExtensionsRbacpoliciesResponse){
-    return NewUpdateNetworkingV2ExtensionsRbacpoliciesResponse(rbacpolicies.Update(oc.client,request.RbacPolicyID,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsRbacpolicies(req *UpdateNetworkingV2ExtensionsRbacpoliciesRequest)(*UpdateNetworkingV2ExtensionsRbacpoliciesResponse){
+    return NewUpdateNetworkingV2ExtensionsRbacpoliciesResponse(rbacpolicies.Update(oc.client,req.RbacPolicyID,req.Opts, ))
 
 }

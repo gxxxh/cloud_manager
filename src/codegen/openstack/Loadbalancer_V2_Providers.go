@@ -31,7 +31,7 @@ func NewListLoadbalancerV2ProvidersResponse(pager pagination.Pager,)*ListLoadbal
 }
 
 // action function
-func (oc *OpenstackClient) ListLoadbalancerV2Providers(request *ListLoadbalancerV2ProvidersRequest)(*ListLoadbalancerV2ProvidersResponse){
-    return NewListLoadbalancerV2ProvidersResponse(providers.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListLoadbalancerV2Providers(req *ListLoadbalancerV2ProvidersRequest)(*ListLoadbalancerV2ProvidersResponse){
+    return NewListLoadbalancerV2ProvidersResponse(providers.List(oc.client,req.Opts, ))
 
 }

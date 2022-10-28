@@ -30,7 +30,7 @@ func NewListSharedfilesystemsApiversionsResponse(pager pagination.Pager,)*ListSh
 }
 
 // action function
-func (oc *OpenstackClient) ListSharedfilesystemsApiversions(request *ListSharedfilesystemsApiversionsRequest)(*ListSharedfilesystemsApiversionsResponse){
+func (oc *OpenstackClient) ListSharedfilesystemsApiversions(req *ListSharedfilesystemsApiversionsRequest)(*ListSharedfilesystemsApiversionsResponse){
     return NewListSharedfilesystemsApiversionsResponse(apiversions.List(oc.client, ))
 
 }
@@ -55,7 +55,7 @@ func NewGetSharedfilesystemsApiversionsResponse(getResult apiversions.GetResult,
 }
 
 // action function
-func (oc *OpenstackClient) GetSharedfilesystemsApiversions(request *GetSharedfilesystemsApiversionsRequest)(*GetSharedfilesystemsApiversionsResponse){
-    return NewGetSharedfilesystemsApiversionsResponse(apiversions.Get(oc.client,request.V, ))
+func (oc *OpenstackClient) GetSharedfilesystemsApiversions(req *GetSharedfilesystemsApiversionsRequest)(*GetSharedfilesystemsApiversionsResponse){
+    return NewGetSharedfilesystemsApiversionsResponse(apiversions.Get(oc.client,req.V, ))
 
 }

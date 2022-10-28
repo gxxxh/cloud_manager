@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsLayer3AddressscopesResponse(pager pagination.P
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsLayer3Addressscopes(request *ListNetworkingV2ExtensionsLayer3AddressscopesRequest)(*ListNetworkingV2ExtensionsLayer3AddressscopesResponse){
-    return NewListNetworkingV2ExtensionsLayer3AddressscopesResponse(addressscopes.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsLayer3Addressscopes(req *ListNetworkingV2ExtensionsLayer3AddressscopesRequest)(*ListNetworkingV2ExtensionsLayer3AddressscopesResponse){
+    return NewListNetworkingV2ExtensionsLayer3AddressscopesResponse(addressscopes.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLayer3Addressscopes
@@ -56,8 +56,8 @@ func NewGetNetworkingV2ExtensionsLayer3AddressscopesResponse(getResult addresssc
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsLayer3Addressscopes(request *GetNetworkingV2ExtensionsLayer3AddressscopesRequest)(*GetNetworkingV2ExtensionsLayer3AddressscopesResponse){
-    return NewGetNetworkingV2ExtensionsLayer3AddressscopesResponse(addressscopes.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsLayer3Addressscopes(req *GetNetworkingV2ExtensionsLayer3AddressscopesRequest)(*GetNetworkingV2ExtensionsLayer3AddressscopesResponse){
+    return NewGetNetworkingV2ExtensionsLayer3AddressscopesResponse(addressscopes.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLayer3Addressscopes
@@ -81,8 +81,8 @@ func NewCreateNetworkingV2ExtensionsLayer3AddressscopesResponse(createResult add
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLayer3Addressscopes(request *CreateNetworkingV2ExtensionsLayer3AddressscopesRequest)(*CreateNetworkingV2ExtensionsLayer3AddressscopesResponse){
-    return NewCreateNetworkingV2ExtensionsLayer3AddressscopesResponse(addressscopes.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLayer3Addressscopes(req *CreateNetworkingV2ExtensionsLayer3AddressscopesRequest)(*CreateNetworkingV2ExtensionsLayer3AddressscopesResponse){
+    return NewCreateNetworkingV2ExtensionsLayer3AddressscopesResponse(addressscopes.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLayer3Addressscopes
@@ -107,8 +107,8 @@ func NewUpdateNetworkingV2ExtensionsLayer3AddressscopesResponse(updateResult add
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLayer3Addressscopes(request *UpdateNetworkingV2ExtensionsLayer3AddressscopesRequest)(*UpdateNetworkingV2ExtensionsLayer3AddressscopesResponse){
-    return NewUpdateNetworkingV2ExtensionsLayer3AddressscopesResponse(addressscopes.Update(oc.client,request.AddressScopeID,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLayer3Addressscopes(req *UpdateNetworkingV2ExtensionsLayer3AddressscopesRequest)(*UpdateNetworkingV2ExtensionsLayer3AddressscopesResponse){
+    return NewUpdateNetworkingV2ExtensionsLayer3AddressscopesResponse(addressscopes.Update(oc.client,req.AddressScopeID,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLayer3Addressscopes
@@ -132,7 +132,7 @@ func NewDeleteNetworkingV2ExtensionsLayer3AddressscopesResponse(deleteResult add
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLayer3Addressscopes(request *DeleteNetworkingV2ExtensionsLayer3AddressscopesRequest)(*DeleteNetworkingV2ExtensionsLayer3AddressscopesResponse){
-    return NewDeleteNetworkingV2ExtensionsLayer3AddressscopesResponse(addressscopes.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLayer3Addressscopes(req *DeleteNetworkingV2ExtensionsLayer3AddressscopesRequest)(*DeleteNetworkingV2ExtensionsLayer3AddressscopesResponse){
+    return NewDeleteNetworkingV2ExtensionsLayer3AddressscopesResponse(addressscopes.Delete(oc.client,req.Id, ))
 
 }

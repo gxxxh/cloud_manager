@@ -32,8 +32,8 @@ func NewGetContainerinfraV1NodegroupsResponse(getResult nodegroups.GetResult,)*G
 }
 
 // action function
-func (oc *OpenstackClient) GetContainerinfraV1Nodegroups(request *GetContainerinfraV1NodegroupsRequest)(*GetContainerinfraV1NodegroupsResponse){
-    return NewGetContainerinfraV1NodegroupsResponse(nodegroups.Get(oc.client,request.ClusterID,request.NodeGroupID, ))
+func (oc *OpenstackClient) GetContainerinfraV1Nodegroups(req *GetContainerinfraV1NodegroupsRequest)(*GetContainerinfraV1NodegroupsResponse){
+    return NewGetContainerinfraV1NodegroupsResponse(nodegroups.Get(oc.client,req.ClusterID,req.NodeGroupID, ))
 
 }
 //request struct for the ListContainerinfraV1Nodegroups
@@ -58,8 +58,8 @@ func NewListContainerinfraV1NodegroupsResponse(pager pagination.Pager,)*ListCont
 }
 
 // action function
-func (oc *OpenstackClient) ListContainerinfraV1Nodegroups(request *ListContainerinfraV1NodegroupsRequest)(*ListContainerinfraV1NodegroupsResponse){
-    return NewListContainerinfraV1NodegroupsResponse(nodegroups.List(oc.client,request.ClusterID,request.Opts, ))
+func (oc *OpenstackClient) ListContainerinfraV1Nodegroups(req *ListContainerinfraV1NodegroupsRequest)(*ListContainerinfraV1NodegroupsResponse){
+    return NewListContainerinfraV1NodegroupsResponse(nodegroups.List(oc.client,req.ClusterID,req.Opts, ))
 
 }
 //request struct for the CreateContainerinfraV1Nodegroups
@@ -84,8 +84,8 @@ func NewCreateContainerinfraV1NodegroupsResponse(createResult nodegroups.CreateR
 }
 
 // action function
-func (oc *OpenstackClient) CreateContainerinfraV1Nodegroups(request *CreateContainerinfraV1NodegroupsRequest)(*CreateContainerinfraV1NodegroupsResponse){
-    return NewCreateContainerinfraV1NodegroupsResponse(nodegroups.Create(oc.client,request.ClusterID,request.Opts, ))
+func (oc *OpenstackClient) CreateContainerinfraV1Nodegroups(req *CreateContainerinfraV1NodegroupsRequest)(*CreateContainerinfraV1NodegroupsResponse){
+    return NewCreateContainerinfraV1NodegroupsResponse(nodegroups.Create(oc.client,req.ClusterID,req.Opts, ))
 
 }
 //request struct for the UpdateContainerinfraV1Nodegroups
@@ -111,8 +111,8 @@ func NewUpdateContainerinfraV1NodegroupsResponse(updateResult nodegroups.UpdateR
 }
 
 // action function
-func (oc *OpenstackClient) UpdateContainerinfraV1Nodegroups(request *UpdateContainerinfraV1NodegroupsRequest)(*UpdateContainerinfraV1NodegroupsResponse){
-    return NewUpdateContainerinfraV1NodegroupsResponse(nodegroups.Update(oc.client,request.ClusterID,request.NodeGroupID,request.Opts, ))
+func (oc *OpenstackClient) UpdateContainerinfraV1Nodegroups(req *UpdateContainerinfraV1NodegroupsRequest)(*UpdateContainerinfraV1NodegroupsResponse){
+    return NewUpdateContainerinfraV1NodegroupsResponse(nodegroups.Update(oc.client,req.ClusterID,req.NodeGroupID,req.Opts, ))
 
 }
 //request struct for the DeleteContainerinfraV1Nodegroups
@@ -137,7 +137,7 @@ func NewDeleteContainerinfraV1NodegroupsResponse(deleteResult nodegroups.DeleteR
 }
 
 // action function
-func (oc *OpenstackClient) DeleteContainerinfraV1Nodegroups(request *DeleteContainerinfraV1NodegroupsRequest)(*DeleteContainerinfraV1NodegroupsResponse){
-    return NewDeleteContainerinfraV1NodegroupsResponse(nodegroups.Delete(oc.client,request.ClusterID,request.NodeGroupID, ))
+func (oc *OpenstackClient) DeleteContainerinfraV1Nodegroups(req *DeleteContainerinfraV1NodegroupsRequest)(*DeleteContainerinfraV1NodegroupsResponse){
+    return NewDeleteContainerinfraV1NodegroupsResponse(nodegroups.Delete(oc.client,req.ClusterID,req.NodeGroupID, ))
 
 }

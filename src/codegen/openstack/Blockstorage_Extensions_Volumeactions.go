@@ -31,8 +31,8 @@ func NewAttachBlockstorageExtensionsVolumeactionsResponse(attachResult volumeact
 }
 
 // action function
-func (oc *OpenstackClient) AttachBlockstorageExtensionsVolumeactions(request *AttachBlockstorageExtensionsVolumeactionsRequest)(*AttachBlockstorageExtensionsVolumeactionsResponse){
-    return NewAttachBlockstorageExtensionsVolumeactionsResponse(volumeactions.Attach(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) AttachBlockstorageExtensionsVolumeactions(req *AttachBlockstorageExtensionsVolumeactionsRequest)(*AttachBlockstorageExtensionsVolumeactionsResponse){
+    return NewAttachBlockstorageExtensionsVolumeactionsResponse(volumeactions.Attach(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the BeginDetachingBlockstorageExtensionsVolumeactions
@@ -56,8 +56,8 @@ func NewBeginDetachingBlockstorageExtensionsVolumeactionsResponse(beginDetaching
 }
 
 // action function
-func (oc *OpenstackClient) BeginDetachingBlockstorageExtensionsVolumeactions(request *BeginDetachingBlockstorageExtensionsVolumeactionsRequest)(*BeginDetachingBlockstorageExtensionsVolumeactionsResponse){
-    return NewBeginDetachingBlockstorageExtensionsVolumeactionsResponse(volumeactions.BeginDetaching(oc.client,request.Id, ))
+func (oc *OpenstackClient) BeginDetachingBlockstorageExtensionsVolumeactions(req *BeginDetachingBlockstorageExtensionsVolumeactionsRequest)(*BeginDetachingBlockstorageExtensionsVolumeactionsResponse){
+    return NewBeginDetachingBlockstorageExtensionsVolumeactionsResponse(volumeactions.BeginDetaching(oc.client,req.Id, ))
 
 }
 //request struct for the DetachBlockstorageExtensionsVolumeactions
@@ -82,8 +82,8 @@ func NewDetachBlockstorageExtensionsVolumeactionsResponse(detachResult volumeact
 }
 
 // action function
-func (oc *OpenstackClient) DetachBlockstorageExtensionsVolumeactions(request *DetachBlockstorageExtensionsVolumeactionsRequest)(*DetachBlockstorageExtensionsVolumeactionsResponse){
-    return NewDetachBlockstorageExtensionsVolumeactionsResponse(volumeactions.Detach(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) DetachBlockstorageExtensionsVolumeactions(req *DetachBlockstorageExtensionsVolumeactionsRequest)(*DetachBlockstorageExtensionsVolumeactionsResponse){
+    return NewDetachBlockstorageExtensionsVolumeactionsResponse(volumeactions.Detach(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ReserveBlockstorageExtensionsVolumeactions
@@ -107,8 +107,8 @@ func NewReserveBlockstorageExtensionsVolumeactionsResponse(reserveResult volumea
 }
 
 // action function
-func (oc *OpenstackClient) ReserveBlockstorageExtensionsVolumeactions(request *ReserveBlockstorageExtensionsVolumeactionsRequest)(*ReserveBlockstorageExtensionsVolumeactionsResponse){
-    return NewReserveBlockstorageExtensionsVolumeactionsResponse(volumeactions.Reserve(oc.client,request.Id, ))
+func (oc *OpenstackClient) ReserveBlockstorageExtensionsVolumeactions(req *ReserveBlockstorageExtensionsVolumeactionsRequest)(*ReserveBlockstorageExtensionsVolumeactionsResponse){
+    return NewReserveBlockstorageExtensionsVolumeactionsResponse(volumeactions.Reserve(oc.client,req.Id, ))
 
 }
 //request struct for the UnreserveBlockstorageExtensionsVolumeactions
@@ -132,8 +132,8 @@ func NewUnreserveBlockstorageExtensionsVolumeactionsResponse(unreserveResult vol
 }
 
 // action function
-func (oc *OpenstackClient) UnreserveBlockstorageExtensionsVolumeactions(request *UnreserveBlockstorageExtensionsVolumeactionsRequest)(*UnreserveBlockstorageExtensionsVolumeactionsResponse){
-    return NewUnreserveBlockstorageExtensionsVolumeactionsResponse(volumeactions.Unreserve(oc.client,request.Id, ))
+func (oc *OpenstackClient) UnreserveBlockstorageExtensionsVolumeactions(req *UnreserveBlockstorageExtensionsVolumeactionsRequest)(*UnreserveBlockstorageExtensionsVolumeactionsResponse){
+    return NewUnreserveBlockstorageExtensionsVolumeactionsResponse(volumeactions.Unreserve(oc.client,req.Id, ))
 
 }
 //request struct for the InitializeConnectionBlockstorageExtensionsVolumeactions
@@ -158,8 +158,8 @@ func NewInitializeConnectionBlockstorageExtensionsVolumeactionsResponse(initiali
 }
 
 // action function
-func (oc *OpenstackClient) InitializeConnectionBlockstorageExtensionsVolumeactions(request *InitializeConnectionBlockstorageExtensionsVolumeactionsRequest)(*InitializeConnectionBlockstorageExtensionsVolumeactionsResponse){
-    return NewInitializeConnectionBlockstorageExtensionsVolumeactionsResponse(volumeactions.InitializeConnection(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) InitializeConnectionBlockstorageExtensionsVolumeactions(req *InitializeConnectionBlockstorageExtensionsVolumeactionsRequest)(*InitializeConnectionBlockstorageExtensionsVolumeactionsResponse){
+    return NewInitializeConnectionBlockstorageExtensionsVolumeactionsResponse(volumeactions.InitializeConnection(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the TerminateConnectionBlockstorageExtensionsVolumeactions
@@ -184,8 +184,8 @@ func NewTerminateConnectionBlockstorageExtensionsVolumeactionsResponse(terminate
 }
 
 // action function
-func (oc *OpenstackClient) TerminateConnectionBlockstorageExtensionsVolumeactions(request *TerminateConnectionBlockstorageExtensionsVolumeactionsRequest)(*TerminateConnectionBlockstorageExtensionsVolumeactionsResponse){
-    return NewTerminateConnectionBlockstorageExtensionsVolumeactionsResponse(volumeactions.TerminateConnection(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) TerminateConnectionBlockstorageExtensionsVolumeactions(req *TerminateConnectionBlockstorageExtensionsVolumeactionsRequest)(*TerminateConnectionBlockstorageExtensionsVolumeactionsResponse){
+    return NewTerminateConnectionBlockstorageExtensionsVolumeactionsResponse(volumeactions.TerminateConnection(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ExtendSizeBlockstorageExtensionsVolumeactions
@@ -210,8 +210,8 @@ func NewExtendSizeBlockstorageExtensionsVolumeactionsResponse(extendSizeResult v
 }
 
 // action function
-func (oc *OpenstackClient) ExtendSizeBlockstorageExtensionsVolumeactions(request *ExtendSizeBlockstorageExtensionsVolumeactionsRequest)(*ExtendSizeBlockstorageExtensionsVolumeactionsResponse){
-    return NewExtendSizeBlockstorageExtensionsVolumeactionsResponse(volumeactions.ExtendSize(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) ExtendSizeBlockstorageExtensionsVolumeactions(req *ExtendSizeBlockstorageExtensionsVolumeactionsRequest)(*ExtendSizeBlockstorageExtensionsVolumeactionsResponse){
+    return NewExtendSizeBlockstorageExtensionsVolumeactionsResponse(volumeactions.ExtendSize(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the UploadImageBlockstorageExtensionsVolumeactions
@@ -236,8 +236,8 @@ func NewUploadImageBlockstorageExtensionsVolumeactionsResponse(uploadImageResult
 }
 
 // action function
-func (oc *OpenstackClient) UploadImageBlockstorageExtensionsVolumeactions(request *UploadImageBlockstorageExtensionsVolumeactionsRequest)(*UploadImageBlockstorageExtensionsVolumeactionsResponse){
-    return NewUploadImageBlockstorageExtensionsVolumeactionsResponse(volumeactions.UploadImage(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UploadImageBlockstorageExtensionsVolumeactions(req *UploadImageBlockstorageExtensionsVolumeactionsRequest)(*UploadImageBlockstorageExtensionsVolumeactionsResponse){
+    return NewUploadImageBlockstorageExtensionsVolumeactionsResponse(volumeactions.UploadImage(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ForceDeleteBlockstorageExtensionsVolumeactions
@@ -261,8 +261,8 @@ func NewForceDeleteBlockstorageExtensionsVolumeactionsResponse(forceDeleteResult
 }
 
 // action function
-func (oc *OpenstackClient) ForceDeleteBlockstorageExtensionsVolumeactions(request *ForceDeleteBlockstorageExtensionsVolumeactionsRequest)(*ForceDeleteBlockstorageExtensionsVolumeactionsResponse){
-    return NewForceDeleteBlockstorageExtensionsVolumeactionsResponse(volumeactions.ForceDelete(oc.client,request.Id, ))
+func (oc *OpenstackClient) ForceDeleteBlockstorageExtensionsVolumeactions(req *ForceDeleteBlockstorageExtensionsVolumeactionsRequest)(*ForceDeleteBlockstorageExtensionsVolumeactionsResponse){
+    return NewForceDeleteBlockstorageExtensionsVolumeactionsResponse(volumeactions.ForceDelete(oc.client,req.Id, ))
 
 }
 //request struct for the SetImageMetadataBlockstorageExtensionsVolumeactions
@@ -287,8 +287,8 @@ func NewSetImageMetadataBlockstorageExtensionsVolumeactionsResponse(setImageMeta
 }
 
 // action function
-func (oc *OpenstackClient) SetImageMetadataBlockstorageExtensionsVolumeactions(request *SetImageMetadataBlockstorageExtensionsVolumeactionsRequest)(*SetImageMetadataBlockstorageExtensionsVolumeactionsResponse){
-    return NewSetImageMetadataBlockstorageExtensionsVolumeactionsResponse(volumeactions.SetImageMetadata(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) SetImageMetadataBlockstorageExtensionsVolumeactions(req *SetImageMetadataBlockstorageExtensionsVolumeactionsRequest)(*SetImageMetadataBlockstorageExtensionsVolumeactionsResponse){
+    return NewSetImageMetadataBlockstorageExtensionsVolumeactionsResponse(volumeactions.SetImageMetadata(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the SetBootableBlockstorageExtensionsVolumeactions
@@ -313,8 +313,8 @@ func NewSetBootableBlockstorageExtensionsVolumeactionsResponse(setBootableResult
 }
 
 // action function
-func (oc *OpenstackClient) SetBootableBlockstorageExtensionsVolumeactions(request *SetBootableBlockstorageExtensionsVolumeactionsRequest)(*SetBootableBlockstorageExtensionsVolumeactionsResponse){
-    return NewSetBootableBlockstorageExtensionsVolumeactionsResponse(volumeactions.SetBootable(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) SetBootableBlockstorageExtensionsVolumeactions(req *SetBootableBlockstorageExtensionsVolumeactionsRequest)(*SetBootableBlockstorageExtensionsVolumeactionsResponse){
+    return NewSetBootableBlockstorageExtensionsVolumeactionsResponse(volumeactions.SetBootable(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ChangeTypeBlockstorageExtensionsVolumeactions
@@ -339,7 +339,7 @@ func NewChangeTypeBlockstorageExtensionsVolumeactionsResponse(changeTypeResult v
 }
 
 // action function
-func (oc *OpenstackClient) ChangeTypeBlockstorageExtensionsVolumeactions(request *ChangeTypeBlockstorageExtensionsVolumeactionsRequest)(*ChangeTypeBlockstorageExtensionsVolumeactionsResponse){
-    return NewChangeTypeBlockstorageExtensionsVolumeactionsResponse(volumeactions.ChangeType(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) ChangeTypeBlockstorageExtensionsVolumeactions(req *ChangeTypeBlockstorageExtensionsVolumeactionsRequest)(*ChangeTypeBlockstorageExtensionsVolumeactionsResponse){
+    return NewChangeTypeBlockstorageExtensionsVolumeactionsResponse(volumeactions.ChangeType(oc.client,req.Id,req.Opts, ))
 
 }

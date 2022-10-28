@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsFwaasFirewallsResponse(pager pagination.Pager,
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsFwaasFirewalls(request *ListNetworkingV2ExtensionsFwaasFirewallsRequest)(*ListNetworkingV2ExtensionsFwaasFirewallsResponse){
-    return NewListNetworkingV2ExtensionsFwaasFirewallsResponse(firewalls.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsFwaasFirewalls(req *ListNetworkingV2ExtensionsFwaasFirewallsRequest)(*ListNetworkingV2ExtensionsFwaasFirewallsResponse){
+    return NewListNetworkingV2ExtensionsFwaasFirewallsResponse(firewalls.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsFwaasFirewalls
@@ -56,8 +56,8 @@ func NewCreateNetworkingV2ExtensionsFwaasFirewallsResponse(createResult firewall
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsFwaasFirewalls(request *CreateNetworkingV2ExtensionsFwaasFirewallsRequest)(*CreateNetworkingV2ExtensionsFwaasFirewallsResponse){
-    return NewCreateNetworkingV2ExtensionsFwaasFirewallsResponse(firewalls.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsFwaasFirewalls(req *CreateNetworkingV2ExtensionsFwaasFirewallsRequest)(*CreateNetworkingV2ExtensionsFwaasFirewallsResponse){
+    return NewCreateNetworkingV2ExtensionsFwaasFirewallsResponse(firewalls.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsFwaasFirewalls
@@ -81,8 +81,8 @@ func NewGetNetworkingV2ExtensionsFwaasFirewallsResponse(getResult firewalls.GetR
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsFwaasFirewalls(request *GetNetworkingV2ExtensionsFwaasFirewallsRequest)(*GetNetworkingV2ExtensionsFwaasFirewallsResponse){
-    return NewGetNetworkingV2ExtensionsFwaasFirewallsResponse(firewalls.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsFwaasFirewalls(req *GetNetworkingV2ExtensionsFwaasFirewallsRequest)(*GetNetworkingV2ExtensionsFwaasFirewallsResponse){
+    return NewGetNetworkingV2ExtensionsFwaasFirewallsResponse(firewalls.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsFwaasFirewalls
@@ -107,8 +107,8 @@ func NewUpdateNetworkingV2ExtensionsFwaasFirewallsResponse(updateResult firewall
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsFwaasFirewalls(request *UpdateNetworkingV2ExtensionsFwaasFirewallsRequest)(*UpdateNetworkingV2ExtensionsFwaasFirewallsResponse){
-    return NewUpdateNetworkingV2ExtensionsFwaasFirewallsResponse(firewalls.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsFwaasFirewalls(req *UpdateNetworkingV2ExtensionsFwaasFirewallsRequest)(*UpdateNetworkingV2ExtensionsFwaasFirewallsResponse){
+    return NewUpdateNetworkingV2ExtensionsFwaasFirewallsResponse(firewalls.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsFwaasFirewalls
@@ -132,7 +132,7 @@ func NewDeleteNetworkingV2ExtensionsFwaasFirewallsResponse(deleteResult firewall
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsFwaasFirewalls(request *DeleteNetworkingV2ExtensionsFwaasFirewallsRequest)(*DeleteNetworkingV2ExtensionsFwaasFirewallsResponse){
-    return NewDeleteNetworkingV2ExtensionsFwaasFirewallsResponse(firewalls.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsFwaasFirewalls(req *DeleteNetworkingV2ExtensionsFwaasFirewallsRequest)(*DeleteNetworkingV2ExtensionsFwaasFirewallsResponse){
+    return NewDeleteNetworkingV2ExtensionsFwaasFirewallsResponse(firewalls.Delete(oc.client,req.Id, ))
 
 }

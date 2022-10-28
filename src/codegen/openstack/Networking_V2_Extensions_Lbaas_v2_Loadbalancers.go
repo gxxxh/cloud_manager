@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(pager pagination
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaas_v2Loadbalancers(request *ListNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*ListNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
-    return NewListNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaas_v2Loadbalancers(req *ListNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*ListNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
+    return NewListNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLbaas_v2Loadbalancers
@@ -56,8 +56,8 @@ func NewCreateNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(createResult l
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaas_v2Loadbalancers(request *CreateNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*CreateNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
-    return NewCreateNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaas_v2Loadbalancers(req *CreateNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*CreateNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
+    return NewCreateNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLbaas_v2Loadbalancers
@@ -81,8 +81,8 @@ func NewGetNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(getResult loadbal
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaas_v2Loadbalancers(request *GetNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*GetNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
-    return NewGetNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaas_v2Loadbalancers(req *GetNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*GetNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
+    return NewGetNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLbaas_v2Loadbalancers
@@ -107,8 +107,8 @@ func NewUpdateNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(updateResult l
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaas_v2Loadbalancers(request *UpdateNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*UpdateNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
-    return NewUpdateNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaas_v2Loadbalancers(req *UpdateNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*UpdateNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
+    return NewUpdateNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLbaas_v2Loadbalancers
@@ -132,8 +132,8 @@ func NewDeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(deleteResult l
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaas_v2Loadbalancers(request *DeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*DeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
-    return NewDeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaas_v2Loadbalancers(req *DeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*DeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
+    return NewDeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the CascadingDeleteNetworkingV2ExtensionsLbaas_v2Loadbalancers
@@ -157,8 +157,8 @@ func NewCascadingDeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(delet
 }
 
 // action function
-func (oc *OpenstackClient) CascadingDeleteNetworkingV2ExtensionsLbaas_v2Loadbalancers(request *CascadingDeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*CascadingDeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
-    return NewCascadingDeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.CascadingDelete(oc.client,request.Id, ))
+func (oc *OpenstackClient) CascadingDeleteNetworkingV2ExtensionsLbaas_v2Loadbalancers(req *CascadingDeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*CascadingDeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
+    return NewCascadingDeleteNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.CascadingDelete(oc.client,req.Id, ))
 
 }
 //request struct for the GetStatusesNetworkingV2ExtensionsLbaas_v2Loadbalancers
@@ -182,8 +182,8 @@ func NewGetStatusesNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(getStatus
 }
 
 // action function
-func (oc *OpenstackClient) GetStatusesNetworkingV2ExtensionsLbaas_v2Loadbalancers(request *GetStatusesNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*GetStatusesNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
-    return NewGetStatusesNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.GetStatuses(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetStatusesNetworkingV2ExtensionsLbaas_v2Loadbalancers(req *GetStatusesNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*GetStatusesNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
+    return NewGetStatusesNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.GetStatuses(oc.client,req.Id, ))
 
 }
 //request struct for the GetStatsNetworkingV2ExtensionsLbaas_v2Loadbalancers
@@ -207,7 +207,7 @@ func NewGetStatsNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(statsResult 
 }
 
 // action function
-func (oc *OpenstackClient) GetStatsNetworkingV2ExtensionsLbaas_v2Loadbalancers(request *GetStatsNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*GetStatsNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
-    return NewGetStatsNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.GetStats(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetStatsNetworkingV2ExtensionsLbaas_v2Loadbalancers(req *GetStatsNetworkingV2ExtensionsLbaas_v2LoadbalancersRequest)(*GetStatsNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse){
+    return NewGetStatsNetworkingV2ExtensionsLbaas_v2LoadbalancersResponse(loadbalancers.GetStats(oc.client,req.Id, ))
 
 }

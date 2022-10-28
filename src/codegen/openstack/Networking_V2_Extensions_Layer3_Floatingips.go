@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsLayer3FloatingipsResponse(pager pagination.Pag
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsLayer3Floatingips(request *ListNetworkingV2ExtensionsLayer3FloatingipsRequest)(*ListNetworkingV2ExtensionsLayer3FloatingipsResponse){
-    return NewListNetworkingV2ExtensionsLayer3FloatingipsResponse(floatingips.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsLayer3Floatingips(req *ListNetworkingV2ExtensionsLayer3FloatingipsRequest)(*ListNetworkingV2ExtensionsLayer3FloatingipsResponse){
+    return NewListNetworkingV2ExtensionsLayer3FloatingipsResponse(floatingips.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLayer3Floatingips
@@ -56,8 +56,8 @@ func NewCreateNetworkingV2ExtensionsLayer3FloatingipsResponse(createResult float
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLayer3Floatingips(request *CreateNetworkingV2ExtensionsLayer3FloatingipsRequest)(*CreateNetworkingV2ExtensionsLayer3FloatingipsResponse){
-    return NewCreateNetworkingV2ExtensionsLayer3FloatingipsResponse(floatingips.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLayer3Floatingips(req *CreateNetworkingV2ExtensionsLayer3FloatingipsRequest)(*CreateNetworkingV2ExtensionsLayer3FloatingipsResponse){
+    return NewCreateNetworkingV2ExtensionsLayer3FloatingipsResponse(floatingips.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLayer3Floatingips
@@ -81,8 +81,8 @@ func NewGetNetworkingV2ExtensionsLayer3FloatingipsResponse(getResult floatingips
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsLayer3Floatingips(request *GetNetworkingV2ExtensionsLayer3FloatingipsRequest)(*GetNetworkingV2ExtensionsLayer3FloatingipsResponse){
-    return NewGetNetworkingV2ExtensionsLayer3FloatingipsResponse(floatingips.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsLayer3Floatingips(req *GetNetworkingV2ExtensionsLayer3FloatingipsRequest)(*GetNetworkingV2ExtensionsLayer3FloatingipsResponse){
+    return NewGetNetworkingV2ExtensionsLayer3FloatingipsResponse(floatingips.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLayer3Floatingips
@@ -107,8 +107,8 @@ func NewUpdateNetworkingV2ExtensionsLayer3FloatingipsResponse(updateResult float
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLayer3Floatingips(request *UpdateNetworkingV2ExtensionsLayer3FloatingipsRequest)(*UpdateNetworkingV2ExtensionsLayer3FloatingipsResponse){
-    return NewUpdateNetworkingV2ExtensionsLayer3FloatingipsResponse(floatingips.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLayer3Floatingips(req *UpdateNetworkingV2ExtensionsLayer3FloatingipsRequest)(*UpdateNetworkingV2ExtensionsLayer3FloatingipsResponse){
+    return NewUpdateNetworkingV2ExtensionsLayer3FloatingipsResponse(floatingips.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLayer3Floatingips
@@ -132,7 +132,7 @@ func NewDeleteNetworkingV2ExtensionsLayer3FloatingipsResponse(deleteResult float
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLayer3Floatingips(request *DeleteNetworkingV2ExtensionsLayer3FloatingipsRequest)(*DeleteNetworkingV2ExtensionsLayer3FloatingipsResponse){
-    return NewDeleteNetworkingV2ExtensionsLayer3FloatingipsResponse(floatingips.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLayer3Floatingips(req *DeleteNetworkingV2ExtensionsLayer3FloatingipsRequest)(*DeleteNetworkingV2ExtensionsLayer3FloatingipsResponse){
+    return NewDeleteNetworkingV2ExtensionsLayer3FloatingipsResponse(floatingips.Delete(oc.client,req.Id, ))
 
 }

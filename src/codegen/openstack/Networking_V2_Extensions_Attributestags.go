@@ -32,8 +32,8 @@ func NewReplaceAllNetworkingV2ExtensionsAttributestagsResponse(replaceAllResult 
 }
 
 // action function
-func (oc *OpenstackClient) ReplaceAllNetworkingV2ExtensionsAttributestags(request *ReplaceAllNetworkingV2ExtensionsAttributestagsRequest)(*ReplaceAllNetworkingV2ExtensionsAttributestagsResponse){
-    return NewReplaceAllNetworkingV2ExtensionsAttributestagsResponse(attributestags.ReplaceAll(oc.client,request.ResourceType,request.ResourceID,request.Opts, ))
+func (oc *OpenstackClient) ReplaceAllNetworkingV2ExtensionsAttributestags(req *ReplaceAllNetworkingV2ExtensionsAttributestagsRequest)(*ReplaceAllNetworkingV2ExtensionsAttributestagsResponse){
+    return NewReplaceAllNetworkingV2ExtensionsAttributestagsResponse(attributestags.ReplaceAll(oc.client,req.ResourceType,req.ResourceID,req.Opts, ))
 
 }
 //request struct for the ListNetworkingV2ExtensionsAttributestags
@@ -58,8 +58,8 @@ func NewListNetworkingV2ExtensionsAttributestagsResponse(listResult attributesta
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsAttributestags(request *ListNetworkingV2ExtensionsAttributestagsRequest)(*ListNetworkingV2ExtensionsAttributestagsResponse){
-    return NewListNetworkingV2ExtensionsAttributestagsResponse(attributestags.List(oc.client,request.ResourceType,request.ResourceID, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsAttributestags(req *ListNetworkingV2ExtensionsAttributestagsRequest)(*ListNetworkingV2ExtensionsAttributestagsResponse){
+    return NewListNetworkingV2ExtensionsAttributestagsResponse(attributestags.List(oc.client,req.ResourceType,req.ResourceID, ))
 
 }
 //request struct for the DeleteAllNetworkingV2ExtensionsAttributestags
@@ -84,8 +84,8 @@ func NewDeleteAllNetworkingV2ExtensionsAttributestagsResponse(deleteResult attri
 }
 
 // action function
-func (oc *OpenstackClient) DeleteAllNetworkingV2ExtensionsAttributestags(request *DeleteAllNetworkingV2ExtensionsAttributestagsRequest)(*DeleteAllNetworkingV2ExtensionsAttributestagsResponse){
-    return NewDeleteAllNetworkingV2ExtensionsAttributestagsResponse(attributestags.DeleteAll(oc.client,request.ResourceType,request.ResourceID, ))
+func (oc *OpenstackClient) DeleteAllNetworkingV2ExtensionsAttributestags(req *DeleteAllNetworkingV2ExtensionsAttributestagsRequest)(*DeleteAllNetworkingV2ExtensionsAttributestagsResponse){
+    return NewDeleteAllNetworkingV2ExtensionsAttributestagsResponse(attributestags.DeleteAll(oc.client,req.ResourceType,req.ResourceID, ))
 
 }
 //request struct for the AddNetworkingV2ExtensionsAttributestags
@@ -111,8 +111,8 @@ func NewAddNetworkingV2ExtensionsAttributestagsResponse(addResult attributestags
 }
 
 // action function
-func (oc *OpenstackClient) AddNetworkingV2ExtensionsAttributestags(request *AddNetworkingV2ExtensionsAttributestagsRequest)(*AddNetworkingV2ExtensionsAttributestagsResponse){
-    return NewAddNetworkingV2ExtensionsAttributestagsResponse(attributestags.Add(oc.client,request.ResourceType,request.ResourceID,request.Tag, ))
+func (oc *OpenstackClient) AddNetworkingV2ExtensionsAttributestags(req *AddNetworkingV2ExtensionsAttributestagsRequest)(*AddNetworkingV2ExtensionsAttributestagsResponse){
+    return NewAddNetworkingV2ExtensionsAttributestagsResponse(attributestags.Add(oc.client,req.ResourceType,req.ResourceID,req.Tag, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsAttributestags
@@ -138,8 +138,8 @@ func NewDeleteNetworkingV2ExtensionsAttributestagsResponse(deleteResult attribut
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsAttributestags(request *DeleteNetworkingV2ExtensionsAttributestagsRequest)(*DeleteNetworkingV2ExtensionsAttributestagsResponse){
-    return NewDeleteNetworkingV2ExtensionsAttributestagsResponse(attributestags.Delete(oc.client,request.ResourceType,request.ResourceID,request.Tag, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsAttributestags(req *DeleteNetworkingV2ExtensionsAttributestagsRequest)(*DeleteNetworkingV2ExtensionsAttributestagsResponse){
+    return NewDeleteNetworkingV2ExtensionsAttributestagsResponse(attributestags.Delete(oc.client,req.ResourceType,req.ResourceID,req.Tag, ))
 
 }
 //request struct for the ConfirmNetworkingV2ExtensionsAttributestags
@@ -165,7 +165,7 @@ func NewConfirmNetworkingV2ExtensionsAttributestagsResponse(confirmResult attrib
 }
 
 // action function
-func (oc *OpenstackClient) ConfirmNetworkingV2ExtensionsAttributestags(request *ConfirmNetworkingV2ExtensionsAttributestagsRequest)(*ConfirmNetworkingV2ExtensionsAttributestagsResponse){
-    return NewConfirmNetworkingV2ExtensionsAttributestagsResponse(attributestags.Confirm(oc.client,request.ResourceType,request.ResourceID,request.Tag, ))
+func (oc *OpenstackClient) ConfirmNetworkingV2ExtensionsAttributestags(req *ConfirmNetworkingV2ExtensionsAttributestagsRequest)(*ConfirmNetworkingV2ExtensionsAttributestagsResponse){
+    return NewConfirmNetworkingV2ExtensionsAttributestagsResponse(attributestags.Confirm(oc.client,req.ResourceType,req.ResourceID,req.Tag, ))
 
 }

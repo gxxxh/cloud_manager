@@ -30,7 +30,7 @@ func NewListDbV1DatastoresResponse(pager pagination.Pager,)*ListDbV1DatastoresRe
 }
 
 // action function
-func (oc *OpenstackClient) ListDbV1Datastores(request *ListDbV1DatastoresRequest)(*ListDbV1DatastoresResponse){
+func (oc *OpenstackClient) ListDbV1Datastores(req *ListDbV1DatastoresRequest)(*ListDbV1DatastoresResponse){
     return NewListDbV1DatastoresResponse(datastores.List(oc.client, ))
 
 }
@@ -55,8 +55,8 @@ func NewGetDbV1DatastoresResponse(getResult datastores.GetResult,)*GetDbV1Datast
 }
 
 // action function
-func (oc *OpenstackClient) GetDbV1Datastores(request *GetDbV1DatastoresRequest)(*GetDbV1DatastoresResponse){
-    return NewGetDbV1DatastoresResponse(datastores.Get(oc.client,request.DatastoreID, ))
+func (oc *OpenstackClient) GetDbV1Datastores(req *GetDbV1DatastoresRequest)(*GetDbV1DatastoresResponse){
+    return NewGetDbV1DatastoresResponse(datastores.Get(oc.client,req.DatastoreID, ))
 
 }
 //request struct for the ListVersionsDbV1Datastores
@@ -80,8 +80,8 @@ func NewListVersionsDbV1DatastoresResponse(pager pagination.Pager,)*ListVersions
 }
 
 // action function
-func (oc *OpenstackClient) ListVersionsDbV1Datastores(request *ListVersionsDbV1DatastoresRequest)(*ListVersionsDbV1DatastoresResponse){
-    return NewListVersionsDbV1DatastoresResponse(datastores.ListVersions(oc.client,request.DatastoreID, ))
+func (oc *OpenstackClient) ListVersionsDbV1Datastores(req *ListVersionsDbV1DatastoresRequest)(*ListVersionsDbV1DatastoresResponse){
+    return NewListVersionsDbV1DatastoresResponse(datastores.ListVersions(oc.client,req.DatastoreID, ))
 
 }
 //request struct for the GetVersionDbV1Datastores
@@ -106,7 +106,7 @@ func NewGetVersionDbV1DatastoresResponse(getVersionResult datastores.GetVersionR
 }
 
 // action function
-func (oc *OpenstackClient) GetVersionDbV1Datastores(request *GetVersionDbV1DatastoresRequest)(*GetVersionDbV1DatastoresResponse){
-    return NewGetVersionDbV1DatastoresResponse(datastores.GetVersion(oc.client,request.DatastoreID,request.VersionID, ))
+func (oc *OpenstackClient) GetVersionDbV1Datastores(req *GetVersionDbV1DatastoresRequest)(*GetVersionDbV1DatastoresResponse){
+    return NewGetVersionDbV1DatastoresResponse(datastores.GetVersion(oc.client,req.DatastoreID,req.VersionID, ))
 
 }

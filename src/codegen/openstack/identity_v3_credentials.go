@@ -31,8 +31,8 @@ func NewListIdentityV3CredentialsResponse(pager pagination.Pager,)*ListIdentityV
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV3Credentials(request *ListIdentityV3CredentialsRequest)(*ListIdentityV3CredentialsResponse){
-    return NewListIdentityV3CredentialsResponse(credentials.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListIdentityV3Credentials(req *ListIdentityV3CredentialsRequest)(*ListIdentityV3CredentialsResponse){
+    return NewListIdentityV3CredentialsResponse(credentials.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Credentials
@@ -56,8 +56,8 @@ func NewGetIdentityV3CredentialsResponse(getResult credentials.GetResult,)*GetId
 }
 
 // action function
-func (oc *OpenstackClient) GetIdentityV3Credentials(request *GetIdentityV3CredentialsRequest)(*GetIdentityV3CredentialsResponse){
-    return NewGetIdentityV3CredentialsResponse(credentials.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetIdentityV3Credentials(req *GetIdentityV3CredentialsRequest)(*GetIdentityV3CredentialsResponse){
+    return NewGetIdentityV3CredentialsResponse(credentials.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateIdentityV3Credentials
@@ -81,8 +81,8 @@ func NewCreateIdentityV3CredentialsResponse(createResult credentials.CreateResul
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3Credentials(request *CreateIdentityV3CredentialsRequest)(*CreateIdentityV3CredentialsResponse){
-    return NewCreateIdentityV3CredentialsResponse(credentials.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV3Credentials(req *CreateIdentityV3CredentialsRequest)(*CreateIdentityV3CredentialsResponse){
+    return NewCreateIdentityV3CredentialsResponse(credentials.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Credentials
@@ -106,8 +106,8 @@ func NewDeleteIdentityV3CredentialsResponse(deleteResult credentials.DeleteResul
 }
 
 // action function
-func (oc *OpenstackClient) DeleteIdentityV3Credentials(request *DeleteIdentityV3CredentialsRequest)(*DeleteIdentityV3CredentialsResponse){
-    return NewDeleteIdentityV3CredentialsResponse(credentials.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteIdentityV3Credentials(req *DeleteIdentityV3CredentialsRequest)(*DeleteIdentityV3CredentialsResponse){
+    return NewDeleteIdentityV3CredentialsResponse(credentials.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateIdentityV3Credentials
@@ -132,7 +132,7 @@ func NewUpdateIdentityV3CredentialsResponse(updateResult credentials.UpdateResul
 }
 
 // action function
-func (oc *OpenstackClient) UpdateIdentityV3Credentials(request *UpdateIdentityV3CredentialsRequest)(*UpdateIdentityV3CredentialsResponse){
-    return NewUpdateIdentityV3CredentialsResponse(credentials.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateIdentityV3Credentials(req *UpdateIdentityV3CredentialsRequest)(*UpdateIdentityV3CredentialsResponse){
+    return NewUpdateIdentityV3CredentialsResponse(credentials.Update(oc.client,req.Id,req.Opts, ))
 
 }

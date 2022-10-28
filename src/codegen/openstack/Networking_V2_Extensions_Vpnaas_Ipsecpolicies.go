@@ -31,8 +31,8 @@ func NewCreateNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(createResult ips
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasIpsecpolicies(request *CreateNetworkingV2ExtensionsVpnaasIpsecpoliciesRequest)(*CreateNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse){
-    return NewCreateNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(ipsecpolicies.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasIpsecpolicies(req *CreateNetworkingV2ExtensionsVpnaasIpsecpoliciesRequest)(*CreateNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse){
+    return NewCreateNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(ipsecpolicies.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsVpnaasIpsecpolicies
@@ -56,8 +56,8 @@ func NewDeleteNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(deleteResult ips
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasIpsecpolicies(request *DeleteNetworkingV2ExtensionsVpnaasIpsecpoliciesRequest)(*DeleteNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse){
-    return NewDeleteNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(ipsecpolicies.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasIpsecpolicies(req *DeleteNetworkingV2ExtensionsVpnaasIpsecpoliciesRequest)(*DeleteNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse){
+    return NewDeleteNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(ipsecpolicies.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsVpnaasIpsecpolicies
@@ -81,8 +81,8 @@ func NewGetNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(getResult ipsecpoli
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasIpsecpolicies(request *GetNetworkingV2ExtensionsVpnaasIpsecpoliciesRequest)(*GetNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse){
-    return NewGetNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(ipsecpolicies.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasIpsecpolicies(req *GetNetworkingV2ExtensionsVpnaasIpsecpoliciesRequest)(*GetNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse){
+    return NewGetNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(ipsecpolicies.Get(oc.client,req.Id, ))
 
 }
 //request struct for the ListNetworkingV2ExtensionsVpnaasIpsecpolicies
@@ -106,8 +106,8 @@ func NewListNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(pager pagination.P
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasIpsecpolicies(request *ListNetworkingV2ExtensionsVpnaasIpsecpoliciesRequest)(*ListNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse){
-    return NewListNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(ipsecpolicies.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasIpsecpolicies(req *ListNetworkingV2ExtensionsVpnaasIpsecpoliciesRequest)(*ListNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse){
+    return NewListNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(ipsecpolicies.List(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsVpnaasIpsecpolicies
@@ -132,7 +132,7 @@ func NewUpdateNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(updateResult ips
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasIpsecpolicies(request *UpdateNetworkingV2ExtensionsVpnaasIpsecpoliciesRequest)(*UpdateNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse){
-    return NewUpdateNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(ipsecpolicies.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasIpsecpolicies(req *UpdateNetworkingV2ExtensionsVpnaasIpsecpoliciesRequest)(*UpdateNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse){
+    return NewUpdateNetworkingV2ExtensionsVpnaasIpsecpoliciesResponse(ipsecpolicies.Update(oc.client,req.Id,req.Opts, ))
 
 }

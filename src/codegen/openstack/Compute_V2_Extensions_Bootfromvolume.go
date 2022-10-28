@@ -31,7 +31,7 @@ func NewCreateComputeV2ExtensionsBootfromvolumeResponse(createResult servers.Cre
 }
 
 // action function
-func (oc *OpenstackClient) CreateComputeV2ExtensionsBootfromvolume(request *CreateComputeV2ExtensionsBootfromvolumeRequest)(*CreateComputeV2ExtensionsBootfromvolumeResponse){
-    return NewCreateComputeV2ExtensionsBootfromvolumeResponse(bootfromvolume.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateComputeV2ExtensionsBootfromvolume(req *CreateComputeV2ExtensionsBootfromvolumeRequest)(*CreateComputeV2ExtensionsBootfromvolumeResponse){
+    return NewCreateComputeV2ExtensionsBootfromvolumeResponse(bootfromvolume.Create(oc.client,req.Opts, ))
 
 }

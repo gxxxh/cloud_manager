@@ -31,8 +31,8 @@ func NewListBaremetalV1PortsResponse(pager pagination.Pager,)*ListBaremetalV1Por
 }
 
 // action function
-func (oc *OpenstackClient) ListBaremetalV1Ports(request *ListBaremetalV1PortsRequest)(*ListBaremetalV1PortsResponse){
-    return NewListBaremetalV1PortsResponse(ports.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListBaremetalV1Ports(req *ListBaremetalV1PortsRequest)(*ListBaremetalV1PortsResponse){
+    return NewListBaremetalV1PortsResponse(ports.List(oc.client,req.Opts, ))
 
 }
 //request struct for the ListDetailBaremetalV1Ports
@@ -56,8 +56,8 @@ func NewListDetailBaremetalV1PortsResponse(pager pagination.Pager,)*ListDetailBa
 }
 
 // action function
-func (oc *OpenstackClient) ListDetailBaremetalV1Ports(request *ListDetailBaremetalV1PortsRequest)(*ListDetailBaremetalV1PortsResponse){
-    return NewListDetailBaremetalV1PortsResponse(ports.ListDetail(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListDetailBaremetalV1Ports(req *ListDetailBaremetalV1PortsRequest)(*ListDetailBaremetalV1PortsResponse){
+    return NewListDetailBaremetalV1PortsResponse(ports.ListDetail(oc.client,req.Opts, ))
 
 }
 //request struct for the GetBaremetalV1Ports
@@ -81,8 +81,8 @@ func NewGetBaremetalV1PortsResponse(getResult ports.GetResult,)*GetBaremetalV1Po
 }
 
 // action function
-func (oc *OpenstackClient) GetBaremetalV1Ports(request *GetBaremetalV1PortsRequest)(*GetBaremetalV1PortsResponse){
-    return NewGetBaremetalV1PortsResponse(ports.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetBaremetalV1Ports(req *GetBaremetalV1PortsRequest)(*GetBaremetalV1PortsResponse){
+    return NewGetBaremetalV1PortsResponse(ports.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateBaremetalV1Ports
@@ -106,8 +106,8 @@ func NewCreateBaremetalV1PortsResponse(createResult ports.CreateResult,)*CreateB
 }
 
 // action function
-func (oc *OpenstackClient) CreateBaremetalV1Ports(request *CreateBaremetalV1PortsRequest)(*CreateBaremetalV1PortsResponse){
-    return NewCreateBaremetalV1PortsResponse(ports.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateBaremetalV1Ports(req *CreateBaremetalV1PortsRequest)(*CreateBaremetalV1PortsResponse){
+    return NewCreateBaremetalV1PortsResponse(ports.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateBaremetalV1Ports
@@ -132,8 +132,8 @@ func NewUpdateBaremetalV1PortsResponse(updateResult ports.UpdateResult,)*UpdateB
 }
 
 // action function
-func (oc *OpenstackClient) UpdateBaremetalV1Ports(request *UpdateBaremetalV1PortsRequest)(*UpdateBaremetalV1PortsResponse){
-    return NewUpdateBaremetalV1PortsResponse(ports.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateBaremetalV1Ports(req *UpdateBaremetalV1PortsRequest)(*UpdateBaremetalV1PortsResponse){
+    return NewUpdateBaremetalV1PortsResponse(ports.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteBaremetalV1Ports
@@ -157,7 +157,7 @@ func NewDeleteBaremetalV1PortsResponse(deleteResult ports.DeleteResult,)*DeleteB
 }
 
 // action function
-func (oc *OpenstackClient) DeleteBaremetalV1Ports(request *DeleteBaremetalV1PortsRequest)(*DeleteBaremetalV1PortsResponse){
-    return NewDeleteBaremetalV1PortsResponse(ports.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteBaremetalV1Ports(req *DeleteBaremetalV1PortsRequest)(*DeleteBaremetalV1PortsResponse){
+    return NewDeleteBaremetalV1PortsResponse(ports.Delete(oc.client,req.Id, ))
 
 }

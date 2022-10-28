@@ -32,8 +32,8 @@ func NewCreateIdentityV3ExtensionsOauth1Response(createResult tokens.CreateResul
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3ExtensionsOauth1(request *CreateIdentityV3ExtensionsOauth1Request)(*CreateIdentityV3ExtensionsOauth1Response){
-    return NewCreateIdentityV3ExtensionsOauth1Response(oauth1.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV3ExtensionsOauth1(req *CreateIdentityV3ExtensionsOauth1Request)(*CreateIdentityV3ExtensionsOauth1Response){
+    return NewCreateIdentityV3ExtensionsOauth1Response(oauth1.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateConsumerIdentityV3ExtensionsOauth1
@@ -57,8 +57,8 @@ func NewCreateConsumerIdentityV3ExtensionsOauth1Response(createConsumerResult oa
 }
 
 // action function
-func (oc *OpenstackClient) CreateConsumerIdentityV3ExtensionsOauth1(request *CreateConsumerIdentityV3ExtensionsOauth1Request)(*CreateConsumerIdentityV3ExtensionsOauth1Response){
-    return NewCreateConsumerIdentityV3ExtensionsOauth1Response(oauth1.CreateConsumer(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateConsumerIdentityV3ExtensionsOauth1(req *CreateConsumerIdentityV3ExtensionsOauth1Request)(*CreateConsumerIdentityV3ExtensionsOauth1Response){
+    return NewCreateConsumerIdentityV3ExtensionsOauth1Response(oauth1.CreateConsumer(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteConsumerIdentityV3ExtensionsOauth1
@@ -82,8 +82,8 @@ func NewDeleteConsumerIdentityV3ExtensionsOauth1Response(deleteConsumerResult oa
 }
 
 // action function
-func (oc *OpenstackClient) DeleteConsumerIdentityV3ExtensionsOauth1(request *DeleteConsumerIdentityV3ExtensionsOauth1Request)(*DeleteConsumerIdentityV3ExtensionsOauth1Response){
-    return NewDeleteConsumerIdentityV3ExtensionsOauth1Response(oauth1.DeleteConsumer(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteConsumerIdentityV3ExtensionsOauth1(req *DeleteConsumerIdentityV3ExtensionsOauth1Request)(*DeleteConsumerIdentityV3ExtensionsOauth1Response){
+    return NewDeleteConsumerIdentityV3ExtensionsOauth1Response(oauth1.DeleteConsumer(oc.client,req.Id, ))
 
 }
 //request struct for the ListConsumersIdentityV3ExtensionsOauth1
@@ -106,7 +106,7 @@ func NewListConsumersIdentityV3ExtensionsOauth1Response(pager pagination.Pager,)
 }
 
 // action function
-func (oc *OpenstackClient) ListConsumersIdentityV3ExtensionsOauth1(request *ListConsumersIdentityV3ExtensionsOauth1Request)(*ListConsumersIdentityV3ExtensionsOauth1Response){
+func (oc *OpenstackClient) ListConsumersIdentityV3ExtensionsOauth1(req *ListConsumersIdentityV3ExtensionsOauth1Request)(*ListConsumersIdentityV3ExtensionsOauth1Response){
     return NewListConsumersIdentityV3ExtensionsOauth1Response(oauth1.ListConsumers(oc.client, ))
 
 }
@@ -131,8 +131,8 @@ func NewGetConsumerIdentityV3ExtensionsOauth1Response(getConsumerResult oauth1.G
 }
 
 // action function
-func (oc *OpenstackClient) GetConsumerIdentityV3ExtensionsOauth1(request *GetConsumerIdentityV3ExtensionsOauth1Request)(*GetConsumerIdentityV3ExtensionsOauth1Response){
-    return NewGetConsumerIdentityV3ExtensionsOauth1Response(oauth1.GetConsumer(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetConsumerIdentityV3ExtensionsOauth1(req *GetConsumerIdentityV3ExtensionsOauth1Request)(*GetConsumerIdentityV3ExtensionsOauth1Response){
+    return NewGetConsumerIdentityV3ExtensionsOauth1Response(oauth1.GetConsumer(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateConsumerIdentityV3ExtensionsOauth1
@@ -157,8 +157,8 @@ func NewUpdateConsumerIdentityV3ExtensionsOauth1Response(updateConsumerResult oa
 }
 
 // action function
-func (oc *OpenstackClient) UpdateConsumerIdentityV3ExtensionsOauth1(request *UpdateConsumerIdentityV3ExtensionsOauth1Request)(*UpdateConsumerIdentityV3ExtensionsOauth1Response){
-    return NewUpdateConsumerIdentityV3ExtensionsOauth1Response(oauth1.UpdateConsumer(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateConsumerIdentityV3ExtensionsOauth1(req *UpdateConsumerIdentityV3ExtensionsOauth1Request)(*UpdateConsumerIdentityV3ExtensionsOauth1Response){
+    return NewUpdateConsumerIdentityV3ExtensionsOauth1Response(oauth1.UpdateConsumer(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the RequestTokenIdentityV3ExtensionsOauth1
@@ -182,8 +182,8 @@ func NewRequestTokenIdentityV3ExtensionsOauth1Response(tokenResult oauth1.TokenR
 }
 
 // action function
-func (oc *OpenstackClient) RequestTokenIdentityV3ExtensionsOauth1(request *RequestTokenIdentityV3ExtensionsOauth1Request)(*RequestTokenIdentityV3ExtensionsOauth1Response){
-    return NewRequestTokenIdentityV3ExtensionsOauth1Response(oauth1.RequestToken(oc.client,request.Opts, ))
+func (oc *OpenstackClient) RequestTokenIdentityV3ExtensionsOauth1(req *RequestTokenIdentityV3ExtensionsOauth1Request)(*RequestTokenIdentityV3ExtensionsOauth1Response){
+    return NewRequestTokenIdentityV3ExtensionsOauth1Response(oauth1.RequestToken(oc.client,req.Opts, ))
 
 }
 //request struct for the AuthorizeTokenIdentityV3ExtensionsOauth1
@@ -208,8 +208,8 @@ func NewAuthorizeTokenIdentityV3ExtensionsOauth1Response(authorizeTokenResult oa
 }
 
 // action function
-func (oc *OpenstackClient) AuthorizeTokenIdentityV3ExtensionsOauth1(request *AuthorizeTokenIdentityV3ExtensionsOauth1Request)(*AuthorizeTokenIdentityV3ExtensionsOauth1Response){
-    return NewAuthorizeTokenIdentityV3ExtensionsOauth1Response(oauth1.AuthorizeToken(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) AuthorizeTokenIdentityV3ExtensionsOauth1(req *AuthorizeTokenIdentityV3ExtensionsOauth1Request)(*AuthorizeTokenIdentityV3ExtensionsOauth1Response){
+    return NewAuthorizeTokenIdentityV3ExtensionsOauth1Response(oauth1.AuthorizeToken(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the CreateAccessTokenIdentityV3ExtensionsOauth1
@@ -233,8 +233,8 @@ func NewCreateAccessTokenIdentityV3ExtensionsOauth1Response(tokenResult oauth1.T
 }
 
 // action function
-func (oc *OpenstackClient) CreateAccessTokenIdentityV3ExtensionsOauth1(request *CreateAccessTokenIdentityV3ExtensionsOauth1Request)(*CreateAccessTokenIdentityV3ExtensionsOauth1Response){
-    return NewCreateAccessTokenIdentityV3ExtensionsOauth1Response(oauth1.CreateAccessToken(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateAccessTokenIdentityV3ExtensionsOauth1(req *CreateAccessTokenIdentityV3ExtensionsOauth1Request)(*CreateAccessTokenIdentityV3ExtensionsOauth1Response){
+    return NewCreateAccessTokenIdentityV3ExtensionsOauth1Response(oauth1.CreateAccessToken(oc.client,req.Opts, ))
 
 }
 //request struct for the GetAccessTokenIdentityV3ExtensionsOauth1
@@ -259,8 +259,8 @@ func NewGetAccessTokenIdentityV3ExtensionsOauth1Response(getAccessTokenResult oa
 }
 
 // action function
-func (oc *OpenstackClient) GetAccessTokenIdentityV3ExtensionsOauth1(request *GetAccessTokenIdentityV3ExtensionsOauth1Request)(*GetAccessTokenIdentityV3ExtensionsOauth1Response){
-    return NewGetAccessTokenIdentityV3ExtensionsOauth1Response(oauth1.GetAccessToken(oc.client,request.UserID,request.Id, ))
+func (oc *OpenstackClient) GetAccessTokenIdentityV3ExtensionsOauth1(req *GetAccessTokenIdentityV3ExtensionsOauth1Request)(*GetAccessTokenIdentityV3ExtensionsOauth1Response){
+    return NewGetAccessTokenIdentityV3ExtensionsOauth1Response(oauth1.GetAccessToken(oc.client,req.UserID,req.Id, ))
 
 }
 //request struct for the RevokeAccessTokenIdentityV3ExtensionsOauth1
@@ -285,8 +285,8 @@ func NewRevokeAccessTokenIdentityV3ExtensionsOauth1Response(revokeAccessTokenRes
 }
 
 // action function
-func (oc *OpenstackClient) RevokeAccessTokenIdentityV3ExtensionsOauth1(request *RevokeAccessTokenIdentityV3ExtensionsOauth1Request)(*RevokeAccessTokenIdentityV3ExtensionsOauth1Response){
-    return NewRevokeAccessTokenIdentityV3ExtensionsOauth1Response(oauth1.RevokeAccessToken(oc.client,request.UserID,request.Id, ))
+func (oc *OpenstackClient) RevokeAccessTokenIdentityV3ExtensionsOauth1(req *RevokeAccessTokenIdentityV3ExtensionsOauth1Request)(*RevokeAccessTokenIdentityV3ExtensionsOauth1Response){
+    return NewRevokeAccessTokenIdentityV3ExtensionsOauth1Response(oauth1.RevokeAccessToken(oc.client,req.UserID,req.Id, ))
 
 }
 //request struct for the ListAccessTokensIdentityV3ExtensionsOauth1
@@ -310,8 +310,8 @@ func NewListAccessTokensIdentityV3ExtensionsOauth1Response(pager pagination.Page
 }
 
 // action function
-func (oc *OpenstackClient) ListAccessTokensIdentityV3ExtensionsOauth1(request *ListAccessTokensIdentityV3ExtensionsOauth1Request)(*ListAccessTokensIdentityV3ExtensionsOauth1Response){
-    return NewListAccessTokensIdentityV3ExtensionsOauth1Response(oauth1.ListAccessTokens(oc.client,request.UserID, ))
+func (oc *OpenstackClient) ListAccessTokensIdentityV3ExtensionsOauth1(req *ListAccessTokensIdentityV3ExtensionsOauth1Request)(*ListAccessTokensIdentityV3ExtensionsOauth1Response){
+    return NewListAccessTokensIdentityV3ExtensionsOauth1Response(oauth1.ListAccessTokens(oc.client,req.UserID, ))
 
 }
 //request struct for the ListAccessTokenRolesIdentityV3ExtensionsOauth1
@@ -336,8 +336,8 @@ func NewListAccessTokenRolesIdentityV3ExtensionsOauth1Response(pager pagination.
 }
 
 // action function
-func (oc *OpenstackClient) ListAccessTokenRolesIdentityV3ExtensionsOauth1(request *ListAccessTokenRolesIdentityV3ExtensionsOauth1Request)(*ListAccessTokenRolesIdentityV3ExtensionsOauth1Response){
-    return NewListAccessTokenRolesIdentityV3ExtensionsOauth1Response(oauth1.ListAccessTokenRoles(oc.client,request.UserID,request.Id, ))
+func (oc *OpenstackClient) ListAccessTokenRolesIdentityV3ExtensionsOauth1(req *ListAccessTokenRolesIdentityV3ExtensionsOauth1Request)(*ListAccessTokenRolesIdentityV3ExtensionsOauth1Response){
+    return NewListAccessTokenRolesIdentityV3ExtensionsOauth1Response(oauth1.ListAccessTokenRoles(oc.client,req.UserID,req.Id, ))
 
 }
 //request struct for the GetAccessTokenRoleIdentityV3ExtensionsOauth1
@@ -363,7 +363,7 @@ func NewGetAccessTokenRoleIdentityV3ExtensionsOauth1Response(getAccessTokenRoleR
 }
 
 // action function
-func (oc *OpenstackClient) GetAccessTokenRoleIdentityV3ExtensionsOauth1(request *GetAccessTokenRoleIdentityV3ExtensionsOauth1Request)(*GetAccessTokenRoleIdentityV3ExtensionsOauth1Response){
-    return NewGetAccessTokenRoleIdentityV3ExtensionsOauth1Response(oauth1.GetAccessTokenRole(oc.client,request.UserID,request.Id,request.RoleID, ))
+func (oc *OpenstackClient) GetAccessTokenRoleIdentityV3ExtensionsOauth1(req *GetAccessTokenRoleIdentityV3ExtensionsOauth1Request)(*GetAccessTokenRoleIdentityV3ExtensionsOauth1Response){
+    return NewGetAccessTokenRoleIdentityV3ExtensionsOauth1Response(oauth1.GetAccessTokenRole(oc.client,req.UserID,req.Id,req.RoleID, ))
 
 }

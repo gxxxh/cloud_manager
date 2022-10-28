@@ -30,7 +30,7 @@ func NewListDbV1FlavorsResponse(pager pagination.Pager,)*ListDbV1FlavorsResponse
 }
 
 // action function
-func (oc *OpenstackClient) ListDbV1Flavors(request *ListDbV1FlavorsRequest)(*ListDbV1FlavorsResponse){
+func (oc *OpenstackClient) ListDbV1Flavors(req *ListDbV1FlavorsRequest)(*ListDbV1FlavorsResponse){
     return NewListDbV1FlavorsResponse(flavors.List(oc.client, ))
 
 }
@@ -55,7 +55,7 @@ func NewGetDbV1FlavorsResponse(getResult flavors.GetResult,)*GetDbV1FlavorsRespo
 }
 
 // action function
-func (oc *OpenstackClient) GetDbV1Flavors(request *GetDbV1FlavorsRequest)(*GetDbV1FlavorsResponse){
-    return NewGetDbV1FlavorsResponse(flavors.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetDbV1Flavors(req *GetDbV1FlavorsRequest)(*GetDbV1FlavorsResponse){
+    return NewGetDbV1FlavorsResponse(flavors.Get(oc.client,req.Id, ))
 
 }

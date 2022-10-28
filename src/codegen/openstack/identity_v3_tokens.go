@@ -30,8 +30,8 @@ func NewCreateIdentityV3TokensResponse(createResult tokens.CreateResult,)*Create
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3Tokens(request *CreateIdentityV3TokensRequest)(*CreateIdentityV3TokensResponse){
-    return NewCreateIdentityV3TokensResponse(tokens.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV3Tokens(req *CreateIdentityV3TokensRequest)(*CreateIdentityV3TokensResponse){
+    return NewCreateIdentityV3TokensResponse(tokens.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Tokens
@@ -55,8 +55,8 @@ func NewGetIdentityV3TokensResponse(getResult tokens.GetResult,)*GetIdentityV3To
 }
 
 // action function
-func (oc *OpenstackClient) GetIdentityV3Tokens(request *GetIdentityV3TokensRequest)(*GetIdentityV3TokensResponse){
-    return NewGetIdentityV3TokensResponse(tokens.Get(oc.client,request.Token, ))
+func (oc *OpenstackClient) GetIdentityV3Tokens(req *GetIdentityV3TokensRequest)(*GetIdentityV3TokensResponse){
+    return NewGetIdentityV3TokensResponse(tokens.Get(oc.client,req.Token, ))
 
 }
 //request struct for the ValidateIdentityV3Tokens
@@ -82,8 +82,8 @@ func NewValidateIdentityV3TokensResponse(bool bool,error error,)*ValidateIdentit
 }
 
 // action function
-func (oc *OpenstackClient) ValidateIdentityV3Tokens(request *ValidateIdentityV3TokensRequest)(*ValidateIdentityV3TokensResponse){
-    return NewValidateIdentityV3TokensResponse(tokens.Validate(oc.client,request.Token, ))
+func (oc *OpenstackClient) ValidateIdentityV3Tokens(req *ValidateIdentityV3TokensRequest)(*ValidateIdentityV3TokensResponse){
+    return NewValidateIdentityV3TokensResponse(tokens.Validate(oc.client,req.Token, ))
 
 }
 //request struct for the RevokeIdentityV3Tokens
@@ -107,7 +107,7 @@ func NewRevokeIdentityV3TokensResponse(revokeResult tokens.RevokeResult,)*Revoke
 }
 
 // action function
-func (oc *OpenstackClient) RevokeIdentityV3Tokens(request *RevokeIdentityV3TokensRequest)(*RevokeIdentityV3TokensResponse){
-    return NewRevokeIdentityV3TokensResponse(tokens.Revoke(oc.client,request.Token, ))
+func (oc *OpenstackClient) RevokeIdentityV3Tokens(req *RevokeIdentityV3TokensRequest)(*RevokeIdentityV3TokensResponse){
+    return NewRevokeIdentityV3TokensResponse(tokens.Revoke(oc.client,req.Token, ))
 
 }

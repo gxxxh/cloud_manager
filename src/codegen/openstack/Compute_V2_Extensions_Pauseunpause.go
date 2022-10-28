@@ -30,8 +30,8 @@ func NewPauseComputeV2ExtensionsPauseunpauseResponse(pauseResult pauseunpause.Pa
 }
 
 // action function
-func (oc *OpenstackClient) PauseComputeV2ExtensionsPauseunpause(request *PauseComputeV2ExtensionsPauseunpauseRequest)(*PauseComputeV2ExtensionsPauseunpauseResponse){
-    return NewPauseComputeV2ExtensionsPauseunpauseResponse(pauseunpause.Pause(oc.client,request.Id, ))
+func (oc *OpenstackClient) PauseComputeV2ExtensionsPauseunpause(req *PauseComputeV2ExtensionsPauseunpauseRequest)(*PauseComputeV2ExtensionsPauseunpauseResponse){
+    return NewPauseComputeV2ExtensionsPauseunpauseResponse(pauseunpause.Pause(oc.client,req.Id, ))
 
 }
 //request struct for the UnpauseComputeV2ExtensionsPauseunpause
@@ -55,7 +55,7 @@ func NewUnpauseComputeV2ExtensionsPauseunpauseResponse(unpauseResult pauseunpaus
 }
 
 // action function
-func (oc *OpenstackClient) UnpauseComputeV2ExtensionsPauseunpause(request *UnpauseComputeV2ExtensionsPauseunpauseRequest)(*UnpauseComputeV2ExtensionsPauseunpauseResponse){
-    return NewUnpauseComputeV2ExtensionsPauseunpauseResponse(pauseunpause.Unpause(oc.client,request.Id, ))
+func (oc *OpenstackClient) UnpauseComputeV2ExtensionsPauseunpause(req *UnpauseComputeV2ExtensionsPauseunpauseRequest)(*UnpauseComputeV2ExtensionsPauseunpauseResponse){
+    return NewUnpauseComputeV2ExtensionsPauseunpauseResponse(pauseunpause.Unpause(oc.client,req.Id, ))
 
 }

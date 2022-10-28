@@ -31,8 +31,8 @@ func NewListDetailComputeV2ImagesResponse(pager pagination.Pager,)*ListDetailCom
 }
 
 // action function
-func (oc *OpenstackClient) ListDetailComputeV2Images(request *ListDetailComputeV2ImagesRequest)(*ListDetailComputeV2ImagesResponse){
-    return NewListDetailComputeV2ImagesResponse(images.ListDetail(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListDetailComputeV2Images(req *ListDetailComputeV2ImagesRequest)(*ListDetailComputeV2ImagesResponse){
+    return NewListDetailComputeV2ImagesResponse(images.ListDetail(oc.client,req.Opts, ))
 
 }
 //request struct for the GetComputeV2Images
@@ -56,8 +56,8 @@ func NewGetComputeV2ImagesResponse(getResult images.GetResult,)*GetComputeV2Imag
 }
 
 // action function
-func (oc *OpenstackClient) GetComputeV2Images(request *GetComputeV2ImagesRequest)(*GetComputeV2ImagesResponse){
-    return NewGetComputeV2ImagesResponse(images.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetComputeV2Images(req *GetComputeV2ImagesRequest)(*GetComputeV2ImagesResponse){
+    return NewGetComputeV2ImagesResponse(images.Get(oc.client,req.Id, ))
 
 }
 //request struct for the DeleteComputeV2Images
@@ -81,7 +81,7 @@ func NewDeleteComputeV2ImagesResponse(deleteResult images.DeleteResult,)*DeleteC
 }
 
 // action function
-func (oc *OpenstackClient) DeleteComputeV2Images(request *DeleteComputeV2ImagesRequest)(*DeleteComputeV2ImagesResponse){
-    return NewDeleteComputeV2ImagesResponse(images.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteComputeV2Images(req *DeleteComputeV2ImagesRequest)(*DeleteComputeV2ImagesResponse){
+    return NewDeleteComputeV2ImagesResponse(images.Delete(oc.client,req.Id, ))
 
 }

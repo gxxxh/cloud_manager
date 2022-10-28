@@ -31,8 +31,8 @@ func NewListImageserviceV2ImagesResponse(pager pagination.Pager,)*ListImageservi
 }
 
 // action function
-func (oc *OpenstackClient) ListImageserviceV2Images(request *ListImageserviceV2ImagesRequest)(*ListImageserviceV2ImagesResponse){
-    return NewListImageserviceV2ImagesResponse(images.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListImageserviceV2Images(req *ListImageserviceV2ImagesRequest)(*ListImageserviceV2ImagesResponse){
+    return NewListImageserviceV2ImagesResponse(images.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateImageserviceV2Images
@@ -56,8 +56,8 @@ func NewCreateImageserviceV2ImagesResponse(createResult images.CreateResult,)*Cr
 }
 
 // action function
-func (oc *OpenstackClient) CreateImageserviceV2Images(request *CreateImageserviceV2ImagesRequest)(*CreateImageserviceV2ImagesResponse){
-    return NewCreateImageserviceV2ImagesResponse(images.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateImageserviceV2Images(req *CreateImageserviceV2ImagesRequest)(*CreateImageserviceV2ImagesResponse){
+    return NewCreateImageserviceV2ImagesResponse(images.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteImageserviceV2Images
@@ -81,8 +81,8 @@ func NewDeleteImageserviceV2ImagesResponse(deleteResult images.DeleteResult,)*De
 }
 
 // action function
-func (oc *OpenstackClient) DeleteImageserviceV2Images(request *DeleteImageserviceV2ImagesRequest)(*DeleteImageserviceV2ImagesResponse){
-    return NewDeleteImageserviceV2ImagesResponse(images.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteImageserviceV2Images(req *DeleteImageserviceV2ImagesRequest)(*DeleteImageserviceV2ImagesResponse){
+    return NewDeleteImageserviceV2ImagesResponse(images.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the GetImageserviceV2Images
@@ -106,8 +106,8 @@ func NewGetImageserviceV2ImagesResponse(getResult images.GetResult,)*GetImageser
 }
 
 // action function
-func (oc *OpenstackClient) GetImageserviceV2Images(request *GetImageserviceV2ImagesRequest)(*GetImageserviceV2ImagesResponse){
-    return NewGetImageserviceV2ImagesResponse(images.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetImageserviceV2Images(req *GetImageserviceV2ImagesRequest)(*GetImageserviceV2ImagesResponse){
+    return NewGetImageserviceV2ImagesResponse(images.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateImageserviceV2Images
@@ -132,7 +132,7 @@ func NewUpdateImageserviceV2ImagesResponse(updateResult images.UpdateResult,)*Up
 }
 
 // action function
-func (oc *OpenstackClient) UpdateImageserviceV2Images(request *UpdateImageserviceV2ImagesRequest)(*UpdateImageserviceV2ImagesResponse){
-    return NewUpdateImageserviceV2ImagesResponse(images.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateImageserviceV2Images(req *UpdateImageserviceV2ImagesRequest)(*UpdateImageserviceV2ImagesResponse){
+    return NewUpdateImageserviceV2ImagesResponse(images.Update(oc.client,req.Id,req.Opts, ))
 
 }

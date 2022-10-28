@@ -31,7 +31,7 @@ func NewListBlockstorageExtensionsServicesResponse(pager pagination.Pager,)*List
 }
 
 // action function
-func (oc *OpenstackClient) ListBlockstorageExtensionsServices(request *ListBlockstorageExtensionsServicesRequest)(*ListBlockstorageExtensionsServicesResponse){
-    return NewListBlockstorageExtensionsServicesResponse(services.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListBlockstorageExtensionsServices(req *ListBlockstorageExtensionsServicesRequest)(*ListBlockstorageExtensionsServicesResponse){
+    return NewListBlockstorageExtensionsServicesResponse(services.List(oc.client,req.Opts, ))
 
 }

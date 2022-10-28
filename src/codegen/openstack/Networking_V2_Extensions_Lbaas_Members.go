@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsLbaasMembersResponse(pager pagination.Pager,)*
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaasMembers(request *ListNetworkingV2ExtensionsLbaasMembersRequest)(*ListNetworkingV2ExtensionsLbaasMembersResponse){
-    return NewListNetworkingV2ExtensionsLbaasMembersResponse(members.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaasMembers(req *ListNetworkingV2ExtensionsLbaasMembersRequest)(*ListNetworkingV2ExtensionsLbaasMembersResponse){
+    return NewListNetworkingV2ExtensionsLbaasMembersResponse(members.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLbaasMembers
@@ -56,8 +56,8 @@ func NewCreateNetworkingV2ExtensionsLbaasMembersResponse(createResult members.Cr
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaasMembers(request *CreateNetworkingV2ExtensionsLbaasMembersRequest)(*CreateNetworkingV2ExtensionsLbaasMembersResponse){
-    return NewCreateNetworkingV2ExtensionsLbaasMembersResponse(members.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaasMembers(req *CreateNetworkingV2ExtensionsLbaasMembersRequest)(*CreateNetworkingV2ExtensionsLbaasMembersResponse){
+    return NewCreateNetworkingV2ExtensionsLbaasMembersResponse(members.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLbaasMembers
@@ -81,8 +81,8 @@ func NewGetNetworkingV2ExtensionsLbaasMembersResponse(getResult members.GetResul
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaasMembers(request *GetNetworkingV2ExtensionsLbaasMembersRequest)(*GetNetworkingV2ExtensionsLbaasMembersResponse){
-    return NewGetNetworkingV2ExtensionsLbaasMembersResponse(members.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaasMembers(req *GetNetworkingV2ExtensionsLbaasMembersRequest)(*GetNetworkingV2ExtensionsLbaasMembersResponse){
+    return NewGetNetworkingV2ExtensionsLbaasMembersResponse(members.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLbaasMembers
@@ -107,8 +107,8 @@ func NewUpdateNetworkingV2ExtensionsLbaasMembersResponse(updateResult members.Up
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaasMembers(request *UpdateNetworkingV2ExtensionsLbaasMembersRequest)(*UpdateNetworkingV2ExtensionsLbaasMembersResponse){
-    return NewUpdateNetworkingV2ExtensionsLbaasMembersResponse(members.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaasMembers(req *UpdateNetworkingV2ExtensionsLbaasMembersRequest)(*UpdateNetworkingV2ExtensionsLbaasMembersResponse){
+    return NewUpdateNetworkingV2ExtensionsLbaasMembersResponse(members.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLbaasMembers
@@ -132,7 +132,7 @@ func NewDeleteNetworkingV2ExtensionsLbaasMembersResponse(deleteResult members.De
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaasMembers(request *DeleteNetworkingV2ExtensionsLbaasMembersRequest)(*DeleteNetworkingV2ExtensionsLbaasMembersResponse){
-    return NewDeleteNetworkingV2ExtensionsLbaasMembersResponse(members.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaasMembers(req *DeleteNetworkingV2ExtensionsLbaasMembersRequest)(*DeleteNetworkingV2ExtensionsLbaasMembersResponse){
+    return NewDeleteNetworkingV2ExtensionsLbaasMembersResponse(members.Delete(oc.client,req.Id, ))
 
 }

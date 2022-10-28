@@ -31,8 +31,8 @@ func NewCreateWorkflowV2CrontriggersResponse(createResult crontriggers.CreateRes
 }
 
 // action function
-func (oc *OpenstackClient) CreateWorkflowV2Crontriggers(request *CreateWorkflowV2CrontriggersRequest)(*CreateWorkflowV2CrontriggersResponse){
-    return NewCreateWorkflowV2CrontriggersResponse(crontriggers.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateWorkflowV2Crontriggers(req *CreateWorkflowV2CrontriggersRequest)(*CreateWorkflowV2CrontriggersResponse){
+    return NewCreateWorkflowV2CrontriggersResponse(crontriggers.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteWorkflowV2Crontriggers
@@ -56,8 +56,8 @@ func NewDeleteWorkflowV2CrontriggersResponse(deleteResult crontriggers.DeleteRes
 }
 
 // action function
-func (oc *OpenstackClient) DeleteWorkflowV2Crontriggers(request *DeleteWorkflowV2CrontriggersRequest)(*DeleteWorkflowV2CrontriggersResponse){
-    return NewDeleteWorkflowV2CrontriggersResponse(crontriggers.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteWorkflowV2Crontriggers(req *DeleteWorkflowV2CrontriggersRequest)(*DeleteWorkflowV2CrontriggersResponse){
+    return NewDeleteWorkflowV2CrontriggersResponse(crontriggers.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the GetWorkflowV2Crontriggers
@@ -81,8 +81,8 @@ func NewGetWorkflowV2CrontriggersResponse(getResult crontriggers.GetResult,)*Get
 }
 
 // action function
-func (oc *OpenstackClient) GetWorkflowV2Crontriggers(request *GetWorkflowV2CrontriggersRequest)(*GetWorkflowV2CrontriggersResponse){
-    return NewGetWorkflowV2CrontriggersResponse(crontriggers.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetWorkflowV2Crontriggers(req *GetWorkflowV2CrontriggersRequest)(*GetWorkflowV2CrontriggersResponse){
+    return NewGetWorkflowV2CrontriggersResponse(crontriggers.Get(oc.client,req.Id, ))
 
 }
 //request struct for the ListWorkflowV2Crontriggers
@@ -106,7 +106,7 @@ func NewListWorkflowV2CrontriggersResponse(pager pagination.Pager,)*ListWorkflow
 }
 
 // action function
-func (oc *OpenstackClient) ListWorkflowV2Crontriggers(request *ListWorkflowV2CrontriggersRequest)(*ListWorkflowV2CrontriggersResponse){
-    return NewListWorkflowV2CrontriggersResponse(crontriggers.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListWorkflowV2Crontriggers(req *ListWorkflowV2CrontriggersRequest)(*ListWorkflowV2CrontriggersResponse){
+    return NewListWorkflowV2CrontriggersResponse(crontriggers.List(oc.client,req.Opts, ))
 
 }

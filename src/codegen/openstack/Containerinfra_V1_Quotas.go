@@ -30,7 +30,7 @@ func NewCreateContainerinfraV1QuotasResponse(createResult quotas.CreateResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) CreateContainerinfraV1Quotas(request *CreateContainerinfraV1QuotasRequest)(*CreateContainerinfraV1QuotasResponse){
-    return NewCreateContainerinfraV1QuotasResponse(quotas.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateContainerinfraV1Quotas(req *CreateContainerinfraV1QuotasRequest)(*CreateContainerinfraV1QuotasResponse){
+    return NewCreateContainerinfraV1QuotasResponse(quotas.Create(oc.client,req.Opts, ))
 
 }

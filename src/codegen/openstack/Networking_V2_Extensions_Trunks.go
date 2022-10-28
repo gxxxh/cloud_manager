@@ -31,8 +31,8 @@ func NewCreateNetworkingV2ExtensionsTrunksResponse(createResult trunks.CreateRes
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsTrunks(request *CreateNetworkingV2ExtensionsTrunksRequest)(*CreateNetworkingV2ExtensionsTrunksResponse){
-    return NewCreateNetworkingV2ExtensionsTrunksResponse(trunks.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsTrunks(req *CreateNetworkingV2ExtensionsTrunksRequest)(*CreateNetworkingV2ExtensionsTrunksResponse){
+    return NewCreateNetworkingV2ExtensionsTrunksResponse(trunks.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsTrunks
@@ -56,8 +56,8 @@ func NewDeleteNetworkingV2ExtensionsTrunksResponse(deleteResult trunks.DeleteRes
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsTrunks(request *DeleteNetworkingV2ExtensionsTrunksRequest)(*DeleteNetworkingV2ExtensionsTrunksResponse){
-    return NewDeleteNetworkingV2ExtensionsTrunksResponse(trunks.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsTrunks(req *DeleteNetworkingV2ExtensionsTrunksRequest)(*DeleteNetworkingV2ExtensionsTrunksResponse){
+    return NewDeleteNetworkingV2ExtensionsTrunksResponse(trunks.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the ListNetworkingV2ExtensionsTrunks
@@ -81,8 +81,8 @@ func NewListNetworkingV2ExtensionsTrunksResponse(pager pagination.Pager,)*ListNe
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsTrunks(request *ListNetworkingV2ExtensionsTrunksRequest)(*ListNetworkingV2ExtensionsTrunksResponse){
-    return NewListNetworkingV2ExtensionsTrunksResponse(trunks.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsTrunks(req *ListNetworkingV2ExtensionsTrunksRequest)(*ListNetworkingV2ExtensionsTrunksResponse){
+    return NewListNetworkingV2ExtensionsTrunksResponse(trunks.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsTrunks
@@ -106,8 +106,8 @@ func NewGetNetworkingV2ExtensionsTrunksResponse(getResult trunks.GetResult,)*Get
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsTrunks(request *GetNetworkingV2ExtensionsTrunksRequest)(*GetNetworkingV2ExtensionsTrunksResponse){
-    return NewGetNetworkingV2ExtensionsTrunksResponse(trunks.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsTrunks(req *GetNetworkingV2ExtensionsTrunksRequest)(*GetNetworkingV2ExtensionsTrunksResponse){
+    return NewGetNetworkingV2ExtensionsTrunksResponse(trunks.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsTrunks
@@ -132,8 +132,8 @@ func NewUpdateNetworkingV2ExtensionsTrunksResponse(updateResult trunks.UpdateRes
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsTrunks(request *UpdateNetworkingV2ExtensionsTrunksRequest)(*UpdateNetworkingV2ExtensionsTrunksResponse){
-    return NewUpdateNetworkingV2ExtensionsTrunksResponse(trunks.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsTrunks(req *UpdateNetworkingV2ExtensionsTrunksRequest)(*UpdateNetworkingV2ExtensionsTrunksResponse){
+    return NewUpdateNetworkingV2ExtensionsTrunksResponse(trunks.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the GetSubportsNetworkingV2ExtensionsTrunks
@@ -157,8 +157,8 @@ func NewGetSubportsNetworkingV2ExtensionsTrunksResponse(getSubportsResult trunks
 }
 
 // action function
-func (oc *OpenstackClient) GetSubportsNetworkingV2ExtensionsTrunks(request *GetSubportsNetworkingV2ExtensionsTrunksRequest)(*GetSubportsNetworkingV2ExtensionsTrunksResponse){
-    return NewGetSubportsNetworkingV2ExtensionsTrunksResponse(trunks.GetSubports(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetSubportsNetworkingV2ExtensionsTrunks(req *GetSubportsNetworkingV2ExtensionsTrunksRequest)(*GetSubportsNetworkingV2ExtensionsTrunksResponse){
+    return NewGetSubportsNetworkingV2ExtensionsTrunksResponse(trunks.GetSubports(oc.client,req.Id, ))
 
 }
 //request struct for the AddSubportsNetworkingV2ExtensionsTrunks
@@ -183,8 +183,8 @@ func NewAddSubportsNetworkingV2ExtensionsTrunksResponse(updateSubportsResult tru
 }
 
 // action function
-func (oc *OpenstackClient) AddSubportsNetworkingV2ExtensionsTrunks(request *AddSubportsNetworkingV2ExtensionsTrunksRequest)(*AddSubportsNetworkingV2ExtensionsTrunksResponse){
-    return NewAddSubportsNetworkingV2ExtensionsTrunksResponse(trunks.AddSubports(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) AddSubportsNetworkingV2ExtensionsTrunks(req *AddSubportsNetworkingV2ExtensionsTrunksRequest)(*AddSubportsNetworkingV2ExtensionsTrunksResponse){
+    return NewAddSubportsNetworkingV2ExtensionsTrunksResponse(trunks.AddSubports(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the RemoveSubportsNetworkingV2ExtensionsTrunks
@@ -209,7 +209,7 @@ func NewRemoveSubportsNetworkingV2ExtensionsTrunksResponse(updateSubportsResult 
 }
 
 // action function
-func (oc *OpenstackClient) RemoveSubportsNetworkingV2ExtensionsTrunks(request *RemoveSubportsNetworkingV2ExtensionsTrunksRequest)(*RemoveSubportsNetworkingV2ExtensionsTrunksResponse){
-    return NewRemoveSubportsNetworkingV2ExtensionsTrunksResponse(trunks.RemoveSubports(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) RemoveSubportsNetworkingV2ExtensionsTrunks(req *RemoveSubportsNetworkingV2ExtensionsTrunksRequest)(*RemoveSubportsNetworkingV2ExtensionsTrunksResponse){
+    return NewRemoveSubportsNetworkingV2ExtensionsTrunksResponse(trunks.RemoveSubports(oc.client,req.Id,req.Opts, ))
 
 }

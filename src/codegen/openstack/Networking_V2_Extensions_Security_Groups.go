@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsSecurityGroupsResponse(pager pagination.Pager,
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsSecurityGroups(request *ListNetworkingV2ExtensionsSecurityGroupsRequest)(*ListNetworkingV2ExtensionsSecurityGroupsResponse){
-    return NewListNetworkingV2ExtensionsSecurityGroupsResponse(groups.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsSecurityGroups(req *ListNetworkingV2ExtensionsSecurityGroupsRequest)(*ListNetworkingV2ExtensionsSecurityGroupsResponse){
+    return NewListNetworkingV2ExtensionsSecurityGroupsResponse(groups.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsSecurityGroups
@@ -56,8 +56,8 @@ func NewCreateNetworkingV2ExtensionsSecurityGroupsResponse(createResult groups.C
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsSecurityGroups(request *CreateNetworkingV2ExtensionsSecurityGroupsRequest)(*CreateNetworkingV2ExtensionsSecurityGroupsResponse){
-    return NewCreateNetworkingV2ExtensionsSecurityGroupsResponse(groups.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsSecurityGroups(req *CreateNetworkingV2ExtensionsSecurityGroupsRequest)(*CreateNetworkingV2ExtensionsSecurityGroupsResponse){
+    return NewCreateNetworkingV2ExtensionsSecurityGroupsResponse(groups.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsSecurityGroups
@@ -82,8 +82,8 @@ func NewUpdateNetworkingV2ExtensionsSecurityGroupsResponse(updateResult groups.U
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsSecurityGroups(request *UpdateNetworkingV2ExtensionsSecurityGroupsRequest)(*UpdateNetworkingV2ExtensionsSecurityGroupsResponse){
-    return NewUpdateNetworkingV2ExtensionsSecurityGroupsResponse(groups.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsSecurityGroups(req *UpdateNetworkingV2ExtensionsSecurityGroupsRequest)(*UpdateNetworkingV2ExtensionsSecurityGroupsResponse){
+    return NewUpdateNetworkingV2ExtensionsSecurityGroupsResponse(groups.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsSecurityGroups
@@ -107,8 +107,8 @@ func NewGetNetworkingV2ExtensionsSecurityGroupsResponse(getResult groups.GetResu
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsSecurityGroups(request *GetNetworkingV2ExtensionsSecurityGroupsRequest)(*GetNetworkingV2ExtensionsSecurityGroupsResponse){
-    return NewGetNetworkingV2ExtensionsSecurityGroupsResponse(groups.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsSecurityGroups(req *GetNetworkingV2ExtensionsSecurityGroupsRequest)(*GetNetworkingV2ExtensionsSecurityGroupsResponse){
+    return NewGetNetworkingV2ExtensionsSecurityGroupsResponse(groups.Get(oc.client,req.Id, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsSecurityGroups
@@ -132,7 +132,7 @@ func NewDeleteNetworkingV2ExtensionsSecurityGroupsResponse(deleteResult groups.D
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsSecurityGroups(request *DeleteNetworkingV2ExtensionsSecurityGroupsRequest)(*DeleteNetworkingV2ExtensionsSecurityGroupsResponse){
-    return NewDeleteNetworkingV2ExtensionsSecurityGroupsResponse(groups.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsSecurityGroups(req *DeleteNetworkingV2ExtensionsSecurityGroupsRequest)(*DeleteNetworkingV2ExtensionsSecurityGroupsResponse){
+    return NewDeleteNetworkingV2ExtensionsSecurityGroupsResponse(groups.Delete(oc.client,req.Id, ))
 
 }

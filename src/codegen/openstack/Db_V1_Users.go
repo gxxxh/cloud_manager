@@ -32,8 +32,8 @@ func NewCreateDbV1UsersResponse(createResult users.CreateResult,)*CreateDbV1User
 }
 
 // action function
-func (oc *OpenstackClient) CreateDbV1Users(request *CreateDbV1UsersRequest)(*CreateDbV1UsersResponse){
-    return NewCreateDbV1UsersResponse(users.Create(oc.client,request.InstanceID,request.Opts, ))
+func (oc *OpenstackClient) CreateDbV1Users(req *CreateDbV1UsersRequest)(*CreateDbV1UsersResponse){
+    return NewCreateDbV1UsersResponse(users.Create(oc.client,req.InstanceID,req.Opts, ))
 
 }
 //request struct for the ListDbV1Users
@@ -57,8 +57,8 @@ func NewListDbV1UsersResponse(pager pagination.Pager,)*ListDbV1UsersResponse {
 }
 
 // action function
-func (oc *OpenstackClient) ListDbV1Users(request *ListDbV1UsersRequest)(*ListDbV1UsersResponse){
-    return NewListDbV1UsersResponse(users.List(oc.client,request.InstanceID, ))
+func (oc *OpenstackClient) ListDbV1Users(req *ListDbV1UsersRequest)(*ListDbV1UsersResponse){
+    return NewListDbV1UsersResponse(users.List(oc.client,req.InstanceID, ))
 
 }
 //request struct for the DeleteDbV1Users
@@ -83,7 +83,7 @@ func NewDeleteDbV1UsersResponse(deleteResult users.DeleteResult,)*DeleteDbV1User
 }
 
 // action function
-func (oc *OpenstackClient) DeleteDbV1Users(request *DeleteDbV1UsersRequest)(*DeleteDbV1UsersResponse){
-    return NewDeleteDbV1UsersResponse(users.Delete(oc.client,request.InstanceID,request.UserName, ))
+func (oc *OpenstackClient) DeleteDbV1Users(req *DeleteDbV1UsersRequest)(*DeleteDbV1UsersResponse){
+    return NewDeleteDbV1UsersResponse(users.Delete(oc.client,req.InstanceID,req.UserName, ))
 
 }

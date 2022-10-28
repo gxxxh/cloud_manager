@@ -32,8 +32,8 @@ func NewCreateIdentityV3ExtensionsProjectendpointsResponse(createResult projecte
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3ExtensionsProjectendpoints(request *CreateIdentityV3ExtensionsProjectendpointsRequest)(*CreateIdentityV3ExtensionsProjectendpointsResponse){
-    return NewCreateIdentityV3ExtensionsProjectendpointsResponse(projectendpoints.Create(oc.client,request.ProjectID,request.EndpointID, ))
+func (oc *OpenstackClient) CreateIdentityV3ExtensionsProjectendpoints(req *CreateIdentityV3ExtensionsProjectendpointsRequest)(*CreateIdentityV3ExtensionsProjectendpointsResponse){
+    return NewCreateIdentityV3ExtensionsProjectendpointsResponse(projectendpoints.Create(oc.client,req.ProjectID,req.EndpointID, ))
 
 }
 //request struct for the ListIdentityV3ExtensionsProjectendpoints
@@ -57,8 +57,8 @@ func NewListIdentityV3ExtensionsProjectendpointsResponse(pager pagination.Pager,
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV3ExtensionsProjectendpoints(request *ListIdentityV3ExtensionsProjectendpointsRequest)(*ListIdentityV3ExtensionsProjectendpointsResponse){
-    return NewListIdentityV3ExtensionsProjectendpointsResponse(projectendpoints.List(oc.client,request.ProjectID, ))
+func (oc *OpenstackClient) ListIdentityV3ExtensionsProjectendpoints(req *ListIdentityV3ExtensionsProjectendpointsRequest)(*ListIdentityV3ExtensionsProjectendpointsResponse){
+    return NewListIdentityV3ExtensionsProjectendpointsResponse(projectendpoints.List(oc.client,req.ProjectID, ))
 
 }
 //request struct for the DeleteIdentityV3ExtensionsProjectendpoints
@@ -83,7 +83,7 @@ func NewDeleteIdentityV3ExtensionsProjectendpointsResponse(deleteResult projecte
 }
 
 // action function
-func (oc *OpenstackClient) DeleteIdentityV3ExtensionsProjectendpoints(request *DeleteIdentityV3ExtensionsProjectendpointsRequest)(*DeleteIdentityV3ExtensionsProjectendpointsResponse){
-    return NewDeleteIdentityV3ExtensionsProjectendpointsResponse(projectendpoints.Delete(oc.client,request.ProjectID,request.EndpointID, ))
+func (oc *OpenstackClient) DeleteIdentityV3ExtensionsProjectendpoints(req *DeleteIdentityV3ExtensionsProjectendpointsRequest)(*DeleteIdentityV3ExtensionsProjectendpointsResponse){
+    return NewDeleteIdentityV3ExtensionsProjectendpointsResponse(projectendpoints.Delete(oc.client,req.ProjectID,req.EndpointID, ))
 
 }

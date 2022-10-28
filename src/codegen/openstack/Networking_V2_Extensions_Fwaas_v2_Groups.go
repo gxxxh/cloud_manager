@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsFwaas_v2GroupsResponse(pager pagination.Pager,
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsFwaas_v2Groups(request *ListNetworkingV2ExtensionsFwaas_v2GroupsRequest)(*ListNetworkingV2ExtensionsFwaas_v2GroupsResponse){
-    return NewListNetworkingV2ExtensionsFwaas_v2GroupsResponse(groups.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsFwaas_v2Groups(req *ListNetworkingV2ExtensionsFwaas_v2GroupsRequest)(*ListNetworkingV2ExtensionsFwaas_v2GroupsResponse){
+    return NewListNetworkingV2ExtensionsFwaas_v2GroupsResponse(groups.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsFwaas_v2Groups
@@ -56,8 +56,8 @@ func NewGetNetworkingV2ExtensionsFwaas_v2GroupsResponse(getResult groups.GetResu
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsFwaas_v2Groups(request *GetNetworkingV2ExtensionsFwaas_v2GroupsRequest)(*GetNetworkingV2ExtensionsFwaas_v2GroupsResponse){
-    return NewGetNetworkingV2ExtensionsFwaas_v2GroupsResponse(groups.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsFwaas_v2Groups(req *GetNetworkingV2ExtensionsFwaas_v2GroupsRequest)(*GetNetworkingV2ExtensionsFwaas_v2GroupsResponse){
+    return NewGetNetworkingV2ExtensionsFwaas_v2GroupsResponse(groups.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsFwaas_v2Groups
@@ -81,8 +81,8 @@ func NewCreateNetworkingV2ExtensionsFwaas_v2GroupsResponse(createResult groups.C
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsFwaas_v2Groups(request *CreateNetworkingV2ExtensionsFwaas_v2GroupsRequest)(*CreateNetworkingV2ExtensionsFwaas_v2GroupsResponse){
-    return NewCreateNetworkingV2ExtensionsFwaas_v2GroupsResponse(groups.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsFwaas_v2Groups(req *CreateNetworkingV2ExtensionsFwaas_v2GroupsRequest)(*CreateNetworkingV2ExtensionsFwaas_v2GroupsResponse){
+    return NewCreateNetworkingV2ExtensionsFwaas_v2GroupsResponse(groups.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsFwaas_v2Groups
@@ -107,8 +107,8 @@ func NewUpdateNetworkingV2ExtensionsFwaas_v2GroupsResponse(updateResult groups.U
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsFwaas_v2Groups(request *UpdateNetworkingV2ExtensionsFwaas_v2GroupsRequest)(*UpdateNetworkingV2ExtensionsFwaas_v2GroupsResponse){
-    return NewUpdateNetworkingV2ExtensionsFwaas_v2GroupsResponse(groups.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsFwaas_v2Groups(req *UpdateNetworkingV2ExtensionsFwaas_v2GroupsRequest)(*UpdateNetworkingV2ExtensionsFwaas_v2GroupsResponse){
+    return NewUpdateNetworkingV2ExtensionsFwaas_v2GroupsResponse(groups.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsFwaas_v2Groups
@@ -132,7 +132,7 @@ func NewDeleteNetworkingV2ExtensionsFwaas_v2GroupsResponse(deleteResult groups.D
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsFwaas_v2Groups(request *DeleteNetworkingV2ExtensionsFwaas_v2GroupsRequest)(*DeleteNetworkingV2ExtensionsFwaas_v2GroupsResponse){
-    return NewDeleteNetworkingV2ExtensionsFwaas_v2GroupsResponse(groups.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsFwaas_v2Groups(req *DeleteNetworkingV2ExtensionsFwaas_v2GroupsRequest)(*DeleteNetworkingV2ExtensionsFwaas_v2GroupsResponse){
+    return NewDeleteNetworkingV2ExtensionsFwaas_v2GroupsResponse(groups.Delete(oc.client,req.Id, ))
 
 }

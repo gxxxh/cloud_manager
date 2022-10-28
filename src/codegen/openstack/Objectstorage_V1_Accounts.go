@@ -30,8 +30,8 @@ func NewGetObjectstorageV1AccountsResponse(getResult accounts.GetResult,)*GetObj
 }
 
 // action function
-func (oc *OpenstackClient) GetObjectstorageV1Accounts(request *GetObjectstorageV1AccountsRequest)(*GetObjectstorageV1AccountsResponse){
-    return NewGetObjectstorageV1AccountsResponse(accounts.Get(oc.client,request.Opts, ))
+func (oc *OpenstackClient) GetObjectstorageV1Accounts(req *GetObjectstorageV1AccountsRequest)(*GetObjectstorageV1AccountsResponse){
+    return NewGetObjectstorageV1AccountsResponse(accounts.Get(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateObjectstorageV1Accounts
@@ -55,7 +55,7 @@ func NewUpdateObjectstorageV1AccountsResponse(updateResult accounts.UpdateResult
 }
 
 // action function
-func (oc *OpenstackClient) UpdateObjectstorageV1Accounts(request *UpdateObjectstorageV1AccountsRequest)(*UpdateObjectstorageV1AccountsResponse){
-    return NewUpdateObjectstorageV1AccountsResponse(accounts.Update(oc.client,request.Opts, ))
+func (oc *OpenstackClient) UpdateObjectstorageV1Accounts(req *UpdateObjectstorageV1AccountsRequest)(*UpdateObjectstorageV1AccountsResponse){
+    return NewUpdateObjectstorageV1AccountsResponse(accounts.Update(oc.client,req.Opts, ))
 
 }

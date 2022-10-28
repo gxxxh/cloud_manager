@@ -31,8 +31,8 @@ func NewCreateNetworkingV2ExtensionsVpnaasIkepoliciesResponse(createResult ikepo
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasIkepolicies(request *CreateNetworkingV2ExtensionsVpnaasIkepoliciesRequest)(*CreateNetworkingV2ExtensionsVpnaasIkepoliciesResponse){
-    return NewCreateNetworkingV2ExtensionsVpnaasIkepoliciesResponse(ikepolicies.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasIkepolicies(req *CreateNetworkingV2ExtensionsVpnaasIkepoliciesRequest)(*CreateNetworkingV2ExtensionsVpnaasIkepoliciesResponse){
+    return NewCreateNetworkingV2ExtensionsVpnaasIkepoliciesResponse(ikepolicies.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsVpnaasIkepolicies
@@ -56,8 +56,8 @@ func NewGetNetworkingV2ExtensionsVpnaasIkepoliciesResponse(getResult ikepolicies
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasIkepolicies(request *GetNetworkingV2ExtensionsVpnaasIkepoliciesRequest)(*GetNetworkingV2ExtensionsVpnaasIkepoliciesResponse){
-    return NewGetNetworkingV2ExtensionsVpnaasIkepoliciesResponse(ikepolicies.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasIkepolicies(req *GetNetworkingV2ExtensionsVpnaasIkepoliciesRequest)(*GetNetworkingV2ExtensionsVpnaasIkepoliciesResponse){
+    return NewGetNetworkingV2ExtensionsVpnaasIkepoliciesResponse(ikepolicies.Get(oc.client,req.Id, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsVpnaasIkepolicies
@@ -81,8 +81,8 @@ func NewDeleteNetworkingV2ExtensionsVpnaasIkepoliciesResponse(deleteResult ikepo
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasIkepolicies(request *DeleteNetworkingV2ExtensionsVpnaasIkepoliciesRequest)(*DeleteNetworkingV2ExtensionsVpnaasIkepoliciesResponse){
-    return NewDeleteNetworkingV2ExtensionsVpnaasIkepoliciesResponse(ikepolicies.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasIkepolicies(req *DeleteNetworkingV2ExtensionsVpnaasIkepoliciesRequest)(*DeleteNetworkingV2ExtensionsVpnaasIkepoliciesResponse){
+    return NewDeleteNetworkingV2ExtensionsVpnaasIkepoliciesResponse(ikepolicies.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the ListNetworkingV2ExtensionsVpnaasIkepolicies
@@ -106,8 +106,8 @@ func NewListNetworkingV2ExtensionsVpnaasIkepoliciesResponse(pager pagination.Pag
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasIkepolicies(request *ListNetworkingV2ExtensionsVpnaasIkepoliciesRequest)(*ListNetworkingV2ExtensionsVpnaasIkepoliciesResponse){
-    return NewListNetworkingV2ExtensionsVpnaasIkepoliciesResponse(ikepolicies.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasIkepolicies(req *ListNetworkingV2ExtensionsVpnaasIkepoliciesRequest)(*ListNetworkingV2ExtensionsVpnaasIkepoliciesResponse){
+    return NewListNetworkingV2ExtensionsVpnaasIkepoliciesResponse(ikepolicies.List(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsVpnaasIkepolicies
@@ -132,7 +132,7 @@ func NewUpdateNetworkingV2ExtensionsVpnaasIkepoliciesResponse(updateResult ikepo
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasIkepolicies(request *UpdateNetworkingV2ExtensionsVpnaasIkepoliciesRequest)(*UpdateNetworkingV2ExtensionsVpnaasIkepoliciesResponse){
-    return NewUpdateNetworkingV2ExtensionsVpnaasIkepoliciesResponse(ikepolicies.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasIkepolicies(req *UpdateNetworkingV2ExtensionsVpnaasIkepoliciesRequest)(*UpdateNetworkingV2ExtensionsVpnaasIkepoliciesResponse){
+    return NewUpdateNetworkingV2ExtensionsVpnaasIkepoliciesResponse(ikepolicies.Update(oc.client,req.Id,req.Opts, ))
 
 }

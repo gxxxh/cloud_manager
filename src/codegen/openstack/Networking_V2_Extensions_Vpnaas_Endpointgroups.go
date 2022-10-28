@@ -31,8 +31,8 @@ func NewCreateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(createResult en
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasEndpointgroups(request *CreateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*CreateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
-    return NewCreateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasEndpointgroups(req *CreateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*CreateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
+    return NewCreateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsVpnaasEndpointgroups
@@ -56,8 +56,8 @@ func NewGetNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(getResult endpoint
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasEndpointgroups(request *GetNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*GetNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
-    return NewGetNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasEndpointgroups(req *GetNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*GetNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
+    return NewGetNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Get(oc.client,req.Id, ))
 
 }
 //request struct for the ListNetworkingV2ExtensionsVpnaasEndpointgroups
@@ -81,8 +81,8 @@ func NewListNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(pager pagination.
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasEndpointgroups(request *ListNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*ListNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
-    return NewListNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasEndpointgroups(req *ListNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*ListNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
+    return NewListNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.List(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsVpnaasEndpointgroups
@@ -106,8 +106,8 @@ func NewDeleteNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(deleteResult en
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasEndpointgroups(request *DeleteNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*DeleteNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
-    return NewDeleteNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasEndpointgroups(req *DeleteNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*DeleteNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
+    return NewDeleteNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsVpnaasEndpointgroups
@@ -132,7 +132,7 @@ func NewUpdateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(updateResult en
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasEndpointgroups(request *UpdateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*UpdateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
-    return NewUpdateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasEndpointgroups(req *UpdateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*UpdateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
+    return NewUpdateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Update(oc.client,req.Id,req.Opts, ))
 
 }

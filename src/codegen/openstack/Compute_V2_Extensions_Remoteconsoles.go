@@ -31,7 +31,7 @@ func NewCreateComputeV2ExtensionsRemoteconsolesResponse(createResult remoteconso
 }
 
 // action function
-func (oc *OpenstackClient) CreateComputeV2ExtensionsRemoteconsoles(request *CreateComputeV2ExtensionsRemoteconsolesRequest)(*CreateComputeV2ExtensionsRemoteconsolesResponse){
-    return NewCreateComputeV2ExtensionsRemoteconsolesResponse(remoteconsoles.Create(oc.client,request.ServerID,request.Opts, ))
+func (oc *OpenstackClient) CreateComputeV2ExtensionsRemoteconsoles(req *CreateComputeV2ExtensionsRemoteconsolesRequest)(*CreateComputeV2ExtensionsRemoteconsolesResponse){
+    return NewCreateComputeV2ExtensionsRemoteconsolesResponse(remoteconsoles.Create(oc.client,req.ServerID,req.Opts, ))
 
 }

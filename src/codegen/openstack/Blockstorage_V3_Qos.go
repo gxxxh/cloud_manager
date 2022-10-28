@@ -31,8 +31,8 @@ func NewCreateBlockstorageV3QosResponse(createResult qos.CreateResult,)*CreateBl
 }
 
 // action function
-func (oc *OpenstackClient) CreateBlockstorageV3Qos(request *CreateBlockstorageV3QosRequest)(*CreateBlockstorageV3QosResponse){
-    return NewCreateBlockstorageV3QosResponse(qos.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateBlockstorageV3Qos(req *CreateBlockstorageV3QosRequest)(*CreateBlockstorageV3QosResponse){
+    return NewCreateBlockstorageV3QosResponse(qos.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageV3Qos
@@ -57,8 +57,8 @@ func NewDeleteBlockstorageV3QosResponse(deleteResult qos.DeleteResult,)*DeleteBl
 }
 
 // action function
-func (oc *OpenstackClient) DeleteBlockstorageV3Qos(request *DeleteBlockstorageV3QosRequest)(*DeleteBlockstorageV3QosResponse){
-    return NewDeleteBlockstorageV3QosResponse(qos.Delete(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) DeleteBlockstorageV3Qos(req *DeleteBlockstorageV3QosRequest)(*DeleteBlockstorageV3QosResponse){
+    return NewDeleteBlockstorageV3QosResponse(qos.Delete(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the ListBlockstorageV3Qos
@@ -82,8 +82,8 @@ func NewListBlockstorageV3QosResponse(pager pagination.Pager,)*ListBlockstorageV
 }
 
 // action function
-func (oc *OpenstackClient) ListBlockstorageV3Qos(request *ListBlockstorageV3QosRequest)(*ListBlockstorageV3QosResponse){
-    return NewListBlockstorageV3QosResponse(qos.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListBlockstorageV3Qos(req *ListBlockstorageV3QosRequest)(*ListBlockstorageV3QosResponse){
+    return NewListBlockstorageV3QosResponse(qos.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetBlockstorageV3Qos
@@ -107,8 +107,8 @@ func NewGetBlockstorageV3QosResponse(getResult qos.GetResult,)*GetBlockstorageV3
 }
 
 // action function
-func (oc *OpenstackClient) GetBlockstorageV3Qos(request *GetBlockstorageV3QosRequest)(*GetBlockstorageV3QosResponse){
-    return NewGetBlockstorageV3QosResponse(qos.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetBlockstorageV3Qos(req *GetBlockstorageV3QosRequest)(*GetBlockstorageV3QosResponse){
+    return NewGetBlockstorageV3QosResponse(qos.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateBlockstorageV3Qos
@@ -133,8 +133,8 @@ func NewUpdateBlockstorageV3QosResponse(updateResult qos.updateResult,)*UpdateBl
 }
 
 // action function
-func (oc *OpenstackClient) UpdateBlockstorageV3Qos(request *UpdateBlockstorageV3QosRequest)(*UpdateBlockstorageV3QosResponse){
-    return NewUpdateBlockstorageV3QosResponse(qos.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateBlockstorageV3Qos(req *UpdateBlockstorageV3QosRequest)(*UpdateBlockstorageV3QosResponse){
+    return NewUpdateBlockstorageV3QosResponse(qos.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteKeysBlockstorageV3Qos
@@ -159,8 +159,8 @@ func NewDeleteKeysBlockstorageV3QosResponse(deleteResult qos.DeleteResult,)*Dele
 }
 
 // action function
-func (oc *OpenstackClient) DeleteKeysBlockstorageV3Qos(request *DeleteKeysBlockstorageV3QosRequest)(*DeleteKeysBlockstorageV3QosResponse){
-    return NewDeleteKeysBlockstorageV3QosResponse(qos.DeleteKeys(oc.client,request.QosID,request.Opts, ))
+func (oc *OpenstackClient) DeleteKeysBlockstorageV3Qos(req *DeleteKeysBlockstorageV3QosRequest)(*DeleteKeysBlockstorageV3QosResponse){
+    return NewDeleteKeysBlockstorageV3QosResponse(qos.DeleteKeys(oc.client,req.QosID,req.Opts, ))
 
 }
 //request struct for the AssociateBlockstorageV3Qos
@@ -185,8 +185,8 @@ func NewAssociateBlockstorageV3QosResponse(associateResult qos.AssociateResult,)
 }
 
 // action function
-func (oc *OpenstackClient) AssociateBlockstorageV3Qos(request *AssociateBlockstorageV3QosRequest)(*AssociateBlockstorageV3QosResponse){
-    return NewAssociateBlockstorageV3QosResponse(qos.Associate(oc.client,request.QosID,request.Opts, ))
+func (oc *OpenstackClient) AssociateBlockstorageV3Qos(req *AssociateBlockstorageV3QosRequest)(*AssociateBlockstorageV3QosResponse){
+    return NewAssociateBlockstorageV3QosResponse(qos.Associate(oc.client,req.QosID,req.Opts, ))
 
 }
 //request struct for the DisassociateBlockstorageV3Qos
@@ -211,8 +211,8 @@ func NewDisassociateBlockstorageV3QosResponse(disassociateResult qos.Disassociat
 }
 
 // action function
-func (oc *OpenstackClient) DisassociateBlockstorageV3Qos(request *DisassociateBlockstorageV3QosRequest)(*DisassociateBlockstorageV3QosResponse){
-    return NewDisassociateBlockstorageV3QosResponse(qos.Disassociate(oc.client,request.QosID,request.Opts, ))
+func (oc *OpenstackClient) DisassociateBlockstorageV3Qos(req *DisassociateBlockstorageV3QosRequest)(*DisassociateBlockstorageV3QosResponse){
+    return NewDisassociateBlockstorageV3QosResponse(qos.Disassociate(oc.client,req.QosID,req.Opts, ))
 
 }
 //request struct for the DisassociateAllBlockstorageV3Qos
@@ -236,8 +236,8 @@ func NewDisassociateAllBlockstorageV3QosResponse(disassociateAllResult qos.Disas
 }
 
 // action function
-func (oc *OpenstackClient) DisassociateAllBlockstorageV3Qos(request *DisassociateAllBlockstorageV3QosRequest)(*DisassociateAllBlockstorageV3QosResponse){
-    return NewDisassociateAllBlockstorageV3QosResponse(qos.DisassociateAll(oc.client,request.QosID, ))
+func (oc *OpenstackClient) DisassociateAllBlockstorageV3Qos(req *DisassociateAllBlockstorageV3QosRequest)(*DisassociateAllBlockstorageV3QosResponse){
+    return NewDisassociateAllBlockstorageV3QosResponse(qos.DisassociateAll(oc.client,req.QosID, ))
 
 }
 //request struct for the ListAssociationsBlockstorageV3Qos
@@ -261,7 +261,7 @@ func NewListAssociationsBlockstorageV3QosResponse(pager pagination.Pager,)*ListA
 }
 
 // action function
-func (oc *OpenstackClient) ListAssociationsBlockstorageV3Qos(request *ListAssociationsBlockstorageV3QosRequest)(*ListAssociationsBlockstorageV3QosResponse){
-    return NewListAssociationsBlockstorageV3QosResponse(qos.ListAssociations(oc.client,request.QosID, ))
+func (oc *OpenstackClient) ListAssociationsBlockstorageV3Qos(req *ListAssociationsBlockstorageV3QosRequest)(*ListAssociationsBlockstorageV3QosResponse){
+    return NewListAssociationsBlockstorageV3QosResponse(qos.ListAssociations(oc.client,req.QosID, ))
 
 }

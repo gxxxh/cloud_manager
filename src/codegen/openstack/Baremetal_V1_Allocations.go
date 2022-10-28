@@ -31,8 +31,8 @@ func NewCreateBaremetalV1AllocationsResponse(createResult allocations.CreateResu
 }
 
 // action function
-func (oc *OpenstackClient) CreateBaremetalV1Allocations(request *CreateBaremetalV1AllocationsRequest)(*CreateBaremetalV1AllocationsResponse){
-    return NewCreateBaremetalV1AllocationsResponse(allocations.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateBaremetalV1Allocations(req *CreateBaremetalV1AllocationsRequest)(*CreateBaremetalV1AllocationsResponse){
+    return NewCreateBaremetalV1AllocationsResponse(allocations.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the ListBaremetalV1Allocations
@@ -56,8 +56,8 @@ func NewListBaremetalV1AllocationsResponse(pager pagination.Pager,)*ListBaremeta
 }
 
 // action function
-func (oc *OpenstackClient) ListBaremetalV1Allocations(request *ListBaremetalV1AllocationsRequest)(*ListBaremetalV1AllocationsResponse){
-    return NewListBaremetalV1AllocationsResponse(allocations.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListBaremetalV1Allocations(req *ListBaremetalV1AllocationsRequest)(*ListBaremetalV1AllocationsResponse){
+    return NewListBaremetalV1AllocationsResponse(allocations.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetBaremetalV1Allocations
@@ -81,8 +81,8 @@ func NewGetBaremetalV1AllocationsResponse(getResult allocations.GetResult,)*GetB
 }
 
 // action function
-func (oc *OpenstackClient) GetBaremetalV1Allocations(request *GetBaremetalV1AllocationsRequest)(*GetBaremetalV1AllocationsResponse){
-    return NewGetBaremetalV1AllocationsResponse(allocations.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetBaremetalV1Allocations(req *GetBaremetalV1AllocationsRequest)(*GetBaremetalV1AllocationsResponse){
+    return NewGetBaremetalV1AllocationsResponse(allocations.Get(oc.client,req.Id, ))
 
 }
 //request struct for the DeleteBaremetalV1Allocations
@@ -106,7 +106,7 @@ func NewDeleteBaremetalV1AllocationsResponse(deleteResult allocations.DeleteResu
 }
 
 // action function
-func (oc *OpenstackClient) DeleteBaremetalV1Allocations(request *DeleteBaremetalV1AllocationsRequest)(*DeleteBaremetalV1AllocationsResponse){
-    return NewDeleteBaremetalV1AllocationsResponse(allocations.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteBaremetalV1Allocations(req *DeleteBaremetalV1AllocationsRequest)(*DeleteBaremetalV1AllocationsResponse){
+    return NewDeleteBaremetalV1AllocationsResponse(allocations.Delete(oc.client,req.Id, ))
 
 }

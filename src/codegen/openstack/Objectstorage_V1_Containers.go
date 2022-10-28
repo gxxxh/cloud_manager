@@ -31,8 +31,8 @@ func NewListObjectstorageV1ContainersResponse(pager pagination.Pager,)*ListObjec
 }
 
 // action function
-func (oc *OpenstackClient) ListObjectstorageV1Containers(request *ListObjectstorageV1ContainersRequest)(*ListObjectstorageV1ContainersResponse){
-    return NewListObjectstorageV1ContainersResponse(containers.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListObjectstorageV1Containers(req *ListObjectstorageV1ContainersRequest)(*ListObjectstorageV1ContainersResponse){
+    return NewListObjectstorageV1ContainersResponse(containers.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateObjectstorageV1Containers
@@ -57,8 +57,8 @@ func NewCreateObjectstorageV1ContainersResponse(createResult containers.CreateRe
 }
 
 // action function
-func (oc *OpenstackClient) CreateObjectstorageV1Containers(request *CreateObjectstorageV1ContainersRequest)(*CreateObjectstorageV1ContainersResponse){
-    return NewCreateObjectstorageV1ContainersResponse(containers.Create(oc.client,request.ContainerName,request.Opts, ))
+func (oc *OpenstackClient) CreateObjectstorageV1Containers(req *CreateObjectstorageV1ContainersRequest)(*CreateObjectstorageV1ContainersResponse){
+    return NewCreateObjectstorageV1ContainersResponse(containers.Create(oc.client,req.ContainerName,req.Opts, ))
 
 }
 //request struct for the BulkDeleteObjectstorageV1Containers
@@ -82,8 +82,8 @@ func NewBulkDeleteObjectstorageV1ContainersResponse(bulkDeleteResult containers.
 }
 
 // action function
-func (oc *OpenstackClient) BulkDeleteObjectstorageV1Containers(request *BulkDeleteObjectstorageV1ContainersRequest)(*BulkDeleteObjectstorageV1ContainersResponse){
-    return NewBulkDeleteObjectstorageV1ContainersResponse(containers.BulkDelete(oc.client,request.Containers, ))
+func (oc *OpenstackClient) BulkDeleteObjectstorageV1Containers(req *BulkDeleteObjectstorageV1ContainersRequest)(*BulkDeleteObjectstorageV1ContainersResponse){
+    return NewBulkDeleteObjectstorageV1ContainersResponse(containers.BulkDelete(oc.client,req.Containers, ))
 
 }
 //request struct for the DeleteObjectstorageV1Containers
@@ -107,8 +107,8 @@ func NewDeleteObjectstorageV1ContainersResponse(deleteResult containers.DeleteRe
 }
 
 // action function
-func (oc *OpenstackClient) DeleteObjectstorageV1Containers(request *DeleteObjectstorageV1ContainersRequest)(*DeleteObjectstorageV1ContainersResponse){
-    return NewDeleteObjectstorageV1ContainersResponse(containers.Delete(oc.client,request.ContainerName, ))
+func (oc *OpenstackClient) DeleteObjectstorageV1Containers(req *DeleteObjectstorageV1ContainersRequest)(*DeleteObjectstorageV1ContainersResponse){
+    return NewDeleteObjectstorageV1ContainersResponse(containers.Delete(oc.client,req.ContainerName, ))
 
 }
 //request struct for the UpdateObjectstorageV1Containers
@@ -133,8 +133,8 @@ func NewUpdateObjectstorageV1ContainersResponse(updateResult containers.UpdateRe
 }
 
 // action function
-func (oc *OpenstackClient) UpdateObjectstorageV1Containers(request *UpdateObjectstorageV1ContainersRequest)(*UpdateObjectstorageV1ContainersResponse){
-    return NewUpdateObjectstorageV1ContainersResponse(containers.Update(oc.client,request.ContainerName,request.Opts, ))
+func (oc *OpenstackClient) UpdateObjectstorageV1Containers(req *UpdateObjectstorageV1ContainersRequest)(*UpdateObjectstorageV1ContainersResponse){
+    return NewUpdateObjectstorageV1ContainersResponse(containers.Update(oc.client,req.ContainerName,req.Opts, ))
 
 }
 //request struct for the GetObjectstorageV1Containers
@@ -159,7 +159,7 @@ func NewGetObjectstorageV1ContainersResponse(getResult containers.GetResult,)*Ge
 }
 
 // action function
-func (oc *OpenstackClient) GetObjectstorageV1Containers(request *GetObjectstorageV1ContainersRequest)(*GetObjectstorageV1ContainersResponse){
-    return NewGetObjectstorageV1ContainersResponse(containers.Get(oc.client,request.ContainerName,request.Opts, ))
+func (oc *OpenstackClient) GetObjectstorageV1Containers(req *GetObjectstorageV1ContainersRequest)(*GetObjectstorageV1ContainersResponse){
+    return NewGetObjectstorageV1ContainersResponse(containers.Get(oc.client,req.ContainerName,req.Opts, ))
 
 }

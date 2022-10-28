@@ -31,7 +31,7 @@ func NewEvacuateComputeV2ExtensionsEvacuateResponse(evacuateResult evacuate.Evac
 }
 
 // action function
-func (oc *OpenstackClient) EvacuateComputeV2ExtensionsEvacuate(request *EvacuateComputeV2ExtensionsEvacuateRequest)(*EvacuateComputeV2ExtensionsEvacuateResponse){
-    return NewEvacuateComputeV2ExtensionsEvacuateResponse(evacuate.Evacuate(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) EvacuateComputeV2ExtensionsEvacuate(req *EvacuateComputeV2ExtensionsEvacuateRequest)(*EvacuateComputeV2ExtensionsEvacuateResponse){
+    return NewEvacuateComputeV2ExtensionsEvacuateResponse(evacuate.Evacuate(oc.client,req.Id,req.Opts, ))
 
 }

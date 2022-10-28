@@ -31,8 +31,8 @@ func NewListDnsV2TransferRequestResponse(pager pagination.Pager,)*ListDnsV2Trans
 }
 
 // action function
-func (oc *OpenstackClient) ListDnsV2TransferRequest(request *ListDnsV2TransferRequestRequest)(*ListDnsV2TransferRequestResponse){
-    return NewListDnsV2TransferRequestResponse(request.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListDnsV2TransferRequest(req *ListDnsV2TransferRequestRequest)(*ListDnsV2TransferRequestResponse){
+    return NewListDnsV2TransferRequestResponse(request.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetDnsV2TransferRequest
@@ -56,8 +56,8 @@ func NewGetDnsV2TransferRequestResponse(getResult request.GetResult,)*GetDnsV2Tr
 }
 
 // action function
-func (oc *OpenstackClient) GetDnsV2TransferRequest(request *GetDnsV2TransferRequestRequest)(*GetDnsV2TransferRequestResponse){
-    return NewGetDnsV2TransferRequestResponse(request.Get(oc.client,request.TransferRequestID, ))
+func (oc *OpenstackClient) GetDnsV2TransferRequest(req *GetDnsV2TransferRequestRequest)(*GetDnsV2TransferRequestResponse){
+    return NewGetDnsV2TransferRequestResponse(request.Get(oc.client,req.TransferRequestID, ))
 
 }
 //request struct for the CreateDnsV2TransferRequest
@@ -82,8 +82,8 @@ func NewCreateDnsV2TransferRequestResponse(createResult request.CreateResult,)*C
 }
 
 // action function
-func (oc *OpenstackClient) CreateDnsV2TransferRequest(request *CreateDnsV2TransferRequestRequest)(*CreateDnsV2TransferRequestResponse){
-    return NewCreateDnsV2TransferRequestResponse(request.Create(oc.client,request.ZoneID,request.Opts, ))
+func (oc *OpenstackClient) CreateDnsV2TransferRequest(req *CreateDnsV2TransferRequestRequest)(*CreateDnsV2TransferRequestResponse){
+    return NewCreateDnsV2TransferRequestResponse(request.Create(oc.client,req.ZoneID,req.Opts, ))
 
 }
 //request struct for the UpdateDnsV2TransferRequest
@@ -108,8 +108,8 @@ func NewUpdateDnsV2TransferRequestResponse(updateResult request.UpdateResult,)*U
 }
 
 // action function
-func (oc *OpenstackClient) UpdateDnsV2TransferRequest(request *UpdateDnsV2TransferRequestRequest)(*UpdateDnsV2TransferRequestResponse){
-    return NewUpdateDnsV2TransferRequestResponse(request.Update(oc.client,request.TransferID,request.Opts, ))
+func (oc *OpenstackClient) UpdateDnsV2TransferRequest(req *UpdateDnsV2TransferRequestRequest)(*UpdateDnsV2TransferRequestResponse){
+    return NewUpdateDnsV2TransferRequestResponse(request.Update(oc.client,req.TransferID,req.Opts, ))
 
 }
 //request struct for the DeleteDnsV2TransferRequest
@@ -133,7 +133,7 @@ func NewDeleteDnsV2TransferRequestResponse(deleteResult request.DeleteResult,)*D
 }
 
 // action function
-func (oc *OpenstackClient) DeleteDnsV2TransferRequest(request *DeleteDnsV2TransferRequestRequest)(*DeleteDnsV2TransferRequestResponse){
-    return NewDeleteDnsV2TransferRequestResponse(request.Delete(oc.client,request.TransferID, ))
+func (oc *OpenstackClient) DeleteDnsV2TransferRequest(req *DeleteDnsV2TransferRequestRequest)(*DeleteDnsV2TransferRequestResponse){
+    return NewDeleteDnsV2TransferRequestResponse(request.Delete(oc.client,req.TransferID, ))
 
 }

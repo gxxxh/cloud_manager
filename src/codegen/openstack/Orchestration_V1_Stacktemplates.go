@@ -31,8 +31,8 @@ func NewGetOrchestrationV1StacktemplatesResponse(getResult stacktemplates.GetRes
 }
 
 // action function
-func (oc *OpenstackClient) GetOrchestrationV1Stacktemplates(request *GetOrchestrationV1StacktemplatesRequest)(*GetOrchestrationV1StacktemplatesResponse){
-    return NewGetOrchestrationV1StacktemplatesResponse(stacktemplates.Get(oc.client,request.StackName,request.StackID, ))
+func (oc *OpenstackClient) GetOrchestrationV1Stacktemplates(req *GetOrchestrationV1StacktemplatesRequest)(*GetOrchestrationV1StacktemplatesResponse){
+    return NewGetOrchestrationV1StacktemplatesResponse(stacktemplates.Get(oc.client,req.StackName,req.StackID, ))
 
 }
 //request struct for the ValidateOrchestrationV1Stacktemplates
@@ -56,7 +56,7 @@ func NewValidateOrchestrationV1StacktemplatesResponse(validateResult stacktempla
 }
 
 // action function
-func (oc *OpenstackClient) ValidateOrchestrationV1Stacktemplates(request *ValidateOrchestrationV1StacktemplatesRequest)(*ValidateOrchestrationV1StacktemplatesResponse){
-    return NewValidateOrchestrationV1StacktemplatesResponse(stacktemplates.Validate(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ValidateOrchestrationV1Stacktemplates(req *ValidateOrchestrationV1StacktemplatesRequest)(*ValidateOrchestrationV1StacktemplatesResponse){
+    return NewValidateOrchestrationV1StacktemplatesResponse(stacktemplates.Validate(oc.client,req.Opts, ))
 
 }

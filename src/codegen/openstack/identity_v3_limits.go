@@ -31,7 +31,7 @@ func NewListIdentityV3LimitsResponse(pager pagination.Pager,)*ListIdentityV3Limi
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV3Limits(request *ListIdentityV3LimitsRequest)(*ListIdentityV3LimitsResponse){
-    return NewListIdentityV3LimitsResponse(limits.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListIdentityV3Limits(req *ListIdentityV3LimitsRequest)(*ListIdentityV3LimitsResponse){
+    return NewListIdentityV3LimitsResponse(limits.List(oc.client,req.Opts, ))
 
 }

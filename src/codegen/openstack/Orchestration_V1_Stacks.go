@@ -31,8 +31,8 @@ func NewCreateOrchestrationV1StacksResponse(createResult stacks.CreateResult,)*C
 }
 
 // action function
-func (oc *OpenstackClient) CreateOrchestrationV1Stacks(request *CreateOrchestrationV1StacksRequest)(*CreateOrchestrationV1StacksResponse){
-    return NewCreateOrchestrationV1StacksResponse(stacks.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateOrchestrationV1Stacks(req *CreateOrchestrationV1StacksRequest)(*CreateOrchestrationV1StacksResponse){
+    return NewCreateOrchestrationV1StacksResponse(stacks.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the AdoptOrchestrationV1Stacks
@@ -56,8 +56,8 @@ func NewAdoptOrchestrationV1StacksResponse(adoptResult stacks.AdoptResult,)*Adop
 }
 
 // action function
-func (oc *OpenstackClient) AdoptOrchestrationV1Stacks(request *AdoptOrchestrationV1StacksRequest)(*AdoptOrchestrationV1StacksResponse){
-    return NewAdoptOrchestrationV1StacksResponse(stacks.Adopt(oc.client,request.Opts, ))
+func (oc *OpenstackClient) AdoptOrchestrationV1Stacks(req *AdoptOrchestrationV1StacksRequest)(*AdoptOrchestrationV1StacksResponse){
+    return NewAdoptOrchestrationV1StacksResponse(stacks.Adopt(oc.client,req.Opts, ))
 
 }
 //request struct for the ListOrchestrationV1Stacks
@@ -81,8 +81,8 @@ func NewListOrchestrationV1StacksResponse(pager pagination.Pager,)*ListOrchestra
 }
 
 // action function
-func (oc *OpenstackClient) ListOrchestrationV1Stacks(request *ListOrchestrationV1StacksRequest)(*ListOrchestrationV1StacksResponse){
-    return NewListOrchestrationV1StacksResponse(stacks.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListOrchestrationV1Stacks(req *ListOrchestrationV1StacksRequest)(*ListOrchestrationV1StacksResponse){
+    return NewListOrchestrationV1StacksResponse(stacks.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetOrchestrationV1Stacks
@@ -107,8 +107,8 @@ func NewGetOrchestrationV1StacksResponse(getResult stacks.GetResult,)*GetOrchest
 }
 
 // action function
-func (oc *OpenstackClient) GetOrchestrationV1Stacks(request *GetOrchestrationV1StacksRequest)(*GetOrchestrationV1StacksResponse){
-    return NewGetOrchestrationV1StacksResponse(stacks.Get(oc.client,request.StackName,request.StackID, ))
+func (oc *OpenstackClient) GetOrchestrationV1Stacks(req *GetOrchestrationV1StacksRequest)(*GetOrchestrationV1StacksResponse){
+    return NewGetOrchestrationV1StacksResponse(stacks.Get(oc.client,req.StackName,req.StackID, ))
 
 }
 //request struct for the FindOrchestrationV1Stacks
@@ -132,8 +132,8 @@ func NewFindOrchestrationV1StacksResponse(getResult stacks.GetResult,)*FindOrche
 }
 
 // action function
-func (oc *OpenstackClient) FindOrchestrationV1Stacks(request *FindOrchestrationV1StacksRequest)(*FindOrchestrationV1StacksResponse){
-    return NewFindOrchestrationV1StacksResponse(stacks.Find(oc.client,request.StackIdentity, ))
+func (oc *OpenstackClient) FindOrchestrationV1Stacks(req *FindOrchestrationV1StacksRequest)(*FindOrchestrationV1StacksResponse){
+    return NewFindOrchestrationV1StacksResponse(stacks.Find(oc.client,req.StackIdentity, ))
 
 }
 //request struct for the UpdateOrchestrationV1Stacks
@@ -159,8 +159,8 @@ func NewUpdateOrchestrationV1StacksResponse(updateResult stacks.UpdateResult,)*U
 }
 
 // action function
-func (oc *OpenstackClient) UpdateOrchestrationV1Stacks(request *UpdateOrchestrationV1StacksRequest)(*UpdateOrchestrationV1StacksResponse){
-    return NewUpdateOrchestrationV1StacksResponse(stacks.Update(oc.client,request.StackName,request.StackID,request.Opts, ))
+func (oc *OpenstackClient) UpdateOrchestrationV1Stacks(req *UpdateOrchestrationV1StacksRequest)(*UpdateOrchestrationV1StacksResponse){
+    return NewUpdateOrchestrationV1StacksResponse(stacks.Update(oc.client,req.StackName,req.StackID,req.Opts, ))
 
 }
 //request struct for the UpdatePatchOrchestrationV1Stacks
@@ -186,8 +186,8 @@ func NewUpdatePatchOrchestrationV1StacksResponse(updateResult stacks.UpdateResul
 }
 
 // action function
-func (oc *OpenstackClient) UpdatePatchOrchestrationV1Stacks(request *UpdatePatchOrchestrationV1StacksRequest)(*UpdatePatchOrchestrationV1StacksResponse){
-    return NewUpdatePatchOrchestrationV1StacksResponse(stacks.UpdatePatch(oc.client,request.StackName,request.StackID,request.Opts, ))
+func (oc *OpenstackClient) UpdatePatchOrchestrationV1Stacks(req *UpdatePatchOrchestrationV1StacksRequest)(*UpdatePatchOrchestrationV1StacksResponse){
+    return NewUpdatePatchOrchestrationV1StacksResponse(stacks.UpdatePatch(oc.client,req.StackName,req.StackID,req.Opts, ))
 
 }
 //request struct for the DeleteOrchestrationV1Stacks
@@ -212,8 +212,8 @@ func NewDeleteOrchestrationV1StacksResponse(deleteResult stacks.DeleteResult,)*D
 }
 
 // action function
-func (oc *OpenstackClient) DeleteOrchestrationV1Stacks(request *DeleteOrchestrationV1StacksRequest)(*DeleteOrchestrationV1StacksResponse){
-    return NewDeleteOrchestrationV1StacksResponse(stacks.Delete(oc.client,request.StackName,request.StackID, ))
+func (oc *OpenstackClient) DeleteOrchestrationV1Stacks(req *DeleteOrchestrationV1StacksRequest)(*DeleteOrchestrationV1StacksResponse){
+    return NewDeleteOrchestrationV1StacksResponse(stacks.Delete(oc.client,req.StackName,req.StackID, ))
 
 }
 //request struct for the PreviewOrchestrationV1Stacks
@@ -237,8 +237,8 @@ func NewPreviewOrchestrationV1StacksResponse(previewResult stacks.PreviewResult,
 }
 
 // action function
-func (oc *OpenstackClient) PreviewOrchestrationV1Stacks(request *PreviewOrchestrationV1StacksRequest)(*PreviewOrchestrationV1StacksResponse){
-    return NewPreviewOrchestrationV1StacksResponse(stacks.Preview(oc.client,request.Opts, ))
+func (oc *OpenstackClient) PreviewOrchestrationV1Stacks(req *PreviewOrchestrationV1StacksRequest)(*PreviewOrchestrationV1StacksResponse){
+    return NewPreviewOrchestrationV1StacksResponse(stacks.Preview(oc.client,req.Opts, ))
 
 }
 //request struct for the AbandonOrchestrationV1Stacks
@@ -263,7 +263,7 @@ func NewAbandonOrchestrationV1StacksResponse(abandonResult stacks.AbandonResult,
 }
 
 // action function
-func (oc *OpenstackClient) AbandonOrchestrationV1Stacks(request *AbandonOrchestrationV1StacksRequest)(*AbandonOrchestrationV1StacksResponse){
-    return NewAbandonOrchestrationV1StacksResponse(stacks.Abandon(oc.client,request.StackName,request.StackID, ))
+func (oc *OpenstackClient) AbandonOrchestrationV1Stacks(req *AbandonOrchestrationV1StacksRequest)(*AbandonOrchestrationV1StacksResponse){
+    return NewAbandonOrchestrationV1StacksResponse(stacks.Abandon(oc.client,req.StackName,req.StackID, ))
 
 }

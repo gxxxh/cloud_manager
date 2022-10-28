@@ -31,8 +31,8 @@ func NewListClusteringV1EventsResponse(pager pagination.Pager,)*ListClusteringV1
 }
 
 // action function
-func (oc *OpenstackClient) ListClusteringV1Events(request *ListClusteringV1EventsRequest)(*ListClusteringV1EventsResponse){
-    return NewListClusteringV1EventsResponse(events.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListClusteringV1Events(req *ListClusteringV1EventsRequest)(*ListClusteringV1EventsResponse){
+    return NewListClusteringV1EventsResponse(events.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetClusteringV1Events
@@ -56,7 +56,7 @@ func NewGetClusteringV1EventsResponse(getResult events.GetResult,)*GetClustering
 }
 
 // action function
-func (oc *OpenstackClient) GetClusteringV1Events(request *GetClusteringV1EventsRequest)(*GetClusteringV1EventsResponse){
-    return NewGetClusteringV1EventsResponse(events.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetClusteringV1Events(req *GetClusteringV1EventsRequest)(*GetClusteringV1EventsResponse){
+    return NewGetClusteringV1EventsResponse(events.Get(oc.client,req.Id, ))
 
 }

@@ -30,8 +30,8 @@ func NewGetComputeV2ExtensionsQuotasetsResponse(getResult quotasets.GetResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) GetComputeV2ExtensionsQuotasets(request *GetComputeV2ExtensionsQuotasetsRequest)(*GetComputeV2ExtensionsQuotasetsResponse){
-    return NewGetComputeV2ExtensionsQuotasetsResponse(quotasets.Get(oc.client,request.TenantID, ))
+func (oc *OpenstackClient) GetComputeV2ExtensionsQuotasets(req *GetComputeV2ExtensionsQuotasetsRequest)(*GetComputeV2ExtensionsQuotasetsResponse){
+    return NewGetComputeV2ExtensionsQuotasetsResponse(quotasets.Get(oc.client,req.TenantID, ))
 
 }
 //request struct for the GetDetailComputeV2ExtensionsQuotasets
@@ -55,8 +55,8 @@ func NewGetDetailComputeV2ExtensionsQuotasetsResponse(getDetailResult quotasets.
 }
 
 // action function
-func (oc *OpenstackClient) GetDetailComputeV2ExtensionsQuotasets(request *GetDetailComputeV2ExtensionsQuotasetsRequest)(*GetDetailComputeV2ExtensionsQuotasetsResponse){
-    return NewGetDetailComputeV2ExtensionsQuotasetsResponse(quotasets.GetDetail(oc.client,request.TenantID, ))
+func (oc *OpenstackClient) GetDetailComputeV2ExtensionsQuotasets(req *GetDetailComputeV2ExtensionsQuotasetsRequest)(*GetDetailComputeV2ExtensionsQuotasetsResponse){
+    return NewGetDetailComputeV2ExtensionsQuotasetsResponse(quotasets.GetDetail(oc.client,req.TenantID, ))
 
 }
 //request struct for the UpdateComputeV2ExtensionsQuotasets
@@ -81,8 +81,8 @@ func NewUpdateComputeV2ExtensionsQuotasetsResponse(updateResult quotasets.Update
 }
 
 // action function
-func (oc *OpenstackClient) UpdateComputeV2ExtensionsQuotasets(request *UpdateComputeV2ExtensionsQuotasetsRequest)(*UpdateComputeV2ExtensionsQuotasetsResponse){
-    return NewUpdateComputeV2ExtensionsQuotasetsResponse(quotasets.Update(oc.client,request.TenantID,request.Opts, ))
+func (oc *OpenstackClient) UpdateComputeV2ExtensionsQuotasets(req *UpdateComputeV2ExtensionsQuotasetsRequest)(*UpdateComputeV2ExtensionsQuotasetsResponse){
+    return NewUpdateComputeV2ExtensionsQuotasetsResponse(quotasets.Update(oc.client,req.TenantID,req.Opts, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsQuotasets
@@ -106,7 +106,7 @@ func NewDeleteComputeV2ExtensionsQuotasetsResponse(deleteResult quotasets.Delete
 }
 
 // action function
-func (oc *OpenstackClient) DeleteComputeV2ExtensionsQuotasets(request *DeleteComputeV2ExtensionsQuotasetsRequest)(*DeleteComputeV2ExtensionsQuotasetsResponse){
-    return NewDeleteComputeV2ExtensionsQuotasetsResponse(quotasets.Delete(oc.client,request.TenantID, ))
+func (oc *OpenstackClient) DeleteComputeV2ExtensionsQuotasets(req *DeleteComputeV2ExtensionsQuotasetsRequest)(*DeleteComputeV2ExtensionsQuotasetsResponse){
+    return NewDeleteComputeV2ExtensionsQuotasetsResponse(quotasets.Delete(oc.client,req.TenantID, ))
 
 }

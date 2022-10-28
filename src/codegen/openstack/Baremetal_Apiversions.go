@@ -29,7 +29,7 @@ func NewListBaremetalApiversionsResponse(listResult apiversions.ListResult,)*Lis
 }
 
 // action function
-func (oc *OpenstackClient) ListBaremetalApiversions(request *ListBaremetalApiversionsRequest)(*ListBaremetalApiversionsResponse){
+func (oc *OpenstackClient) ListBaremetalApiversions(req *ListBaremetalApiversionsRequest)(*ListBaremetalApiversionsResponse){
     return NewListBaremetalApiversionsResponse(apiversions.List(oc.client, ))
 
 }
@@ -54,7 +54,7 @@ func NewGetBaremetalApiversionsResponse(getResult apiversions.GetResult,)*GetBar
 }
 
 // action function
-func (oc *OpenstackClient) GetBaremetalApiversions(request *GetBaremetalApiversionsRequest)(*GetBaremetalApiversionsResponse){
-    return NewGetBaremetalApiversionsResponse(apiversions.Get(oc.client,request.V, ))
+func (oc *OpenstackClient) GetBaremetalApiversions(req *GetBaremetalApiversionsRequest)(*GetBaremetalApiversionsResponse){
+    return NewGetBaremetalApiversionsResponse(apiversions.Get(oc.client,req.V, ))
 
 }

@@ -31,8 +31,8 @@ func NewListComputeV2ExtensionsKeypairsResponse(pager pagination.Pager,)*ListCom
 }
 
 // action function
-func (oc *OpenstackClient) ListComputeV2ExtensionsKeypairs(request *ListComputeV2ExtensionsKeypairsRequest)(*ListComputeV2ExtensionsKeypairsResponse){
-    return NewListComputeV2ExtensionsKeypairsResponse(keypairs.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListComputeV2ExtensionsKeypairs(req *ListComputeV2ExtensionsKeypairsRequest)(*ListComputeV2ExtensionsKeypairsResponse){
+    return NewListComputeV2ExtensionsKeypairsResponse(keypairs.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateComputeV2ExtensionsKeypairs
@@ -56,8 +56,8 @@ func NewCreateComputeV2ExtensionsKeypairsResponse(createResult keypairs.CreateRe
 }
 
 // action function
-func (oc *OpenstackClient) CreateComputeV2ExtensionsKeypairs(request *CreateComputeV2ExtensionsKeypairsRequest)(*CreateComputeV2ExtensionsKeypairsResponse){
-    return NewCreateComputeV2ExtensionsKeypairsResponse(keypairs.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateComputeV2ExtensionsKeypairs(req *CreateComputeV2ExtensionsKeypairsRequest)(*CreateComputeV2ExtensionsKeypairsResponse){
+    return NewCreateComputeV2ExtensionsKeypairsResponse(keypairs.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetComputeV2ExtensionsKeypairs
@@ -82,8 +82,8 @@ func NewGetComputeV2ExtensionsKeypairsResponse(getResult keypairs.GetResult,)*Ge
 }
 
 // action function
-func (oc *OpenstackClient) GetComputeV2ExtensionsKeypairs(request *GetComputeV2ExtensionsKeypairsRequest)(*GetComputeV2ExtensionsKeypairsResponse){
-    return NewGetComputeV2ExtensionsKeypairsResponse(keypairs.Get(oc.client,request.Name,request.Opts, ))
+func (oc *OpenstackClient) GetComputeV2ExtensionsKeypairs(req *GetComputeV2ExtensionsKeypairsRequest)(*GetComputeV2ExtensionsKeypairsResponse){
+    return NewGetComputeV2ExtensionsKeypairsResponse(keypairs.Get(oc.client,req.Name,req.Opts, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsKeypairs
@@ -108,7 +108,7 @@ func NewDeleteComputeV2ExtensionsKeypairsResponse(deleteResult keypairs.DeleteRe
 }
 
 // action function
-func (oc *OpenstackClient) DeleteComputeV2ExtensionsKeypairs(request *DeleteComputeV2ExtensionsKeypairsRequest)(*DeleteComputeV2ExtensionsKeypairsResponse){
-    return NewDeleteComputeV2ExtensionsKeypairsResponse(keypairs.Delete(oc.client,request.Name,request.Opts, ))
+func (oc *OpenstackClient) DeleteComputeV2ExtensionsKeypairs(req *DeleteComputeV2ExtensionsKeypairsRequest)(*DeleteComputeV2ExtensionsKeypairsResponse){
+    return NewDeleteComputeV2ExtensionsKeypairsResponse(keypairs.Delete(oc.client,req.Name,req.Opts, ))
 
 }

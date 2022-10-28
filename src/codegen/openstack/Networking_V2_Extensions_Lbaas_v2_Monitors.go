@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsLbaas_v2MonitorsResponse(pager pagination.Page
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaas_v2Monitors(request *ListNetworkingV2ExtensionsLbaas_v2MonitorsRequest)(*ListNetworkingV2ExtensionsLbaas_v2MonitorsResponse){
-    return NewListNetworkingV2ExtensionsLbaas_v2MonitorsResponse(monitors.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaas_v2Monitors(req *ListNetworkingV2ExtensionsLbaas_v2MonitorsRequest)(*ListNetworkingV2ExtensionsLbaas_v2MonitorsResponse){
+    return NewListNetworkingV2ExtensionsLbaas_v2MonitorsResponse(monitors.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLbaas_v2Monitors
@@ -56,8 +56,8 @@ func NewCreateNetworkingV2ExtensionsLbaas_v2MonitorsResponse(createResult monito
 }
 
 // action function
-func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaas_v2Monitors(request *CreateNetworkingV2ExtensionsLbaas_v2MonitorsRequest)(*CreateNetworkingV2ExtensionsLbaas_v2MonitorsResponse){
-    return NewCreateNetworkingV2ExtensionsLbaas_v2MonitorsResponse(monitors.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaas_v2Monitors(req *CreateNetworkingV2ExtensionsLbaas_v2MonitorsRequest)(*CreateNetworkingV2ExtensionsLbaas_v2MonitorsResponse){
+    return NewCreateNetworkingV2ExtensionsLbaas_v2MonitorsResponse(monitors.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLbaas_v2Monitors
@@ -81,8 +81,8 @@ func NewGetNetworkingV2ExtensionsLbaas_v2MonitorsResponse(getResult monitors.Get
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaas_v2Monitors(request *GetNetworkingV2ExtensionsLbaas_v2MonitorsRequest)(*GetNetworkingV2ExtensionsLbaas_v2MonitorsResponse){
-    return NewGetNetworkingV2ExtensionsLbaas_v2MonitorsResponse(monitors.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaas_v2Monitors(req *GetNetworkingV2ExtensionsLbaas_v2MonitorsRequest)(*GetNetworkingV2ExtensionsLbaas_v2MonitorsResponse){
+    return NewGetNetworkingV2ExtensionsLbaas_v2MonitorsResponse(monitors.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLbaas_v2Monitors
@@ -107,8 +107,8 @@ func NewUpdateNetworkingV2ExtensionsLbaas_v2MonitorsResponse(updateResult monito
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaas_v2Monitors(request *UpdateNetworkingV2ExtensionsLbaas_v2MonitorsRequest)(*UpdateNetworkingV2ExtensionsLbaas_v2MonitorsResponse){
-    return NewUpdateNetworkingV2ExtensionsLbaas_v2MonitorsResponse(monitors.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaas_v2Monitors(req *UpdateNetworkingV2ExtensionsLbaas_v2MonitorsRequest)(*UpdateNetworkingV2ExtensionsLbaas_v2MonitorsResponse){
+    return NewUpdateNetworkingV2ExtensionsLbaas_v2MonitorsResponse(monitors.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLbaas_v2Monitors
@@ -132,7 +132,7 @@ func NewDeleteNetworkingV2ExtensionsLbaas_v2MonitorsResponse(deleteResult monito
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaas_v2Monitors(request *DeleteNetworkingV2ExtensionsLbaas_v2MonitorsRequest)(*DeleteNetworkingV2ExtensionsLbaas_v2MonitorsResponse){
-    return NewDeleteNetworkingV2ExtensionsLbaas_v2MonitorsResponse(monitors.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaas_v2Monitors(req *DeleteNetworkingV2ExtensionsLbaas_v2MonitorsRequest)(*DeleteNetworkingV2ExtensionsLbaas_v2MonitorsResponse){
+    return NewDeleteNetworkingV2ExtensionsLbaas_v2MonitorsResponse(monitors.Delete(oc.client,req.Id, ))
 
 }

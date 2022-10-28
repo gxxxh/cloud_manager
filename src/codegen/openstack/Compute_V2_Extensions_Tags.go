@@ -30,8 +30,8 @@ func NewListComputeV2ExtensionsTagsResponse(listResult tags.ListResult,)*ListCom
 }
 
 // action function
-func (oc *OpenstackClient) ListComputeV2ExtensionsTags(request *ListComputeV2ExtensionsTagsRequest)(*ListComputeV2ExtensionsTagsResponse){
-    return NewListComputeV2ExtensionsTagsResponse(tags.List(oc.client,request.ServerID, ))
+func (oc *OpenstackClient) ListComputeV2ExtensionsTags(req *ListComputeV2ExtensionsTagsRequest)(*ListComputeV2ExtensionsTagsResponse){
+    return NewListComputeV2ExtensionsTagsResponse(tags.List(oc.client,req.ServerID, ))
 
 }
 //request struct for the CheckComputeV2ExtensionsTags
@@ -56,8 +56,8 @@ func NewCheckComputeV2ExtensionsTagsResponse(checkResult tags.CheckResult,)*Chec
 }
 
 // action function
-func (oc *OpenstackClient) CheckComputeV2ExtensionsTags(request *CheckComputeV2ExtensionsTagsRequest)(*CheckComputeV2ExtensionsTagsResponse){
-    return NewCheckComputeV2ExtensionsTagsResponse(tags.Check(oc.client,request.ServerID,request.Tag, ))
+func (oc *OpenstackClient) CheckComputeV2ExtensionsTags(req *CheckComputeV2ExtensionsTagsRequest)(*CheckComputeV2ExtensionsTagsResponse){
+    return NewCheckComputeV2ExtensionsTagsResponse(tags.Check(oc.client,req.ServerID,req.Tag, ))
 
 }
 //request struct for the ReplaceAllComputeV2ExtensionsTags
@@ -82,8 +82,8 @@ func NewReplaceAllComputeV2ExtensionsTagsResponse(replaceAllResult tags.ReplaceA
 }
 
 // action function
-func (oc *OpenstackClient) ReplaceAllComputeV2ExtensionsTags(request *ReplaceAllComputeV2ExtensionsTagsRequest)(*ReplaceAllComputeV2ExtensionsTagsResponse){
-    return NewReplaceAllComputeV2ExtensionsTagsResponse(tags.ReplaceAll(oc.client,request.ServerID,request.Opts, ))
+func (oc *OpenstackClient) ReplaceAllComputeV2ExtensionsTags(req *ReplaceAllComputeV2ExtensionsTagsRequest)(*ReplaceAllComputeV2ExtensionsTagsResponse){
+    return NewReplaceAllComputeV2ExtensionsTagsResponse(tags.ReplaceAll(oc.client,req.ServerID,req.Opts, ))
 
 }
 //request struct for the AddComputeV2ExtensionsTags
@@ -108,8 +108,8 @@ func NewAddComputeV2ExtensionsTagsResponse(addResult tags.AddResult,)*AddCompute
 }
 
 // action function
-func (oc *OpenstackClient) AddComputeV2ExtensionsTags(request *AddComputeV2ExtensionsTagsRequest)(*AddComputeV2ExtensionsTagsResponse){
-    return NewAddComputeV2ExtensionsTagsResponse(tags.Add(oc.client,request.ServerID,request.Tag, ))
+func (oc *OpenstackClient) AddComputeV2ExtensionsTags(req *AddComputeV2ExtensionsTagsRequest)(*AddComputeV2ExtensionsTagsResponse){
+    return NewAddComputeV2ExtensionsTagsResponse(tags.Add(oc.client,req.ServerID,req.Tag, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsTags
@@ -134,8 +134,8 @@ func NewDeleteComputeV2ExtensionsTagsResponse(deleteResult tags.DeleteResult,)*D
 }
 
 // action function
-func (oc *OpenstackClient) DeleteComputeV2ExtensionsTags(request *DeleteComputeV2ExtensionsTagsRequest)(*DeleteComputeV2ExtensionsTagsResponse){
-    return NewDeleteComputeV2ExtensionsTagsResponse(tags.Delete(oc.client,request.ServerID,request.Tag, ))
+func (oc *OpenstackClient) DeleteComputeV2ExtensionsTags(req *DeleteComputeV2ExtensionsTagsRequest)(*DeleteComputeV2ExtensionsTagsResponse){
+    return NewDeleteComputeV2ExtensionsTagsResponse(tags.Delete(oc.client,req.ServerID,req.Tag, ))
 
 }
 //request struct for the DeleteAllComputeV2ExtensionsTags
@@ -159,7 +159,7 @@ func NewDeleteAllComputeV2ExtensionsTagsResponse(deleteResult tags.DeleteResult,
 }
 
 // action function
-func (oc *OpenstackClient) DeleteAllComputeV2ExtensionsTags(request *DeleteAllComputeV2ExtensionsTagsRequest)(*DeleteAllComputeV2ExtensionsTagsResponse){
-    return NewDeleteAllComputeV2ExtensionsTagsResponse(tags.DeleteAll(oc.client,request.ServerID, ))
+func (oc *OpenstackClient) DeleteAllComputeV2ExtensionsTags(req *DeleteAllComputeV2ExtensionsTagsRequest)(*DeleteAllComputeV2ExtensionsTagsResponse){
+    return NewDeleteAllComputeV2ExtensionsTagsResponse(tags.DeleteAll(oc.client,req.ServerID, ))
 
 }

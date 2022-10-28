@@ -31,8 +31,8 @@ func NewCreateSharedfilesystemsV2SnapshotsResponse(createResult snapshots.Create
 }
 
 // action function
-func (oc *OpenstackClient) CreateSharedfilesystemsV2Snapshots(request *CreateSharedfilesystemsV2SnapshotsRequest)(*CreateSharedfilesystemsV2SnapshotsResponse){
-    return NewCreateSharedfilesystemsV2SnapshotsResponse(snapshots.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateSharedfilesystemsV2Snapshots(req *CreateSharedfilesystemsV2SnapshotsRequest)(*CreateSharedfilesystemsV2SnapshotsResponse){
+    return NewCreateSharedfilesystemsV2SnapshotsResponse(snapshots.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the ListDetailSharedfilesystemsV2Snapshots
@@ -56,8 +56,8 @@ func NewListDetailSharedfilesystemsV2SnapshotsResponse(pager pagination.Pager,)*
 }
 
 // action function
-func (oc *OpenstackClient) ListDetailSharedfilesystemsV2Snapshots(request *ListDetailSharedfilesystemsV2SnapshotsRequest)(*ListDetailSharedfilesystemsV2SnapshotsResponse){
-    return NewListDetailSharedfilesystemsV2SnapshotsResponse(snapshots.ListDetail(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListDetailSharedfilesystemsV2Snapshots(req *ListDetailSharedfilesystemsV2SnapshotsRequest)(*ListDetailSharedfilesystemsV2SnapshotsResponse){
+    return NewListDetailSharedfilesystemsV2SnapshotsResponse(snapshots.ListDetail(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteSharedfilesystemsV2Snapshots
@@ -81,8 +81,8 @@ func NewDeleteSharedfilesystemsV2SnapshotsResponse(deleteResult snapshots.Delete
 }
 
 // action function
-func (oc *OpenstackClient) DeleteSharedfilesystemsV2Snapshots(request *DeleteSharedfilesystemsV2SnapshotsRequest)(*DeleteSharedfilesystemsV2SnapshotsResponse){
-    return NewDeleteSharedfilesystemsV2SnapshotsResponse(snapshots.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteSharedfilesystemsV2Snapshots(req *DeleteSharedfilesystemsV2SnapshotsRequest)(*DeleteSharedfilesystemsV2SnapshotsResponse){
+    return NewDeleteSharedfilesystemsV2SnapshotsResponse(snapshots.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the GetSharedfilesystemsV2Snapshots
@@ -106,8 +106,8 @@ func NewGetSharedfilesystemsV2SnapshotsResponse(getResult snapshots.GetResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) GetSharedfilesystemsV2Snapshots(request *GetSharedfilesystemsV2SnapshotsRequest)(*GetSharedfilesystemsV2SnapshotsResponse){
-    return NewGetSharedfilesystemsV2SnapshotsResponse(snapshots.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetSharedfilesystemsV2Snapshots(req *GetSharedfilesystemsV2SnapshotsRequest)(*GetSharedfilesystemsV2SnapshotsResponse){
+    return NewGetSharedfilesystemsV2SnapshotsResponse(snapshots.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateSharedfilesystemsV2Snapshots
@@ -132,7 +132,7 @@ func NewUpdateSharedfilesystemsV2SnapshotsResponse(updateResult snapshots.Update
 }
 
 // action function
-func (oc *OpenstackClient) UpdateSharedfilesystemsV2Snapshots(request *UpdateSharedfilesystemsV2SnapshotsRequest)(*UpdateSharedfilesystemsV2SnapshotsResponse){
-    return NewUpdateSharedfilesystemsV2SnapshotsResponse(snapshots.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateSharedfilesystemsV2Snapshots(req *UpdateSharedfilesystemsV2SnapshotsRequest)(*UpdateSharedfilesystemsV2SnapshotsResponse){
+    return NewUpdateSharedfilesystemsV2SnapshotsResponse(snapshots.Update(oc.client,req.Id,req.Opts, ))
 
 }

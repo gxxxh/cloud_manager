@@ -31,8 +31,8 @@ func NewListIdentityV3RolesResponse(pager pagination.Pager,)*ListIdentityV3Roles
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV3Roles(request *ListIdentityV3RolesRequest)(*ListIdentityV3RolesResponse){
-    return NewListIdentityV3RolesResponse(roles.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListIdentityV3Roles(req *ListIdentityV3RolesRequest)(*ListIdentityV3RolesResponse){
+    return NewListIdentityV3RolesResponse(roles.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Roles
@@ -56,8 +56,8 @@ func NewGetIdentityV3RolesResponse(getResult roles.GetResult,)*GetIdentityV3Role
 }
 
 // action function
-func (oc *OpenstackClient) GetIdentityV3Roles(request *GetIdentityV3RolesRequest)(*GetIdentityV3RolesResponse){
-    return NewGetIdentityV3RolesResponse(roles.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetIdentityV3Roles(req *GetIdentityV3RolesRequest)(*GetIdentityV3RolesResponse){
+    return NewGetIdentityV3RolesResponse(roles.Get(oc.client,req.Id, ))
 
 }
 //request struct for the CreateIdentityV3Roles
@@ -81,8 +81,8 @@ func NewCreateIdentityV3RolesResponse(createResult roles.CreateResult,)*CreateId
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3Roles(request *CreateIdentityV3RolesRequest)(*CreateIdentityV3RolesResponse){
-    return NewCreateIdentityV3RolesResponse(roles.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV3Roles(req *CreateIdentityV3RolesRequest)(*CreateIdentityV3RolesResponse){
+    return NewCreateIdentityV3RolesResponse(roles.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateIdentityV3Roles
@@ -107,8 +107,8 @@ func NewUpdateIdentityV3RolesResponse(updateResult roles.UpdateResult,)*UpdateId
 }
 
 // action function
-func (oc *OpenstackClient) UpdateIdentityV3Roles(request *UpdateIdentityV3RolesRequest)(*UpdateIdentityV3RolesResponse){
-    return NewUpdateIdentityV3RolesResponse(roles.Update(oc.client,request.RoleID,request.Opts, ))
+func (oc *OpenstackClient) UpdateIdentityV3Roles(req *UpdateIdentityV3RolesRequest)(*UpdateIdentityV3RolesResponse){
+    return NewUpdateIdentityV3RolesResponse(roles.Update(oc.client,req.RoleID,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Roles
@@ -132,8 +132,8 @@ func NewDeleteIdentityV3RolesResponse(deleteResult roles.DeleteResult,)*DeleteId
 }
 
 // action function
-func (oc *OpenstackClient) DeleteIdentityV3Roles(request *DeleteIdentityV3RolesRequest)(*DeleteIdentityV3RolesResponse){
-    return NewDeleteIdentityV3RolesResponse(roles.Delete(oc.client,request.RoleID, ))
+func (oc *OpenstackClient) DeleteIdentityV3Roles(req *DeleteIdentityV3RolesRequest)(*DeleteIdentityV3RolesResponse){
+    return NewDeleteIdentityV3RolesResponse(roles.Delete(oc.client,req.RoleID, ))
 
 }
 //request struct for the ListAssignmentsIdentityV3Roles
@@ -157,8 +157,8 @@ func NewListAssignmentsIdentityV3RolesResponse(pager pagination.Pager,)*ListAssi
 }
 
 // action function
-func (oc *OpenstackClient) ListAssignmentsIdentityV3Roles(request *ListAssignmentsIdentityV3RolesRequest)(*ListAssignmentsIdentityV3RolesResponse){
-    return NewListAssignmentsIdentityV3RolesResponse(roles.ListAssignments(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListAssignmentsIdentityV3Roles(req *ListAssignmentsIdentityV3RolesRequest)(*ListAssignmentsIdentityV3RolesResponse){
+    return NewListAssignmentsIdentityV3RolesResponse(roles.ListAssignments(oc.client,req.Opts, ))
 
 }
 //request struct for the ListAssignmentsOnResourceIdentityV3Roles
@@ -182,8 +182,8 @@ func NewListAssignmentsOnResourceIdentityV3RolesResponse(pager pagination.Pager,
 }
 
 // action function
-func (oc *OpenstackClient) ListAssignmentsOnResourceIdentityV3Roles(request *ListAssignmentsOnResourceIdentityV3RolesRequest)(*ListAssignmentsOnResourceIdentityV3RolesResponse){
-    return NewListAssignmentsOnResourceIdentityV3RolesResponse(roles.ListAssignmentsOnResource(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListAssignmentsOnResourceIdentityV3Roles(req *ListAssignmentsOnResourceIdentityV3RolesRequest)(*ListAssignmentsOnResourceIdentityV3RolesResponse){
+    return NewListAssignmentsOnResourceIdentityV3RolesResponse(roles.ListAssignmentsOnResource(oc.client,req.Opts, ))
 
 }
 //request struct for the AssignIdentityV3Roles
@@ -208,8 +208,8 @@ func NewAssignIdentityV3RolesResponse(assignmentResult roles.AssignmentResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) AssignIdentityV3Roles(request *AssignIdentityV3RolesRequest)(*AssignIdentityV3RolesResponse){
-    return NewAssignIdentityV3RolesResponse(roles.Assign(oc.client,request.RoleID,request.Opts, ))
+func (oc *OpenstackClient) AssignIdentityV3Roles(req *AssignIdentityV3RolesRequest)(*AssignIdentityV3RolesResponse){
+    return NewAssignIdentityV3RolesResponse(roles.Assign(oc.client,req.RoleID,req.Opts, ))
 
 }
 //request struct for the UnassignIdentityV3Roles
@@ -234,7 +234,7 @@ func NewUnassignIdentityV3RolesResponse(unassignmentResult roles.UnassignmentRes
 }
 
 // action function
-func (oc *OpenstackClient) UnassignIdentityV3Roles(request *UnassignIdentityV3RolesRequest)(*UnassignIdentityV3RolesResponse){
-    return NewUnassignIdentityV3RolesResponse(roles.Unassign(oc.client,request.RoleID,request.Opts, ))
+func (oc *OpenstackClient) UnassignIdentityV3Roles(req *UnassignIdentityV3RolesRequest)(*UnassignIdentityV3RolesResponse){
+    return NewUnassignIdentityV3RolesResponse(roles.Unassign(oc.client,req.RoleID,req.Opts, ))
 
 }

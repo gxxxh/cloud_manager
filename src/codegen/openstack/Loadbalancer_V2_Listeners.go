@@ -31,8 +31,8 @@ func NewListLoadbalancerV2ListenersResponse(pager pagination.Pager,)*ListLoadbal
 }
 
 // action function
-func (oc *OpenstackClient) ListLoadbalancerV2Listeners(request *ListLoadbalancerV2ListenersRequest)(*ListLoadbalancerV2ListenersResponse){
-    return NewListLoadbalancerV2ListenersResponse(listeners.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListLoadbalancerV2Listeners(req *ListLoadbalancerV2ListenersRequest)(*ListLoadbalancerV2ListenersResponse){
+    return NewListLoadbalancerV2ListenersResponse(listeners.List(oc.client,req.Opts, ))
 
 }
 //request struct for the CreateLoadbalancerV2Listeners
@@ -56,8 +56,8 @@ func NewCreateLoadbalancerV2ListenersResponse(createResult listeners.CreateResul
 }
 
 // action function
-func (oc *OpenstackClient) CreateLoadbalancerV2Listeners(request *CreateLoadbalancerV2ListenersRequest)(*CreateLoadbalancerV2ListenersResponse){
-    return NewCreateLoadbalancerV2ListenersResponse(listeners.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateLoadbalancerV2Listeners(req *CreateLoadbalancerV2ListenersRequest)(*CreateLoadbalancerV2ListenersResponse){
+    return NewCreateLoadbalancerV2ListenersResponse(listeners.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the GetLoadbalancerV2Listeners
@@ -81,8 +81,8 @@ func NewGetLoadbalancerV2ListenersResponse(getResult listeners.GetResult,)*GetLo
 }
 
 // action function
-func (oc *OpenstackClient) GetLoadbalancerV2Listeners(request *GetLoadbalancerV2ListenersRequest)(*GetLoadbalancerV2ListenersResponse){
-    return NewGetLoadbalancerV2ListenersResponse(listeners.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetLoadbalancerV2Listeners(req *GetLoadbalancerV2ListenersRequest)(*GetLoadbalancerV2ListenersResponse){
+    return NewGetLoadbalancerV2ListenersResponse(listeners.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateLoadbalancerV2Listeners
@@ -107,8 +107,8 @@ func NewUpdateLoadbalancerV2ListenersResponse(updateResult listeners.UpdateResul
 }
 
 // action function
-func (oc *OpenstackClient) UpdateLoadbalancerV2Listeners(request *UpdateLoadbalancerV2ListenersRequest)(*UpdateLoadbalancerV2ListenersResponse){
-    return NewUpdateLoadbalancerV2ListenersResponse(listeners.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateLoadbalancerV2Listeners(req *UpdateLoadbalancerV2ListenersRequest)(*UpdateLoadbalancerV2ListenersResponse){
+    return NewUpdateLoadbalancerV2ListenersResponse(listeners.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteLoadbalancerV2Listeners
@@ -132,8 +132,8 @@ func NewDeleteLoadbalancerV2ListenersResponse(deleteResult listeners.DeleteResul
 }
 
 // action function
-func (oc *OpenstackClient) DeleteLoadbalancerV2Listeners(request *DeleteLoadbalancerV2ListenersRequest)(*DeleteLoadbalancerV2ListenersResponse){
-    return NewDeleteLoadbalancerV2ListenersResponse(listeners.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteLoadbalancerV2Listeners(req *DeleteLoadbalancerV2ListenersRequest)(*DeleteLoadbalancerV2ListenersResponse){
+    return NewDeleteLoadbalancerV2ListenersResponse(listeners.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the GetStatsLoadbalancerV2Listeners
@@ -157,7 +157,7 @@ func NewGetStatsLoadbalancerV2ListenersResponse(statsResult listeners.StatsResul
 }
 
 // action function
-func (oc *OpenstackClient) GetStatsLoadbalancerV2Listeners(request *GetStatsLoadbalancerV2ListenersRequest)(*GetStatsLoadbalancerV2ListenersResponse){
-    return NewGetStatsLoadbalancerV2ListenersResponse(listeners.GetStats(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetStatsLoadbalancerV2Listeners(req *GetStatsLoadbalancerV2ListenersRequest)(*GetStatsLoadbalancerV2ListenersResponse){
+    return NewGetStatsLoadbalancerV2ListenersResponse(listeners.GetStats(oc.client,req.Id, ))
 
 }

@@ -30,7 +30,7 @@ func NewListLoadbalancerV2ApiversionsResponse(pager pagination.Pager,)*ListLoadb
 }
 
 // action function
-func (oc *OpenstackClient) ListLoadbalancerV2Apiversions(request *ListLoadbalancerV2ApiversionsRequest)(*ListLoadbalancerV2ApiversionsResponse){
+func (oc *OpenstackClient) ListLoadbalancerV2Apiversions(req *ListLoadbalancerV2ApiversionsRequest)(*ListLoadbalancerV2ApiversionsResponse){
     return NewListLoadbalancerV2ApiversionsResponse(apiversions.List(oc.client, ))
 
 }

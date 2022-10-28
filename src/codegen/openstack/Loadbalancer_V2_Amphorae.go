@@ -31,8 +31,8 @@ func NewListLoadbalancerV2AmphoraeResponse(pager pagination.Pager,)*ListLoadbala
 }
 
 // action function
-func (oc *OpenstackClient) ListLoadbalancerV2Amphorae(request *ListLoadbalancerV2AmphoraeRequest)(*ListLoadbalancerV2AmphoraeResponse){
-    return NewListLoadbalancerV2AmphoraeResponse(amphorae.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListLoadbalancerV2Amphorae(req *ListLoadbalancerV2AmphoraeRequest)(*ListLoadbalancerV2AmphoraeResponse){
+    return NewListLoadbalancerV2AmphoraeResponse(amphorae.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetLoadbalancerV2Amphorae
@@ -56,8 +56,8 @@ func NewGetLoadbalancerV2AmphoraeResponse(getResult amphorae.GetResult,)*GetLoad
 }
 
 // action function
-func (oc *OpenstackClient) GetLoadbalancerV2Amphorae(request *GetLoadbalancerV2AmphoraeRequest)(*GetLoadbalancerV2AmphoraeResponse){
-    return NewGetLoadbalancerV2AmphoraeResponse(amphorae.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetLoadbalancerV2Amphorae(req *GetLoadbalancerV2AmphoraeRequest)(*GetLoadbalancerV2AmphoraeResponse){
+    return NewGetLoadbalancerV2AmphoraeResponse(amphorae.Get(oc.client,req.Id, ))
 
 }
 //request struct for the FailoverLoadbalancerV2Amphorae
@@ -81,7 +81,7 @@ func NewFailoverLoadbalancerV2AmphoraeResponse(failoverResult amphorae.FailoverR
 }
 
 // action function
-func (oc *OpenstackClient) FailoverLoadbalancerV2Amphorae(request *FailoverLoadbalancerV2AmphoraeRequest)(*FailoverLoadbalancerV2AmphoraeResponse){
-    return NewFailoverLoadbalancerV2AmphoraeResponse(amphorae.Failover(oc.client,request.Id, ))
+func (oc *OpenstackClient) FailoverLoadbalancerV2Amphorae(req *FailoverLoadbalancerV2AmphoraeRequest)(*FailoverLoadbalancerV2AmphoraeResponse){
+    return NewFailoverLoadbalancerV2AmphoraeResponse(amphorae.Failover(oc.client,req.Id, ))
 
 }

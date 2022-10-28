@@ -31,8 +31,8 @@ func NewCreateMessagingV2ClaimsResponse(createResult claims.CreateResult,)*Creat
 }
 
 // action function
-func (oc *OpenstackClient) CreateMessagingV2Claims(request *CreateMessagingV2ClaimsRequest)(*CreateMessagingV2ClaimsResponse){
-    return NewCreateMessagingV2ClaimsResponse(claims.Create(oc.client,request.QueueName,request.Opts, ))
+func (oc *OpenstackClient) CreateMessagingV2Claims(req *CreateMessagingV2ClaimsRequest)(*CreateMessagingV2ClaimsResponse){
+    return NewCreateMessagingV2ClaimsResponse(claims.Create(oc.client,req.QueueName,req.Opts, ))
 
 }
 //request struct for the GetMessagingV2Claims
@@ -57,8 +57,8 @@ func NewGetMessagingV2ClaimsResponse(getResult claims.GetResult,)*GetMessagingV2
 }
 
 // action function
-func (oc *OpenstackClient) GetMessagingV2Claims(request *GetMessagingV2ClaimsRequest)(*GetMessagingV2ClaimsResponse){
-    return NewGetMessagingV2ClaimsResponse(claims.Get(oc.client,request.QueueName,request.ClaimID, ))
+func (oc *OpenstackClient) GetMessagingV2Claims(req *GetMessagingV2ClaimsRequest)(*GetMessagingV2ClaimsResponse){
+    return NewGetMessagingV2ClaimsResponse(claims.Get(oc.client,req.QueueName,req.ClaimID, ))
 
 }
 //request struct for the UpdateMessagingV2Claims
@@ -84,8 +84,8 @@ func NewUpdateMessagingV2ClaimsResponse(updateResult claims.UpdateResult,)*Updat
 }
 
 // action function
-func (oc *OpenstackClient) UpdateMessagingV2Claims(request *UpdateMessagingV2ClaimsRequest)(*UpdateMessagingV2ClaimsResponse){
-    return NewUpdateMessagingV2ClaimsResponse(claims.Update(oc.client,request.QueueName,request.ClaimID,request.Opts, ))
+func (oc *OpenstackClient) UpdateMessagingV2Claims(req *UpdateMessagingV2ClaimsRequest)(*UpdateMessagingV2ClaimsResponse){
+    return NewUpdateMessagingV2ClaimsResponse(claims.Update(oc.client,req.QueueName,req.ClaimID,req.Opts, ))
 
 }
 //request struct for the DeleteMessagingV2Claims
@@ -110,7 +110,7 @@ func NewDeleteMessagingV2ClaimsResponse(deleteResult claims.DeleteResult,)*Delet
 }
 
 // action function
-func (oc *OpenstackClient) DeleteMessagingV2Claims(request *DeleteMessagingV2ClaimsRequest)(*DeleteMessagingV2ClaimsResponse){
-    return NewDeleteMessagingV2ClaimsResponse(claims.Delete(oc.client,request.QueueName,request.ClaimID, ))
+func (oc *OpenstackClient) DeleteMessagingV2Claims(req *DeleteMessagingV2ClaimsRequest)(*DeleteMessagingV2ClaimsResponse){
+    return NewDeleteMessagingV2ClaimsResponse(claims.Delete(oc.client,req.QueueName,req.ClaimID, ))
 
 }

@@ -31,8 +31,8 @@ func NewCreateDbV1InstancesResponse(createResult instances.CreateResult,)*Create
 }
 
 // action function
-func (oc *OpenstackClient) CreateDbV1Instances(request *CreateDbV1InstancesRequest)(*CreateDbV1InstancesResponse){
-    return NewCreateDbV1InstancesResponse(instances.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateDbV1Instances(req *CreateDbV1InstancesRequest)(*CreateDbV1InstancesResponse){
+    return NewCreateDbV1InstancesResponse(instances.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the ListDbV1Instances
@@ -55,7 +55,7 @@ func NewListDbV1InstancesResponse(pager pagination.Pager,)*ListDbV1InstancesResp
 }
 
 // action function
-func (oc *OpenstackClient) ListDbV1Instances(request *ListDbV1InstancesRequest)(*ListDbV1InstancesResponse){
+func (oc *OpenstackClient) ListDbV1Instances(req *ListDbV1InstancesRequest)(*ListDbV1InstancesResponse){
     return NewListDbV1InstancesResponse(instances.List(oc.client, ))
 
 }
@@ -80,8 +80,8 @@ func NewGetDbV1InstancesResponse(getResult instances.GetResult,)*GetDbV1Instance
 }
 
 // action function
-func (oc *OpenstackClient) GetDbV1Instances(request *GetDbV1InstancesRequest)(*GetDbV1InstancesResponse){
-    return NewGetDbV1InstancesResponse(instances.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetDbV1Instances(req *GetDbV1InstancesRequest)(*GetDbV1InstancesResponse){
+    return NewGetDbV1InstancesResponse(instances.Get(oc.client,req.Id, ))
 
 }
 //request struct for the DeleteDbV1Instances
@@ -105,8 +105,8 @@ func NewDeleteDbV1InstancesResponse(deleteResult instances.DeleteResult,)*Delete
 }
 
 // action function
-func (oc *OpenstackClient) DeleteDbV1Instances(request *DeleteDbV1InstancesRequest)(*DeleteDbV1InstancesResponse){
-    return NewDeleteDbV1InstancesResponse(instances.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteDbV1Instances(req *DeleteDbV1InstancesRequest)(*DeleteDbV1InstancesResponse){
+    return NewDeleteDbV1InstancesResponse(instances.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the EnableRootUserDbV1Instances
@@ -130,8 +130,8 @@ func NewEnableRootUserDbV1InstancesResponse(enableRootUserResult instances.Enabl
 }
 
 // action function
-func (oc *OpenstackClient) EnableRootUserDbV1Instances(request *EnableRootUserDbV1InstancesRequest)(*EnableRootUserDbV1InstancesResponse){
-    return NewEnableRootUserDbV1InstancesResponse(instances.EnableRootUser(oc.client,request.Id, ))
+func (oc *OpenstackClient) EnableRootUserDbV1Instances(req *EnableRootUserDbV1InstancesRequest)(*EnableRootUserDbV1InstancesResponse){
+    return NewEnableRootUserDbV1InstancesResponse(instances.EnableRootUser(oc.client,req.Id, ))
 
 }
 //request struct for the IsRootEnabledDbV1Instances
@@ -155,8 +155,8 @@ func NewIsRootEnabledDbV1InstancesResponse(isRootEnabledResult instances.IsRootE
 }
 
 // action function
-func (oc *OpenstackClient) IsRootEnabledDbV1Instances(request *IsRootEnabledDbV1InstancesRequest)(*IsRootEnabledDbV1InstancesResponse){
-    return NewIsRootEnabledDbV1InstancesResponse(instances.IsRootEnabled(oc.client,request.Id, ))
+func (oc *OpenstackClient) IsRootEnabledDbV1Instances(req *IsRootEnabledDbV1InstancesRequest)(*IsRootEnabledDbV1InstancesResponse){
+    return NewIsRootEnabledDbV1InstancesResponse(instances.IsRootEnabled(oc.client,req.Id, ))
 
 }
 //request struct for the RestartDbV1Instances
@@ -180,8 +180,8 @@ func NewRestartDbV1InstancesResponse(actionResult instances.ActionResult,)*Resta
 }
 
 // action function
-func (oc *OpenstackClient) RestartDbV1Instances(request *RestartDbV1InstancesRequest)(*RestartDbV1InstancesResponse){
-    return NewRestartDbV1InstancesResponse(instances.Restart(oc.client,request.Id, ))
+func (oc *OpenstackClient) RestartDbV1Instances(req *RestartDbV1InstancesRequest)(*RestartDbV1InstancesResponse){
+    return NewRestartDbV1InstancesResponse(instances.Restart(oc.client,req.Id, ))
 
 }
 //request struct for the ResizeDbV1Instances
@@ -206,8 +206,8 @@ func NewResizeDbV1InstancesResponse(actionResult instances.ActionResult,)*Resize
 }
 
 // action function
-func (oc *OpenstackClient) ResizeDbV1Instances(request *ResizeDbV1InstancesRequest)(*ResizeDbV1InstancesResponse){
-    return NewResizeDbV1InstancesResponse(instances.Resize(oc.client,request.Id,request.FlavorRef, ))
+func (oc *OpenstackClient) ResizeDbV1Instances(req *ResizeDbV1InstancesRequest)(*ResizeDbV1InstancesResponse){
+    return NewResizeDbV1InstancesResponse(instances.Resize(oc.client,req.Id,req.FlavorRef, ))
 
 }
 //request struct for the ResizeVolumeDbV1Instances
@@ -232,8 +232,8 @@ func NewResizeVolumeDbV1InstancesResponse(actionResult instances.ActionResult,)*
 }
 
 // action function
-func (oc *OpenstackClient) ResizeVolumeDbV1Instances(request *ResizeVolumeDbV1InstancesRequest)(*ResizeVolumeDbV1InstancesResponse){
-    return NewResizeVolumeDbV1InstancesResponse(instances.ResizeVolume(oc.client,request.Id,request.Size, ))
+func (oc *OpenstackClient) ResizeVolumeDbV1Instances(req *ResizeVolumeDbV1InstancesRequest)(*ResizeVolumeDbV1InstancesResponse){
+    return NewResizeVolumeDbV1InstancesResponse(instances.ResizeVolume(oc.client,req.Id,req.Size, ))
 
 }
 //request struct for the AttachConfigurationGroupDbV1Instances
@@ -258,8 +258,8 @@ func NewAttachConfigurationGroupDbV1InstancesResponse(configurationResult instan
 }
 
 // action function
-func (oc *OpenstackClient) AttachConfigurationGroupDbV1Instances(request *AttachConfigurationGroupDbV1InstancesRequest)(*AttachConfigurationGroupDbV1InstancesResponse){
-    return NewAttachConfigurationGroupDbV1InstancesResponse(instances.AttachConfigurationGroup(oc.client,request.InstanceID,request.ConfigID, ))
+func (oc *OpenstackClient) AttachConfigurationGroupDbV1Instances(req *AttachConfigurationGroupDbV1InstancesRequest)(*AttachConfigurationGroupDbV1InstancesResponse){
+    return NewAttachConfigurationGroupDbV1InstancesResponse(instances.AttachConfigurationGroup(oc.client,req.InstanceID,req.ConfigID, ))
 
 }
 //request struct for the DetachConfigurationGroupDbV1Instances
@@ -283,7 +283,7 @@ func NewDetachConfigurationGroupDbV1InstancesResponse(configurationResult instan
 }
 
 // action function
-func (oc *OpenstackClient) DetachConfigurationGroupDbV1Instances(request *DetachConfigurationGroupDbV1InstancesRequest)(*DetachConfigurationGroupDbV1InstancesResponse){
-    return NewDetachConfigurationGroupDbV1InstancesResponse(instances.DetachConfigurationGroup(oc.client,request.InstanceID, ))
+func (oc *OpenstackClient) DetachConfigurationGroupDbV1Instances(req *DetachConfigurationGroupDbV1InstancesRequest)(*DetachConfigurationGroupDbV1InstancesResponse){
+    return NewDetachConfigurationGroupDbV1InstancesResponse(instances.DetachConfigurationGroup(oc.client,req.InstanceID, ))
 
 }

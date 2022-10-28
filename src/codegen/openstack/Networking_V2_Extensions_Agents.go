@@ -31,8 +31,8 @@ func NewListNetworkingV2ExtensionsAgentsResponse(pager pagination.Pager,)*ListNe
 }
 
 // action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsAgents(request *ListNetworkingV2ExtensionsAgentsRequest)(*ListNetworkingV2ExtensionsAgentsResponse){
-    return NewListNetworkingV2ExtensionsAgentsResponse(agents.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsAgents(req *ListNetworkingV2ExtensionsAgentsRequest)(*ListNetworkingV2ExtensionsAgentsResponse){
+    return NewListNetworkingV2ExtensionsAgentsResponse(agents.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsAgents
@@ -56,8 +56,8 @@ func NewGetNetworkingV2ExtensionsAgentsResponse(getResult agents.GetResult,)*Get
 }
 
 // action function
-func (oc *OpenstackClient) GetNetworkingV2ExtensionsAgents(request *GetNetworkingV2ExtensionsAgentsRequest)(*GetNetworkingV2ExtensionsAgentsResponse){
-    return NewGetNetworkingV2ExtensionsAgentsResponse(agents.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetNetworkingV2ExtensionsAgents(req *GetNetworkingV2ExtensionsAgentsRequest)(*GetNetworkingV2ExtensionsAgentsResponse){
+    return NewGetNetworkingV2ExtensionsAgentsResponse(agents.Get(oc.client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsAgents
@@ -82,8 +82,8 @@ func NewUpdateNetworkingV2ExtensionsAgentsResponse(updateResult agents.UpdateRes
 }
 
 // action function
-func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsAgents(request *UpdateNetworkingV2ExtensionsAgentsRequest)(*UpdateNetworkingV2ExtensionsAgentsResponse){
-    return NewUpdateNetworkingV2ExtensionsAgentsResponse(agents.Update(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsAgents(req *UpdateNetworkingV2ExtensionsAgentsRequest)(*UpdateNetworkingV2ExtensionsAgentsResponse){
+    return NewUpdateNetworkingV2ExtensionsAgentsResponse(agents.Update(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsAgents
@@ -107,8 +107,8 @@ func NewDeleteNetworkingV2ExtensionsAgentsResponse(deleteResult agents.DeleteRes
 }
 
 // action function
-func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsAgents(request *DeleteNetworkingV2ExtensionsAgentsRequest)(*DeleteNetworkingV2ExtensionsAgentsResponse){
-    return NewDeleteNetworkingV2ExtensionsAgentsResponse(agents.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsAgents(req *DeleteNetworkingV2ExtensionsAgentsRequest)(*DeleteNetworkingV2ExtensionsAgentsResponse){
+    return NewDeleteNetworkingV2ExtensionsAgentsResponse(agents.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the ListDHCPNetworksNetworkingV2ExtensionsAgents
@@ -132,8 +132,8 @@ func NewListDHCPNetworksNetworkingV2ExtensionsAgentsResponse(listDHCPNetworksRes
 }
 
 // action function
-func (oc *OpenstackClient) ListDHCPNetworksNetworkingV2ExtensionsAgents(request *ListDHCPNetworksNetworkingV2ExtensionsAgentsRequest)(*ListDHCPNetworksNetworkingV2ExtensionsAgentsResponse){
-    return NewListDHCPNetworksNetworkingV2ExtensionsAgentsResponse(agents.ListDHCPNetworks(oc.client,request.Id, ))
+func (oc *OpenstackClient) ListDHCPNetworksNetworkingV2ExtensionsAgents(req *ListDHCPNetworksNetworkingV2ExtensionsAgentsRequest)(*ListDHCPNetworksNetworkingV2ExtensionsAgentsResponse){
+    return NewListDHCPNetworksNetworkingV2ExtensionsAgentsResponse(agents.ListDHCPNetworks(oc.client,req.Id, ))
 
 }
 //request struct for the ScheduleDHCPNetworkNetworkingV2ExtensionsAgents
@@ -158,8 +158,8 @@ func NewScheduleDHCPNetworkNetworkingV2ExtensionsAgentsResponse(scheduleDHCPNetw
 }
 
 // action function
-func (oc *OpenstackClient) ScheduleDHCPNetworkNetworkingV2ExtensionsAgents(request *ScheduleDHCPNetworkNetworkingV2ExtensionsAgentsRequest)(*ScheduleDHCPNetworkNetworkingV2ExtensionsAgentsResponse){
-    return NewScheduleDHCPNetworkNetworkingV2ExtensionsAgentsResponse(agents.ScheduleDHCPNetwork(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) ScheduleDHCPNetworkNetworkingV2ExtensionsAgents(req *ScheduleDHCPNetworkNetworkingV2ExtensionsAgentsRequest)(*ScheduleDHCPNetworkNetworkingV2ExtensionsAgentsResponse){
+    return NewScheduleDHCPNetworkNetworkingV2ExtensionsAgentsResponse(agents.ScheduleDHCPNetwork(oc.client,req.Id,req.Opts, ))
 
 }
 //request struct for the RemoveDHCPNetworkNetworkingV2ExtensionsAgents
@@ -184,8 +184,8 @@ func NewRemoveDHCPNetworkNetworkingV2ExtensionsAgentsResponse(removeDHCPNetworkR
 }
 
 // action function
-func (oc *OpenstackClient) RemoveDHCPNetworkNetworkingV2ExtensionsAgents(request *RemoveDHCPNetworkNetworkingV2ExtensionsAgentsRequest)(*RemoveDHCPNetworkNetworkingV2ExtensionsAgentsResponse){
-    return NewRemoveDHCPNetworkNetworkingV2ExtensionsAgentsResponse(agents.RemoveDHCPNetwork(oc.client,request.Id,request.NetworkID, ))
+func (oc *OpenstackClient) RemoveDHCPNetworkNetworkingV2ExtensionsAgents(req *RemoveDHCPNetworkNetworkingV2ExtensionsAgentsRequest)(*RemoveDHCPNetworkNetworkingV2ExtensionsAgentsResponse){
+    return NewRemoveDHCPNetworkNetworkingV2ExtensionsAgentsResponse(agents.RemoveDHCPNetwork(oc.client,req.Id,req.NetworkID, ))
 
 }
 //request struct for the ListBGPSpeakersNetworkingV2ExtensionsAgents
@@ -209,7 +209,7 @@ func NewListBGPSpeakersNetworkingV2ExtensionsAgentsResponse(pager pagination.Pag
 }
 
 // action function
-func (oc *OpenstackClient) ListBGPSpeakersNetworkingV2ExtensionsAgents(request *ListBGPSpeakersNetworkingV2ExtensionsAgentsRequest)(*ListBGPSpeakersNetworkingV2ExtensionsAgentsResponse){
-    return NewListBGPSpeakersNetworkingV2ExtensionsAgentsResponse(agents.ListBGPSpeakers(oc.client,request.AgentID, ))
+func (oc *OpenstackClient) ListBGPSpeakersNetworkingV2ExtensionsAgents(req *ListBGPSpeakersNetworkingV2ExtensionsAgentsRequest)(*ListBGPSpeakersNetworkingV2ExtensionsAgentsResponse){
+    return NewListBGPSpeakersNetworkingV2ExtensionsAgentsResponse(agents.ListBGPSpeakers(oc.client,req.AgentID, ))
 
 }

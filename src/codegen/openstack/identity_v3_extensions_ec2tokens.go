@@ -31,8 +31,8 @@ func NewCreateIdentityV3ExtensionsEc2tokensResponse(createResult tokens.CreateRe
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3ExtensionsEc2tokens(request *CreateIdentityV3ExtensionsEc2tokensRequest)(*CreateIdentityV3ExtensionsEc2tokensResponse){
-    return NewCreateIdentityV3ExtensionsEc2tokensResponse(ec2tokens.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV3ExtensionsEc2tokens(req *CreateIdentityV3ExtensionsEc2tokensRequest)(*CreateIdentityV3ExtensionsEc2tokensResponse){
+    return NewCreateIdentityV3ExtensionsEc2tokensResponse(ec2tokens.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the ValidateS3TokenIdentityV3ExtensionsEc2tokens
@@ -56,7 +56,7 @@ func NewValidateS3TokenIdentityV3ExtensionsEc2tokensResponse(createResult tokens
 }
 
 // action function
-func (oc *OpenstackClient) ValidateS3TokenIdentityV3ExtensionsEc2tokens(request *ValidateS3TokenIdentityV3ExtensionsEc2tokensRequest)(*ValidateS3TokenIdentityV3ExtensionsEc2tokensResponse){
-    return NewValidateS3TokenIdentityV3ExtensionsEc2tokensResponse(ec2tokens.ValidateS3Token(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ValidateS3TokenIdentityV3ExtensionsEc2tokens(req *ValidateS3TokenIdentityV3ExtensionsEc2tokensRequest)(*ValidateS3TokenIdentityV3ExtensionsEc2tokensResponse){
+    return NewValidateS3TokenIdentityV3ExtensionsEc2tokensResponse(ec2tokens.ValidateS3Token(oc.client,req.Opts, ))
 
 }

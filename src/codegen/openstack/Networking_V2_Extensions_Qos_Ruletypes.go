@@ -30,7 +30,7 @@ func NewListRuleTypesNetworkingV2ExtensionsQosRuletypesResponse(pager pagination
 }
 
 // action function
-func (oc *OpenstackClient) ListRuleTypesNetworkingV2ExtensionsQosRuletypes(request *ListRuleTypesNetworkingV2ExtensionsQosRuletypesRequest)(*ListRuleTypesNetworkingV2ExtensionsQosRuletypesResponse){
+func (oc *OpenstackClient) ListRuleTypesNetworkingV2ExtensionsQosRuletypes(req *ListRuleTypesNetworkingV2ExtensionsQosRuletypesRequest)(*ListRuleTypesNetworkingV2ExtensionsQosRuletypesResponse){
     return NewListRuleTypesNetworkingV2ExtensionsQosRuletypesResponse(ruletypes.ListRuleTypes(oc.client, ))
 
 }
@@ -55,7 +55,7 @@ func NewGetRuleTypeNetworkingV2ExtensionsQosRuletypesResponse(getResult ruletype
 }
 
 // action function
-func (oc *OpenstackClient) GetRuleTypeNetworkingV2ExtensionsQosRuletypes(request *GetRuleTypeNetworkingV2ExtensionsQosRuletypesRequest)(*GetRuleTypeNetworkingV2ExtensionsQosRuletypesResponse){
-    return NewGetRuleTypeNetworkingV2ExtensionsQosRuletypesResponse(ruletypes.GetRuleType(oc.client,request.Name, ))
+func (oc *OpenstackClient) GetRuleTypeNetworkingV2ExtensionsQosRuletypes(req *GetRuleTypeNetworkingV2ExtensionsQosRuletypesRequest)(*GetRuleTypeNetworkingV2ExtensionsQosRuletypesResponse){
+    return NewGetRuleTypeNetworkingV2ExtensionsQosRuletypesResponse(ruletypes.GetRuleType(oc.client,req.Name, ))
 
 }

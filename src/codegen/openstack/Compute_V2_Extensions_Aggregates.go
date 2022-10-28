@@ -30,7 +30,7 @@ func NewListComputeV2ExtensionsAggregatesResponse(pager pagination.Pager,)*ListC
 }
 
 // action function
-func (oc *OpenstackClient) ListComputeV2ExtensionsAggregates(request *ListComputeV2ExtensionsAggregatesRequest)(*ListComputeV2ExtensionsAggregatesResponse){
+func (oc *OpenstackClient) ListComputeV2ExtensionsAggregates(req *ListComputeV2ExtensionsAggregatesRequest)(*ListComputeV2ExtensionsAggregatesResponse){
     return NewListComputeV2ExtensionsAggregatesResponse(aggregates.List(oc.client, ))
 
 }
@@ -55,8 +55,8 @@ func NewCreateComputeV2ExtensionsAggregatesResponse(createResult aggregates.Crea
 }
 
 // action function
-func (oc *OpenstackClient) CreateComputeV2ExtensionsAggregates(request *CreateComputeV2ExtensionsAggregatesRequest)(*CreateComputeV2ExtensionsAggregatesResponse){
-    return NewCreateComputeV2ExtensionsAggregatesResponse(aggregates.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateComputeV2ExtensionsAggregates(req *CreateComputeV2ExtensionsAggregatesRequest)(*CreateComputeV2ExtensionsAggregatesResponse){
+    return NewCreateComputeV2ExtensionsAggregatesResponse(aggregates.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsAggregates
@@ -80,8 +80,8 @@ func NewDeleteComputeV2ExtensionsAggregatesResponse(deleteResult aggregates.Dele
 }
 
 // action function
-func (oc *OpenstackClient) DeleteComputeV2ExtensionsAggregates(request *DeleteComputeV2ExtensionsAggregatesRequest)(*DeleteComputeV2ExtensionsAggregatesResponse){
-    return NewDeleteComputeV2ExtensionsAggregatesResponse(aggregates.Delete(oc.client,request.AggregateID, ))
+func (oc *OpenstackClient) DeleteComputeV2ExtensionsAggregates(req *DeleteComputeV2ExtensionsAggregatesRequest)(*DeleteComputeV2ExtensionsAggregatesResponse){
+    return NewDeleteComputeV2ExtensionsAggregatesResponse(aggregates.Delete(oc.client,req.AggregateID, ))
 
 }
 //request struct for the GetComputeV2ExtensionsAggregates
@@ -105,8 +105,8 @@ func NewGetComputeV2ExtensionsAggregatesResponse(getResult aggregates.GetResult,
 }
 
 // action function
-func (oc *OpenstackClient) GetComputeV2ExtensionsAggregates(request *GetComputeV2ExtensionsAggregatesRequest)(*GetComputeV2ExtensionsAggregatesResponse){
-    return NewGetComputeV2ExtensionsAggregatesResponse(aggregates.Get(oc.client,request.AggregateID, ))
+func (oc *OpenstackClient) GetComputeV2ExtensionsAggregates(req *GetComputeV2ExtensionsAggregatesRequest)(*GetComputeV2ExtensionsAggregatesResponse){
+    return NewGetComputeV2ExtensionsAggregatesResponse(aggregates.Get(oc.client,req.AggregateID, ))
 
 }
 //request struct for the UpdateComputeV2ExtensionsAggregates
@@ -131,8 +131,8 @@ func NewUpdateComputeV2ExtensionsAggregatesResponse(updateResult aggregates.Upda
 }
 
 // action function
-func (oc *OpenstackClient) UpdateComputeV2ExtensionsAggregates(request *UpdateComputeV2ExtensionsAggregatesRequest)(*UpdateComputeV2ExtensionsAggregatesResponse){
-    return NewUpdateComputeV2ExtensionsAggregatesResponse(aggregates.Update(oc.client,request.AggregateID,request.Opts, ))
+func (oc *OpenstackClient) UpdateComputeV2ExtensionsAggregates(req *UpdateComputeV2ExtensionsAggregatesRequest)(*UpdateComputeV2ExtensionsAggregatesResponse){
+    return NewUpdateComputeV2ExtensionsAggregatesResponse(aggregates.Update(oc.client,req.AggregateID,req.Opts, ))
 
 }
 //request struct for the AddHostComputeV2ExtensionsAggregates
@@ -157,8 +157,8 @@ func NewAddHostComputeV2ExtensionsAggregatesResponse(actionResult aggregates.Act
 }
 
 // action function
-func (oc *OpenstackClient) AddHostComputeV2ExtensionsAggregates(request *AddHostComputeV2ExtensionsAggregatesRequest)(*AddHostComputeV2ExtensionsAggregatesResponse){
-    return NewAddHostComputeV2ExtensionsAggregatesResponse(aggregates.AddHost(oc.client,request.AggregateID,request.Opts, ))
+func (oc *OpenstackClient) AddHostComputeV2ExtensionsAggregates(req *AddHostComputeV2ExtensionsAggregatesRequest)(*AddHostComputeV2ExtensionsAggregatesResponse){
+    return NewAddHostComputeV2ExtensionsAggregatesResponse(aggregates.AddHost(oc.client,req.AggregateID,req.Opts, ))
 
 }
 //request struct for the RemoveHostComputeV2ExtensionsAggregates
@@ -183,8 +183,8 @@ func NewRemoveHostComputeV2ExtensionsAggregatesResponse(actionResult aggregates.
 }
 
 // action function
-func (oc *OpenstackClient) RemoveHostComputeV2ExtensionsAggregates(request *RemoveHostComputeV2ExtensionsAggregatesRequest)(*RemoveHostComputeV2ExtensionsAggregatesResponse){
-    return NewRemoveHostComputeV2ExtensionsAggregatesResponse(aggregates.RemoveHost(oc.client,request.AggregateID,request.Opts, ))
+func (oc *OpenstackClient) RemoveHostComputeV2ExtensionsAggregates(req *RemoveHostComputeV2ExtensionsAggregatesRequest)(*RemoveHostComputeV2ExtensionsAggregatesResponse){
+    return NewRemoveHostComputeV2ExtensionsAggregatesResponse(aggregates.RemoveHost(oc.client,req.AggregateID,req.Opts, ))
 
 }
 //request struct for the SetMetadataComputeV2ExtensionsAggregates
@@ -209,7 +209,7 @@ func NewSetMetadataComputeV2ExtensionsAggregatesResponse(actionResult aggregates
 }
 
 // action function
-func (oc *OpenstackClient) SetMetadataComputeV2ExtensionsAggregates(request *SetMetadataComputeV2ExtensionsAggregatesRequest)(*SetMetadataComputeV2ExtensionsAggregatesResponse){
-    return NewSetMetadataComputeV2ExtensionsAggregatesResponse(aggregates.SetMetadata(oc.client,request.AggregateID,request.Opts, ))
+func (oc *OpenstackClient) SetMetadataComputeV2ExtensionsAggregates(req *SetMetadataComputeV2ExtensionsAggregatesRequest)(*SetMetadataComputeV2ExtensionsAggregatesResponse){
+    return NewSetMetadataComputeV2ExtensionsAggregatesResponse(aggregates.SetMetadata(oc.client,req.AggregateID,req.Opts, ))
 
 }

@@ -32,8 +32,8 @@ func NewListByZoneDnsV2RecordsetsResponse(pager pagination.Pager,)*ListByZoneDns
 }
 
 // action function
-func (oc *OpenstackClient) ListByZoneDnsV2Recordsets(request *ListByZoneDnsV2RecordsetsRequest)(*ListByZoneDnsV2RecordsetsResponse){
-    return NewListByZoneDnsV2RecordsetsResponse(recordsets.ListByZone(oc.client,request.ZoneID,request.Opts, ))
+func (oc *OpenstackClient) ListByZoneDnsV2Recordsets(req *ListByZoneDnsV2RecordsetsRequest)(*ListByZoneDnsV2RecordsetsResponse){
+    return NewListByZoneDnsV2RecordsetsResponse(recordsets.ListByZone(oc.client,req.ZoneID,req.Opts, ))
 
 }
 //request struct for the GetDnsV2Recordsets
@@ -58,8 +58,8 @@ func NewGetDnsV2RecordsetsResponse(getResult recordsets.GetResult,)*GetDnsV2Reco
 }
 
 // action function
-func (oc *OpenstackClient) GetDnsV2Recordsets(request *GetDnsV2RecordsetsRequest)(*GetDnsV2RecordsetsResponse){
-    return NewGetDnsV2RecordsetsResponse(recordsets.Get(oc.client,request.ZoneID,request.RrsetID, ))
+func (oc *OpenstackClient) GetDnsV2Recordsets(req *GetDnsV2RecordsetsRequest)(*GetDnsV2RecordsetsResponse){
+    return NewGetDnsV2RecordsetsResponse(recordsets.Get(oc.client,req.ZoneID,req.RrsetID, ))
 
 }
 //request struct for the CreateDnsV2Recordsets
@@ -84,8 +84,8 @@ func NewCreateDnsV2RecordsetsResponse(createResult recordsets.CreateResult,)*Cre
 }
 
 // action function
-func (oc *OpenstackClient) CreateDnsV2Recordsets(request *CreateDnsV2RecordsetsRequest)(*CreateDnsV2RecordsetsResponse){
-    return NewCreateDnsV2RecordsetsResponse(recordsets.Create(oc.client,request.ZoneID,request.Opts, ))
+func (oc *OpenstackClient) CreateDnsV2Recordsets(req *CreateDnsV2RecordsetsRequest)(*CreateDnsV2RecordsetsResponse){
+    return NewCreateDnsV2RecordsetsResponse(recordsets.Create(oc.client,req.ZoneID,req.Opts, ))
 
 }
 //request struct for the UpdateDnsV2Recordsets
@@ -111,8 +111,8 @@ func NewUpdateDnsV2RecordsetsResponse(updateResult recordsets.UpdateResult,)*Upd
 }
 
 // action function
-func (oc *OpenstackClient) UpdateDnsV2Recordsets(request *UpdateDnsV2RecordsetsRequest)(*UpdateDnsV2RecordsetsResponse){
-    return NewUpdateDnsV2RecordsetsResponse(recordsets.Update(oc.client,request.ZoneID,request.RrsetID,request.Opts, ))
+func (oc *OpenstackClient) UpdateDnsV2Recordsets(req *UpdateDnsV2RecordsetsRequest)(*UpdateDnsV2RecordsetsResponse){
+    return NewUpdateDnsV2RecordsetsResponse(recordsets.Update(oc.client,req.ZoneID,req.RrsetID,req.Opts, ))
 
 }
 //request struct for the DeleteDnsV2Recordsets
@@ -137,7 +137,7 @@ func NewDeleteDnsV2RecordsetsResponse(deleteResult recordsets.DeleteResult,)*Del
 }
 
 // action function
-func (oc *OpenstackClient) DeleteDnsV2Recordsets(request *DeleteDnsV2RecordsetsRequest)(*DeleteDnsV2RecordsetsResponse){
-    return NewDeleteDnsV2RecordsetsResponse(recordsets.Delete(oc.client,request.ZoneID,request.RrsetID, ))
+func (oc *OpenstackClient) DeleteDnsV2Recordsets(req *DeleteDnsV2RecordsetsRequest)(*DeleteDnsV2RecordsetsResponse){
+    return NewDeleteDnsV2RecordsetsResponse(recordsets.Delete(oc.client,req.ZoneID,req.RrsetID, ))
 
 }

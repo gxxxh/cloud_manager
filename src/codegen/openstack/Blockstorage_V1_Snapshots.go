@@ -31,8 +31,8 @@ func NewCreateBlockstorageV1SnapshotsResponse(createResult snapshots.CreateResul
 }
 
 // action function
-func (oc *OpenstackClient) CreateBlockstorageV1Snapshots(request *CreateBlockstorageV1SnapshotsRequest)(*CreateBlockstorageV1SnapshotsResponse){
-    return NewCreateBlockstorageV1SnapshotsResponse(snapshots.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateBlockstorageV1Snapshots(req *CreateBlockstorageV1SnapshotsRequest)(*CreateBlockstorageV1SnapshotsResponse){
+    return NewCreateBlockstorageV1SnapshotsResponse(snapshots.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageV1Snapshots
@@ -56,8 +56,8 @@ func NewDeleteBlockstorageV1SnapshotsResponse(deleteResult snapshots.DeleteResul
 }
 
 // action function
-func (oc *OpenstackClient) DeleteBlockstorageV1Snapshots(request *DeleteBlockstorageV1SnapshotsRequest)(*DeleteBlockstorageV1SnapshotsResponse){
-    return NewDeleteBlockstorageV1SnapshotsResponse(snapshots.Delete(oc.client,request.Id, ))
+func (oc *OpenstackClient) DeleteBlockstorageV1Snapshots(req *DeleteBlockstorageV1SnapshotsRequest)(*DeleteBlockstorageV1SnapshotsResponse){
+    return NewDeleteBlockstorageV1SnapshotsResponse(snapshots.Delete(oc.client,req.Id, ))
 
 }
 //request struct for the GetBlockstorageV1Snapshots
@@ -81,8 +81,8 @@ func NewGetBlockstorageV1SnapshotsResponse(getResult snapshots.GetResult,)*GetBl
 }
 
 // action function
-func (oc *OpenstackClient) GetBlockstorageV1Snapshots(request *GetBlockstorageV1SnapshotsRequest)(*GetBlockstorageV1SnapshotsResponse){
-    return NewGetBlockstorageV1SnapshotsResponse(snapshots.Get(oc.client,request.Id, ))
+func (oc *OpenstackClient) GetBlockstorageV1Snapshots(req *GetBlockstorageV1SnapshotsRequest)(*GetBlockstorageV1SnapshotsResponse){
+    return NewGetBlockstorageV1SnapshotsResponse(snapshots.Get(oc.client,req.Id, ))
 
 }
 //request struct for the ListBlockstorageV1Snapshots
@@ -106,8 +106,8 @@ func NewListBlockstorageV1SnapshotsResponse(pager pagination.Pager,)*ListBlockst
 }
 
 // action function
-func (oc *OpenstackClient) ListBlockstorageV1Snapshots(request *ListBlockstorageV1SnapshotsRequest)(*ListBlockstorageV1SnapshotsResponse){
-    return NewListBlockstorageV1SnapshotsResponse(snapshots.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListBlockstorageV1Snapshots(req *ListBlockstorageV1SnapshotsRequest)(*ListBlockstorageV1SnapshotsResponse){
+    return NewListBlockstorageV1SnapshotsResponse(snapshots.List(oc.client,req.Opts, ))
 
 }
 //request struct for the UpdateMetadataBlockstorageV1Snapshots
@@ -132,7 +132,7 @@ func NewUpdateMetadataBlockstorageV1SnapshotsResponse(updateMetadataResult snaps
 }
 
 // action function
-func (oc *OpenstackClient) UpdateMetadataBlockstorageV1Snapshots(request *UpdateMetadataBlockstorageV1SnapshotsRequest)(*UpdateMetadataBlockstorageV1SnapshotsResponse){
-    return NewUpdateMetadataBlockstorageV1SnapshotsResponse(snapshots.UpdateMetadata(oc.client,request.Id,request.Opts, ))
+func (oc *OpenstackClient) UpdateMetadataBlockstorageV1Snapshots(req *UpdateMetadataBlockstorageV1SnapshotsRequest)(*UpdateMetadataBlockstorageV1SnapshotsResponse){
+    return NewUpdateMetadataBlockstorageV1SnapshotsResponse(snapshots.UpdateMetadata(oc.client,req.Id,req.Opts, ))
 
 }

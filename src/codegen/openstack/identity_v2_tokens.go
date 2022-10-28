@@ -30,8 +30,8 @@ func NewCreateIdentityV2TokensResponse(createResult tokens.CreateResult,)*Create
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV2Tokens(request *CreateIdentityV2TokensRequest)(*CreateIdentityV2TokensResponse){
-    return NewCreateIdentityV2TokensResponse(tokens.Create(oc.client,request.Auth, ))
+func (oc *OpenstackClient) CreateIdentityV2Tokens(req *CreateIdentityV2TokensRequest)(*CreateIdentityV2TokensResponse){
+    return NewCreateIdentityV2TokensResponse(tokens.Create(oc.client,req.Auth, ))
 
 }
 //request struct for the GetIdentityV2Tokens
@@ -55,7 +55,7 @@ func NewGetIdentityV2TokensResponse(getResult tokens.GetResult,)*GetIdentityV2To
 }
 
 // action function
-func (oc *OpenstackClient) GetIdentityV2Tokens(request *GetIdentityV2TokensRequest)(*GetIdentityV2TokensResponse){
-    return NewGetIdentityV2TokensResponse(tokens.Get(oc.client,request.Token, ))
+func (oc *OpenstackClient) GetIdentityV2Tokens(req *GetIdentityV2TokensRequest)(*GetIdentityV2TokensResponse){
+    return NewGetIdentityV2TokensResponse(tokens.Get(oc.client,req.Token, ))
 
 }

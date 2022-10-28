@@ -31,8 +31,8 @@ func NewCreateIdentityV3ServicesResponse(createResult services.CreateResult,)*Cr
 }
 
 // action function
-func (oc *OpenstackClient) CreateIdentityV3Services(request *CreateIdentityV3ServicesRequest)(*CreateIdentityV3ServicesResponse){
-    return NewCreateIdentityV3ServicesResponse(services.Create(oc.client,request.Opts, ))
+func (oc *OpenstackClient) CreateIdentityV3Services(req *CreateIdentityV3ServicesRequest)(*CreateIdentityV3ServicesResponse){
+    return NewCreateIdentityV3ServicesResponse(services.Create(oc.client,req.Opts, ))
 
 }
 //request struct for the ListIdentityV3Services
@@ -56,8 +56,8 @@ func NewListIdentityV3ServicesResponse(pager pagination.Pager,)*ListIdentityV3Se
 }
 
 // action function
-func (oc *OpenstackClient) ListIdentityV3Services(request *ListIdentityV3ServicesRequest)(*ListIdentityV3ServicesResponse){
-    return NewListIdentityV3ServicesResponse(services.List(oc.client,request.Opts, ))
+func (oc *OpenstackClient) ListIdentityV3Services(req *ListIdentityV3ServicesRequest)(*ListIdentityV3ServicesResponse){
+    return NewListIdentityV3ServicesResponse(services.List(oc.client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Services
@@ -81,8 +81,8 @@ func NewGetIdentityV3ServicesResponse(getResult services.GetResult,)*GetIdentity
 }
 
 // action function
-func (oc *OpenstackClient) GetIdentityV3Services(request *GetIdentityV3ServicesRequest)(*GetIdentityV3ServicesResponse){
-    return NewGetIdentityV3ServicesResponse(services.Get(oc.client,request.ServiceID, ))
+func (oc *OpenstackClient) GetIdentityV3Services(req *GetIdentityV3ServicesRequest)(*GetIdentityV3ServicesResponse){
+    return NewGetIdentityV3ServicesResponse(services.Get(oc.client,req.ServiceID, ))
 
 }
 //request struct for the UpdateIdentityV3Services
@@ -107,8 +107,8 @@ func NewUpdateIdentityV3ServicesResponse(updateResult services.UpdateResult,)*Up
 }
 
 // action function
-func (oc *OpenstackClient) UpdateIdentityV3Services(request *UpdateIdentityV3ServicesRequest)(*UpdateIdentityV3ServicesResponse){
-    return NewUpdateIdentityV3ServicesResponse(services.Update(oc.client,request.ServiceID,request.Opts, ))
+func (oc *OpenstackClient) UpdateIdentityV3Services(req *UpdateIdentityV3ServicesRequest)(*UpdateIdentityV3ServicesResponse){
+    return NewUpdateIdentityV3ServicesResponse(services.Update(oc.client,req.ServiceID,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Services
@@ -132,7 +132,7 @@ func NewDeleteIdentityV3ServicesResponse(deleteResult services.DeleteResult,)*De
 }
 
 // action function
-func (oc *OpenstackClient) DeleteIdentityV3Services(request *DeleteIdentityV3ServicesRequest)(*DeleteIdentityV3ServicesResponse){
-    return NewDeleteIdentityV3ServicesResponse(services.Delete(oc.client,request.ServiceID, ))
+func (oc *OpenstackClient) DeleteIdentityV3Services(req *DeleteIdentityV3ServicesRequest)(*DeleteIdentityV3ServicesResponse){
+    return NewDeleteIdentityV3ServicesResponse(services.Delete(oc.client,req.ServiceID, ))
 
 }
