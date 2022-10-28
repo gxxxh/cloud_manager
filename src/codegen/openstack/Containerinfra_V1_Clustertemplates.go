@@ -113,7 +113,7 @@ func (oc *OpenstackClient) GetContainerinfraV1Clustertemplates(request *GetConta
 //request struct for the UpdateContainerinfraV1Clustertemplates
 type UpdateContainerinfraV1ClustertemplatesRequest struct{
     Id string
-    Opts 
+    Opts []clustertemplates.UpdateOptsBuilder
 }
 
 func NewUpdateContainerinfraV1ClustertemplatesRequest()*UpdateContainerinfraV1ClustertemplatesRequest{

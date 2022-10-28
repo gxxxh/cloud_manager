@@ -63,7 +63,7 @@ func (oc *OpenstackClient) CreateObjectstorageV1Containers(request *CreateObject
 }
 //request struct for the BulkDeleteObjectstorageV1Containers
 type BulkDeleteObjectstorageV1ContainersRequest struct{
-    Containers 
+    Containers []string
 }
 
 func NewBulkDeleteObjectstorageV1ContainersRequest()*BulkDeleteObjectstorageV1ContainersRequest{

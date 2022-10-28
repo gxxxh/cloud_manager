@@ -230,7 +230,7 @@ func (oc *OpenstackClient) CreateTempURLObjectstorageV1Objects(request *CreateTe
 //request struct for the BulkDeleteObjectstorageV1Objects
 type BulkDeleteObjectstorageV1ObjectsRequest struct{
     Container string
-    Objects 
+    Objects []string
 }
 
 func NewBulkDeleteObjectstorageV1ObjectsRequest()*BulkDeleteObjectstorageV1ObjectsRequest{

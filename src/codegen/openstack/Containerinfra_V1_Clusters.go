@@ -138,7 +138,7 @@ func (oc *OpenstackClient) ListDetailContainerinfraV1Clusters(request *ListDetai
 //request struct for the UpdateContainerinfraV1Clusters
 type UpdateContainerinfraV1ClustersRequest struct{
     Id string
-    Opts 
+    Opts []clusters.UpdateOptsBuilder
 }
 
 func NewUpdateContainerinfraV1ClustersRequest()*UpdateContainerinfraV1ClustersRequest{

@@ -163,6 +163,9 @@ func (pa *PackageAnalyzer) parseTypeInfo(ty types.Type) (string, string) {
 		}
 	case *types.Basic:
 		return tyType.Name(), ""
+	case *types.Slice:
+		typeName, packagePath := pa.parseTypeInfo(tyType.Elem())
+		return "[]" + typeName, packagePath
 	default:
 		fmt.Println("error! unhandled type: ", tyType)
 		return "", ""

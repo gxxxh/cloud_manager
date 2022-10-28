@@ -92,7 +92,7 @@ func (oc *OpenstackClient) CreateContainerinfraV1Nodegroups(request *CreateConta
 type UpdateContainerinfraV1NodegroupsRequest struct{
     ClusterID string
     NodeGroupID string
-    Opts 
+    Opts []nodegroups.UpdateOptsBuilder
 }
 
 func NewUpdateContainerinfraV1NodegroupsRequest()*UpdateContainerinfraV1NodegroupsRequest{

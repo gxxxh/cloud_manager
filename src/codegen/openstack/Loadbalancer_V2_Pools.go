@@ -244,7 +244,7 @@ func (oc *OpenstackClient) UpdateMemberLoadbalancerV2Pools(request *UpdateMember
 //request struct for the BatchUpdateMembersLoadbalancerV2Pools
 type BatchUpdateMembersLoadbalancerV2PoolsRequest struct{
     PoolID string
-    Opts 
+    Opts []pools.BatchUpdateMemberOpts
 }
 
 func NewBatchUpdateMembersLoadbalancerV2PoolsRequest()*BatchUpdateMembersLoadbalancerV2PoolsRequest{
