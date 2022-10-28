@@ -2,6 +2,7 @@ package analyzer
 
 import (
 	"cloud_manager/src/utils"
+	"log"
 	"strings"
 )
 
@@ -27,8 +28,25 @@ func NewOpenstackResourceInfo(resourcePackageName string, resourcePath string) *
 	return ri
 }
 
+// check if the return struct is exported
+// todo check parameters, should exclude basic type
+func (ri *OpenstackResourceInfo) checkValidAction(actionInfo *OpenStackActionInfo) bool {
+	checkVarInfo := func(varInfos []VarInfo) bool {
+		for _, varInfo := range varInfos {
+			if utils.IsExportedStruct(varInfo.TypeName) {
+				return false
+			}
+		}
+		return true
+	}
+	return checkVarInfo(actionInfo.ActionReturns)
+}
 func (ri *OpenstackResourceInfo) AddAction(actionInfo *OpenStackActionInfo) {
-	ri.Actions = append(ri.Actions, actionInfo)
+	if ri.checkValidAction(actionInfo) {
+		ri.Actions = append(ri.Actions, actionInfo)
+	} else {
+		log.Println("invalid action: ", actionInfo)
+	}
 }
 
 type VarInfo struct {

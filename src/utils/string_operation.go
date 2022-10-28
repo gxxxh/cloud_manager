@@ -17,3 +17,16 @@ func LowerFirst(s string) string {
 	}
 	return first + s[1:]
 }
+
+/*
+check if the first character is lower
+*/
+func IsLower(s string) bool {
+	return s[0] >= 'a' && s[0] <= 'z'
+}
+
+func IsExportedStruct(typeName string) bool {
+	names := strings.Split(typeName, ".")
+	structName := names[len(names)-1]
+	return IsLower(structName)
+}

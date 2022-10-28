@@ -1,7 +1,7 @@
 package analyzer
 
 import (
-	"fmt"
+	"cloud_manager/src/utils"
 	"go/ast"
 	"go/token"
 	"go/types"
@@ -85,9 +85,6 @@ func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceIn
 			if pa.checkValidFunction(fn) {
 				actionInfo := NewOpenstackActionInfo(fn.Name.String())
 				log.Println("******************handle function***************** :", fn.Name)
-				if fn.Name.String() == "ListAddressesByNetwork" {
-					fmt.Println(fn.Name)
-				}
 				parseFieldList := func(fieldList []*ast.Field, kind string) {
 					log.Printf("-----------------%v:%d------------------/n", kind, len(fieldList))
 					for _, expr := range fieldList {
@@ -125,7 +122,7 @@ check if the function is required(List, Create, Delete, Get...)
 func (pa *PackageAnalyzer) checkValidFunction(fn *ast.FuncDecl) bool {
 	funcName := fn.Name.String()
 	//check if the function is exported
-	if funcName[0] >= 'a' && funcName[0] <= 'z' {
+	if utils.IsLower(funcName) {
 		return false
 	}
 	if fn.Recv == nil { //function's Recv filed is nil, method is not
@@ -167,7 +164,7 @@ func (pa *PackageAnalyzer) parseTypeInfo(ty types.Type) (string, string) {
 		typeName, packagePath := pa.parseTypeInfo(tyType.Elem())
 		return "[]" + typeName, packagePath
 	default:
-		fmt.Println("error! unhandled type: ", tyType)
+		log.Println("error! unhandled type: ", tyType)
 		return "", ""
 	}
 }

@@ -111,32 +111,6 @@ func (oc *OpenstackClient) GetBlockstorageV3Qos(req *GetBlockstorageV3QosRequest
     return NewGetBlockstorageV3QosResponse(qos.Get(oc.client,req.Id, ))
 
 }
-//request struct for the UpdateBlockstorageV3Qos
-type UpdateBlockstorageV3QosRequest struct{
-    Id string
-    Opts qos.UpdateOptsBuilder
-}
-
-func NewUpdateBlockstorageV3QosRequest()*UpdateBlockstorageV3QosRequest{
-    return &UpdateBlockstorageV3QosRequest{}
-}
-
-//response struct for the UpdateBlockstorageV3Qos
-type UpdateBlockstorageV3QosResponse struct{
-    UpdateResult qos.updateResult
-}
-
-func NewUpdateBlockstorageV3QosResponse(updateResult qos.updateResult,)*UpdateBlockstorageV3QosResponse {
-    return &UpdateBlockstorageV3QosResponse{
-            UpdateResult:updateResult,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) UpdateBlockstorageV3Qos(req *UpdateBlockstorageV3QosRequest)(*UpdateBlockstorageV3QosResponse){
-    return NewUpdateBlockstorageV3QosResponse(qos.Update(oc.client,req.Id,req.Opts, ))
-
-}
 //request struct for the DeleteKeysBlockstorageV3Qos
 type DeleteKeysBlockstorageV3QosRequest struct{
     QosID string

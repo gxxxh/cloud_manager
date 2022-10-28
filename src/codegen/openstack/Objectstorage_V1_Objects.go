@@ -198,35 +198,6 @@ func (oc *OpenstackClient) UpdateObjectstorageV1Objects(req *UpdateObjectstorage
     return NewUpdateObjectstorageV1ObjectsResponse(objects.Update(oc.client,req.ContainerName,req.ObjectName,req.Opts, ))
 
 }
-//request struct for the CreateTempURLObjectstorageV1Objects
-type CreateTempURLObjectstorageV1ObjectsRequest struct{
-    ContainerName string
-    ObjectName string
-    Opts objects.CreateTempURLOpts
-}
-
-func NewCreateTempURLObjectstorageV1ObjectsRequest()*CreateTempURLObjectstorageV1ObjectsRequest{
-    return &CreateTempURLObjectstorageV1ObjectsRequest{}
-}
-
-//response struct for the CreateTempURLObjectstorageV1Objects
-type CreateTempURLObjectstorageV1ObjectsResponse struct{
-    String string
-    Error error
-}
-
-func NewCreateTempURLObjectstorageV1ObjectsResponse(string string,error error,)*CreateTempURLObjectstorageV1ObjectsResponse {
-    return &CreateTempURLObjectstorageV1ObjectsResponse{
-            String:string,
-            Error:error,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) CreateTempURLObjectstorageV1Objects(req *CreateTempURLObjectstorageV1ObjectsRequest)(*CreateTempURLObjectstorageV1ObjectsResponse){
-    return NewCreateTempURLObjectstorageV1ObjectsResponse(objects.CreateTempURL(oc.client,req.ContainerName,req.ObjectName,req.Opts, ))
-
-}
 //request struct for the BulkDeleteObjectstorageV1Objects
 type BulkDeleteObjectstorageV1ObjectsRequest struct{
     Container string
