@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListIdentityV3Limits
 type ListIdentityV3LimitsRequest struct{
-    Opts limits.ListOptsBuilder
+    Opts limits.ListOpts
 }
 
 func NewListIdentityV3LimitsRequest()*ListIdentityV3LimitsRequest{
@@ -32,6 +32,6 @@ func NewListIdentityV3LimitsResponse(pager pagination.Pager,)*ListIdentityV3Limi
 
 // action function
 func (oc *OpenstackClient) ListIdentityV3Limits(req *ListIdentityV3LimitsRequest)(*ListIdentityV3LimitsResponse){
-    return NewListIdentityV3LimitsResponse(limits.List(oc.client,req.Opts, ))
+    return NewListIdentityV3LimitsResponse(limits.List(oc.Client,req.Opts, ))
 
 }

@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListSharedfilesystemsV2Services
 type ListSharedfilesystemsV2ServicesRequest struct{
-    Opts services.ListOptsBuilder
+    Opts services.ListOpts
 }
 
 func NewListSharedfilesystemsV2ServicesRequest()*ListSharedfilesystemsV2ServicesRequest{
@@ -32,6 +32,6 @@ func NewListSharedfilesystemsV2ServicesResponse(pager pagination.Pager,)*ListSha
 
 // action function
 func (oc *OpenstackClient) ListSharedfilesystemsV2Services(req *ListSharedfilesystemsV2ServicesRequest)(*ListSharedfilesystemsV2ServicesResponse){
-    return NewListSharedfilesystemsV2ServicesResponse(services.List(oc.client,req.Opts, ))
+    return NewListSharedfilesystemsV2ServicesResponse(services.List(oc.Client,req.Opts, ))
 
 }

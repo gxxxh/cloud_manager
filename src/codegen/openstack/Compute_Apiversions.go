@@ -31,7 +31,7 @@ func NewListComputeApiversionsResponse(pager pagination.Pager,)*ListComputeApive
 
 // action function
 func (oc *OpenstackClient) ListComputeApiversions(req *ListComputeApiversionsRequest)(*ListComputeApiversionsResponse){
-    return NewListComputeApiversionsResponse(apiversions.List(oc.client, ))
+    return NewListComputeApiversionsResponse(apiversions.List(oc.Client, ))
 
 }
 //request struct for the GetComputeApiversions
@@ -56,6 +56,6 @@ func NewGetComputeApiversionsResponse(getResult apiversions.GetResult,)*GetCompu
 
 // action function
 func (oc *OpenstackClient) GetComputeApiversions(req *GetComputeApiversionsRequest)(*GetComputeApiversionsResponse){
-    return NewGetComputeApiversionsResponse(apiversions.Get(oc.client,req.V, ))
+    return NewGetComputeApiversionsResponse(apiversions.Get(oc.Client,req.V, ))
 
 }

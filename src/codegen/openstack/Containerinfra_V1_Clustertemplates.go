@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateContainerinfraV1Clustertemplates
 type CreateContainerinfraV1ClustertemplatesRequest struct{
-    Opts clustertemplates.CreateOptsBuilder
+    Opts clustertemplates.CreateOpts
 }
 
 func NewCreateContainerinfraV1ClustertemplatesRequest()*CreateContainerinfraV1ClustertemplatesRequest{
@@ -32,7 +32,7 @@ func NewCreateContainerinfraV1ClustertemplatesResponse(createResult clustertempl
 
 // action function
 func (oc *OpenstackClient) CreateContainerinfraV1Clustertemplates(req *CreateContainerinfraV1ClustertemplatesRequest)(*CreateContainerinfraV1ClustertemplatesResponse){
-    return NewCreateContainerinfraV1ClustertemplatesResponse(clustertemplates.Create(oc.client,req.Opts, ))
+    return NewCreateContainerinfraV1ClustertemplatesResponse(clustertemplates.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteContainerinfraV1Clustertemplates
@@ -57,12 +57,12 @@ func NewDeleteContainerinfraV1ClustertemplatesResponse(deleteResult clustertempl
 
 // action function
 func (oc *OpenstackClient) DeleteContainerinfraV1Clustertemplates(req *DeleteContainerinfraV1ClustertemplatesRequest)(*DeleteContainerinfraV1ClustertemplatesResponse){
-    return NewDeleteContainerinfraV1ClustertemplatesResponse(clustertemplates.Delete(oc.client,req.Id, ))
+    return NewDeleteContainerinfraV1ClustertemplatesResponse(clustertemplates.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the ListContainerinfraV1Clustertemplates
 type ListContainerinfraV1ClustertemplatesRequest struct{
-    Opts clustertemplates.ListOptsBuilder
+    Opts clustertemplates.ListOpts
 }
 
 func NewListContainerinfraV1ClustertemplatesRequest()*ListContainerinfraV1ClustertemplatesRequest{
@@ -82,7 +82,7 @@ func NewListContainerinfraV1ClustertemplatesResponse(pager pagination.Pager,)*Li
 
 // action function
 func (oc *OpenstackClient) ListContainerinfraV1Clustertemplates(req *ListContainerinfraV1ClustertemplatesRequest)(*ListContainerinfraV1ClustertemplatesResponse){
-    return NewListContainerinfraV1ClustertemplatesResponse(clustertemplates.List(oc.client,req.Opts, ))
+    return NewListContainerinfraV1ClustertemplatesResponse(clustertemplates.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetContainerinfraV1Clustertemplates
@@ -107,32 +107,6 @@ func NewGetContainerinfraV1ClustertemplatesResponse(getResult clustertemplates.G
 
 // action function
 func (oc *OpenstackClient) GetContainerinfraV1Clustertemplates(req *GetContainerinfraV1ClustertemplatesRequest)(*GetContainerinfraV1ClustertemplatesResponse){
-    return NewGetContainerinfraV1ClustertemplatesResponse(clustertemplates.Get(oc.client,req.Id, ))
-
-}
-//request struct for the UpdateContainerinfraV1Clustertemplates
-type UpdateContainerinfraV1ClustertemplatesRequest struct{
-    Id string
-    Opts []clustertemplates.UpdateOptsBuilder
-}
-
-func NewUpdateContainerinfraV1ClustertemplatesRequest()*UpdateContainerinfraV1ClustertemplatesRequest{
-    return &UpdateContainerinfraV1ClustertemplatesRequest{}
-}
-
-//response struct for the UpdateContainerinfraV1Clustertemplates
-type UpdateContainerinfraV1ClustertemplatesResponse struct{
-    UpdateResult clustertemplates.UpdateResult
-}
-
-func NewUpdateContainerinfraV1ClustertemplatesResponse(updateResult clustertemplates.UpdateResult,)*UpdateContainerinfraV1ClustertemplatesResponse {
-    return &UpdateContainerinfraV1ClustertemplatesResponse{
-            UpdateResult:updateResult,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) UpdateContainerinfraV1Clustertemplates(req *UpdateContainerinfraV1ClustertemplatesRequest)(*UpdateContainerinfraV1ClustertemplatesResponse){
-    return NewUpdateContainerinfraV1ClustertemplatesResponse(clustertemplates.Update(oc.client,req.Id,req.Opts, ))
+    return NewGetContainerinfraV1ClustertemplatesResponse(clustertemplates.Get(oc.Client,req.Id, ))
 
 }

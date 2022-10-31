@@ -31,6 +31,6 @@ func NewListIdentityV3CatalogResponse(pager pagination.Pager,)*ListIdentityV3Cat
 
 // action function
 func (oc *OpenstackClient) ListIdentityV3Catalog(req *ListIdentityV3CatalogRequest)(*ListIdentityV3CatalogResponse){
-    return NewListIdentityV3CatalogResponse(catalog.List(oc.client, ))
+    return NewListIdentityV3CatalogResponse(catalog.List(oc.Client, ))
 
 }

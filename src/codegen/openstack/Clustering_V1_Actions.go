@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListClusteringV1Actions
 type ListClusteringV1ActionsRequest struct{
-    Opts actions.ListOptsBuilder
+    Opts actions.ListOpts
 }
 
 func NewListClusteringV1ActionsRequest()*ListClusteringV1ActionsRequest{
@@ -32,7 +32,7 @@ func NewListClusteringV1ActionsResponse(pager pagination.Pager,)*ListClusteringV
 
 // action function
 func (oc *OpenstackClient) ListClusteringV1Actions(req *ListClusteringV1ActionsRequest)(*ListClusteringV1ActionsResponse){
-    return NewListClusteringV1ActionsResponse(actions.List(oc.client,req.Opts, ))
+    return NewListClusteringV1ActionsResponse(actions.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetClusteringV1Actions
@@ -57,6 +57,6 @@ func NewGetClusteringV1ActionsResponse(getResult actions.GetResult,)*GetClusteri
 
 // action function
 func (oc *OpenstackClient) GetClusteringV1Actions(req *GetClusteringV1ActionsRequest)(*GetClusteringV1ActionsResponse){
-    return NewGetClusteringV1ActionsResponse(actions.Get(oc.client,req.Id, ))
+    return NewGetClusteringV1ActionsResponse(actions.Get(oc.Client,req.Id, ))
 
 }

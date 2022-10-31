@@ -31,7 +31,7 @@ func NewStartComputeV2ExtensionsStartstopResponse(startResult startstop.StartRes
 
 // action function
 func (oc *OpenstackClient) StartComputeV2ExtensionsStartstop(req *StartComputeV2ExtensionsStartstopRequest)(*StartComputeV2ExtensionsStartstopResponse){
-    return NewStartComputeV2ExtensionsStartstopResponse(startstop.Start(oc.client,req.Id, ))
+    return NewStartComputeV2ExtensionsStartstopResponse(startstop.Start(oc.Client,req.Id, ))
 
 }
 //request struct for the StopComputeV2ExtensionsStartstop
@@ -56,6 +56,6 @@ func NewStopComputeV2ExtensionsStartstopResponse(stopResult startstop.StopResult
 
 // action function
 func (oc *OpenstackClient) StopComputeV2ExtensionsStartstop(req *StopComputeV2ExtensionsStartstopRequest)(*StopComputeV2ExtensionsStartstopResponse){
-    return NewStopComputeV2ExtensionsStartstopResponse(startstop.Stop(oc.client,req.Id, ))
+    return NewStopComputeV2ExtensionsStartstopResponse(startstop.Stop(oc.Client,req.Id, ))
 
 }

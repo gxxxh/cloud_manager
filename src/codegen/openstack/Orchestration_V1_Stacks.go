@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateOrchestrationV1Stacks
 type CreateOrchestrationV1StacksRequest struct{
-    Opts stacks.CreateOptsBuilder
+    Opts stacks.CreateOpts
 }
 
 func NewCreateOrchestrationV1StacksRequest()*CreateOrchestrationV1StacksRequest{
@@ -32,12 +32,12 @@ func NewCreateOrchestrationV1StacksResponse(createResult stacks.CreateResult,)*C
 
 // action function
 func (oc *OpenstackClient) CreateOrchestrationV1Stacks(req *CreateOrchestrationV1StacksRequest)(*CreateOrchestrationV1StacksResponse){
-    return NewCreateOrchestrationV1StacksResponse(stacks.Create(oc.client,req.Opts, ))
+    return NewCreateOrchestrationV1StacksResponse(stacks.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the AdoptOrchestrationV1Stacks
 type AdoptOrchestrationV1StacksRequest struct{
-    Opts stacks.AdoptOptsBuilder
+    Opts stacks.AdoptOpts
 }
 
 func NewAdoptOrchestrationV1StacksRequest()*AdoptOrchestrationV1StacksRequest{
@@ -57,12 +57,12 @@ func NewAdoptOrchestrationV1StacksResponse(adoptResult stacks.AdoptResult,)*Adop
 
 // action function
 func (oc *OpenstackClient) AdoptOrchestrationV1Stacks(req *AdoptOrchestrationV1StacksRequest)(*AdoptOrchestrationV1StacksResponse){
-    return NewAdoptOrchestrationV1StacksResponse(stacks.Adopt(oc.client,req.Opts, ))
+    return NewAdoptOrchestrationV1StacksResponse(stacks.Adopt(oc.Client,req.Opts, ))
 
 }
 //request struct for the ListOrchestrationV1Stacks
 type ListOrchestrationV1StacksRequest struct{
-    Opts stacks.ListOptsBuilder
+    Opts stacks.ListOpts
 }
 
 func NewListOrchestrationV1StacksRequest()*ListOrchestrationV1StacksRequest{
@@ -82,7 +82,7 @@ func NewListOrchestrationV1StacksResponse(pager pagination.Pager,)*ListOrchestra
 
 // action function
 func (oc *OpenstackClient) ListOrchestrationV1Stacks(req *ListOrchestrationV1StacksRequest)(*ListOrchestrationV1StacksResponse){
-    return NewListOrchestrationV1StacksResponse(stacks.List(oc.client,req.Opts, ))
+    return NewListOrchestrationV1StacksResponse(stacks.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetOrchestrationV1Stacks
@@ -108,7 +108,7 @@ func NewGetOrchestrationV1StacksResponse(getResult stacks.GetResult,)*GetOrchest
 
 // action function
 func (oc *OpenstackClient) GetOrchestrationV1Stacks(req *GetOrchestrationV1StacksRequest)(*GetOrchestrationV1StacksResponse){
-    return NewGetOrchestrationV1StacksResponse(stacks.Get(oc.client,req.StackName,req.StackID, ))
+    return NewGetOrchestrationV1StacksResponse(stacks.Get(oc.Client,req.StackName,req.StackID, ))
 
 }
 //request struct for the FindOrchestrationV1Stacks
@@ -133,14 +133,14 @@ func NewFindOrchestrationV1StacksResponse(getResult stacks.GetResult,)*FindOrche
 
 // action function
 func (oc *OpenstackClient) FindOrchestrationV1Stacks(req *FindOrchestrationV1StacksRequest)(*FindOrchestrationV1StacksResponse){
-    return NewFindOrchestrationV1StacksResponse(stacks.Find(oc.client,req.StackIdentity, ))
+    return NewFindOrchestrationV1StacksResponse(stacks.Find(oc.Client,req.StackIdentity, ))
 
 }
 //request struct for the UpdateOrchestrationV1Stacks
 type UpdateOrchestrationV1StacksRequest struct{
     StackName string
     StackID string
-    Opts stacks.UpdateOptsBuilder
+    Opts stacks.UpdateOpts
 }
 
 func NewUpdateOrchestrationV1StacksRequest()*UpdateOrchestrationV1StacksRequest{
@@ -160,14 +160,14 @@ func NewUpdateOrchestrationV1StacksResponse(updateResult stacks.UpdateResult,)*U
 
 // action function
 func (oc *OpenstackClient) UpdateOrchestrationV1Stacks(req *UpdateOrchestrationV1StacksRequest)(*UpdateOrchestrationV1StacksResponse){
-    return NewUpdateOrchestrationV1StacksResponse(stacks.Update(oc.client,req.StackName,req.StackID,req.Opts, ))
+    return NewUpdateOrchestrationV1StacksResponse(stacks.Update(oc.Client,req.StackName,req.StackID,req.Opts, ))
 
 }
 //request struct for the UpdatePatchOrchestrationV1Stacks
 type UpdatePatchOrchestrationV1StacksRequest struct{
     StackName string
     StackID string
-    Opts stacks.UpdatePatchOptsBuilder
+    Opts stacks.UpdateOpts
 }
 
 func NewUpdatePatchOrchestrationV1StacksRequest()*UpdatePatchOrchestrationV1StacksRequest{
@@ -187,7 +187,7 @@ func NewUpdatePatchOrchestrationV1StacksResponse(updateResult stacks.UpdateResul
 
 // action function
 func (oc *OpenstackClient) UpdatePatchOrchestrationV1Stacks(req *UpdatePatchOrchestrationV1StacksRequest)(*UpdatePatchOrchestrationV1StacksResponse){
-    return NewUpdatePatchOrchestrationV1StacksResponse(stacks.UpdatePatch(oc.client,req.StackName,req.StackID,req.Opts, ))
+    return NewUpdatePatchOrchestrationV1StacksResponse(stacks.UpdatePatch(oc.Client,req.StackName,req.StackID,req.Opts, ))
 
 }
 //request struct for the DeleteOrchestrationV1Stacks
@@ -213,12 +213,12 @@ func NewDeleteOrchestrationV1StacksResponse(deleteResult stacks.DeleteResult,)*D
 
 // action function
 func (oc *OpenstackClient) DeleteOrchestrationV1Stacks(req *DeleteOrchestrationV1StacksRequest)(*DeleteOrchestrationV1StacksResponse){
-    return NewDeleteOrchestrationV1StacksResponse(stacks.Delete(oc.client,req.StackName,req.StackID, ))
+    return NewDeleteOrchestrationV1StacksResponse(stacks.Delete(oc.Client,req.StackName,req.StackID, ))
 
 }
 //request struct for the PreviewOrchestrationV1Stacks
 type PreviewOrchestrationV1StacksRequest struct{
-    Opts stacks.PreviewOptsBuilder
+    Opts stacks.PreviewOpts
 }
 
 func NewPreviewOrchestrationV1StacksRequest()*PreviewOrchestrationV1StacksRequest{
@@ -238,7 +238,7 @@ func NewPreviewOrchestrationV1StacksResponse(previewResult stacks.PreviewResult,
 
 // action function
 func (oc *OpenstackClient) PreviewOrchestrationV1Stacks(req *PreviewOrchestrationV1StacksRequest)(*PreviewOrchestrationV1StacksResponse){
-    return NewPreviewOrchestrationV1StacksResponse(stacks.Preview(oc.client,req.Opts, ))
+    return NewPreviewOrchestrationV1StacksResponse(stacks.Preview(oc.Client,req.Opts, ))
 
 }
 //request struct for the AbandonOrchestrationV1Stacks
@@ -264,6 +264,6 @@ func NewAbandonOrchestrationV1StacksResponse(abandonResult stacks.AbandonResult,
 
 // action function
 func (oc *OpenstackClient) AbandonOrchestrationV1Stacks(req *AbandonOrchestrationV1StacksRequest)(*AbandonOrchestrationV1StacksResponse){
-    return NewAbandonOrchestrationV1StacksResponse(stacks.Abandon(oc.client,req.StackName,req.StackID, ))
+    return NewAbandonOrchestrationV1StacksResponse(stacks.Abandon(oc.Client,req.StackName,req.StackID, ))
 
 }

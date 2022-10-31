@@ -31,12 +31,12 @@ func NewListComputeV2ExtensionsDefsecrulesResponse(pager pagination.Pager,)*List
 
 // action function
 func (oc *OpenstackClient) ListComputeV2ExtensionsDefsecrules(req *ListComputeV2ExtensionsDefsecrulesRequest)(*ListComputeV2ExtensionsDefsecrulesResponse){
-    return NewListComputeV2ExtensionsDefsecrulesResponse(defsecrules.List(oc.client, ))
+    return NewListComputeV2ExtensionsDefsecrulesResponse(defsecrules.List(oc.Client, ))
 
 }
 //request struct for the CreateComputeV2ExtensionsDefsecrules
 type CreateComputeV2ExtensionsDefsecrulesRequest struct{
-    Opts defsecrules.CreateOptsBuilder
+    Opts defsecrules.CreateOpts
 }
 
 func NewCreateComputeV2ExtensionsDefsecrulesRequest()*CreateComputeV2ExtensionsDefsecrulesRequest{
@@ -56,7 +56,7 @@ func NewCreateComputeV2ExtensionsDefsecrulesResponse(createResult defsecrules.Cr
 
 // action function
 func (oc *OpenstackClient) CreateComputeV2ExtensionsDefsecrules(req *CreateComputeV2ExtensionsDefsecrulesRequest)(*CreateComputeV2ExtensionsDefsecrulesResponse){
-    return NewCreateComputeV2ExtensionsDefsecrulesResponse(defsecrules.Create(oc.client,req.Opts, ))
+    return NewCreateComputeV2ExtensionsDefsecrulesResponse(defsecrules.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetComputeV2ExtensionsDefsecrules
@@ -81,7 +81,7 @@ func NewGetComputeV2ExtensionsDefsecrulesResponse(getResult defsecrules.GetResul
 
 // action function
 func (oc *OpenstackClient) GetComputeV2ExtensionsDefsecrules(req *GetComputeV2ExtensionsDefsecrulesRequest)(*GetComputeV2ExtensionsDefsecrulesResponse){
-    return NewGetComputeV2ExtensionsDefsecrulesResponse(defsecrules.Get(oc.client,req.Id, ))
+    return NewGetComputeV2ExtensionsDefsecrulesResponse(defsecrules.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsDefsecrules
@@ -106,6 +106,6 @@ func NewDeleteComputeV2ExtensionsDefsecrulesResponse(deleteResult defsecrules.De
 
 // action function
 func (oc *OpenstackClient) DeleteComputeV2ExtensionsDefsecrules(req *DeleteComputeV2ExtensionsDefsecrulesRequest)(*DeleteComputeV2ExtensionsDefsecrulesResponse){
-    return NewDeleteComputeV2ExtensionsDefsecrulesResponse(defsecrules.Delete(oc.client,req.Id, ))
+    return NewDeleteComputeV2ExtensionsDefsecrulesResponse(defsecrules.Delete(oc.Client,req.Id, ))
 
 }

@@ -31,7 +31,7 @@ func NewGetNetworkingV2ExtensionsQuotasResponse(getResult quotas.GetResult,)*Get
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsQuotas(req *GetNetworkingV2ExtensionsQuotasRequest)(*GetNetworkingV2ExtensionsQuotasResponse){
-    return NewGetNetworkingV2ExtensionsQuotasResponse(quotas.Get(oc.client,req.ProjectID, ))
+    return NewGetNetworkingV2ExtensionsQuotasResponse(quotas.Get(oc.Client,req.ProjectID, ))
 
 }
 //request struct for the GetDetailNetworkingV2ExtensionsQuotas
@@ -56,13 +56,13 @@ func NewGetDetailNetworkingV2ExtensionsQuotasResponse(getDetailResult quotas.Get
 
 // action function
 func (oc *OpenstackClient) GetDetailNetworkingV2ExtensionsQuotas(req *GetDetailNetworkingV2ExtensionsQuotasRequest)(*GetDetailNetworkingV2ExtensionsQuotasResponse){
-    return NewGetDetailNetworkingV2ExtensionsQuotasResponse(quotas.GetDetail(oc.client,req.ProjectID, ))
+    return NewGetDetailNetworkingV2ExtensionsQuotasResponse(quotas.GetDetail(oc.Client,req.ProjectID, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsQuotas
 type UpdateNetworkingV2ExtensionsQuotasRequest struct{
     ProjectID string
-    Opts quotas.UpdateOptsBuilder
+    Opts quotas.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsQuotasRequest()*UpdateNetworkingV2ExtensionsQuotasRequest{
@@ -82,6 +82,6 @@ func NewUpdateNetworkingV2ExtensionsQuotasResponse(updateResult quotas.UpdateRes
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsQuotas(req *UpdateNetworkingV2ExtensionsQuotasRequest)(*UpdateNetworkingV2ExtensionsQuotasResponse){
-    return NewUpdateNetworkingV2ExtensionsQuotasResponse(quotas.Update(oc.client,req.ProjectID,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsQuotasResponse(quotas.Update(oc.Client,req.ProjectID,req.Opts, ))
 
 }

@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListNetworkingV2ExtensionsLbaas_v2Listeners
 type ListNetworkingV2ExtensionsLbaas_v2ListenersRequest struct{
-    Opts listeners.ListOptsBuilder
+    Opts listeners.ListOpts
 }
 
 func NewListNetworkingV2ExtensionsLbaas_v2ListenersRequest()*ListNetworkingV2ExtensionsLbaas_v2ListenersRequest{
@@ -32,12 +32,12 @@ func NewListNetworkingV2ExtensionsLbaas_v2ListenersResponse(pager pagination.Pag
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaas_v2Listeners(req *ListNetworkingV2ExtensionsLbaas_v2ListenersRequest)(*ListNetworkingV2ExtensionsLbaas_v2ListenersResponse){
-    return NewListNetworkingV2ExtensionsLbaas_v2ListenersResponse(listeners.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2ExtensionsLbaas_v2ListenersResponse(listeners.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLbaas_v2Listeners
 type CreateNetworkingV2ExtensionsLbaas_v2ListenersRequest struct{
-    Opts listeners.CreateOptsBuilder
+    Opts listeners.CreateOpts
 }
 
 func NewCreateNetworkingV2ExtensionsLbaas_v2ListenersRequest()*CreateNetworkingV2ExtensionsLbaas_v2ListenersRequest{
@@ -57,7 +57,7 @@ func NewCreateNetworkingV2ExtensionsLbaas_v2ListenersResponse(createResult liste
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaas_v2Listeners(req *CreateNetworkingV2ExtensionsLbaas_v2ListenersRequest)(*CreateNetworkingV2ExtensionsLbaas_v2ListenersResponse){
-    return NewCreateNetworkingV2ExtensionsLbaas_v2ListenersResponse(listeners.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsLbaas_v2ListenersResponse(listeners.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLbaas_v2Listeners
@@ -82,13 +82,13 @@ func NewGetNetworkingV2ExtensionsLbaas_v2ListenersResponse(getResult listeners.G
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaas_v2Listeners(req *GetNetworkingV2ExtensionsLbaas_v2ListenersRequest)(*GetNetworkingV2ExtensionsLbaas_v2ListenersResponse){
-    return NewGetNetworkingV2ExtensionsLbaas_v2ListenersResponse(listeners.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsLbaas_v2ListenersResponse(listeners.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLbaas_v2Listeners
 type UpdateNetworkingV2ExtensionsLbaas_v2ListenersRequest struct{
     Id string
-    Opts listeners.UpdateOptsBuilder
+    Opts listeners.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsLbaas_v2ListenersRequest()*UpdateNetworkingV2ExtensionsLbaas_v2ListenersRequest{
@@ -108,7 +108,7 @@ func NewUpdateNetworkingV2ExtensionsLbaas_v2ListenersResponse(updateResult liste
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaas_v2Listeners(req *UpdateNetworkingV2ExtensionsLbaas_v2ListenersRequest)(*UpdateNetworkingV2ExtensionsLbaas_v2ListenersResponse){
-    return NewUpdateNetworkingV2ExtensionsLbaas_v2ListenersResponse(listeners.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsLbaas_v2ListenersResponse(listeners.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLbaas_v2Listeners
@@ -133,6 +133,6 @@ func NewDeleteNetworkingV2ExtensionsLbaas_v2ListenersResponse(deleteResult liste
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaas_v2Listeners(req *DeleteNetworkingV2ExtensionsLbaas_v2ListenersRequest)(*DeleteNetworkingV2ExtensionsLbaas_v2ListenersResponse){
-    return NewDeleteNetworkingV2ExtensionsLbaas_v2ListenersResponse(listeners.Delete(oc.client,req.Id, ))
+    return NewDeleteNetworkingV2ExtensionsLbaas_v2ListenersResponse(listeners.Delete(oc.Client,req.Id, ))
 
 }

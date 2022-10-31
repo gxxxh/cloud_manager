@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateClusteringV1Profiles
 type CreateClusteringV1ProfilesRequest struct{
-    Opts profiles.CreateOptsBuilder
+    Opts profiles.CreateOpts
 }
 
 func NewCreateClusteringV1ProfilesRequest()*CreateClusteringV1ProfilesRequest{
@@ -32,7 +32,7 @@ func NewCreateClusteringV1ProfilesResponse(createResult profiles.CreateResult,)*
 
 // action function
 func (oc *OpenstackClient) CreateClusteringV1Profiles(req *CreateClusteringV1ProfilesRequest)(*CreateClusteringV1ProfilesResponse){
-    return NewCreateClusteringV1ProfilesResponse(profiles.Create(oc.client,req.Opts, ))
+    return NewCreateClusteringV1ProfilesResponse(profiles.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetClusteringV1Profiles
@@ -57,12 +57,12 @@ func NewGetClusteringV1ProfilesResponse(getResult profiles.GetResult,)*GetCluste
 
 // action function
 func (oc *OpenstackClient) GetClusteringV1Profiles(req *GetClusteringV1ProfilesRequest)(*GetClusteringV1ProfilesResponse){
-    return NewGetClusteringV1ProfilesResponse(profiles.Get(oc.client,req.Id, ))
+    return NewGetClusteringV1ProfilesResponse(profiles.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListClusteringV1Profiles
 type ListClusteringV1ProfilesRequest struct{
-    Opts profiles.ListOptsBuilder
+    Opts profiles.ListOpts
 }
 
 func NewListClusteringV1ProfilesRequest()*ListClusteringV1ProfilesRequest{
@@ -82,13 +82,13 @@ func NewListClusteringV1ProfilesResponse(pager pagination.Pager,)*ListClustering
 
 // action function
 func (oc *OpenstackClient) ListClusteringV1Profiles(req *ListClusteringV1ProfilesRequest)(*ListClusteringV1ProfilesResponse){
-    return NewListClusteringV1ProfilesResponse(profiles.List(oc.client,req.Opts, ))
+    return NewListClusteringV1ProfilesResponse(profiles.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateClusteringV1Profiles
 type UpdateClusteringV1ProfilesRequest struct{
     Id string
-    Opts profiles.UpdateOptsBuilder
+    Opts profiles.UpdateOpts
 }
 
 func NewUpdateClusteringV1ProfilesRequest()*UpdateClusteringV1ProfilesRequest{
@@ -108,7 +108,7 @@ func NewUpdateClusteringV1ProfilesResponse(updateResult profiles.UpdateResult,)*
 
 // action function
 func (oc *OpenstackClient) UpdateClusteringV1Profiles(req *UpdateClusteringV1ProfilesRequest)(*UpdateClusteringV1ProfilesResponse){
-    return NewUpdateClusteringV1ProfilesResponse(profiles.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateClusteringV1ProfilesResponse(profiles.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteClusteringV1Profiles
@@ -133,7 +133,7 @@ func NewDeleteClusteringV1ProfilesResponse(deleteResult profiles.DeleteResult,)*
 
 // action function
 func (oc *OpenstackClient) DeleteClusteringV1Profiles(req *DeleteClusteringV1ProfilesRequest)(*DeleteClusteringV1ProfilesResponse){
-    return NewDeleteClusteringV1ProfilesResponse(profiles.Delete(oc.client,req.Id, ))
+    return NewDeleteClusteringV1ProfilesResponse(profiles.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the ValidateClusteringV1Profiles
@@ -158,6 +158,6 @@ func NewValidateClusteringV1ProfilesResponse(validateResult profiles.ValidateRes
 
 // action function
 func (oc *OpenstackClient) ValidateClusteringV1Profiles(req *ValidateClusteringV1ProfilesRequest)(*ValidateClusteringV1ProfilesResponse){
-    return NewValidateClusteringV1ProfilesResponse(profiles.Validate(oc.client,req.Opts, ))
+    return NewValidateClusteringV1ProfilesResponse(profiles.Validate(oc.Client,req.Opts, ))
 
 }

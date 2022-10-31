@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListCdnV1Services
 type ListCdnV1ServicesRequest struct{
-    Opts services.ListOptsBuilder
+    Opts services.ListOpts
 }
 
 func NewListCdnV1ServicesRequest()*ListCdnV1ServicesRequest{
@@ -32,12 +32,12 @@ func NewListCdnV1ServicesResponse(pager pagination.Pager,)*ListCdnV1ServicesResp
 
 // action function
 func (oc *OpenstackClient) ListCdnV1Services(req *ListCdnV1ServicesRequest)(*ListCdnV1ServicesResponse){
-    return NewListCdnV1ServicesResponse(services.List(oc.client,req.Opts, ))
+    return NewListCdnV1ServicesResponse(services.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateCdnV1Services
 type CreateCdnV1ServicesRequest struct{
-    Opts services.CreateOptsBuilder
+    Opts services.CreateOpts
 }
 
 func NewCreateCdnV1ServicesRequest()*CreateCdnV1ServicesRequest{
@@ -57,7 +57,7 @@ func NewCreateCdnV1ServicesResponse(createResult services.CreateResult,)*CreateC
 
 // action function
 func (oc *OpenstackClient) CreateCdnV1Services(req *CreateCdnV1ServicesRequest)(*CreateCdnV1ServicesResponse){
-    return NewCreateCdnV1ServicesResponse(services.Create(oc.client,req.Opts, ))
+    return NewCreateCdnV1ServicesResponse(services.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetCdnV1Services
@@ -82,7 +82,7 @@ func NewGetCdnV1ServicesResponse(getResult services.GetResult,)*GetCdnV1Services
 
 // action function
 func (oc *OpenstackClient) GetCdnV1Services(req *GetCdnV1ServicesRequest)(*GetCdnV1ServicesResponse){
-    return NewGetCdnV1ServicesResponse(services.Get(oc.client,req.IdOrURL, ))
+    return NewGetCdnV1ServicesResponse(services.Get(oc.Client,req.IdOrURL, ))
 
 }
 //request struct for the UpdateCdnV1Services
@@ -108,7 +108,7 @@ func NewUpdateCdnV1ServicesResponse(updateResult services.UpdateResult,)*UpdateC
 
 // action function
 func (oc *OpenstackClient) UpdateCdnV1Services(req *UpdateCdnV1ServicesRequest)(*UpdateCdnV1ServicesResponse){
-    return NewUpdateCdnV1ServicesResponse(services.Update(oc.client,req.IdOrURL,req.Opts, ))
+    return NewUpdateCdnV1ServicesResponse(services.Update(oc.Client,req.IdOrURL,req.Opts, ))
 
 }
 //request struct for the DeleteCdnV1Services
@@ -133,6 +133,6 @@ func NewDeleteCdnV1ServicesResponse(deleteResult services.DeleteResult,)*DeleteC
 
 // action function
 func (oc *OpenstackClient) DeleteCdnV1Services(req *DeleteCdnV1ServicesRequest)(*DeleteCdnV1ServicesResponse){
-    return NewDeleteCdnV1ServicesResponse(services.Delete(oc.client,req.IdOrURL, ))
+    return NewDeleteCdnV1ServicesResponse(services.Delete(oc.Client,req.IdOrURL, ))
 
 }

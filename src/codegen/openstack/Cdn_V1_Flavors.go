@@ -31,7 +31,7 @@ func NewListCdnV1FlavorsResponse(pager pagination.Pager,)*ListCdnV1FlavorsRespon
 
 // action function
 func (oc *OpenstackClient) ListCdnV1Flavors(req *ListCdnV1FlavorsRequest)(*ListCdnV1FlavorsResponse){
-    return NewListCdnV1FlavorsResponse(flavors.List(oc.client, ))
+    return NewListCdnV1FlavorsResponse(flavors.List(oc.Client, ))
 
 }
 //request struct for the GetCdnV1Flavors
@@ -56,6 +56,6 @@ func NewGetCdnV1FlavorsResponse(getResult flavors.GetResult,)*GetCdnV1FlavorsRes
 
 // action function
 func (oc *OpenstackClient) GetCdnV1Flavors(req *GetCdnV1FlavorsRequest)(*GetCdnV1FlavorsResponse){
-    return NewGetCdnV1FlavorsResponse(flavors.Get(oc.client,req.Id, ))
+    return NewGetCdnV1FlavorsResponse(flavors.Get(oc.Client,req.Id, ))
 
 }

@@ -12,7 +12,7 @@ import (
 //request struct for the DeleteCdnV1Serviceassets
 type DeleteCdnV1ServiceassetsRequest struct{
     IdOrURL string
-    Opts serviceassets.DeleteOptsBuilder
+    Opts serviceassets.DeleteOpts
 }
 
 func NewDeleteCdnV1ServiceassetsRequest()*DeleteCdnV1ServiceassetsRequest{
@@ -32,6 +32,6 @@ func NewDeleteCdnV1ServiceassetsResponse(deleteResult serviceassets.DeleteResult
 
 // action function
 func (oc *OpenstackClient) DeleteCdnV1Serviceassets(req *DeleteCdnV1ServiceassetsRequest)(*DeleteCdnV1ServiceassetsResponse){
-    return NewDeleteCdnV1ServiceassetsResponse(serviceassets.Delete(oc.client,req.IdOrURL,req.Opts, ))
+    return NewDeleteCdnV1ServiceassetsResponse(serviceassets.Delete(oc.Client,req.IdOrURL,req.Opts, ))
 
 }

@@ -32,12 +32,12 @@ func NewListNetworkingV2ExtensionsSecurityRulesResponse(pager pagination.Pager,)
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsSecurityRules(req *ListNetworkingV2ExtensionsSecurityRulesRequest)(*ListNetworkingV2ExtensionsSecurityRulesResponse){
-    return NewListNetworkingV2ExtensionsSecurityRulesResponse(rules.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2ExtensionsSecurityRulesResponse(rules.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsSecurityRules
 type CreateNetworkingV2ExtensionsSecurityRulesRequest struct{
-    Opts rules.CreateOptsBuilder
+    Opts rules.CreateOpts
 }
 
 func NewCreateNetworkingV2ExtensionsSecurityRulesRequest()*CreateNetworkingV2ExtensionsSecurityRulesRequest{
@@ -57,7 +57,7 @@ func NewCreateNetworkingV2ExtensionsSecurityRulesResponse(createResult rules.Cre
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsSecurityRules(req *CreateNetworkingV2ExtensionsSecurityRulesRequest)(*CreateNetworkingV2ExtensionsSecurityRulesResponse){
-    return NewCreateNetworkingV2ExtensionsSecurityRulesResponse(rules.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsSecurityRulesResponse(rules.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsSecurityRules
@@ -82,7 +82,7 @@ func NewGetNetworkingV2ExtensionsSecurityRulesResponse(getResult rules.GetResult
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsSecurityRules(req *GetNetworkingV2ExtensionsSecurityRulesRequest)(*GetNetworkingV2ExtensionsSecurityRulesResponse){
-    return NewGetNetworkingV2ExtensionsSecurityRulesResponse(rules.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsSecurityRulesResponse(rules.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsSecurityRules
@@ -107,6 +107,6 @@ func NewDeleteNetworkingV2ExtensionsSecurityRulesResponse(deleteResult rules.Del
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsSecurityRules(req *DeleteNetworkingV2ExtensionsSecurityRulesRequest)(*DeleteNetworkingV2ExtensionsSecurityRulesResponse){
-    return NewDeleteNetworkingV2ExtensionsSecurityRulesResponse(rules.Delete(oc.client,req.Id, ))
+    return NewDeleteNetworkingV2ExtensionsSecurityRulesResponse(rules.Delete(oc.Client,req.Id, ))
 
 }

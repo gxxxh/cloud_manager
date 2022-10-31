@@ -31,7 +31,7 @@ func NewGetContainerACLKeymanagerV1AclsResponse(aCLResult acls.ACLResult,)*GetCo
 
 // action function
 func (oc *OpenstackClient) GetContainerACLKeymanagerV1Acls(req *GetContainerACLKeymanagerV1AclsRequest)(*GetContainerACLKeymanagerV1AclsResponse){
-    return NewGetContainerACLKeymanagerV1AclsResponse(acls.GetContainerACL(oc.client,req.ContainerID, ))
+    return NewGetContainerACLKeymanagerV1AclsResponse(acls.GetContainerACL(oc.Client,req.ContainerID, ))
 
 }
 //request struct for the GetSecretACLKeymanagerV1Acls
@@ -56,13 +56,13 @@ func NewGetSecretACLKeymanagerV1AclsResponse(aCLResult acls.ACLResult,)*GetSecre
 
 // action function
 func (oc *OpenstackClient) GetSecretACLKeymanagerV1Acls(req *GetSecretACLKeymanagerV1AclsRequest)(*GetSecretACLKeymanagerV1AclsResponse){
-    return NewGetSecretACLKeymanagerV1AclsResponse(acls.GetSecretACL(oc.client,req.SecretID, ))
+    return NewGetSecretACLKeymanagerV1AclsResponse(acls.GetSecretACL(oc.Client,req.SecretID, ))
 
 }
 //request struct for the SetContainerACLKeymanagerV1Acls
 type SetContainerACLKeymanagerV1AclsRequest struct{
     ContainerID string
-    Opts acls.SetOptsBuilder
+    Opts acls.SetOpts
 }
 
 func NewSetContainerACLKeymanagerV1AclsRequest()*SetContainerACLKeymanagerV1AclsRequest{
@@ -82,13 +82,13 @@ func NewSetContainerACLKeymanagerV1AclsResponse(aCLRefResult acls.ACLRefResult,)
 
 // action function
 func (oc *OpenstackClient) SetContainerACLKeymanagerV1Acls(req *SetContainerACLKeymanagerV1AclsRequest)(*SetContainerACLKeymanagerV1AclsResponse){
-    return NewSetContainerACLKeymanagerV1AclsResponse(acls.SetContainerACL(oc.client,req.ContainerID,req.Opts, ))
+    return NewSetContainerACLKeymanagerV1AclsResponse(acls.SetContainerACL(oc.Client,req.ContainerID,req.Opts, ))
 
 }
 //request struct for the SetSecretACLKeymanagerV1Acls
 type SetSecretACLKeymanagerV1AclsRequest struct{
     SecretID string
-    Opts acls.SetOptsBuilder
+    Opts acls.SetOpts
 }
 
 func NewSetSecretACLKeymanagerV1AclsRequest()*SetSecretACLKeymanagerV1AclsRequest{
@@ -108,13 +108,13 @@ func NewSetSecretACLKeymanagerV1AclsResponse(aCLRefResult acls.ACLRefResult,)*Se
 
 // action function
 func (oc *OpenstackClient) SetSecretACLKeymanagerV1Acls(req *SetSecretACLKeymanagerV1AclsRequest)(*SetSecretACLKeymanagerV1AclsResponse){
-    return NewSetSecretACLKeymanagerV1AclsResponse(acls.SetSecretACL(oc.client,req.SecretID,req.Opts, ))
+    return NewSetSecretACLKeymanagerV1AclsResponse(acls.SetSecretACL(oc.Client,req.SecretID,req.Opts, ))
 
 }
 //request struct for the UpdateContainerACLKeymanagerV1Acls
 type UpdateContainerACLKeymanagerV1AclsRequest struct{
     ContainerID string
-    Opts acls.SetOptsBuilder
+    Opts acls.SetOpts
 }
 
 func NewUpdateContainerACLKeymanagerV1AclsRequest()*UpdateContainerACLKeymanagerV1AclsRequest{
@@ -134,13 +134,13 @@ func NewUpdateContainerACLKeymanagerV1AclsResponse(aCLRefResult acls.ACLRefResul
 
 // action function
 func (oc *OpenstackClient) UpdateContainerACLKeymanagerV1Acls(req *UpdateContainerACLKeymanagerV1AclsRequest)(*UpdateContainerACLKeymanagerV1AclsResponse){
-    return NewUpdateContainerACLKeymanagerV1AclsResponse(acls.UpdateContainerACL(oc.client,req.ContainerID,req.Opts, ))
+    return NewUpdateContainerACLKeymanagerV1AclsResponse(acls.UpdateContainerACL(oc.Client,req.ContainerID,req.Opts, ))
 
 }
 //request struct for the UpdateSecretACLKeymanagerV1Acls
 type UpdateSecretACLKeymanagerV1AclsRequest struct{
     SecretID string
-    Opts acls.SetOptsBuilder
+    Opts acls.SetOpts
 }
 
 func NewUpdateSecretACLKeymanagerV1AclsRequest()*UpdateSecretACLKeymanagerV1AclsRequest{
@@ -160,7 +160,7 @@ func NewUpdateSecretACLKeymanagerV1AclsResponse(aCLRefResult acls.ACLRefResult,)
 
 // action function
 func (oc *OpenstackClient) UpdateSecretACLKeymanagerV1Acls(req *UpdateSecretACLKeymanagerV1AclsRequest)(*UpdateSecretACLKeymanagerV1AclsResponse){
-    return NewUpdateSecretACLKeymanagerV1AclsResponse(acls.UpdateSecretACL(oc.client,req.SecretID,req.Opts, ))
+    return NewUpdateSecretACLKeymanagerV1AclsResponse(acls.UpdateSecretACL(oc.Client,req.SecretID,req.Opts, ))
 
 }
 //request struct for the DeleteContainerACLKeymanagerV1Acls
@@ -185,7 +185,7 @@ func NewDeleteContainerACLKeymanagerV1AclsResponse(deleteResult acls.DeleteResul
 
 // action function
 func (oc *OpenstackClient) DeleteContainerACLKeymanagerV1Acls(req *DeleteContainerACLKeymanagerV1AclsRequest)(*DeleteContainerACLKeymanagerV1AclsResponse){
-    return NewDeleteContainerACLKeymanagerV1AclsResponse(acls.DeleteContainerACL(oc.client,req.ContainerID, ))
+    return NewDeleteContainerACLKeymanagerV1AclsResponse(acls.DeleteContainerACL(oc.Client,req.ContainerID, ))
 
 }
 //request struct for the DeleteSecretACLKeymanagerV1Acls
@@ -210,6 +210,6 @@ func NewDeleteSecretACLKeymanagerV1AclsResponse(deleteResult acls.DeleteResult,)
 
 // action function
 func (oc *OpenstackClient) DeleteSecretACLKeymanagerV1Acls(req *DeleteSecretACLKeymanagerV1AclsRequest)(*DeleteSecretACLKeymanagerV1AclsResponse){
-    return NewDeleteSecretACLKeymanagerV1AclsResponse(acls.DeleteSecretACL(oc.client,req.SecretID, ))
+    return NewDeleteSecretACLKeymanagerV1AclsResponse(acls.DeleteSecretACL(oc.Client,req.SecretID, ))
 
 }

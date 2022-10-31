@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateNetworkingV2ExtensionsVpnaasEndpointgroups
 type CreateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest struct{
-    Opts endpointgroups.CreateOptsBuilder
+    Opts endpointgroups.CreateOpts
 }
 
 func NewCreateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest()*CreateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest{
@@ -32,7 +32,7 @@ func NewCreateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(createResult en
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasEndpointgroups(req *CreateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*CreateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
-    return NewCreateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsVpnaasEndpointgroups
@@ -57,12 +57,12 @@ func NewGetNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(getResult endpoint
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasEndpointgroups(req *GetNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*GetNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
-    return NewGetNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListNetworkingV2ExtensionsVpnaasEndpointgroups
 type ListNetworkingV2ExtensionsVpnaasEndpointgroupsRequest struct{
-    Opts endpointgroups.ListOptsBuilder
+    Opts endpointgroups.ListOpts
 }
 
 func NewListNetworkingV2ExtensionsVpnaasEndpointgroupsRequest()*ListNetworkingV2ExtensionsVpnaasEndpointgroupsRequest{
@@ -82,7 +82,7 @@ func NewListNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(pager pagination.
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasEndpointgroups(req *ListNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*ListNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
-    return NewListNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsVpnaasEndpointgroups
@@ -107,13 +107,13 @@ func NewDeleteNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(deleteResult en
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasEndpointgroups(req *DeleteNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*DeleteNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
-    return NewDeleteNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Delete(oc.client,req.Id, ))
+    return NewDeleteNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsVpnaasEndpointgroups
 type UpdateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest struct{
     Id string
-    Opts endpointgroups.UpdateOptsBuilder
+    Opts endpointgroups.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest()*UpdateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest{
@@ -133,6 +133,6 @@ func NewUpdateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(updateResult en
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasEndpointgroups(req *UpdateNetworkingV2ExtensionsVpnaasEndpointgroupsRequest)(*UpdateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse){
-    return NewUpdateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsVpnaasEndpointgroupsResponse(endpointgroups.Update(oc.Client,req.Id,req.Opts, ))
 
 }

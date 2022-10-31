@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateNetworkingV2ExtensionsVpnaasSiteconnections
 type CreateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest struct{
-    Opts siteconnections.CreateOptsBuilder
+    Opts siteconnections.CreateOpts
 }
 
 func NewCreateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest()*CreateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest{
@@ -32,7 +32,7 @@ func NewCreateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(createResult s
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsVpnaasSiteconnections(req *CreateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*CreateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
-    return NewCreateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsVpnaasSiteconnections
@@ -57,7 +57,7 @@ func NewDeleteNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(deleteResult s
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsVpnaasSiteconnections(req *DeleteNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*DeleteNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
-    return NewDeleteNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Delete(oc.client,req.Id, ))
+    return NewDeleteNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsVpnaasSiteconnections
@@ -82,12 +82,12 @@ func NewGetNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(getResult sitecon
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsVpnaasSiteconnections(req *GetNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*GetNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
-    return NewGetNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListNetworkingV2ExtensionsVpnaasSiteconnections
 type ListNetworkingV2ExtensionsVpnaasSiteconnectionsRequest struct{
-    Opts siteconnections.ListOptsBuilder
+    Opts siteconnections.ListOpts
 }
 
 func NewListNetworkingV2ExtensionsVpnaasSiteconnectionsRequest()*ListNetworkingV2ExtensionsVpnaasSiteconnectionsRequest{
@@ -107,13 +107,13 @@ func NewListNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(pager pagination
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsVpnaasSiteconnections(req *ListNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*ListNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
-    return NewListNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsVpnaasSiteconnections
 type UpdateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest struct{
     Id string
-    Opts siteconnections.UpdateOptsBuilder
+    Opts siteconnections.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest()*UpdateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest{
@@ -133,6 +133,6 @@ func NewUpdateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(updateResult s
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsVpnaasSiteconnections(req *UpdateNetworkingV2ExtensionsVpnaasSiteconnectionsRequest)(*UpdateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse){
-    return NewUpdateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsVpnaasSiteconnectionsResponse(siteconnections.Update(oc.Client,req.Id,req.Opts, ))
 
 }

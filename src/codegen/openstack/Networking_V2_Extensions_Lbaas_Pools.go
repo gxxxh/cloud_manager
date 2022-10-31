@@ -32,12 +32,12 @@ func NewListNetworkingV2ExtensionsLbaasPoolsResponse(pager pagination.Pager,)*Li
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsLbaasPools(req *ListNetworkingV2ExtensionsLbaasPoolsRequest)(*ListNetworkingV2ExtensionsLbaasPoolsResponse){
-    return NewListNetworkingV2ExtensionsLbaasPoolsResponse(pools.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2ExtensionsLbaasPoolsResponse(pools.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLbaasPools
 type CreateNetworkingV2ExtensionsLbaasPoolsRequest struct{
-    Opts pools.CreateOptsBuilder
+    Opts pools.CreateOpts
 }
 
 func NewCreateNetworkingV2ExtensionsLbaasPoolsRequest()*CreateNetworkingV2ExtensionsLbaasPoolsRequest{
@@ -57,7 +57,7 @@ func NewCreateNetworkingV2ExtensionsLbaasPoolsResponse(createResult pools.Create
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLbaasPools(req *CreateNetworkingV2ExtensionsLbaasPoolsRequest)(*CreateNetworkingV2ExtensionsLbaasPoolsResponse){
-    return NewCreateNetworkingV2ExtensionsLbaasPoolsResponse(pools.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsLbaasPoolsResponse(pools.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLbaasPools
@@ -82,13 +82,13 @@ func NewGetNetworkingV2ExtensionsLbaasPoolsResponse(getResult pools.GetResult,)*
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsLbaasPools(req *GetNetworkingV2ExtensionsLbaasPoolsRequest)(*GetNetworkingV2ExtensionsLbaasPoolsResponse){
-    return NewGetNetworkingV2ExtensionsLbaasPoolsResponse(pools.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsLbaasPoolsResponse(pools.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLbaasPools
 type UpdateNetworkingV2ExtensionsLbaasPoolsRequest struct{
     Id string
-    Opts pools.UpdateOptsBuilder
+    Opts pools.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsLbaasPoolsRequest()*UpdateNetworkingV2ExtensionsLbaasPoolsRequest{
@@ -108,7 +108,7 @@ func NewUpdateNetworkingV2ExtensionsLbaasPoolsResponse(updateResult pools.Update
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLbaasPools(req *UpdateNetworkingV2ExtensionsLbaasPoolsRequest)(*UpdateNetworkingV2ExtensionsLbaasPoolsResponse){
-    return NewUpdateNetworkingV2ExtensionsLbaasPoolsResponse(pools.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsLbaasPoolsResponse(pools.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLbaasPools
@@ -133,7 +133,7 @@ func NewDeleteNetworkingV2ExtensionsLbaasPoolsResponse(deleteResult pools.Delete
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLbaasPools(req *DeleteNetworkingV2ExtensionsLbaasPoolsRequest)(*DeleteNetworkingV2ExtensionsLbaasPoolsResponse){
-    return NewDeleteNetworkingV2ExtensionsLbaasPoolsResponse(pools.Delete(oc.client,req.Id, ))
+    return NewDeleteNetworkingV2ExtensionsLbaasPoolsResponse(pools.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the AssociateMonitorNetworkingV2ExtensionsLbaasPools
@@ -159,7 +159,7 @@ func NewAssociateMonitorNetworkingV2ExtensionsLbaasPoolsResponse(associateResult
 
 // action function
 func (oc *OpenstackClient) AssociateMonitorNetworkingV2ExtensionsLbaasPools(req *AssociateMonitorNetworkingV2ExtensionsLbaasPoolsRequest)(*AssociateMonitorNetworkingV2ExtensionsLbaasPoolsResponse){
-    return NewAssociateMonitorNetworkingV2ExtensionsLbaasPoolsResponse(pools.AssociateMonitor(oc.client,req.PoolID,req.MonitorID, ))
+    return NewAssociateMonitorNetworkingV2ExtensionsLbaasPoolsResponse(pools.AssociateMonitor(oc.Client,req.PoolID,req.MonitorID, ))
 
 }
 //request struct for the DisassociateMonitorNetworkingV2ExtensionsLbaasPools
@@ -185,6 +185,6 @@ func NewDisassociateMonitorNetworkingV2ExtensionsLbaasPoolsResponse(associateRes
 
 // action function
 func (oc *OpenstackClient) DisassociateMonitorNetworkingV2ExtensionsLbaasPools(req *DisassociateMonitorNetworkingV2ExtensionsLbaasPoolsRequest)(*DisassociateMonitorNetworkingV2ExtensionsLbaasPoolsResponse){
-    return NewDisassociateMonitorNetworkingV2ExtensionsLbaasPoolsResponse(pools.DisassociateMonitor(oc.client,req.PoolID,req.MonitorID, ))
+    return NewDisassociateMonitorNetworkingV2ExtensionsLbaasPoolsResponse(pools.DisassociateMonitor(oc.Client,req.PoolID,req.MonitorID, ))
 
 }

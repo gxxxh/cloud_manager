@@ -33,7 +33,7 @@ func NewUploadImageserviceV2ImagedataResponse(uploadResult imagedata.UploadResul
 
 // action function
 func (oc *OpenstackClient) UploadImageserviceV2Imagedata(req *UploadImageserviceV2ImagedataRequest)(*UploadImageserviceV2ImagedataResponse){
-    return NewUploadImageserviceV2ImagedataResponse(imagedata.Upload(oc.client,req.Id,req.Data, ))
+    return NewUploadImageserviceV2ImagedataResponse(imagedata.Upload(oc.Client,req.Id,req.Data, ))
 
 }
 //request struct for the StageImageserviceV2Imagedata
@@ -59,7 +59,7 @@ func NewStageImageserviceV2ImagedataResponse(stageResult imagedata.StageResult,)
 
 // action function
 func (oc *OpenstackClient) StageImageserviceV2Imagedata(req *StageImageserviceV2ImagedataRequest)(*StageImageserviceV2ImagedataResponse){
-    return NewStageImageserviceV2ImagedataResponse(imagedata.Stage(oc.client,req.Id,req.Data, ))
+    return NewStageImageserviceV2ImagedataResponse(imagedata.Stage(oc.Client,req.Id,req.Data, ))
 
 }
 //request struct for the DownloadImageserviceV2Imagedata
@@ -84,6 +84,6 @@ func NewDownloadImageserviceV2ImagedataResponse(downloadResult imagedata.Downloa
 
 // action function
 func (oc *OpenstackClient) DownloadImageserviceV2Imagedata(req *DownloadImageserviceV2ImagedataRequest)(*DownloadImageserviceV2ImagedataResponse){
-    return NewDownloadImageserviceV2ImagedataResponse(imagedata.Download(oc.client,req.Id, ))
+    return NewDownloadImageserviceV2ImagedataResponse(imagedata.Download(oc.Client,req.Id, ))
 
 }

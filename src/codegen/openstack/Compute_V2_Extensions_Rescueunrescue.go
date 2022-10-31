@@ -12,7 +12,7 @@ import (
 //request struct for the RescueComputeV2ExtensionsRescueunrescue
 type RescueComputeV2ExtensionsRescueunrescueRequest struct{
     Id string
-    Opts rescueunrescue.RescueOptsBuilder
+    Opts rescueunrescue.RescueOpts
 }
 
 func NewRescueComputeV2ExtensionsRescueunrescueRequest()*RescueComputeV2ExtensionsRescueunrescueRequest{
@@ -32,7 +32,7 @@ func NewRescueComputeV2ExtensionsRescueunrescueResponse(rescueResult rescueunres
 
 // action function
 func (oc *OpenstackClient) RescueComputeV2ExtensionsRescueunrescue(req *RescueComputeV2ExtensionsRescueunrescueRequest)(*RescueComputeV2ExtensionsRescueunrescueResponse){
-    return NewRescueComputeV2ExtensionsRescueunrescueResponse(rescueunrescue.Rescue(oc.client,req.Id,req.Opts, ))
+    return NewRescueComputeV2ExtensionsRescueunrescueResponse(rescueunrescue.Rescue(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the UnrescueComputeV2ExtensionsRescueunrescue
@@ -57,6 +57,6 @@ func NewUnrescueComputeV2ExtensionsRescueunrescueResponse(unrescueResult rescueu
 
 // action function
 func (oc *OpenstackClient) UnrescueComputeV2ExtensionsRescueunrescue(req *UnrescueComputeV2ExtensionsRescueunrescueRequest)(*UnrescueComputeV2ExtensionsRescueunrescueResponse){
-    return NewUnrescueComputeV2ExtensionsRescueunrescueResponse(rescueunrescue.Unrescue(oc.client,req.Id, ))
+    return NewUnrescueComputeV2ExtensionsRescueunrescueResponse(rescueunrescue.Unrescue(oc.Client,req.Id, ))
 
 }

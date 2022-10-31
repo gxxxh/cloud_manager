@@ -31,7 +31,7 @@ func NewListDbV1DatastoresResponse(pager pagination.Pager,)*ListDbV1DatastoresRe
 
 // action function
 func (oc *OpenstackClient) ListDbV1Datastores(req *ListDbV1DatastoresRequest)(*ListDbV1DatastoresResponse){
-    return NewListDbV1DatastoresResponse(datastores.List(oc.client, ))
+    return NewListDbV1DatastoresResponse(datastores.List(oc.Client, ))
 
 }
 //request struct for the GetDbV1Datastores
@@ -56,7 +56,7 @@ func NewGetDbV1DatastoresResponse(getResult datastores.GetResult,)*GetDbV1Datast
 
 // action function
 func (oc *OpenstackClient) GetDbV1Datastores(req *GetDbV1DatastoresRequest)(*GetDbV1DatastoresResponse){
-    return NewGetDbV1DatastoresResponse(datastores.Get(oc.client,req.DatastoreID, ))
+    return NewGetDbV1DatastoresResponse(datastores.Get(oc.Client,req.DatastoreID, ))
 
 }
 //request struct for the ListVersionsDbV1Datastores
@@ -81,7 +81,7 @@ func NewListVersionsDbV1DatastoresResponse(pager pagination.Pager,)*ListVersions
 
 // action function
 func (oc *OpenstackClient) ListVersionsDbV1Datastores(req *ListVersionsDbV1DatastoresRequest)(*ListVersionsDbV1DatastoresResponse){
-    return NewListVersionsDbV1DatastoresResponse(datastores.ListVersions(oc.client,req.DatastoreID, ))
+    return NewListVersionsDbV1DatastoresResponse(datastores.ListVersions(oc.Client,req.DatastoreID, ))
 
 }
 //request struct for the GetVersionDbV1Datastores
@@ -107,6 +107,6 @@ func NewGetVersionDbV1DatastoresResponse(getVersionResult datastores.GetVersionR
 
 // action function
 func (oc *OpenstackClient) GetVersionDbV1Datastores(req *GetVersionDbV1DatastoresRequest)(*GetVersionDbV1DatastoresResponse){
-    return NewGetVersionDbV1DatastoresResponse(datastores.GetVersion(oc.client,req.DatastoreID,req.VersionID, ))
+    return NewGetVersionDbV1DatastoresResponse(datastores.GetVersion(oc.Client,req.DatastoreID,req.VersionID, ))
 
 }

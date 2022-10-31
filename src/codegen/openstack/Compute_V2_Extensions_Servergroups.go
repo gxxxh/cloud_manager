@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListComputeV2ExtensionsServergroups
 type ListComputeV2ExtensionsServergroupsRequest struct{
-    Opts servergroups.ListOptsBuilder
+    Opts servergroups.ListOpts
 }
 
 func NewListComputeV2ExtensionsServergroupsRequest()*ListComputeV2ExtensionsServergroupsRequest{
@@ -32,12 +32,12 @@ func NewListComputeV2ExtensionsServergroupsResponse(pager pagination.Pager,)*Lis
 
 // action function
 func (oc *OpenstackClient) ListComputeV2ExtensionsServergroups(req *ListComputeV2ExtensionsServergroupsRequest)(*ListComputeV2ExtensionsServergroupsResponse){
-    return NewListComputeV2ExtensionsServergroupsResponse(servergroups.List(oc.client,req.Opts, ))
+    return NewListComputeV2ExtensionsServergroupsResponse(servergroups.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateComputeV2ExtensionsServergroups
 type CreateComputeV2ExtensionsServergroupsRequest struct{
-    Opts servergroups.CreateOptsBuilder
+    Opts servergroups.CreateOpts
 }
 
 func NewCreateComputeV2ExtensionsServergroupsRequest()*CreateComputeV2ExtensionsServergroupsRequest{
@@ -57,7 +57,7 @@ func NewCreateComputeV2ExtensionsServergroupsResponse(createResult servergroups.
 
 // action function
 func (oc *OpenstackClient) CreateComputeV2ExtensionsServergroups(req *CreateComputeV2ExtensionsServergroupsRequest)(*CreateComputeV2ExtensionsServergroupsResponse){
-    return NewCreateComputeV2ExtensionsServergroupsResponse(servergroups.Create(oc.client,req.Opts, ))
+    return NewCreateComputeV2ExtensionsServergroupsResponse(servergroups.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetComputeV2ExtensionsServergroups
@@ -82,7 +82,7 @@ func NewGetComputeV2ExtensionsServergroupsResponse(getResult servergroups.GetRes
 
 // action function
 func (oc *OpenstackClient) GetComputeV2ExtensionsServergroups(req *GetComputeV2ExtensionsServergroupsRequest)(*GetComputeV2ExtensionsServergroupsResponse){
-    return NewGetComputeV2ExtensionsServergroupsResponse(servergroups.Get(oc.client,req.Id, ))
+    return NewGetComputeV2ExtensionsServergroupsResponse(servergroups.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsServergroups
@@ -107,6 +107,6 @@ func NewDeleteComputeV2ExtensionsServergroupsResponse(deleteResult servergroups.
 
 // action function
 func (oc *OpenstackClient) DeleteComputeV2ExtensionsServergroups(req *DeleteComputeV2ExtensionsServergroupsRequest)(*DeleteComputeV2ExtensionsServergroupsResponse){
-    return NewDeleteComputeV2ExtensionsServergroupsResponse(servergroups.Delete(oc.client,req.Id, ))
+    return NewDeleteComputeV2ExtensionsServergroupsResponse(servergroups.Delete(oc.Client,req.Id, ))
 
 }

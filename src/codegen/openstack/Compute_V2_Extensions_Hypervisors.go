@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListComputeV2ExtensionsHypervisors
 type ListComputeV2ExtensionsHypervisorsRequest struct{
-    Opts hypervisors.ListOptsBuilder
+    Opts hypervisors.ListOpts
 }
 
 func NewListComputeV2ExtensionsHypervisorsRequest()*ListComputeV2ExtensionsHypervisorsRequest{
@@ -32,7 +32,7 @@ func NewListComputeV2ExtensionsHypervisorsResponse(pager pagination.Pager,)*List
 
 // action function
 func (oc *OpenstackClient) ListComputeV2ExtensionsHypervisors(req *ListComputeV2ExtensionsHypervisorsRequest)(*ListComputeV2ExtensionsHypervisorsResponse){
-    return NewListComputeV2ExtensionsHypervisorsResponse(hypervisors.List(oc.client,req.Opts, ))
+    return NewListComputeV2ExtensionsHypervisorsResponse(hypervisors.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetStatisticsComputeV2ExtensionsHypervisors
@@ -56,7 +56,7 @@ func NewGetStatisticsComputeV2ExtensionsHypervisorsResponse(statisticsResult hyp
 
 // action function
 func (oc *OpenstackClient) GetStatisticsComputeV2ExtensionsHypervisors(req *GetStatisticsComputeV2ExtensionsHypervisorsRequest)(*GetStatisticsComputeV2ExtensionsHypervisorsResponse){
-    return NewGetStatisticsComputeV2ExtensionsHypervisorsResponse(hypervisors.GetStatistics(oc.client, ))
+    return NewGetStatisticsComputeV2ExtensionsHypervisorsResponse(hypervisors.GetStatistics(oc.Client, ))
 
 }
 //request struct for the GetComputeV2ExtensionsHypervisors
@@ -81,7 +81,7 @@ func NewGetComputeV2ExtensionsHypervisorsResponse(hypervisorResult hypervisors.H
 
 // action function
 func (oc *OpenstackClient) GetComputeV2ExtensionsHypervisors(req *GetComputeV2ExtensionsHypervisorsRequest)(*GetComputeV2ExtensionsHypervisorsResponse){
-    return NewGetComputeV2ExtensionsHypervisorsResponse(hypervisors.Get(oc.client,req.HypervisorID, ))
+    return NewGetComputeV2ExtensionsHypervisorsResponse(hypervisors.Get(oc.Client,req.HypervisorID, ))
 
 }
 //request struct for the GetUptimeComputeV2ExtensionsHypervisors
@@ -106,6 +106,6 @@ func NewGetUptimeComputeV2ExtensionsHypervisorsResponse(uptimeResult hypervisors
 
 // action function
 func (oc *OpenstackClient) GetUptimeComputeV2ExtensionsHypervisors(req *GetUptimeComputeV2ExtensionsHypervisorsRequest)(*GetUptimeComputeV2ExtensionsHypervisorsResponse){
-    return NewGetUptimeComputeV2ExtensionsHypervisorsResponse(hypervisors.GetUptime(oc.client,req.HypervisorID, ))
+    return NewGetUptimeComputeV2ExtensionsHypervisorsResponse(hypervisors.GetUptime(oc.Client,req.HypervisorID, ))
 
 }

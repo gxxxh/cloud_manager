@@ -31,6 +31,6 @@ func NewListSharedfilesystemsV2AvailabilityzonesResponse(pager pagination.Pager,
 
 // action function
 func (oc *OpenstackClient) ListSharedfilesystemsV2Availabilityzones(req *ListSharedfilesystemsV2AvailabilityzonesRequest)(*ListSharedfilesystemsV2AvailabilityzonesResponse){
-    return NewListSharedfilesystemsV2AvailabilityzonesResponse(availabilityzones.List(oc.client, ))
+    return NewListSharedfilesystemsV2AvailabilityzonesResponse(availabilityzones.List(oc.Client, ))
 
 }

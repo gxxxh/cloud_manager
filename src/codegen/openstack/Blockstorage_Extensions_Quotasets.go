@@ -31,7 +31,7 @@ func NewGetBlockstorageExtensionsQuotasetsResponse(getResult quotasets.GetResult
 
 // action function
 func (oc *OpenstackClient) GetBlockstorageExtensionsQuotasets(req *GetBlockstorageExtensionsQuotasetsRequest)(*GetBlockstorageExtensionsQuotasetsResponse){
-    return NewGetBlockstorageExtensionsQuotasetsResponse(quotasets.Get(oc.client,req.ProjectID, ))
+    return NewGetBlockstorageExtensionsQuotasetsResponse(quotasets.Get(oc.Client,req.ProjectID, ))
 
 }
 //request struct for the GetDefaultsBlockstorageExtensionsQuotasets
@@ -56,7 +56,7 @@ func NewGetDefaultsBlockstorageExtensionsQuotasetsResponse(getResult quotasets.G
 
 // action function
 func (oc *OpenstackClient) GetDefaultsBlockstorageExtensionsQuotasets(req *GetDefaultsBlockstorageExtensionsQuotasetsRequest)(*GetDefaultsBlockstorageExtensionsQuotasetsResponse){
-    return NewGetDefaultsBlockstorageExtensionsQuotasetsResponse(quotasets.GetDefaults(oc.client,req.ProjectID, ))
+    return NewGetDefaultsBlockstorageExtensionsQuotasetsResponse(quotasets.GetDefaults(oc.Client,req.ProjectID, ))
 
 }
 //request struct for the GetUsageBlockstorageExtensionsQuotasets
@@ -81,13 +81,13 @@ func NewGetUsageBlockstorageExtensionsQuotasetsResponse(getUsageResult quotasets
 
 // action function
 func (oc *OpenstackClient) GetUsageBlockstorageExtensionsQuotasets(req *GetUsageBlockstorageExtensionsQuotasetsRequest)(*GetUsageBlockstorageExtensionsQuotasetsResponse){
-    return NewGetUsageBlockstorageExtensionsQuotasetsResponse(quotasets.GetUsage(oc.client,req.ProjectID, ))
+    return NewGetUsageBlockstorageExtensionsQuotasetsResponse(quotasets.GetUsage(oc.Client,req.ProjectID, ))
 
 }
 //request struct for the UpdateBlockstorageExtensionsQuotasets
 type UpdateBlockstorageExtensionsQuotasetsRequest struct{
     ProjectID string
-    Opts quotasets.UpdateOptsBuilder
+    Opts quotasets.UpdateOpts
 }
 
 func NewUpdateBlockstorageExtensionsQuotasetsRequest()*UpdateBlockstorageExtensionsQuotasetsRequest{
@@ -107,7 +107,7 @@ func NewUpdateBlockstorageExtensionsQuotasetsResponse(updateResult quotasets.Upd
 
 // action function
 func (oc *OpenstackClient) UpdateBlockstorageExtensionsQuotasets(req *UpdateBlockstorageExtensionsQuotasetsRequest)(*UpdateBlockstorageExtensionsQuotasetsResponse){
-    return NewUpdateBlockstorageExtensionsQuotasetsResponse(quotasets.Update(oc.client,req.ProjectID,req.Opts, ))
+    return NewUpdateBlockstorageExtensionsQuotasetsResponse(quotasets.Update(oc.Client,req.ProjectID,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageExtensionsQuotasets
@@ -132,6 +132,6 @@ func NewDeleteBlockstorageExtensionsQuotasetsResponse(deleteResult quotasets.Del
 
 // action function
 func (oc *OpenstackClient) DeleteBlockstorageExtensionsQuotasets(req *DeleteBlockstorageExtensionsQuotasetsRequest)(*DeleteBlockstorageExtensionsQuotasetsResponse){
-    return NewDeleteBlockstorageExtensionsQuotasetsResponse(quotasets.Delete(oc.client,req.ProjectID, ))
+    return NewDeleteBlockstorageExtensionsQuotasetsResponse(quotasets.Delete(oc.Client,req.ProjectID, ))
 
 }

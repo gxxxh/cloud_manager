@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListBlockstorageExtensionsServices
 type ListBlockstorageExtensionsServicesRequest struct{
-    Opts services.ListOptsBuilder
+    Opts services.ListOpts
 }
 
 func NewListBlockstorageExtensionsServicesRequest()*ListBlockstorageExtensionsServicesRequest{
@@ -32,6 +32,6 @@ func NewListBlockstorageExtensionsServicesResponse(pager pagination.Pager,)*List
 
 // action function
 func (oc *OpenstackClient) ListBlockstorageExtensionsServices(req *ListBlockstorageExtensionsServicesRequest)(*ListBlockstorageExtensionsServicesResponse){
-    return NewListBlockstorageExtensionsServicesResponse(services.List(oc.client,req.Opts, ))
+    return NewListBlockstorageExtensionsServicesResponse(services.List(oc.Client,req.Opts, ))
 
 }

@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateIdentityV3Endpoints
 type CreateIdentityV3EndpointsRequest struct{
-    Opts endpoints.CreateOptsBuilder
+    Opts endpoints.CreateOpts
 }
 
 func NewCreateIdentityV3EndpointsRequest()*CreateIdentityV3EndpointsRequest{
@@ -32,12 +32,12 @@ func NewCreateIdentityV3EndpointsResponse(createResult endpoints.CreateResult,)*
 
 // action function
 func (oc *OpenstackClient) CreateIdentityV3Endpoints(req *CreateIdentityV3EndpointsRequest)(*CreateIdentityV3EndpointsResponse){
-    return NewCreateIdentityV3EndpointsResponse(endpoints.Create(oc.client,req.Opts, ))
+    return NewCreateIdentityV3EndpointsResponse(endpoints.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the ListIdentityV3Endpoints
 type ListIdentityV3EndpointsRequest struct{
-    Opts endpoints.ListOptsBuilder
+    Opts endpoints.ListOpts
 }
 
 func NewListIdentityV3EndpointsRequest()*ListIdentityV3EndpointsRequest{
@@ -57,13 +57,13 @@ func NewListIdentityV3EndpointsResponse(pager pagination.Pager,)*ListIdentityV3E
 
 // action function
 func (oc *OpenstackClient) ListIdentityV3Endpoints(req *ListIdentityV3EndpointsRequest)(*ListIdentityV3EndpointsResponse){
-    return NewListIdentityV3EndpointsResponse(endpoints.List(oc.client,req.Opts, ))
+    return NewListIdentityV3EndpointsResponse(endpoints.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateIdentityV3Endpoints
 type UpdateIdentityV3EndpointsRequest struct{
     EndpointID string
-    Opts endpoints.UpdateOptsBuilder
+    Opts endpoints.UpdateOpts
 }
 
 func NewUpdateIdentityV3EndpointsRequest()*UpdateIdentityV3EndpointsRequest{
@@ -83,7 +83,7 @@ func NewUpdateIdentityV3EndpointsResponse(updateResult endpoints.UpdateResult,)*
 
 // action function
 func (oc *OpenstackClient) UpdateIdentityV3Endpoints(req *UpdateIdentityV3EndpointsRequest)(*UpdateIdentityV3EndpointsResponse){
-    return NewUpdateIdentityV3EndpointsResponse(endpoints.Update(oc.client,req.EndpointID,req.Opts, ))
+    return NewUpdateIdentityV3EndpointsResponse(endpoints.Update(oc.Client,req.EndpointID,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Endpoints
@@ -108,6 +108,6 @@ func NewDeleteIdentityV3EndpointsResponse(deleteResult endpoints.DeleteResult,)*
 
 // action function
 func (oc *OpenstackClient) DeleteIdentityV3Endpoints(req *DeleteIdentityV3EndpointsRequest)(*DeleteIdentityV3EndpointsResponse){
-    return NewDeleteIdentityV3EndpointsResponse(endpoints.Delete(oc.client,req.EndpointID, ))
+    return NewDeleteIdentityV3EndpointsResponse(endpoints.Delete(oc.Client,req.EndpointID, ))
 
 }

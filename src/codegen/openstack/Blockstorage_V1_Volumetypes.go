@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateBlockstorageV1Volumetypes
 type CreateBlockstorageV1VolumetypesRequest struct{
-    Opts volumetypes.CreateOptsBuilder
+    Opts volumetypes.CreateOpts
 }
 
 func NewCreateBlockstorageV1VolumetypesRequest()*CreateBlockstorageV1VolumetypesRequest{
@@ -32,7 +32,7 @@ func NewCreateBlockstorageV1VolumetypesResponse(createResult volumetypes.CreateR
 
 // action function
 func (oc *OpenstackClient) CreateBlockstorageV1Volumetypes(req *CreateBlockstorageV1VolumetypesRequest)(*CreateBlockstorageV1VolumetypesResponse){
-    return NewCreateBlockstorageV1VolumetypesResponse(volumetypes.Create(oc.client,req.Opts, ))
+    return NewCreateBlockstorageV1VolumetypesResponse(volumetypes.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageV1Volumetypes
@@ -57,7 +57,7 @@ func NewDeleteBlockstorageV1VolumetypesResponse(deleteResult volumetypes.DeleteR
 
 // action function
 func (oc *OpenstackClient) DeleteBlockstorageV1Volumetypes(req *DeleteBlockstorageV1VolumetypesRequest)(*DeleteBlockstorageV1VolumetypesResponse){
-    return NewDeleteBlockstorageV1VolumetypesResponse(volumetypes.Delete(oc.client,req.Id, ))
+    return NewDeleteBlockstorageV1VolumetypesResponse(volumetypes.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the GetBlockstorageV1Volumetypes
@@ -82,7 +82,7 @@ func NewGetBlockstorageV1VolumetypesResponse(getResult volumetypes.GetResult,)*G
 
 // action function
 func (oc *OpenstackClient) GetBlockstorageV1Volumetypes(req *GetBlockstorageV1VolumetypesRequest)(*GetBlockstorageV1VolumetypesResponse){
-    return NewGetBlockstorageV1VolumetypesResponse(volumetypes.Get(oc.client,req.Id, ))
+    return NewGetBlockstorageV1VolumetypesResponse(volumetypes.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListBlockstorageV1Volumetypes
@@ -106,6 +106,6 @@ func NewListBlockstorageV1VolumetypesResponse(pager pagination.Pager,)*ListBlock
 
 // action function
 func (oc *OpenstackClient) ListBlockstorageV1Volumetypes(req *ListBlockstorageV1VolumetypesRequest)(*ListBlockstorageV1VolumetypesResponse){
-    return NewListBlockstorageV1VolumetypesResponse(volumetypes.List(oc.client, ))
+    return NewListBlockstorageV1VolumetypesResponse(volumetypes.List(oc.Client, ))
 
 }

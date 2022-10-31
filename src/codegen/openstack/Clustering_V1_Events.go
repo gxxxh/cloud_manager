@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListClusteringV1Events
 type ListClusteringV1EventsRequest struct{
-    Opts events.ListOptsBuilder
+    Opts events.ListOpts
 }
 
 func NewListClusteringV1EventsRequest()*ListClusteringV1EventsRequest{
@@ -32,7 +32,7 @@ func NewListClusteringV1EventsResponse(pager pagination.Pager,)*ListClusteringV1
 
 // action function
 func (oc *OpenstackClient) ListClusteringV1Events(req *ListClusteringV1EventsRequest)(*ListClusteringV1EventsResponse){
-    return NewListClusteringV1EventsResponse(events.List(oc.client,req.Opts, ))
+    return NewListClusteringV1EventsResponse(events.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetClusteringV1Events
@@ -57,6 +57,6 @@ func NewGetClusteringV1EventsResponse(getResult events.GetResult,)*GetClustering
 
 // action function
 func (oc *OpenstackClient) GetClusteringV1Events(req *GetClusteringV1EventsRequest)(*GetClusteringV1EventsResponse){
-    return NewGetClusteringV1EventsResponse(events.Get(oc.client,req.Id, ))
+    return NewGetClusteringV1EventsResponse(events.Get(oc.Client,req.Id, ))
 
 }

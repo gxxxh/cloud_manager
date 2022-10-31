@@ -30,13 +30,13 @@ func NewGetImageserviceV2ImageimportResponse(getResult imageimport.GetResult,)*G
 
 // action function
 func (oc *OpenstackClient) GetImageserviceV2Imageimport(req *GetImageserviceV2ImageimportRequest)(*GetImageserviceV2ImageimportResponse){
-    return NewGetImageserviceV2ImageimportResponse(imageimport.Get(oc.client, ))
+    return NewGetImageserviceV2ImageimportResponse(imageimport.Get(oc.Client, ))
 
 }
 //request struct for the CreateImageserviceV2Imageimport
 type CreateImageserviceV2ImageimportRequest struct{
     ImageID string
-    Opts imageimport.CreateOptsBuilder
+    Opts imageimport.CreateOpts
 }
 
 func NewCreateImageserviceV2ImageimportRequest()*CreateImageserviceV2ImageimportRequest{
@@ -56,6 +56,6 @@ func NewCreateImageserviceV2ImageimportResponse(createResult imageimport.CreateR
 
 // action function
 func (oc *OpenstackClient) CreateImageserviceV2Imageimport(req *CreateImageserviceV2ImageimportRequest)(*CreateImageserviceV2ImageimportResponse){
-    return NewCreateImageserviceV2ImageimportResponse(imageimport.Create(oc.client,req.ImageID,req.Opts, ))
+    return NewCreateImageserviceV2ImageimportResponse(imageimport.Create(oc.Client,req.ImageID,req.Opts, ))
 
 }

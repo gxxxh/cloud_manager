@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListSharedfilesystemsV2Schedulerstats
 type ListSharedfilesystemsV2SchedulerstatsRequest struct{
-    Opts schedulerstats.ListOptsBuilder
+    Opts schedulerstats.ListDetailOpts
 }
 
 func NewListSharedfilesystemsV2SchedulerstatsRequest()*ListSharedfilesystemsV2SchedulerstatsRequest{
@@ -32,12 +32,12 @@ func NewListSharedfilesystemsV2SchedulerstatsResponse(pager pagination.Pager,)*L
 
 // action function
 func (oc *OpenstackClient) ListSharedfilesystemsV2Schedulerstats(req *ListSharedfilesystemsV2SchedulerstatsRequest)(*ListSharedfilesystemsV2SchedulerstatsResponse){
-    return NewListSharedfilesystemsV2SchedulerstatsResponse(schedulerstats.List(oc.client,req.Opts, ))
+    return NewListSharedfilesystemsV2SchedulerstatsResponse(schedulerstats.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the ListDetailSharedfilesystemsV2Schedulerstats
 type ListDetailSharedfilesystemsV2SchedulerstatsRequest struct{
-    Opts schedulerstats.ListDetailOptsBuilder
+    Opts schedulerstats.ListOpts
 }
 
 func NewListDetailSharedfilesystemsV2SchedulerstatsRequest()*ListDetailSharedfilesystemsV2SchedulerstatsRequest{
@@ -57,6 +57,6 @@ func NewListDetailSharedfilesystemsV2SchedulerstatsResponse(pager pagination.Pag
 
 // action function
 func (oc *OpenstackClient) ListDetailSharedfilesystemsV2Schedulerstats(req *ListDetailSharedfilesystemsV2SchedulerstatsRequest)(*ListDetailSharedfilesystemsV2SchedulerstatsResponse){
-    return NewListDetailSharedfilesystemsV2SchedulerstatsResponse(schedulerstats.ListDetail(oc.client,req.Opts, ))
+    return NewListDetailSharedfilesystemsV2SchedulerstatsResponse(schedulerstats.ListDetail(oc.Client,req.Opts, ))
 
 }

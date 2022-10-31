@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListDnsV2TransferAccept
 type ListDnsV2TransferAcceptRequest struct{
-    Opts accept.ListOptsBuilder
+    Opts accept.ListOpts
 }
 
 func NewListDnsV2TransferAcceptRequest()*ListDnsV2TransferAcceptRequest{
@@ -32,7 +32,7 @@ func NewListDnsV2TransferAcceptResponse(pager pagination.Pager,)*ListDnsV2Transf
 
 // action function
 func (oc *OpenstackClient) ListDnsV2TransferAccept(req *ListDnsV2TransferAcceptRequest)(*ListDnsV2TransferAcceptResponse){
-    return NewListDnsV2TransferAcceptResponse(accept.List(oc.client,req.Opts, ))
+    return NewListDnsV2TransferAcceptResponse(accept.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetDnsV2TransferAccept
@@ -57,12 +57,12 @@ func NewGetDnsV2TransferAcceptResponse(getResult accept.GetResult,)*GetDnsV2Tran
 
 // action function
 func (oc *OpenstackClient) GetDnsV2TransferAccept(req *GetDnsV2TransferAcceptRequest)(*GetDnsV2TransferAcceptResponse){
-    return NewGetDnsV2TransferAcceptResponse(accept.Get(oc.client,req.TransferAcceptID, ))
+    return NewGetDnsV2TransferAcceptResponse(accept.Get(oc.Client,req.TransferAcceptID, ))
 
 }
 //request struct for the CreateDnsV2TransferAccept
 type CreateDnsV2TransferAcceptRequest struct{
-    Opts accept.CreateOptsBuilder
+    Opts accept.CreateOpts
 }
 
 func NewCreateDnsV2TransferAcceptRequest()*CreateDnsV2TransferAcceptRequest{
@@ -82,6 +82,6 @@ func NewCreateDnsV2TransferAcceptResponse(createResult accept.CreateResult,)*Cre
 
 // action function
 func (oc *OpenstackClient) CreateDnsV2TransferAccept(req *CreateDnsV2TransferAcceptRequest)(*CreateDnsV2TransferAcceptResponse){
-    return NewCreateDnsV2TransferAcceptResponse(accept.Create(oc.client,req.Opts, ))
+    return NewCreateDnsV2TransferAcceptResponse(accept.Create(oc.Client,req.Opts, ))
 
 }

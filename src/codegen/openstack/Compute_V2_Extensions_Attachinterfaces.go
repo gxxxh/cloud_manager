@@ -32,7 +32,7 @@ func NewListComputeV2ExtensionsAttachinterfacesResponse(pager pagination.Pager,)
 
 // action function
 func (oc *OpenstackClient) ListComputeV2ExtensionsAttachinterfaces(req *ListComputeV2ExtensionsAttachinterfacesRequest)(*ListComputeV2ExtensionsAttachinterfacesResponse){
-    return NewListComputeV2ExtensionsAttachinterfacesResponse(attachinterfaces.List(oc.client,req.ServerID, ))
+    return NewListComputeV2ExtensionsAttachinterfacesResponse(attachinterfaces.List(oc.Client,req.ServerID, ))
 
 }
 //request struct for the GetComputeV2ExtensionsAttachinterfaces
@@ -58,13 +58,13 @@ func NewGetComputeV2ExtensionsAttachinterfacesResponse(getResult attachinterface
 
 // action function
 func (oc *OpenstackClient) GetComputeV2ExtensionsAttachinterfaces(req *GetComputeV2ExtensionsAttachinterfacesRequest)(*GetComputeV2ExtensionsAttachinterfacesResponse){
-    return NewGetComputeV2ExtensionsAttachinterfacesResponse(attachinterfaces.Get(oc.client,req.ServerID,req.PortID, ))
+    return NewGetComputeV2ExtensionsAttachinterfacesResponse(attachinterfaces.Get(oc.Client,req.ServerID,req.PortID, ))
 
 }
 //request struct for the CreateComputeV2ExtensionsAttachinterfaces
 type CreateComputeV2ExtensionsAttachinterfacesRequest struct{
     ServerID string
-    Opts attachinterfaces.CreateOptsBuilder
+    Opts attachinterfaces.CreateOpts
 }
 
 func NewCreateComputeV2ExtensionsAttachinterfacesRequest()*CreateComputeV2ExtensionsAttachinterfacesRequest{
@@ -84,7 +84,7 @@ func NewCreateComputeV2ExtensionsAttachinterfacesResponse(createResult attachint
 
 // action function
 func (oc *OpenstackClient) CreateComputeV2ExtensionsAttachinterfaces(req *CreateComputeV2ExtensionsAttachinterfacesRequest)(*CreateComputeV2ExtensionsAttachinterfacesResponse){
-    return NewCreateComputeV2ExtensionsAttachinterfacesResponse(attachinterfaces.Create(oc.client,req.ServerID,req.Opts, ))
+    return NewCreateComputeV2ExtensionsAttachinterfacesResponse(attachinterfaces.Create(oc.Client,req.ServerID,req.Opts, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsAttachinterfaces
@@ -110,6 +110,6 @@ func NewDeleteComputeV2ExtensionsAttachinterfacesResponse(deleteResult attachint
 
 // action function
 func (oc *OpenstackClient) DeleteComputeV2ExtensionsAttachinterfaces(req *DeleteComputeV2ExtensionsAttachinterfacesRequest)(*DeleteComputeV2ExtensionsAttachinterfacesResponse){
-    return NewDeleteComputeV2ExtensionsAttachinterfacesResponse(attachinterfaces.Delete(oc.client,req.ServerID,req.PortID, ))
+    return NewDeleteComputeV2ExtensionsAttachinterfacesResponse(attachinterfaces.Delete(oc.Client,req.ServerID,req.PortID, ))
 
 }

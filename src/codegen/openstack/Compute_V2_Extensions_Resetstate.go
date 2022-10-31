@@ -32,6 +32,6 @@ func NewResetStateComputeV2ExtensionsResetstateResponse(resetResult resetstate.R
 
 // action function
 func (oc *OpenstackClient) ResetStateComputeV2ExtensionsResetstate(req *ResetStateComputeV2ExtensionsResetstateRequest)(*ResetStateComputeV2ExtensionsResetstateResponse){
-    return NewResetStateComputeV2ExtensionsResetstateResponse(resetstate.ResetState(oc.client,req.Id,req.State, ))
+    return NewResetStateComputeV2ExtensionsResetstateResponse(resetstate.ResetState(oc.Client,req.Id,req.State, ))
 
 }

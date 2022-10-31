@@ -11,7 +11,7 @@ import (
 )
 //request struct for the CreateContainerinfraV1Quotas
 type CreateContainerinfraV1QuotasRequest struct{
-    Opts quotas.CreateOptsBuilder
+    Opts quotas.CreateOpts
 }
 
 func NewCreateContainerinfraV1QuotasRequest()*CreateContainerinfraV1QuotasRequest{
@@ -31,6 +31,6 @@ func NewCreateContainerinfraV1QuotasResponse(createResult quotas.CreateResult,)*
 
 // action function
 func (oc *OpenstackClient) CreateContainerinfraV1Quotas(req *CreateContainerinfraV1QuotasRequest)(*CreateContainerinfraV1QuotasResponse){
-    return NewCreateContainerinfraV1QuotasResponse(quotas.Create(oc.client,req.Opts, ))
+    return NewCreateContainerinfraV1QuotasResponse(quotas.Create(oc.Client,req.Opts, ))
 
 }

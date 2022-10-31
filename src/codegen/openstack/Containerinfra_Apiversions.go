@@ -31,7 +31,7 @@ func NewListContainerinfraApiversionsResponse(pager pagination.Pager,)*ListConta
 
 // action function
 func (oc *OpenstackClient) ListContainerinfraApiversions(req *ListContainerinfraApiversionsRequest)(*ListContainerinfraApiversionsResponse){
-    return NewListContainerinfraApiversionsResponse(apiversions.List(oc.client, ))
+    return NewListContainerinfraApiversionsResponse(apiversions.List(oc.Client, ))
 
 }
 //request struct for the GetContainerinfraApiversions
@@ -56,6 +56,6 @@ func NewGetContainerinfraApiversionsResponse(getResult apiversions.GetResult,)*G
 
 // action function
 func (oc *OpenstackClient) GetContainerinfraApiversions(req *GetContainerinfraApiversionsRequest)(*GetContainerinfraApiversionsResponse){
-    return NewGetContainerinfraApiversionsResponse(apiversions.Get(oc.client,req.V, ))
+    return NewGetContainerinfraApiversionsResponse(apiversions.Get(oc.Client,req.V, ))
 
 }

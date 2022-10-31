@@ -31,13 +31,13 @@ func NewGetLoadbalancerV2QuotasResponse(getResult quotas.GetResult,)*GetLoadbala
 
 // action function
 func (oc *OpenstackClient) GetLoadbalancerV2Quotas(req *GetLoadbalancerV2QuotasRequest)(*GetLoadbalancerV2QuotasResponse){
-    return NewGetLoadbalancerV2QuotasResponse(quotas.Get(oc.client,req.ProjectID, ))
+    return NewGetLoadbalancerV2QuotasResponse(quotas.Get(oc.Client,req.ProjectID, ))
 
 }
 //request struct for the UpdateLoadbalancerV2Quotas
 type UpdateLoadbalancerV2QuotasRequest struct{
     ProjectID string
-    Opts quotas.UpdateOptsBuilder
+    Opts quotas.UpdateOpts
 }
 
 func NewUpdateLoadbalancerV2QuotasRequest()*UpdateLoadbalancerV2QuotasRequest{
@@ -57,6 +57,6 @@ func NewUpdateLoadbalancerV2QuotasResponse(updateResult quotas.UpdateResult,)*Up
 
 // action function
 func (oc *OpenstackClient) UpdateLoadbalancerV2Quotas(req *UpdateLoadbalancerV2QuotasRequest)(*UpdateLoadbalancerV2QuotasResponse){
-    return NewUpdateLoadbalancerV2QuotasResponse(quotas.Update(oc.client,req.ProjectID,req.Opts, ))
+    return NewUpdateLoadbalancerV2QuotasResponse(quotas.Update(oc.Client,req.ProjectID,req.Opts, ))
 
 }

@@ -32,7 +32,7 @@ func NewGetCommonExtensionsResponse(getResult extensions.GetResult,)*GetCommonEx
 
 // action function
 func (oc *OpenstackClient) GetCommonExtensions(req *GetCommonExtensionsRequest)(*GetCommonExtensionsResponse){
-    return NewGetCommonExtensionsResponse(extensions.Get(oc.client,req.Alias, ))
+    return NewGetCommonExtensionsResponse(extensions.Get(oc.Client,req.Alias, ))
 
 }
 //request struct for the ListCommonExtensions
@@ -56,6 +56,6 @@ func NewListCommonExtensionsResponse(pager pagination.Pager,)*ListCommonExtensio
 
 // action function
 func (oc *OpenstackClient) ListCommonExtensions(req *ListCommonExtensionsRequest)(*ListCommonExtensionsResponse){
-    return NewListCommonExtensionsResponse(extensions.List(oc.client, ))
+    return NewListCommonExtensionsResponse(extensions.List(oc.Client, ))
 
 }

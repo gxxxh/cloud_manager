@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListIdentityV3Users
 type ListIdentityV3UsersRequest struct{
-    Opts users.ListOptsBuilder
+    Opts users.ListOpts
 }
 
 func NewListIdentityV3UsersRequest()*ListIdentityV3UsersRequest{
@@ -32,7 +32,7 @@ func NewListIdentityV3UsersResponse(pager pagination.Pager,)*ListIdentityV3Users
 
 // action function
 func (oc *OpenstackClient) ListIdentityV3Users(req *ListIdentityV3UsersRequest)(*ListIdentityV3UsersResponse){
-    return NewListIdentityV3UsersResponse(users.List(oc.client,req.Opts, ))
+    return NewListIdentityV3UsersResponse(users.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Users
@@ -57,12 +57,12 @@ func NewGetIdentityV3UsersResponse(getResult users.GetResult,)*GetIdentityV3User
 
 // action function
 func (oc *OpenstackClient) GetIdentityV3Users(req *GetIdentityV3UsersRequest)(*GetIdentityV3UsersResponse){
-    return NewGetIdentityV3UsersResponse(users.Get(oc.client,req.Id, ))
+    return NewGetIdentityV3UsersResponse(users.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateIdentityV3Users
 type CreateIdentityV3UsersRequest struct{
-    Opts users.CreateOptsBuilder
+    Opts users.CreateOpts
 }
 
 func NewCreateIdentityV3UsersRequest()*CreateIdentityV3UsersRequest{
@@ -82,13 +82,13 @@ func NewCreateIdentityV3UsersResponse(createResult users.CreateResult,)*CreateId
 
 // action function
 func (oc *OpenstackClient) CreateIdentityV3Users(req *CreateIdentityV3UsersRequest)(*CreateIdentityV3UsersResponse){
-    return NewCreateIdentityV3UsersResponse(users.Create(oc.client,req.Opts, ))
+    return NewCreateIdentityV3UsersResponse(users.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateIdentityV3Users
 type UpdateIdentityV3UsersRequest struct{
     UserID string
-    Opts users.UpdateOptsBuilder
+    Opts users.UpdateOpts
 }
 
 func NewUpdateIdentityV3UsersRequest()*UpdateIdentityV3UsersRequest{
@@ -108,13 +108,13 @@ func NewUpdateIdentityV3UsersResponse(updateResult users.UpdateResult,)*UpdateId
 
 // action function
 func (oc *OpenstackClient) UpdateIdentityV3Users(req *UpdateIdentityV3UsersRequest)(*UpdateIdentityV3UsersResponse){
-    return NewUpdateIdentityV3UsersResponse(users.Update(oc.client,req.UserID,req.Opts, ))
+    return NewUpdateIdentityV3UsersResponse(users.Update(oc.Client,req.UserID,req.Opts, ))
 
 }
 //request struct for the ChangePasswordIdentityV3Users
 type ChangePasswordIdentityV3UsersRequest struct{
     UserID string
-    Opts users.ChangePasswordOptsBuilder
+    Opts users.ChangePasswordOpts
 }
 
 func NewChangePasswordIdentityV3UsersRequest()*ChangePasswordIdentityV3UsersRequest{
@@ -134,7 +134,7 @@ func NewChangePasswordIdentityV3UsersResponse(changePasswordResult users.ChangeP
 
 // action function
 func (oc *OpenstackClient) ChangePasswordIdentityV3Users(req *ChangePasswordIdentityV3UsersRequest)(*ChangePasswordIdentityV3UsersResponse){
-    return NewChangePasswordIdentityV3UsersResponse(users.ChangePassword(oc.client,req.UserID,req.Opts, ))
+    return NewChangePasswordIdentityV3UsersResponse(users.ChangePassword(oc.Client,req.UserID,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Users
@@ -159,7 +159,7 @@ func NewDeleteIdentityV3UsersResponse(deleteResult users.DeleteResult,)*DeleteId
 
 // action function
 func (oc *OpenstackClient) DeleteIdentityV3Users(req *DeleteIdentityV3UsersRequest)(*DeleteIdentityV3UsersResponse){
-    return NewDeleteIdentityV3UsersResponse(users.Delete(oc.client,req.UserID, ))
+    return NewDeleteIdentityV3UsersResponse(users.Delete(oc.Client,req.UserID, ))
 
 }
 //request struct for the ListGroupsIdentityV3Users
@@ -184,7 +184,7 @@ func NewListGroupsIdentityV3UsersResponse(pager pagination.Pager,)*ListGroupsIde
 
 // action function
 func (oc *OpenstackClient) ListGroupsIdentityV3Users(req *ListGroupsIdentityV3UsersRequest)(*ListGroupsIdentityV3UsersResponse){
-    return NewListGroupsIdentityV3UsersResponse(users.ListGroups(oc.client,req.UserID, ))
+    return NewListGroupsIdentityV3UsersResponse(users.ListGroups(oc.Client,req.UserID, ))
 
 }
 //request struct for the AddToGroupIdentityV3Users
@@ -210,7 +210,7 @@ func NewAddToGroupIdentityV3UsersResponse(addToGroupResult users.AddToGroupResul
 
 // action function
 func (oc *OpenstackClient) AddToGroupIdentityV3Users(req *AddToGroupIdentityV3UsersRequest)(*AddToGroupIdentityV3UsersResponse){
-    return NewAddToGroupIdentityV3UsersResponse(users.AddToGroup(oc.client,req.GroupID,req.UserID, ))
+    return NewAddToGroupIdentityV3UsersResponse(users.AddToGroup(oc.Client,req.GroupID,req.UserID, ))
 
 }
 //request struct for the IsMemberOfGroupIdentityV3Users
@@ -236,7 +236,7 @@ func NewIsMemberOfGroupIdentityV3UsersResponse(isMemberOfGroupResult users.IsMem
 
 // action function
 func (oc *OpenstackClient) IsMemberOfGroupIdentityV3Users(req *IsMemberOfGroupIdentityV3UsersRequest)(*IsMemberOfGroupIdentityV3UsersResponse){
-    return NewIsMemberOfGroupIdentityV3UsersResponse(users.IsMemberOfGroup(oc.client,req.GroupID,req.UserID, ))
+    return NewIsMemberOfGroupIdentityV3UsersResponse(users.IsMemberOfGroup(oc.Client,req.GroupID,req.UserID, ))
 
 }
 //request struct for the RemoveFromGroupIdentityV3Users
@@ -262,7 +262,7 @@ func NewRemoveFromGroupIdentityV3UsersResponse(removeFromGroupResult users.Remov
 
 // action function
 func (oc *OpenstackClient) RemoveFromGroupIdentityV3Users(req *RemoveFromGroupIdentityV3UsersRequest)(*RemoveFromGroupIdentityV3UsersResponse){
-    return NewRemoveFromGroupIdentityV3UsersResponse(users.RemoveFromGroup(oc.client,req.GroupID,req.UserID, ))
+    return NewRemoveFromGroupIdentityV3UsersResponse(users.RemoveFromGroup(oc.Client,req.GroupID,req.UserID, ))
 
 }
 //request struct for the ListProjectsIdentityV3Users
@@ -287,13 +287,13 @@ func NewListProjectsIdentityV3UsersResponse(pager pagination.Pager,)*ListProject
 
 // action function
 func (oc *OpenstackClient) ListProjectsIdentityV3Users(req *ListProjectsIdentityV3UsersRequest)(*ListProjectsIdentityV3UsersResponse){
-    return NewListProjectsIdentityV3UsersResponse(users.ListProjects(oc.client,req.UserID, ))
+    return NewListProjectsIdentityV3UsersResponse(users.ListProjects(oc.Client,req.UserID, ))
 
 }
 //request struct for the ListInGroupIdentityV3Users
 type ListInGroupIdentityV3UsersRequest struct{
     GroupID string
-    Opts users.ListOptsBuilder
+    Opts users.ListOpts
 }
 
 func NewListInGroupIdentityV3UsersRequest()*ListInGroupIdentityV3UsersRequest{
@@ -313,6 +313,6 @@ func NewListInGroupIdentityV3UsersResponse(pager pagination.Pager,)*ListInGroupI
 
 // action function
 func (oc *OpenstackClient) ListInGroupIdentityV3Users(req *ListInGroupIdentityV3UsersRequest)(*ListInGroupIdentityV3UsersResponse){
-    return NewListInGroupIdentityV3UsersResponse(users.ListInGroup(oc.client,req.GroupID,req.Opts, ))
+    return NewListInGroupIdentityV3UsersResponse(users.ListInGroup(oc.Client,req.GroupID,req.Opts, ))
 
 }

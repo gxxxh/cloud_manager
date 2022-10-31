@@ -31,12 +31,12 @@ func NewListComputeV2ExtensionsFloatingipsResponse(pager pagination.Pager,)*List
 
 // action function
 func (oc *OpenstackClient) ListComputeV2ExtensionsFloatingips(req *ListComputeV2ExtensionsFloatingipsRequest)(*ListComputeV2ExtensionsFloatingipsResponse){
-    return NewListComputeV2ExtensionsFloatingipsResponse(floatingips.List(oc.client, ))
+    return NewListComputeV2ExtensionsFloatingipsResponse(floatingips.List(oc.Client, ))
 
 }
 //request struct for the CreateComputeV2ExtensionsFloatingips
 type CreateComputeV2ExtensionsFloatingipsRequest struct{
-    Opts floatingips.CreateOptsBuilder
+    Opts floatingips.CreateOpts
 }
 
 func NewCreateComputeV2ExtensionsFloatingipsRequest()*CreateComputeV2ExtensionsFloatingipsRequest{
@@ -56,7 +56,7 @@ func NewCreateComputeV2ExtensionsFloatingipsResponse(createResult floatingips.Cr
 
 // action function
 func (oc *OpenstackClient) CreateComputeV2ExtensionsFloatingips(req *CreateComputeV2ExtensionsFloatingipsRequest)(*CreateComputeV2ExtensionsFloatingipsResponse){
-    return NewCreateComputeV2ExtensionsFloatingipsResponse(floatingips.Create(oc.client,req.Opts, ))
+    return NewCreateComputeV2ExtensionsFloatingipsResponse(floatingips.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetComputeV2ExtensionsFloatingips
@@ -81,7 +81,7 @@ func NewGetComputeV2ExtensionsFloatingipsResponse(getResult floatingips.GetResul
 
 // action function
 func (oc *OpenstackClient) GetComputeV2ExtensionsFloatingips(req *GetComputeV2ExtensionsFloatingipsRequest)(*GetComputeV2ExtensionsFloatingipsResponse){
-    return NewGetComputeV2ExtensionsFloatingipsResponse(floatingips.Get(oc.client,req.Id, ))
+    return NewGetComputeV2ExtensionsFloatingipsResponse(floatingips.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsFloatingips
@@ -106,13 +106,13 @@ func NewDeleteComputeV2ExtensionsFloatingipsResponse(deleteResult floatingips.De
 
 // action function
 func (oc *OpenstackClient) DeleteComputeV2ExtensionsFloatingips(req *DeleteComputeV2ExtensionsFloatingipsRequest)(*DeleteComputeV2ExtensionsFloatingipsResponse){
-    return NewDeleteComputeV2ExtensionsFloatingipsResponse(floatingips.Delete(oc.client,req.Id, ))
+    return NewDeleteComputeV2ExtensionsFloatingipsResponse(floatingips.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the AssociateInstanceComputeV2ExtensionsFloatingips
 type AssociateInstanceComputeV2ExtensionsFloatingipsRequest struct{
     ServerID string
-    Opts floatingips.AssociateOptsBuilder
+    Opts floatingips.AssociateOpts
 }
 
 func NewAssociateInstanceComputeV2ExtensionsFloatingipsRequest()*AssociateInstanceComputeV2ExtensionsFloatingipsRequest{
@@ -132,13 +132,13 @@ func NewAssociateInstanceComputeV2ExtensionsFloatingipsResponse(associateResult 
 
 // action function
 func (oc *OpenstackClient) AssociateInstanceComputeV2ExtensionsFloatingips(req *AssociateInstanceComputeV2ExtensionsFloatingipsRequest)(*AssociateInstanceComputeV2ExtensionsFloatingipsResponse){
-    return NewAssociateInstanceComputeV2ExtensionsFloatingipsResponse(floatingips.AssociateInstance(oc.client,req.ServerID,req.Opts, ))
+    return NewAssociateInstanceComputeV2ExtensionsFloatingipsResponse(floatingips.AssociateInstance(oc.Client,req.ServerID,req.Opts, ))
 
 }
 //request struct for the DisassociateInstanceComputeV2ExtensionsFloatingips
 type DisassociateInstanceComputeV2ExtensionsFloatingipsRequest struct{
     ServerID string
-    Opts floatingips.DisassociateOptsBuilder
+    Opts floatingips.DisassociateOpts
 }
 
 func NewDisassociateInstanceComputeV2ExtensionsFloatingipsRequest()*DisassociateInstanceComputeV2ExtensionsFloatingipsRequest{
@@ -158,6 +158,6 @@ func NewDisassociateInstanceComputeV2ExtensionsFloatingipsResponse(disassociateR
 
 // action function
 func (oc *OpenstackClient) DisassociateInstanceComputeV2ExtensionsFloatingips(req *DisassociateInstanceComputeV2ExtensionsFloatingipsRequest)(*DisassociateInstanceComputeV2ExtensionsFloatingipsResponse){
-    return NewDisassociateInstanceComputeV2ExtensionsFloatingipsResponse(floatingips.DisassociateInstance(oc.client,req.ServerID,req.Opts, ))
+    return NewDisassociateInstanceComputeV2ExtensionsFloatingipsResponse(floatingips.DisassociateInstance(oc.Client,req.ServerID,req.Opts, ))
 
 }

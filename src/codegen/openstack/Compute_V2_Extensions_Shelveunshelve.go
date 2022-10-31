@@ -31,7 +31,7 @@ func NewShelveComputeV2ExtensionsShelveunshelveResponse(shelveResult shelveunshe
 
 // action function
 func (oc *OpenstackClient) ShelveComputeV2ExtensionsShelveunshelve(req *ShelveComputeV2ExtensionsShelveunshelveRequest)(*ShelveComputeV2ExtensionsShelveunshelveResponse){
-    return NewShelveComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.Shelve(oc.client,req.Id, ))
+    return NewShelveComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.Shelve(oc.Client,req.Id, ))
 
 }
 //request struct for the ShelveOffloadComputeV2ExtensionsShelveunshelve
@@ -56,13 +56,13 @@ func NewShelveOffloadComputeV2ExtensionsShelveunshelveResponse(shelveOffloadResu
 
 // action function
 func (oc *OpenstackClient) ShelveOffloadComputeV2ExtensionsShelveunshelve(req *ShelveOffloadComputeV2ExtensionsShelveunshelveRequest)(*ShelveOffloadComputeV2ExtensionsShelveunshelveResponse){
-    return NewShelveOffloadComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.ShelveOffload(oc.client,req.Id, ))
+    return NewShelveOffloadComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.ShelveOffload(oc.Client,req.Id, ))
 
 }
 //request struct for the UnshelveComputeV2ExtensionsShelveunshelve
 type UnshelveComputeV2ExtensionsShelveunshelveRequest struct{
     Id string
-    Opts shelveunshelve.UnshelveOptsBuilder
+    Opts shelveunshelve.UnshelveOpts
 }
 
 func NewUnshelveComputeV2ExtensionsShelveunshelveRequest()*UnshelveComputeV2ExtensionsShelveunshelveRequest{
@@ -82,6 +82,6 @@ func NewUnshelveComputeV2ExtensionsShelveunshelveResponse(unshelveResult shelveu
 
 // action function
 func (oc *OpenstackClient) UnshelveComputeV2ExtensionsShelveunshelve(req *UnshelveComputeV2ExtensionsShelveunshelveRequest)(*UnshelveComputeV2ExtensionsShelveunshelveResponse){
-    return NewUnshelveComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.Unshelve(oc.client,req.Id,req.Opts, ))
+    return NewUnshelveComputeV2ExtensionsShelveunshelveResponse(shelveunshelve.Unshelve(oc.Client,req.Id,req.Opts, ))
 
 }

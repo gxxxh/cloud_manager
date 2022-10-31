@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListKeymanagerV1Secrets
 type ListKeymanagerV1SecretsRequest struct{
-    Opts secrets.ListOptsBuilder
+    Opts secrets.ListOpts
 }
 
 func NewListKeymanagerV1SecretsRequest()*ListKeymanagerV1SecretsRequest{
@@ -32,7 +32,7 @@ func NewListKeymanagerV1SecretsResponse(pager pagination.Pager,)*ListKeymanagerV
 
 // action function
 func (oc *OpenstackClient) ListKeymanagerV1Secrets(req *ListKeymanagerV1SecretsRequest)(*ListKeymanagerV1SecretsResponse){
-    return NewListKeymanagerV1SecretsResponse(secrets.List(oc.client,req.Opts, ))
+    return NewListKeymanagerV1SecretsResponse(secrets.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetKeymanagerV1Secrets
@@ -57,13 +57,13 @@ func NewGetKeymanagerV1SecretsResponse(getResult secrets.GetResult,)*GetKeymanag
 
 // action function
 func (oc *OpenstackClient) GetKeymanagerV1Secrets(req *GetKeymanagerV1SecretsRequest)(*GetKeymanagerV1SecretsResponse){
-    return NewGetKeymanagerV1SecretsResponse(secrets.Get(oc.client,req.Id, ))
+    return NewGetKeymanagerV1SecretsResponse(secrets.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the GetPayloadKeymanagerV1Secrets
 type GetPayloadKeymanagerV1SecretsRequest struct{
     Id string
-    Opts secrets.GetPayloadOptsBuilder
+    Opts secrets.GetPayloadOpts
 }
 
 func NewGetPayloadKeymanagerV1SecretsRequest()*GetPayloadKeymanagerV1SecretsRequest{
@@ -83,12 +83,12 @@ func NewGetPayloadKeymanagerV1SecretsResponse(payloadResult secrets.PayloadResul
 
 // action function
 func (oc *OpenstackClient) GetPayloadKeymanagerV1Secrets(req *GetPayloadKeymanagerV1SecretsRequest)(*GetPayloadKeymanagerV1SecretsResponse){
-    return NewGetPayloadKeymanagerV1SecretsResponse(secrets.GetPayload(oc.client,req.Id,req.Opts, ))
+    return NewGetPayloadKeymanagerV1SecretsResponse(secrets.GetPayload(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the CreateKeymanagerV1Secrets
 type CreateKeymanagerV1SecretsRequest struct{
-    Opts secrets.CreateOptsBuilder
+    Opts secrets.CreateOpts
 }
 
 func NewCreateKeymanagerV1SecretsRequest()*CreateKeymanagerV1SecretsRequest{
@@ -108,7 +108,7 @@ func NewCreateKeymanagerV1SecretsResponse(createResult secrets.CreateResult,)*Cr
 
 // action function
 func (oc *OpenstackClient) CreateKeymanagerV1Secrets(req *CreateKeymanagerV1SecretsRequest)(*CreateKeymanagerV1SecretsResponse){
-    return NewCreateKeymanagerV1SecretsResponse(secrets.Create(oc.client,req.Opts, ))
+    return NewCreateKeymanagerV1SecretsResponse(secrets.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteKeymanagerV1Secrets
@@ -133,13 +133,13 @@ func NewDeleteKeymanagerV1SecretsResponse(deleteResult secrets.DeleteResult,)*De
 
 // action function
 func (oc *OpenstackClient) DeleteKeymanagerV1Secrets(req *DeleteKeymanagerV1SecretsRequest)(*DeleteKeymanagerV1SecretsResponse){
-    return NewDeleteKeymanagerV1SecretsResponse(secrets.Delete(oc.client,req.Id, ))
+    return NewDeleteKeymanagerV1SecretsResponse(secrets.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateKeymanagerV1Secrets
 type UpdateKeymanagerV1SecretsRequest struct{
     Id string
-    Opts secrets.UpdateOptsBuilder
+    Opts secrets.UpdateOpts
 }
 
 func NewUpdateKeymanagerV1SecretsRequest()*UpdateKeymanagerV1SecretsRequest{
@@ -159,7 +159,7 @@ func NewUpdateKeymanagerV1SecretsResponse(updateResult secrets.UpdateResult,)*Up
 
 // action function
 func (oc *OpenstackClient) UpdateKeymanagerV1Secrets(req *UpdateKeymanagerV1SecretsRequest)(*UpdateKeymanagerV1SecretsResponse){
-    return NewUpdateKeymanagerV1SecretsResponse(secrets.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateKeymanagerV1SecretsResponse(secrets.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the GetMetadataKeymanagerV1Secrets
@@ -184,13 +184,13 @@ func NewGetMetadataKeymanagerV1SecretsResponse(metadataResult secrets.MetadataRe
 
 // action function
 func (oc *OpenstackClient) GetMetadataKeymanagerV1Secrets(req *GetMetadataKeymanagerV1SecretsRequest)(*GetMetadataKeymanagerV1SecretsResponse){
-    return NewGetMetadataKeymanagerV1SecretsResponse(secrets.GetMetadata(oc.client,req.SecretID, ))
+    return NewGetMetadataKeymanagerV1SecretsResponse(secrets.GetMetadata(oc.Client,req.SecretID, ))
 
 }
 //request struct for the CreateMetadataKeymanagerV1Secrets
 type CreateMetadataKeymanagerV1SecretsRequest struct{
     SecretID string
-    Opts secrets.CreateMetadataOptsBuilder
+    Opts secrets.MetadataOpts
 }
 
 func NewCreateMetadataKeymanagerV1SecretsRequest()*CreateMetadataKeymanagerV1SecretsRequest{
@@ -210,7 +210,7 @@ func NewCreateMetadataKeymanagerV1SecretsResponse(metadataCreateResult secrets.M
 
 // action function
 func (oc *OpenstackClient) CreateMetadataKeymanagerV1Secrets(req *CreateMetadataKeymanagerV1SecretsRequest)(*CreateMetadataKeymanagerV1SecretsResponse){
-    return NewCreateMetadataKeymanagerV1SecretsResponse(secrets.CreateMetadata(oc.client,req.SecretID,req.Opts, ))
+    return NewCreateMetadataKeymanagerV1SecretsResponse(secrets.CreateMetadata(oc.Client,req.SecretID,req.Opts, ))
 
 }
 //request struct for the GetMetadatumKeymanagerV1Secrets
@@ -236,13 +236,13 @@ func NewGetMetadatumKeymanagerV1SecretsResponse(metadatumResult secrets.Metadatu
 
 // action function
 func (oc *OpenstackClient) GetMetadatumKeymanagerV1Secrets(req *GetMetadatumKeymanagerV1SecretsRequest)(*GetMetadatumKeymanagerV1SecretsResponse){
-    return NewGetMetadatumKeymanagerV1SecretsResponse(secrets.GetMetadatum(oc.client,req.SecretID,req.Key, ))
+    return NewGetMetadatumKeymanagerV1SecretsResponse(secrets.GetMetadatum(oc.Client,req.SecretID,req.Key, ))
 
 }
 //request struct for the CreateMetadatumKeymanagerV1Secrets
 type CreateMetadatumKeymanagerV1SecretsRequest struct{
     SecretID string
-    Opts secrets.CreateMetadatumOptsBuilder
+    Opts secrets.MetadatumOpts
 }
 
 func NewCreateMetadatumKeymanagerV1SecretsRequest()*CreateMetadatumKeymanagerV1SecretsRequest{
@@ -262,13 +262,13 @@ func NewCreateMetadatumKeymanagerV1SecretsResponse(metadatumCreateResult secrets
 
 // action function
 func (oc *OpenstackClient) CreateMetadatumKeymanagerV1Secrets(req *CreateMetadatumKeymanagerV1SecretsRequest)(*CreateMetadatumKeymanagerV1SecretsResponse){
-    return NewCreateMetadatumKeymanagerV1SecretsResponse(secrets.CreateMetadatum(oc.client,req.SecretID,req.Opts, ))
+    return NewCreateMetadatumKeymanagerV1SecretsResponse(secrets.CreateMetadatum(oc.Client,req.SecretID,req.Opts, ))
 
 }
 //request struct for the UpdateMetadatumKeymanagerV1Secrets
 type UpdateMetadatumKeymanagerV1SecretsRequest struct{
     SecretID string
-    Opts secrets.UpdateMetadatumOptsBuilder
+    Opts secrets.MetadatumOpts
 }
 
 func NewUpdateMetadatumKeymanagerV1SecretsRequest()*UpdateMetadatumKeymanagerV1SecretsRequest{
@@ -288,7 +288,7 @@ func NewUpdateMetadatumKeymanagerV1SecretsResponse(metadatumResult secrets.Metad
 
 // action function
 func (oc *OpenstackClient) UpdateMetadatumKeymanagerV1Secrets(req *UpdateMetadatumKeymanagerV1SecretsRequest)(*UpdateMetadatumKeymanagerV1SecretsResponse){
-    return NewUpdateMetadatumKeymanagerV1SecretsResponse(secrets.UpdateMetadatum(oc.client,req.SecretID,req.Opts, ))
+    return NewUpdateMetadatumKeymanagerV1SecretsResponse(secrets.UpdateMetadatum(oc.Client,req.SecretID,req.Opts, ))
 
 }
 //request struct for the DeleteMetadatumKeymanagerV1Secrets
@@ -314,6 +314,6 @@ func NewDeleteMetadatumKeymanagerV1SecretsResponse(metadatumDeleteResult secrets
 
 // action function
 func (oc *OpenstackClient) DeleteMetadatumKeymanagerV1Secrets(req *DeleteMetadatumKeymanagerV1SecretsRequest)(*DeleteMetadatumKeymanagerV1SecretsResponse){
-    return NewDeleteMetadatumKeymanagerV1SecretsResponse(secrets.DeleteMetadatum(oc.client,req.SecretID,req.Key, ))
+    return NewDeleteMetadatumKeymanagerV1SecretsResponse(secrets.DeleteMetadatum(oc.Client,req.SecretID,req.Key, ))
 
 }

@@ -31,7 +31,7 @@ func NewListNetworkingV2ExtensionsBgpSpeakersResponse(pager pagination.Pager,)*L
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsBgpSpeakers(req *ListNetworkingV2ExtensionsBgpSpeakersRequest)(*ListNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewListNetworkingV2ExtensionsBgpSpeakersResponse(speakers.List(oc.client, ))
+    return NewListNetworkingV2ExtensionsBgpSpeakersResponse(speakers.List(oc.Client, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsBgpSpeakers
@@ -56,7 +56,7 @@ func NewGetNetworkingV2ExtensionsBgpSpeakersResponse(getResult speakers.GetResul
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsBgpSpeakers(req *GetNetworkingV2ExtensionsBgpSpeakersRequest)(*GetNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewGetNetworkingV2ExtensionsBgpSpeakersResponse(speakers.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsBgpSpeakersResponse(speakers.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsBgpSpeakers
@@ -81,7 +81,7 @@ func NewCreateNetworkingV2ExtensionsBgpSpeakersResponse(createResult speakers.Cr
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsBgpSpeakers(req *CreateNetworkingV2ExtensionsBgpSpeakersRequest)(*CreateNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewCreateNetworkingV2ExtensionsBgpSpeakersResponse(speakers.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsBgpSpeakersResponse(speakers.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsBgpSpeakers
@@ -106,13 +106,13 @@ func NewDeleteNetworkingV2ExtensionsBgpSpeakersResponse(deleteResult speakers.De
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsBgpSpeakers(req *DeleteNetworkingV2ExtensionsBgpSpeakersRequest)(*DeleteNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewDeleteNetworkingV2ExtensionsBgpSpeakersResponse(speakers.Delete(oc.client,req.SpeakerID, ))
+    return NewDeleteNetworkingV2ExtensionsBgpSpeakersResponse(speakers.Delete(oc.Client,req.SpeakerID, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsBgpSpeakers
 type UpdateNetworkingV2ExtensionsBgpSpeakersRequest struct{
     SpeakerID string
-    Opts speakers.UpdateOptsBuilder
+    Opts speakers.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsBgpSpeakersRequest()*UpdateNetworkingV2ExtensionsBgpSpeakersRequest{
@@ -132,13 +132,13 @@ func NewUpdateNetworkingV2ExtensionsBgpSpeakersResponse(updateResult speakers.Up
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsBgpSpeakers(req *UpdateNetworkingV2ExtensionsBgpSpeakersRequest)(*UpdateNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewUpdateNetworkingV2ExtensionsBgpSpeakersResponse(speakers.Update(oc.client,req.SpeakerID,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsBgpSpeakersResponse(speakers.Update(oc.Client,req.SpeakerID,req.Opts, ))
 
 }
 //request struct for the AddBGPPeerNetworkingV2ExtensionsBgpSpeakers
 type AddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest struct{
     BgpSpeakerID string
-    Opts speakers.AddBGPPeerOptsBuilder
+    Opts *speakers.AddBGPPeerOpts
 }
 
 func NewAddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest()*AddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest{
@@ -158,13 +158,13 @@ func NewAddBGPPeerNetworkingV2ExtensionsBgpSpeakersResponse(addBGPPeerResult spe
 
 // action function
 func (oc *OpenstackClient) AddBGPPeerNetworkingV2ExtensionsBgpSpeakers(req *AddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest)(*AddBGPPeerNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewAddBGPPeerNetworkingV2ExtensionsBgpSpeakersResponse(speakers.AddBGPPeer(oc.client,req.BgpSpeakerID,req.Opts, ))
+    return NewAddBGPPeerNetworkingV2ExtensionsBgpSpeakersResponse(speakers.AddBGPPeer(oc.Client,req.BgpSpeakerID,req.Opts, ))
 
 }
 //request struct for the RemoveBGPPeerNetworkingV2ExtensionsBgpSpeakers
 type RemoveBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest struct{
     BgpSpeakerID string
-    Opts speakers.RemoveBGPPeerOptsBuilder
+    Opts speakers.RemoveBGPPeerOpts
 }
 
 func NewRemoveBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest()*RemoveBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest{
@@ -184,7 +184,7 @@ func NewRemoveBGPPeerNetworkingV2ExtensionsBgpSpeakersResponse(removeBGPPeerResu
 
 // action function
 func (oc *OpenstackClient) RemoveBGPPeerNetworkingV2ExtensionsBgpSpeakers(req *RemoveBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest)(*RemoveBGPPeerNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewRemoveBGPPeerNetworkingV2ExtensionsBgpSpeakersResponse(speakers.RemoveBGPPeer(oc.client,req.BgpSpeakerID,req.Opts, ))
+    return NewRemoveBGPPeerNetworkingV2ExtensionsBgpSpeakersResponse(speakers.RemoveBGPPeer(oc.Client,req.BgpSpeakerID,req.Opts, ))
 
 }
 //request struct for the GetAdvertisedRoutesNetworkingV2ExtensionsBgpSpeakers
@@ -209,13 +209,13 @@ func NewGetAdvertisedRoutesNetworkingV2ExtensionsBgpSpeakersResponse(pager pagin
 
 // action function
 func (oc *OpenstackClient) GetAdvertisedRoutesNetworkingV2ExtensionsBgpSpeakers(req *GetAdvertisedRoutesNetworkingV2ExtensionsBgpSpeakersRequest)(*GetAdvertisedRoutesNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewGetAdvertisedRoutesNetworkingV2ExtensionsBgpSpeakersResponse(speakers.GetAdvertisedRoutes(oc.client,req.BgpSpeakerID, ))
+    return NewGetAdvertisedRoutesNetworkingV2ExtensionsBgpSpeakersResponse(speakers.GetAdvertisedRoutes(oc.Client,req.BgpSpeakerID, ))
 
 }
 //request struct for the AddGatewayNetworkNetworkingV2ExtensionsBgpSpeakers
 type AddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest struct{
     BgpSpeakerID string
-    Opts speakers.AddGatewayNetworkOptsBuilder
+    Opts *speakers.AddGatewayNetworkOpts
 }
 
 func NewAddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest()*AddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest{
@@ -235,13 +235,13 @@ func NewAddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersResponse(addGatewayNet
 
 // action function
 func (oc *OpenstackClient) AddGatewayNetworkNetworkingV2ExtensionsBgpSpeakers(req *AddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest)(*AddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewAddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersResponse(speakers.AddGatewayNetwork(oc.client,req.BgpSpeakerID,req.Opts, ))
+    return NewAddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersResponse(speakers.AddGatewayNetwork(oc.Client,req.BgpSpeakerID,req.Opts, ))
 
 }
 //request struct for the RemoveGatewayNetworkNetworkingV2ExtensionsBgpSpeakers
 type RemoveGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest struct{
     BgpSpeakerID string
-    Opts speakers.RemoveGatewayNetworkOptsBuilder
+    Opts speakers.RemoveGatewayNetworkOpts
 }
 
 func NewRemoveGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest()*RemoveGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest{
@@ -261,6 +261,6 @@ func NewRemoveGatewayNetworkNetworkingV2ExtensionsBgpSpeakersResponse(removeGate
 
 // action function
 func (oc *OpenstackClient) RemoveGatewayNetworkNetworkingV2ExtensionsBgpSpeakers(req *RemoveGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest)(*RemoveGatewayNetworkNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewRemoveGatewayNetworkNetworkingV2ExtensionsBgpSpeakersResponse(speakers.RemoveGatewayNetwork(oc.client,req.BgpSpeakerID,req.Opts, ))
+    return NewRemoveGatewayNetworkNetworkingV2ExtensionsBgpSpeakersResponse(speakers.RemoveGatewayNetwork(oc.Client,req.BgpSpeakerID,req.Opts, ))
 
 }

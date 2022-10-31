@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateSharedfilesystemsV2Sharenetworks
 type CreateSharedfilesystemsV2SharenetworksRequest struct{
-    Opts sharenetworks.CreateOptsBuilder
+    Opts sharenetworks.CreateOpts
 }
 
 func NewCreateSharedfilesystemsV2SharenetworksRequest()*CreateSharedfilesystemsV2SharenetworksRequest{
@@ -32,7 +32,7 @@ func NewCreateSharedfilesystemsV2SharenetworksResponse(createResult sharenetwork
 
 // action function
 func (oc *OpenstackClient) CreateSharedfilesystemsV2Sharenetworks(req *CreateSharedfilesystemsV2SharenetworksRequest)(*CreateSharedfilesystemsV2SharenetworksResponse){
-    return NewCreateSharedfilesystemsV2SharenetworksResponse(sharenetworks.Create(oc.client,req.Opts, ))
+    return NewCreateSharedfilesystemsV2SharenetworksResponse(sharenetworks.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteSharedfilesystemsV2Sharenetworks
@@ -57,12 +57,12 @@ func NewDeleteSharedfilesystemsV2SharenetworksResponse(deleteResult sharenetwork
 
 // action function
 func (oc *OpenstackClient) DeleteSharedfilesystemsV2Sharenetworks(req *DeleteSharedfilesystemsV2SharenetworksRequest)(*DeleteSharedfilesystemsV2SharenetworksResponse){
-    return NewDeleteSharedfilesystemsV2SharenetworksResponse(sharenetworks.Delete(oc.client,req.Id, ))
+    return NewDeleteSharedfilesystemsV2SharenetworksResponse(sharenetworks.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the ListDetailSharedfilesystemsV2Sharenetworks
 type ListDetailSharedfilesystemsV2SharenetworksRequest struct{
-    Opts sharenetworks.ListOptsBuilder
+    Opts sharenetworks.ListOpts
 }
 
 func NewListDetailSharedfilesystemsV2SharenetworksRequest()*ListDetailSharedfilesystemsV2SharenetworksRequest{
@@ -82,7 +82,7 @@ func NewListDetailSharedfilesystemsV2SharenetworksResponse(pager pagination.Page
 
 // action function
 func (oc *OpenstackClient) ListDetailSharedfilesystemsV2Sharenetworks(req *ListDetailSharedfilesystemsV2SharenetworksRequest)(*ListDetailSharedfilesystemsV2SharenetworksResponse){
-    return NewListDetailSharedfilesystemsV2SharenetworksResponse(sharenetworks.ListDetail(oc.client,req.Opts, ))
+    return NewListDetailSharedfilesystemsV2SharenetworksResponse(sharenetworks.ListDetail(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetSharedfilesystemsV2Sharenetworks
@@ -107,13 +107,13 @@ func NewGetSharedfilesystemsV2SharenetworksResponse(getResult sharenetworks.GetR
 
 // action function
 func (oc *OpenstackClient) GetSharedfilesystemsV2Sharenetworks(req *GetSharedfilesystemsV2SharenetworksRequest)(*GetSharedfilesystemsV2SharenetworksResponse){
-    return NewGetSharedfilesystemsV2SharenetworksResponse(sharenetworks.Get(oc.client,req.Id, ))
+    return NewGetSharedfilesystemsV2SharenetworksResponse(sharenetworks.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateSharedfilesystemsV2Sharenetworks
 type UpdateSharedfilesystemsV2SharenetworksRequest struct{
     Id string
-    Opts sharenetworks.UpdateOptsBuilder
+    Opts sharenetworks.UpdateOpts
 }
 
 func NewUpdateSharedfilesystemsV2SharenetworksRequest()*UpdateSharedfilesystemsV2SharenetworksRequest{
@@ -133,13 +133,13 @@ func NewUpdateSharedfilesystemsV2SharenetworksResponse(updateResult sharenetwork
 
 // action function
 func (oc *OpenstackClient) UpdateSharedfilesystemsV2Sharenetworks(req *UpdateSharedfilesystemsV2SharenetworksRequest)(*UpdateSharedfilesystemsV2SharenetworksResponse){
-    return NewUpdateSharedfilesystemsV2SharenetworksResponse(sharenetworks.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateSharedfilesystemsV2SharenetworksResponse(sharenetworks.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the AddSecurityServiceSharedfilesystemsV2Sharenetworks
 type AddSecurityServiceSharedfilesystemsV2SharenetworksRequest struct{
     Id string
-    Opts sharenetworks.AddSecurityServiceOptsBuilder
+    Opts sharenetworks.AddSecurityServiceOpts
 }
 
 func NewAddSecurityServiceSharedfilesystemsV2SharenetworksRequest()*AddSecurityServiceSharedfilesystemsV2SharenetworksRequest{
@@ -159,13 +159,13 @@ func NewAddSecurityServiceSharedfilesystemsV2SharenetworksResponse(updateResult 
 
 // action function
 func (oc *OpenstackClient) AddSecurityServiceSharedfilesystemsV2Sharenetworks(req *AddSecurityServiceSharedfilesystemsV2SharenetworksRequest)(*AddSecurityServiceSharedfilesystemsV2SharenetworksResponse){
-    return NewAddSecurityServiceSharedfilesystemsV2SharenetworksResponse(sharenetworks.AddSecurityService(oc.client,req.Id,req.Opts, ))
+    return NewAddSecurityServiceSharedfilesystemsV2SharenetworksResponse(sharenetworks.AddSecurityService(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the RemoveSecurityServiceSharedfilesystemsV2Sharenetworks
 type RemoveSecurityServiceSharedfilesystemsV2SharenetworksRequest struct{
     Id string
-    Opts sharenetworks.RemoveSecurityServiceOptsBuilder
+    Opts sharenetworks.RemoveSecurityServiceOpts
 }
 
 func NewRemoveSecurityServiceSharedfilesystemsV2SharenetworksRequest()*RemoveSecurityServiceSharedfilesystemsV2SharenetworksRequest{
@@ -185,6 +185,6 @@ func NewRemoveSecurityServiceSharedfilesystemsV2SharenetworksResponse(updateResu
 
 // action function
 func (oc *OpenstackClient) RemoveSecurityServiceSharedfilesystemsV2Sharenetworks(req *RemoveSecurityServiceSharedfilesystemsV2SharenetworksRequest)(*RemoveSecurityServiceSharedfilesystemsV2SharenetworksResponse){
-    return NewRemoveSecurityServiceSharedfilesystemsV2SharenetworksResponse(sharenetworks.RemoveSecurityService(oc.client,req.Id,req.Opts, ))
+    return NewRemoveSecurityServiceSharedfilesystemsV2SharenetworksResponse(sharenetworks.RemoveSecurityService(oc.Client,req.Id,req.Opts, ))
 
 }

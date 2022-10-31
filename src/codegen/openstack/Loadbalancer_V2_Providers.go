@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListLoadbalancerV2Providers
 type ListLoadbalancerV2ProvidersRequest struct{
-    Opts providers.ListOptsBuilder
+    Opts providers.ListOpts
 }
 
 func NewListLoadbalancerV2ProvidersRequest()*ListLoadbalancerV2ProvidersRequest{
@@ -32,6 +32,6 @@ func NewListLoadbalancerV2ProvidersResponse(pager pagination.Pager,)*ListLoadbal
 
 // action function
 func (oc *OpenstackClient) ListLoadbalancerV2Providers(req *ListLoadbalancerV2ProvidersRequest)(*ListLoadbalancerV2ProvidersResponse){
-    return NewListLoadbalancerV2ProvidersResponse(providers.List(oc.client,req.Opts, ))
+    return NewListLoadbalancerV2ProvidersResponse(providers.List(oc.Client,req.Opts, ))
 
 }

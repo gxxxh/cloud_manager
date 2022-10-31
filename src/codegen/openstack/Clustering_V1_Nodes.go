@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateClusteringV1Nodes
 type CreateClusteringV1NodesRequest struct{
-    Opts nodes.CreateOptsBuilder
+    Opts nodes.CreateOpts
 }
 
 func NewCreateClusteringV1NodesRequest()*CreateClusteringV1NodesRequest{
@@ -32,13 +32,13 @@ func NewCreateClusteringV1NodesResponse(createResult nodes.CreateResult,)*Create
 
 // action function
 func (oc *OpenstackClient) CreateClusteringV1Nodes(req *CreateClusteringV1NodesRequest)(*CreateClusteringV1NodesResponse){
-    return NewCreateClusteringV1NodesResponse(nodes.Create(oc.client,req.Opts, ))
+    return NewCreateClusteringV1NodesResponse(nodes.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateClusteringV1Nodes
 type UpdateClusteringV1NodesRequest struct{
     Id string
-    Opts nodes.UpdateOptsBuilder
+    Opts nodes.UpdateOpts
 }
 
 func NewUpdateClusteringV1NodesRequest()*UpdateClusteringV1NodesRequest{
@@ -58,12 +58,12 @@ func NewUpdateClusteringV1NodesResponse(updateResult nodes.UpdateResult,)*Update
 
 // action function
 func (oc *OpenstackClient) UpdateClusteringV1Nodes(req *UpdateClusteringV1NodesRequest)(*UpdateClusteringV1NodesResponse){
-    return NewUpdateClusteringV1NodesResponse(nodes.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateClusteringV1NodesResponse(nodes.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ListClusteringV1Nodes
 type ListClusteringV1NodesRequest struct{
-    Opts nodes.ListOptsBuilder
+    Opts nodes.ListOpts
 }
 
 func NewListClusteringV1NodesRequest()*ListClusteringV1NodesRequest{
@@ -83,7 +83,7 @@ func NewListClusteringV1NodesResponse(pager pagination.Pager,)*ListClusteringV1N
 
 // action function
 func (oc *OpenstackClient) ListClusteringV1Nodes(req *ListClusteringV1NodesRequest)(*ListClusteringV1NodesResponse){
-    return NewListClusteringV1NodesResponse(nodes.List(oc.client,req.Opts, ))
+    return NewListClusteringV1NodesResponse(nodes.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteClusteringV1Nodes
@@ -108,7 +108,7 @@ func NewDeleteClusteringV1NodesResponse(deleteResult nodes.DeleteResult,)*Delete
 
 // action function
 func (oc *OpenstackClient) DeleteClusteringV1Nodes(req *DeleteClusteringV1NodesRequest)(*DeleteClusteringV1NodesResponse){
-    return NewDeleteClusteringV1NodesResponse(nodes.Delete(oc.client,req.Id, ))
+    return NewDeleteClusteringV1NodesResponse(nodes.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the GetClusteringV1Nodes
@@ -133,13 +133,13 @@ func NewGetClusteringV1NodesResponse(getResult nodes.GetResult,)*GetClusteringV1
 
 // action function
 func (oc *OpenstackClient) GetClusteringV1Nodes(req *GetClusteringV1NodesRequest)(*GetClusteringV1NodesResponse){
-    return NewGetClusteringV1NodesResponse(nodes.Get(oc.client,req.Id, ))
+    return NewGetClusteringV1NodesResponse(nodes.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the OpsClusteringV1Nodes
 type OpsClusteringV1NodesRequest struct{
     Id string
-    Opts nodes.OperationOptsBuilder
+    Opts nodes.OperationOpts
 }
 
 func NewOpsClusteringV1NodesRequest()*OpsClusteringV1NodesRequest{
@@ -159,7 +159,7 @@ func NewOpsClusteringV1NodesResponse(actionResult nodes.ActionResult,)*OpsCluste
 
 // action function
 func (oc *OpenstackClient) OpsClusteringV1Nodes(req *OpsClusteringV1NodesRequest)(*OpsClusteringV1NodesResponse){
-    return NewOpsClusteringV1NodesResponse(nodes.Ops(oc.client,req.Id,req.Opts, ))
+    return NewOpsClusteringV1NodesResponse(nodes.Ops(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the RecoverClusteringV1Nodes
@@ -185,7 +185,7 @@ func NewRecoverClusteringV1NodesResponse(actionResult nodes.ActionResult,)*Recov
 
 // action function
 func (oc *OpenstackClient) RecoverClusteringV1Nodes(req *RecoverClusteringV1NodesRequest)(*RecoverClusteringV1NodesResponse){
-    return NewRecoverClusteringV1NodesResponse(nodes.Recover(oc.client,req.Id,req.Opts, ))
+    return NewRecoverClusteringV1NodesResponse(nodes.Recover(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the CheckClusteringV1Nodes
@@ -210,6 +210,6 @@ func NewCheckClusteringV1NodesResponse(actionResult nodes.ActionResult,)*CheckCl
 
 // action function
 func (oc *OpenstackClient) CheckClusteringV1Nodes(req *CheckClusteringV1NodesRequest)(*CheckClusteringV1NodesResponse){
-    return NewCheckClusteringV1NodesResponse(nodes.Check(oc.client,req.Id, ))
+    return NewCheckClusteringV1NodesResponse(nodes.Check(oc.Client,req.Id, ))
 
 }

@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListBaremetalV1Ports
 type ListBaremetalV1PortsRequest struct{
-    Opts ports.ListOptsBuilder
+    Opts ports.ListOpts
 }
 
 func NewListBaremetalV1PortsRequest()*ListBaremetalV1PortsRequest{
@@ -32,12 +32,12 @@ func NewListBaremetalV1PortsResponse(pager pagination.Pager,)*ListBaremetalV1Por
 
 // action function
 func (oc *OpenstackClient) ListBaremetalV1Ports(req *ListBaremetalV1PortsRequest)(*ListBaremetalV1PortsResponse){
-    return NewListBaremetalV1PortsResponse(ports.List(oc.client,req.Opts, ))
+    return NewListBaremetalV1PortsResponse(ports.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the ListDetailBaremetalV1Ports
 type ListDetailBaremetalV1PortsRequest struct{
-    Opts ports.ListOptsBuilder
+    Opts ports.ListOpts
 }
 
 func NewListDetailBaremetalV1PortsRequest()*ListDetailBaremetalV1PortsRequest{
@@ -57,7 +57,7 @@ func NewListDetailBaremetalV1PortsResponse(pager pagination.Pager,)*ListDetailBa
 
 // action function
 func (oc *OpenstackClient) ListDetailBaremetalV1Ports(req *ListDetailBaremetalV1PortsRequest)(*ListDetailBaremetalV1PortsResponse){
-    return NewListDetailBaremetalV1PortsResponse(ports.ListDetail(oc.client,req.Opts, ))
+    return NewListDetailBaremetalV1PortsResponse(ports.ListDetail(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetBaremetalV1Ports
@@ -82,12 +82,12 @@ func NewGetBaremetalV1PortsResponse(getResult ports.GetResult,)*GetBaremetalV1Po
 
 // action function
 func (oc *OpenstackClient) GetBaremetalV1Ports(req *GetBaremetalV1PortsRequest)(*GetBaremetalV1PortsResponse){
-    return NewGetBaremetalV1PortsResponse(ports.Get(oc.client,req.Id, ))
+    return NewGetBaremetalV1PortsResponse(ports.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateBaremetalV1Ports
 type CreateBaremetalV1PortsRequest struct{
-    Opts ports.CreateOptsBuilder
+    Opts ports.CreateOpts
 }
 
 func NewCreateBaremetalV1PortsRequest()*CreateBaremetalV1PortsRequest{
@@ -107,7 +107,7 @@ func NewCreateBaremetalV1PortsResponse(createResult ports.CreateResult,)*CreateB
 
 // action function
 func (oc *OpenstackClient) CreateBaremetalV1Ports(req *CreateBaremetalV1PortsRequest)(*CreateBaremetalV1PortsResponse){
-    return NewCreateBaremetalV1PortsResponse(ports.Create(oc.client,req.Opts, ))
+    return NewCreateBaremetalV1PortsResponse(ports.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateBaremetalV1Ports
@@ -133,7 +133,7 @@ func NewUpdateBaremetalV1PortsResponse(updateResult ports.UpdateResult,)*UpdateB
 
 // action function
 func (oc *OpenstackClient) UpdateBaremetalV1Ports(req *UpdateBaremetalV1PortsRequest)(*UpdateBaremetalV1PortsResponse){
-    return NewUpdateBaremetalV1PortsResponse(ports.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateBaremetalV1PortsResponse(ports.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteBaremetalV1Ports
@@ -158,6 +158,6 @@ func NewDeleteBaremetalV1PortsResponse(deleteResult ports.DeleteResult,)*DeleteB
 
 // action function
 func (oc *OpenstackClient) DeleteBaremetalV1Ports(req *DeleteBaremetalV1PortsRequest)(*DeleteBaremetalV1PortsResponse){
-    return NewDeleteBaremetalV1PortsResponse(ports.Delete(oc.client,req.Id, ))
+    return NewDeleteBaremetalV1PortsResponse(ports.Delete(oc.Client,req.Id, ))
 
 }

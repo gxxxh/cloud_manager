@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListIntrospectionsBaremetalintrospectionV1Introspection
 type ListIntrospectionsBaremetalintrospectionV1IntrospectionRequest struct{
-    Opts introspection.ListIntrospectionsOptsBuilder
+    Opts introspection.ListIntrospectionsOpts
 }
 
 func NewListIntrospectionsBaremetalintrospectionV1IntrospectionRequest()*ListIntrospectionsBaremetalintrospectionV1IntrospectionRequest{
@@ -32,7 +32,7 @@ func NewListIntrospectionsBaremetalintrospectionV1IntrospectionResponse(pager pa
 
 // action function
 func (oc *OpenstackClient) ListIntrospectionsBaremetalintrospectionV1Introspection(req *ListIntrospectionsBaremetalintrospectionV1IntrospectionRequest)(*ListIntrospectionsBaremetalintrospectionV1IntrospectionResponse){
-    return NewListIntrospectionsBaremetalintrospectionV1IntrospectionResponse(introspection.ListIntrospections(oc.client,req.Opts, ))
+    return NewListIntrospectionsBaremetalintrospectionV1IntrospectionResponse(introspection.ListIntrospections(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetIntrospectionStatusBaremetalintrospectionV1Introspection
@@ -57,13 +57,13 @@ func NewGetIntrospectionStatusBaremetalintrospectionV1IntrospectionResponse(getI
 
 // action function
 func (oc *OpenstackClient) GetIntrospectionStatusBaremetalintrospectionV1Introspection(req *GetIntrospectionStatusBaremetalintrospectionV1IntrospectionRequest)(*GetIntrospectionStatusBaremetalintrospectionV1IntrospectionResponse){
-    return NewGetIntrospectionStatusBaremetalintrospectionV1IntrospectionResponse(introspection.GetIntrospectionStatus(oc.client,req.NodeID, ))
+    return NewGetIntrospectionStatusBaremetalintrospectionV1IntrospectionResponse(introspection.GetIntrospectionStatus(oc.Client,req.NodeID, ))
 
 }
 //request struct for the StartIntrospectionBaremetalintrospectionV1Introspection
 type StartIntrospectionBaremetalintrospectionV1IntrospectionRequest struct{
     NodeID string
-    Opts introspection.StartOptsBuilder
+    Opts introspection.StartOpts
 }
 
 func NewStartIntrospectionBaremetalintrospectionV1IntrospectionRequest()*StartIntrospectionBaremetalintrospectionV1IntrospectionRequest{
@@ -83,7 +83,7 @@ func NewStartIntrospectionBaremetalintrospectionV1IntrospectionResponse(startRes
 
 // action function
 func (oc *OpenstackClient) StartIntrospectionBaremetalintrospectionV1Introspection(req *StartIntrospectionBaremetalintrospectionV1IntrospectionRequest)(*StartIntrospectionBaremetalintrospectionV1IntrospectionResponse){
-    return NewStartIntrospectionBaremetalintrospectionV1IntrospectionResponse(introspection.StartIntrospection(oc.client,req.NodeID,req.Opts, ))
+    return NewStartIntrospectionBaremetalintrospectionV1IntrospectionResponse(introspection.StartIntrospection(oc.Client,req.NodeID,req.Opts, ))
 
 }
 //request struct for the AbortIntrospectionBaremetalintrospectionV1Introspection
@@ -108,7 +108,7 @@ func NewAbortIntrospectionBaremetalintrospectionV1IntrospectionResponse(abortRes
 
 // action function
 func (oc *OpenstackClient) AbortIntrospectionBaremetalintrospectionV1Introspection(req *AbortIntrospectionBaremetalintrospectionV1IntrospectionRequest)(*AbortIntrospectionBaremetalintrospectionV1IntrospectionResponse){
-    return NewAbortIntrospectionBaremetalintrospectionV1IntrospectionResponse(introspection.AbortIntrospection(oc.client,req.NodeID, ))
+    return NewAbortIntrospectionBaremetalintrospectionV1IntrospectionResponse(introspection.AbortIntrospection(oc.Client,req.NodeID, ))
 
 }
 //request struct for the GetIntrospectionDataBaremetalintrospectionV1Introspection
@@ -133,7 +133,7 @@ func NewGetIntrospectionDataBaremetalintrospectionV1IntrospectionResponse(dataRe
 
 // action function
 func (oc *OpenstackClient) GetIntrospectionDataBaremetalintrospectionV1Introspection(req *GetIntrospectionDataBaremetalintrospectionV1IntrospectionRequest)(*GetIntrospectionDataBaremetalintrospectionV1IntrospectionResponse){
-    return NewGetIntrospectionDataBaremetalintrospectionV1IntrospectionResponse(introspection.GetIntrospectionData(oc.client,req.NodeID, ))
+    return NewGetIntrospectionDataBaremetalintrospectionV1IntrospectionResponse(introspection.GetIntrospectionData(oc.Client,req.NodeID, ))
 
 }
 //request struct for the ReApplyIntrospectionBaremetalintrospectionV1Introspection
@@ -158,6 +158,6 @@ func NewReApplyIntrospectionBaremetalintrospectionV1IntrospectionResponse(applyD
 
 // action function
 func (oc *OpenstackClient) ReApplyIntrospectionBaremetalintrospectionV1Introspection(req *ReApplyIntrospectionBaremetalintrospectionV1IntrospectionRequest)(*ReApplyIntrospectionBaremetalintrospectionV1IntrospectionResponse){
-    return NewReApplyIntrospectionBaremetalintrospectionV1IntrospectionResponse(introspection.ReApplyIntrospection(oc.client,req.NodeID, ))
+    return NewReApplyIntrospectionBaremetalintrospectionV1IntrospectionResponse(introspection.ReApplyIntrospection(oc.Client,req.NodeID, ))
 
 }

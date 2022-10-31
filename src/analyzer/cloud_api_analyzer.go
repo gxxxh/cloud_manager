@@ -2,7 +2,6 @@ package analyzer
 
 import (
 	"encoding/json"
-	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	"log"
 	"os"
 	"reflect"
@@ -13,36 +12,26 @@ import (
 // 还是将所有云的包编译在一起
 // using to analyze cloudapi by reflect(dynamically)
 type CloudAPIAnalyzer struct {
-	Kind         string
-	client       interface{}
 	MethodMap    map[string]reflect.Method
 	RequestMap   map[string]reflect.Type
 	RequestInfos []RequestInfo
 }
 
-func NewCloudAPIAnalyzer(kind string) (*CloudAPIAnalyzer, error) {
-	ca := &CloudAPIAnalyzer{
-		Kind: kind,
-	}
+func NewCloudAPIAnalyzer() *CloudAPIAnalyzer {
+	ca := &CloudAPIAnalyzer{}
 	ca.Init()
-	return ca, nil
+	return ca
 }
 
 func (c *CloudAPIAnalyzer) Init() {
-	switch c.Kind {
-	case "aliyun":
-		c.client = &ecs.Client{}
-	default:
-		log.Panic("error!, you need to provide a cloud type")
-	}
 	c.MethodMap = make(map[string]reflect.Method)
 	c.RequestMap = make(map[string]reflect.Type)
 }
 
-func (c *CloudAPIAnalyzer) ExtractCloudAPIs() {
+func (c *CloudAPIAnalyzer) ExtractCloudAPIs(client interface{}) {
 	log.Println("CloudAPIAnalyzer: analyzer client's method")
 	// Notice the *Type can access all the Type Methods. But Type cannot access to *Type Methods.
-	clientType := reflect.TypeOf(c.client)
+	clientType := reflect.TypeOf(client)
 	//use reflect.PtrTo(Type) to convert from Type to *Type
 	if clientType.Kind() != reflect.Ptr && clientType.Kind() != reflect.Pointer {
 		clientType = reflect.PtrTo(clientType)
@@ -113,7 +102,7 @@ func (c *CloudAPIAnalyzer) ExtractRequestInfos() *RequestRegistryInfo {
 	return requestRegistryInfo
 }
 
-func (c *CloudAPIAnalyzer) SaveToJson() {
+func (c *CloudAPIAnalyzer) SaveToJson(path string) {
 	paraInfoMap := make(map[string]interface{})
 	for paraName, paraType := range c.RequestMap {
 		typeInfo := c.ExtractType(paraType)
@@ -123,7 +112,7 @@ func (c *CloudAPIAnalyzer) SaveToJson() {
 	if err != nil {
 		log.Panicf("SaveToJson Error: %v \n", err)
 	}
-	filePtr, err := os.Create("create_image.json")
+	filePtr, err := os.Create(path)
 	if err != nil {
 		log.Panicf("SaveToJson Error: %v \n", err)
 	}

@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListNetworkingV2ExtensionsSubnetpools
 type ListNetworkingV2ExtensionsSubnetpoolsRequest struct{
-    Opts subnetpools.ListOptsBuilder
+    Opts subnetpools.ListOpts
 }
 
 func NewListNetworkingV2ExtensionsSubnetpoolsRequest()*ListNetworkingV2ExtensionsSubnetpoolsRequest{
@@ -32,7 +32,7 @@ func NewListNetworkingV2ExtensionsSubnetpoolsResponse(pager pagination.Pager,)*L
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsSubnetpools(req *ListNetworkingV2ExtensionsSubnetpoolsRequest)(*ListNetworkingV2ExtensionsSubnetpoolsResponse){
-    return NewListNetworkingV2ExtensionsSubnetpoolsResponse(subnetpools.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2ExtensionsSubnetpoolsResponse(subnetpools.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsSubnetpools
@@ -57,12 +57,12 @@ func NewGetNetworkingV2ExtensionsSubnetpoolsResponse(getResult subnetpools.GetRe
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsSubnetpools(req *GetNetworkingV2ExtensionsSubnetpoolsRequest)(*GetNetworkingV2ExtensionsSubnetpoolsResponse){
-    return NewGetNetworkingV2ExtensionsSubnetpoolsResponse(subnetpools.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsSubnetpoolsResponse(subnetpools.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsSubnetpools
 type CreateNetworkingV2ExtensionsSubnetpoolsRequest struct{
-    Opts subnetpools.CreateOptsBuilder
+    Opts subnetpools.CreateOpts
 }
 
 func NewCreateNetworkingV2ExtensionsSubnetpoolsRequest()*CreateNetworkingV2ExtensionsSubnetpoolsRequest{
@@ -82,13 +82,13 @@ func NewCreateNetworkingV2ExtensionsSubnetpoolsResponse(createResult subnetpools
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsSubnetpools(req *CreateNetworkingV2ExtensionsSubnetpoolsRequest)(*CreateNetworkingV2ExtensionsSubnetpoolsResponse){
-    return NewCreateNetworkingV2ExtensionsSubnetpoolsResponse(subnetpools.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsSubnetpoolsResponse(subnetpools.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsSubnetpools
 type UpdateNetworkingV2ExtensionsSubnetpoolsRequest struct{
     SubnetPoolID string
-    Opts subnetpools.UpdateOptsBuilder
+    Opts subnetpools.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsSubnetpoolsRequest()*UpdateNetworkingV2ExtensionsSubnetpoolsRequest{
@@ -108,7 +108,7 @@ func NewUpdateNetworkingV2ExtensionsSubnetpoolsResponse(updateResult subnetpools
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsSubnetpools(req *UpdateNetworkingV2ExtensionsSubnetpoolsRequest)(*UpdateNetworkingV2ExtensionsSubnetpoolsResponse){
-    return NewUpdateNetworkingV2ExtensionsSubnetpoolsResponse(subnetpools.Update(oc.client,req.SubnetPoolID,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsSubnetpoolsResponse(subnetpools.Update(oc.Client,req.SubnetPoolID,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsSubnetpools
@@ -133,6 +133,6 @@ func NewDeleteNetworkingV2ExtensionsSubnetpoolsResponse(deleteResult subnetpools
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsSubnetpools(req *DeleteNetworkingV2ExtensionsSubnetpoolsRequest)(*DeleteNetworkingV2ExtensionsSubnetpoolsResponse){
-    return NewDeleteNetworkingV2ExtensionsSubnetpoolsResponse(subnetpools.Delete(oc.client,req.Id, ))
+    return NewDeleteNetworkingV2ExtensionsSubnetpoolsResponse(subnetpools.Delete(oc.Client,req.Id, ))
 
 }

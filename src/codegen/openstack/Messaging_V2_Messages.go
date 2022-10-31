@@ -13,7 +13,7 @@ import (
 //request struct for the ListMessagingV2Messages
 type ListMessagingV2MessagesRequest struct{
     QueueName string
-    Opts messages.ListOptsBuilder
+    Opts messages.ListOpts
 }
 
 func NewListMessagingV2MessagesRequest()*ListMessagingV2MessagesRequest{
@@ -33,13 +33,13 @@ func NewListMessagingV2MessagesResponse(pager pagination.Pager,)*ListMessagingV2
 
 // action function
 func (oc *OpenstackClient) ListMessagingV2Messages(req *ListMessagingV2MessagesRequest)(*ListMessagingV2MessagesResponse){
-    return NewListMessagingV2MessagesResponse(messages.List(oc.client,req.QueueName,req.Opts, ))
+    return NewListMessagingV2MessagesResponse(messages.List(oc.Client,req.QueueName,req.Opts, ))
 
 }
 //request struct for the CreateMessagingV2Messages
 type CreateMessagingV2MessagesRequest struct{
     QueueName string
-    Opts messages.CreateOptsBuilder
+    Opts messages.BatchCreateOpts
 }
 
 func NewCreateMessagingV2MessagesRequest()*CreateMessagingV2MessagesRequest{
@@ -59,13 +59,13 @@ func NewCreateMessagingV2MessagesResponse(createResult messages.CreateResult,)*C
 
 // action function
 func (oc *OpenstackClient) CreateMessagingV2Messages(req *CreateMessagingV2MessagesRequest)(*CreateMessagingV2MessagesResponse){
-    return NewCreateMessagingV2MessagesResponse(messages.Create(oc.client,req.QueueName,req.Opts, ))
+    return NewCreateMessagingV2MessagesResponse(messages.Create(oc.Client,req.QueueName,req.Opts, ))
 
 }
 //request struct for the DeleteMessagesMessagingV2Messages
 type DeleteMessagesMessagingV2MessagesRequest struct{
     QueueName string
-    Opts messages.DeleteMessagesOptsBuilder
+    Opts messages.DeleteMessagesOpts
 }
 
 func NewDeleteMessagesMessagingV2MessagesRequest()*DeleteMessagesMessagingV2MessagesRequest{
@@ -85,13 +85,13 @@ func NewDeleteMessagesMessagingV2MessagesResponse(deleteResult messages.DeleteRe
 
 // action function
 func (oc *OpenstackClient) DeleteMessagesMessagingV2Messages(req *DeleteMessagesMessagingV2MessagesRequest)(*DeleteMessagesMessagingV2MessagesResponse){
-    return NewDeleteMessagesMessagingV2MessagesResponse(messages.DeleteMessages(oc.client,req.QueueName,req.Opts, ))
+    return NewDeleteMessagesMessagingV2MessagesResponse(messages.DeleteMessages(oc.Client,req.QueueName,req.Opts, ))
 
 }
 //request struct for the PopMessagesMessagingV2Messages
 type PopMessagesMessagingV2MessagesRequest struct{
     QueueName string
-    Opts messages.PopMessagesOptsBuilder
+    Opts messages.PopMessagesOpts
 }
 
 func NewPopMessagesMessagingV2MessagesRequest()*PopMessagesMessagingV2MessagesRequest{
@@ -111,13 +111,13 @@ func NewPopMessagesMessagingV2MessagesResponse(popResult messages.PopResult,)*Po
 
 // action function
 func (oc *OpenstackClient) PopMessagesMessagingV2Messages(req *PopMessagesMessagingV2MessagesRequest)(*PopMessagesMessagingV2MessagesResponse){
-    return NewPopMessagesMessagingV2MessagesResponse(messages.PopMessages(oc.client,req.QueueName,req.Opts, ))
+    return NewPopMessagesMessagingV2MessagesResponse(messages.PopMessages(oc.Client,req.QueueName,req.Opts, ))
 
 }
 //request struct for the GetMessagesMessagingV2Messages
 type GetMessagesMessagingV2MessagesRequest struct{
     QueueName string
-    Opts messages.GetMessagesOptsBuilder
+    Opts messages.GetMessagesOpts
 }
 
 func NewGetMessagesMessagingV2MessagesRequest()*GetMessagesMessagingV2MessagesRequest{
@@ -137,7 +137,7 @@ func NewGetMessagesMessagingV2MessagesResponse(getMessagesResult messages.GetMes
 
 // action function
 func (oc *OpenstackClient) GetMessagesMessagingV2Messages(req *GetMessagesMessagingV2MessagesRequest)(*GetMessagesMessagingV2MessagesResponse){
-    return NewGetMessagesMessagingV2MessagesResponse(messages.GetMessages(oc.client,req.QueueName,req.Opts, ))
+    return NewGetMessagesMessagingV2MessagesResponse(messages.GetMessages(oc.Client,req.QueueName,req.Opts, ))
 
 }
 //request struct for the GetMessagingV2Messages
@@ -163,14 +163,14 @@ func NewGetMessagingV2MessagesResponse(getResult messages.GetResult,)*GetMessagi
 
 // action function
 func (oc *OpenstackClient) GetMessagingV2Messages(req *GetMessagingV2MessagesRequest)(*GetMessagingV2MessagesResponse){
-    return NewGetMessagingV2MessagesResponse(messages.Get(oc.client,req.QueueName,req.MessageID, ))
+    return NewGetMessagingV2MessagesResponse(messages.Get(oc.Client,req.QueueName,req.MessageID, ))
 
 }
 //request struct for the DeleteMessagingV2Messages
 type DeleteMessagingV2MessagesRequest struct{
     QueueName string
     MessageID string
-    Opts messages.DeleteOptsBuilder
+    Opts messages.DeleteOpts
 }
 
 func NewDeleteMessagingV2MessagesRequest()*DeleteMessagingV2MessagesRequest{
@@ -190,6 +190,6 @@ func NewDeleteMessagingV2MessagesResponse(deleteResult messages.DeleteResult,)*D
 
 // action function
 func (oc *OpenstackClient) DeleteMessagingV2Messages(req *DeleteMessagingV2MessagesRequest)(*DeleteMessagingV2MessagesResponse){
-    return NewDeleteMessagingV2MessagesResponse(messages.Delete(oc.client,req.QueueName,req.MessageID,req.Opts, ))
+    return NewDeleteMessagingV2MessagesResponse(messages.Delete(oc.Client,req.QueueName,req.MessageID,req.Opts, ))
 
 }

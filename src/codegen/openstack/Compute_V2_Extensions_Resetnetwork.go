@@ -31,6 +31,6 @@ func NewResetNetworkComputeV2ExtensionsResetnetworkResponse(resetResult resetnet
 
 // action function
 func (oc *OpenstackClient) ResetNetworkComputeV2ExtensionsResetnetwork(req *ResetNetworkComputeV2ExtensionsResetnetworkRequest)(*ResetNetworkComputeV2ExtensionsResetnetworkResponse){
-    return NewResetNetworkComputeV2ExtensionsResetnetworkResponse(resetnetwork.ResetNetwork(oc.client,req.Id, ))
+    return NewResetNetworkComputeV2ExtensionsResetnetworkResponse(resetnetwork.ResetNetwork(oc.Client,req.Id, ))
 
 }

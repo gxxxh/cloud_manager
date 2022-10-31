@@ -13,7 +13,7 @@ import (
 //request struct for the ListIdentityV3Applicationcredentials
 type ListIdentityV3ApplicationcredentialsRequest struct{
     UserID string
-    Opts applicationcredentials.ListOptsBuilder
+    Opts applicationcredentials.ListOpts
 }
 
 func NewListIdentityV3ApplicationcredentialsRequest()*ListIdentityV3ApplicationcredentialsRequest{
@@ -33,7 +33,7 @@ func NewListIdentityV3ApplicationcredentialsResponse(pager pagination.Pager,)*Li
 
 // action function
 func (oc *OpenstackClient) ListIdentityV3Applicationcredentials(req *ListIdentityV3ApplicationcredentialsRequest)(*ListIdentityV3ApplicationcredentialsResponse){
-    return NewListIdentityV3ApplicationcredentialsResponse(applicationcredentials.List(oc.client,req.UserID,req.Opts, ))
+    return NewListIdentityV3ApplicationcredentialsResponse(applicationcredentials.List(oc.Client,req.UserID,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Applicationcredentials
@@ -59,13 +59,13 @@ func NewGetIdentityV3ApplicationcredentialsResponse(getResult applicationcredent
 
 // action function
 func (oc *OpenstackClient) GetIdentityV3Applicationcredentials(req *GetIdentityV3ApplicationcredentialsRequest)(*GetIdentityV3ApplicationcredentialsResponse){
-    return NewGetIdentityV3ApplicationcredentialsResponse(applicationcredentials.Get(oc.client,req.UserID,req.Id, ))
+    return NewGetIdentityV3ApplicationcredentialsResponse(applicationcredentials.Get(oc.Client,req.UserID,req.Id, ))
 
 }
 //request struct for the CreateIdentityV3Applicationcredentials
 type CreateIdentityV3ApplicationcredentialsRequest struct{
     UserID string
-    Opts applicationcredentials.CreateOptsBuilder
+    Opts applicationcredentials.CreateOpts
 }
 
 func NewCreateIdentityV3ApplicationcredentialsRequest()*CreateIdentityV3ApplicationcredentialsRequest{
@@ -85,7 +85,7 @@ func NewCreateIdentityV3ApplicationcredentialsResponse(createResult applicationc
 
 // action function
 func (oc *OpenstackClient) CreateIdentityV3Applicationcredentials(req *CreateIdentityV3ApplicationcredentialsRequest)(*CreateIdentityV3ApplicationcredentialsResponse){
-    return NewCreateIdentityV3ApplicationcredentialsResponse(applicationcredentials.Create(oc.client,req.UserID,req.Opts, ))
+    return NewCreateIdentityV3ApplicationcredentialsResponse(applicationcredentials.Create(oc.Client,req.UserID,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Applicationcredentials
@@ -111,7 +111,7 @@ func NewDeleteIdentityV3ApplicationcredentialsResponse(deleteResult applicationc
 
 // action function
 func (oc *OpenstackClient) DeleteIdentityV3Applicationcredentials(req *DeleteIdentityV3ApplicationcredentialsRequest)(*DeleteIdentityV3ApplicationcredentialsResponse){
-    return NewDeleteIdentityV3ApplicationcredentialsResponse(applicationcredentials.Delete(oc.client,req.UserID,req.Id, ))
+    return NewDeleteIdentityV3ApplicationcredentialsResponse(applicationcredentials.Delete(oc.Client,req.UserID,req.Id, ))
 
 }
 //request struct for the ListAccessRulesIdentityV3Applicationcredentials
@@ -136,7 +136,7 @@ func NewListAccessRulesIdentityV3ApplicationcredentialsResponse(pager pagination
 
 // action function
 func (oc *OpenstackClient) ListAccessRulesIdentityV3Applicationcredentials(req *ListAccessRulesIdentityV3ApplicationcredentialsRequest)(*ListAccessRulesIdentityV3ApplicationcredentialsResponse){
-    return NewListAccessRulesIdentityV3ApplicationcredentialsResponse(applicationcredentials.ListAccessRules(oc.client,req.UserID, ))
+    return NewListAccessRulesIdentityV3ApplicationcredentialsResponse(applicationcredentials.ListAccessRules(oc.Client,req.UserID, ))
 
 }
 //request struct for the GetAccessRuleIdentityV3Applicationcredentials
@@ -162,7 +162,7 @@ func NewGetAccessRuleIdentityV3ApplicationcredentialsResponse(getAccessRuleResul
 
 // action function
 func (oc *OpenstackClient) GetAccessRuleIdentityV3Applicationcredentials(req *GetAccessRuleIdentityV3ApplicationcredentialsRequest)(*GetAccessRuleIdentityV3ApplicationcredentialsResponse){
-    return NewGetAccessRuleIdentityV3ApplicationcredentialsResponse(applicationcredentials.GetAccessRule(oc.client,req.UserID,req.Id, ))
+    return NewGetAccessRuleIdentityV3ApplicationcredentialsResponse(applicationcredentials.GetAccessRule(oc.Client,req.UserID,req.Id, ))
 
 }
 //request struct for the DeleteAccessRuleIdentityV3Applicationcredentials
@@ -188,6 +188,6 @@ func NewDeleteAccessRuleIdentityV3ApplicationcredentialsResponse(deleteResult ap
 
 // action function
 func (oc *OpenstackClient) DeleteAccessRuleIdentityV3Applicationcredentials(req *DeleteAccessRuleIdentityV3ApplicationcredentialsRequest)(*DeleteAccessRuleIdentityV3ApplicationcredentialsResponse){
-    return NewDeleteAccessRuleIdentityV3ApplicationcredentialsResponse(applicationcredentials.DeleteAccessRule(oc.client,req.UserID,req.Id, ))
+    return NewDeleteAccessRuleIdentityV3ApplicationcredentialsResponse(applicationcredentials.DeleteAccessRule(oc.Client,req.UserID,req.Id, ))
 
 }

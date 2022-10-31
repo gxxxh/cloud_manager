@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListLoadbalancerV2Pools
 type ListLoadbalancerV2PoolsRequest struct{
-    Opts pools.ListOptsBuilder
+    Opts pools.ListOpts
 }
 
 func NewListLoadbalancerV2PoolsRequest()*ListLoadbalancerV2PoolsRequest{
@@ -32,12 +32,12 @@ func NewListLoadbalancerV2PoolsResponse(pager pagination.Pager,)*ListLoadbalance
 
 // action function
 func (oc *OpenstackClient) ListLoadbalancerV2Pools(req *ListLoadbalancerV2PoolsRequest)(*ListLoadbalancerV2PoolsResponse){
-    return NewListLoadbalancerV2PoolsResponse(pools.List(oc.client,req.Opts, ))
+    return NewListLoadbalancerV2PoolsResponse(pools.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateLoadbalancerV2Pools
 type CreateLoadbalancerV2PoolsRequest struct{
-    Opts pools.CreateOptsBuilder
+    Opts pools.CreateOpts
 }
 
 func NewCreateLoadbalancerV2PoolsRequest()*CreateLoadbalancerV2PoolsRequest{
@@ -57,7 +57,7 @@ func NewCreateLoadbalancerV2PoolsResponse(createResult pools.CreateResult,)*Crea
 
 // action function
 func (oc *OpenstackClient) CreateLoadbalancerV2Pools(req *CreateLoadbalancerV2PoolsRequest)(*CreateLoadbalancerV2PoolsResponse){
-    return NewCreateLoadbalancerV2PoolsResponse(pools.Create(oc.client,req.Opts, ))
+    return NewCreateLoadbalancerV2PoolsResponse(pools.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetLoadbalancerV2Pools
@@ -82,13 +82,13 @@ func NewGetLoadbalancerV2PoolsResponse(getResult pools.GetResult,)*GetLoadbalanc
 
 // action function
 func (oc *OpenstackClient) GetLoadbalancerV2Pools(req *GetLoadbalancerV2PoolsRequest)(*GetLoadbalancerV2PoolsResponse){
-    return NewGetLoadbalancerV2PoolsResponse(pools.Get(oc.client,req.Id, ))
+    return NewGetLoadbalancerV2PoolsResponse(pools.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateLoadbalancerV2Pools
 type UpdateLoadbalancerV2PoolsRequest struct{
     Id string
-    Opts pools.UpdateOptsBuilder
+    Opts pools.UpdateOpts
 }
 
 func NewUpdateLoadbalancerV2PoolsRequest()*UpdateLoadbalancerV2PoolsRequest{
@@ -108,7 +108,7 @@ func NewUpdateLoadbalancerV2PoolsResponse(updateResult pools.UpdateResult,)*Upda
 
 // action function
 func (oc *OpenstackClient) UpdateLoadbalancerV2Pools(req *UpdateLoadbalancerV2PoolsRequest)(*UpdateLoadbalancerV2PoolsResponse){
-    return NewUpdateLoadbalancerV2PoolsResponse(pools.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateLoadbalancerV2PoolsResponse(pools.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteLoadbalancerV2Pools
@@ -133,13 +133,13 @@ func NewDeleteLoadbalancerV2PoolsResponse(deleteResult pools.DeleteResult,)*Dele
 
 // action function
 func (oc *OpenstackClient) DeleteLoadbalancerV2Pools(req *DeleteLoadbalancerV2PoolsRequest)(*DeleteLoadbalancerV2PoolsResponse){
-    return NewDeleteLoadbalancerV2PoolsResponse(pools.Delete(oc.client,req.Id, ))
+    return NewDeleteLoadbalancerV2PoolsResponse(pools.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the ListMembersLoadbalancerV2Pools
 type ListMembersLoadbalancerV2PoolsRequest struct{
     PoolID string
-    Opts pools.ListMembersOptsBuilder
+    Opts pools.ListMembersOpts
 }
 
 func NewListMembersLoadbalancerV2PoolsRequest()*ListMembersLoadbalancerV2PoolsRequest{
@@ -159,13 +159,13 @@ func NewListMembersLoadbalancerV2PoolsResponse(pager pagination.Pager,)*ListMemb
 
 // action function
 func (oc *OpenstackClient) ListMembersLoadbalancerV2Pools(req *ListMembersLoadbalancerV2PoolsRequest)(*ListMembersLoadbalancerV2PoolsResponse){
-    return NewListMembersLoadbalancerV2PoolsResponse(pools.ListMembers(oc.client,req.PoolID,req.Opts, ))
+    return NewListMembersLoadbalancerV2PoolsResponse(pools.ListMembers(oc.Client,req.PoolID,req.Opts, ))
 
 }
 //request struct for the CreateMemberLoadbalancerV2Pools
 type CreateMemberLoadbalancerV2PoolsRequest struct{
     PoolID string
-    Opts pools.CreateMemberOptsBuilder
+    Opts pools.CreateMemberOpts
 }
 
 func NewCreateMemberLoadbalancerV2PoolsRequest()*CreateMemberLoadbalancerV2PoolsRequest{
@@ -185,7 +185,7 @@ func NewCreateMemberLoadbalancerV2PoolsResponse(createMemberResult pools.CreateM
 
 // action function
 func (oc *OpenstackClient) CreateMemberLoadbalancerV2Pools(req *CreateMemberLoadbalancerV2PoolsRequest)(*CreateMemberLoadbalancerV2PoolsResponse){
-    return NewCreateMemberLoadbalancerV2PoolsResponse(pools.CreateMember(oc.client,req.PoolID,req.Opts, ))
+    return NewCreateMemberLoadbalancerV2PoolsResponse(pools.CreateMember(oc.Client,req.PoolID,req.Opts, ))
 
 }
 //request struct for the GetMemberLoadbalancerV2Pools
@@ -211,14 +211,14 @@ func NewGetMemberLoadbalancerV2PoolsResponse(getMemberResult pools.GetMemberResu
 
 // action function
 func (oc *OpenstackClient) GetMemberLoadbalancerV2Pools(req *GetMemberLoadbalancerV2PoolsRequest)(*GetMemberLoadbalancerV2PoolsResponse){
-    return NewGetMemberLoadbalancerV2PoolsResponse(pools.GetMember(oc.client,req.PoolID,req.MemberID, ))
+    return NewGetMemberLoadbalancerV2PoolsResponse(pools.GetMember(oc.Client,req.PoolID,req.MemberID, ))
 
 }
 //request struct for the UpdateMemberLoadbalancerV2Pools
 type UpdateMemberLoadbalancerV2PoolsRequest struct{
     PoolID string
     MemberID string
-    Opts pools.UpdateMemberOptsBuilder
+    Opts pools.UpdateMemberOpts
 }
 
 func NewUpdateMemberLoadbalancerV2PoolsRequest()*UpdateMemberLoadbalancerV2PoolsRequest{
@@ -238,33 +238,7 @@ func NewUpdateMemberLoadbalancerV2PoolsResponse(updateMemberResult pools.UpdateM
 
 // action function
 func (oc *OpenstackClient) UpdateMemberLoadbalancerV2Pools(req *UpdateMemberLoadbalancerV2PoolsRequest)(*UpdateMemberLoadbalancerV2PoolsResponse){
-    return NewUpdateMemberLoadbalancerV2PoolsResponse(pools.UpdateMember(oc.client,req.PoolID,req.MemberID,req.Opts, ))
-
-}
-//request struct for the BatchUpdateMembersLoadbalancerV2Pools
-type BatchUpdateMembersLoadbalancerV2PoolsRequest struct{
-    PoolID string
-    Opts []pools.BatchUpdateMemberOpts
-}
-
-func NewBatchUpdateMembersLoadbalancerV2PoolsRequest()*BatchUpdateMembersLoadbalancerV2PoolsRequest{
-    return &BatchUpdateMembersLoadbalancerV2PoolsRequest{}
-}
-
-//response struct for the BatchUpdateMembersLoadbalancerV2Pools
-type BatchUpdateMembersLoadbalancerV2PoolsResponse struct{
-    UpdateMembersResult pools.UpdateMembersResult
-}
-
-func NewBatchUpdateMembersLoadbalancerV2PoolsResponse(updateMembersResult pools.UpdateMembersResult,)*BatchUpdateMembersLoadbalancerV2PoolsResponse {
-    return &BatchUpdateMembersLoadbalancerV2PoolsResponse{
-            UpdateMembersResult:updateMembersResult,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) BatchUpdateMembersLoadbalancerV2Pools(req *BatchUpdateMembersLoadbalancerV2PoolsRequest)(*BatchUpdateMembersLoadbalancerV2PoolsResponse){
-    return NewBatchUpdateMembersLoadbalancerV2PoolsResponse(pools.BatchUpdateMembers(oc.client,req.PoolID,req.Opts, ))
+    return NewUpdateMemberLoadbalancerV2PoolsResponse(pools.UpdateMember(oc.Client,req.PoolID,req.MemberID,req.Opts, ))
 
 }
 //request struct for the DeleteMemberLoadbalancerV2Pools
@@ -290,6 +264,6 @@ func NewDeleteMemberLoadbalancerV2PoolsResponse(deleteMemberResult pools.DeleteM
 
 // action function
 func (oc *OpenstackClient) DeleteMemberLoadbalancerV2Pools(req *DeleteMemberLoadbalancerV2PoolsRequest)(*DeleteMemberLoadbalancerV2PoolsResponse){
-    return NewDeleteMemberLoadbalancerV2PoolsResponse(pools.DeleteMember(oc.client,req.PoolID,req.MemberID, ))
+    return NewDeleteMemberLoadbalancerV2PoolsResponse(pools.DeleteMember(oc.Client,req.PoolID,req.MemberID, ))
 
 }

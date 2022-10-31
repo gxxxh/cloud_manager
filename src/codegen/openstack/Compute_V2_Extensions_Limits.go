@@ -11,7 +11,7 @@ import (
 )
 //request struct for the GetComputeV2ExtensionsLimits
 type GetComputeV2ExtensionsLimitsRequest struct{
-    Opts limits.GetOptsBuilder
+    Opts limits.GetOpts
 }
 
 func NewGetComputeV2ExtensionsLimitsRequest()*GetComputeV2ExtensionsLimitsRequest{
@@ -31,6 +31,6 @@ func NewGetComputeV2ExtensionsLimitsResponse(getResult limits.GetResult,)*GetCom
 
 // action function
 func (oc *OpenstackClient) GetComputeV2ExtensionsLimits(req *GetComputeV2ExtensionsLimitsRequest)(*GetComputeV2ExtensionsLimitsResponse){
-    return NewGetComputeV2ExtensionsLimitsResponse(limits.Get(oc.client,req.Opts, ))
+    return NewGetComputeV2ExtensionsLimitsResponse(limits.Get(oc.Client,req.Opts, ))
 
 }

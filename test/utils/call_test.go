@@ -32,4 +32,14 @@ func TestCallMethod(t *testing.T) {
 	fmt.Println(reflect.ValueOf(result[0]).Type())        //*utils.ResStruct
 	fmt.Println(reflect.ValueOf(result[0]).Type().Kind()) //ptr
 	fmt.Printf("%v", reflect.ValueOf(result[0]))          //working
+
+}
+
+func TestMap(t *testing.T) {
+	b := map[string]string{
+		"a": "a",
+	}
+	fmt.Println(b["a"])
+	c := b["b"]
+	fmt.Printf(c)
 }

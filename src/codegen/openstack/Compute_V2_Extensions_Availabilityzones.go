@@ -31,7 +31,7 @@ func NewListComputeV2ExtensionsAvailabilityzonesResponse(pager pagination.Pager,
 
 // action function
 func (oc *OpenstackClient) ListComputeV2ExtensionsAvailabilityzones(req *ListComputeV2ExtensionsAvailabilityzonesRequest)(*ListComputeV2ExtensionsAvailabilityzonesResponse){
-    return NewListComputeV2ExtensionsAvailabilityzonesResponse(availabilityzones.List(oc.client, ))
+    return NewListComputeV2ExtensionsAvailabilityzonesResponse(availabilityzones.List(oc.Client, ))
 
 }
 //request struct for the ListDetailComputeV2ExtensionsAvailabilityzones
@@ -55,6 +55,6 @@ func NewListDetailComputeV2ExtensionsAvailabilityzonesResponse(pager pagination.
 
 // action function
 func (oc *OpenstackClient) ListDetailComputeV2ExtensionsAvailabilityzones(req *ListDetailComputeV2ExtensionsAvailabilityzonesRequest)(*ListDetailComputeV2ExtensionsAvailabilityzonesResponse){
-    return NewListDetailComputeV2ExtensionsAvailabilityzonesResponse(availabilityzones.ListDetail(oc.client, ))
+    return NewListDetailComputeV2ExtensionsAvailabilityzonesResponse(availabilityzones.ListDetail(oc.Client, ))
 
 }

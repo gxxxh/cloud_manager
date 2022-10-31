@@ -32,7 +32,7 @@ func NewListIdentityV3ExtensionsEc2credentialsResponse(pager pagination.Pager,)*
 
 // action function
 func (oc *OpenstackClient) ListIdentityV3ExtensionsEc2credentials(req *ListIdentityV3ExtensionsEc2credentialsRequest)(*ListIdentityV3ExtensionsEc2credentialsResponse){
-    return NewListIdentityV3ExtensionsEc2credentialsResponse(ec2credentials.List(oc.client,req.UserID, ))
+    return NewListIdentityV3ExtensionsEc2credentialsResponse(ec2credentials.List(oc.Client,req.UserID, ))
 
 }
 //request struct for the GetIdentityV3ExtensionsEc2credentials
@@ -58,7 +58,7 @@ func NewGetIdentityV3ExtensionsEc2credentialsResponse(getResult ec2credentials.G
 
 // action function
 func (oc *OpenstackClient) GetIdentityV3ExtensionsEc2credentials(req *GetIdentityV3ExtensionsEc2credentialsRequest)(*GetIdentityV3ExtensionsEc2credentialsResponse){
-    return NewGetIdentityV3ExtensionsEc2credentialsResponse(ec2credentials.Get(oc.client,req.UserID,req.Id, ))
+    return NewGetIdentityV3ExtensionsEc2credentialsResponse(ec2credentials.Get(oc.Client,req.UserID,req.Id, ))
 
 }
 //request struct for the CreateIdentityV3ExtensionsEc2credentials
@@ -84,7 +84,7 @@ func NewCreateIdentityV3ExtensionsEc2credentialsResponse(createResult ec2credent
 
 // action function
 func (oc *OpenstackClient) CreateIdentityV3ExtensionsEc2credentials(req *CreateIdentityV3ExtensionsEc2credentialsRequest)(*CreateIdentityV3ExtensionsEc2credentialsResponse){
-    return NewCreateIdentityV3ExtensionsEc2credentialsResponse(ec2credentials.Create(oc.client,req.UserID,req.Opts, ))
+    return NewCreateIdentityV3ExtensionsEc2credentialsResponse(ec2credentials.Create(oc.Client,req.UserID,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3ExtensionsEc2credentials
@@ -110,6 +110,6 @@ func NewDeleteIdentityV3ExtensionsEc2credentialsResponse(deleteResult ec2credent
 
 // action function
 func (oc *OpenstackClient) DeleteIdentityV3ExtensionsEc2credentials(req *DeleteIdentityV3ExtensionsEc2credentialsRequest)(*DeleteIdentityV3ExtensionsEc2credentialsResponse){
-    return NewDeleteIdentityV3ExtensionsEc2credentialsResponse(ec2credentials.Delete(oc.client,req.UserID,req.Id, ))
+    return NewDeleteIdentityV3ExtensionsEc2credentialsResponse(ec2credentials.Delete(oc.Client,req.UserID,req.Id, ))
 
 }

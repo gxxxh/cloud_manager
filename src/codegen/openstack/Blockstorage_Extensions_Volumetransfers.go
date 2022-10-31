@@ -32,7 +32,7 @@ func NewCreateBlockstorageExtensionsVolumetransfersResponse(createResult volumet
 
 // action function
 func (oc *OpenstackClient) CreateBlockstorageExtensionsVolumetransfers(req *CreateBlockstorageExtensionsVolumetransfersRequest)(*CreateBlockstorageExtensionsVolumetransfersResponse){
-    return NewCreateBlockstorageExtensionsVolumetransfersResponse(volumetransfers.Create(oc.client,req.Opts, ))
+    return NewCreateBlockstorageExtensionsVolumetransfersResponse(volumetransfers.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the AcceptBlockstorageExtensionsVolumetransfers
@@ -58,7 +58,7 @@ func NewAcceptBlockstorageExtensionsVolumetransfersResponse(createResult volumet
 
 // action function
 func (oc *OpenstackClient) AcceptBlockstorageExtensionsVolumetransfers(req *AcceptBlockstorageExtensionsVolumetransfersRequest)(*AcceptBlockstorageExtensionsVolumetransfersResponse){
-    return NewAcceptBlockstorageExtensionsVolumetransfersResponse(volumetransfers.Accept(oc.client,req.Id,req.Opts, ))
+    return NewAcceptBlockstorageExtensionsVolumetransfersResponse(volumetransfers.Accept(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageExtensionsVolumetransfers
@@ -83,12 +83,12 @@ func NewDeleteBlockstorageExtensionsVolumetransfersResponse(deleteResult volumet
 
 // action function
 func (oc *OpenstackClient) DeleteBlockstorageExtensionsVolumetransfers(req *DeleteBlockstorageExtensionsVolumetransfersRequest)(*DeleteBlockstorageExtensionsVolumetransfersResponse){
-    return NewDeleteBlockstorageExtensionsVolumetransfersResponse(volumetransfers.Delete(oc.client,req.Id, ))
+    return NewDeleteBlockstorageExtensionsVolumetransfersResponse(volumetransfers.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the ListBlockstorageExtensionsVolumetransfers
 type ListBlockstorageExtensionsVolumetransfersRequest struct{
-    Opts volumetransfers.ListOptsBuilder
+    Opts volumetransfers.ListOpts
 }
 
 func NewListBlockstorageExtensionsVolumetransfersRequest()*ListBlockstorageExtensionsVolumetransfersRequest{
@@ -108,7 +108,7 @@ func NewListBlockstorageExtensionsVolumetransfersResponse(pager pagination.Pager
 
 // action function
 func (oc *OpenstackClient) ListBlockstorageExtensionsVolumetransfers(req *ListBlockstorageExtensionsVolumetransfersRequest)(*ListBlockstorageExtensionsVolumetransfersResponse){
-    return NewListBlockstorageExtensionsVolumetransfersResponse(volumetransfers.List(oc.client,req.Opts, ))
+    return NewListBlockstorageExtensionsVolumetransfersResponse(volumetransfers.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetBlockstorageExtensionsVolumetransfers
@@ -133,6 +133,6 @@ func NewGetBlockstorageExtensionsVolumetransfersResponse(getResult volumetransfe
 
 // action function
 func (oc *OpenstackClient) GetBlockstorageExtensionsVolumetransfers(req *GetBlockstorageExtensionsVolumetransfersRequest)(*GetBlockstorageExtensionsVolumetransfersResponse){
-    return NewGetBlockstorageExtensionsVolumetransfersResponse(volumetransfers.Get(oc.client,req.Id, ))
+    return NewGetBlockstorageExtensionsVolumetransfersResponse(volumetransfers.Get(oc.Client,req.Id, ))
 
 }

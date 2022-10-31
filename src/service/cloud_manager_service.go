@@ -2,6 +2,7 @@ package service
 
 import (
 	"cloud_manager/src/codegen/aliyun"
+	"cloud_manager/src/codegen/openstack"
 	"cloud_manager/src/utils"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
@@ -14,33 +15,36 @@ type MultiCloudManager struct {
 	requestRegistry map[string]interface{}
 }
 
-func NewMultiCloudManager(kind string, params ...string) (*MultiCloudManager, error) {
-	mcm := &MultiCloudManager{
+func NewMultiCloudManager(params map[string]string) (mcm *MultiCloudManager, err error) {
+	kind, ok := params["kind"]
+	if !ok {
+		err = fmt.Errorf("Error, the kind can't be empty")
+		return
+	}
+	mcm = &MultiCloudManager{
 		Kind: kind,
 	}
-	err := mcm.Init(params...)
-	if err != nil {
-		return nil, err
-	}
-	return mcm, err
+	err = mcm.Init(params)
+	return
 }
 
-func (m *MultiCloudManager) Init(params ...string) error {
+func (m *MultiCloudManager) Init(params map[string]string) (err error) {
 	switch m.Kind {
 	case "aliyun":
-		client, err := ecs.NewClientWithAccessKey(params[0], params[1], params[2])
-		if err != nil {
-			log.Println("Init MultiCloudManager error: ", err)
-			return err
-		}
-		m.Client = client
+		//regionId, accessId, accessKeySecret
+		m.Client, err = ecs.NewClientWithAccessKey(params["regionId"], params["accessId"], params["accessKeySecret"])
 		m.requestRegistry = aliyun.CreateRequestRegistry
+	case "openstack":
+		//IdentityEndPoint, Username, Password
+		m.Client, err = openstack.NewOpenstackClient(params)
+		//m.requestRegistry = openstack.CreateRequestRegistry
 	default:
-		err := fmt.Errorf("unsupport cloud type")
-		log.Println("Init MultiCloudManager error: ", err)
-		return err
+		err = fmt.Errorf("unsupport cloud type")
 	}
-	return nil
+	if err != nil {
+		log.Println("Init MultiCloudManager error: ", err)
+	}
+	return
 }
 
 /*

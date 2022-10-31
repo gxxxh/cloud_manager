@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListBlockstorageExtensionsSchedulerstats
 type ListBlockstorageExtensionsSchedulerstatsRequest struct{
-    Opts schedulerstats.ListOptsBuilder
+    Opts schedulerstats.ListOpts
 }
 
 func NewListBlockstorageExtensionsSchedulerstatsRequest()*ListBlockstorageExtensionsSchedulerstatsRequest{
@@ -32,6 +32,6 @@ func NewListBlockstorageExtensionsSchedulerstatsResponse(pager pagination.Pager,
 
 // action function
 func (oc *OpenstackClient) ListBlockstorageExtensionsSchedulerstats(req *ListBlockstorageExtensionsSchedulerstatsRequest)(*ListBlockstorageExtensionsSchedulerstatsResponse){
-    return NewListBlockstorageExtensionsSchedulerstatsResponse(schedulerstats.List(oc.client,req.Opts, ))
+    return NewListBlockstorageExtensionsSchedulerstatsResponse(schedulerstats.List(oc.Client,req.Opts, ))
 
 }

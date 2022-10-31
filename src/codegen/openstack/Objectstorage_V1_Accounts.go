@@ -11,7 +11,7 @@ import (
 )
 //request struct for the GetObjectstorageV1Accounts
 type GetObjectstorageV1AccountsRequest struct{
-    Opts accounts.GetOptsBuilder
+    Opts accounts.GetOpts
 }
 
 func NewGetObjectstorageV1AccountsRequest()*GetObjectstorageV1AccountsRequest{
@@ -31,12 +31,12 @@ func NewGetObjectstorageV1AccountsResponse(getResult accounts.GetResult,)*GetObj
 
 // action function
 func (oc *OpenstackClient) GetObjectstorageV1Accounts(req *GetObjectstorageV1AccountsRequest)(*GetObjectstorageV1AccountsResponse){
-    return NewGetObjectstorageV1AccountsResponse(accounts.Get(oc.client,req.Opts, ))
+    return NewGetObjectstorageV1AccountsResponse(accounts.Get(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateObjectstorageV1Accounts
 type UpdateObjectstorageV1AccountsRequest struct{
-    Opts accounts.UpdateOptsBuilder
+    Opts accounts.UpdateOpts
 }
 
 func NewUpdateObjectstorageV1AccountsRequest()*UpdateObjectstorageV1AccountsRequest{
@@ -56,6 +56,6 @@ func NewUpdateObjectstorageV1AccountsResponse(updateResult accounts.UpdateResult
 
 // action function
 func (oc *OpenstackClient) UpdateObjectstorageV1Accounts(req *UpdateObjectstorageV1AccountsRequest)(*UpdateObjectstorageV1AccountsResponse){
-    return NewUpdateObjectstorageV1AccountsResponse(accounts.Update(oc.client,req.Opts, ))
+    return NewUpdateObjectstorageV1AccountsResponse(accounts.Update(oc.Client,req.Opts, ))
 
 }

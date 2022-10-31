@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListIdentityV3Projects
 type ListIdentityV3ProjectsRequest struct{
-    Opts projects.ListOptsBuilder
+    Opts projects.ListOpts
 }
 
 func NewListIdentityV3ProjectsRequest()*ListIdentityV3ProjectsRequest{
@@ -32,7 +32,7 @@ func NewListIdentityV3ProjectsResponse(pager pagination.Pager,)*ListIdentityV3Pr
 
 // action function
 func (oc *OpenstackClient) ListIdentityV3Projects(req *ListIdentityV3ProjectsRequest)(*ListIdentityV3ProjectsResponse){
-    return NewListIdentityV3ProjectsResponse(projects.List(oc.client,req.Opts, ))
+    return NewListIdentityV3ProjectsResponse(projects.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the ListAvailableIdentityV3Projects
@@ -56,7 +56,7 @@ func NewListAvailableIdentityV3ProjectsResponse(pager pagination.Pager,)*ListAva
 
 // action function
 func (oc *OpenstackClient) ListAvailableIdentityV3Projects(req *ListAvailableIdentityV3ProjectsRequest)(*ListAvailableIdentityV3ProjectsResponse){
-    return NewListAvailableIdentityV3ProjectsResponse(projects.ListAvailable(oc.client, ))
+    return NewListAvailableIdentityV3ProjectsResponse(projects.ListAvailable(oc.Client, ))
 
 }
 //request struct for the GetIdentityV3Projects
@@ -81,12 +81,12 @@ func NewGetIdentityV3ProjectsResponse(getResult projects.GetResult,)*GetIdentity
 
 // action function
 func (oc *OpenstackClient) GetIdentityV3Projects(req *GetIdentityV3ProjectsRequest)(*GetIdentityV3ProjectsResponse){
-    return NewGetIdentityV3ProjectsResponse(projects.Get(oc.client,req.Id, ))
+    return NewGetIdentityV3ProjectsResponse(projects.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateIdentityV3Projects
 type CreateIdentityV3ProjectsRequest struct{
-    Opts projects.CreateOptsBuilder
+    Opts projects.CreateOpts
 }
 
 func NewCreateIdentityV3ProjectsRequest()*CreateIdentityV3ProjectsRequest{
@@ -106,7 +106,7 @@ func NewCreateIdentityV3ProjectsResponse(createResult projects.CreateResult,)*Cr
 
 // action function
 func (oc *OpenstackClient) CreateIdentityV3Projects(req *CreateIdentityV3ProjectsRequest)(*CreateIdentityV3ProjectsResponse){
-    return NewCreateIdentityV3ProjectsResponse(projects.Create(oc.client,req.Opts, ))
+    return NewCreateIdentityV3ProjectsResponse(projects.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Projects
@@ -131,13 +131,13 @@ func NewDeleteIdentityV3ProjectsResponse(deleteResult projects.DeleteResult,)*De
 
 // action function
 func (oc *OpenstackClient) DeleteIdentityV3Projects(req *DeleteIdentityV3ProjectsRequest)(*DeleteIdentityV3ProjectsResponse){
-    return NewDeleteIdentityV3ProjectsResponse(projects.Delete(oc.client,req.ProjectID, ))
+    return NewDeleteIdentityV3ProjectsResponse(projects.Delete(oc.Client,req.ProjectID, ))
 
 }
 //request struct for the UpdateIdentityV3Projects
 type UpdateIdentityV3ProjectsRequest struct{
     Id string
-    Opts projects.UpdateOptsBuilder
+    Opts projects.UpdateOpts
 }
 
 func NewUpdateIdentityV3ProjectsRequest()*UpdateIdentityV3ProjectsRequest{
@@ -157,6 +157,6 @@ func NewUpdateIdentityV3ProjectsResponse(updateResult projects.UpdateResult,)*Up
 
 // action function
 func (oc *OpenstackClient) UpdateIdentityV3Projects(req *UpdateIdentityV3ProjectsRequest)(*UpdateIdentityV3ProjectsResponse){
-    return NewUpdateIdentityV3ProjectsResponse(projects.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateIdentityV3ProjectsResponse(projects.Update(oc.Client,req.Id,req.Opts, ))
 
 }

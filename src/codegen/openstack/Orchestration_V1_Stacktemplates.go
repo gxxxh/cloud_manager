@@ -32,12 +32,12 @@ func NewGetOrchestrationV1StacktemplatesResponse(getResult stacktemplates.GetRes
 
 // action function
 func (oc *OpenstackClient) GetOrchestrationV1Stacktemplates(req *GetOrchestrationV1StacktemplatesRequest)(*GetOrchestrationV1StacktemplatesResponse){
-    return NewGetOrchestrationV1StacktemplatesResponse(stacktemplates.Get(oc.client,req.StackName,req.StackID, ))
+    return NewGetOrchestrationV1StacktemplatesResponse(stacktemplates.Get(oc.Client,req.StackName,req.StackID, ))
 
 }
 //request struct for the ValidateOrchestrationV1Stacktemplates
 type ValidateOrchestrationV1StacktemplatesRequest struct{
-    Opts stacktemplates.ValidateOptsBuilder
+    Opts stacktemplates.ValidateOpts
 }
 
 func NewValidateOrchestrationV1StacktemplatesRequest()*ValidateOrchestrationV1StacktemplatesRequest{
@@ -57,6 +57,6 @@ func NewValidateOrchestrationV1StacktemplatesResponse(validateResult stacktempla
 
 // action function
 func (oc *OpenstackClient) ValidateOrchestrationV1Stacktemplates(req *ValidateOrchestrationV1StacktemplatesRequest)(*ValidateOrchestrationV1StacktemplatesResponse){
-    return NewValidateOrchestrationV1StacktemplatesResponse(stacktemplates.Validate(oc.client,req.Opts, ))
+    return NewValidateOrchestrationV1StacktemplatesResponse(stacktemplates.Validate(oc.Client,req.Opts, ))
 
 }

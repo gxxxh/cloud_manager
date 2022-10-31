@@ -32,7 +32,7 @@ func NewGetClusteringV1ProfiletypesResponse(getResult profiletypes.GetResult,)*G
 
 // action function
 func (oc *OpenstackClient) GetClusteringV1Profiletypes(req *GetClusteringV1ProfiletypesRequest)(*GetClusteringV1ProfiletypesResponse){
-    return NewGetClusteringV1ProfiletypesResponse(profiletypes.Get(oc.client,req.Id, ))
+    return NewGetClusteringV1ProfiletypesResponse(profiletypes.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListClusteringV1Profiletypes
@@ -56,7 +56,7 @@ func NewListClusteringV1ProfiletypesResponse(pager pagination.Pager,)*ListCluste
 
 // action function
 func (oc *OpenstackClient) ListClusteringV1Profiletypes(req *ListClusteringV1ProfiletypesRequest)(*ListClusteringV1ProfiletypesResponse){
-    return NewListClusteringV1ProfiletypesResponse(profiletypes.List(oc.client, ))
+    return NewListClusteringV1ProfiletypesResponse(profiletypes.List(oc.Client, ))
 
 }
 //request struct for the ListOpsClusteringV1Profiletypes
@@ -81,6 +81,6 @@ func NewListOpsClusteringV1ProfiletypesResponse(pager pagination.Pager,)*ListOps
 
 // action function
 func (oc *OpenstackClient) ListOpsClusteringV1Profiletypes(req *ListOpsClusteringV1ProfiletypesRequest)(*ListOpsClusteringV1ProfiletypesResponse){
-    return NewListOpsClusteringV1ProfiletypesResponse(profiletypes.ListOps(oc.client,req.Id, ))
+    return NewListOpsClusteringV1ProfiletypesResponse(profiletypes.ListOps(oc.Client,req.Id, ))
 
 }

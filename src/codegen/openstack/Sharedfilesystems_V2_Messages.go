@@ -32,12 +32,12 @@ func NewDeleteSharedfilesystemsV2MessagesResponse(deleteResult messages.DeleteRe
 
 // action function
 func (oc *OpenstackClient) DeleteSharedfilesystemsV2Messages(req *DeleteSharedfilesystemsV2MessagesRequest)(*DeleteSharedfilesystemsV2MessagesResponse){
-    return NewDeleteSharedfilesystemsV2MessagesResponse(messages.Delete(oc.client,req.Id, ))
+    return NewDeleteSharedfilesystemsV2MessagesResponse(messages.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the ListSharedfilesystemsV2Messages
 type ListSharedfilesystemsV2MessagesRequest struct{
-    Opts messages.ListOptsBuilder
+    Opts messages.ListOpts
 }
 
 func NewListSharedfilesystemsV2MessagesRequest()*ListSharedfilesystemsV2MessagesRequest{
@@ -57,7 +57,7 @@ func NewListSharedfilesystemsV2MessagesResponse(pager pagination.Pager,)*ListSha
 
 // action function
 func (oc *OpenstackClient) ListSharedfilesystemsV2Messages(req *ListSharedfilesystemsV2MessagesRequest)(*ListSharedfilesystemsV2MessagesResponse){
-    return NewListSharedfilesystemsV2MessagesResponse(messages.List(oc.client,req.Opts, ))
+    return NewListSharedfilesystemsV2MessagesResponse(messages.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetSharedfilesystemsV2Messages
@@ -82,6 +82,6 @@ func NewGetSharedfilesystemsV2MessagesResponse(getResult messages.GetResult,)*Ge
 
 // action function
 func (oc *OpenstackClient) GetSharedfilesystemsV2Messages(req *GetSharedfilesystemsV2MessagesRequest)(*GetSharedfilesystemsV2MessagesResponse){
-    return NewGetSharedfilesystemsV2MessagesResponse(messages.Get(oc.client,req.Id, ))
+    return NewGetSharedfilesystemsV2MessagesResponse(messages.Get(oc.Client,req.Id, ))
 
 }

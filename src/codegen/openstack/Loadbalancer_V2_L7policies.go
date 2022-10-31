@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateLoadbalancerV2L7policies
 type CreateLoadbalancerV2L7policiesRequest struct{
-    Opts l7policies.CreateOptsBuilder
+    Opts l7policies.CreateOpts
 }
 
 func NewCreateLoadbalancerV2L7policiesRequest()*CreateLoadbalancerV2L7policiesRequest{
@@ -32,12 +32,12 @@ func NewCreateLoadbalancerV2L7policiesResponse(createResult l7policies.CreateRes
 
 // action function
 func (oc *OpenstackClient) CreateLoadbalancerV2L7policies(req *CreateLoadbalancerV2L7policiesRequest)(*CreateLoadbalancerV2L7policiesResponse){
-    return NewCreateLoadbalancerV2L7policiesResponse(l7policies.Create(oc.client,req.Opts, ))
+    return NewCreateLoadbalancerV2L7policiesResponse(l7policies.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the ListLoadbalancerV2L7policies
 type ListLoadbalancerV2L7policiesRequest struct{
-    Opts l7policies.ListOptsBuilder
+    Opts l7policies.ListOpts
 }
 
 func NewListLoadbalancerV2L7policiesRequest()*ListLoadbalancerV2L7policiesRequest{
@@ -57,7 +57,7 @@ func NewListLoadbalancerV2L7policiesResponse(pager pagination.Pager,)*ListLoadba
 
 // action function
 func (oc *OpenstackClient) ListLoadbalancerV2L7policies(req *ListLoadbalancerV2L7policiesRequest)(*ListLoadbalancerV2L7policiesResponse){
-    return NewListLoadbalancerV2L7policiesResponse(l7policies.List(oc.client,req.Opts, ))
+    return NewListLoadbalancerV2L7policiesResponse(l7policies.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetLoadbalancerV2L7policies
@@ -82,7 +82,7 @@ func NewGetLoadbalancerV2L7policiesResponse(getResult l7policies.GetResult,)*Get
 
 // action function
 func (oc *OpenstackClient) GetLoadbalancerV2L7policies(req *GetLoadbalancerV2L7policiesRequest)(*GetLoadbalancerV2L7policiesResponse){
-    return NewGetLoadbalancerV2L7policiesResponse(l7policies.Get(oc.client,req.Id, ))
+    return NewGetLoadbalancerV2L7policiesResponse(l7policies.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the DeleteLoadbalancerV2L7policies
@@ -107,13 +107,13 @@ func NewDeleteLoadbalancerV2L7policiesResponse(deleteResult l7policies.DeleteRes
 
 // action function
 func (oc *OpenstackClient) DeleteLoadbalancerV2L7policies(req *DeleteLoadbalancerV2L7policiesRequest)(*DeleteLoadbalancerV2L7policiesResponse){
-    return NewDeleteLoadbalancerV2L7policiesResponse(l7policies.Delete(oc.client,req.Id, ))
+    return NewDeleteLoadbalancerV2L7policiesResponse(l7policies.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateLoadbalancerV2L7policies
 type UpdateLoadbalancerV2L7policiesRequest struct{
     Id string
-    Opts l7policies.UpdateOptsBuilder
+    Opts l7policies.UpdateOpts
 }
 
 func NewUpdateLoadbalancerV2L7policiesRequest()*UpdateLoadbalancerV2L7policiesRequest{
@@ -133,7 +133,7 @@ func NewUpdateLoadbalancerV2L7policiesResponse(updateResult l7policies.UpdateRes
 
 // action function
 func (oc *OpenstackClient) UpdateLoadbalancerV2L7policies(req *UpdateLoadbalancerV2L7policiesRequest)(*UpdateLoadbalancerV2L7policiesResponse){
-    return NewUpdateLoadbalancerV2L7policiesResponse(l7policies.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateLoadbalancerV2L7policiesResponse(l7policies.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the CreateRuleLoadbalancerV2L7policies
@@ -159,13 +159,13 @@ func NewCreateRuleLoadbalancerV2L7policiesResponse(createRuleResult l7policies.C
 
 // action function
 func (oc *OpenstackClient) CreateRuleLoadbalancerV2L7policies(req *CreateRuleLoadbalancerV2L7policiesRequest)(*CreateRuleLoadbalancerV2L7policiesResponse){
-    return NewCreateRuleLoadbalancerV2L7policiesResponse(l7policies.CreateRule(oc.client,req.PolicyID,req.Opts, ))
+    return NewCreateRuleLoadbalancerV2L7policiesResponse(l7policies.CreateRule(oc.Client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the ListRulesLoadbalancerV2L7policies
 type ListRulesLoadbalancerV2L7policiesRequest struct{
     PolicyID string
-    Opts l7policies.ListRulesOptsBuilder
+    Opts l7policies.ListRulesOpts
 }
 
 func NewListRulesLoadbalancerV2L7policiesRequest()*ListRulesLoadbalancerV2L7policiesRequest{
@@ -185,7 +185,7 @@ func NewListRulesLoadbalancerV2L7policiesResponse(pager pagination.Pager,)*ListR
 
 // action function
 func (oc *OpenstackClient) ListRulesLoadbalancerV2L7policies(req *ListRulesLoadbalancerV2L7policiesRequest)(*ListRulesLoadbalancerV2L7policiesResponse){
-    return NewListRulesLoadbalancerV2L7policiesResponse(l7policies.ListRules(oc.client,req.PolicyID,req.Opts, ))
+    return NewListRulesLoadbalancerV2L7policiesResponse(l7policies.ListRules(oc.Client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the GetRuleLoadbalancerV2L7policies
@@ -211,7 +211,7 @@ func NewGetRuleLoadbalancerV2L7policiesResponse(getRuleResult l7policies.GetRule
 
 // action function
 func (oc *OpenstackClient) GetRuleLoadbalancerV2L7policies(req *GetRuleLoadbalancerV2L7policiesRequest)(*GetRuleLoadbalancerV2L7policiesResponse){
-    return NewGetRuleLoadbalancerV2L7policiesResponse(l7policies.GetRule(oc.client,req.PolicyID,req.RuleID, ))
+    return NewGetRuleLoadbalancerV2L7policiesResponse(l7policies.GetRule(oc.Client,req.PolicyID,req.RuleID, ))
 
 }
 //request struct for the DeleteRuleLoadbalancerV2L7policies
@@ -237,14 +237,14 @@ func NewDeleteRuleLoadbalancerV2L7policiesResponse(deleteRuleResult l7policies.D
 
 // action function
 func (oc *OpenstackClient) DeleteRuleLoadbalancerV2L7policies(req *DeleteRuleLoadbalancerV2L7policiesRequest)(*DeleteRuleLoadbalancerV2L7policiesResponse){
-    return NewDeleteRuleLoadbalancerV2L7policiesResponse(l7policies.DeleteRule(oc.client,req.PolicyID,req.RuleID, ))
+    return NewDeleteRuleLoadbalancerV2L7policiesResponse(l7policies.DeleteRule(oc.Client,req.PolicyID,req.RuleID, ))
 
 }
 //request struct for the UpdateRuleLoadbalancerV2L7policies
 type UpdateRuleLoadbalancerV2L7policiesRequest struct{
     PolicyID string
     RuleID string
-    Opts l7policies.UpdateRuleOptsBuilder
+    Opts l7policies.UpdateRuleOpts
 }
 
 func NewUpdateRuleLoadbalancerV2L7policiesRequest()*UpdateRuleLoadbalancerV2L7policiesRequest{
@@ -264,6 +264,6 @@ func NewUpdateRuleLoadbalancerV2L7policiesResponse(updateRuleResult l7policies.U
 
 // action function
 func (oc *OpenstackClient) UpdateRuleLoadbalancerV2L7policies(req *UpdateRuleLoadbalancerV2L7policiesRequest)(*UpdateRuleLoadbalancerV2L7policiesResponse){
-    return NewUpdateRuleLoadbalancerV2L7policiesResponse(l7policies.UpdateRule(oc.client,req.PolicyID,req.RuleID,req.Opts, ))
+    return NewUpdateRuleLoadbalancerV2L7policiesResponse(l7policies.UpdateRule(oc.Client,req.PolicyID,req.RuleID,req.Opts, ))
 
 }

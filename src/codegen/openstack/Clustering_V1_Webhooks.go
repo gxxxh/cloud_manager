@@ -12,7 +12,7 @@ import (
 //request struct for the TriggerClusteringV1Webhooks
 type TriggerClusteringV1WebhooksRequest struct{
     Id string
-    Opts webhooks.TriggerOptsBuilder
+    Opts webhooks.TriggerOpts
 }
 
 func NewTriggerClusteringV1WebhooksRequest()*TriggerClusteringV1WebhooksRequest{
@@ -32,6 +32,6 @@ func NewTriggerClusteringV1WebhooksResponse(triggerResult webhooks.TriggerResult
 
 // action function
 func (oc *OpenstackClient) TriggerClusteringV1Webhooks(req *TriggerClusteringV1WebhooksRequest)(*TriggerClusteringV1WebhooksResponse){
-    return NewTriggerClusteringV1WebhooksResponse(webhooks.Trigger(oc.client,req.Id,req.Opts, ))
+    return NewTriggerClusteringV1WebhooksResponse(webhooks.Trigger(oc.Client,req.Id,req.Opts, ))
 
 }

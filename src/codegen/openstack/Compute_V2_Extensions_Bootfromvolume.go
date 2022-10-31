@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateComputeV2ExtensionsBootfromvolume
 type CreateComputeV2ExtensionsBootfromvolumeRequest struct{
-    Opts servers.CreateOptsBuilder
+    Opts servers.CreateOpts
 }
 
 func NewCreateComputeV2ExtensionsBootfromvolumeRequest()*CreateComputeV2ExtensionsBootfromvolumeRequest{
@@ -32,6 +32,6 @@ func NewCreateComputeV2ExtensionsBootfromvolumeResponse(createResult servers.Cre
 
 // action function
 func (oc *OpenstackClient) CreateComputeV2ExtensionsBootfromvolume(req *CreateComputeV2ExtensionsBootfromvolumeRequest)(*CreateComputeV2ExtensionsBootfromvolumeResponse){
-    return NewCreateComputeV2ExtensionsBootfromvolumeResponse(bootfromvolume.Create(oc.client,req.Opts, ))
+    return NewCreateComputeV2ExtensionsBootfromvolumeResponse(bootfromvolume.Create(oc.Client,req.Opts, ))
 
 }

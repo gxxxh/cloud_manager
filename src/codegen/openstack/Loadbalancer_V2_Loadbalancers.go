@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListLoadbalancerV2Loadbalancers
 type ListLoadbalancerV2LoadbalancersRequest struct{
-    Opts loadbalancers.ListOptsBuilder
+    Opts loadbalancers.ListOpts
 }
 
 func NewListLoadbalancerV2LoadbalancersRequest()*ListLoadbalancerV2LoadbalancersRequest{
@@ -32,12 +32,12 @@ func NewListLoadbalancerV2LoadbalancersResponse(pager pagination.Pager,)*ListLoa
 
 // action function
 func (oc *OpenstackClient) ListLoadbalancerV2Loadbalancers(req *ListLoadbalancerV2LoadbalancersRequest)(*ListLoadbalancerV2LoadbalancersResponse){
-    return NewListLoadbalancerV2LoadbalancersResponse(loadbalancers.List(oc.client,req.Opts, ))
+    return NewListLoadbalancerV2LoadbalancersResponse(loadbalancers.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateLoadbalancerV2Loadbalancers
 type CreateLoadbalancerV2LoadbalancersRequest struct{
-    Opts loadbalancers.CreateOptsBuilder
+    Opts loadbalancers.CreateOpts
 }
 
 func NewCreateLoadbalancerV2LoadbalancersRequest()*CreateLoadbalancerV2LoadbalancersRequest{
@@ -57,7 +57,7 @@ func NewCreateLoadbalancerV2LoadbalancersResponse(createResult loadbalancers.Cre
 
 // action function
 func (oc *OpenstackClient) CreateLoadbalancerV2Loadbalancers(req *CreateLoadbalancerV2LoadbalancersRequest)(*CreateLoadbalancerV2LoadbalancersResponse){
-    return NewCreateLoadbalancerV2LoadbalancersResponse(loadbalancers.Create(oc.client,req.Opts, ))
+    return NewCreateLoadbalancerV2LoadbalancersResponse(loadbalancers.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetLoadbalancerV2Loadbalancers
@@ -82,7 +82,7 @@ func NewGetLoadbalancerV2LoadbalancersResponse(getResult loadbalancers.GetResult
 
 // action function
 func (oc *OpenstackClient) GetLoadbalancerV2Loadbalancers(req *GetLoadbalancerV2LoadbalancersRequest)(*GetLoadbalancerV2LoadbalancersResponse){
-    return NewGetLoadbalancerV2LoadbalancersResponse(loadbalancers.Get(oc.client,req.Id, ))
+    return NewGetLoadbalancerV2LoadbalancersResponse(loadbalancers.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateLoadbalancerV2Loadbalancers
@@ -108,13 +108,13 @@ func NewUpdateLoadbalancerV2LoadbalancersResponse(updateResult loadbalancers.Upd
 
 // action function
 func (oc *OpenstackClient) UpdateLoadbalancerV2Loadbalancers(req *UpdateLoadbalancerV2LoadbalancersRequest)(*UpdateLoadbalancerV2LoadbalancersResponse){
-    return NewUpdateLoadbalancerV2LoadbalancersResponse(loadbalancers.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateLoadbalancerV2LoadbalancersResponse(loadbalancers.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteLoadbalancerV2Loadbalancers
 type DeleteLoadbalancerV2LoadbalancersRequest struct{
     Id string
-    Opts loadbalancers.DeleteOptsBuilder
+    Opts loadbalancers.DeleteOpts
 }
 
 func NewDeleteLoadbalancerV2LoadbalancersRequest()*DeleteLoadbalancerV2LoadbalancersRequest{
@@ -134,7 +134,7 @@ func NewDeleteLoadbalancerV2LoadbalancersResponse(deleteResult loadbalancers.Del
 
 // action function
 func (oc *OpenstackClient) DeleteLoadbalancerV2Loadbalancers(req *DeleteLoadbalancerV2LoadbalancersRequest)(*DeleteLoadbalancerV2LoadbalancersResponse){
-    return NewDeleteLoadbalancerV2LoadbalancersResponse(loadbalancers.Delete(oc.client,req.Id,req.Opts, ))
+    return NewDeleteLoadbalancerV2LoadbalancersResponse(loadbalancers.Delete(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the GetStatusesLoadbalancerV2Loadbalancers
@@ -159,7 +159,7 @@ func NewGetStatusesLoadbalancerV2LoadbalancersResponse(getStatusesResult loadbal
 
 // action function
 func (oc *OpenstackClient) GetStatusesLoadbalancerV2Loadbalancers(req *GetStatusesLoadbalancerV2LoadbalancersRequest)(*GetStatusesLoadbalancerV2LoadbalancersResponse){
-    return NewGetStatusesLoadbalancerV2LoadbalancersResponse(loadbalancers.GetStatuses(oc.client,req.Id, ))
+    return NewGetStatusesLoadbalancerV2LoadbalancersResponse(loadbalancers.GetStatuses(oc.Client,req.Id, ))
 
 }
 //request struct for the GetStatsLoadbalancerV2Loadbalancers
@@ -184,7 +184,7 @@ func NewGetStatsLoadbalancerV2LoadbalancersResponse(statsResult loadbalancers.St
 
 // action function
 func (oc *OpenstackClient) GetStatsLoadbalancerV2Loadbalancers(req *GetStatsLoadbalancerV2LoadbalancersRequest)(*GetStatsLoadbalancerV2LoadbalancersResponse){
-    return NewGetStatsLoadbalancerV2LoadbalancersResponse(loadbalancers.GetStats(oc.client,req.Id, ))
+    return NewGetStatsLoadbalancerV2LoadbalancersResponse(loadbalancers.GetStats(oc.Client,req.Id, ))
 
 }
 //request struct for the FailoverLoadbalancerV2Loadbalancers
@@ -209,6 +209,6 @@ func NewFailoverLoadbalancerV2LoadbalancersResponse(failoverResult loadbalancers
 
 // action function
 func (oc *OpenstackClient) FailoverLoadbalancerV2Loadbalancers(req *FailoverLoadbalancerV2LoadbalancersRequest)(*FailoverLoadbalancerV2LoadbalancersResponse){
-    return NewFailoverLoadbalancerV2LoadbalancersResponse(loadbalancers.Failover(oc.client,req.Id, ))
+    return NewFailoverLoadbalancerV2LoadbalancersResponse(loadbalancers.Failover(oc.Client,req.Id, ))
 
 }

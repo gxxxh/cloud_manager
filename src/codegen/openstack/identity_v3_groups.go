@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListIdentityV3Groups
 type ListIdentityV3GroupsRequest struct{
-    Opts groups.ListOptsBuilder
+    Opts groups.ListOpts
 }
 
 func NewListIdentityV3GroupsRequest()*ListIdentityV3GroupsRequest{
@@ -32,7 +32,7 @@ func NewListIdentityV3GroupsResponse(pager pagination.Pager,)*ListIdentityV3Grou
 
 // action function
 func (oc *OpenstackClient) ListIdentityV3Groups(req *ListIdentityV3GroupsRequest)(*ListIdentityV3GroupsResponse){
-    return NewListIdentityV3GroupsResponse(groups.List(oc.client,req.Opts, ))
+    return NewListIdentityV3GroupsResponse(groups.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Groups
@@ -57,12 +57,12 @@ func NewGetIdentityV3GroupsResponse(getResult groups.GetResult,)*GetIdentityV3Gr
 
 // action function
 func (oc *OpenstackClient) GetIdentityV3Groups(req *GetIdentityV3GroupsRequest)(*GetIdentityV3GroupsResponse){
-    return NewGetIdentityV3GroupsResponse(groups.Get(oc.client,req.Id, ))
+    return NewGetIdentityV3GroupsResponse(groups.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateIdentityV3Groups
 type CreateIdentityV3GroupsRequest struct{
-    Opts groups.CreateOptsBuilder
+    Opts groups.CreateOpts
 }
 
 func NewCreateIdentityV3GroupsRequest()*CreateIdentityV3GroupsRequest{
@@ -82,13 +82,13 @@ func NewCreateIdentityV3GroupsResponse(createResult groups.CreateResult,)*Create
 
 // action function
 func (oc *OpenstackClient) CreateIdentityV3Groups(req *CreateIdentityV3GroupsRequest)(*CreateIdentityV3GroupsResponse){
-    return NewCreateIdentityV3GroupsResponse(groups.Create(oc.client,req.Opts, ))
+    return NewCreateIdentityV3GroupsResponse(groups.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateIdentityV3Groups
 type UpdateIdentityV3GroupsRequest struct{
     GroupID string
-    Opts groups.UpdateOptsBuilder
+    Opts groups.UpdateOpts
 }
 
 func NewUpdateIdentityV3GroupsRequest()*UpdateIdentityV3GroupsRequest{
@@ -108,7 +108,7 @@ func NewUpdateIdentityV3GroupsResponse(updateResult groups.UpdateResult,)*Update
 
 // action function
 func (oc *OpenstackClient) UpdateIdentityV3Groups(req *UpdateIdentityV3GroupsRequest)(*UpdateIdentityV3GroupsResponse){
-    return NewUpdateIdentityV3GroupsResponse(groups.Update(oc.client,req.GroupID,req.Opts, ))
+    return NewUpdateIdentityV3GroupsResponse(groups.Update(oc.Client,req.GroupID,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Groups
@@ -133,6 +133,6 @@ func NewDeleteIdentityV3GroupsResponse(deleteResult groups.DeleteResult,)*Delete
 
 // action function
 func (oc *OpenstackClient) DeleteIdentityV3Groups(req *DeleteIdentityV3GroupsRequest)(*DeleteIdentityV3GroupsResponse){
-    return NewDeleteIdentityV3GroupsResponse(groups.Delete(oc.client,req.GroupID, ))
+    return NewDeleteIdentityV3GroupsResponse(groups.Delete(oc.Client,req.GroupID, ))
 
 }

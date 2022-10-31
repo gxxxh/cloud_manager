@@ -32,12 +32,12 @@ func NewListNetworkingV2ExtensionsLayer3RoutersResponse(pager pagination.Pager,)
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsLayer3Routers(req *ListNetworkingV2ExtensionsLayer3RoutersRequest)(*ListNetworkingV2ExtensionsLayer3RoutersResponse){
-    return NewListNetworkingV2ExtensionsLayer3RoutersResponse(routers.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2ExtensionsLayer3RoutersResponse(routers.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLayer3Routers
 type CreateNetworkingV2ExtensionsLayer3RoutersRequest struct{
-    Opts routers.CreateOptsBuilder
+    Opts routers.CreateOpts
 }
 
 func NewCreateNetworkingV2ExtensionsLayer3RoutersRequest()*CreateNetworkingV2ExtensionsLayer3RoutersRequest{
@@ -57,7 +57,7 @@ func NewCreateNetworkingV2ExtensionsLayer3RoutersResponse(createResult routers.C
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLayer3Routers(req *CreateNetworkingV2ExtensionsLayer3RoutersRequest)(*CreateNetworkingV2ExtensionsLayer3RoutersResponse){
-    return NewCreateNetworkingV2ExtensionsLayer3RoutersResponse(routers.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsLayer3RoutersResponse(routers.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLayer3Routers
@@ -82,13 +82,13 @@ func NewGetNetworkingV2ExtensionsLayer3RoutersResponse(getResult routers.GetResu
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsLayer3Routers(req *GetNetworkingV2ExtensionsLayer3RoutersRequest)(*GetNetworkingV2ExtensionsLayer3RoutersResponse){
-    return NewGetNetworkingV2ExtensionsLayer3RoutersResponse(routers.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsLayer3RoutersResponse(routers.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLayer3Routers
 type UpdateNetworkingV2ExtensionsLayer3RoutersRequest struct{
     Id string
-    Opts routers.UpdateOptsBuilder
+    Opts routers.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsLayer3RoutersRequest()*UpdateNetworkingV2ExtensionsLayer3RoutersRequest{
@@ -108,7 +108,7 @@ func NewUpdateNetworkingV2ExtensionsLayer3RoutersResponse(updateResult routers.U
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLayer3Routers(req *UpdateNetworkingV2ExtensionsLayer3RoutersRequest)(*UpdateNetworkingV2ExtensionsLayer3RoutersResponse){
-    return NewUpdateNetworkingV2ExtensionsLayer3RoutersResponse(routers.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsLayer3RoutersResponse(routers.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLayer3Routers
@@ -133,13 +133,13 @@ func NewDeleteNetworkingV2ExtensionsLayer3RoutersResponse(deleteResult routers.D
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLayer3Routers(req *DeleteNetworkingV2ExtensionsLayer3RoutersRequest)(*DeleteNetworkingV2ExtensionsLayer3RoutersResponse){
-    return NewDeleteNetworkingV2ExtensionsLayer3RoutersResponse(routers.Delete(oc.client,req.Id, ))
+    return NewDeleteNetworkingV2ExtensionsLayer3RoutersResponse(routers.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the AddInterfaceNetworkingV2ExtensionsLayer3Routers
 type AddInterfaceNetworkingV2ExtensionsLayer3RoutersRequest struct{
     Id string
-    Opts routers.AddInterfaceOptsBuilder
+    Opts routers.AddInterfaceOpts
 }
 
 func NewAddInterfaceNetworkingV2ExtensionsLayer3RoutersRequest()*AddInterfaceNetworkingV2ExtensionsLayer3RoutersRequest{
@@ -159,13 +159,13 @@ func NewAddInterfaceNetworkingV2ExtensionsLayer3RoutersResponse(interfaceResult 
 
 // action function
 func (oc *OpenstackClient) AddInterfaceNetworkingV2ExtensionsLayer3Routers(req *AddInterfaceNetworkingV2ExtensionsLayer3RoutersRequest)(*AddInterfaceNetworkingV2ExtensionsLayer3RoutersResponse){
-    return NewAddInterfaceNetworkingV2ExtensionsLayer3RoutersResponse(routers.AddInterface(oc.client,req.Id,req.Opts, ))
+    return NewAddInterfaceNetworkingV2ExtensionsLayer3RoutersResponse(routers.AddInterface(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the RemoveInterfaceNetworkingV2ExtensionsLayer3Routers
 type RemoveInterfaceNetworkingV2ExtensionsLayer3RoutersRequest struct{
     Id string
-    Opts routers.RemoveInterfaceOptsBuilder
+    Opts routers.RemoveInterfaceOpts
 }
 
 func NewRemoveInterfaceNetworkingV2ExtensionsLayer3RoutersRequest()*RemoveInterfaceNetworkingV2ExtensionsLayer3RoutersRequest{
@@ -185,7 +185,7 @@ func NewRemoveInterfaceNetworkingV2ExtensionsLayer3RoutersResponse(interfaceResu
 
 // action function
 func (oc *OpenstackClient) RemoveInterfaceNetworkingV2ExtensionsLayer3Routers(req *RemoveInterfaceNetworkingV2ExtensionsLayer3RoutersRequest)(*RemoveInterfaceNetworkingV2ExtensionsLayer3RoutersResponse){
-    return NewRemoveInterfaceNetworkingV2ExtensionsLayer3RoutersResponse(routers.RemoveInterface(oc.client,req.Id,req.Opts, ))
+    return NewRemoveInterfaceNetworkingV2ExtensionsLayer3RoutersResponse(routers.RemoveInterface(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ListL3AgentsNetworkingV2ExtensionsLayer3Routers
@@ -210,6 +210,6 @@ func NewListL3AgentsNetworkingV2ExtensionsLayer3RoutersResponse(pager pagination
 
 // action function
 func (oc *OpenstackClient) ListL3AgentsNetworkingV2ExtensionsLayer3Routers(req *ListL3AgentsNetworkingV2ExtensionsLayer3RoutersRequest)(*ListL3AgentsNetworkingV2ExtensionsLayer3RoutersResponse){
-    return NewListL3AgentsNetworkingV2ExtensionsLayer3RoutersResponse(routers.ListL3Agents(oc.client,req.Id, ))
+    return NewListL3AgentsNetworkingV2ExtensionsLayer3RoutersResponse(routers.ListL3Agents(oc.Client,req.Id, ))
 
 }

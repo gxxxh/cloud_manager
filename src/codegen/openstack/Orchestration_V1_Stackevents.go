@@ -32,14 +32,14 @@ func NewFindOrchestrationV1StackeventsResponse(findResult stackevents.FindResult
 
 // action function
 func (oc *OpenstackClient) FindOrchestrationV1Stackevents(req *FindOrchestrationV1StackeventsRequest)(*FindOrchestrationV1StackeventsResponse){
-    return NewFindOrchestrationV1StackeventsResponse(stackevents.Find(oc.client,req.StackName, ))
+    return NewFindOrchestrationV1StackeventsResponse(stackevents.Find(oc.Client,req.StackName, ))
 
 }
 //request struct for the ListOrchestrationV1Stackevents
 type ListOrchestrationV1StackeventsRequest struct{
     StackName string
     StackID string
-    Opts stackevents.ListOptsBuilder
+    Opts stackevents.ListOpts
 }
 
 func NewListOrchestrationV1StackeventsRequest()*ListOrchestrationV1StackeventsRequest{
@@ -59,7 +59,7 @@ func NewListOrchestrationV1StackeventsResponse(pager pagination.Pager,)*ListOrch
 
 // action function
 func (oc *OpenstackClient) ListOrchestrationV1Stackevents(req *ListOrchestrationV1StackeventsRequest)(*ListOrchestrationV1StackeventsResponse){
-    return NewListOrchestrationV1StackeventsResponse(stackevents.List(oc.client,req.StackName,req.StackID,req.Opts, ))
+    return NewListOrchestrationV1StackeventsResponse(stackevents.List(oc.Client,req.StackName,req.StackID,req.Opts, ))
 
 }
 //request struct for the ListResourceEventsOrchestrationV1Stackevents
@@ -67,7 +67,7 @@ type ListResourceEventsOrchestrationV1StackeventsRequest struct{
     StackName string
     StackID string
     ResourceName string
-    Opts stackevents.ListResourceEventsOptsBuilder
+    Opts stackevents.ListResourceEventsOpts
 }
 
 func NewListResourceEventsOrchestrationV1StackeventsRequest()*ListResourceEventsOrchestrationV1StackeventsRequest{
@@ -87,7 +87,7 @@ func NewListResourceEventsOrchestrationV1StackeventsResponse(pager pagination.Pa
 
 // action function
 func (oc *OpenstackClient) ListResourceEventsOrchestrationV1Stackevents(req *ListResourceEventsOrchestrationV1StackeventsRequest)(*ListResourceEventsOrchestrationV1StackeventsResponse){
-    return NewListResourceEventsOrchestrationV1StackeventsResponse(stackevents.ListResourceEvents(oc.client,req.StackName,req.StackID,req.ResourceName,req.Opts, ))
+    return NewListResourceEventsOrchestrationV1StackeventsResponse(stackevents.ListResourceEvents(oc.Client,req.StackName,req.StackID,req.ResourceName,req.Opts, ))
 
 }
 //request struct for the GetOrchestrationV1Stackevents
@@ -115,6 +115,6 @@ func NewGetOrchestrationV1StackeventsResponse(getResult stackevents.GetResult,)*
 
 // action function
 func (oc *OpenstackClient) GetOrchestrationV1Stackevents(req *GetOrchestrationV1StackeventsRequest)(*GetOrchestrationV1StackeventsResponse){
-    return NewGetOrchestrationV1StackeventsResponse(stackevents.Get(oc.client,req.StackName,req.StackID,req.ResourceName,req.EventID, ))
+    return NewGetOrchestrationV1StackeventsResponse(stackevents.Get(oc.Client,req.StackName,req.StackID,req.ResourceName,req.EventID, ))
 
 }

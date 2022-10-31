@@ -31,6 +31,6 @@ func NewListVersionsOrchestrationV1ApiversionsResponse(pager pagination.Pager,)*
 
 // action function
 func (oc *OpenstackClient) ListVersionsOrchestrationV1Apiversions(req *ListVersionsOrchestrationV1ApiversionsRequest)(*ListVersionsOrchestrationV1ApiversionsResponse){
-    return NewListVersionsOrchestrationV1ApiversionsResponse(apiversions.ListVersions(oc.client, ))
+    return NewListVersionsOrchestrationV1ApiversionsResponse(apiversions.ListVersions(oc.Client, ))
 
 }

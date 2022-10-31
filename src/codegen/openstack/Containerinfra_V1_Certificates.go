@@ -31,12 +31,12 @@ func NewGetContainerinfraV1CertificatesResponse(getResult certificates.GetResult
 
 // action function
 func (oc *OpenstackClient) GetContainerinfraV1Certificates(req *GetContainerinfraV1CertificatesRequest)(*GetContainerinfraV1CertificatesResponse){
-    return NewGetContainerinfraV1CertificatesResponse(certificates.Get(oc.client,req.ClusterID, ))
+    return NewGetContainerinfraV1CertificatesResponse(certificates.Get(oc.Client,req.ClusterID, ))
 
 }
 //request struct for the CreateContainerinfraV1Certificates
 type CreateContainerinfraV1CertificatesRequest struct{
-    Opts certificates.CreateOptsBuilder
+    Opts certificates.CreateOpts
 }
 
 func NewCreateContainerinfraV1CertificatesRequest()*CreateContainerinfraV1CertificatesRequest{
@@ -56,7 +56,7 @@ func NewCreateContainerinfraV1CertificatesResponse(createResult certificates.Cre
 
 // action function
 func (oc *OpenstackClient) CreateContainerinfraV1Certificates(req *CreateContainerinfraV1CertificatesRequest)(*CreateContainerinfraV1CertificatesResponse){
-    return NewCreateContainerinfraV1CertificatesResponse(certificates.Create(oc.client,req.Opts, ))
+    return NewCreateContainerinfraV1CertificatesResponse(certificates.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateContainerinfraV1Certificates
@@ -81,6 +81,6 @@ func NewUpdateContainerinfraV1CertificatesResponse(updateResult certificates.Upd
 
 // action function
 func (oc *OpenstackClient) UpdateContainerinfraV1Certificates(req *UpdateContainerinfraV1CertificatesRequest)(*UpdateContainerinfraV1CertificatesResponse){
-    return NewUpdateContainerinfraV1CertificatesResponse(certificates.Update(oc.client,req.ClusterID, ))
+    return NewUpdateContainerinfraV1CertificatesResponse(certificates.Update(oc.Client,req.ClusterID, ))
 
 }

@@ -11,7 +11,7 @@ import (
 )
 //request struct for the CreateIdentityV3Tokens
 type CreateIdentityV3TokensRequest struct{
-    Opts tokens.AuthOptionsBuilder
+    Opts *tokens.AuthOptions
 }
 
 func NewCreateIdentityV3TokensRequest()*CreateIdentityV3TokensRequest{
@@ -31,7 +31,7 @@ func NewCreateIdentityV3TokensResponse(createResult tokens.CreateResult,)*Create
 
 // action function
 func (oc *OpenstackClient) CreateIdentityV3Tokens(req *CreateIdentityV3TokensRequest)(*CreateIdentityV3TokensResponse){
-    return NewCreateIdentityV3TokensResponse(tokens.Create(oc.client,req.Opts, ))
+    return NewCreateIdentityV3TokensResponse(tokens.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Tokens
@@ -56,7 +56,7 @@ func NewGetIdentityV3TokensResponse(getResult tokens.GetResult,)*GetIdentityV3To
 
 // action function
 func (oc *OpenstackClient) GetIdentityV3Tokens(req *GetIdentityV3TokensRequest)(*GetIdentityV3TokensResponse){
-    return NewGetIdentityV3TokensResponse(tokens.Get(oc.client,req.Token, ))
+    return NewGetIdentityV3TokensResponse(tokens.Get(oc.Client,req.Token, ))
 
 }
 //request struct for the RevokeIdentityV3Tokens
@@ -81,6 +81,6 @@ func NewRevokeIdentityV3TokensResponse(revokeResult tokens.RevokeResult,)*Revoke
 
 // action function
 func (oc *OpenstackClient) RevokeIdentityV3Tokens(req *RevokeIdentityV3TokensRequest)(*RevokeIdentityV3TokensResponse){
-    return NewRevokeIdentityV3TokensResponse(tokens.Revoke(oc.client,req.Token, ))
+    return NewRevokeIdentityV3TokensResponse(tokens.Revoke(oc.Client,req.Token, ))
 
 }

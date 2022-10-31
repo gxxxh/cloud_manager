@@ -30,7 +30,7 @@ func NewGetCdnV1BaseResponse(getResult base.GetResult,)*GetCdnV1BaseResponse {
 
 // action function
 func (oc *OpenstackClient) GetCdnV1Base(req *GetCdnV1BaseRequest)(*GetCdnV1BaseResponse){
-    return NewGetCdnV1BaseResponse(base.Get(oc.client, ))
+    return NewGetCdnV1BaseResponse(base.Get(oc.Client, ))
 
 }
 //request struct for the PingCdnV1Base
@@ -54,6 +54,6 @@ func NewPingCdnV1BaseResponse(pingResult base.PingResult,)*PingCdnV1BaseResponse
 
 // action function
 func (oc *OpenstackClient) PingCdnV1Base(req *PingCdnV1BaseRequest)(*PingCdnV1BaseResponse){
-    return NewPingCdnV1BaseResponse(base.Ping(oc.client, ))
+    return NewPingCdnV1BaseResponse(base.Ping(oc.Client, ))
 
 }

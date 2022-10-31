@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateBlockstorageV3Attachments
 type CreateBlockstorageV3AttachmentsRequest struct{
-    Opts attachments.CreateOptsBuilder
+    Opts attachments.CreateOpts
 }
 
 func NewCreateBlockstorageV3AttachmentsRequest()*CreateBlockstorageV3AttachmentsRequest{
@@ -32,7 +32,7 @@ func NewCreateBlockstorageV3AttachmentsResponse(createResult attachments.CreateR
 
 // action function
 func (oc *OpenstackClient) CreateBlockstorageV3Attachments(req *CreateBlockstorageV3AttachmentsRequest)(*CreateBlockstorageV3AttachmentsResponse){
-    return NewCreateBlockstorageV3AttachmentsResponse(attachments.Create(oc.client,req.Opts, ))
+    return NewCreateBlockstorageV3AttachmentsResponse(attachments.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageV3Attachments
@@ -57,7 +57,7 @@ func NewDeleteBlockstorageV3AttachmentsResponse(deleteResult attachments.DeleteR
 
 // action function
 func (oc *OpenstackClient) DeleteBlockstorageV3Attachments(req *DeleteBlockstorageV3AttachmentsRequest)(*DeleteBlockstorageV3AttachmentsResponse){
-    return NewDeleteBlockstorageV3AttachmentsResponse(attachments.Delete(oc.client,req.Id, ))
+    return NewDeleteBlockstorageV3AttachmentsResponse(attachments.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the GetBlockstorageV3Attachments
@@ -82,12 +82,12 @@ func NewGetBlockstorageV3AttachmentsResponse(getResult attachments.GetResult,)*G
 
 // action function
 func (oc *OpenstackClient) GetBlockstorageV3Attachments(req *GetBlockstorageV3AttachmentsRequest)(*GetBlockstorageV3AttachmentsResponse){
-    return NewGetBlockstorageV3AttachmentsResponse(attachments.Get(oc.client,req.Id, ))
+    return NewGetBlockstorageV3AttachmentsResponse(attachments.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListBlockstorageV3Attachments
 type ListBlockstorageV3AttachmentsRequest struct{
-    Opts attachments.ListOptsBuilder
+    Opts attachments.ListOpts
 }
 
 func NewListBlockstorageV3AttachmentsRequest()*ListBlockstorageV3AttachmentsRequest{
@@ -107,13 +107,13 @@ func NewListBlockstorageV3AttachmentsResponse(pager pagination.Pager,)*ListBlock
 
 // action function
 func (oc *OpenstackClient) ListBlockstorageV3Attachments(req *ListBlockstorageV3AttachmentsRequest)(*ListBlockstorageV3AttachmentsResponse){
-    return NewListBlockstorageV3AttachmentsResponse(attachments.List(oc.client,req.Opts, ))
+    return NewListBlockstorageV3AttachmentsResponse(attachments.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateBlockstorageV3Attachments
 type UpdateBlockstorageV3AttachmentsRequest struct{
     Id string
-    Opts attachments.UpdateOptsBuilder
+    Opts attachments.UpdateOpts
 }
 
 func NewUpdateBlockstorageV3AttachmentsRequest()*UpdateBlockstorageV3AttachmentsRequest{
@@ -133,7 +133,7 @@ func NewUpdateBlockstorageV3AttachmentsResponse(updateResult attachments.UpdateR
 
 // action function
 func (oc *OpenstackClient) UpdateBlockstorageV3Attachments(req *UpdateBlockstorageV3AttachmentsRequest)(*UpdateBlockstorageV3AttachmentsResponse){
-    return NewUpdateBlockstorageV3AttachmentsResponse(attachments.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateBlockstorageV3AttachmentsResponse(attachments.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the CompleteBlockstorageV3Attachments
@@ -158,6 +158,6 @@ func NewCompleteBlockstorageV3AttachmentsResponse(completeResult attachments.Com
 
 // action function
 func (oc *OpenstackClient) CompleteBlockstorageV3Attachments(req *CompleteBlockstorageV3AttachmentsRequest)(*CompleteBlockstorageV3AttachmentsResponse){
-    return NewCompleteBlockstorageV3AttachmentsResponse(attachments.Complete(oc.client,req.Id, ))
+    return NewCompleteBlockstorageV3AttachmentsResponse(attachments.Complete(oc.Client,req.Id, ))
 
 }

@@ -31,7 +31,7 @@ func NewListNetworkingV2ExtensionsBgpPeersResponse(pager pagination.Pager,)*List
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsBgpPeers(req *ListNetworkingV2ExtensionsBgpPeersRequest)(*ListNetworkingV2ExtensionsBgpPeersResponse){
-    return NewListNetworkingV2ExtensionsBgpPeersResponse(peers.List(oc.client, ))
+    return NewListNetworkingV2ExtensionsBgpPeersResponse(peers.List(oc.Client, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsBgpPeers
@@ -56,7 +56,7 @@ func NewGetNetworkingV2ExtensionsBgpPeersResponse(getResult peers.GetResult,)*Ge
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsBgpPeers(req *GetNetworkingV2ExtensionsBgpPeersRequest)(*GetNetworkingV2ExtensionsBgpPeersResponse){
-    return NewGetNetworkingV2ExtensionsBgpPeersResponse(peers.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsBgpPeersResponse(peers.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsBgpPeers
@@ -81,7 +81,7 @@ func NewCreateNetworkingV2ExtensionsBgpPeersResponse(createResult peers.CreateRe
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsBgpPeers(req *CreateNetworkingV2ExtensionsBgpPeersRequest)(*CreateNetworkingV2ExtensionsBgpPeersResponse){
-    return NewCreateNetworkingV2ExtensionsBgpPeersResponse(peers.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsBgpPeersResponse(peers.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsBgpPeers
@@ -106,7 +106,7 @@ func NewDeleteNetworkingV2ExtensionsBgpPeersResponse(deleteResult peers.DeleteRe
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsBgpPeers(req *DeleteNetworkingV2ExtensionsBgpPeersRequest)(*DeleteNetworkingV2ExtensionsBgpPeersResponse){
-    return NewDeleteNetworkingV2ExtensionsBgpPeersResponse(peers.Delete(oc.client,req.BgpPeerID, ))
+    return NewDeleteNetworkingV2ExtensionsBgpPeersResponse(peers.Delete(oc.Client,req.BgpPeerID, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsBgpPeers
@@ -132,6 +132,6 @@ func NewUpdateNetworkingV2ExtensionsBgpPeersResponse(updateResult peers.UpdateRe
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsBgpPeers(req *UpdateNetworkingV2ExtensionsBgpPeersRequest)(*UpdateNetworkingV2ExtensionsBgpPeersResponse){
-    return NewUpdateNetworkingV2ExtensionsBgpPeersResponse(peers.Update(oc.client,req.BgpPeerID,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsBgpPeersResponse(peers.Update(oc.Client,req.BgpPeerID,req.Opts, ))
 
 }

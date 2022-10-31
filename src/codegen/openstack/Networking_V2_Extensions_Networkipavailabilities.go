@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListNetworkingV2ExtensionsNetworkipavailabilities
 type ListNetworkingV2ExtensionsNetworkipavailabilitiesRequest struct{
-    Opts networkipavailabilities.ListOptsBuilder
+    Opts networkipavailabilities.ListOpts
 }
 
 func NewListNetworkingV2ExtensionsNetworkipavailabilitiesRequest()*ListNetworkingV2ExtensionsNetworkipavailabilitiesRequest{
@@ -32,7 +32,7 @@ func NewListNetworkingV2ExtensionsNetworkipavailabilitiesResponse(pager paginati
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsNetworkipavailabilities(req *ListNetworkingV2ExtensionsNetworkipavailabilitiesRequest)(*ListNetworkingV2ExtensionsNetworkipavailabilitiesResponse){
-    return NewListNetworkingV2ExtensionsNetworkipavailabilitiesResponse(networkipavailabilities.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2ExtensionsNetworkipavailabilitiesResponse(networkipavailabilities.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsNetworkipavailabilities
@@ -57,6 +57,6 @@ func NewGetNetworkingV2ExtensionsNetworkipavailabilitiesResponse(getResult netwo
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsNetworkipavailabilities(req *GetNetworkingV2ExtensionsNetworkipavailabilitiesRequest)(*GetNetworkingV2ExtensionsNetworkipavailabilitiesResponse){
-    return NewGetNetworkingV2ExtensionsNetworkipavailabilitiesResponse(networkipavailabilities.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsNetworkipavailabilitiesResponse(networkipavailabilities.Get(oc.Client,req.Id, ))
 
 }

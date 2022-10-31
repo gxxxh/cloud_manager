@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateContainerinfraV1Clusters
 type CreateContainerinfraV1ClustersRequest struct{
-    Opts clusters.CreateOptsBuilder
+    Opts clusters.CreateOpts
 }
 
 func NewCreateContainerinfraV1ClustersRequest()*CreateContainerinfraV1ClustersRequest{
@@ -32,7 +32,7 @@ func NewCreateContainerinfraV1ClustersResponse(createResult clusters.CreateResul
 
 // action function
 func (oc *OpenstackClient) CreateContainerinfraV1Clusters(req *CreateContainerinfraV1ClustersRequest)(*CreateContainerinfraV1ClustersResponse){
-    return NewCreateContainerinfraV1ClustersResponse(clusters.Create(oc.client,req.Opts, ))
+    return NewCreateContainerinfraV1ClustersResponse(clusters.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetContainerinfraV1Clusters
@@ -57,7 +57,7 @@ func NewGetContainerinfraV1ClustersResponse(getResult clusters.GetResult,)*GetCo
 
 // action function
 func (oc *OpenstackClient) GetContainerinfraV1Clusters(req *GetContainerinfraV1ClustersRequest)(*GetContainerinfraV1ClustersResponse){
-    return NewGetContainerinfraV1ClustersResponse(clusters.Get(oc.client,req.Id, ))
+    return NewGetContainerinfraV1ClustersResponse(clusters.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the DeleteContainerinfraV1Clusters
@@ -82,12 +82,12 @@ func NewDeleteContainerinfraV1ClustersResponse(deleteResult clusters.DeleteResul
 
 // action function
 func (oc *OpenstackClient) DeleteContainerinfraV1Clusters(req *DeleteContainerinfraV1ClustersRequest)(*DeleteContainerinfraV1ClustersResponse){
-    return NewDeleteContainerinfraV1ClustersResponse(clusters.Delete(oc.client,req.Id, ))
+    return NewDeleteContainerinfraV1ClustersResponse(clusters.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the ListContainerinfraV1Clusters
 type ListContainerinfraV1ClustersRequest struct{
-    Opts clusters.ListOptsBuilder
+    Opts clusters.ListOpts
 }
 
 func NewListContainerinfraV1ClustersRequest()*ListContainerinfraV1ClustersRequest{
@@ -107,12 +107,12 @@ func NewListContainerinfraV1ClustersResponse(pager pagination.Pager,)*ListContai
 
 // action function
 func (oc *OpenstackClient) ListContainerinfraV1Clusters(req *ListContainerinfraV1ClustersRequest)(*ListContainerinfraV1ClustersResponse){
-    return NewListContainerinfraV1ClustersResponse(clusters.List(oc.client,req.Opts, ))
+    return NewListContainerinfraV1ClustersResponse(clusters.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the ListDetailContainerinfraV1Clusters
 type ListDetailContainerinfraV1ClustersRequest struct{
-    Opts clusters.ListOptsBuilder
+    Opts clusters.ListOpts
 }
 
 func NewListDetailContainerinfraV1ClustersRequest()*ListDetailContainerinfraV1ClustersRequest{
@@ -132,39 +132,13 @@ func NewListDetailContainerinfraV1ClustersResponse(pager pagination.Pager,)*List
 
 // action function
 func (oc *OpenstackClient) ListDetailContainerinfraV1Clusters(req *ListDetailContainerinfraV1ClustersRequest)(*ListDetailContainerinfraV1ClustersResponse){
-    return NewListDetailContainerinfraV1ClustersResponse(clusters.ListDetail(oc.client,req.Opts, ))
-
-}
-//request struct for the UpdateContainerinfraV1Clusters
-type UpdateContainerinfraV1ClustersRequest struct{
-    Id string
-    Opts []clusters.UpdateOptsBuilder
-}
-
-func NewUpdateContainerinfraV1ClustersRequest()*UpdateContainerinfraV1ClustersRequest{
-    return &UpdateContainerinfraV1ClustersRequest{}
-}
-
-//response struct for the UpdateContainerinfraV1Clusters
-type UpdateContainerinfraV1ClustersResponse struct{
-    UpdateResult clusters.UpdateResult
-}
-
-func NewUpdateContainerinfraV1ClustersResponse(updateResult clusters.UpdateResult,)*UpdateContainerinfraV1ClustersResponse {
-    return &UpdateContainerinfraV1ClustersResponse{
-            UpdateResult:updateResult,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) UpdateContainerinfraV1Clusters(req *UpdateContainerinfraV1ClustersRequest)(*UpdateContainerinfraV1ClustersResponse){
-    return NewUpdateContainerinfraV1ClustersResponse(clusters.Update(oc.client,req.Id,req.Opts, ))
+    return NewListDetailContainerinfraV1ClustersResponse(clusters.ListDetail(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpgradeContainerinfraV1Clusters
 type UpgradeContainerinfraV1ClustersRequest struct{
     Id string
-    Opts clusters.UpgradeOptsBuilder
+    Opts clusters.UpgradeOpts
 }
 
 func NewUpgradeContainerinfraV1ClustersRequest()*UpgradeContainerinfraV1ClustersRequest{
@@ -184,13 +158,13 @@ func NewUpgradeContainerinfraV1ClustersResponse(upgradeResult clusters.UpgradeRe
 
 // action function
 func (oc *OpenstackClient) UpgradeContainerinfraV1Clusters(req *UpgradeContainerinfraV1ClustersRequest)(*UpgradeContainerinfraV1ClustersResponse){
-    return NewUpgradeContainerinfraV1ClustersResponse(clusters.Upgrade(oc.client,req.Id,req.Opts, ))
+    return NewUpgradeContainerinfraV1ClustersResponse(clusters.Upgrade(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ResizeContainerinfraV1Clusters
 type ResizeContainerinfraV1ClustersRequest struct{
     Id string
-    Opts clusters.ResizeOptsBuilder
+    Opts clusters.ResizeOpts
 }
 
 func NewResizeContainerinfraV1ClustersRequest()*ResizeContainerinfraV1ClustersRequest{
@@ -210,6 +184,6 @@ func NewResizeContainerinfraV1ClustersResponse(resizeResult clusters.ResizeResul
 
 // action function
 func (oc *OpenstackClient) ResizeContainerinfraV1Clusters(req *ResizeContainerinfraV1ClustersRequest)(*ResizeContainerinfraV1ClustersResponse){
-    return NewResizeContainerinfraV1ClustersResponse(clusters.Resize(oc.client,req.Id,req.Opts, ))
+    return NewResizeContainerinfraV1ClustersResponse(clusters.Resize(oc.Client,req.Id,req.Opts, ))
 
 }

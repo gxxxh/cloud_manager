@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListNetworkingV2Networks
 type ListNetworkingV2NetworksRequest struct{
-    Opts networks.ListOptsBuilder
+    Opts networks.ListOpts
 }
 
 func NewListNetworkingV2NetworksRequest()*ListNetworkingV2NetworksRequest{
@@ -32,7 +32,7 @@ func NewListNetworkingV2NetworksResponse(pager pagination.Pager,)*ListNetworking
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2Networks(req *ListNetworkingV2NetworksRequest)(*ListNetworkingV2NetworksResponse){
-    return NewListNetworkingV2NetworksResponse(networks.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2NetworksResponse(networks.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2Networks
@@ -57,12 +57,12 @@ func NewGetNetworkingV2NetworksResponse(getResult networks.GetResult,)*GetNetwor
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2Networks(req *GetNetworkingV2NetworksRequest)(*GetNetworkingV2NetworksResponse){
-    return NewGetNetworkingV2NetworksResponse(networks.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2NetworksResponse(networks.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateNetworkingV2Networks
 type CreateNetworkingV2NetworksRequest struct{
-    Opts networks.CreateOptsBuilder
+    Opts networks.CreateOpts
 }
 
 func NewCreateNetworkingV2NetworksRequest()*CreateNetworkingV2NetworksRequest{
@@ -82,13 +82,13 @@ func NewCreateNetworkingV2NetworksResponse(createResult networks.CreateResult,)*
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2Networks(req *CreateNetworkingV2NetworksRequest)(*CreateNetworkingV2NetworksResponse){
-    return NewCreateNetworkingV2NetworksResponse(networks.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2NetworksResponse(networks.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2Networks
 type UpdateNetworkingV2NetworksRequest struct{
     NetworkID string
-    Opts networks.UpdateOptsBuilder
+    Opts networks.UpdateOpts
 }
 
 func NewUpdateNetworkingV2NetworksRequest()*UpdateNetworkingV2NetworksRequest{
@@ -108,7 +108,7 @@ func NewUpdateNetworkingV2NetworksResponse(updateResult networks.UpdateResult,)*
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2Networks(req *UpdateNetworkingV2NetworksRequest)(*UpdateNetworkingV2NetworksResponse){
-    return NewUpdateNetworkingV2NetworksResponse(networks.Update(oc.client,req.NetworkID,req.Opts, ))
+    return NewUpdateNetworkingV2NetworksResponse(networks.Update(oc.Client,req.NetworkID,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2Networks
@@ -133,6 +133,6 @@ func NewDeleteNetworkingV2NetworksResponse(deleteResult networks.DeleteResult,)*
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2Networks(req *DeleteNetworkingV2NetworksRequest)(*DeleteNetworkingV2NetworksResponse){
-    return NewDeleteNetworkingV2NetworksResponse(networks.Delete(oc.client,req.NetworkID, ))
+    return NewDeleteNetworkingV2NetworksResponse(networks.Delete(oc.Client,req.NetworkID, ))
 
 }

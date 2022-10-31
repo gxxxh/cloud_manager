@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateSharedfilesystemsV2Shares
 type CreateSharedfilesystemsV2SharesRequest struct{
-    Opts shares.CreateOptsBuilder
+    Opts shares.CreateOpts
 }
 
 func NewCreateSharedfilesystemsV2SharesRequest()*CreateSharedfilesystemsV2SharesRequest{
@@ -32,12 +32,12 @@ func NewCreateSharedfilesystemsV2SharesResponse(createResult shares.CreateResult
 
 // action function
 func (oc *OpenstackClient) CreateSharedfilesystemsV2Shares(req *CreateSharedfilesystemsV2SharesRequest)(*CreateSharedfilesystemsV2SharesResponse){
-    return NewCreateSharedfilesystemsV2SharesResponse(shares.Create(oc.client,req.Opts, ))
+    return NewCreateSharedfilesystemsV2SharesResponse(shares.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the ListDetailSharedfilesystemsV2Shares
 type ListDetailSharedfilesystemsV2SharesRequest struct{
-    Opts shares.ListOptsBuilder
+    Opts shares.ListOpts
 }
 
 func NewListDetailSharedfilesystemsV2SharesRequest()*ListDetailSharedfilesystemsV2SharesRequest{
@@ -57,7 +57,7 @@ func NewListDetailSharedfilesystemsV2SharesResponse(pager pagination.Pager,)*Lis
 
 // action function
 func (oc *OpenstackClient) ListDetailSharedfilesystemsV2Shares(req *ListDetailSharedfilesystemsV2SharesRequest)(*ListDetailSharedfilesystemsV2SharesResponse){
-    return NewListDetailSharedfilesystemsV2SharesResponse(shares.ListDetail(oc.client,req.Opts, ))
+    return NewListDetailSharedfilesystemsV2SharesResponse(shares.ListDetail(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteSharedfilesystemsV2Shares
@@ -82,7 +82,7 @@ func NewDeleteSharedfilesystemsV2SharesResponse(deleteResult shares.DeleteResult
 
 // action function
 func (oc *OpenstackClient) DeleteSharedfilesystemsV2Shares(req *DeleteSharedfilesystemsV2SharesRequest)(*DeleteSharedfilesystemsV2SharesResponse){
-    return NewDeleteSharedfilesystemsV2SharesResponse(shares.Delete(oc.client,req.Id, ))
+    return NewDeleteSharedfilesystemsV2SharesResponse(shares.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the GetSharedfilesystemsV2Shares
@@ -107,7 +107,7 @@ func NewGetSharedfilesystemsV2SharesResponse(getResult shares.GetResult,)*GetSha
 
 // action function
 func (oc *OpenstackClient) GetSharedfilesystemsV2Shares(req *GetSharedfilesystemsV2SharesRequest)(*GetSharedfilesystemsV2SharesResponse){
-    return NewGetSharedfilesystemsV2SharesResponse(shares.Get(oc.client,req.Id, ))
+    return NewGetSharedfilesystemsV2SharesResponse(shares.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListExportLocationsSharedfilesystemsV2Shares
@@ -132,7 +132,7 @@ func NewListExportLocationsSharedfilesystemsV2SharesResponse(listExportLocations
 
 // action function
 func (oc *OpenstackClient) ListExportLocationsSharedfilesystemsV2Shares(req *ListExportLocationsSharedfilesystemsV2SharesRequest)(*ListExportLocationsSharedfilesystemsV2SharesResponse){
-    return NewListExportLocationsSharedfilesystemsV2SharesResponse(shares.ListExportLocations(oc.client,req.Id, ))
+    return NewListExportLocationsSharedfilesystemsV2SharesResponse(shares.ListExportLocations(oc.Client,req.Id, ))
 
 }
 //request struct for the GetExportLocationSharedfilesystemsV2Shares
@@ -158,13 +158,13 @@ func NewGetExportLocationSharedfilesystemsV2SharesResponse(getExportLocationResu
 
 // action function
 func (oc *OpenstackClient) GetExportLocationSharedfilesystemsV2Shares(req *GetExportLocationSharedfilesystemsV2SharesRequest)(*GetExportLocationSharedfilesystemsV2SharesResponse){
-    return NewGetExportLocationSharedfilesystemsV2SharesResponse(shares.GetExportLocation(oc.client,req.ShareID,req.Id, ))
+    return NewGetExportLocationSharedfilesystemsV2SharesResponse(shares.GetExportLocation(oc.Client,req.ShareID,req.Id, ))
 
 }
 //request struct for the GrantAccessSharedfilesystemsV2Shares
 type GrantAccessSharedfilesystemsV2SharesRequest struct{
     Id string
-    Opts shares.GrantAccessOptsBuilder
+    Opts shares.GrantAccessOpts
 }
 
 func NewGrantAccessSharedfilesystemsV2SharesRequest()*GrantAccessSharedfilesystemsV2SharesRequest{
@@ -184,13 +184,13 @@ func NewGrantAccessSharedfilesystemsV2SharesResponse(grantAccessResult shares.Gr
 
 // action function
 func (oc *OpenstackClient) GrantAccessSharedfilesystemsV2Shares(req *GrantAccessSharedfilesystemsV2SharesRequest)(*GrantAccessSharedfilesystemsV2SharesResponse){
-    return NewGrantAccessSharedfilesystemsV2SharesResponse(shares.GrantAccess(oc.client,req.Id,req.Opts, ))
+    return NewGrantAccessSharedfilesystemsV2SharesResponse(shares.GrantAccess(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the RevokeAccessSharedfilesystemsV2Shares
 type RevokeAccessSharedfilesystemsV2SharesRequest struct{
     Id string
-    Opts shares.RevokeAccessOptsBuilder
+    Opts shares.RevokeAccessOpts
 }
 
 func NewRevokeAccessSharedfilesystemsV2SharesRequest()*RevokeAccessSharedfilesystemsV2SharesRequest{
@@ -210,7 +210,7 @@ func NewRevokeAccessSharedfilesystemsV2SharesResponse(revokeAccessResult shares.
 
 // action function
 func (oc *OpenstackClient) RevokeAccessSharedfilesystemsV2Shares(req *RevokeAccessSharedfilesystemsV2SharesRequest)(*RevokeAccessSharedfilesystemsV2SharesResponse){
-    return NewRevokeAccessSharedfilesystemsV2SharesResponse(shares.RevokeAccess(oc.client,req.Id,req.Opts, ))
+    return NewRevokeAccessSharedfilesystemsV2SharesResponse(shares.RevokeAccess(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ListAccessRightsSharedfilesystemsV2Shares
@@ -235,13 +235,13 @@ func NewListAccessRightsSharedfilesystemsV2SharesResponse(listAccessRightsResult
 
 // action function
 func (oc *OpenstackClient) ListAccessRightsSharedfilesystemsV2Shares(req *ListAccessRightsSharedfilesystemsV2SharesRequest)(*ListAccessRightsSharedfilesystemsV2SharesResponse){
-    return NewListAccessRightsSharedfilesystemsV2SharesResponse(shares.ListAccessRights(oc.client,req.Id, ))
+    return NewListAccessRightsSharedfilesystemsV2SharesResponse(shares.ListAccessRights(oc.Client,req.Id, ))
 
 }
 //request struct for the ExtendSharedfilesystemsV2Shares
 type ExtendSharedfilesystemsV2SharesRequest struct{
     Id string
-    Opts shares.ExtendOptsBuilder
+    Opts shares.ExtendOpts
 }
 
 func NewExtendSharedfilesystemsV2SharesRequest()*ExtendSharedfilesystemsV2SharesRequest{
@@ -261,13 +261,13 @@ func NewExtendSharedfilesystemsV2SharesResponse(extendResult shares.ExtendResult
 
 // action function
 func (oc *OpenstackClient) ExtendSharedfilesystemsV2Shares(req *ExtendSharedfilesystemsV2SharesRequest)(*ExtendSharedfilesystemsV2SharesResponse){
-    return NewExtendSharedfilesystemsV2SharesResponse(shares.Extend(oc.client,req.Id,req.Opts, ))
+    return NewExtendSharedfilesystemsV2SharesResponse(shares.Extend(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ShrinkSharedfilesystemsV2Shares
 type ShrinkSharedfilesystemsV2SharesRequest struct{
     Id string
-    Opts shares.ShrinkOptsBuilder
+    Opts shares.ShrinkOpts
 }
 
 func NewShrinkSharedfilesystemsV2SharesRequest()*ShrinkSharedfilesystemsV2SharesRequest{
@@ -287,13 +287,13 @@ func NewShrinkSharedfilesystemsV2SharesResponse(shrinkResult shares.ShrinkResult
 
 // action function
 func (oc *OpenstackClient) ShrinkSharedfilesystemsV2Shares(req *ShrinkSharedfilesystemsV2SharesRequest)(*ShrinkSharedfilesystemsV2SharesResponse){
-    return NewShrinkSharedfilesystemsV2SharesResponse(shares.Shrink(oc.client,req.Id,req.Opts, ))
+    return NewShrinkSharedfilesystemsV2SharesResponse(shares.Shrink(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the UpdateSharedfilesystemsV2Shares
 type UpdateSharedfilesystemsV2SharesRequest struct{
     Id string
-    Opts shares.UpdateOptsBuilder
+    Opts shares.UpdateOpts
 }
 
 func NewUpdateSharedfilesystemsV2SharesRequest()*UpdateSharedfilesystemsV2SharesRequest{
@@ -313,7 +313,7 @@ func NewUpdateSharedfilesystemsV2SharesResponse(updateResult shares.UpdateResult
 
 // action function
 func (oc *OpenstackClient) UpdateSharedfilesystemsV2Shares(req *UpdateSharedfilesystemsV2SharesRequest)(*UpdateSharedfilesystemsV2SharesResponse){
-    return NewUpdateSharedfilesystemsV2SharesResponse(shares.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateSharedfilesystemsV2SharesResponse(shares.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the GetMetadataSharedfilesystemsV2Shares
@@ -338,7 +338,7 @@ func NewGetMetadataSharedfilesystemsV2SharesResponse(metadataResult shares.Metad
 
 // action function
 func (oc *OpenstackClient) GetMetadataSharedfilesystemsV2Shares(req *GetMetadataSharedfilesystemsV2SharesRequest)(*GetMetadataSharedfilesystemsV2SharesResponse){
-    return NewGetMetadataSharedfilesystemsV2SharesResponse(shares.GetMetadata(oc.client,req.Id, ))
+    return NewGetMetadataSharedfilesystemsV2SharesResponse(shares.GetMetadata(oc.Client,req.Id, ))
 
 }
 //request struct for the GetMetadatumSharedfilesystemsV2Shares
@@ -364,13 +364,13 @@ func NewGetMetadatumSharedfilesystemsV2SharesResponse(getMetadatumResult shares.
 
 // action function
 func (oc *OpenstackClient) GetMetadatumSharedfilesystemsV2Shares(req *GetMetadatumSharedfilesystemsV2SharesRequest)(*GetMetadatumSharedfilesystemsV2SharesResponse){
-    return NewGetMetadatumSharedfilesystemsV2SharesResponse(shares.GetMetadatum(oc.client,req.Id,req.Key, ))
+    return NewGetMetadatumSharedfilesystemsV2SharesResponse(shares.GetMetadatum(oc.Client,req.Id,req.Key, ))
 
 }
 //request struct for the SetMetadataSharedfilesystemsV2Shares
 type SetMetadataSharedfilesystemsV2SharesRequest struct{
     Id string
-    Opts shares.SetMetadataOptsBuilder
+    Opts shares.SetMetadataOpts
 }
 
 func NewSetMetadataSharedfilesystemsV2SharesRequest()*SetMetadataSharedfilesystemsV2SharesRequest{
@@ -390,13 +390,13 @@ func NewSetMetadataSharedfilesystemsV2SharesResponse(metadataResult shares.Metad
 
 // action function
 func (oc *OpenstackClient) SetMetadataSharedfilesystemsV2Shares(req *SetMetadataSharedfilesystemsV2SharesRequest)(*SetMetadataSharedfilesystemsV2SharesResponse){
-    return NewSetMetadataSharedfilesystemsV2SharesResponse(shares.SetMetadata(oc.client,req.Id,req.Opts, ))
+    return NewSetMetadataSharedfilesystemsV2SharesResponse(shares.SetMetadata(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the UpdateMetadataSharedfilesystemsV2Shares
 type UpdateMetadataSharedfilesystemsV2SharesRequest struct{
     Id string
-    Opts shares.UpdateMetadataOptsBuilder
+    Opts shares.UpdateMetadataOpts
 }
 
 func NewUpdateMetadataSharedfilesystemsV2SharesRequest()*UpdateMetadataSharedfilesystemsV2SharesRequest{
@@ -416,7 +416,7 @@ func NewUpdateMetadataSharedfilesystemsV2SharesResponse(metadataResult shares.Me
 
 // action function
 func (oc *OpenstackClient) UpdateMetadataSharedfilesystemsV2Shares(req *UpdateMetadataSharedfilesystemsV2SharesRequest)(*UpdateMetadataSharedfilesystemsV2SharesResponse){
-    return NewUpdateMetadataSharedfilesystemsV2SharesResponse(shares.UpdateMetadata(oc.client,req.Id,req.Opts, ))
+    return NewUpdateMetadataSharedfilesystemsV2SharesResponse(shares.UpdateMetadata(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteMetadatumSharedfilesystemsV2Shares
@@ -442,13 +442,13 @@ func NewDeleteMetadatumSharedfilesystemsV2SharesResponse(deleteMetadatumResult s
 
 // action function
 func (oc *OpenstackClient) DeleteMetadatumSharedfilesystemsV2Shares(req *DeleteMetadatumSharedfilesystemsV2SharesRequest)(*DeleteMetadatumSharedfilesystemsV2SharesResponse){
-    return NewDeleteMetadatumSharedfilesystemsV2SharesResponse(shares.DeleteMetadatum(oc.client,req.Id,req.Key, ))
+    return NewDeleteMetadatumSharedfilesystemsV2SharesResponse(shares.DeleteMetadatum(oc.Client,req.Id,req.Key, ))
 
 }
 //request struct for the RevertSharedfilesystemsV2Shares
 type RevertSharedfilesystemsV2SharesRequest struct{
     Id string
-    Opts shares.RevertOptsBuilder
+    Opts shares.RevertOpts
 }
 
 func NewRevertSharedfilesystemsV2SharesRequest()*RevertSharedfilesystemsV2SharesRequest{
@@ -468,13 +468,13 @@ func NewRevertSharedfilesystemsV2SharesResponse(revertResult shares.RevertResult
 
 // action function
 func (oc *OpenstackClient) RevertSharedfilesystemsV2Shares(req *RevertSharedfilesystemsV2SharesRequest)(*RevertSharedfilesystemsV2SharesResponse){
-    return NewRevertSharedfilesystemsV2SharesResponse(shares.Revert(oc.client,req.Id,req.Opts, ))
+    return NewRevertSharedfilesystemsV2SharesResponse(shares.Revert(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ResetStatusSharedfilesystemsV2Shares
 type ResetStatusSharedfilesystemsV2SharesRequest struct{
     Id string
-    Opts shares.ResetStatusOptsBuilder
+    Opts shares.ResetStatusOpts
 }
 
 func NewResetStatusSharedfilesystemsV2SharesRequest()*ResetStatusSharedfilesystemsV2SharesRequest{
@@ -494,7 +494,7 @@ func NewResetStatusSharedfilesystemsV2SharesResponse(resetStatusResult shares.Re
 
 // action function
 func (oc *OpenstackClient) ResetStatusSharedfilesystemsV2Shares(req *ResetStatusSharedfilesystemsV2SharesRequest)(*ResetStatusSharedfilesystemsV2SharesResponse){
-    return NewResetStatusSharedfilesystemsV2SharesResponse(shares.ResetStatus(oc.client,req.Id,req.Opts, ))
+    return NewResetStatusSharedfilesystemsV2SharesResponse(shares.ResetStatus(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ForceDeleteSharedfilesystemsV2Shares
@@ -519,7 +519,7 @@ func NewForceDeleteSharedfilesystemsV2SharesResponse(forceDeleteResult shares.Fo
 
 // action function
 func (oc *OpenstackClient) ForceDeleteSharedfilesystemsV2Shares(req *ForceDeleteSharedfilesystemsV2SharesRequest)(*ForceDeleteSharedfilesystemsV2SharesResponse){
-    return NewForceDeleteSharedfilesystemsV2SharesResponse(shares.ForceDelete(oc.client,req.Id, ))
+    return NewForceDeleteSharedfilesystemsV2SharesResponse(shares.ForceDelete(oc.Client,req.Id, ))
 
 }
 //request struct for the UnmanageSharedfilesystemsV2Shares
@@ -544,6 +544,6 @@ func NewUnmanageSharedfilesystemsV2SharesResponse(unmanageResult shares.Unmanage
 
 // action function
 func (oc *OpenstackClient) UnmanageSharedfilesystemsV2Shares(req *UnmanageSharedfilesystemsV2SharesRequest)(*UnmanageSharedfilesystemsV2SharesResponse){
-    return NewUnmanageSharedfilesystemsV2SharesResponse(shares.Unmanage(oc.client,req.Id, ))
+    return NewUnmanageSharedfilesystemsV2SharesResponse(shares.Unmanage(oc.Client,req.Id, ))
 
 }

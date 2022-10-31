@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateClusteringV1Clusters
 type CreateClusteringV1ClustersRequest struct{
-    Opts clusters.CreateOptsBuilder
+    Opts clusters.CreateOpts
 }
 
 func NewCreateClusteringV1ClustersRequest()*CreateClusteringV1ClustersRequest{
@@ -32,7 +32,7 @@ func NewCreateClusteringV1ClustersResponse(createResult clusters.CreateResult,)*
 
 // action function
 func (oc *OpenstackClient) CreateClusteringV1Clusters(req *CreateClusteringV1ClustersRequest)(*CreateClusteringV1ClustersResponse){
-    return NewCreateClusteringV1ClustersResponse(clusters.Create(oc.client,req.Opts, ))
+    return NewCreateClusteringV1ClustersResponse(clusters.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetClusteringV1Clusters
@@ -57,12 +57,12 @@ func NewGetClusteringV1ClustersResponse(getResult clusters.GetResult,)*GetCluste
 
 // action function
 func (oc *OpenstackClient) GetClusteringV1Clusters(req *GetClusteringV1ClustersRequest)(*GetClusteringV1ClustersResponse){
-    return NewGetClusteringV1ClustersResponse(clusters.Get(oc.client,req.Id, ))
+    return NewGetClusteringV1ClustersResponse(clusters.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListClusteringV1Clusters
 type ListClusteringV1ClustersRequest struct{
-    Opts clusters.ListOptsBuilder
+    Opts clusters.ListOpts
 }
 
 func NewListClusteringV1ClustersRequest()*ListClusteringV1ClustersRequest{
@@ -82,13 +82,13 @@ func NewListClusteringV1ClustersResponse(pager pagination.Pager,)*ListClustering
 
 // action function
 func (oc *OpenstackClient) ListClusteringV1Clusters(req *ListClusteringV1ClustersRequest)(*ListClusteringV1ClustersResponse){
-    return NewListClusteringV1ClustersResponse(clusters.List(oc.client,req.Opts, ))
+    return NewListClusteringV1ClustersResponse(clusters.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateClusteringV1Clusters
 type UpdateClusteringV1ClustersRequest struct{
     Id string
-    Opts clusters.UpdateOptsBuilder
+    Opts clusters.UpdateOpts
 }
 
 func NewUpdateClusteringV1ClustersRequest()*UpdateClusteringV1ClustersRequest{
@@ -108,7 +108,7 @@ func NewUpdateClusteringV1ClustersResponse(updateResult clusters.UpdateResult,)*
 
 // action function
 func (oc *OpenstackClient) UpdateClusteringV1Clusters(req *UpdateClusteringV1ClustersRequest)(*UpdateClusteringV1ClustersResponse){
-    return NewUpdateClusteringV1ClustersResponse(clusters.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateClusteringV1ClustersResponse(clusters.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteClusteringV1Clusters
@@ -133,13 +133,13 @@ func NewDeleteClusteringV1ClustersResponse(deleteResult clusters.DeleteResult,)*
 
 // action function
 func (oc *OpenstackClient) DeleteClusteringV1Clusters(req *DeleteClusteringV1ClustersRequest)(*DeleteClusteringV1ClustersResponse){
-    return NewDeleteClusteringV1ClustersResponse(clusters.Delete(oc.client,req.Id, ))
+    return NewDeleteClusteringV1ClustersResponse(clusters.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the ResizeClusteringV1Clusters
 type ResizeClusteringV1ClustersRequest struct{
     Id string
-    Opts clusters.ResizeOptsBuilder
+    Opts clusters.ResizeOpts
 }
 
 func NewResizeClusteringV1ClustersRequest()*ResizeClusteringV1ClustersRequest{
@@ -159,13 +159,13 @@ func NewResizeClusteringV1ClustersResponse(actionResult clusters.ActionResult,)*
 
 // action function
 func (oc *OpenstackClient) ResizeClusteringV1Clusters(req *ResizeClusteringV1ClustersRequest)(*ResizeClusteringV1ClustersResponse){
-    return NewResizeClusteringV1ClustersResponse(clusters.Resize(oc.client,req.Id,req.Opts, ))
+    return NewResizeClusteringV1ClustersResponse(clusters.Resize(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ScaleInClusteringV1Clusters
 type ScaleInClusteringV1ClustersRequest struct{
     Id string
-    Opts clusters.ScaleInOptsBuilder
+    Opts clusters.ScaleInOpts
 }
 
 func NewScaleInClusteringV1ClustersRequest()*ScaleInClusteringV1ClustersRequest{
@@ -185,13 +185,13 @@ func NewScaleInClusteringV1ClustersResponse(actionResult clusters.ActionResult,)
 
 // action function
 func (oc *OpenstackClient) ScaleInClusteringV1Clusters(req *ScaleInClusteringV1ClustersRequest)(*ScaleInClusteringV1ClustersResponse){
-    return NewScaleInClusteringV1ClustersResponse(clusters.ScaleIn(oc.client,req.Id,req.Opts, ))
+    return NewScaleInClusteringV1ClustersResponse(clusters.ScaleIn(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ScaleOutClusteringV1Clusters
 type ScaleOutClusteringV1ClustersRequest struct{
     Id string
-    Opts clusters.ScaleOutOptsBuilder
+    Opts clusters.ScaleOutOpts
 }
 
 func NewScaleOutClusteringV1ClustersRequest()*ScaleOutClusteringV1ClustersRequest{
@@ -211,13 +211,13 @@ func NewScaleOutClusteringV1ClustersResponse(actionResult clusters.ActionResult,
 
 // action function
 func (oc *OpenstackClient) ScaleOutClusteringV1Clusters(req *ScaleOutClusteringV1ClustersRequest)(*ScaleOutClusteringV1ClustersResponse){
-    return NewScaleOutClusteringV1ClustersResponse(clusters.ScaleOut(oc.client,req.Id,req.Opts, ))
+    return NewScaleOutClusteringV1ClustersResponse(clusters.ScaleOut(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the AttachPolicyClusteringV1Clusters
 type AttachPolicyClusteringV1ClustersRequest struct{
     Id string
-    Opts clusters.AttachPolicyOptsBuilder
+    Opts clusters.AttachPolicyOpts
 }
 
 func NewAttachPolicyClusteringV1ClustersRequest()*AttachPolicyClusteringV1ClustersRequest{
@@ -237,13 +237,13 @@ func NewAttachPolicyClusteringV1ClustersResponse(actionResult clusters.ActionRes
 
 // action function
 func (oc *OpenstackClient) AttachPolicyClusteringV1Clusters(req *AttachPolicyClusteringV1ClustersRequest)(*AttachPolicyClusteringV1ClustersResponse){
-    return NewAttachPolicyClusteringV1ClustersResponse(clusters.AttachPolicy(oc.client,req.Id,req.Opts, ))
+    return NewAttachPolicyClusteringV1ClustersResponse(clusters.AttachPolicy(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the UpdatePolicyClusteringV1Clusters
 type UpdatePolicyClusteringV1ClustersRequest struct{
     Id string
-    Opts clusters.UpdatePolicyOptsBuilder
+    Opts clusters.UpdatePolicyOpts
 }
 
 func NewUpdatePolicyClusteringV1ClustersRequest()*UpdatePolicyClusteringV1ClustersRequest{
@@ -263,13 +263,13 @@ func NewUpdatePolicyClusteringV1ClustersResponse(actionResult clusters.ActionRes
 
 // action function
 func (oc *OpenstackClient) UpdatePolicyClusteringV1Clusters(req *UpdatePolicyClusteringV1ClustersRequest)(*UpdatePolicyClusteringV1ClustersResponse){
-    return NewUpdatePolicyClusteringV1ClustersResponse(clusters.UpdatePolicy(oc.client,req.Id,req.Opts, ))
+    return NewUpdatePolicyClusteringV1ClustersResponse(clusters.UpdatePolicy(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DetachPolicyClusteringV1Clusters
 type DetachPolicyClusteringV1ClustersRequest struct{
     Id string
-    Opts clusters.DetachPolicyOptsBuilder
+    Opts clusters.DetachPolicyOpts
 }
 
 func NewDetachPolicyClusteringV1ClustersRequest()*DetachPolicyClusteringV1ClustersRequest{
@@ -289,13 +289,13 @@ func NewDetachPolicyClusteringV1ClustersResponse(actionResult clusters.ActionRes
 
 // action function
 func (oc *OpenstackClient) DetachPolicyClusteringV1Clusters(req *DetachPolicyClusteringV1ClustersRequest)(*DetachPolicyClusteringV1ClustersResponse){
-    return NewDetachPolicyClusteringV1ClustersResponse(clusters.DetachPolicy(oc.client,req.Id,req.Opts, ))
+    return NewDetachPolicyClusteringV1ClustersResponse(clusters.DetachPolicy(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ListPoliciesClusteringV1Clusters
 type ListPoliciesClusteringV1ClustersRequest struct{
     ClusterID string
-    Opts clusters.ListPoliciesOptsBuilder
+    Opts clusters.ListPoliciesOpts
 }
 
 func NewListPoliciesClusteringV1ClustersRequest()*ListPoliciesClusteringV1ClustersRequest{
@@ -315,7 +315,7 @@ func NewListPoliciesClusteringV1ClustersResponse(pager pagination.Pager,)*ListPo
 
 // action function
 func (oc *OpenstackClient) ListPoliciesClusteringV1Clusters(req *ListPoliciesClusteringV1ClustersRequest)(*ListPoliciesClusteringV1ClustersResponse){
-    return NewListPoliciesClusteringV1ClustersResponse(clusters.ListPolicies(oc.client,req.ClusterID,req.Opts, ))
+    return NewListPoliciesClusteringV1ClustersResponse(clusters.ListPolicies(oc.Client,req.ClusterID,req.Opts, ))
 
 }
 //request struct for the GetPolicyClusteringV1Clusters
@@ -341,13 +341,13 @@ func NewGetPolicyClusteringV1ClustersResponse(getPolicyResult clusters.GetPolicy
 
 // action function
 func (oc *OpenstackClient) GetPolicyClusteringV1Clusters(req *GetPolicyClusteringV1ClustersRequest)(*GetPolicyClusteringV1ClustersResponse){
-    return NewGetPolicyClusteringV1ClustersResponse(clusters.GetPolicy(oc.client,req.ClusterID,req.PolicyID, ))
+    return NewGetPolicyClusteringV1ClustersResponse(clusters.GetPolicy(oc.Client,req.ClusterID,req.PolicyID, ))
 
 }
 //request struct for the RecoverClusteringV1Clusters
 type RecoverClusteringV1ClustersRequest struct{
     Id string
-    Opts clusters.RecoverOptsBuilder
+    Opts clusters.RecoverOpts
 }
 
 func NewRecoverClusteringV1ClustersRequest()*RecoverClusteringV1ClustersRequest{
@@ -367,7 +367,7 @@ func NewRecoverClusteringV1ClustersResponse(actionResult clusters.ActionResult,)
 
 // action function
 func (oc *OpenstackClient) RecoverClusteringV1Clusters(req *RecoverClusteringV1ClustersRequest)(*RecoverClusteringV1ClustersResponse){
-    return NewRecoverClusteringV1ClustersResponse(clusters.Recover(oc.client,req.Id,req.Opts, ))
+    return NewRecoverClusteringV1ClustersResponse(clusters.Recover(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the CheckClusteringV1Clusters
@@ -392,7 +392,7 @@ func NewCheckClusteringV1ClustersResponse(actionResult clusters.ActionResult,)*C
 
 // action function
 func (oc *OpenstackClient) CheckClusteringV1Clusters(req *CheckClusteringV1ClustersRequest)(*CheckClusteringV1ClustersResponse){
-    return NewCheckClusteringV1ClustersResponse(clusters.Check(oc.client,req.Id, ))
+    return NewCheckClusteringV1ClustersResponse(clusters.Check(oc.Client,req.Id, ))
 
 }
 //request struct for the CompleteLifecycleClusteringV1Clusters
@@ -418,7 +418,7 @@ func NewCompleteLifecycleClusteringV1ClustersResponse(actionResult clusters.Acti
 
 // action function
 func (oc *OpenstackClient) CompleteLifecycleClusteringV1Clusters(req *CompleteLifecycleClusteringV1ClustersRequest)(*CompleteLifecycleClusteringV1ClustersResponse){
-    return NewCompleteLifecycleClusteringV1ClustersResponse(clusters.CompleteLifecycle(oc.client,req.Id,req.Opts, ))
+    return NewCompleteLifecycleClusteringV1ClustersResponse(clusters.CompleteLifecycle(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the AddNodesClusteringV1Clusters
@@ -444,7 +444,7 @@ func NewAddNodesClusteringV1ClustersResponse(actionResult clusters.ActionResult,
 
 // action function
 func (oc *OpenstackClient) AddNodesClusteringV1Clusters(req *AddNodesClusteringV1ClustersRequest)(*AddNodesClusteringV1ClustersResponse){
-    return NewAddNodesClusteringV1ClustersResponse(clusters.AddNodes(oc.client,req.Id,req.Opts, ))
+    return NewAddNodesClusteringV1ClustersResponse(clusters.AddNodes(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the RemoveNodesClusteringV1Clusters
@@ -470,7 +470,7 @@ func NewRemoveNodesClusteringV1ClustersResponse(actionResult clusters.ActionResu
 
 // action function
 func (oc *OpenstackClient) RemoveNodesClusteringV1Clusters(req *RemoveNodesClusteringV1ClustersRequest)(*RemoveNodesClusteringV1ClustersResponse){
-    return NewRemoveNodesClusteringV1ClustersResponse(clusters.RemoveNodes(oc.client,req.ClusterID,req.Opts, ))
+    return NewRemoveNodesClusteringV1ClustersResponse(clusters.RemoveNodes(oc.Client,req.ClusterID,req.Opts, ))
 
 }
 //request struct for the ReplaceNodesClusteringV1Clusters
@@ -496,13 +496,13 @@ func NewReplaceNodesClusteringV1ClustersResponse(actionResult clusters.ActionRes
 
 // action function
 func (oc *OpenstackClient) ReplaceNodesClusteringV1Clusters(req *ReplaceNodesClusteringV1ClustersRequest)(*ReplaceNodesClusteringV1ClustersResponse){
-    return NewReplaceNodesClusteringV1ClustersResponse(clusters.ReplaceNodes(oc.client,req.Id,req.Opts, ))
+    return NewReplaceNodesClusteringV1ClustersResponse(clusters.ReplaceNodes(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the CollectClusteringV1Clusters
 type CollectClusteringV1ClustersRequest struct{
     Id string
-    Opts clusters.CollectOptsBuilder
+    Opts clusters.CollectOpts
 }
 
 func NewCollectClusteringV1ClustersRequest()*CollectClusteringV1ClustersRequest{
@@ -522,13 +522,13 @@ func NewCollectClusteringV1ClustersResponse(collectResult clusters.CollectResult
 
 // action function
 func (oc *OpenstackClient) CollectClusteringV1Clusters(req *CollectClusteringV1ClustersRequest)(*CollectClusteringV1ClustersResponse){
-    return NewCollectClusteringV1ClustersResponse(clusters.Collect(oc.client,req.Id,req.Opts, ))
+    return NewCollectClusteringV1ClustersResponse(clusters.Collect(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the OpsClusteringV1Clusters
 type OpsClusteringV1ClustersRequest struct{
     Id string
-    Opts clusters.OperationOptsBuilder
+    Opts clusters.OperationOpts
 }
 
 func NewOpsClusteringV1ClustersRequest()*OpsClusteringV1ClustersRequest{
@@ -548,6 +548,6 @@ func NewOpsClusteringV1ClustersResponse(actionResult clusters.ActionResult,)*Ops
 
 // action function
 func (oc *OpenstackClient) OpsClusteringV1Clusters(req *OpsClusteringV1ClustersRequest)(*OpsClusteringV1ClustersResponse){
-    return NewOpsClusteringV1ClustersResponse(clusters.Ops(oc.client,req.Id,req.Opts, ))
+    return NewOpsClusteringV1ClustersResponse(clusters.Ops(oc.Client,req.Id,req.Opts, ))
 
 }

@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateSharedfilesystemsV2Securityservices
 type CreateSharedfilesystemsV2SecurityservicesRequest struct{
-    Opts securityservices.CreateOptsBuilder
+    Opts securityservices.CreateOpts
 }
 
 func NewCreateSharedfilesystemsV2SecurityservicesRequest()*CreateSharedfilesystemsV2SecurityservicesRequest{
@@ -32,7 +32,7 @@ func NewCreateSharedfilesystemsV2SecurityservicesResponse(createResult securitys
 
 // action function
 func (oc *OpenstackClient) CreateSharedfilesystemsV2Securityservices(req *CreateSharedfilesystemsV2SecurityservicesRequest)(*CreateSharedfilesystemsV2SecurityservicesResponse){
-    return NewCreateSharedfilesystemsV2SecurityservicesResponse(securityservices.Create(oc.client,req.Opts, ))
+    return NewCreateSharedfilesystemsV2SecurityservicesResponse(securityservices.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteSharedfilesystemsV2Securityservices
@@ -57,12 +57,12 @@ func NewDeleteSharedfilesystemsV2SecurityservicesResponse(deleteResult securitys
 
 // action function
 func (oc *OpenstackClient) DeleteSharedfilesystemsV2Securityservices(req *DeleteSharedfilesystemsV2SecurityservicesRequest)(*DeleteSharedfilesystemsV2SecurityservicesResponse){
-    return NewDeleteSharedfilesystemsV2SecurityservicesResponse(securityservices.Delete(oc.client,req.Id, ))
+    return NewDeleteSharedfilesystemsV2SecurityservicesResponse(securityservices.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the ListSharedfilesystemsV2Securityservices
 type ListSharedfilesystemsV2SecurityservicesRequest struct{
-    Opts securityservices.ListOptsBuilder
+    Opts securityservices.ListOpts
 }
 
 func NewListSharedfilesystemsV2SecurityservicesRequest()*ListSharedfilesystemsV2SecurityservicesRequest{
@@ -82,7 +82,7 @@ func NewListSharedfilesystemsV2SecurityservicesResponse(pager pagination.Pager,)
 
 // action function
 func (oc *OpenstackClient) ListSharedfilesystemsV2Securityservices(req *ListSharedfilesystemsV2SecurityservicesRequest)(*ListSharedfilesystemsV2SecurityservicesResponse){
-    return NewListSharedfilesystemsV2SecurityservicesResponse(securityservices.List(oc.client,req.Opts, ))
+    return NewListSharedfilesystemsV2SecurityservicesResponse(securityservices.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetSharedfilesystemsV2Securityservices
@@ -107,13 +107,13 @@ func NewGetSharedfilesystemsV2SecurityservicesResponse(getResult securityservice
 
 // action function
 func (oc *OpenstackClient) GetSharedfilesystemsV2Securityservices(req *GetSharedfilesystemsV2SecurityservicesRequest)(*GetSharedfilesystemsV2SecurityservicesResponse){
-    return NewGetSharedfilesystemsV2SecurityservicesResponse(securityservices.Get(oc.client,req.Id, ))
+    return NewGetSharedfilesystemsV2SecurityservicesResponse(securityservices.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateSharedfilesystemsV2Securityservices
 type UpdateSharedfilesystemsV2SecurityservicesRequest struct{
     Id string
-    Opts securityservices.UpdateOptsBuilder
+    Opts securityservices.UpdateOpts
 }
 
 func NewUpdateSharedfilesystemsV2SecurityservicesRequest()*UpdateSharedfilesystemsV2SecurityservicesRequest{
@@ -133,6 +133,6 @@ func NewUpdateSharedfilesystemsV2SecurityservicesResponse(updateResult securitys
 
 // action function
 func (oc *OpenstackClient) UpdateSharedfilesystemsV2Securityservices(req *UpdateSharedfilesystemsV2SecurityservicesRequest)(*UpdateSharedfilesystemsV2SecurityservicesResponse){
-    return NewUpdateSharedfilesystemsV2SecurityservicesResponse(securityservices.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateSharedfilesystemsV2SecurityservicesResponse(securityservices.Update(oc.Client,req.Id,req.Opts, ))
 
 }

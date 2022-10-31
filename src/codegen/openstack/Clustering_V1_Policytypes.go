@@ -31,7 +31,7 @@ func NewListClusteringV1PolicytypesResponse(pager pagination.Pager,)*ListCluster
 
 // action function
 func (oc *OpenstackClient) ListClusteringV1Policytypes(req *ListClusteringV1PolicytypesRequest)(*ListClusteringV1PolicytypesResponse){
-    return NewListClusteringV1PolicytypesResponse(policytypes.List(oc.client, ))
+    return NewListClusteringV1PolicytypesResponse(policytypes.List(oc.Client, ))
 
 }
 //request struct for the GetClusteringV1Policytypes
@@ -56,6 +56,6 @@ func NewGetClusteringV1PolicytypesResponse(getResult policytypes.GetResult,)*Get
 
 // action function
 func (oc *OpenstackClient) GetClusteringV1Policytypes(req *GetClusteringV1PolicytypesRequest)(*GetClusteringV1PolicytypesResponse){
-    return NewGetClusteringV1PolicytypesResponse(policytypes.Get(oc.client,req.PolicyTypeName, ))
+    return NewGetClusteringV1PolicytypesResponse(policytypes.Get(oc.Client,req.PolicyTypeName, ))
 
 }

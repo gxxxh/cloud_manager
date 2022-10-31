@@ -31,7 +31,7 @@ func NewLockComputeV2ExtensionsLockunlockResponse(lockResult lockunlock.LockResu
 
 // action function
 func (oc *OpenstackClient) LockComputeV2ExtensionsLockunlock(req *LockComputeV2ExtensionsLockunlockRequest)(*LockComputeV2ExtensionsLockunlockResponse){
-    return NewLockComputeV2ExtensionsLockunlockResponse(lockunlock.Lock(oc.client,req.Id, ))
+    return NewLockComputeV2ExtensionsLockunlockResponse(lockunlock.Lock(oc.Client,req.Id, ))
 
 }
 //request struct for the UnlockComputeV2ExtensionsLockunlock
@@ -56,6 +56,6 @@ func NewUnlockComputeV2ExtensionsLockunlockResponse(unlockResult lockunlock.Unlo
 
 // action function
 func (oc *OpenstackClient) UnlockComputeV2ExtensionsLockunlock(req *UnlockComputeV2ExtensionsLockunlockRequest)(*UnlockComputeV2ExtensionsLockunlockResponse){
-    return NewUnlockComputeV2ExtensionsLockunlockResponse(lockunlock.Unlock(oc.client,req.Id, ))
+    return NewUnlockComputeV2ExtensionsLockunlockResponse(lockunlock.Unlock(oc.Client,req.Id, ))
 
 }

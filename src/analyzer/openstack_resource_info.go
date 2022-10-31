@@ -54,7 +54,7 @@ type VarInfo struct {
 	TypeName string
 }
 
-// describe a action to the resouce
+// describe an action to the resource
 // list, get, create ...
 type OpenStackActionInfo struct {
 	ActionName       string
@@ -75,6 +75,10 @@ func NewOpenstackActionInfo(actionName string) *OpenStackActionInfo {
 add parameters/return variable name and typeName
 */
 func (ai *OpenStackActionInfo) AddVarInfo(name, typeName, kind string) {
+	//interface to struct(OptsBuilder →Opts)
+	if strings.HasSuffix(typeName, "OptsBuilder") {
+		typeName = typeName[:len(typeName)-len("Builder")]
+	}
 	varInfo := VarInfo{
 		Name:     name,
 		TypeName: typeName,
@@ -123,12 +127,16 @@ func TypeName2MemberName(typeName string) string {
 	return utils.UpperFirst(TypeName2LocalVarName(typeName))
 }
 
-func TypeName2LocalVarName(typeName string) string {
-	//todo check basic type
-	localVarName := typeName
+// remove package info from typename
+func GetStructName(typeName string) string {
 	if strings.Contains(typeName, ".") {
 		tmp := strings.Split(typeName, ".")
-		localVarName = tmp[len(tmp)-1]
+		return tmp[len(tmp)-1]
 	}
+	return typeName
+}
+func TypeName2LocalVarName(typeName string) string {
+	//todo check basic type
+	localVarName := GetStructName(typeName)
 	return utils.LowerFirst(localVarName)
 }

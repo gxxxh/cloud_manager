@@ -31,7 +31,7 @@ func NewListBlockstorageV1ApiversionsResponse(pager pagination.Pager,)*ListBlock
 
 // action function
 func (oc *OpenstackClient) ListBlockstorageV1Apiversions(req *ListBlockstorageV1ApiversionsRequest)(*ListBlockstorageV1ApiversionsResponse){
-    return NewListBlockstorageV1ApiversionsResponse(apiversions.List(oc.client, ))
+    return NewListBlockstorageV1ApiversionsResponse(apiversions.List(oc.Client, ))
 
 }
 //request struct for the GetBlockstorageV1Apiversions
@@ -56,6 +56,6 @@ func NewGetBlockstorageV1ApiversionsResponse(getResult apiversions.GetResult,)*G
 
 // action function
 func (oc *OpenstackClient) GetBlockstorageV1Apiversions(req *GetBlockstorageV1ApiversionsRequest)(*GetBlockstorageV1ApiversionsResponse){
-    return NewGetBlockstorageV1ApiversionsResponse(apiversions.Get(oc.client,req.V, ))
+    return NewGetBlockstorageV1ApiversionsResponse(apiversions.Get(oc.Client,req.V, ))
 
 }

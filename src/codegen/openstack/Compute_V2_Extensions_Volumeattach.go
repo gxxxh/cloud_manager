@@ -32,13 +32,13 @@ func NewListComputeV2ExtensionsVolumeattachResponse(pager pagination.Pager,)*Lis
 
 // action function
 func (oc *OpenstackClient) ListComputeV2ExtensionsVolumeattach(req *ListComputeV2ExtensionsVolumeattachRequest)(*ListComputeV2ExtensionsVolumeattachResponse){
-    return NewListComputeV2ExtensionsVolumeattachResponse(volumeattach.List(oc.client,req.ServerID, ))
+    return NewListComputeV2ExtensionsVolumeattachResponse(volumeattach.List(oc.Client,req.ServerID, ))
 
 }
 //request struct for the CreateComputeV2ExtensionsVolumeattach
 type CreateComputeV2ExtensionsVolumeattachRequest struct{
     ServerID string
-    Opts volumeattach.CreateOptsBuilder
+    Opts volumeattach.CreateOpts
 }
 
 func NewCreateComputeV2ExtensionsVolumeattachRequest()*CreateComputeV2ExtensionsVolumeattachRequest{
@@ -58,7 +58,7 @@ func NewCreateComputeV2ExtensionsVolumeattachResponse(createResult volumeattach.
 
 // action function
 func (oc *OpenstackClient) CreateComputeV2ExtensionsVolumeattach(req *CreateComputeV2ExtensionsVolumeattachRequest)(*CreateComputeV2ExtensionsVolumeattachResponse){
-    return NewCreateComputeV2ExtensionsVolumeattachResponse(volumeattach.Create(oc.client,req.ServerID,req.Opts, ))
+    return NewCreateComputeV2ExtensionsVolumeattachResponse(volumeattach.Create(oc.Client,req.ServerID,req.Opts, ))
 
 }
 //request struct for the GetComputeV2ExtensionsVolumeattach
@@ -84,7 +84,7 @@ func NewGetComputeV2ExtensionsVolumeattachResponse(getResult volumeattach.GetRes
 
 // action function
 func (oc *OpenstackClient) GetComputeV2ExtensionsVolumeattach(req *GetComputeV2ExtensionsVolumeattachRequest)(*GetComputeV2ExtensionsVolumeattachResponse){
-    return NewGetComputeV2ExtensionsVolumeattachResponse(volumeattach.Get(oc.client,req.ServerID,req.AttachmentID, ))
+    return NewGetComputeV2ExtensionsVolumeattachResponse(volumeattach.Get(oc.Client,req.ServerID,req.AttachmentID, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsVolumeattach
@@ -110,6 +110,6 @@ func NewDeleteComputeV2ExtensionsVolumeattachResponse(deleteResult volumeattach.
 
 // action function
 func (oc *OpenstackClient) DeleteComputeV2ExtensionsVolumeattach(req *DeleteComputeV2ExtensionsVolumeattachRequest)(*DeleteComputeV2ExtensionsVolumeattachResponse){
-    return NewDeleteComputeV2ExtensionsVolumeattachResponse(volumeattach.Delete(oc.client,req.ServerID,req.AttachmentID, ))
+    return NewDeleteComputeV2ExtensionsVolumeattachResponse(volumeattach.Delete(oc.Client,req.ServerID,req.AttachmentID, ))
 
 }

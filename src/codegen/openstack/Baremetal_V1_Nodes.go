@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListBaremetalV1Nodes
 type ListBaremetalV1NodesRequest struct{
-    Opts nodes.ListOptsBuilder
+    Opts nodes.ListOpts
 }
 
 func NewListBaremetalV1NodesRequest()*ListBaremetalV1NodesRequest{
@@ -32,12 +32,12 @@ func NewListBaremetalV1NodesResponse(pager pagination.Pager,)*ListBaremetalV1Nod
 
 // action function
 func (oc *OpenstackClient) ListBaremetalV1Nodes(req *ListBaremetalV1NodesRequest)(*ListBaremetalV1NodesResponse){
-    return NewListBaremetalV1NodesResponse(nodes.List(oc.client,req.Opts, ))
+    return NewListBaremetalV1NodesResponse(nodes.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the ListDetailBaremetalV1Nodes
 type ListDetailBaremetalV1NodesRequest struct{
-    Opts nodes.ListOptsBuilder
+    Opts nodes.ListOpts
 }
 
 func NewListDetailBaremetalV1NodesRequest()*ListDetailBaremetalV1NodesRequest{
@@ -57,7 +57,7 @@ func NewListDetailBaremetalV1NodesResponse(pager pagination.Pager,)*ListDetailBa
 
 // action function
 func (oc *OpenstackClient) ListDetailBaremetalV1Nodes(req *ListDetailBaremetalV1NodesRequest)(*ListDetailBaremetalV1NodesResponse){
-    return NewListDetailBaremetalV1NodesResponse(nodes.ListDetail(oc.client,req.Opts, ))
+    return NewListDetailBaremetalV1NodesResponse(nodes.ListDetail(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetBaremetalV1Nodes
@@ -82,12 +82,12 @@ func NewGetBaremetalV1NodesResponse(getResult nodes.GetResult,)*GetBaremetalV1No
 
 // action function
 func (oc *OpenstackClient) GetBaremetalV1Nodes(req *GetBaremetalV1NodesRequest)(*GetBaremetalV1NodesResponse){
-    return NewGetBaremetalV1NodesResponse(nodes.Get(oc.client,req.Id, ))
+    return NewGetBaremetalV1NodesResponse(nodes.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateBaremetalV1Nodes
 type CreateBaremetalV1NodesRequest struct{
-    Opts nodes.CreateOptsBuilder
+    Opts nodes.CreateOpts
 }
 
 func NewCreateBaremetalV1NodesRequest()*CreateBaremetalV1NodesRequest{
@@ -107,7 +107,7 @@ func NewCreateBaremetalV1NodesResponse(createResult nodes.CreateResult,)*CreateB
 
 // action function
 func (oc *OpenstackClient) CreateBaremetalV1Nodes(req *CreateBaremetalV1NodesRequest)(*CreateBaremetalV1NodesResponse){
-    return NewCreateBaremetalV1NodesResponse(nodes.Create(oc.client,req.Opts, ))
+    return NewCreateBaremetalV1NodesResponse(nodes.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateBaremetalV1Nodes
@@ -133,7 +133,7 @@ func NewUpdateBaremetalV1NodesResponse(updateResult nodes.UpdateResult,)*UpdateB
 
 // action function
 func (oc *OpenstackClient) UpdateBaremetalV1Nodes(req *UpdateBaremetalV1NodesRequest)(*UpdateBaremetalV1NodesResponse){
-    return NewUpdateBaremetalV1NodesResponse(nodes.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateBaremetalV1NodesResponse(nodes.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteBaremetalV1Nodes
@@ -158,7 +158,7 @@ func NewDeleteBaremetalV1NodesResponse(deleteResult nodes.DeleteResult,)*DeleteB
 
 // action function
 func (oc *OpenstackClient) DeleteBaremetalV1Nodes(req *DeleteBaremetalV1NodesRequest)(*DeleteBaremetalV1NodesResponse){
-    return NewDeleteBaremetalV1NodesResponse(nodes.Delete(oc.client,req.Id, ))
+    return NewDeleteBaremetalV1NodesResponse(nodes.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the ValidateBaremetalV1Nodes
@@ -183,7 +183,7 @@ func NewValidateBaremetalV1NodesResponse(validateResult nodes.ValidateResult,)*V
 
 // action function
 func (oc *OpenstackClient) ValidateBaremetalV1Nodes(req *ValidateBaremetalV1NodesRequest)(*ValidateBaremetalV1NodesResponse){
-    return NewValidateBaremetalV1NodesResponse(nodes.Validate(oc.client,req.Id, ))
+    return NewValidateBaremetalV1NodesResponse(nodes.Validate(oc.Client,req.Id, ))
 
 }
 //request struct for the InjectNMIBaremetalV1Nodes
@@ -208,13 +208,13 @@ func NewInjectNMIBaremetalV1NodesResponse(injectNMIResult nodes.InjectNMIResult,
 
 // action function
 func (oc *OpenstackClient) InjectNMIBaremetalV1Nodes(req *InjectNMIBaremetalV1NodesRequest)(*InjectNMIBaremetalV1NodesResponse){
-    return NewInjectNMIBaremetalV1NodesResponse(nodes.InjectNMI(oc.client,req.Id, ))
+    return NewInjectNMIBaremetalV1NodesResponse(nodes.InjectNMI(oc.Client,req.Id, ))
 
 }
 //request struct for the SetBootDeviceBaremetalV1Nodes
 type SetBootDeviceBaremetalV1NodesRequest struct{
     Id string
-    BootDevice nodes.BootDeviceOptsBuilder
+    BootDevice nodes.BootDeviceOpts
 }
 
 func NewSetBootDeviceBaremetalV1NodesRequest()*SetBootDeviceBaremetalV1NodesRequest{
@@ -234,7 +234,7 @@ func NewSetBootDeviceBaremetalV1NodesResponse(setBootDeviceResult nodes.SetBootD
 
 // action function
 func (oc *OpenstackClient) SetBootDeviceBaremetalV1Nodes(req *SetBootDeviceBaremetalV1NodesRequest)(*SetBootDeviceBaremetalV1NodesResponse){
-    return NewSetBootDeviceBaremetalV1NodesResponse(nodes.SetBootDevice(oc.client,req.Id,req.BootDevice, ))
+    return NewSetBootDeviceBaremetalV1NodesResponse(nodes.SetBootDevice(oc.Client,req.Id,req.BootDevice, ))
 
 }
 //request struct for the GetBootDeviceBaremetalV1Nodes
@@ -259,7 +259,7 @@ func NewGetBootDeviceBaremetalV1NodesResponse(bootDeviceResult nodes.BootDeviceR
 
 // action function
 func (oc *OpenstackClient) GetBootDeviceBaremetalV1Nodes(req *GetBootDeviceBaremetalV1NodesRequest)(*GetBootDeviceBaremetalV1NodesResponse){
-    return NewGetBootDeviceBaremetalV1NodesResponse(nodes.GetBootDevice(oc.client,req.Id, ))
+    return NewGetBootDeviceBaremetalV1NodesResponse(nodes.GetBootDevice(oc.Client,req.Id, ))
 
 }
 //request struct for the GetSupportedBootDevicesBaremetalV1Nodes
@@ -284,13 +284,13 @@ func NewGetSupportedBootDevicesBaremetalV1NodesResponse(supportedBootDeviceResul
 
 // action function
 func (oc *OpenstackClient) GetSupportedBootDevicesBaremetalV1Nodes(req *GetSupportedBootDevicesBaremetalV1NodesRequest)(*GetSupportedBootDevicesBaremetalV1NodesResponse){
-    return NewGetSupportedBootDevicesBaremetalV1NodesResponse(nodes.GetSupportedBootDevices(oc.client,req.Id, ))
+    return NewGetSupportedBootDevicesBaremetalV1NodesResponse(nodes.GetSupportedBootDevices(oc.Client,req.Id, ))
 
 }
 //request struct for the ChangeProvisionStateBaremetalV1Nodes
 type ChangeProvisionStateBaremetalV1NodesRequest struct{
     Id string
-    Opts nodes.ProvisionStateOptsBuilder
+    Opts nodes.ProvisionStateOpts
 }
 
 func NewChangeProvisionStateBaremetalV1NodesRequest()*ChangeProvisionStateBaremetalV1NodesRequest{
@@ -310,13 +310,13 @@ func NewChangeProvisionStateBaremetalV1NodesResponse(changeStateResult nodes.Cha
 
 // action function
 func (oc *OpenstackClient) ChangeProvisionStateBaremetalV1Nodes(req *ChangeProvisionStateBaremetalV1NodesRequest)(*ChangeProvisionStateBaremetalV1NodesResponse){
-    return NewChangeProvisionStateBaremetalV1NodesResponse(nodes.ChangeProvisionState(oc.client,req.Id,req.Opts, ))
+    return NewChangeProvisionStateBaremetalV1NodesResponse(nodes.ChangeProvisionState(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the ChangePowerStateBaremetalV1Nodes
 type ChangePowerStateBaremetalV1NodesRequest struct{
     Id string
-    Opts nodes.PowerStateOptsBuilder
+    Opts nodes.PowerStateOpts
 }
 
 func NewChangePowerStateBaremetalV1NodesRequest()*ChangePowerStateBaremetalV1NodesRequest{
@@ -336,13 +336,13 @@ func NewChangePowerStateBaremetalV1NodesResponse(changePowerStateResult nodes.Ch
 
 // action function
 func (oc *OpenstackClient) ChangePowerStateBaremetalV1Nodes(req *ChangePowerStateBaremetalV1NodesRequest)(*ChangePowerStateBaremetalV1NodesResponse){
-    return NewChangePowerStateBaremetalV1NodesResponse(nodes.ChangePowerState(oc.client,req.Id,req.Opts, ))
+    return NewChangePowerStateBaremetalV1NodesResponse(nodes.ChangePowerState(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the SetRAIDConfigBaremetalV1Nodes
 type SetRAIDConfigBaremetalV1NodesRequest struct{
     Id string
-    RaidConfigOptsBuilder nodes.RAIDConfigOptsBuilder
+    RaidConfigOptsBuilder nodes.RAIDConfigOpts
 }
 
 func NewSetRAIDConfigBaremetalV1NodesRequest()*SetRAIDConfigBaremetalV1NodesRequest{
@@ -362,13 +362,13 @@ func NewSetRAIDConfigBaremetalV1NodesResponse(changeStateResult nodes.ChangeStat
 
 // action function
 func (oc *OpenstackClient) SetRAIDConfigBaremetalV1Nodes(req *SetRAIDConfigBaremetalV1NodesRequest)(*SetRAIDConfigBaremetalV1NodesResponse){
-    return NewSetRAIDConfigBaremetalV1NodesResponse(nodes.SetRAIDConfig(oc.client,req.Id,req.RaidConfigOptsBuilder, ))
+    return NewSetRAIDConfigBaremetalV1NodesResponse(nodes.SetRAIDConfig(oc.Client,req.Id,req.RaidConfigOptsBuilder, ))
 
 }
 //request struct for the ListBIOSSettingsBaremetalV1Nodes
 type ListBIOSSettingsBaremetalV1NodesRequest struct{
     Id string
-    Opts nodes.ListBIOSSettingsOptsBuilder
+    Opts nodes.ListBIOSSettingsOpts
 }
 
 func NewListBIOSSettingsBaremetalV1NodesRequest()*ListBIOSSettingsBaremetalV1NodesRequest{
@@ -388,7 +388,7 @@ func NewListBIOSSettingsBaremetalV1NodesResponse(listBIOSSettingsResult nodes.Li
 
 // action function
 func (oc *OpenstackClient) ListBIOSSettingsBaremetalV1Nodes(req *ListBIOSSettingsBaremetalV1NodesRequest)(*ListBIOSSettingsBaremetalV1NodesResponse){
-    return NewListBIOSSettingsBaremetalV1NodesResponse(nodes.ListBIOSSettings(oc.client,req.Id,req.Opts, ))
+    return NewListBIOSSettingsBaremetalV1NodesResponse(nodes.ListBIOSSettings(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the GetBIOSSettingBaremetalV1Nodes
@@ -414,7 +414,7 @@ func NewGetBIOSSettingBaremetalV1NodesResponse(getBIOSSettingResult nodes.GetBIO
 
 // action function
 func (oc *OpenstackClient) GetBIOSSettingBaremetalV1Nodes(req *GetBIOSSettingBaremetalV1NodesRequest)(*GetBIOSSettingBaremetalV1NodesResponse){
-    return NewGetBIOSSettingBaremetalV1NodesResponse(nodes.GetBIOSSetting(oc.client,req.Id,req.Setting, ))
+    return NewGetBIOSSettingBaremetalV1NodesResponse(nodes.GetBIOSSetting(oc.Client,req.Id,req.Setting, ))
 
 }
 //request struct for the GetVendorPassthruMethodsBaremetalV1Nodes
@@ -439,7 +439,7 @@ func NewGetVendorPassthruMethodsBaremetalV1NodesResponse(vendorPassthruMethodsRe
 
 // action function
 func (oc *OpenstackClient) GetVendorPassthruMethodsBaremetalV1Nodes(req *GetVendorPassthruMethodsBaremetalV1NodesRequest)(*GetVendorPassthruMethodsBaremetalV1NodesResponse){
-    return NewGetVendorPassthruMethodsBaremetalV1NodesResponse(nodes.GetVendorPassthruMethods(oc.client,req.Id, ))
+    return NewGetVendorPassthruMethodsBaremetalV1NodesResponse(nodes.GetVendorPassthruMethods(oc.Client,req.Id, ))
 
 }
 //request struct for the GetAllSubscriptionsBaremetalV1Nodes
@@ -465,7 +465,7 @@ func NewGetAllSubscriptionsBaremetalV1NodesResponse(getAllSubscriptionsVendorPas
 
 // action function
 func (oc *OpenstackClient) GetAllSubscriptionsBaremetalV1Nodes(req *GetAllSubscriptionsBaremetalV1NodesRequest)(*GetAllSubscriptionsBaremetalV1NodesResponse){
-    return NewGetAllSubscriptionsBaremetalV1NodesResponse(nodes.GetAllSubscriptions(oc.client,req.Id,req.Method, ))
+    return NewGetAllSubscriptionsBaremetalV1NodesResponse(nodes.GetAllSubscriptions(oc.Client,req.Id,req.Method, ))
 
 }
 //request struct for the GetSubscriptionBaremetalV1Nodes
@@ -492,7 +492,7 @@ func NewGetSubscriptionBaremetalV1NodesResponse(subscriptionVendorPassthruResult
 
 // action function
 func (oc *OpenstackClient) GetSubscriptionBaremetalV1Nodes(req *GetSubscriptionBaremetalV1NodesRequest)(*GetSubscriptionBaremetalV1NodesResponse){
-    return NewGetSubscriptionBaremetalV1NodesResponse(nodes.GetSubscription(oc.client,req.Id,req.Method,req.SubscriptionOpts, ))
+    return NewGetSubscriptionBaremetalV1NodesResponse(nodes.GetSubscription(oc.Client,req.Id,req.Method,req.SubscriptionOpts, ))
 
 }
 //request struct for the DeleteSubscriptionBaremetalV1Nodes
@@ -519,7 +519,7 @@ func NewDeleteSubscriptionBaremetalV1NodesResponse(deleteSubscriptionVendorPasst
 
 // action function
 func (oc *OpenstackClient) DeleteSubscriptionBaremetalV1Nodes(req *DeleteSubscriptionBaremetalV1NodesRequest)(*DeleteSubscriptionBaremetalV1NodesResponse){
-    return NewDeleteSubscriptionBaremetalV1NodesResponse(nodes.DeleteSubscription(oc.client,req.Id,req.Method,req.SubscriptionOpts, ))
+    return NewDeleteSubscriptionBaremetalV1NodesResponse(nodes.DeleteSubscription(oc.Client,req.Id,req.Method,req.SubscriptionOpts, ))
 
 }
 //request struct for the CreateSubscriptionBaremetalV1Nodes
@@ -546,13 +546,13 @@ func NewCreateSubscriptionBaremetalV1NodesResponse(subscriptionVendorPassthruRes
 
 // action function
 func (oc *OpenstackClient) CreateSubscriptionBaremetalV1Nodes(req *CreateSubscriptionBaremetalV1NodesRequest)(*CreateSubscriptionBaremetalV1NodesResponse){
-    return NewCreateSubscriptionBaremetalV1NodesResponse(nodes.CreateSubscription(oc.client,req.Id,req.Method,req.SubscriptionOpts, ))
+    return NewCreateSubscriptionBaremetalV1NodesResponse(nodes.CreateSubscription(oc.Client,req.Id,req.Method,req.SubscriptionOpts, ))
 
 }
 //request struct for the SetMaintenanceBaremetalV1Nodes
 type SetMaintenanceBaremetalV1NodesRequest struct{
     Id string
-    Opts nodes.MaintenanceOptsBuilder
+    Opts nodes.MaintenanceOpts
 }
 
 func NewSetMaintenanceBaremetalV1NodesRequest()*SetMaintenanceBaremetalV1NodesRequest{
@@ -572,7 +572,7 @@ func NewSetMaintenanceBaremetalV1NodesResponse(setMaintenanceResult nodes.SetMai
 
 // action function
 func (oc *OpenstackClient) SetMaintenanceBaremetalV1Nodes(req *SetMaintenanceBaremetalV1NodesRequest)(*SetMaintenanceBaremetalV1NodesResponse){
-    return NewSetMaintenanceBaremetalV1NodesResponse(nodes.SetMaintenance(oc.client,req.Id,req.Opts, ))
+    return NewSetMaintenanceBaremetalV1NodesResponse(nodes.SetMaintenance(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the UnsetMaintenanceBaremetalV1Nodes
@@ -597,6 +597,6 @@ func NewUnsetMaintenanceBaremetalV1NodesResponse(setMaintenanceResult nodes.SetM
 
 // action function
 func (oc *OpenstackClient) UnsetMaintenanceBaremetalV1Nodes(req *UnsetMaintenanceBaremetalV1NodesRequest)(*UnsetMaintenanceBaremetalV1NodesResponse){
-    return NewUnsetMaintenanceBaremetalV1NodesResponse(nodes.UnsetMaintenance(oc.client,req.Id, ))
+    return NewUnsetMaintenanceBaremetalV1NodesResponse(nodes.UnsetMaintenance(oc.Client,req.Id, ))
 
 }

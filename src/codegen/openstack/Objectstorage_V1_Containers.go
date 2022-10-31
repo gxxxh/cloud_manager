@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListObjectstorageV1Containers
 type ListObjectstorageV1ContainersRequest struct{
-    Opts containers.ListOptsBuilder
+    Opts containers.ListOpts
 }
 
 func NewListObjectstorageV1ContainersRequest()*ListObjectstorageV1ContainersRequest{
@@ -32,13 +32,13 @@ func NewListObjectstorageV1ContainersResponse(pager pagination.Pager,)*ListObjec
 
 // action function
 func (oc *OpenstackClient) ListObjectstorageV1Containers(req *ListObjectstorageV1ContainersRequest)(*ListObjectstorageV1ContainersResponse){
-    return NewListObjectstorageV1ContainersResponse(containers.List(oc.client,req.Opts, ))
+    return NewListObjectstorageV1ContainersResponse(containers.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateObjectstorageV1Containers
 type CreateObjectstorageV1ContainersRequest struct{
     ContainerName string
-    Opts containers.CreateOptsBuilder
+    Opts containers.CreateOpts
 }
 
 func NewCreateObjectstorageV1ContainersRequest()*CreateObjectstorageV1ContainersRequest{
@@ -58,32 +58,7 @@ func NewCreateObjectstorageV1ContainersResponse(createResult containers.CreateRe
 
 // action function
 func (oc *OpenstackClient) CreateObjectstorageV1Containers(req *CreateObjectstorageV1ContainersRequest)(*CreateObjectstorageV1ContainersResponse){
-    return NewCreateObjectstorageV1ContainersResponse(containers.Create(oc.client,req.ContainerName,req.Opts, ))
-
-}
-//request struct for the BulkDeleteObjectstorageV1Containers
-type BulkDeleteObjectstorageV1ContainersRequest struct{
-    Containers []string
-}
-
-func NewBulkDeleteObjectstorageV1ContainersRequest()*BulkDeleteObjectstorageV1ContainersRequest{
-    return &BulkDeleteObjectstorageV1ContainersRequest{}
-}
-
-//response struct for the BulkDeleteObjectstorageV1Containers
-type BulkDeleteObjectstorageV1ContainersResponse struct{
-    BulkDeleteResult containers.BulkDeleteResult
-}
-
-func NewBulkDeleteObjectstorageV1ContainersResponse(bulkDeleteResult containers.BulkDeleteResult,)*BulkDeleteObjectstorageV1ContainersResponse {
-    return &BulkDeleteObjectstorageV1ContainersResponse{
-            BulkDeleteResult:bulkDeleteResult,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) BulkDeleteObjectstorageV1Containers(req *BulkDeleteObjectstorageV1ContainersRequest)(*BulkDeleteObjectstorageV1ContainersResponse){
-    return NewBulkDeleteObjectstorageV1ContainersResponse(containers.BulkDelete(oc.client,req.Containers, ))
+    return NewCreateObjectstorageV1ContainersResponse(containers.Create(oc.Client,req.ContainerName,req.Opts, ))
 
 }
 //request struct for the DeleteObjectstorageV1Containers
@@ -108,13 +83,13 @@ func NewDeleteObjectstorageV1ContainersResponse(deleteResult containers.DeleteRe
 
 // action function
 func (oc *OpenstackClient) DeleteObjectstorageV1Containers(req *DeleteObjectstorageV1ContainersRequest)(*DeleteObjectstorageV1ContainersResponse){
-    return NewDeleteObjectstorageV1ContainersResponse(containers.Delete(oc.client,req.ContainerName, ))
+    return NewDeleteObjectstorageV1ContainersResponse(containers.Delete(oc.Client,req.ContainerName, ))
 
 }
 //request struct for the UpdateObjectstorageV1Containers
 type UpdateObjectstorageV1ContainersRequest struct{
     ContainerName string
-    Opts containers.UpdateOptsBuilder
+    Opts containers.UpdateOpts
 }
 
 func NewUpdateObjectstorageV1ContainersRequest()*UpdateObjectstorageV1ContainersRequest{
@@ -134,13 +109,13 @@ func NewUpdateObjectstorageV1ContainersResponse(updateResult containers.UpdateRe
 
 // action function
 func (oc *OpenstackClient) UpdateObjectstorageV1Containers(req *UpdateObjectstorageV1ContainersRequest)(*UpdateObjectstorageV1ContainersResponse){
-    return NewUpdateObjectstorageV1ContainersResponse(containers.Update(oc.client,req.ContainerName,req.Opts, ))
+    return NewUpdateObjectstorageV1ContainersResponse(containers.Update(oc.Client,req.ContainerName,req.Opts, ))
 
 }
 //request struct for the GetObjectstorageV1Containers
 type GetObjectstorageV1ContainersRequest struct{
     ContainerName string
-    Opts containers.GetOptsBuilder
+    Opts containers.GetOpts
 }
 
 func NewGetObjectstorageV1ContainersRequest()*GetObjectstorageV1ContainersRequest{
@@ -160,6 +135,6 @@ func NewGetObjectstorageV1ContainersResponse(getResult containers.GetResult,)*Ge
 
 // action function
 func (oc *OpenstackClient) GetObjectstorageV1Containers(req *GetObjectstorageV1ContainersRequest)(*GetObjectstorageV1ContainersResponse){
-    return NewGetObjectstorageV1ContainersResponse(containers.Get(oc.client,req.ContainerName,req.Opts, ))
+    return NewGetObjectstorageV1ContainersResponse(containers.Get(oc.Client,req.ContainerName,req.Opts, ))
 
 }

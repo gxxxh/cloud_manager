@@ -12,7 +12,7 @@ import (
 //request struct for the CreateComputeV2ExtensionsRemoteconsoles
 type CreateComputeV2ExtensionsRemoteconsolesRequest struct{
     ServerID string
-    Opts remoteconsoles.CreateOptsBuilder
+    Opts remoteconsoles.CreateOpts
 }
 
 func NewCreateComputeV2ExtensionsRemoteconsolesRequest()*CreateComputeV2ExtensionsRemoteconsolesRequest{
@@ -32,6 +32,6 @@ func NewCreateComputeV2ExtensionsRemoteconsolesResponse(createResult remoteconso
 
 // action function
 func (oc *OpenstackClient) CreateComputeV2ExtensionsRemoteconsoles(req *CreateComputeV2ExtensionsRemoteconsolesRequest)(*CreateComputeV2ExtensionsRemoteconsolesResponse){
-    return NewCreateComputeV2ExtensionsRemoteconsolesResponse(remoteconsoles.Create(oc.client,req.ServerID,req.Opts, ))
+    return NewCreateComputeV2ExtensionsRemoteconsolesResponse(remoteconsoles.Create(oc.Client,req.ServerID,req.Opts, ))
 
 }

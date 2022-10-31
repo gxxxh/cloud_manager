@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateWorkflowV2Workflows
 type CreateWorkflowV2WorkflowsRequest struct{
-    Opts workflows.CreateOptsBuilder
+    Opts workflows.CreateOpts
 }
 
 func NewCreateWorkflowV2WorkflowsRequest()*CreateWorkflowV2WorkflowsRequest{
@@ -32,7 +32,7 @@ func NewCreateWorkflowV2WorkflowsResponse(createResult workflows.CreateResult,)*
 
 // action function
 func (oc *OpenstackClient) CreateWorkflowV2Workflows(req *CreateWorkflowV2WorkflowsRequest)(*CreateWorkflowV2WorkflowsResponse){
-    return NewCreateWorkflowV2WorkflowsResponse(workflows.Create(oc.client,req.Opts, ))
+    return NewCreateWorkflowV2WorkflowsResponse(workflows.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteWorkflowV2Workflows
@@ -57,7 +57,7 @@ func NewDeleteWorkflowV2WorkflowsResponse(deleteResult workflows.DeleteResult,)*
 
 // action function
 func (oc *OpenstackClient) DeleteWorkflowV2Workflows(req *DeleteWorkflowV2WorkflowsRequest)(*DeleteWorkflowV2WorkflowsResponse){
-    return NewDeleteWorkflowV2WorkflowsResponse(workflows.Delete(oc.client,req.Id, ))
+    return NewDeleteWorkflowV2WorkflowsResponse(workflows.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the GetWorkflowV2Workflows
@@ -82,12 +82,12 @@ func NewGetWorkflowV2WorkflowsResponse(getResult workflows.GetResult,)*GetWorkfl
 
 // action function
 func (oc *OpenstackClient) GetWorkflowV2Workflows(req *GetWorkflowV2WorkflowsRequest)(*GetWorkflowV2WorkflowsResponse){
-    return NewGetWorkflowV2WorkflowsResponse(workflows.Get(oc.client,req.Id, ))
+    return NewGetWorkflowV2WorkflowsResponse(workflows.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListWorkflowV2Workflows
 type ListWorkflowV2WorkflowsRequest struct{
-    Opts workflows.ListOptsBuilder
+    Opts workflows.ListOpts
 }
 
 func NewListWorkflowV2WorkflowsRequest()*ListWorkflowV2WorkflowsRequest{
@@ -107,6 +107,6 @@ func NewListWorkflowV2WorkflowsResponse(pager pagination.Pager,)*ListWorkflowV2W
 
 // action function
 func (oc *OpenstackClient) ListWorkflowV2Workflows(req *ListWorkflowV2WorkflowsRequest)(*ListWorkflowV2WorkflowsResponse){
-    return NewListWorkflowV2WorkflowsResponse(workflows.List(oc.client,req.Opts, ))
+    return NewListWorkflowV2WorkflowsResponse(workflows.List(oc.Client,req.Opts, ))
 
 }

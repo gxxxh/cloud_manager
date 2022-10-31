@@ -5,15 +5,17 @@ import (
 	"cloud_manager/src/code_generator"
 	"cloud_manager/src/utils"
 	"fmt"
+	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	"os"
 	"path/filepath"
 	"testing"
 )
 
 func TestGenCreateRequestRegistry(t *testing.T) {
-	analyzer := cloud_manager.CloudAPIAnalyzer{Kind: "aliyun"}
-	analyzer.Init()
-	analyzer.ExtractCloudAPIs()
+	//client := openstack.OpenstackClient{}
+	client := ecs.Client{}
+	analyzer := cloud_manager.NewCloudAPIAnalyzer()
+	analyzer.ExtractCloudAPIs(client)
 	requestRegistryInfo := analyzer.ExtractRequestInfos()
 	templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\request_map.tmpl"
 	requestRegistryInfo.ImportPaths = []string{"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"}
@@ -35,7 +37,7 @@ func TestGenCreateRequestRegistry(t *testing.T) {
 
 func TestGenOpenstackCode(t *testing.T) {
 	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack"
-	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\containerinfra\\v1\\clusters"
+	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\keymanager\\v1\\secrets"
 	ma := cloud_manager.NewModuleAnalyzer()
 	resourceInfos, err := ma.DoAnalyze(dir)
 	if err != nil {

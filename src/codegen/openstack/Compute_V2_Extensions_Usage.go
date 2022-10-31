@@ -13,7 +13,7 @@ import (
 //request struct for the SingleTenantComputeV2ExtensionsUsage
 type SingleTenantComputeV2ExtensionsUsageRequest struct{
     TenantID string
-    Opts usage.SingleTenantOptsBuilder
+    Opts usage.SingleTenantOpts
 }
 
 func NewSingleTenantComputeV2ExtensionsUsageRequest()*SingleTenantComputeV2ExtensionsUsageRequest{
@@ -33,12 +33,12 @@ func NewSingleTenantComputeV2ExtensionsUsageResponse(pager pagination.Pager,)*Si
 
 // action function
 func (oc *OpenstackClient) SingleTenantComputeV2ExtensionsUsage(req *SingleTenantComputeV2ExtensionsUsageRequest)(*SingleTenantComputeV2ExtensionsUsageResponse){
-    return NewSingleTenantComputeV2ExtensionsUsageResponse(usage.SingleTenant(oc.client,req.TenantID,req.Opts, ))
+    return NewSingleTenantComputeV2ExtensionsUsageResponse(usage.SingleTenant(oc.Client,req.TenantID,req.Opts, ))
 
 }
 //request struct for the AllTenantsComputeV2ExtensionsUsage
 type AllTenantsComputeV2ExtensionsUsageRequest struct{
-    Opts usage.AllTenantsOptsBuilder
+    Opts usage.AllTenantsOpts
 }
 
 func NewAllTenantsComputeV2ExtensionsUsageRequest()*AllTenantsComputeV2ExtensionsUsageRequest{
@@ -58,6 +58,6 @@ func NewAllTenantsComputeV2ExtensionsUsageResponse(pager pagination.Pager,)*AllT
 
 // action function
 func (oc *OpenstackClient) AllTenantsComputeV2ExtensionsUsage(req *AllTenantsComputeV2ExtensionsUsageRequest)(*AllTenantsComputeV2ExtensionsUsageResponse){
-    return NewAllTenantsComputeV2ExtensionsUsageResponse(usage.AllTenants(oc.client,req.Opts, ))
+    return NewAllTenantsComputeV2ExtensionsUsageResponse(usage.AllTenants(oc.Client,req.Opts, ))
 
 }

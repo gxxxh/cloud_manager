@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListNetworkingV2ExtensionsQosPolicies
 type ListNetworkingV2ExtensionsQosPoliciesRequest struct{
-    Opts policies.PolicyListOptsBuilder
+    Opts policies.ListOpts
 }
 
 func NewListNetworkingV2ExtensionsQosPoliciesRequest()*ListNetworkingV2ExtensionsQosPoliciesRequest{
@@ -32,7 +32,7 @@ func NewListNetworkingV2ExtensionsQosPoliciesResponse(pager pagination.Pager,)*L
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsQosPolicies(req *ListNetworkingV2ExtensionsQosPoliciesRequest)(*ListNetworkingV2ExtensionsQosPoliciesResponse){
-    return NewListNetworkingV2ExtensionsQosPoliciesResponse(policies.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2ExtensionsQosPoliciesResponse(policies.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsQosPolicies
@@ -57,12 +57,12 @@ func NewGetNetworkingV2ExtensionsQosPoliciesResponse(getResult policies.GetResul
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsQosPolicies(req *GetNetworkingV2ExtensionsQosPoliciesRequest)(*GetNetworkingV2ExtensionsQosPoliciesResponse){
-    return NewGetNetworkingV2ExtensionsQosPoliciesResponse(policies.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsQosPoliciesResponse(policies.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsQosPolicies
 type CreateNetworkingV2ExtensionsQosPoliciesRequest struct{
-    Opts policies.CreateOptsBuilder
+    Opts policies.CreateOpts
 }
 
 func NewCreateNetworkingV2ExtensionsQosPoliciesRequest()*CreateNetworkingV2ExtensionsQosPoliciesRequest{
@@ -82,13 +82,13 @@ func NewCreateNetworkingV2ExtensionsQosPoliciesResponse(createResult policies.Cr
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsQosPolicies(req *CreateNetworkingV2ExtensionsQosPoliciesRequest)(*CreateNetworkingV2ExtensionsQosPoliciesResponse){
-    return NewCreateNetworkingV2ExtensionsQosPoliciesResponse(policies.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsQosPoliciesResponse(policies.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsQosPolicies
 type UpdateNetworkingV2ExtensionsQosPoliciesRequest struct{
     PolicyID string
-    Opts policies.UpdateOptsBuilder
+    Opts policies.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsQosPoliciesRequest()*UpdateNetworkingV2ExtensionsQosPoliciesRequest{
@@ -108,7 +108,7 @@ func NewUpdateNetworkingV2ExtensionsQosPoliciesResponse(updateResult policies.Up
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsQosPolicies(req *UpdateNetworkingV2ExtensionsQosPoliciesRequest)(*UpdateNetworkingV2ExtensionsQosPoliciesResponse){
-    return NewUpdateNetworkingV2ExtensionsQosPoliciesResponse(policies.Update(oc.client,req.PolicyID,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsQosPoliciesResponse(policies.Update(oc.Client,req.PolicyID,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsQosPolicies
@@ -133,6 +133,6 @@ func NewDeleteNetworkingV2ExtensionsQosPoliciesResponse(deleteResult policies.De
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsQosPolicies(req *DeleteNetworkingV2ExtensionsQosPoliciesRequest)(*DeleteNetworkingV2ExtensionsQosPoliciesResponse){
-    return NewDeleteNetworkingV2ExtensionsQosPoliciesResponse(policies.Delete(oc.client,req.Id, ))
+    return NewDeleteNetworkingV2ExtensionsQosPoliciesResponse(policies.Delete(oc.Client,req.Id, ))
 
 }

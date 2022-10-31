@@ -31,7 +31,7 @@ func NewListVersionsNetworkingV2ApiversionsResponse(pager pagination.Pager,)*Lis
 
 // action function
 func (oc *OpenstackClient) ListVersionsNetworkingV2Apiversions(req *ListVersionsNetworkingV2ApiversionsRequest)(*ListVersionsNetworkingV2ApiversionsResponse){
-    return NewListVersionsNetworkingV2ApiversionsResponse(apiversions.ListVersions(oc.client, ))
+    return NewListVersionsNetworkingV2ApiversionsResponse(apiversions.ListVersions(oc.Client, ))
 
 }
 //request struct for the ListVersionResourcesNetworkingV2Apiversions
@@ -56,6 +56,6 @@ func NewListVersionResourcesNetworkingV2ApiversionsResponse(pager pagination.Pag
 
 // action function
 func (oc *OpenstackClient) ListVersionResourcesNetworkingV2Apiversions(req *ListVersionResourcesNetworkingV2ApiversionsRequest)(*ListVersionResourcesNetworkingV2ApiversionsResponse){
-    return NewListVersionResourcesNetworkingV2ApiversionsResponse(apiversions.ListVersionResources(oc.client,req.V, ))
+    return NewListVersionResourcesNetworkingV2ApiversionsResponse(apiversions.ListVersionResources(oc.Client,req.V, ))
 
 }

@@ -12,7 +12,7 @@ import (
 //request struct for the EvacuateComputeV2ExtensionsEvacuate
 type EvacuateComputeV2ExtensionsEvacuateRequest struct{
     Id string
-    Opts evacuate.EvacuateOptsBuilder
+    Opts evacuate.EvacuateOpts
 }
 
 func NewEvacuateComputeV2ExtensionsEvacuateRequest()*EvacuateComputeV2ExtensionsEvacuateRequest{
@@ -32,6 +32,6 @@ func NewEvacuateComputeV2ExtensionsEvacuateResponse(evacuateResult evacuate.Evac
 
 // action function
 func (oc *OpenstackClient) EvacuateComputeV2ExtensionsEvacuate(req *EvacuateComputeV2ExtensionsEvacuateRequest)(*EvacuateComputeV2ExtensionsEvacuateResponse){
-    return NewEvacuateComputeV2ExtensionsEvacuateResponse(evacuate.Evacuate(oc.client,req.Id,req.Opts, ))
+    return NewEvacuateComputeV2ExtensionsEvacuateResponse(evacuate.Evacuate(oc.Client,req.Id,req.Opts, ))
 
 }

@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListMessagingV2Queues
 type ListMessagingV2QueuesRequest struct{
-    Opts queues.ListOptsBuilder
+    Opts queues.ListOpts
 }
 
 func NewListMessagingV2QueuesRequest()*ListMessagingV2QueuesRequest{
@@ -32,12 +32,12 @@ func NewListMessagingV2QueuesResponse(pager pagination.Pager,)*ListMessagingV2Qu
 
 // action function
 func (oc *OpenstackClient) ListMessagingV2Queues(req *ListMessagingV2QueuesRequest)(*ListMessagingV2QueuesResponse){
-    return NewListMessagingV2QueuesResponse(queues.List(oc.client,req.Opts, ))
+    return NewListMessagingV2QueuesResponse(queues.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateMessagingV2Queues
 type CreateMessagingV2QueuesRequest struct{
-    Opts queues.CreateOptsBuilder
+    Opts queues.CreateOpts
 }
 
 func NewCreateMessagingV2QueuesRequest()*CreateMessagingV2QueuesRequest{
@@ -57,13 +57,13 @@ func NewCreateMessagingV2QueuesResponse(createResult queues.CreateResult,)*Creat
 
 // action function
 func (oc *OpenstackClient) CreateMessagingV2Queues(req *CreateMessagingV2QueuesRequest)(*CreateMessagingV2QueuesResponse){
-    return NewCreateMessagingV2QueuesResponse(queues.Create(oc.client,req.Opts, ))
+    return NewCreateMessagingV2QueuesResponse(queues.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateMessagingV2Queues
 type UpdateMessagingV2QueuesRequest struct{
     QueueName string
-    Opts queues.UpdateOptsBuilder
+    Opts queues.BatchUpdateOpts
 }
 
 func NewUpdateMessagingV2QueuesRequest()*UpdateMessagingV2QueuesRequest{
@@ -83,7 +83,7 @@ func NewUpdateMessagingV2QueuesResponse(updateResult queues.UpdateResult,)*Updat
 
 // action function
 func (oc *OpenstackClient) UpdateMessagingV2Queues(req *UpdateMessagingV2QueuesRequest)(*UpdateMessagingV2QueuesResponse){
-    return NewUpdateMessagingV2QueuesResponse(queues.Update(oc.client,req.QueueName,req.Opts, ))
+    return NewUpdateMessagingV2QueuesResponse(queues.Update(oc.Client,req.QueueName,req.Opts, ))
 
 }
 //request struct for the GetMessagingV2Queues
@@ -108,7 +108,7 @@ func NewGetMessagingV2QueuesResponse(getResult queues.GetResult,)*GetMessagingV2
 
 // action function
 func (oc *OpenstackClient) GetMessagingV2Queues(req *GetMessagingV2QueuesRequest)(*GetMessagingV2QueuesResponse){
-    return NewGetMessagingV2QueuesResponse(queues.Get(oc.client,req.QueueName, ))
+    return NewGetMessagingV2QueuesResponse(queues.Get(oc.Client,req.QueueName, ))
 
 }
 //request struct for the DeleteMessagingV2Queues
@@ -133,7 +133,7 @@ func NewDeleteMessagingV2QueuesResponse(deleteResult queues.DeleteResult,)*Delet
 
 // action function
 func (oc *OpenstackClient) DeleteMessagingV2Queues(req *DeleteMessagingV2QueuesRequest)(*DeleteMessagingV2QueuesResponse){
-    return NewDeleteMessagingV2QueuesResponse(queues.Delete(oc.client,req.QueueName, ))
+    return NewDeleteMessagingV2QueuesResponse(queues.Delete(oc.Client,req.QueueName, ))
 
 }
 //request struct for the GetStatsMessagingV2Queues
@@ -158,13 +158,13 @@ func NewGetStatsMessagingV2QueuesResponse(statResult queues.StatResult,)*GetStat
 
 // action function
 func (oc *OpenstackClient) GetStatsMessagingV2Queues(req *GetStatsMessagingV2QueuesRequest)(*GetStatsMessagingV2QueuesResponse){
-    return NewGetStatsMessagingV2QueuesResponse(queues.GetStats(oc.client,req.QueueName, ))
+    return NewGetStatsMessagingV2QueuesResponse(queues.GetStats(oc.Client,req.QueueName, ))
 
 }
 //request struct for the ShareMessagingV2Queues
 type ShareMessagingV2QueuesRequest struct{
     QueueName string
-    Opts queues.ShareOptsBuilder
+    Opts queues.ShareOpts
 }
 
 func NewShareMessagingV2QueuesRequest()*ShareMessagingV2QueuesRequest{
@@ -184,13 +184,13 @@ func NewShareMessagingV2QueuesResponse(shareResult queues.ShareResult,)*ShareMes
 
 // action function
 func (oc *OpenstackClient) ShareMessagingV2Queues(req *ShareMessagingV2QueuesRequest)(*ShareMessagingV2QueuesResponse){
-    return NewShareMessagingV2QueuesResponse(queues.Share(oc.client,req.QueueName,req.Opts, ))
+    return NewShareMessagingV2QueuesResponse(queues.Share(oc.Client,req.QueueName,req.Opts, ))
 
 }
 //request struct for the PurgeMessagingV2Queues
 type PurgeMessagingV2QueuesRequest struct{
     QueueName string
-    Opts queues.PurgeOptsBuilder
+    Opts queues.PurgeOpts
 }
 
 func NewPurgeMessagingV2QueuesRequest()*PurgeMessagingV2QueuesRequest{
@@ -210,6 +210,6 @@ func NewPurgeMessagingV2QueuesResponse(purgeResult queues.PurgeResult,)*PurgeMes
 
 // action function
 func (oc *OpenstackClient) PurgeMessagingV2Queues(req *PurgeMessagingV2QueuesRequest)(*PurgeMessagingV2QueuesResponse){
-    return NewPurgeMessagingV2QueuesResponse(queues.Purge(oc.client,req.QueueName,req.Opts, ))
+    return NewPurgeMessagingV2QueuesResponse(queues.Purge(oc.Client,req.QueueName,req.Opts, ))
 
 }

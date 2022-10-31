@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateBlockstorageV3Volumes
 type CreateBlockstorageV3VolumesRequest struct{
-    Opts volumes.CreateOptsBuilder
+    Opts volumes.CreateOpts
 }
 
 func NewCreateBlockstorageV3VolumesRequest()*CreateBlockstorageV3VolumesRequest{
@@ -32,13 +32,13 @@ func NewCreateBlockstorageV3VolumesResponse(createResult volumes.CreateResult,)*
 
 // action function
 func (oc *OpenstackClient) CreateBlockstorageV3Volumes(req *CreateBlockstorageV3VolumesRequest)(*CreateBlockstorageV3VolumesResponse){
-    return NewCreateBlockstorageV3VolumesResponse(volumes.Create(oc.client,req.Opts, ))
+    return NewCreateBlockstorageV3VolumesResponse(volumes.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageV3Volumes
 type DeleteBlockstorageV3VolumesRequest struct{
     Id string
-    Opts volumes.DeleteOptsBuilder
+    Opts volumes.DeleteOpts
 }
 
 func NewDeleteBlockstorageV3VolumesRequest()*DeleteBlockstorageV3VolumesRequest{
@@ -58,7 +58,7 @@ func NewDeleteBlockstorageV3VolumesResponse(deleteResult volumes.DeleteResult,)*
 
 // action function
 func (oc *OpenstackClient) DeleteBlockstorageV3Volumes(req *DeleteBlockstorageV3VolumesRequest)(*DeleteBlockstorageV3VolumesResponse){
-    return NewDeleteBlockstorageV3VolumesResponse(volumes.Delete(oc.client,req.Id,req.Opts, ))
+    return NewDeleteBlockstorageV3VolumesResponse(volumes.Delete(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the GetBlockstorageV3Volumes
@@ -83,12 +83,12 @@ func NewGetBlockstorageV3VolumesResponse(getResult volumes.GetResult,)*GetBlocks
 
 // action function
 func (oc *OpenstackClient) GetBlockstorageV3Volumes(req *GetBlockstorageV3VolumesRequest)(*GetBlockstorageV3VolumesResponse){
-    return NewGetBlockstorageV3VolumesResponse(volumes.Get(oc.client,req.Id, ))
+    return NewGetBlockstorageV3VolumesResponse(volumes.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListBlockstorageV3Volumes
 type ListBlockstorageV3VolumesRequest struct{
-    Opts volumes.ListOptsBuilder
+    Opts volumes.ListOpts
 }
 
 func NewListBlockstorageV3VolumesRequest()*ListBlockstorageV3VolumesRequest{
@@ -108,13 +108,13 @@ func NewListBlockstorageV3VolumesResponse(pager pagination.Pager,)*ListBlockstor
 
 // action function
 func (oc *OpenstackClient) ListBlockstorageV3Volumes(req *ListBlockstorageV3VolumesRequest)(*ListBlockstorageV3VolumesResponse){
-    return NewListBlockstorageV3VolumesResponse(volumes.List(oc.client,req.Opts, ))
+    return NewListBlockstorageV3VolumesResponse(volumes.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateBlockstorageV3Volumes
 type UpdateBlockstorageV3VolumesRequest struct{
     Id string
-    Opts volumes.UpdateOptsBuilder
+    Opts volumes.UpdateOpts
 }
 
 func NewUpdateBlockstorageV3VolumesRequest()*UpdateBlockstorageV3VolumesRequest{
@@ -134,6 +134,6 @@ func NewUpdateBlockstorageV3VolumesResponse(updateResult volumes.UpdateResult,)*
 
 // action function
 func (oc *OpenstackClient) UpdateBlockstorageV3Volumes(req *UpdateBlockstorageV3VolumesRequest)(*UpdateBlockstorageV3VolumesResponse){
-    return NewUpdateBlockstorageV3VolumesResponse(volumes.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateBlockstorageV3VolumesResponse(volumes.Update(oc.Client,req.Id,req.Opts, ))
 
 }

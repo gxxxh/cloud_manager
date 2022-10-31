@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListNetworkingV2ExtensionsFwaasPolicies
 type ListNetworkingV2ExtensionsFwaasPoliciesRequest struct{
-    Opts policies.ListOptsBuilder
+    Opts policies.ListOpts
 }
 
 func NewListNetworkingV2ExtensionsFwaasPoliciesRequest()*ListNetworkingV2ExtensionsFwaasPoliciesRequest{
@@ -32,12 +32,12 @@ func NewListNetworkingV2ExtensionsFwaasPoliciesResponse(pager pagination.Pager,)
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsFwaasPolicies(req *ListNetworkingV2ExtensionsFwaasPoliciesRequest)(*ListNetworkingV2ExtensionsFwaasPoliciesResponse){
-    return NewListNetworkingV2ExtensionsFwaasPoliciesResponse(policies.List(oc.client,req.Opts, ))
+    return NewListNetworkingV2ExtensionsFwaasPoliciesResponse(policies.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsFwaasPolicies
 type CreateNetworkingV2ExtensionsFwaasPoliciesRequest struct{
-    Opts policies.CreateOptsBuilder
+    Opts policies.CreateOpts
 }
 
 func NewCreateNetworkingV2ExtensionsFwaasPoliciesRequest()*CreateNetworkingV2ExtensionsFwaasPoliciesRequest{
@@ -57,7 +57,7 @@ func NewCreateNetworkingV2ExtensionsFwaasPoliciesResponse(createResult policies.
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsFwaasPolicies(req *CreateNetworkingV2ExtensionsFwaasPoliciesRequest)(*CreateNetworkingV2ExtensionsFwaasPoliciesResponse){
-    return NewCreateNetworkingV2ExtensionsFwaasPoliciesResponse(policies.Create(oc.client,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsFwaasPoliciesResponse(policies.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsFwaasPolicies
@@ -82,13 +82,13 @@ func NewGetNetworkingV2ExtensionsFwaasPoliciesResponse(getResult policies.GetRes
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsFwaasPolicies(req *GetNetworkingV2ExtensionsFwaasPoliciesRequest)(*GetNetworkingV2ExtensionsFwaasPoliciesResponse){
-    return NewGetNetworkingV2ExtensionsFwaasPoliciesResponse(policies.Get(oc.client,req.Id, ))
+    return NewGetNetworkingV2ExtensionsFwaasPoliciesResponse(policies.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsFwaasPolicies
 type UpdateNetworkingV2ExtensionsFwaasPoliciesRequest struct{
     Id string
-    Opts policies.UpdateOptsBuilder
+    Opts policies.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsFwaasPoliciesRequest()*UpdateNetworkingV2ExtensionsFwaasPoliciesRequest{
@@ -108,7 +108,7 @@ func NewUpdateNetworkingV2ExtensionsFwaasPoliciesResponse(updateResult policies.
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsFwaasPolicies(req *UpdateNetworkingV2ExtensionsFwaasPoliciesRequest)(*UpdateNetworkingV2ExtensionsFwaasPoliciesResponse){
-    return NewUpdateNetworkingV2ExtensionsFwaasPoliciesResponse(policies.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsFwaasPoliciesResponse(policies.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsFwaasPolicies
@@ -133,13 +133,13 @@ func NewDeleteNetworkingV2ExtensionsFwaasPoliciesResponse(deleteResult policies.
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsFwaasPolicies(req *DeleteNetworkingV2ExtensionsFwaasPoliciesRequest)(*DeleteNetworkingV2ExtensionsFwaasPoliciesResponse){
-    return NewDeleteNetworkingV2ExtensionsFwaasPoliciesResponse(policies.Delete(oc.client,req.Id, ))
+    return NewDeleteNetworkingV2ExtensionsFwaasPoliciesResponse(policies.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the AddRuleNetworkingV2ExtensionsFwaasPolicies
 type AddRuleNetworkingV2ExtensionsFwaasPoliciesRequest struct{
     Id string
-    Opts policies.InsertRuleOptsBuilder
+    Opts policies.InsertRuleOpts
 }
 
 func NewAddRuleNetworkingV2ExtensionsFwaasPoliciesRequest()*AddRuleNetworkingV2ExtensionsFwaasPoliciesRequest{
@@ -159,7 +159,7 @@ func NewAddRuleNetworkingV2ExtensionsFwaasPoliciesResponse(insertRuleResult poli
 
 // action function
 func (oc *OpenstackClient) AddRuleNetworkingV2ExtensionsFwaasPolicies(req *AddRuleNetworkingV2ExtensionsFwaasPoliciesRequest)(*AddRuleNetworkingV2ExtensionsFwaasPoliciesResponse){
-    return NewAddRuleNetworkingV2ExtensionsFwaasPoliciesResponse(policies.AddRule(oc.client,req.Id,req.Opts, ))
+    return NewAddRuleNetworkingV2ExtensionsFwaasPoliciesResponse(policies.AddRule(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the RemoveRuleNetworkingV2ExtensionsFwaasPolicies
@@ -185,6 +185,6 @@ func NewRemoveRuleNetworkingV2ExtensionsFwaasPoliciesResponse(removeRuleResult p
 
 // action function
 func (oc *OpenstackClient) RemoveRuleNetworkingV2ExtensionsFwaasPolicies(req *RemoveRuleNetworkingV2ExtensionsFwaasPoliciesRequest)(*RemoveRuleNetworkingV2ExtensionsFwaasPoliciesResponse){
-    return NewRemoveRuleNetworkingV2ExtensionsFwaasPoliciesResponse(policies.RemoveRule(oc.client,req.Id,req.RuleID, ))
+    return NewRemoveRuleNetworkingV2ExtensionsFwaasPoliciesResponse(policies.RemoveRule(oc.Client,req.Id,req.RuleID, ))
 
 }

@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateClusteringV1Receivers
 type CreateClusteringV1ReceiversRequest struct{
-    Opts receivers.CreateOptsBuilder
+    Opts receivers.CreateOpts
 }
 
 func NewCreateClusteringV1ReceiversRequest()*CreateClusteringV1ReceiversRequest{
@@ -32,13 +32,13 @@ func NewCreateClusteringV1ReceiversResponse(createResult receivers.CreateResult,
 
 // action function
 func (oc *OpenstackClient) CreateClusteringV1Receivers(req *CreateClusteringV1ReceiversRequest)(*CreateClusteringV1ReceiversResponse){
-    return NewCreateClusteringV1ReceiversResponse(receivers.Create(oc.client,req.Opts, ))
+    return NewCreateClusteringV1ReceiversResponse(receivers.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateClusteringV1Receivers
 type UpdateClusteringV1ReceiversRequest struct{
     Id string
-    Opts receivers.UpdateOptsBuilder
+    Opts receivers.UpdateOpts
 }
 
 func NewUpdateClusteringV1ReceiversRequest()*UpdateClusteringV1ReceiversRequest{
@@ -58,7 +58,7 @@ func NewUpdateClusteringV1ReceiversResponse(updateResult receivers.UpdateResult,
 
 // action function
 func (oc *OpenstackClient) UpdateClusteringV1Receivers(req *UpdateClusteringV1ReceiversRequest)(*UpdateClusteringV1ReceiversResponse){
-    return NewUpdateClusteringV1ReceiversResponse(receivers.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateClusteringV1ReceiversResponse(receivers.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the GetClusteringV1Receivers
@@ -83,12 +83,12 @@ func NewGetClusteringV1ReceiversResponse(getResult receivers.GetResult,)*GetClus
 
 // action function
 func (oc *OpenstackClient) GetClusteringV1Receivers(req *GetClusteringV1ReceiversRequest)(*GetClusteringV1ReceiversResponse){
-    return NewGetClusteringV1ReceiversResponse(receivers.Get(oc.client,req.Id, ))
+    return NewGetClusteringV1ReceiversResponse(receivers.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListClusteringV1Receivers
 type ListClusteringV1ReceiversRequest struct{
-    Opts receivers.ListOptsBuilder
+    Opts receivers.ListOpts
 }
 
 func NewListClusteringV1ReceiversRequest()*ListClusteringV1ReceiversRequest{
@@ -108,7 +108,7 @@ func NewListClusteringV1ReceiversResponse(pager pagination.Pager,)*ListClusterin
 
 // action function
 func (oc *OpenstackClient) ListClusteringV1Receivers(req *ListClusteringV1ReceiversRequest)(*ListClusteringV1ReceiversResponse){
-    return NewListClusteringV1ReceiversResponse(receivers.List(oc.client,req.Opts, ))
+    return NewListClusteringV1ReceiversResponse(receivers.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteClusteringV1Receivers
@@ -133,7 +133,7 @@ func NewDeleteClusteringV1ReceiversResponse(deleteResult receivers.DeleteResult,
 
 // action function
 func (oc *OpenstackClient) DeleteClusteringV1Receivers(req *DeleteClusteringV1ReceiversRequest)(*DeleteClusteringV1ReceiversResponse){
-    return NewDeleteClusteringV1ReceiversResponse(receivers.Delete(oc.client,req.Id, ))
+    return NewDeleteClusteringV1ReceiversResponse(receivers.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the NotifyClusteringV1Receivers
@@ -158,6 +158,6 @@ func NewNotifyClusteringV1ReceiversResponse(notifyResult receivers.NotifyResult,
 
 // action function
 func (oc *OpenstackClient) NotifyClusteringV1Receivers(req *NotifyClusteringV1ReceiversRequest)(*NotifyClusteringV1ReceiversResponse){
-    return NewNotifyClusteringV1ReceiversResponse(receivers.Notify(oc.client,req.Id, ))
+    return NewNotifyClusteringV1ReceiversResponse(receivers.Notify(oc.Client,req.Id, ))
 
 }

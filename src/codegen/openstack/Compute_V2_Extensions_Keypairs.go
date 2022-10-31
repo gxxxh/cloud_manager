@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListComputeV2ExtensionsKeypairs
 type ListComputeV2ExtensionsKeypairsRequest struct{
-    Opts keypairs.ListOptsBuilder
+    Opts keypairs.ListOpts
 }
 
 func NewListComputeV2ExtensionsKeypairsRequest()*ListComputeV2ExtensionsKeypairsRequest{
@@ -32,12 +32,12 @@ func NewListComputeV2ExtensionsKeypairsResponse(pager pagination.Pager,)*ListCom
 
 // action function
 func (oc *OpenstackClient) ListComputeV2ExtensionsKeypairs(req *ListComputeV2ExtensionsKeypairsRequest)(*ListComputeV2ExtensionsKeypairsResponse){
-    return NewListComputeV2ExtensionsKeypairsResponse(keypairs.List(oc.client,req.Opts, ))
+    return NewListComputeV2ExtensionsKeypairsResponse(keypairs.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateComputeV2ExtensionsKeypairs
 type CreateComputeV2ExtensionsKeypairsRequest struct{
-    Opts keypairs.CreateOptsBuilder
+    Opts keypairs.CreateOpts
 }
 
 func NewCreateComputeV2ExtensionsKeypairsRequest()*CreateComputeV2ExtensionsKeypairsRequest{
@@ -57,13 +57,13 @@ func NewCreateComputeV2ExtensionsKeypairsResponse(createResult keypairs.CreateRe
 
 // action function
 func (oc *OpenstackClient) CreateComputeV2ExtensionsKeypairs(req *CreateComputeV2ExtensionsKeypairsRequest)(*CreateComputeV2ExtensionsKeypairsResponse){
-    return NewCreateComputeV2ExtensionsKeypairsResponse(keypairs.Create(oc.client,req.Opts, ))
+    return NewCreateComputeV2ExtensionsKeypairsResponse(keypairs.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetComputeV2ExtensionsKeypairs
 type GetComputeV2ExtensionsKeypairsRequest struct{
     Name string
-    Opts keypairs.GetOptsBuilder
+    Opts keypairs.GetOpts
 }
 
 func NewGetComputeV2ExtensionsKeypairsRequest()*GetComputeV2ExtensionsKeypairsRequest{
@@ -83,13 +83,13 @@ func NewGetComputeV2ExtensionsKeypairsResponse(getResult keypairs.GetResult,)*Ge
 
 // action function
 func (oc *OpenstackClient) GetComputeV2ExtensionsKeypairs(req *GetComputeV2ExtensionsKeypairsRequest)(*GetComputeV2ExtensionsKeypairsResponse){
-    return NewGetComputeV2ExtensionsKeypairsResponse(keypairs.Get(oc.client,req.Name,req.Opts, ))
+    return NewGetComputeV2ExtensionsKeypairsResponse(keypairs.Get(oc.Client,req.Name,req.Opts, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsKeypairs
 type DeleteComputeV2ExtensionsKeypairsRequest struct{
     Name string
-    Opts keypairs.DeleteOptsBuilder
+    Opts keypairs.DeleteOpts
 }
 
 func NewDeleteComputeV2ExtensionsKeypairsRequest()*DeleteComputeV2ExtensionsKeypairsRequest{
@@ -109,6 +109,6 @@ func NewDeleteComputeV2ExtensionsKeypairsResponse(deleteResult keypairs.DeleteRe
 
 // action function
 func (oc *OpenstackClient) DeleteComputeV2ExtensionsKeypairs(req *DeleteComputeV2ExtensionsKeypairsRequest)(*DeleteComputeV2ExtensionsKeypairsResponse){
-    return NewDeleteComputeV2ExtensionsKeypairsResponse(keypairs.Delete(oc.client,req.Name,req.Opts, ))
+    return NewDeleteComputeV2ExtensionsKeypairsResponse(keypairs.Delete(oc.Client,req.Name,req.Opts, ))
 
 }

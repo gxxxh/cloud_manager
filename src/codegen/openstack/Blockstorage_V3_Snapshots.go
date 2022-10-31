@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateBlockstorageV3Snapshots
 type CreateBlockstorageV3SnapshotsRequest struct{
-    Opts snapshots.CreateOptsBuilder
+    Opts snapshots.CreateOpts
 }
 
 func NewCreateBlockstorageV3SnapshotsRequest()*CreateBlockstorageV3SnapshotsRequest{
@@ -32,7 +32,7 @@ func NewCreateBlockstorageV3SnapshotsResponse(createResult snapshots.CreateResul
 
 // action function
 func (oc *OpenstackClient) CreateBlockstorageV3Snapshots(req *CreateBlockstorageV3SnapshotsRequest)(*CreateBlockstorageV3SnapshotsResponse){
-    return NewCreateBlockstorageV3SnapshotsResponse(snapshots.Create(oc.client,req.Opts, ))
+    return NewCreateBlockstorageV3SnapshotsResponse(snapshots.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the DeleteBlockstorageV3Snapshots
@@ -57,7 +57,7 @@ func NewDeleteBlockstorageV3SnapshotsResponse(deleteResult snapshots.DeleteResul
 
 // action function
 func (oc *OpenstackClient) DeleteBlockstorageV3Snapshots(req *DeleteBlockstorageV3SnapshotsRequest)(*DeleteBlockstorageV3SnapshotsResponse){
-    return NewDeleteBlockstorageV3SnapshotsResponse(snapshots.Delete(oc.client,req.Id, ))
+    return NewDeleteBlockstorageV3SnapshotsResponse(snapshots.Delete(oc.Client,req.Id, ))
 
 }
 //request struct for the GetBlockstorageV3Snapshots
@@ -82,12 +82,12 @@ func NewGetBlockstorageV3SnapshotsResponse(getResult snapshots.GetResult,)*GetBl
 
 // action function
 func (oc *OpenstackClient) GetBlockstorageV3Snapshots(req *GetBlockstorageV3SnapshotsRequest)(*GetBlockstorageV3SnapshotsResponse){
-    return NewGetBlockstorageV3SnapshotsResponse(snapshots.Get(oc.client,req.Id, ))
+    return NewGetBlockstorageV3SnapshotsResponse(snapshots.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the ListBlockstorageV3Snapshots
 type ListBlockstorageV3SnapshotsRequest struct{
-    Opts snapshots.ListOptsBuilder
+    Opts snapshots.ListOpts
 }
 
 func NewListBlockstorageV3SnapshotsRequest()*ListBlockstorageV3SnapshotsRequest{
@@ -107,13 +107,13 @@ func NewListBlockstorageV3SnapshotsResponse(pager pagination.Pager,)*ListBlockst
 
 // action function
 func (oc *OpenstackClient) ListBlockstorageV3Snapshots(req *ListBlockstorageV3SnapshotsRequest)(*ListBlockstorageV3SnapshotsResponse){
-    return NewListBlockstorageV3SnapshotsResponse(snapshots.List(oc.client,req.Opts, ))
+    return NewListBlockstorageV3SnapshotsResponse(snapshots.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateBlockstorageV3Snapshots
 type UpdateBlockstorageV3SnapshotsRequest struct{
     Id string
-    Opts snapshots.UpdateOptsBuilder
+    Opts snapshots.UpdateOpts
 }
 
 func NewUpdateBlockstorageV3SnapshotsRequest()*UpdateBlockstorageV3SnapshotsRequest{
@@ -133,13 +133,13 @@ func NewUpdateBlockstorageV3SnapshotsResponse(updateResult snapshots.UpdateResul
 
 // action function
 func (oc *OpenstackClient) UpdateBlockstorageV3Snapshots(req *UpdateBlockstorageV3SnapshotsRequest)(*UpdateBlockstorageV3SnapshotsResponse){
-    return NewUpdateBlockstorageV3SnapshotsResponse(snapshots.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateBlockstorageV3SnapshotsResponse(snapshots.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the UpdateMetadataBlockstorageV3Snapshots
 type UpdateMetadataBlockstorageV3SnapshotsRequest struct{
     Id string
-    Opts snapshots.UpdateMetadataOptsBuilder
+    Opts snapshots.UpdateMetadataOpts
 }
 
 func NewUpdateMetadataBlockstorageV3SnapshotsRequest()*UpdateMetadataBlockstorageV3SnapshotsRequest{
@@ -159,6 +159,6 @@ func NewUpdateMetadataBlockstorageV3SnapshotsResponse(updateMetadataResult snaps
 
 // action function
 func (oc *OpenstackClient) UpdateMetadataBlockstorageV3Snapshots(req *UpdateMetadataBlockstorageV3SnapshotsRequest)(*UpdateMetadataBlockstorageV3SnapshotsResponse){
-    return NewUpdateMetadataBlockstorageV3SnapshotsResponse(snapshots.UpdateMetadata(oc.client,req.Id,req.Opts, ))
+    return NewUpdateMetadataBlockstorageV3SnapshotsResponse(snapshots.UpdateMetadata(oc.Client,req.Id,req.Opts, ))
 
 }

@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListIdentityV3Regions
 type ListIdentityV3RegionsRequest struct{
-    Opts regions.ListOptsBuilder
+    Opts regions.ListOpts
 }
 
 func NewListIdentityV3RegionsRequest()*ListIdentityV3RegionsRequest{
@@ -32,7 +32,7 @@ func NewListIdentityV3RegionsResponse(pager pagination.Pager,)*ListIdentityV3Reg
 
 // action function
 func (oc *OpenstackClient) ListIdentityV3Regions(req *ListIdentityV3RegionsRequest)(*ListIdentityV3RegionsResponse){
-    return NewListIdentityV3RegionsResponse(regions.List(oc.client,req.Opts, ))
+    return NewListIdentityV3RegionsResponse(regions.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV3Regions
@@ -57,12 +57,12 @@ func NewGetIdentityV3RegionsResponse(getResult regions.GetResult,)*GetIdentityV3
 
 // action function
 func (oc *OpenstackClient) GetIdentityV3Regions(req *GetIdentityV3RegionsRequest)(*GetIdentityV3RegionsResponse){
-    return NewGetIdentityV3RegionsResponse(regions.Get(oc.client,req.Id, ))
+    return NewGetIdentityV3RegionsResponse(regions.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the CreateIdentityV3Regions
 type CreateIdentityV3RegionsRequest struct{
-    Opts regions.CreateOptsBuilder
+    Opts regions.CreateOpts
 }
 
 func NewCreateIdentityV3RegionsRequest()*CreateIdentityV3RegionsRequest{
@@ -82,13 +82,13 @@ func NewCreateIdentityV3RegionsResponse(createResult regions.CreateResult,)*Crea
 
 // action function
 func (oc *OpenstackClient) CreateIdentityV3Regions(req *CreateIdentityV3RegionsRequest)(*CreateIdentityV3RegionsResponse){
-    return NewCreateIdentityV3RegionsResponse(regions.Create(oc.client,req.Opts, ))
+    return NewCreateIdentityV3RegionsResponse(regions.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateIdentityV3Regions
 type UpdateIdentityV3RegionsRequest struct{
     RegionID string
-    Opts regions.UpdateOptsBuilder
+    Opts regions.UpdateOpts
 }
 
 func NewUpdateIdentityV3RegionsRequest()*UpdateIdentityV3RegionsRequest{
@@ -108,7 +108,7 @@ func NewUpdateIdentityV3RegionsResponse(updateResult regions.UpdateResult,)*Upda
 
 // action function
 func (oc *OpenstackClient) UpdateIdentityV3Regions(req *UpdateIdentityV3RegionsRequest)(*UpdateIdentityV3RegionsResponse){
-    return NewUpdateIdentityV3RegionsResponse(regions.Update(oc.client,req.RegionID,req.Opts, ))
+    return NewUpdateIdentityV3RegionsResponse(regions.Update(oc.Client,req.RegionID,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV3Regions
@@ -133,6 +133,6 @@ func NewDeleteIdentityV3RegionsResponse(deleteResult regions.DeleteResult,)*Dele
 
 // action function
 func (oc *OpenstackClient) DeleteIdentityV3Regions(req *DeleteIdentityV3RegionsRequest)(*DeleteIdentityV3RegionsResponse){
-    return NewDeleteIdentityV3RegionsResponse(regions.Delete(oc.client,req.RegionID, ))
+    return NewDeleteIdentityV3RegionsResponse(regions.Delete(oc.Client,req.RegionID, ))
 
 }

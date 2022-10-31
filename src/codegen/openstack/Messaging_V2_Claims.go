@@ -12,7 +12,7 @@ import (
 //request struct for the CreateMessagingV2Claims
 type CreateMessagingV2ClaimsRequest struct{
     QueueName string
-    Opts claims.CreateOptsBuilder
+    Opts claims.CreateOpts
 }
 
 func NewCreateMessagingV2ClaimsRequest()*CreateMessagingV2ClaimsRequest{
@@ -32,7 +32,7 @@ func NewCreateMessagingV2ClaimsResponse(createResult claims.CreateResult,)*Creat
 
 // action function
 func (oc *OpenstackClient) CreateMessagingV2Claims(req *CreateMessagingV2ClaimsRequest)(*CreateMessagingV2ClaimsResponse){
-    return NewCreateMessagingV2ClaimsResponse(claims.Create(oc.client,req.QueueName,req.Opts, ))
+    return NewCreateMessagingV2ClaimsResponse(claims.Create(oc.Client,req.QueueName,req.Opts, ))
 
 }
 //request struct for the GetMessagingV2Claims
@@ -58,14 +58,14 @@ func NewGetMessagingV2ClaimsResponse(getResult claims.GetResult,)*GetMessagingV2
 
 // action function
 func (oc *OpenstackClient) GetMessagingV2Claims(req *GetMessagingV2ClaimsRequest)(*GetMessagingV2ClaimsResponse){
-    return NewGetMessagingV2ClaimsResponse(claims.Get(oc.client,req.QueueName,req.ClaimID, ))
+    return NewGetMessagingV2ClaimsResponse(claims.Get(oc.Client,req.QueueName,req.ClaimID, ))
 
 }
 //request struct for the UpdateMessagingV2Claims
 type UpdateMessagingV2ClaimsRequest struct{
     QueueName string
     ClaimID string
-    Opts claims.UpdateOptsBuilder
+    Opts claims.UpdateOpts
 }
 
 func NewUpdateMessagingV2ClaimsRequest()*UpdateMessagingV2ClaimsRequest{
@@ -85,7 +85,7 @@ func NewUpdateMessagingV2ClaimsResponse(updateResult claims.UpdateResult,)*Updat
 
 // action function
 func (oc *OpenstackClient) UpdateMessagingV2Claims(req *UpdateMessagingV2ClaimsRequest)(*UpdateMessagingV2ClaimsResponse){
-    return NewUpdateMessagingV2ClaimsResponse(claims.Update(oc.client,req.QueueName,req.ClaimID,req.Opts, ))
+    return NewUpdateMessagingV2ClaimsResponse(claims.Update(oc.Client,req.QueueName,req.ClaimID,req.Opts, ))
 
 }
 //request struct for the DeleteMessagingV2Claims
@@ -111,6 +111,6 @@ func NewDeleteMessagingV2ClaimsResponse(deleteResult claims.DeleteResult,)*Delet
 
 // action function
 func (oc *OpenstackClient) DeleteMessagingV2Claims(req *DeleteMessagingV2ClaimsRequest)(*DeleteMessagingV2ClaimsResponse){
-    return NewDeleteMessagingV2ClaimsResponse(claims.Delete(oc.client,req.QueueName,req.ClaimID, ))
+    return NewDeleteMessagingV2ClaimsResponse(claims.Delete(oc.Client,req.QueueName,req.ClaimID, ))
 
 }

@@ -33,13 +33,13 @@ func NewGetContainerinfraV1NodegroupsResponse(getResult nodegroups.GetResult,)*G
 
 // action function
 func (oc *OpenstackClient) GetContainerinfraV1Nodegroups(req *GetContainerinfraV1NodegroupsRequest)(*GetContainerinfraV1NodegroupsResponse){
-    return NewGetContainerinfraV1NodegroupsResponse(nodegroups.Get(oc.client,req.ClusterID,req.NodeGroupID, ))
+    return NewGetContainerinfraV1NodegroupsResponse(nodegroups.Get(oc.Client,req.ClusterID,req.NodeGroupID, ))
 
 }
 //request struct for the ListContainerinfraV1Nodegroups
 type ListContainerinfraV1NodegroupsRequest struct{
     ClusterID string
-    Opts nodegroups.ListOptsBuilder
+    Opts nodegroups.ListOpts
 }
 
 func NewListContainerinfraV1NodegroupsRequest()*ListContainerinfraV1NodegroupsRequest{
@@ -59,13 +59,13 @@ func NewListContainerinfraV1NodegroupsResponse(pager pagination.Pager,)*ListCont
 
 // action function
 func (oc *OpenstackClient) ListContainerinfraV1Nodegroups(req *ListContainerinfraV1NodegroupsRequest)(*ListContainerinfraV1NodegroupsResponse){
-    return NewListContainerinfraV1NodegroupsResponse(nodegroups.List(oc.client,req.ClusterID,req.Opts, ))
+    return NewListContainerinfraV1NodegroupsResponse(nodegroups.List(oc.Client,req.ClusterID,req.Opts, ))
 
 }
 //request struct for the CreateContainerinfraV1Nodegroups
 type CreateContainerinfraV1NodegroupsRequest struct{
     ClusterID string
-    Opts nodegroups.CreateOptsBuilder
+    Opts nodegroups.CreateOpts
 }
 
 func NewCreateContainerinfraV1NodegroupsRequest()*CreateContainerinfraV1NodegroupsRequest{
@@ -85,34 +85,7 @@ func NewCreateContainerinfraV1NodegroupsResponse(createResult nodegroups.CreateR
 
 // action function
 func (oc *OpenstackClient) CreateContainerinfraV1Nodegroups(req *CreateContainerinfraV1NodegroupsRequest)(*CreateContainerinfraV1NodegroupsResponse){
-    return NewCreateContainerinfraV1NodegroupsResponse(nodegroups.Create(oc.client,req.ClusterID,req.Opts, ))
-
-}
-//request struct for the UpdateContainerinfraV1Nodegroups
-type UpdateContainerinfraV1NodegroupsRequest struct{
-    ClusterID string
-    NodeGroupID string
-    Opts []nodegroups.UpdateOptsBuilder
-}
-
-func NewUpdateContainerinfraV1NodegroupsRequest()*UpdateContainerinfraV1NodegroupsRequest{
-    return &UpdateContainerinfraV1NodegroupsRequest{}
-}
-
-//response struct for the UpdateContainerinfraV1Nodegroups
-type UpdateContainerinfraV1NodegroupsResponse struct{
-    UpdateResult nodegroups.UpdateResult
-}
-
-func NewUpdateContainerinfraV1NodegroupsResponse(updateResult nodegroups.UpdateResult,)*UpdateContainerinfraV1NodegroupsResponse {
-    return &UpdateContainerinfraV1NodegroupsResponse{
-            UpdateResult:updateResult,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) UpdateContainerinfraV1Nodegroups(req *UpdateContainerinfraV1NodegroupsRequest)(*UpdateContainerinfraV1NodegroupsResponse){
-    return NewUpdateContainerinfraV1NodegroupsResponse(nodegroups.Update(oc.client,req.ClusterID,req.NodeGroupID,req.Opts, ))
+    return NewCreateContainerinfraV1NodegroupsResponse(nodegroups.Create(oc.Client,req.ClusterID,req.Opts, ))
 
 }
 //request struct for the DeleteContainerinfraV1Nodegroups
@@ -138,6 +111,6 @@ func NewDeleteContainerinfraV1NodegroupsResponse(deleteResult nodegroups.DeleteR
 
 // action function
 func (oc *OpenstackClient) DeleteContainerinfraV1Nodegroups(req *DeleteContainerinfraV1NodegroupsRequest)(*DeleteContainerinfraV1NodegroupsResponse){
-    return NewDeleteContainerinfraV1NodegroupsResponse(nodegroups.Delete(oc.client,req.ClusterID,req.NodeGroupID, ))
+    return NewDeleteContainerinfraV1NodegroupsResponse(nodegroups.Delete(oc.Client,req.ClusterID,req.NodeGroupID, ))
 
 }

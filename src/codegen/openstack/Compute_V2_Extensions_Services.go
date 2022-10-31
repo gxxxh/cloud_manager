@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListComputeV2ExtensionsServices
 type ListComputeV2ExtensionsServicesRequest struct{
-    Opts services.ListOptsBuilder
+    Opts services.ListOpts
 }
 
 func NewListComputeV2ExtensionsServicesRequest()*ListComputeV2ExtensionsServicesRequest{
@@ -32,7 +32,7 @@ func NewListComputeV2ExtensionsServicesResponse(pager pagination.Pager,)*ListCom
 
 // action function
 func (oc *OpenstackClient) ListComputeV2ExtensionsServices(req *ListComputeV2ExtensionsServicesRequest)(*ListComputeV2ExtensionsServicesResponse){
-    return NewListComputeV2ExtensionsServicesResponse(services.List(oc.client,req.Opts, ))
+    return NewListComputeV2ExtensionsServicesResponse(services.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the UpdateComputeV2ExtensionsServices
@@ -58,7 +58,7 @@ func NewUpdateComputeV2ExtensionsServicesResponse(updateResult services.UpdateRe
 
 // action function
 func (oc *OpenstackClient) UpdateComputeV2ExtensionsServices(req *UpdateComputeV2ExtensionsServicesRequest)(*UpdateComputeV2ExtensionsServicesResponse){
-    return NewUpdateComputeV2ExtensionsServicesResponse(services.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateComputeV2ExtensionsServicesResponse(services.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteComputeV2ExtensionsServices
@@ -83,6 +83,6 @@ func NewDeleteComputeV2ExtensionsServicesResponse(deleteResult services.DeleteRe
 
 // action function
 func (oc *OpenstackClient) DeleteComputeV2ExtensionsServices(req *DeleteComputeV2ExtensionsServicesRequest)(*DeleteComputeV2ExtensionsServicesResponse){
-    return NewDeleteComputeV2ExtensionsServicesResponse(services.Delete(oc.client,req.Id, ))
+    return NewDeleteComputeV2ExtensionsServicesResponse(services.Delete(oc.Client,req.Id, ))
 
 }

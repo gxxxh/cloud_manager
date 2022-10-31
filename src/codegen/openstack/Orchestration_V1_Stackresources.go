@@ -32,14 +32,14 @@ func NewFindOrchestrationV1StackresourcesResponse(findResult stackresources.Find
 
 // action function
 func (oc *OpenstackClient) FindOrchestrationV1Stackresources(req *FindOrchestrationV1StackresourcesRequest)(*FindOrchestrationV1StackresourcesResponse){
-    return NewFindOrchestrationV1StackresourcesResponse(stackresources.Find(oc.client,req.StackName, ))
+    return NewFindOrchestrationV1StackresourcesResponse(stackresources.Find(oc.Client,req.StackName, ))
 
 }
 //request struct for the ListOrchestrationV1Stackresources
 type ListOrchestrationV1StackresourcesRequest struct{
     StackName string
     StackID string
-    Opts stackresources.ListOptsBuilder
+    Opts stackresources.ListOpts
 }
 
 func NewListOrchestrationV1StackresourcesRequest()*ListOrchestrationV1StackresourcesRequest{
@@ -59,7 +59,7 @@ func NewListOrchestrationV1StackresourcesResponse(pager pagination.Pager,)*ListO
 
 // action function
 func (oc *OpenstackClient) ListOrchestrationV1Stackresources(req *ListOrchestrationV1StackresourcesRequest)(*ListOrchestrationV1StackresourcesResponse){
-    return NewListOrchestrationV1StackresourcesResponse(stackresources.List(oc.client,req.StackName,req.StackID,req.Opts, ))
+    return NewListOrchestrationV1StackresourcesResponse(stackresources.List(oc.Client,req.StackName,req.StackID,req.Opts, ))
 
 }
 //request struct for the GetOrchestrationV1Stackresources
@@ -86,7 +86,7 @@ func NewGetOrchestrationV1StackresourcesResponse(getResult stackresources.GetRes
 
 // action function
 func (oc *OpenstackClient) GetOrchestrationV1Stackresources(req *GetOrchestrationV1StackresourcesRequest)(*GetOrchestrationV1StackresourcesResponse){
-    return NewGetOrchestrationV1StackresourcesResponse(stackresources.Get(oc.client,req.StackName,req.StackID,req.ResourceName, ))
+    return NewGetOrchestrationV1StackresourcesResponse(stackresources.Get(oc.Client,req.StackName,req.StackID,req.ResourceName, ))
 
 }
 //request struct for the MetadataOrchestrationV1Stackresources
@@ -113,7 +113,7 @@ func NewMetadataOrchestrationV1StackresourcesResponse(metadataResult stackresour
 
 // action function
 func (oc *OpenstackClient) MetadataOrchestrationV1Stackresources(req *MetadataOrchestrationV1StackresourcesRequest)(*MetadataOrchestrationV1StackresourcesResponse){
-    return NewMetadataOrchestrationV1StackresourcesResponse(stackresources.Metadata(oc.client,req.StackName,req.StackID,req.ResourceName, ))
+    return NewMetadataOrchestrationV1StackresourcesResponse(stackresources.Metadata(oc.Client,req.StackName,req.StackID,req.ResourceName, ))
 
 }
 //request struct for the ListTypesOrchestrationV1Stackresources
@@ -137,7 +137,7 @@ func NewListTypesOrchestrationV1StackresourcesResponse(pager pagination.Pager,)*
 
 // action function
 func (oc *OpenstackClient) ListTypesOrchestrationV1Stackresources(req *ListTypesOrchestrationV1StackresourcesRequest)(*ListTypesOrchestrationV1StackresourcesResponse){
-    return NewListTypesOrchestrationV1StackresourcesResponse(stackresources.ListTypes(oc.client, ))
+    return NewListTypesOrchestrationV1StackresourcesResponse(stackresources.ListTypes(oc.Client, ))
 
 }
 //request struct for the SchemaOrchestrationV1Stackresources
@@ -162,7 +162,7 @@ func NewSchemaOrchestrationV1StackresourcesResponse(schemaResult stackresources.
 
 // action function
 func (oc *OpenstackClient) SchemaOrchestrationV1Stackresources(req *SchemaOrchestrationV1StackresourcesRequest)(*SchemaOrchestrationV1StackresourcesResponse){
-    return NewSchemaOrchestrationV1StackresourcesResponse(stackresources.Schema(oc.client,req.ResourceType, ))
+    return NewSchemaOrchestrationV1StackresourcesResponse(stackresources.Schema(oc.Client,req.ResourceType, ))
 
 }
 //request struct for the TemplateOrchestrationV1Stackresources
@@ -187,7 +187,7 @@ func NewTemplateOrchestrationV1StackresourcesResponse(templateResult stackresour
 
 // action function
 func (oc *OpenstackClient) TemplateOrchestrationV1Stackresources(req *TemplateOrchestrationV1StackresourcesRequest)(*TemplateOrchestrationV1StackresourcesResponse){
-    return NewTemplateOrchestrationV1StackresourcesResponse(stackresources.Template(oc.client,req.ResourceType, ))
+    return NewTemplateOrchestrationV1StackresourcesResponse(stackresources.Template(oc.Client,req.ResourceType, ))
 
 }
 //request struct for the MarkUnhealthyOrchestrationV1Stackresources
@@ -195,7 +195,7 @@ type MarkUnhealthyOrchestrationV1StackresourcesRequest struct{
     StackName string
     StackID string
     ResourceName string
-    Opts stackresources.MarkUnhealthyOptsBuilder
+    Opts stackresources.MarkUnhealthyOpts
 }
 
 func NewMarkUnhealthyOrchestrationV1StackresourcesRequest()*MarkUnhealthyOrchestrationV1StackresourcesRequest{
@@ -215,6 +215,6 @@ func NewMarkUnhealthyOrchestrationV1StackresourcesResponse(markUnhealthyResult s
 
 // action function
 func (oc *OpenstackClient) MarkUnhealthyOrchestrationV1Stackresources(req *MarkUnhealthyOrchestrationV1StackresourcesRequest)(*MarkUnhealthyOrchestrationV1StackresourcesResponse){
-    return NewMarkUnhealthyOrchestrationV1StackresourcesResponse(stackresources.MarkUnhealthy(oc.client,req.StackName,req.StackID,req.ResourceName,req.Opts, ))
+    return NewMarkUnhealthyOrchestrationV1StackresourcesResponse(stackresources.MarkUnhealthy(oc.Client,req.StackName,req.StackID,req.ResourceName,req.Opts, ))
 
 }

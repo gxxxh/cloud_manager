@@ -31,6 +31,6 @@ func NewListBlockstorageApiversionsResponse(pager pagination.Pager,)*ListBlockst
 
 // action function
 func (oc *OpenstackClient) ListBlockstorageApiversions(req *ListBlockstorageApiversionsRequest)(*ListBlockstorageApiversionsResponse){
-    return NewListBlockstorageApiversionsResponse(apiversions.List(oc.client, ))
+    return NewListBlockstorageApiversionsResponse(apiversions.List(oc.Client, ))
 
 }

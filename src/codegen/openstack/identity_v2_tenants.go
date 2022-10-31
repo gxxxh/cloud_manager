@@ -32,12 +32,12 @@ func NewListIdentityV2TenantsResponse(pager pagination.Pager,)*ListIdentityV2Ten
 
 // action function
 func (oc *OpenstackClient) ListIdentityV2Tenants(req *ListIdentityV2TenantsRequest)(*ListIdentityV2TenantsResponse){
-    return NewListIdentityV2TenantsResponse(tenants.List(oc.client,req.Opts, ))
+    return NewListIdentityV2TenantsResponse(tenants.List(oc.Client,req.Opts, ))
 
 }
 //request struct for the CreateIdentityV2Tenants
 type CreateIdentityV2TenantsRequest struct{
-    Opts tenants.CreateOptsBuilder
+    Opts tenants.CreateOpts
 }
 
 func NewCreateIdentityV2TenantsRequest()*CreateIdentityV2TenantsRequest{
@@ -57,7 +57,7 @@ func NewCreateIdentityV2TenantsResponse(createResult tenants.CreateResult,)*Crea
 
 // action function
 func (oc *OpenstackClient) CreateIdentityV2Tenants(req *CreateIdentityV2TenantsRequest)(*CreateIdentityV2TenantsResponse){
-    return NewCreateIdentityV2TenantsResponse(tenants.Create(oc.client,req.Opts, ))
+    return NewCreateIdentityV2TenantsResponse(tenants.Create(oc.Client,req.Opts, ))
 
 }
 //request struct for the GetIdentityV2Tenants
@@ -82,13 +82,13 @@ func NewGetIdentityV2TenantsResponse(getResult tenants.GetResult,)*GetIdentityV2
 
 // action function
 func (oc *OpenstackClient) GetIdentityV2Tenants(req *GetIdentityV2TenantsRequest)(*GetIdentityV2TenantsResponse){
-    return NewGetIdentityV2TenantsResponse(tenants.Get(oc.client,req.Id, ))
+    return NewGetIdentityV2TenantsResponse(tenants.Get(oc.Client,req.Id, ))
 
 }
 //request struct for the UpdateIdentityV2Tenants
 type UpdateIdentityV2TenantsRequest struct{
     Id string
-    Opts tenants.UpdateOptsBuilder
+    Opts tenants.UpdateOpts
 }
 
 func NewUpdateIdentityV2TenantsRequest()*UpdateIdentityV2TenantsRequest{
@@ -108,7 +108,7 @@ func NewUpdateIdentityV2TenantsResponse(updateResult tenants.UpdateResult,)*Upda
 
 // action function
 func (oc *OpenstackClient) UpdateIdentityV2Tenants(req *UpdateIdentityV2TenantsRequest)(*UpdateIdentityV2TenantsResponse){
-    return NewUpdateIdentityV2TenantsResponse(tenants.Update(oc.client,req.Id,req.Opts, ))
+    return NewUpdateIdentityV2TenantsResponse(tenants.Update(oc.Client,req.Id,req.Opts, ))
 
 }
 //request struct for the DeleteIdentityV2Tenants
@@ -133,6 +133,6 @@ func NewDeleteIdentityV2TenantsResponse(deleteResult tenants.DeleteResult,)*Dele
 
 // action function
 func (oc *OpenstackClient) DeleteIdentityV2Tenants(req *DeleteIdentityV2TenantsRequest)(*DeleteIdentityV2TenantsResponse){
-    return NewDeleteIdentityV2TenantsResponse(tenants.Delete(oc.client,req.Id, ))
+    return NewDeleteIdentityV2TenantsResponse(tenants.Delete(oc.Client,req.Id, ))
 
 }

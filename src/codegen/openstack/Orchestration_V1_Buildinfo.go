@@ -30,6 +30,6 @@ func NewGetOrchestrationV1BuildinfoResponse(getResult buildinfo.GetResult,)*GetO
 
 // action function
 func (oc *OpenstackClient) GetOrchestrationV1Buildinfo(req *GetOrchestrationV1BuildinfoRequest)(*GetOrchestrationV1BuildinfoResponse){
-    return NewGetOrchestrationV1BuildinfoResponse(buildinfo.Get(oc.client, ))
+    return NewGetOrchestrationV1BuildinfoResponse(buildinfo.Get(oc.Client, ))
 
 }

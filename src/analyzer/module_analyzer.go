@@ -72,6 +72,8 @@ func (pa *PackageAnalyzer) GetASTFile(pkg *packages.Package) *ast.File {
 	return nil
 }
 
+//todo save constants into a filter struct
+
 // analyze packages and parse info
 func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceInfo {
 	log.Printf("*********************************analyze %s*****************************", pkg.Name)
@@ -85,14 +87,18 @@ func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceIn
 			if pa.checkValidFunction(fn) {
 				actionInfo := NewOpenstackActionInfo(fn.Name.String())
 				log.Println("******************handle function***************** :", fn.Name)
-				parseFieldList := func(fieldList []*ast.Field, kind string) {
+				parseFieldList := func(fieldList []*ast.Field, kind string) bool {
 					log.Printf("-----------------%v:%d------------------/n", kind, len(fieldList))
 					for _, expr := range fieldList {
 						//a field may contain two name with the same type
-						names, _ := pa.parseFieldInfo(expr)
-						typeName, packagePath := pa.parseExprTypeInfo(expr.Type, pkg.TypesInfo)
+						names := pa.parseFieldNames(expr)
+						typeName, packagePath := pa.parseExprTypeInfo(expr.Type, pkg)
 						if typeName == "*gophercloud.ServiceClient" {
 							continue
+						}
+						//todo support action with array parameter
+						if strings.HasPrefix(typeName, "[]") {
+							return false
 						}
 						for _, name := range names {
 							actionInfo.AddVarInfo(name, typeName, kind)
@@ -105,14 +111,69 @@ func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceIn
 							resourceInfo.ImportPaths.Insert(packagePath)
 						}
 					}
+					return true
 				}
-				parseFieldList(fn.Type.Params.List, "parameters")
-				parseFieldList(fn.Type.Results.List, "returns")
-				resourceInfo.AddAction(actionInfo)
+				if parseFieldList(fn.Type.Params.List, "parameters") && parseFieldList(fn.Type.Results.List, "returns") {
+					resourceInfo.AddAction(actionInfo)
+				} else {
+					log.Println("Warning: unsupport action: ", actionInfo.ActionName)
+				}
+
 			}
 		}
 	}
 	return resourceInfo
+}
+
+// get interface type from the pkg
+func (pa *PackageAnalyzer) getInterface(interfaceName string, pkg *types.Package) (*types.Type, *types.Interface) {
+	interfaceName = GetStructName(interfaceName)
+	obj := pkg.Scope().Lookup(interfaceName)
+	if obj != nil {
+		objType := obj.Type()
+		ifaceType, ok := objType.Underlying().(*types.Interface)
+		if ok {
+			return &objType, ifaceType
+		}
+	}
+	return nil, nil
+}
+
+// find the struct type that implement the interface
+func (pa *PackageAnalyzer) interface2struct(ifaceType *types.Type, iface *types.Interface, tinfo *types.Info) (string, string) {
+	log.Println("find struct for interface ", *ifaceType)
+	for _, ty := range tinfo.Types {
+		if types.Implements(ty.Type, iface) {
+			//if ty.Type.String() != (*ifaceType).String() {
+			log.Println(ty.Type)
+			_, isInterface := ty.Type.Underlying().(*types.Interface)
+			if !isInterface {
+				log.Println(ty.Type.String())
+				log.Println((*ifaceType).String())
+				log.Printf("struct %v implements interface %v\n", ty.Type, *ifaceType)
+				return pa.parseTypeInfo(ty.Type)
+			}
+		}
+	}
+	return "", ""
+}
+
+func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr, pkg *packages.Package) (tyName string, packagePath string) {
+	ty := pkg.TypesInfo.Types[expr].Type
+	//check if  type is interface,
+	tyName, packagePath = pa.parseTypeInfo(ty)
+	isSlice := false
+	if strings.HasPrefix(tyName, "[]") {
+		isSlice = true
+	}
+	ifaceType, iface := pa.getInterface(tyName, pkg.Types)
+	if ifaceType != nil {
+		tyName, packagePath = pa.interface2struct(ifaceType, iface, pkg.TypesInfo)
+	}
+	if isSlice {
+		tyName = "[]" + tyName
+	}
+	return
 }
 
 /*
@@ -163,15 +224,11 @@ func (pa *PackageAnalyzer) parseTypeInfo(ty types.Type) (string, string) {
 	case *types.Slice:
 		typeName, packagePath := pa.parseTypeInfo(tyType.Elem())
 		return "[]" + typeName, packagePath
+
 	default:
 		log.Println("error! unhandled type: ", tyType)
 		return "", ""
 	}
-}
-
-func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr, tinfo *types.Info) (string, string) {
-	ty := tinfo.Types[expr].Type
-	return pa.parseTypeInfo(ty)
 }
 
 /*
@@ -193,12 +250,10 @@ func (pa *PackageAnalyzer) parseExprName(expr ast.Expr) string {
 /*
 parse field's name and type
 */
-func (pa *PackageAnalyzer) parseFieldInfo(field *ast.Field) ([]string, []string) {
+func (pa *PackageAnalyzer) parseFieldNames(field *ast.Field) []string {
 	names := make([]string, len(field.Names), len(field.Names))
-	typeNames := make([]string, len(field.Names), len(field.Names))
 	for idx, fieldName := range field.Names {
 		names[idx] = fieldName.Name
-		typeNames[idx] = pa.parseExprName(field.Type)
 	}
-	return names, typeNames
+	return names
 }

@@ -31,7 +31,7 @@ func NewListComputeV2ExtensionsTenantnetworksResponse(pager pagination.Pager,)*L
 
 // action function
 func (oc *OpenstackClient) ListComputeV2ExtensionsTenantnetworks(req *ListComputeV2ExtensionsTenantnetworksRequest)(*ListComputeV2ExtensionsTenantnetworksResponse){
-    return NewListComputeV2ExtensionsTenantnetworksResponse(tenantnetworks.List(oc.client, ))
+    return NewListComputeV2ExtensionsTenantnetworksResponse(tenantnetworks.List(oc.Client, ))
 
 }
 //request struct for the GetComputeV2ExtensionsTenantnetworks
@@ -56,6 +56,6 @@ func NewGetComputeV2ExtensionsTenantnetworksResponse(getResult tenantnetworks.Ge
 
 // action function
 func (oc *OpenstackClient) GetComputeV2ExtensionsTenantnetworks(req *GetComputeV2ExtensionsTenantnetworksRequest)(*GetComputeV2ExtensionsTenantnetworksResponse){
-    return NewGetComputeV2ExtensionsTenantnetworksResponse(tenantnetworks.Get(oc.client,req.Id, ))
+    return NewGetComputeV2ExtensionsTenantnetworksResponse(tenantnetworks.Get(oc.Client,req.Id, ))
 
 }

@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListNetworkingV2ExtensionsLayer3Portforwarding
 type ListNetworkingV2ExtensionsLayer3PortforwardingRequest struct{
-    Opts portforwarding.ListOptsBuilder
+    Opts portforwarding.ListOpts
     Id string
 }
 
@@ -33,7 +33,7 @@ func NewListNetworkingV2ExtensionsLayer3PortforwardingResponse(pager pagination.
 
 // action function
 func (oc *OpenstackClient) ListNetworkingV2ExtensionsLayer3Portforwarding(req *ListNetworkingV2ExtensionsLayer3PortforwardingRequest)(*ListNetworkingV2ExtensionsLayer3PortforwardingResponse){
-    return NewListNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.List(oc.client,req.Opts,req.Id, ))
+    return NewListNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.List(oc.Client,req.Opts,req.Id, ))
 
 }
 //request struct for the GetNetworkingV2ExtensionsLayer3Portforwarding
@@ -59,13 +59,13 @@ func NewGetNetworkingV2ExtensionsLayer3PortforwardingResponse(getResult portforw
 
 // action function
 func (oc *OpenstackClient) GetNetworkingV2ExtensionsLayer3Portforwarding(req *GetNetworkingV2ExtensionsLayer3PortforwardingRequest)(*GetNetworkingV2ExtensionsLayer3PortforwardingResponse){
-    return NewGetNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Get(oc.client,req.FloatingIpId,req.PfId, ))
+    return NewGetNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Get(oc.Client,req.FloatingIpId,req.PfId, ))
 
 }
 //request struct for the CreateNetworkingV2ExtensionsLayer3Portforwarding
 type CreateNetworkingV2ExtensionsLayer3PortforwardingRequest struct{
     FloatingIpId string
-    Opts portforwarding.CreateOptsBuilder
+    Opts portforwarding.CreateOpts
 }
 
 func NewCreateNetworkingV2ExtensionsLayer3PortforwardingRequest()*CreateNetworkingV2ExtensionsLayer3PortforwardingRequest{
@@ -85,14 +85,14 @@ func NewCreateNetworkingV2ExtensionsLayer3PortforwardingResponse(createResult po
 
 // action function
 func (oc *OpenstackClient) CreateNetworkingV2ExtensionsLayer3Portforwarding(req *CreateNetworkingV2ExtensionsLayer3PortforwardingRequest)(*CreateNetworkingV2ExtensionsLayer3PortforwardingResponse){
-    return NewCreateNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Create(oc.client,req.FloatingIpId,req.Opts, ))
+    return NewCreateNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Create(oc.Client,req.FloatingIpId,req.Opts, ))
 
 }
 //request struct for the UpdateNetworkingV2ExtensionsLayer3Portforwarding
 type UpdateNetworkingV2ExtensionsLayer3PortforwardingRequest struct{
     FipID string
     PfID string
-    Opts portforwarding.UpdateOptsBuilder
+    Opts portforwarding.UpdateOpts
 }
 
 func NewUpdateNetworkingV2ExtensionsLayer3PortforwardingRequest()*UpdateNetworkingV2ExtensionsLayer3PortforwardingRequest{
@@ -112,7 +112,7 @@ func NewUpdateNetworkingV2ExtensionsLayer3PortforwardingResponse(updateResult po
 
 // action function
 func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsLayer3Portforwarding(req *UpdateNetworkingV2ExtensionsLayer3PortforwardingRequest)(*UpdateNetworkingV2ExtensionsLayer3PortforwardingResponse){
-    return NewUpdateNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Update(oc.client,req.FipID,req.PfID,req.Opts, ))
+    return NewUpdateNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Update(oc.Client,req.FipID,req.PfID,req.Opts, ))
 
 }
 //request struct for the DeleteNetworkingV2ExtensionsLayer3Portforwarding
@@ -138,6 +138,6 @@ func NewDeleteNetworkingV2ExtensionsLayer3PortforwardingResponse(deleteResult po
 
 // action function
 func (oc *OpenstackClient) DeleteNetworkingV2ExtensionsLayer3Portforwarding(req *DeleteNetworkingV2ExtensionsLayer3PortforwardingRequest)(*DeleteNetworkingV2ExtensionsLayer3PortforwardingResponse){
-    return NewDeleteNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Delete(oc.client,req.FloatingIpId,req.PfId, ))
+    return NewDeleteNetworkingV2ExtensionsLayer3PortforwardingResponse(portforwarding.Delete(oc.Client,req.FloatingIpId,req.PfId, ))
 
 }

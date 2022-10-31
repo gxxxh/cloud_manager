@@ -33,7 +33,7 @@ func NewCreateImageserviceV2MembersResponse(createResult members.CreateResult,)*
 
 // action function
 func (oc *OpenstackClient) CreateImageserviceV2Members(req *CreateImageserviceV2MembersRequest)(*CreateImageserviceV2MembersResponse){
-    return NewCreateImageserviceV2MembersResponse(members.Create(oc.client,req.Id,req.Member, ))
+    return NewCreateImageserviceV2MembersResponse(members.Create(oc.Client,req.Id,req.Member, ))
 
 }
 //request struct for the ListImageserviceV2Members
@@ -58,7 +58,7 @@ func NewListImageserviceV2MembersResponse(pager pagination.Pager,)*ListImageserv
 
 // action function
 func (oc *OpenstackClient) ListImageserviceV2Members(req *ListImageserviceV2MembersRequest)(*ListImageserviceV2MembersResponse){
-    return NewListImageserviceV2MembersResponse(members.List(oc.client,req.Id, ))
+    return NewListImageserviceV2MembersResponse(members.List(oc.Client,req.Id, ))
 
 }
 //request struct for the GetImageserviceV2Members
@@ -84,7 +84,7 @@ func NewGetImageserviceV2MembersResponse(detailsResult members.DetailsResult,)*G
 
 // action function
 func (oc *OpenstackClient) GetImageserviceV2Members(req *GetImageserviceV2MembersRequest)(*GetImageserviceV2MembersResponse){
-    return NewGetImageserviceV2MembersResponse(members.Get(oc.client,req.ImageID,req.MemberID, ))
+    return NewGetImageserviceV2MembersResponse(members.Get(oc.Client,req.ImageID,req.MemberID, ))
 
 }
 //request struct for the DeleteImageserviceV2Members
@@ -110,14 +110,14 @@ func NewDeleteImageserviceV2MembersResponse(deleteResult members.DeleteResult,)*
 
 // action function
 func (oc *OpenstackClient) DeleteImageserviceV2Members(req *DeleteImageserviceV2MembersRequest)(*DeleteImageserviceV2MembersResponse){
-    return NewDeleteImageserviceV2MembersResponse(members.Delete(oc.client,req.ImageID,req.MemberID, ))
+    return NewDeleteImageserviceV2MembersResponse(members.Delete(oc.Client,req.ImageID,req.MemberID, ))
 
 }
 //request struct for the UpdateImageserviceV2Members
 type UpdateImageserviceV2MembersRequest struct{
     ImageID string
     MemberID string
-    Opts members.UpdateOptsBuilder
+    Opts members.UpdateOpts
 }
 
 func NewUpdateImageserviceV2MembersRequest()*UpdateImageserviceV2MembersRequest{
@@ -137,6 +137,6 @@ func NewUpdateImageserviceV2MembersResponse(updateResult members.UpdateResult,)*
 
 // action function
 func (oc *OpenstackClient) UpdateImageserviceV2Members(req *UpdateImageserviceV2MembersRequest)(*UpdateImageserviceV2MembersResponse){
-    return NewUpdateImageserviceV2MembersResponse(members.Update(oc.client,req.ImageID,req.MemberID,req.Opts, ))
+    return NewUpdateImageserviceV2MembersResponse(members.Update(oc.Client,req.ImageID,req.MemberID,req.Opts, ))
 
 }
