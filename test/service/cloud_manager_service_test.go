@@ -12,7 +12,12 @@ func TestHandleRequest(t *testing.T) {
 	regionId := "cn-beijing"
 	accessKeyId := "LTAI5tJKWj6qWB7t4VooErRx"
 	accessKeySecret := "FsCABqUiecxe2NQmjlJl1321RcfxFV"
-	mcm, _ := service.NewMultiCloudManager("aliyun", regionId, accessKeyId, accessKeySecret)
+	params := make(map[string]string)
+	params["regionId"] = regionId
+	params["accessKeyId"] = accessKeyId
+	params["accessKeySecret"] = accessKeySecret
+	params["kind"] = "aliyun"
+	mcm, _ := service.NewMultiCloudManager(params)
 	request := ecs.CreateDescribeRegionsRequest()
 	jsonBytes, err := json.Marshal(request)
 	if err != nil {

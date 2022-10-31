@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateIdentityV3ExtensionsEc2tokens
 type CreateIdentityV3ExtensionsEc2tokensRequest struct{
-    Opts tokens.AuthOptionsBuilder
+    Opts *ec2tokens.AuthOptions
 }
 
 func NewCreateIdentityV3ExtensionsEc2tokensRequest()*CreateIdentityV3ExtensionsEc2tokensRequest{
@@ -37,7 +37,7 @@ func (oc *OpenstackClient) CreateIdentityV3ExtensionsEc2tokens(req *CreateIdenti
 }
 //request struct for the ValidateS3TokenIdentityV3ExtensionsEc2tokens
 type ValidateS3TokenIdentityV3ExtensionsEc2tokensRequest struct{
-    Opts tokens.AuthOptionsBuilder
+    Opts *ec2tokens.AuthOptions
 }
 
 func NewValidateS3TokenIdentityV3ExtensionsEc2tokensRequest()*ValidateS3TokenIdentityV3ExtensionsEc2tokensRequest{

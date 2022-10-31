@@ -12,7 +12,7 @@ import (
 )
 //request struct for the CreateComputeV2ExtensionsBootfromvolume
 type CreateComputeV2ExtensionsBootfromvolumeRequest struct{
-    Opts servers.CreateOpts
+    Opts bootfromvolume.CreateOptsExt
 }
 
 func NewCreateComputeV2ExtensionsBootfromvolumeRequest()*CreateComputeV2ExtensionsBootfromvolumeRequest{

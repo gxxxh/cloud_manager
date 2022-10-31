@@ -13,7 +13,7 @@ import (
 )
 //request struct for the CreateIdentityV3ExtensionsOauth1
 type CreateIdentityV3ExtensionsOauth1Request struct{
-    Opts tokens.AuthOptionsBuilder
+    Opts oauth1.AuthOptions
 }
 
 func NewCreateIdentityV3ExtensionsOauth1Request()*CreateIdentityV3ExtensionsOauth1Request{

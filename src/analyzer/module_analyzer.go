@@ -127,6 +127,9 @@ func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceIn
 
 // get interface type from the pkg
 func (pa *PackageAnalyzer) getInterface(interfaceName string, pkg *types.Package) (*types.Type, *types.Interface) {
+	if pkg == nil || !strings.Contains(pkg.Path(), "openstack") {
+		return nil, nil
+	}
 	interfaceName = GetStructName(interfaceName)
 	obj := pkg.Scope().Lookup(interfaceName)
 	if obj != nil {
@@ -158,6 +161,26 @@ func (pa *PackageAnalyzer) interface2struct(ifaceType *types.Type, iface *types.
 	return "", ""
 }
 
+func (pa *PackageAnalyzer) GetPackage(ty types.Type) *types.Package {
+	switch tyType := ty.(type) {
+	case *types.Pointer:
+		return pa.GetPackage(tyType.Elem())
+	case *types.Named:
+		tmp := tyType.Obj()
+		if tmp.Pkg() != nil {
+			return tmp.Pkg()
+		} else {
+			return nil
+		}
+	case *types.Basic:
+		return nil
+	case *types.Slice:
+		return pa.GetPackage(tyType.Elem())
+	default:
+		return nil
+	}
+}
+
 func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr, pkg *packages.Package) (tyName string, packagePath string) {
 	ty := pkg.TypesInfo.Types[expr].Type
 	//check if  type is interface,
@@ -166,7 +189,9 @@ func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr, pkg *packages.Packag
 	if strings.HasPrefix(tyName, "[]") {
 		isSlice = true
 	}
-	ifaceType, iface := pa.getInterface(tyName, pkg.Types)
+	typesPkg := pa.GetPackage(ty)
+	ifaceType, iface := pa.getInterface(tyName, typesPkg)
+	//ifaceType, iface := pa.getInterface(tyName, pkg.Types)
 	if ifaceType != nil {
 		tyName, packagePath = pa.interface2struct(ifaceType, iface, pkg.TypesInfo)
 	}

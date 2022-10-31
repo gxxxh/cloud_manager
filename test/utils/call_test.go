@@ -7,17 +7,29 @@ import (
 	"testing"
 )
 
+type TestIface interface {
+	Get() string
+}
 type RetStruct struct {
 	Name  string
 	Kind  string
 	Value string
 }
 
+func (a Animal) Get() string {
+	fmt.Println("test")
+	return ""
+}
 func (a *Animal) GetStruct(value string) *RetStruct {
 	return &RetStruct{
 		Name:  a.Name,
 		Kind:  a.Kind,
 		Value: value,
+	}
+}
+func testSlice(a []TestIface) {
+	for _, i := range a {
+		i.Get()
 	}
 }
 func TestCallMethod(t *testing.T) {
@@ -32,7 +44,6 @@ func TestCallMethod(t *testing.T) {
 	fmt.Println(reflect.ValueOf(result[0]).Type())        //*utils.ResStruct
 	fmt.Println(reflect.ValueOf(result[0]).Type().Kind()) //ptr
 	fmt.Printf("%v", reflect.ValueOf(result[0]))          //working
-
 }
 
 func TestMap(t *testing.T) {

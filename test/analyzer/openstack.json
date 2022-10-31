@@ -824,38 +824,21 @@
   },
   "CreateComputeV2ExtensionsBootfromvolumeRequest": {
     "Opts": {
-      "AccessIPv4": "string",
-      "AccessIPv6": "string",
-      "AdminPass": "string",
-      "AvailabilityZone": "string",
-      "ConfigDrive": "bool",
-      "FlavorRef": "string",
-      "ImageRef": "string",
-      "Max": "int",
-      "Metadata": {
-        "map_key_type": "string",
-        "map_value_type": "string"
-      },
-      "Min": "int",
-      "Name": "string",
-      "Networks": "interface",
-      "Personality": {
+      "BlockDevice": {
         "slice": {
-          "Contents": {
-            "slice": "uint8"
-          },
-          "Path": "string"
+          "BootIndex": "int",
+          "DeleteOnTermination": "bool",
+          "DestinationType": "string",
+          "DeviceType": "string",
+          "DiskBus": "string",
+          "GuestFormat": "string",
+          "SourceType": "string",
+          "UUID": "string",
+          "VolumeSize": "int",
+          "VolumeType": "string"
         }
       },
-      "SecurityGroups": {
-        "slice": "string"
-      },
-      "Tags": {
-        "slice": "string"
-      },
-      "UserData": {
-        "slice": "uint8"
-      }
+      "CreateOptsBuilder": "interface"
     }
   },
   "CreateComputeV2ExtensionsDefsecrulesRequest": {
@@ -1310,10 +1293,100 @@
     "UserID": "string"
   },
   "CreateIdentityV3ExtensionsEc2tokensRequest": {
-    "Opts": "interface"
+    "Opts": {
+      "Access": "string",
+      "AllowReauth": "bool",
+      "BodyHash": "string",
+      "Headers": {
+        "map_key_type": "string",
+        "map_value_type": "string"
+      },
+      "Host": "string",
+      "Params": {
+        "map_key_type": "string",
+        "map_value_type": "string"
+      },
+      "Path": "string",
+      "Region": "string",
+      "Secret": "string",
+      "Service": "string",
+      "Signature": "interface",
+      "Timestamp": {
+        "ext": "int64",
+        "loc": {
+          "cacheEnd": "int64",
+          "cacheStart": "int64",
+          "cacheZone": {
+            "isDST": "bool",
+            "name": "string",
+            "offset": "int"
+          },
+          "extend": "string",
+          "name": "string",
+          "tx": {
+            "slice": {
+              "index": "uint8",
+              "isstd": "bool",
+              "isutc": "bool",
+              "when": "int64"
+            }
+          },
+          "zone": {
+            "slice": {
+              "isDST": "bool",
+              "name": "string",
+              "offset": "int"
+            }
+          }
+        },
+        "wall": "uint64"
+      },
+      "Token": {
+        "slice": "uint8"
+      },
+      "Verb": "string"
+    }
   },
   "CreateIdentityV3ExtensionsOauth1Request": {
-    "Opts": "interface"
+    "Opts": {
+      "AllowReauth": "bool",
+      "OAuthConsumerKey": "string",
+      "OAuthConsumerSecret": "string",
+      "OAuthNonce": "string",
+      "OAuthSignatureMethod": "string",
+      "OAuthTimestamp": {
+        "ext": "int64",
+        "loc": {
+          "cacheEnd": "int64",
+          "cacheStart": "int64",
+          "cacheZone": {
+            "isDST": "bool",
+            "name": "string",
+            "offset": "int"
+          },
+          "extend": "string",
+          "name": "string",
+          "tx": {
+            "slice": {
+              "index": "uint8",
+              "isstd": "bool",
+              "isutc": "bool",
+              "when": "int64"
+            }
+          },
+          "zone": {
+            "slice": {
+              "isDST": "bool",
+              "name": "string",
+              "offset": "int"
+            }
+          }
+        },
+        "wall": "uint64"
+      },
+      "OAuthToken": "string",
+      "OAuthTokenSecret": "string"
+    }
   },
   "CreateIdentityV3ExtensionsProjectendpointsRequest": {
     "EndpointID": "string",
@@ -9107,6 +9180,58 @@
     }
   },
   "ValidateS3TokenIdentityV3ExtensionsEc2tokensRequest": {
-    "Opts": "interface"
+    "Opts": {
+      "Access": "string",
+      "AllowReauth": "bool",
+      "BodyHash": "string",
+      "Headers": {
+        "map_key_type": "string",
+        "map_value_type": "string"
+      },
+      "Host": "string",
+      "Params": {
+        "map_key_type": "string",
+        "map_value_type": "string"
+      },
+      "Path": "string",
+      "Region": "string",
+      "Secret": "string",
+      "Service": "string",
+      "Signature": "interface",
+      "Timestamp": {
+        "ext": "int64",
+        "loc": {
+          "cacheEnd": "int64",
+          "cacheStart": "int64",
+          "cacheZone": {
+            "isDST": "bool",
+            "name": "string",
+            "offset": "int"
+          },
+          "extend": "string",
+          "name": "string",
+          "tx": {
+            "slice": {
+              "index": "uint8",
+              "isstd": "bool",
+              "isutc": "bool",
+              "when": "int64"
+            }
+          },
+          "zone": {
+            "slice": {
+              "isDST": "bool",
+              "name": "string",
+              "offset": "int"
+            }
+          }
+        },
+        "wall": "uint64"
+      },
+      "Token": {
+        "slice": "uint8"
+      },
+      "Verb": "string"
+    }
   }
 }

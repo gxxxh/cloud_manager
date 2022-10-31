@@ -6,6 +6,7 @@ import (
 	"strings"
 )
 
+// todo log format
 // resource in openstack
 // server, img ...
 type OpenstackResourceInfo struct {
@@ -75,10 +76,6 @@ func NewOpenstackActionInfo(actionName string) *OpenStackActionInfo {
 add parameters/return variable name and typeName
 */
 func (ai *OpenStackActionInfo) AddVarInfo(name, typeName, kind string) {
-	//interface to struct(OptsBuilder →Opts)
-	if strings.HasSuffix(typeName, "OptsBuilder") {
-		typeName = typeName[:len(typeName)-len("Builder")]
-	}
 	varInfo := VarInfo{
 		Name:     name,
 		TypeName: typeName,
