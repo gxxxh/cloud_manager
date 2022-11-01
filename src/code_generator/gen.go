@@ -7,7 +7,6 @@ import (
 	"log"
 	"strings"
 	"text/template"
-	"time"
 )
 
 /*
@@ -22,16 +21,13 @@ func GenerateTemplate(templateText string, templateData interface{}, params map[
 		"GetCodeHeader": func() string {
 			return templateHeader
 		},
-		"GenParams":     analyzer.GetParasList,
-		"GenReturns":    analyzer.GetReturnsList,
-		"GenParamsCall": analyzer.GetParasCallList,
-		"now": func() string {
-			return time.Now().Format(time.RFC3339)
-		},
-		"GenMemberName":   analyzer.TypeName2MemberName,   // 大写首字母作为成员变量
-		"GenLocalVarName": analyzer.TypeName2LocalVarName, // 针对返回值生成针对类型的成员变量名称
+		"GenParams":       analyzer.GetParasList,
+		"GenReturns":      analyzer.GetReturnsList,
+		"GenParamsCall":   analyzer.GetParasCallList,
+		"GenMemberName":   utils.TypeName2MemberName,   // 大写首字母作为成员变量
+		"GenLocalVarName": utils.TypeName2LocalVarName, // 针对返回值生成针对类型的成员变量名称
 		"UpperFirst":      utils.UpperFirst,
-		"param": func(name string) interface{} {
+		"Param": func(name string) interface{} {
 			if v, ok := params[name]; ok {
 				return v
 			}
@@ -51,17 +47,14 @@ func GenerateTemplate(templateText string, templateData interface{}, params map[
 	return buf.Bytes(), nil
 }
 
-func GenCode(templatePath string, data map[string]interface{}, packageName string) ([]byte, error) {
+func GenCode(templatePath string, data map[string]interface{}, params map[string]interface{}) ([]byte, error) {
 	createRequestRegistryTemplate, err := NewCustomerTemplate(templatePath)
 	if err != nil {
 		log.Println(err)
 		return nil, err
 	}
 	code, err := GenerateTemplate(createRequestRegistryTemplate.GetTemplateBody(),
-		data,
-		map[string]interface{}{
-			"packageName": packageName,
-		})
+		data, params)
 	if err != nil {
 		log.Println(err)
 		return nil, err

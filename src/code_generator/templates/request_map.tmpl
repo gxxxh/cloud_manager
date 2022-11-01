@@ -1,4 +1,4 @@
-package {{param "packageName"}}
+package {{Param "packageName"}}
 {{GetCodeHeader}}
 
 import (
@@ -7,7 +7,7 @@ import (
 {{- end}}
 )
 
-var CreateRequestRegistry = map[string]interface{}{
+var {{Param "kind"}}CreateRequestRegistry = map[string]interface{}{
 {{- range .RequestInfos}}
 	"{{.RequestName}}":{{.CreateFunctionName}},
 {{- end}}

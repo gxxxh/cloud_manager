@@ -18,10 +18,17 @@ func NewOpenstackClient(params map[string]string) (oc *OpenstackClient, err erro
 		Client:         nil,
 		Kind:           "",
 	}
+	//todo add other parameters
+	scope := gophercloud.AuthScope{
+		ProjectName: params["projectName"],
+		DomainName:  params["domainName"],
+	}
 	opts := gophercloud.AuthOptions{
-		IdentityEndpoint: params["IdentityEndpoint"],
+		IdentityEndpoint: params["identityEndpoint"],
 		Username:         params["username"],
 		Password:         params["password"],
+		DomainName:       params["domainName"],
+		Scope:            &scope,
 	}
 	oc.ProviderClient, err = openstack.AuthenticatedClient(opts)
 	return

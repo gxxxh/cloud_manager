@@ -130,7 +130,7 @@ func (pa *PackageAnalyzer) getInterface(interfaceName string, pkg *types.Package
 	if pkg == nil || !strings.Contains(pkg.Path(), "openstack") {
 		return nil, nil
 	}
-	interfaceName = GetStructName(interfaceName)
+	interfaceName = utils.GetStructName(interfaceName)
 	obj := pkg.Scope().Lookup(interfaceName)
 	if obj != nil {
 		objType := obj.Type()

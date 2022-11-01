@@ -13,11 +13,11 @@ type RequestInfo struct {
 	CreateFunctionName string
 }
 
-func NewRequestInfo(requestTypeName string, requestType reflect.Type) *RequestInfo {
+func NewRequestInfo(requestTypeName string, requestType reflect.Type, CreatefuncPre string) *RequestInfo {
 	packageName := requestType.String()
 	return &RequestInfo{
 		RequestName:        requestTypeName,
-		CreateFunctionName: utils.GetPackageName(packageName) + ".Create" + requestTypeName,
+		CreateFunctionName: utils.GetPackageName(packageName) + "." + CreatefuncPre + requestTypeName,
 	}
 }
 

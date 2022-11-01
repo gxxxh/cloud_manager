@@ -12,9 +12,9 @@ import (
 // 还是将所有云的包编译在一起
 // using to analyze cloudapi by reflect(dynamically)
 type CloudAPIAnalyzer struct {
-	MethodMap    map[string]reflect.Method
-	RequestMap   map[string]reflect.Type
-	RequestInfos []RequestInfo
+	MethodMap  map[string]reflect.Method
+	RequestMap map[string]reflect.Type
+	//RequestInfos []RequestInfo
 }
 
 func NewCloudAPIAnalyzer() *CloudAPIAnalyzer {
@@ -94,10 +94,10 @@ func (c *CloudAPIAnalyzer) ExtractType(dataType reflect.Type) interface{} {
 }
 
 // 需要在调用了extractCloudAPIs之后再使用，
-func (c *CloudAPIAnalyzer) ExtractRequestInfos() *RequestRegistryInfo {
+func (c *CloudAPIAnalyzer) ExtractRequestInfos(createFuncPre string) *RequestRegistryInfo {
 	requestRegistryInfo := NewRequestRegistryInfo()
 	for requestTypeName, requestType := range c.RequestMap {
-		requestRegistryInfo.RequestInfos = append(requestRegistryInfo.RequestInfos, NewRequestInfo(requestTypeName, requestType))
+		requestRegistryInfo.RequestInfos = append(requestRegistryInfo.RequestInfos, NewRequestInfo(requestTypeName, requestType, createFuncPre))
 	}
 	return requestRegistryInfo
 }

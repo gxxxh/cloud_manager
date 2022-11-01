@@ -1,8 +1,8 @@
 package service
 
 import (
-	"cloud_manager/src/codegen/aliyun"
 	"cloud_manager/src/codegen/openstack"
+	"cloud_manager/src/codegen/registry"
 	"cloud_manager/src/utils"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
@@ -33,11 +33,11 @@ func (m *MultiCloudManager) Init(params map[string]string) (err error) {
 	case "aliyun":
 		//regionId, accessId, accessKeySecret
 		m.Client, err = ecs.NewClientWithAccessKey(params["regionId"], params["accessId"], params["accessKeySecret"])
-		m.requestRegistry = aliyun.CreateRequestRegistry
+		m.requestRegistry = registry.AliyunCreateRequestRegistry
 	case "openstack":
 		//IdentityEndPoint, Username, Password
 		m.Client, err = openstack.NewOpenstackClient(params)
-		//m.requestRegistry = openstack.CreateRequestRegistry
+		m.requestRegistry = registry.OpenstackCreateRequestRegistry
 	default:
 		err = fmt.Errorf("unsupport cloud type")
 	}
