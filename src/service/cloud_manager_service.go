@@ -50,12 +50,12 @@ func (m *MultiCloudManager) Init(params map[string]string) (err error) {
 /*
 using reflect to construct the parameters and call
 */
-func (m *MultiCloudManager) HandleRequest(actionName string, requestParameters []byte) (string, error) {
-	requestName := actionName + "Request"
+func (m *MultiCloudManager) CallCloudAPI(cloudAPIName string, requestParameters []byte) (string, error) {
+	requestName := cloudAPIName + "Request"
 	request, err := utils.CallFunction(requestName, m.requestRegistry)
 	if len(request) != 1 {
-		err := fmt.Errorf("error, CreateRequestFunction return more than one value!, actionName is:%v", actionName)
-		log.Println("HandleRequest error: ", err)
+		err := fmt.Errorf("error, CreateRequestFunction return more than one value!, cloudAPIName is:%v", cloudAPIName)
+		log.Println("CallCloudAPI error: ", err)
 		return "", err
 	}
 	if err != nil {
@@ -67,7 +67,7 @@ func (m *MultiCloudManager) HandleRequest(actionName string, requestParameters [
 	}
 	//fmt.Printf("%v", request)
 	//createRequest only has one return value
-	return m.doRequest(actionName, request[0])
+	return m.doRequest(cloudAPIName, request[0])
 }
 
 func (m *MultiCloudManager) doRequest(actionName string, request interface{}) (string, error) {

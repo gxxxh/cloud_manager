@@ -14,7 +14,7 @@ func TestHandleRequest(t *testing.T) {
 	accessKeySecret := "FsCABqUiecxe2NQmjlJl1321RcfxFV"
 	params := make(map[string]string)
 	params["regionId"] = regionId
-	params["accessKeyId"] = accessKeyId
+	params["accessId"] = accessKeyId
 	params["accessKeySecret"] = accessKeySecret
 	params["kind"] = "aliyun"
 	mcm, _ := service.NewMultiCloudManager(params)
@@ -24,7 +24,7 @@ func TestHandleRequest(t *testing.T) {
 		t.Error(err)
 	}
 	fmt.Println(string(jsonBytes))
-	ret, err := mcm.HandleRequest("DescribeRegions", jsonBytes)
+	ret, err := mcm.CallCloudAPI("DescribeRegions", jsonBytes)
 	if err != nil {
 		t.Error(err)
 	}

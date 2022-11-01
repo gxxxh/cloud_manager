@@ -12,9 +12,9 @@ import (
 )
 
 func TestAliyunSDK(t *testing.T) {
-	regionId := ""        //need to be added
-	accessKeyId := ""     //need to be added
-	accessKeySecret := "" //need to be added
+	regionId := "cn-beijing"
+	accessKeyId := "LTAI5tJKWj6qWB7t4VooErRx"
+	accessKeySecret := "FsCABqUiecxe2NQmjlJl1321RcfxFV"
 	client, err := ecs.NewClientWithAccessKey(regionId, accessKeyId, accessKeySecret)
 	if err != nil {
 		t.Error(err)
