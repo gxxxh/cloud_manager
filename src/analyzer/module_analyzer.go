@@ -62,59 +62,56 @@ func NewPackageAnalyzer() *PackageAnalyzer {
 	return pa
 }
 
-// get the ast for file requests.go
-func (pa *PackageAnalyzer) GetASTFile(pkg *packages.Package) *ast.File {
+// get the ast for of fileName
+func (pa *PackageAnalyzer) GetASTFile(pkg *packages.Package, fileName string) *ast.File {
 	for idx, file := range pkg.CompiledGoFiles {
-		if strings.HasSuffix(file, "requests.go") {
+		if strings.HasSuffix(file, fileName) {
 			return pkg.Syntax[idx]
 		}
 	}
 	return nil
 }
 
-//todo save constants into a filter struct
+// todo save constants into a filter struct
+func (pa *PackageAnalyzer) ParseFieldList(fieldList []*ast.Field, actionInfo *OpenStackActionInfo, pkg *packages.Package, kind string) ([]string, bool) {
+	log.Printf("-----------------parse %v:%d------------------/n", kind, len(fieldList))
+	importPaths := make([]string, 0)
+	for _, expr := range fieldList {
+		names := pa.parseFieldNames(expr)
+		typeName, packagePath := pa.parseExprTypeInfo(expr.Type, pkg)
+		if typeName == "*gophercloud.ServiceClient" {
+			continue
+		}
+		//todo support action with array parameter
+		if strings.HasPrefix(typeName, "[]") {
+			return importPaths, false
+		}
+		log.Println(names, typeName, packagePath)
+		actionInfo.AddVarInfos(names, typeName, kind)
+		importPaths = append(importPaths, packagePath)
+	}
+	return importPaths, true
+}
 
 // analyze packages and parse info
 func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceInfo {
 	log.Printf("*********************************analyze %s*****************************", pkg.Name)
 	resourceInfo := NewOpenstackResourceInfo(pkg.Name, pkg.PkgPath)
-	astFile := pa.GetASTFile(pkg)
-	if astFile == nil {
+	requestAST := pa.GetASTFile(pkg, "requests.go")
+	if requestAST == nil {
 		return nil
 	}
-	for _, d := range astFile.Decls {
+	for _, d := range requestAST.Decls {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
 			if pa.checkValidFunction(fn) {
 				actionInfo := NewOpenstackActionInfo(fn.Name.String())
 				log.Println("******************handle function***************** :", fn.Name)
-				parseFieldList := func(fieldList []*ast.Field, kind string) bool {
-					log.Printf("-----------------%v:%d------------------/n", kind, len(fieldList))
-					for _, expr := range fieldList {
-						//a field may contain two name with the same type
-						names := pa.parseFieldNames(expr)
-						typeName, packagePath := pa.parseExprTypeInfo(expr.Type, pkg)
-						if typeName == "*gophercloud.ServiceClient" {
-							continue
-						}
-						//todo support action with array parameter
-						if strings.HasPrefix(typeName, "[]") {
-							return false
-						}
-						for _, name := range names {
-							actionInfo.AddVarInfo(name, typeName, kind)
-							log.Println(name, typeName, packagePath)
-						}
-						if len(names) == 0 { //return has no names
-							actionInfo.AddVarInfo("", typeName, kind)
-						}
-						if packagePath != "" {
-							resourceInfo.ImportPaths.Insert(packagePath)
-						}
-					}
-					return true
-				}
-				if parseFieldList(fn.Type.Params.List, "parameters") && parseFieldList(fn.Type.Results.List, "returns") {
+				paramsImportPaths, parseParamsResult := pa.ParseFieldList(fn.Type.Params.List, actionInfo, pkg, "parameters")
+				returnsImportPaths, parseReturnsResult := pa.ParseFieldList(fn.Type.Results.List, actionInfo, pkg, "returns")
+				if parseParamsResult && parseReturnsResult {
 					resourceInfo.AddAction(actionInfo)
+					resourceInfo.AddImportPaths(paramsImportPaths)
+					resourceInfo.AddImportPaths(returnsImportPaths)
 				} else {
 					log.Println("Warning: unsupport action: ", actionInfo.ActionName)
 				}
@@ -273,12 +270,17 @@ func (pa *PackageAnalyzer) parseExprName(expr ast.Expr) string {
 }
 
 /*
-parse field's name and type
+parse field's name and type,
+a field may contain two var names
 */
 func (pa *PackageAnalyzer) parseFieldNames(field *ast.Field) []string {
 	names := make([]string, len(field.Names), len(field.Names))
 	for idx, fieldName := range field.Names {
 		names[idx] = fieldName.Name
+	}
+	//return filed may have no names
+	if len(field.Names) == 0 {
+		names = []string{""}
 	}
 	return names
 }

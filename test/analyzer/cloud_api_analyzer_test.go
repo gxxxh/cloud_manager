@@ -11,5 +11,5 @@ func TestExtractCloudAPIs(t *testing.T) {
 	client := openstack.OpenstackClient{}
 	analyzer := cloud_manager.NewCloudAPIAnalyzer()
 	analyzer.ExtractCloudAPIs(client)
-	analyzer.SaveToJson("openstack.json")
+	analyzer.SaveToJson("E:\\gopath\\src\\cloud_manager\\doc\\openstack.json")
 }

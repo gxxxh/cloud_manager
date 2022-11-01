@@ -49,6 +49,14 @@ func (ri *OpenstackResourceInfo) AddAction(actionInfo *OpenStackActionInfo) {
 	}
 }
 
+func (ri *OpenstackResourceInfo) AddImportPaths(packagePaths []string) {
+	for _, packagePath := range packagePaths {
+		if packagePath != "" {
+			ri.ImportPaths.Insert(packagePath)
+		}
+	}
+}
+
 type VarInfo struct {
 	Name     string
 	TypeName string
@@ -85,7 +93,11 @@ func (ai *OpenStackActionInfo) AddVarInfo(name, typeName, kind string) {
 		ai.ActionReturns = append(ai.ActionReturns, varInfo)
 	}
 }
-
+func (ai *OpenStackActionInfo) AddVarInfos(names []string, typeName, kind string) {
+	for _, name := range names {
+		ai.AddVarInfo(name, typeName, kind)
+	}
+}
 func GetParasList(paraInfo []VarInfo) string {
 	var paras = ""
 	for i := 0; i < len(paraInfo); i++ {

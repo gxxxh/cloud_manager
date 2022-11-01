@@ -100,7 +100,7 @@ func TestOpenstackCodeGen(t *testing.T) {
 	})
 	request := openstack2.NewListDetailComputeV2ImagesRequest()
 	res := oc.ListDetailComputeV2Images(request)
-	fmt.Println(res)
+	fmt.Println("direct: ", res)
 	//todo handle page type
 	err = res.Pager.EachPage(func(page pagination.Page) (bool, error) {
 		imageList, err := images.ExtractImages(page)

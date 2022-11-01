@@ -138,7 +138,7 @@ func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsBgpSpeakers(req *UpdateNe
 //request struct for the AddBGPPeerNetworkingV2ExtensionsBgpSpeakers
 type AddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest struct{
     BgpSpeakerID string
-    Opts speakers.AddBGPPeerOpts
+    Opts *speakers.AddBGPPeerOpts
 }
 
 func NewAddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest()*AddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest{
@@ -215,7 +215,7 @@ func (oc *OpenstackClient) GetAdvertisedRoutesNetworkingV2ExtensionsBgpSpeakers(
 //request struct for the AddGatewayNetworkNetworkingV2ExtensionsBgpSpeakers
 type AddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest struct{
     BgpSpeakerID string
-    Opts speakers.AddGatewayNetworkOpts
+    Opts *speakers.AddGatewayNetworkOpts
 }
 
 func NewAddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest()*AddGatewayNetworkNetworkingV2ExtensionsBgpSpeakersRequest{
