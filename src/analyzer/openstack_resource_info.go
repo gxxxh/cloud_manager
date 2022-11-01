@@ -1,12 +1,10 @@
 package analyzer
 
 import (
+	"cloud_manager/src/log"
 	"cloud_manager/src/utils"
-	"log"
-	"strings"
 )
 
-// todo log format
 // resource in openstack
 // server, img ...
 type OpenstackResourceInfo struct {
@@ -46,7 +44,7 @@ func (ri *OpenstackResourceInfo) AddAction(actionInfo *OpenStackActionInfo) {
 	if ri.checkValidAction(actionInfo) {
 		ri.Actions = append(ri.Actions, actionInfo)
 	} else {
-		log.Println("invalid action: ", actionInfo)
+		log.DEBUG("invalid action: \n", actionInfo)
 	}
 }
 
@@ -118,22 +116,4 @@ func GetReturnsList(returnInfo []VarInfo) string {
 		}
 	}
 	return paras[:len(paras)-1]
-}
-
-func TypeName2MemberName(typeName string) string {
-	return utils.UpperFirst(TypeName2LocalVarName(typeName))
-}
-
-// remove package info from typename
-func GetStructName(typeName string) string {
-	if strings.Contains(typeName, ".") {
-		tmp := strings.Split(typeName, ".")
-		return tmp[len(tmp)-1]
-	}
-	return typeName
-}
-func TypeName2LocalVarName(typeName string) string {
-	//todo check basic type
-	localVarName := GetStructName(typeName)
-	return utils.LowerFirst(localVarName)
 }

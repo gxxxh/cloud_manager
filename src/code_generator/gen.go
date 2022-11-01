@@ -3,8 +3,8 @@ package code_generator
 import (
 	"bytes"
 	"cloud_manager/src/analyzer"
+	"cloud_manager/src/log"
 	"cloud_manager/src/utils"
-	"log"
 	"strings"
 	"text/template"
 	"time"
@@ -28,8 +28,8 @@ func GenerateTemplate(templateText string, templateData interface{}, params map[
 		"now": func() string {
 			return time.Now().Format(time.RFC3339)
 		},
-		"GenMemberName":   analyzer.TypeName2MemberName,   // 大写首字母作为成员变量
-		"GenLocalVarName": analyzer.TypeName2LocalVarName, // 针对返回值生成针对类型的成员变量名称
+		"GenMemberName":   utils.TypeName2MemberName,   // 大写首字母作为成员变量
+		"GenLocalVarName": utils.TypeName2LocalVarName, // 针对返回值生成针对类型的成员变量名称
 		"UpperFirst":      utils.UpperFirst,
 		"param": func(name string) interface{} {
 			if v, ok := params[name]; ok {
@@ -39,12 +39,12 @@ func GenerateTemplate(templateText string, templateData interface{}, params map[
 		},
 	}).Parse(templateText)
 	if err != nil {
-		log.Println("GenTemplateError: ", err)
+		log.ERROR("%v\n ", err)
 		return nil, err
 	}
 	var buf bytes.Buffer
 	if err := t.Execute(&buf, templateData); err != nil {
-		log.Println("GenTemplateError: ", err)
+		log.ERROR("%v\n", err)
 		return nil, err
 	}
 
@@ -54,7 +54,7 @@ func GenerateTemplate(templateText string, templateData interface{}, params map[
 func GenCode(templatePath string, data map[string]interface{}, packageName string) ([]byte, error) {
 	createRequestRegistryTemplate, err := NewCustomerTemplate(templatePath)
 	if err != nil {
-		log.Println(err)
+		log.ERROR("%v\n", err)
 		return nil, err
 	}
 	code, err := GenerateTemplate(createRequestRegistryTemplate.GetTemplateBody(),
@@ -63,7 +63,7 @@ func GenCode(templatePath string, data map[string]interface{}, packageName strin
 			"packageName": packageName,
 		})
 	if err != nil {
-		log.Println(err)
+		log.ERROR("%v\n", err)
 		return nil, err
 	}
 	return code, err

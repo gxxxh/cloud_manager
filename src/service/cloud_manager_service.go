@@ -3,10 +3,10 @@ package service
 import (
 	"cloud_manager/src/codegen/aliyun"
 	"cloud_manager/src/codegen/openstack"
+	"cloud_manager/src/log"
 	"cloud_manager/src/utils"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
-	"log"
 )
 
 type MultiCloudManager struct {
@@ -42,7 +42,7 @@ func (m *MultiCloudManager) Init(params map[string]string) (err error) {
 		err = fmt.Errorf("unsupport cloud type")
 	}
 	if err != nil {
-		log.Println("Init MultiCloudManager error: ", err)
+		log.ERROR("%v\n", err)
 	}
 	return
 }
@@ -55,7 +55,7 @@ func (m *MultiCloudManager) CallCloudAPI(cloudAPIName string, requestParameters 
 	request, err := utils.CallFunction(requestName, m.requestRegistry)
 	if len(request) != 1 {
 		err := fmt.Errorf("error, CreateRequestFunction return more than one value!, cloudAPIName is:%v", cloudAPIName)
-		log.Println("CallCloudAPI error: ", err)
+		log.ERROR("%v\n", err)
 		return "", err
 	}
 	if err != nil {
@@ -78,13 +78,13 @@ func (m *MultiCloudManager) doRequest(actionName string, request interface{}) (s
 	}
 	if len(ret) != 2 {
 		err = fmt.Errorf("the action %s should only return two result\n", actionName)
-		log.Println("doRequest Error: ", err)
+		log.ERROR("%v\n", err)
 		return "", err
 	}
 	//ret[1] should be a error
 	if ret[1] != nil {
 		err = ret[1].(error)
-		log.Println("sdk do request error: ", err)
+		log.ERROR("%v\n", err)
 	}
 	//retValue := reflect.ValueOf(ret[0]).Elem()
 	//fmt.Println(retValue.NumField())

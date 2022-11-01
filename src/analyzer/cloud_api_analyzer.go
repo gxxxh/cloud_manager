@@ -1,8 +1,8 @@
 package analyzer
 
 import (
+	"cloud_manager/src/log"
 	"encoding/json"
-	"log"
 	"os"
 	"reflect"
 	"strings"
@@ -29,7 +29,7 @@ func (c *CloudAPIAnalyzer) Init() {
 }
 
 func (c *CloudAPIAnalyzer) ExtractCloudAPIs(client interface{}) {
-	log.Println("CloudAPIAnalyzer: analyzer client's method")
+	log.INFO("CloudAPIAnalyzer: analyzer client's method\n")
 	// Notice the *Type can access all the Type Methods. But Type cannot access to *Type Methods.
 	clientType := reflect.TypeOf(client)
 	//use reflect.PtrTo(Type) to convert from Type to *Type
@@ -56,7 +56,7 @@ func (c *CloudAPIAnalyzer) ExtractMethodParameters(method reflect.Method) {
 	}
 	// filter by parameter name
 	if _, ok := c.RequestMap[paraType.Name()]; !ok && strings.HasSuffix(paraType.Name(), "Request") && paraType.Name() != "CommonRequest" {
-		log.Printf("extract parameter type for method:%v, num parameters:%v, package path: %v\n", method.Name, method.Type.NumIn(), method.Type.String())
+		log.DEBUG("extract parameter type for method:%v, num parameters:%v, package path: %v\n", method.Name, method.Type.NumIn(), method.Type.String())
 		c.MethodMap[method.Name] = method
 		c.RequestMap[paraType.Name()] = paraType
 	}
@@ -103,6 +103,7 @@ func (c *CloudAPIAnalyzer) ExtractRequestInfos() *RequestRegistryInfo {
 }
 
 func (c *CloudAPIAnalyzer) SaveToJson(path string) {
+	log.INFO("CloudAPIAnalyzer: Save api info to json\n")
 	paraInfoMap := make(map[string]interface{})
 	for paraName, paraType := range c.RequestMap {
 		typeInfo := c.ExtractType(paraType)
@@ -110,11 +111,11 @@ func (c *CloudAPIAnalyzer) SaveToJson(path string) {
 	}
 	paraInfoJson, err := json.Marshal(paraInfoMap)
 	if err != nil {
-		log.Panicf("SaveToJson Error: %v \n", err)
+		log.CRITICAL("SaveToJson Error: %v \n", err)
 	}
 	filePtr, err := os.Create(path)
 	if err != nil {
-		log.Panicf("SaveToJson Error: %v \n", err)
+		log.CRITICAL("SaveToJson Error: %v \n", err)
 	}
 	defer filePtr.Close()
 	filePtr.Write(paraInfoJson)

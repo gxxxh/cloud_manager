@@ -1,12 +1,12 @@
 package analyzer
 
 import (
+	"cloud_manager/src/log"
 	"cloud_manager/src/utils"
 	"go/ast"
 	"go/token"
 	"go/types"
 	"golang.org/x/tools/go/packages"
-	"log"
 	"strings"
 )
 
@@ -38,11 +38,12 @@ func NewModuleAnalyzer() *ModuleAnalyzer {
 
 // parse all the packages in the module
 func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackResourceInfo, error) {
+	log.INFO("Analyze module\n")
 	resourceInfos := make([]*OpenstackResourceInfo, 0)
 	ma.Config.Dir = dir
 	pkgs, err := packages.Load(ma.Config, "./...")
 	if err != nil {
-		log.Println(err)
+		log.ERROR("load package error: %v\n", err)
 		return resourceInfos, err
 	}
 	packageAnalyzer := NewPackageAnalyzer()
@@ -76,7 +77,6 @@ func (pa *PackageAnalyzer) GetASTFile(pkg *packages.Package) *ast.File {
 
 // analyze packages and parse info
 func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceInfo {
-	log.Printf("*********************************analyze %s*****************************", pkg.Name)
 	resourceInfo := NewOpenstackResourceInfo(pkg.Name, pkg.PkgPath)
 	astFile := pa.GetASTFile(pkg)
 	if astFile == nil {
@@ -86,9 +86,9 @@ func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceIn
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
 			if pa.checkValidFunction(fn) {
 				actionInfo := NewOpenstackActionInfo(fn.Name.String())
-				log.Println("******************handle function***************** :", fn.Name)
+				log.DEBUG("******************handle function***************** :\n", fn.Name)
 				parseFieldList := func(fieldList []*ast.Field, kind string) bool {
-					log.Printf("-----------------%v:%d------------------/n", kind, len(fieldList))
+					log.DEBUG("-----------------%v:%d------------------\n", kind, len(fieldList))
 					for _, expr := range fieldList {
 						//a field may contain two name with the same type
 						names := pa.parseFieldNames(expr)
@@ -102,7 +102,7 @@ func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceIn
 						}
 						for _, name := range names {
 							actionInfo.AddVarInfo(name, typeName, kind)
-							log.Println(name, typeName, packagePath)
+							log.DEBUG("%s info\n", kind, name, typeName, packagePath)
 						}
 						if len(names) == 0 { //return has no names
 							actionInfo.AddVarInfo("", typeName, kind)
@@ -116,7 +116,7 @@ func (pa *PackageAnalyzer) DoAnalyze(pkg *packages.Package) *OpenstackResourceIn
 				if parseFieldList(fn.Type.Params.List, "parameters") && parseFieldList(fn.Type.Results.List, "returns") {
 					resourceInfo.AddAction(actionInfo)
 				} else {
-					log.Println("Warning: unsupport action: ", actionInfo.ActionName)
+					log.DEBUG("Unsupport action: \n", actionInfo.ActionName)
 				}
 
 			}
@@ -130,7 +130,7 @@ func (pa *PackageAnalyzer) getInterface(interfaceName string, pkg *types.Package
 	if pkg == nil || !strings.Contains(pkg.Path(), "openstack") {
 		return nil, nil
 	}
-	interfaceName = GetStructName(interfaceName)
+	interfaceName = utils.GetStructName(interfaceName)
 	obj := pkg.Scope().Lookup(interfaceName)
 	if obj != nil {
 		objType := obj.Type()
@@ -144,16 +144,15 @@ func (pa *PackageAnalyzer) getInterface(interfaceName string, pkg *types.Package
 
 // find the struct type that implement the interface
 func (pa *PackageAnalyzer) interface2struct(ifaceType *types.Type, iface *types.Interface, tinfo *types.Info) (string, string) {
-	log.Println("find struct for interface ", *ifaceType)
+	log.INFO("find struct for interface \n", *ifaceType)
 	for _, ty := range tinfo.Types {
 		if types.Implements(ty.Type, iface) {
 			//if ty.Type.String() != (*ifaceType).String() {
-			log.Println(ty.Type)
 			_, isInterface := ty.Type.Underlying().(*types.Interface)
 			if !isInterface {
-				log.Println(ty.Type.String())
-				log.Println((*ifaceType).String())
-				log.Printf("struct %v implements interface %v\n", ty.Type, *ifaceType)
+				log.DEBUG(ty.Type.String())
+				log.DEBUG((*ifaceType).String())
+				log.DEBUG("struct %v implements interface %v\n", ty.Type, *ifaceType)
 				return pa.parseTypeInfo(ty.Type)
 			}
 		}
@@ -251,7 +250,7 @@ func (pa *PackageAnalyzer) parseTypeInfo(ty types.Type) (string, string) {
 		return "[]" + typeName, packagePath
 
 	default:
-		log.Println("error! unhandled type: ", tyType)
+		log.ERROR("error! unhandled type: \n", tyType)
 		return "", ""
 	}
 }

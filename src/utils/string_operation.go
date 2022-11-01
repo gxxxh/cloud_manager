@@ -30,3 +30,21 @@ func IsExportedStruct(typeName string) bool {
 	structName := names[len(names)-1]
 	return IsLower(structName)
 }
+
+func TypeName2MemberName(typeName string) string {
+	return UpperFirst(TypeName2LocalVarName(typeName))
+}
+
+// remove package info from typename
+func GetStructName(typeName string) string {
+	if strings.Contains(typeName, ".") {
+		tmp := strings.Split(typeName, ".")
+		return tmp[len(tmp)-1]
+	}
+	return typeName
+}
+func TypeName2LocalVarName(typeName string) string {
+	//todo check basic type
+	localVarName := GetStructName(typeName)
+	return LowerFirst(localVarName)
+}
