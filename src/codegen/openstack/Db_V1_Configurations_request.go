@@ -10,30 +10,6 @@ import (
     "github.com/gophercloud/gophercloud/openstack/db/v1/configurations"
     "github.com/gophercloud/gophercloud/pagination"
 )
-//request struct for the ListDbV1Configurations
-type ListDbV1ConfigurationsRequest struct{
-}
-
-func NewListDbV1ConfigurationsRequest()*ListDbV1ConfigurationsRequest{
-    return &ListDbV1ConfigurationsRequest{}
-}
-
-//response struct for the ListDbV1Configurations
-type ListDbV1ConfigurationsResponse struct{
-    Pager pagination.Pager
-}
-
-func NewListDbV1ConfigurationsResponse(pager pagination.Pager,)*ListDbV1ConfigurationsResponse {
-    return &ListDbV1ConfigurationsResponse{
-            Pager:pager,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) ListDbV1Configurations(req *ListDbV1ConfigurationsRequest)(*ListDbV1ConfigurationsResponse){
-    return NewListDbV1ConfigurationsResponse(configurations.List(oc.Client, ))
-
-}
 //request struct for the CreateDbV1Configurations
 type CreateDbV1ConfigurationsRequest struct{
     Opts configurations.CreateOpts

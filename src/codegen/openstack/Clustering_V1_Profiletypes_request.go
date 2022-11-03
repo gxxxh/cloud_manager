@@ -35,30 +35,6 @@ func (oc *OpenstackClient) GetClusteringV1Profiletypes(req *GetClusteringV1Profi
     return NewGetClusteringV1ProfiletypesResponse(profiletypes.Get(oc.Client,req.Id, ))
 
 }
-//request struct for the ListClusteringV1Profiletypes
-type ListClusteringV1ProfiletypesRequest struct{
-}
-
-func NewListClusteringV1ProfiletypesRequest()*ListClusteringV1ProfiletypesRequest{
-    return &ListClusteringV1ProfiletypesRequest{}
-}
-
-//response struct for the ListClusteringV1Profiletypes
-type ListClusteringV1ProfiletypesResponse struct{
-    Pager pagination.Pager
-}
-
-func NewListClusteringV1ProfiletypesResponse(pager pagination.Pager,)*ListClusteringV1ProfiletypesResponse {
-    return &ListClusteringV1ProfiletypesResponse{
-            Pager:pager,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) ListClusteringV1Profiletypes(req *ListClusteringV1ProfiletypesRequest)(*ListClusteringV1ProfiletypesResponse){
-    return NewListClusteringV1ProfiletypesResponse(profiletypes.List(oc.Client, ))
-
-}
 //request struct for the ListOpsClusteringV1Profiletypes
 type ListOpsClusteringV1ProfiletypesRequest struct{
     Id string

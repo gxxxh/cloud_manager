@@ -61,6 +61,31 @@ func (oc *OpenstackClient) CreateObjectstorageV1Containers(req *CreateObjectstor
     return NewCreateObjectstorageV1ContainersResponse(containers.Create(oc.Client,req.ContainerName,req.Opts, ))
 
 }
+//request struct for the BulkDeleteObjectstorageV1Containers
+type BulkDeleteObjectstorageV1ContainersRequest struct{
+    Containers []string
+}
+
+func NewBulkDeleteObjectstorageV1ContainersRequest()*BulkDeleteObjectstorageV1ContainersRequest{
+    return &BulkDeleteObjectstorageV1ContainersRequest{}
+}
+
+//response struct for the BulkDeleteObjectstorageV1Containers
+type BulkDeleteObjectstorageV1ContainersResponse struct{
+    BulkDeleteResult containers.BulkDeleteResult
+}
+
+func NewBulkDeleteObjectstorageV1ContainersResponse(bulkDeleteResult containers.BulkDeleteResult,)*BulkDeleteObjectstorageV1ContainersResponse {
+    return &BulkDeleteObjectstorageV1ContainersResponse{
+            BulkDeleteResult:bulkDeleteResult,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) BulkDeleteObjectstorageV1Containers(req *BulkDeleteObjectstorageV1ContainersRequest)(*BulkDeleteObjectstorageV1ContainersResponse){
+    return NewBulkDeleteObjectstorageV1ContainersResponse(containers.BulkDelete(oc.Client,req.Containers, ))
+
+}
 //request struct for the DeleteObjectstorageV1Containers
 type DeleteObjectstorageV1ContainersRequest struct{
     ContainerName string

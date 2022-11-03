@@ -63,15 +63,18 @@ func TestGenOpenstackRequestRegistry(t *testing.T) {
 	filePtr.Write(code)
 }
 func TestGenOpenstackCode(t *testing.T) {
+	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute\\v2\\extensions\\secgroups"
+	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\objectstorage\\v1\\containers"
+	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\blockstorage\\v3\\qos"
+	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\containerinfra\\v1\\clusters"
 	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack"
-	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute\\v2\\images"
 	ma := cloud_manager.NewModuleAnalyzer()
 	resourceInfos, err := ma.DoAnalyze(dir)
 	if err != nil {
 		t.Error(err)
 	}
 	for _, resourceInfo := range resourceInfos {
-		if len(resourceInfo.Actions) == 0 {
+		if len(resourceInfo.ActionInfos) == 0 {
 			continue
 		}
 		fmt.Printf("gen code for actions in resource %s\n", resourceInfo.ResourcePackageName)

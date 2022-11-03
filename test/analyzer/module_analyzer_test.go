@@ -7,11 +7,11 @@ import (
 )
 
 func TestModuleAnalyzer(t *testing.T) {
-	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute\\v2\\extensions\\bootfromvolume"
+	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute\\v2\\servers"
 	ma := analyzer.NewModuleAnalyzer()
-	resourceInfos, err := ma.DoAnalyze(dir)
+	requestInfos, err := ma.DoAnalyze(dir)
 	if err != nil {
 		t.Error(err)
 	}
-	log.Println(len(resourceInfos))
+	log.Println(len(requestInfos))
 }

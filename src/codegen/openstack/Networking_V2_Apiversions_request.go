@@ -10,30 +10,6 @@ import (
     "github.com/gophercloud/gophercloud/openstack/networking/v2/apiversions"
     "github.com/gophercloud/gophercloud/pagination"
 )
-//request struct for the ListVersionsNetworkingV2Apiversions
-type ListVersionsNetworkingV2ApiversionsRequest struct{
-}
-
-func NewListVersionsNetworkingV2ApiversionsRequest()*ListVersionsNetworkingV2ApiversionsRequest{
-    return &ListVersionsNetworkingV2ApiversionsRequest{}
-}
-
-//response struct for the ListVersionsNetworkingV2Apiversions
-type ListVersionsNetworkingV2ApiversionsResponse struct{
-    Pager pagination.Pager
-}
-
-func NewListVersionsNetworkingV2ApiversionsResponse(pager pagination.Pager,)*ListVersionsNetworkingV2ApiversionsResponse {
-    return &ListVersionsNetworkingV2ApiversionsResponse{
-            Pager:pager,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) ListVersionsNetworkingV2Apiversions(req *ListVersionsNetworkingV2ApiversionsRequest)(*ListVersionsNetworkingV2ApiversionsResponse){
-    return NewListVersionsNetworkingV2ApiversionsResponse(apiversions.ListVersions(oc.Client, ))
-
-}
 //request struct for the ListVersionResourcesNetworkingV2Apiversions
 type ListVersionResourcesNetworkingV2ApiversionsRequest struct{
     V string

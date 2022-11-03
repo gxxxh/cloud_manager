@@ -8,32 +8,7 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/containerinfra/apiversions"
-    "github.com/gophercloud/gophercloud/pagination"
 )
-//request struct for the ListContainerinfraApiversions
-type ListContainerinfraApiversionsRequest struct{
-}
-
-func NewListContainerinfraApiversionsRequest()*ListContainerinfraApiversionsRequest{
-    return &ListContainerinfraApiversionsRequest{}
-}
-
-//response struct for the ListContainerinfraApiversions
-type ListContainerinfraApiversionsResponse struct{
-    Pager pagination.Pager
-}
-
-func NewListContainerinfraApiversionsResponse(pager pagination.Pager,)*ListContainerinfraApiversionsResponse {
-    return &ListContainerinfraApiversionsResponse{
-            Pager:pager,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) ListContainerinfraApiversions(req *ListContainerinfraApiversionsRequest)(*ListContainerinfraApiversionsResponse){
-    return NewListContainerinfraApiversionsResponse(apiversions.List(oc.Client, ))
-
-}
 //request struct for the GetContainerinfraApiversions
 type GetContainerinfraApiversionsRequest struct{
     V string

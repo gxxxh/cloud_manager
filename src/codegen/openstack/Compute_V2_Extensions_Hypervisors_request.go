@@ -35,30 +35,6 @@ func (oc *OpenstackClient) ListComputeV2ExtensionsHypervisors(req *ListComputeV2
     return NewListComputeV2ExtensionsHypervisorsResponse(hypervisors.List(oc.Client,req.Opts, ))
 
 }
-//request struct for the GetStatisticsComputeV2ExtensionsHypervisors
-type GetStatisticsComputeV2ExtensionsHypervisorsRequest struct{
-}
-
-func NewGetStatisticsComputeV2ExtensionsHypervisorsRequest()*GetStatisticsComputeV2ExtensionsHypervisorsRequest{
-    return &GetStatisticsComputeV2ExtensionsHypervisorsRequest{}
-}
-
-//response struct for the GetStatisticsComputeV2ExtensionsHypervisors
-type GetStatisticsComputeV2ExtensionsHypervisorsResponse struct{
-    StatisticsResult hypervisors.StatisticsResult
-}
-
-func NewGetStatisticsComputeV2ExtensionsHypervisorsResponse(statisticsResult hypervisors.StatisticsResult,)*GetStatisticsComputeV2ExtensionsHypervisorsResponse {
-    return &GetStatisticsComputeV2ExtensionsHypervisorsResponse{
-            StatisticsResult:statisticsResult,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) GetStatisticsComputeV2ExtensionsHypervisors(req *GetStatisticsComputeV2ExtensionsHypervisorsRequest)(*GetStatisticsComputeV2ExtensionsHypervisorsResponse){
-    return NewGetStatisticsComputeV2ExtensionsHypervisorsResponse(hypervisors.GetStatistics(oc.Client, ))
-
-}
 //request struct for the GetComputeV2ExtensionsHypervisors
 type GetComputeV2ExtensionsHypervisorsRequest struct{
     HypervisorID string

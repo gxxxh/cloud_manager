@@ -37,22 +37,27 @@ func NewModuleAnalyzer() *ModuleAnalyzer {
 }
 
 // parse all the packages in the module
-func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackResourceInfo, error) {
-	resourceInfos := make([]*OpenstackResourceInfo, 0)
+func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackRequestInfo, error) {
+	requestInfos := make([]*OpenstackRequestInfo, 0)
+	//resultInfos := make([]*OpenstackResultInfo, 0)
 	ma.Config.Dir = dir
 	pkgs, err := packages.Load(ma.Config, "./...")
 	if err != nil {
 		log.Println(err)
-		return resourceInfos, err
+		return requestInfos, err
 	}
 
 	for _, pkg := range pkgs {
 		packageAnalyzer := NewPackageAnalyzer(pkg)
-		if resourceInfo := packageAnalyzer.DoAnalyze(); resourceInfo != nil {
-			resourceInfos = append(resourceInfos, resourceInfo)
+		//analyzing request file
+		if requestInfo := packageAnalyzer.AnalyzeRequestFile(); requestInfo != nil {
+			requestInfos = append(requestInfos, requestInfo)
 		}
+		//if resultInfo := packageAnalyzer.AnalyseResultFile(); resultInfo != nil {
+		//	resultInfos = append(resultInfos, resultInfo)
+		//}
 	}
-	return resourceInfos, err
+	return requestInfos, err
 }
 
 type PackageAnalyzer struct {
@@ -77,52 +82,71 @@ func (pa *PackageAnalyzer) GetASTFile(fileName string) *ast.File {
 }
 
 // todo save constants into a filter struct
-func (pa *PackageAnalyzer) ParseFieldList(fieldList []*ast.Field, actionInfo *OpenStackActionInfo, kind string) ([]string, bool) {
-	log.Printf("-----------------parse %v:%d------------------/n", kind, len(fieldList))
-	importPaths := make([]string, 0)
+func (pa *PackageAnalyzer) Field2VarInfos(fieldList []*ast.Field) (utils.Set, VarInfos) {
+	importPaths := utils.NewSet()
+	varInfos := NewVarInfos()
 	for _, expr := range fieldList {
 		names := pa.parseFieldNames(expr)
 		typeName, packagePath := pa.parseExprTypeInfo(expr.Type)
-		if typeName == "*gophercloud.ServiceClient" {
-			continue
-		}
-		//todo support action with array parameter
-		if strings.HasPrefix(typeName, "[]") {
-			return importPaths, false
-		}
-		log.Println(names, typeName, packagePath)
-		actionInfo.AddVarInfos(names, typeName, kind)
-		importPaths = append(importPaths, packagePath)
+		varInfos.Add(names, typeName)
+		importPaths.Insert(packagePath)
 	}
-	return importPaths, true
+	return importPaths, varInfos
 }
 
 // analyze packages and parse info
-func (pa *PackageAnalyzer) DoAnalyze() *OpenstackResourceInfo {
+func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackRequestInfo {
 	log.Printf("-----------analyze requestfile:  %s-----------\n", pa.pkg.Name)
-	resourceInfo := NewOpenstackResourceInfo(pa.pkg.Name, pa.pkg.PkgPath)
+	requestInfo := NewOpenstackRequestInfo(pa.pkg.Name, pa.pkg.PkgPath)
 	requestAST := pa.GetASTFile("requests.go")
 	if requestAST == nil {
 		return nil
 	}
 	for _, d := range requestAST.Decls {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
-			if pa.checkRequestFunc(fn) {
-				actionInfo := NewOpenstackActionInfo(fn.Name.String())
+			if pa.checkValidFunc(fn, "*gophercloud.ServiceClient") {
 				log.Println("******************handle function***************** :", fn.Name)
-				paramsImportPaths, parseParamsResult := pa.ParseFieldList(fn.Type.Params.List, actionInfo, "parameters")
-				returnsImportPaths, parseReturnsResult := pa.ParseFieldList(fn.Type.Results.List, actionInfo, "returns")
-				if parseParamsResult && parseReturnsResult {
-					resourceInfo.AddAction(actionInfo)
-					resourceInfo.AddImportPaths(paramsImportPaths)
-					resourceInfo.AddImportPaths(returnsImportPaths)
-				} else {
-					log.Println("Warning: unsupport action: ", actionInfo.ActionName)
+				actionInfo := NewOpenstackActionInfo(fn.Name.String())
+				paramsImportPaths, paramsVarInfos := pa.Field2VarInfos(fn.Type.Params.List)
+				//no need to import
+				paramsImportPaths.Delete("github.com/gophercloud/gophercloud")
+				returnsImportPaths, returnsVarInfos := pa.Field2VarInfos(fn.Type.Results.List)
+				actionInfo.AddVarInfos(paramsVarInfos, "parameters")
+				actionInfo.AddVarInfos(returnsVarInfos, "returns")
+				if succeed := requestInfo.AddAction(actionInfo); succeed {
+					requestInfo.AddImportPaths(paramsImportPaths)
+					requestInfo.AddImportPaths(returnsImportPaths)
 				}
 			}
 		}
 	}
-	return resourceInfo
+	return requestInfo
+}
+
+func (pa *PackageAnalyzer) AnalyseResultFile() *OpenstackResultInfo {
+	ori := NewOpenstackResultInfo(pa.pkg.Name, pa.pkg.PkgPath)
+	log.Printf("-----------analyze requestfile:  %s-----------\n", pa.pkg.Name)
+	resultAST := pa.GetASTFile("results.go")
+	if resultAST == nil {
+		return ori
+	}
+	for _, d := range resultAST.Decls {
+		if fn, isFn := d.(*ast.FuncDecl); isFn {
+			fnName := fn.Name.String()
+			log.Println(fnName)
+			if pa.checkValidFunc(fn, "pagination.Page") &&
+				strings.HasPrefix(fnName, "Extract") &&
+				fnName != "Extract" {
+				pageExtractInfo := NewPageExtractInfo(fnName)
+				importPaths, returnVarInfos := pa.Field2VarInfos(fn.Type.Results.List)
+				ori.AddImportPaths(importPaths)
+				ori.AddPageExtractInfos(pageExtractInfo)
+				pageExtractInfo.ReturnInfo = returnVarInfos
+
+			}
+		}
+	}
+	return ori
 }
 
 // get interface type from the pkg
@@ -195,27 +219,28 @@ func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr) (tyName string, pack
 	//ifaceType, iface := pa.getInterface(tyName, pkg.Types)
 	if ifaceType != nil {
 		tyName, packagePath = pa.interface2struct(ifaceType, iface)
-	}
-	if isSlice {
-		tyName = "[]" + tyName
+		if isSlice {
+			tyName = "[]" + tyName
+		}
 	}
 	return
 }
 
 /*
-check if the function is required(List, Create, Delete, Get...)
-1. the first parameter should be * gophercloud.ServiceClient
+check if the function is required
+1. it should be an exported function
+2. the first parameter should be required
 */
-func (pa *PackageAnalyzer) checkRequestFunc(fn *ast.FuncDecl) bool {
+func (pa *PackageAnalyzer) checkValidFunc(fn *ast.FuncDecl, paraName string) bool {
 	funcName := fn.Name.String()
 	//check if the function is exported
 	if utils.IsLower(funcName) {
 		return false
 	}
 	if fn.Recv == nil { //function's Recv filed is nil, method is not
-		if len(fn.Type.Params.List) != 0 {
+		if len(fn.Type.Params.List) != 1 {
 			typeName, _ := pa.parseExprTypeInfo(fn.Type.Params.List[0].Type)
-			if typeName == "*gophercloud.ServiceClient" {
+			if typeName == paraName {
 				return true
 			}
 		}

@@ -10,30 +10,6 @@ import (
     "github.com/gophercloud/gophercloud/openstack/db/v1/datastores"
     "github.com/gophercloud/gophercloud/pagination"
 )
-//request struct for the ListDbV1Datastores
-type ListDbV1DatastoresRequest struct{
-}
-
-func NewListDbV1DatastoresRequest()*ListDbV1DatastoresRequest{
-    return &ListDbV1DatastoresRequest{}
-}
-
-//response struct for the ListDbV1Datastores
-type ListDbV1DatastoresResponse struct{
-    Pager pagination.Pager
-}
-
-func NewListDbV1DatastoresResponse(pager pagination.Pager,)*ListDbV1DatastoresResponse {
-    return &ListDbV1DatastoresResponse{
-            Pager:pager,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) ListDbV1Datastores(req *ListDbV1DatastoresRequest)(*ListDbV1DatastoresResponse){
-    return NewListDbV1DatastoresResponse(datastores.List(oc.Client, ))
-
-}
 //request struct for the GetDbV1Datastores
 type GetDbV1DatastoresRequest struct{
     DatastoreID string

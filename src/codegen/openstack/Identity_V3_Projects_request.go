@@ -35,30 +35,6 @@ func (oc *OpenstackClient) ListIdentityV3Projects(req *ListIdentityV3ProjectsReq
     return NewListIdentityV3ProjectsResponse(projects.List(oc.Client,req.Opts, ))
 
 }
-//request struct for the ListAvailableIdentityV3Projects
-type ListAvailableIdentityV3ProjectsRequest struct{
-}
-
-func NewListAvailableIdentityV3ProjectsRequest()*ListAvailableIdentityV3ProjectsRequest{
-    return &ListAvailableIdentityV3ProjectsRequest{}
-}
-
-//response struct for the ListAvailableIdentityV3Projects
-type ListAvailableIdentityV3ProjectsResponse struct{
-    Pager pagination.Pager
-}
-
-func NewListAvailableIdentityV3ProjectsResponse(pager pagination.Pager,)*ListAvailableIdentityV3ProjectsResponse {
-    return &ListAvailableIdentityV3ProjectsResponse{
-            Pager:pager,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) ListAvailableIdentityV3Projects(req *ListAvailableIdentityV3ProjectsRequest)(*ListAvailableIdentityV3ProjectsResponse){
-    return NewListAvailableIdentityV3ProjectsResponse(projects.ListAvailable(oc.Client, ))
-
-}
 //request struct for the GetIdentityV3Projects
 type GetIdentityV3ProjectsRequest struct{
     Id string

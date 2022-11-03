@@ -59,6 +59,33 @@ func (oc *OpenstackClient) GetIdentityV3Tokens(req *GetIdentityV3TokensRequest)(
     return NewGetIdentityV3TokensResponse(tokens.Get(oc.Client,req.Token, ))
 
 }
+//request struct for the ValidateIdentityV3Tokens
+type ValidateIdentityV3TokensRequest struct{
+    Token string
+}
+
+func NewValidateIdentityV3TokensRequest()*ValidateIdentityV3TokensRequest{
+    return &ValidateIdentityV3TokensRequest{}
+}
+
+//response struct for the ValidateIdentityV3Tokens
+type ValidateIdentityV3TokensResponse struct{
+    Bool bool
+    Error error
+}
+
+func NewValidateIdentityV3TokensResponse(bool bool,error error,)*ValidateIdentityV3TokensResponse {
+    return &ValidateIdentityV3TokensResponse{
+            Bool:bool,
+            Error:error,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ValidateIdentityV3Tokens(req *ValidateIdentityV3TokensRequest)(*ValidateIdentityV3TokensResponse){
+    return NewValidateIdentityV3TokensResponse(tokens.Validate(oc.Client,req.Token, ))
+
+}
 //request struct for the RevokeIdentityV3Tokens
 type RevokeIdentityV3TokensRequest struct{
     Token string

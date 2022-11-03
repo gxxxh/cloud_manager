@@ -10,30 +10,6 @@ import (
     "github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/secgroups"
     "github.com/gophercloud/gophercloud/pagination"
 )
-//request struct for the ListComputeV2ExtensionsSecgroups
-type ListComputeV2ExtensionsSecgroupsRequest struct{
-}
-
-func NewListComputeV2ExtensionsSecgroupsRequest()*ListComputeV2ExtensionsSecgroupsRequest{
-    return &ListComputeV2ExtensionsSecgroupsRequest{}
-}
-
-//response struct for the ListComputeV2ExtensionsSecgroups
-type ListComputeV2ExtensionsSecgroupsResponse struct{
-    Pager pagination.Pager
-}
-
-func NewListComputeV2ExtensionsSecgroupsResponse(pager pagination.Pager,)*ListComputeV2ExtensionsSecgroupsResponse {
-    return &ListComputeV2ExtensionsSecgroupsResponse{
-            Pager:pager,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) ListComputeV2ExtensionsSecgroups(req *ListComputeV2ExtensionsSecgroupsRequest)(*ListComputeV2ExtensionsSecgroupsResponse){
-    return NewListComputeV2ExtensionsSecgroupsResponse(secgroups.List(oc.Client, ))
-
-}
 //request struct for the ListByServerComputeV2ExtensionsSecgroups
 type ListByServerComputeV2ExtensionsSecgroupsRequest struct{
     ServerID string

@@ -24,6 +24,24 @@ check if the first character is lower
 func IsLower(s string) bool {
 	return s[0] >= 'a' && s[0] <= 'z'
 }
+func IsBasicType(typeName string) bool {
+	tmp := typeName
+	if strings.HasPrefix(typeName, "[]") {
+		tmp = tmp[2:]
+	}
+	if strings.HasPrefix(typeName, "*") {
+		tmp = tmp[1:]
+	}
+	if tmp == "string" ||
+		tmp == "int" ||
+		tmp == "bool" ||
+		tmp == "byte" ||
+		tmp == "chan" ||
+		tmp == "error" {
+		return true
+	}
+	return false
+}
 
 func IsExportedStruct(typeName string) bool {
 	names := strings.Split(typeName, ".")

@@ -10,30 +10,6 @@ import (
     "github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/bgp/speakers"
     "github.com/gophercloud/gophercloud/pagination"
 )
-//request struct for the ListNetworkingV2ExtensionsBgpSpeakers
-type ListNetworkingV2ExtensionsBgpSpeakersRequest struct{
-}
-
-func NewListNetworkingV2ExtensionsBgpSpeakersRequest()*ListNetworkingV2ExtensionsBgpSpeakersRequest{
-    return &ListNetworkingV2ExtensionsBgpSpeakersRequest{}
-}
-
-//response struct for the ListNetworkingV2ExtensionsBgpSpeakers
-type ListNetworkingV2ExtensionsBgpSpeakersResponse struct{
-    Pager pagination.Pager
-}
-
-func NewListNetworkingV2ExtensionsBgpSpeakersResponse(pager pagination.Pager,)*ListNetworkingV2ExtensionsBgpSpeakersResponse {
-    return &ListNetworkingV2ExtensionsBgpSpeakersResponse{
-            Pager:pager,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) ListNetworkingV2ExtensionsBgpSpeakers(req *ListNetworkingV2ExtensionsBgpSpeakersRequest)(*ListNetworkingV2ExtensionsBgpSpeakersResponse){
-    return NewListNetworkingV2ExtensionsBgpSpeakersResponse(speakers.List(oc.Client, ))
-
-}
 //request struct for the GetNetworkingV2ExtensionsBgpSpeakers
 type GetNetworkingV2ExtensionsBgpSpeakersRequest struct{
     Id string
@@ -138,7 +114,7 @@ func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsBgpSpeakers(req *UpdateNe
 //request struct for the AddBGPPeerNetworkingV2ExtensionsBgpSpeakers
 type AddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest struct{
     BgpSpeakerID string
-    Opts speakers.AddBGPPeerOpts
+    Opts *speakers.AddBGPPeerOpts
 }
 
 func NewAddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest()*AddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest{

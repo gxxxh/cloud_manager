@@ -10,7 +10,7 @@ import (
 {{- end}}
 )
 
-{{- range .Actions}}
+{{- range .ActionInfos}}
 //request struct for the {{.ActionName}}{{$ResourceName}}
 type {{.ActionName}}{{$ResourceName}}Request struct{
 {{- range .ActionParameters}}

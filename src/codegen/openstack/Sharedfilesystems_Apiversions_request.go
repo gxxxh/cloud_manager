@@ -8,32 +8,7 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/sharedfilesystems/apiversions"
-    "github.com/gophercloud/gophercloud/pagination"
 )
-//request struct for the ListSharedfilesystemsApiversions
-type ListSharedfilesystemsApiversionsRequest struct{
-}
-
-func NewListSharedfilesystemsApiversionsRequest()*ListSharedfilesystemsApiversionsRequest{
-    return &ListSharedfilesystemsApiversionsRequest{}
-}
-
-//response struct for the ListSharedfilesystemsApiversions
-type ListSharedfilesystemsApiversionsResponse struct{
-    Pager pagination.Pager
-}
-
-func NewListSharedfilesystemsApiversionsResponse(pager pagination.Pager,)*ListSharedfilesystemsApiversionsResponse {
-    return &ListSharedfilesystemsApiversionsResponse{
-            Pager:pager,
-    }
-}
-
-// action function
-func (oc *OpenstackClient) ListSharedfilesystemsApiversions(req *ListSharedfilesystemsApiversionsRequest)(*ListSharedfilesystemsApiversionsResponse){
-    return NewListSharedfilesystemsApiversionsResponse(apiversions.List(oc.Client, ))
-
-}
 //request struct for the GetSharedfilesystemsApiversions
 type GetSharedfilesystemsApiversionsRequest struct{
     V string
