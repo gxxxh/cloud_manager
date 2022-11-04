@@ -8,7 +8,32 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/aggregates"
+    "github.com/gophercloud/gophercloud/pagination"
 )
+//request struct for the ListComputeV2ExtensionsAggregates
+type ListComputeV2ExtensionsAggregatesRequest struct{
+}
+
+func NewListComputeV2ExtensionsAggregatesRequest()*ListComputeV2ExtensionsAggregatesRequest{
+    return &ListComputeV2ExtensionsAggregatesRequest{}
+}
+
+//response struct for the ListComputeV2ExtensionsAggregates
+type ListComputeV2ExtensionsAggregatesResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListComputeV2ExtensionsAggregatesResponse(pager pagination.Pager,)*ListComputeV2ExtensionsAggregatesResponse {
+    return &ListComputeV2ExtensionsAggregatesResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListComputeV2ExtensionsAggregates(req *ListComputeV2ExtensionsAggregatesRequest)(*ListComputeV2ExtensionsAggregatesResponse){
+    return NewListComputeV2ExtensionsAggregatesResponse(aggregates.List(oc.Client, ))
+
+}
 //request struct for the CreateComputeV2ExtensionsAggregates
 type CreateComputeV2ExtensionsAggregatesRequest struct{
     Opts aggregates.CreateOpts

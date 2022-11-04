@@ -21,12 +21,12 @@ func GenerateTemplate(templateText string, templateData interface{}, params map[
 		"GetCodeHeader": func() string {
 			return templateHeader
 		},
-		"GenParams":       analyzer.GetParasList,
-		"GenReturns":      analyzer.GetReturnsList,
-		"GenParamsCall":   analyzer.GetParasCallList,
-		"GenMemberName":   utils.TypeName2MemberName,   // 大写首字母作为成员变量
-		"GenLocalVarName": utils.TypeName2LocalVarName, // 针对返回值生成针对类型的成员变量名称
-		"UpperFirst":      utils.UpperFirst,
+		"GetParamsList":     analyzer.GetParamsLsit,
+		"GetReturnsList":    analyzer.GetReturnsList,
+		"GetParamsCallList": analyzer.GetParamsCallList,
+		"GenMemberName":     utils.TypeName2MemberName,   // 大写首字母作为成员变量
+		"GenLocalVarName":   utils.TypeName2LocalVarName, // 针对返回值生成针对类型的成员变量名称
+		"UpperFirst":        utils.UpperFirst,
 		"Param": func(name string) interface{} {
 			if v, ok := params[name]; ok {
 				return v

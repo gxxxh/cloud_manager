@@ -86,6 +86,30 @@ func (oc *OpenstackClient) DeleteConsumerIdentityV3ExtensionsOauth1(req *DeleteC
     return NewDeleteConsumerIdentityV3ExtensionsOauth1Response(oauth1.DeleteConsumer(oc.Client,req.Id, ))
 
 }
+//request struct for the ListConsumersIdentityV3ExtensionsOauth1
+type ListConsumersIdentityV3ExtensionsOauth1Request struct{
+}
+
+func NewListConsumersIdentityV3ExtensionsOauth1Request()*ListConsumersIdentityV3ExtensionsOauth1Request{
+    return &ListConsumersIdentityV3ExtensionsOauth1Request{}
+}
+
+//response struct for the ListConsumersIdentityV3ExtensionsOauth1
+type ListConsumersIdentityV3ExtensionsOauth1Response struct{
+    Pager pagination.Pager
+}
+
+func NewListConsumersIdentityV3ExtensionsOauth1Response(pager pagination.Pager,)*ListConsumersIdentityV3ExtensionsOauth1Response {
+    return &ListConsumersIdentityV3ExtensionsOauth1Response{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListConsumersIdentityV3ExtensionsOauth1(req *ListConsumersIdentityV3ExtensionsOauth1Request)(*ListConsumersIdentityV3ExtensionsOauth1Response){
+    return NewListConsumersIdentityV3ExtensionsOauth1Response(oauth1.ListConsumers(oc.Client, ))
+
+}
 //request struct for the GetConsumerIdentityV3ExtensionsOauth1
 type GetConsumerIdentityV3ExtensionsOauth1Request struct{
     Id string

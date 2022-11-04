@@ -8,7 +8,32 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/blockstorage/v1/apiversions"
+    "github.com/gophercloud/gophercloud/pagination"
 )
+//request struct for the ListBlockstorageV1Apiversions
+type ListBlockstorageV1ApiversionsRequest struct{
+}
+
+func NewListBlockstorageV1ApiversionsRequest()*ListBlockstorageV1ApiversionsRequest{
+    return &ListBlockstorageV1ApiversionsRequest{}
+}
+
+//response struct for the ListBlockstorageV1Apiversions
+type ListBlockstorageV1ApiversionsResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListBlockstorageV1ApiversionsResponse(pager pagination.Pager,)*ListBlockstorageV1ApiversionsResponse {
+    return &ListBlockstorageV1ApiversionsResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListBlockstorageV1Apiversions(req *ListBlockstorageV1ApiversionsRequest)(*ListBlockstorageV1ApiversionsResponse){
+    return NewListBlockstorageV1ApiversionsResponse(apiversions.List(oc.Client, ))
+
+}
 //request struct for the GetBlockstorageV1Apiversions
 type GetBlockstorageV1ApiversionsRequest struct{
     V string

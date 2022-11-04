@@ -85,6 +85,30 @@ func (oc *OpenstackClient) ListSharedfilesystemsV2Sharetypes(req *ListSharedfile
     return NewListSharedfilesystemsV2SharetypesResponse(sharetypes.List(oc.Client,req.Opts, ))
 
 }
+//request struct for the GetDefaultSharedfilesystemsV2Sharetypes
+type GetDefaultSharedfilesystemsV2SharetypesRequest struct{
+}
+
+func NewGetDefaultSharedfilesystemsV2SharetypesRequest()*GetDefaultSharedfilesystemsV2SharetypesRequest{
+    return &GetDefaultSharedfilesystemsV2SharetypesRequest{}
+}
+
+//response struct for the GetDefaultSharedfilesystemsV2Sharetypes
+type GetDefaultSharedfilesystemsV2SharetypesResponse struct{
+    GetDefaultResult sharetypes.GetDefaultResult
+}
+
+func NewGetDefaultSharedfilesystemsV2SharetypesResponse(getDefaultResult sharetypes.GetDefaultResult,)*GetDefaultSharedfilesystemsV2SharetypesResponse {
+    return &GetDefaultSharedfilesystemsV2SharetypesResponse{
+            GetDefaultResult:getDefaultResult,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) GetDefaultSharedfilesystemsV2Sharetypes(req *GetDefaultSharedfilesystemsV2SharetypesRequest)(*GetDefaultSharedfilesystemsV2SharetypesResponse){
+    return NewGetDefaultSharedfilesystemsV2SharetypesResponse(sharetypes.GetDefault(oc.Client, ))
+
+}
 //request struct for the GetExtraSpecsSharedfilesystemsV2Sharetypes
 type GetExtraSpecsSharedfilesystemsV2SharetypesRequest struct{
     Id string

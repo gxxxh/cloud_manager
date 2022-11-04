@@ -8,7 +8,32 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/tenantnetworks"
+    "github.com/gophercloud/gophercloud/pagination"
 )
+//request struct for the ListComputeV2ExtensionsTenantnetworks
+type ListComputeV2ExtensionsTenantnetworksRequest struct{
+}
+
+func NewListComputeV2ExtensionsTenantnetworksRequest()*ListComputeV2ExtensionsTenantnetworksRequest{
+    return &ListComputeV2ExtensionsTenantnetworksRequest{}
+}
+
+//response struct for the ListComputeV2ExtensionsTenantnetworks
+type ListComputeV2ExtensionsTenantnetworksResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListComputeV2ExtensionsTenantnetworksResponse(pager pagination.Pager,)*ListComputeV2ExtensionsTenantnetworksResponse {
+    return &ListComputeV2ExtensionsTenantnetworksResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListComputeV2ExtensionsTenantnetworks(req *ListComputeV2ExtensionsTenantnetworksRequest)(*ListComputeV2ExtensionsTenantnetworksResponse){
+    return NewListComputeV2ExtensionsTenantnetworksResponse(tenantnetworks.List(oc.Client, ))
+
+}
 //request struct for the GetComputeV2ExtensionsTenantnetworks
 type GetComputeV2ExtensionsTenantnetworksRequest struct{
     Id string

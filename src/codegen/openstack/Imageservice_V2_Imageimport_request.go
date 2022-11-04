@@ -9,6 +9,30 @@ package openstack
 import (
     "github.com/gophercloud/gophercloud/openstack/imageservice/v2/imageimport"
 )
+//request struct for the GetImageserviceV2Imageimport
+type GetImageserviceV2ImageimportRequest struct{
+}
+
+func NewGetImageserviceV2ImageimportRequest()*GetImageserviceV2ImageimportRequest{
+    return &GetImageserviceV2ImageimportRequest{}
+}
+
+//response struct for the GetImageserviceV2Imageimport
+type GetImageserviceV2ImageimportResponse struct{
+    GetResult imageimport.GetResult
+}
+
+func NewGetImageserviceV2ImageimportResponse(getResult imageimport.GetResult,)*GetImageserviceV2ImageimportResponse {
+    return &GetImageserviceV2ImageimportResponse{
+            GetResult:getResult,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) GetImageserviceV2Imageimport(req *GetImageserviceV2ImageimportRequest)(*GetImageserviceV2ImageimportResponse){
+    return NewGetImageserviceV2ImageimportResponse(imageimport.Get(oc.Client, ))
+
+}
 //request struct for the CreateImageserviceV2Imageimport
 type CreateImageserviceV2ImageimportRequest struct{
     ImageID string

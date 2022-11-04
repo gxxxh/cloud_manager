@@ -8,7 +8,32 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/defsecrules"
+    "github.com/gophercloud/gophercloud/pagination"
 )
+//request struct for the ListComputeV2ExtensionsDefsecrules
+type ListComputeV2ExtensionsDefsecrulesRequest struct{
+}
+
+func NewListComputeV2ExtensionsDefsecrulesRequest()*ListComputeV2ExtensionsDefsecrulesRequest{
+    return &ListComputeV2ExtensionsDefsecrulesRequest{}
+}
+
+//response struct for the ListComputeV2ExtensionsDefsecrules
+type ListComputeV2ExtensionsDefsecrulesResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListComputeV2ExtensionsDefsecrulesResponse(pager pagination.Pager,)*ListComputeV2ExtensionsDefsecrulesResponse {
+    return &ListComputeV2ExtensionsDefsecrulesResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListComputeV2ExtensionsDefsecrules(req *ListComputeV2ExtensionsDefsecrulesRequest)(*ListComputeV2ExtensionsDefsecrulesResponse){
+    return NewListComputeV2ExtensionsDefsecrulesResponse(defsecrules.List(oc.Client, ))
+
+}
 //request struct for the CreateComputeV2ExtensionsDefsecrules
 type CreateComputeV2ExtensionsDefsecrulesRequest struct{
     Opts defsecrules.CreateOpts

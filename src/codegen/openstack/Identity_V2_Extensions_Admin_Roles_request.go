@@ -8,7 +8,32 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/identity/v2/extensions/admin/roles"
+    "github.com/gophercloud/gophercloud/pagination"
 )
+//request struct for the ListIdentityV2ExtensionsAdminRoles
+type ListIdentityV2ExtensionsAdminRolesRequest struct{
+}
+
+func NewListIdentityV2ExtensionsAdminRolesRequest()*ListIdentityV2ExtensionsAdminRolesRequest{
+    return &ListIdentityV2ExtensionsAdminRolesRequest{}
+}
+
+//response struct for the ListIdentityV2ExtensionsAdminRoles
+type ListIdentityV2ExtensionsAdminRolesResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListIdentityV2ExtensionsAdminRolesResponse(pager pagination.Pager,)*ListIdentityV2ExtensionsAdminRolesResponse {
+    return &ListIdentityV2ExtensionsAdminRolesResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListIdentityV2ExtensionsAdminRoles(req *ListIdentityV2ExtensionsAdminRolesRequest)(*ListIdentityV2ExtensionsAdminRolesResponse){
+    return NewListIdentityV2ExtensionsAdminRolesResponse(roles.List(oc.Client, ))
+
+}
 //request struct for the AddUserIdentityV2ExtensionsAdminRoles
 type AddUserIdentityV2ExtensionsAdminRolesRequest struct{
     TenantID string

@@ -8,6 +8,7 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/db/v1/instances"
+    "github.com/gophercloud/gophercloud/pagination"
 )
 //request struct for the CreateDbV1Instances
 type CreateDbV1InstancesRequest struct{
@@ -32,6 +33,30 @@ func NewCreateDbV1InstancesResponse(createResult instances.CreateResult,)*Create
 // action function
 func (oc *OpenstackClient) CreateDbV1Instances(req *CreateDbV1InstancesRequest)(*CreateDbV1InstancesResponse){
     return NewCreateDbV1InstancesResponse(instances.Create(oc.Client,req.Opts, ))
+
+}
+//request struct for the ListDbV1Instances
+type ListDbV1InstancesRequest struct{
+}
+
+func NewListDbV1InstancesRequest()*ListDbV1InstancesRequest{
+    return &ListDbV1InstancesRequest{}
+}
+
+//response struct for the ListDbV1Instances
+type ListDbV1InstancesResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListDbV1InstancesResponse(pager pagination.Pager,)*ListDbV1InstancesResponse {
+    return &ListDbV1InstancesResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListDbV1Instances(req *ListDbV1InstancesRequest)(*ListDbV1InstancesResponse){
+    return NewListDbV1InstancesResponse(instances.List(oc.Client, ))
 
 }
 //request struct for the GetDbV1Instances

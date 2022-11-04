@@ -8,7 +8,32 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/cdn/v1/flavors"
+    "github.com/gophercloud/gophercloud/pagination"
 )
+//request struct for the ListCdnV1Flavors
+type ListCdnV1FlavorsRequest struct{
+}
+
+func NewListCdnV1FlavorsRequest()*ListCdnV1FlavorsRequest{
+    return &ListCdnV1FlavorsRequest{}
+}
+
+//response struct for the ListCdnV1Flavors
+type ListCdnV1FlavorsResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListCdnV1FlavorsResponse(pager pagination.Pager,)*ListCdnV1FlavorsResponse {
+    return &ListCdnV1FlavorsResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListCdnV1Flavors(req *ListCdnV1FlavorsRequest)(*ListCdnV1FlavorsResponse){
+    return NewListCdnV1FlavorsResponse(flavors.List(oc.Client, ))
+
+}
 //request struct for the GetCdnV1Flavors
 type GetCdnV1FlavorsRequest struct{
     Id string

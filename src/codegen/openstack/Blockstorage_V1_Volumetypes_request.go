@@ -8,6 +8,7 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/blockstorage/v1/volumetypes"
+    "github.com/gophercloud/gophercloud/pagination"
 )
 //request struct for the CreateBlockstorageV1Volumetypes
 type CreateBlockstorageV1VolumetypesRequest struct{
@@ -82,5 +83,29 @@ func NewGetBlockstorageV1VolumetypesResponse(getResult volumetypes.GetResult,)*G
 // action function
 func (oc *OpenstackClient) GetBlockstorageV1Volumetypes(req *GetBlockstorageV1VolumetypesRequest)(*GetBlockstorageV1VolumetypesResponse){
     return NewGetBlockstorageV1VolumetypesResponse(volumetypes.Get(oc.Client,req.Id, ))
+
+}
+//request struct for the ListBlockstorageV1Volumetypes
+type ListBlockstorageV1VolumetypesRequest struct{
+}
+
+func NewListBlockstorageV1VolumetypesRequest()*ListBlockstorageV1VolumetypesRequest{
+    return &ListBlockstorageV1VolumetypesRequest{}
+}
+
+//response struct for the ListBlockstorageV1Volumetypes
+type ListBlockstorageV1VolumetypesResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListBlockstorageV1VolumetypesResponse(pager pagination.Pager,)*ListBlockstorageV1VolumetypesResponse {
+    return &ListBlockstorageV1VolumetypesResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListBlockstorageV1Volumetypes(req *ListBlockstorageV1VolumetypesRequest)(*ListBlockstorageV1VolumetypesResponse){
+    return NewListBlockstorageV1VolumetypesResponse(volumetypes.List(oc.Client, ))
 
 }

@@ -39,7 +39,6 @@ func NewModuleAnalyzer() *ModuleAnalyzer {
 // parse all the packages in the module
 func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackRequestInfo, error) {
 	requestInfos := make([]*OpenstackRequestInfo, 0)
-	//resultInfos := make([]*OpenstackResultInfo, 0)
 	ma.Config.Dir = dir
 	pkgs, err := packages.Load(ma.Config, "./...")
 	if err != nil {
@@ -49,15 +48,127 @@ func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackRequestInfo, error)
 
 	for _, pkg := range pkgs {
 		packageAnalyzer := NewPackageAnalyzer(pkg)
-		//analyzing request file
-		if requestInfo := packageAnalyzer.AnalyzeRequestFile(); requestInfo != nil {
-			requestInfos = append(requestInfos, requestInfo)
+		////analyzing request file
+		requestInfo := packageAnalyzer.AnalyzeRequestFile()
+		if requestInfo == nil {
+			continue
 		}
-		//if resultInfo := packageAnalyzer.AnalyseResultFile(); resultInfo != nil {
-		//	resultInfos = append(resultInfos, resultInfo)
-		//}
+
+		if resultInfo := packageAnalyzer.AnalyseResultFile(); resultInfo != nil {
+			flag := ma.MapPageExtractInfo2Action(pkg.PkgPath, pkg.Name, resultInfo.PageExtractInfos, requestInfo.ActionInfos)
+			requestInfo.HasResultFile = flag
+			requestInfo.ResultImportPaths.Add(resultInfo.ImportPaths)
+			//resultInfos = append(resultInfos, resultInfo)
+		}
+		requestInfos = append(requestInfos, requestInfo)
 	}
 	return requestInfos, err
+}
+
+func (ma *ModuleAnalyzer) MapPageExtractInfo2Action(pkgPath string, pkgName string, pageExtractInfos []*PageExtractInfo, actionInfos []*OpenStackActionInfo) bool {
+	if len(pageExtractInfos) == 0 {
+		return false
+	}
+	//筛选返回值是page的action
+	resource2actionInfo := make(map[string]*OpenStackActionInfo, 0)
+	validActionNames := make([]string, 0)
+	for _, actionInfo := range actionInfos {
+		for _, varInfo := range actionInfo.ActionReturns {
+			if strings.Contains(varInfo.TypeName, "pagination.Page") {
+				actionName := utils.ParseResourceName(actionInfo.ActionName, "List")
+				if actionName == "list" {
+					actionName = strings.ToLower(pkgName)
+				}
+				resource2actionInfo[actionName] = actionInfo
+				validActionNames = append(validActionNames, actionName)
+				break
+			}
+		}
+	}
+	resource2pageExtractInfo := make(map[string]*PageExtractInfo, 0)
+	validPageFuncNames := make([]string, 0)
+	for _, pageExtractInfo := range pageExtractInfos {
+		pageFuncName := utils.ParseResourceName(pageExtractInfo.FuncName, "Extract")
+		resource2pageExtractInfo[pageFuncName] = pageExtractInfo
+		validPageFuncNames = append(validPageFuncNames, pageFuncName)
+	}
+	if len(resource2actionInfo) == 0 {
+		return false
+	}
+	//1. 若只有一个extract function 直接赋值
+	if len(resource2pageExtractInfo) == 1 && len(resource2actionInfo) == 1 {
+		for _, tmpAction := range resource2actionInfo {
+			tmpAction.PageExtractInfo = pageExtractInfos[0]
+		}
+		return true
+	}
+	//2. 一个extract对应多个action
+	if len(resource2pageExtractInfo) == 1 {
+		for _, tmpAction := range resource2actionInfo {
+			tmpAction.PageExtractInfo = pageExtractInfos[0]
+		}
+		return true
+	}
+	//2. 若能产生的后缀相同，则直接赋值。
+	if utils.CompareSlice(validActionNames, validPageFuncNames) {
+		for _, pageFuncName := range validPageFuncNames {
+			resource2actionInfo[pageFuncName].PageExtractInfo = resource2pageExtractInfo[pageFuncName]
+		}
+		return true
+	}
+	//3. 若只有一个名称不同，则也可以匹配
+	if diffNames := utils.DiffSlice(validActionNames, validPageFuncNames); len(diffNames) == 2 {
+		for _, pageFuncName := range validPageFuncNames {
+			if !diffNames.Has(pageFuncName) {
+				resource2actionInfo[pageFuncName].PageExtractInfo = resource2pageExtractInfo[pageFuncName]
+			} else {
+				for name, _ := range diffNames {
+					if name != pageFuncName {
+						resource2actionInfo[name.(string)].PageExtractInfo = resource2pageExtractInfo[pageFuncName]
+					}
+				}
+			}
+		}
+		return true
+	}
+	//3. 手动map
+	switch pkgPath {
+	//case "github.com/gophercloud/gophercloud/openstack/compute/v2/servers":
+	//	resource2actionInfo["servers"].PageExtractInfo = resource2pageExtractInfo["servers"]
+	//	resource2actionInfo["addresses"].PageExtractInfo = resource2pageExtractInfo["addresses"]
+	//	resource2actionInfo["addressbynetwork"].PageExtractInfo = resource2pageExtractInfo["networkaddresses"]
+	//case "github.com/gophercloud/gophercloud/openstack/clustering/v1/clusters":
+	//	resource2actionInfo["clusters"].PageExtractInfo = resource2pageExtractInfo["clusters"]
+	//	resource2actionInfo["clusterpolicies"].PageExtractInfo = resource2pageExtractInfo["clusterpolicies"]
+	case "github.com/gophercloud/gophercloud/openstack/db/v1/configurations":
+		resource2actionInfo["configurations"].PageExtractInfo = resource2pageExtractInfo["configs"]
+		resource2actionInfo["datastoreparams"].PageExtractInfo = resource2pageExtractInfo["params"]
+		resource2actionInfo["globalparams"].PageExtractInfo = resource2pageExtractInfo["params"]
+		//todo 有一个action listinstance需要调用instance包的extract
+		return true
+	case "github.com/gophercloud/gophercloud/openstack/identity/v3/roles":
+		resource2actionInfo["roles"].PageExtractInfo = resource2pageExtractInfo["roles"]
+		resource2actionInfo["assignments"].PageExtractInfo = resource2pageExtractInfo["roleassignments"]
+		resource2actionInfo["assignmentsonresource"].PageExtractInfo = resource2pageExtractInfo["roles"]
+		return true
+	case "github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/bgp/speakers":
+		resource2actionInfo["speakers"].PageExtractInfo = resource2pageExtractInfo["bgpspeakers"]
+		resource2actionInfo["getadvertisedroutes"].PageExtractInfo = resource2pageExtractInfo["advertisedroutes"]
+		return true
+	case "github.com/gophercloud/gophercloud/openstack/objectstorage/v1/containers":
+		resource2actionInfo["containers"].PageExtractInfo = resource2pageExtractInfo["info"]
+		return true
+	case "github.com/gophercloud/gophercloud/openstack/objectstorage/v1/objects":
+		resource2actionInfo["objects"].PageExtractInfo = resource2pageExtractInfo["info"]
+		return true
+	case "github.com/gophercloud/gophercloud/openstack/orchestration/v1/stackresources":
+		resource2actionInfo["stackresources"].PageExtractInfo = resource2pageExtractInfo["resources"]
+		resource2actionInfo["types"].PageExtractInfo = resource2pageExtractInfo["resourcetypes"]
+		return true
+	default:
+		log.Println("no rules mapped for package ", pkgPath)
+	}
+	return false
 }
 
 type PackageAnalyzer struct {
@@ -89,7 +200,9 @@ func (pa *PackageAnalyzer) Field2VarInfos(fieldList []*ast.Field) (utils.Set, Va
 		names := pa.parseFieldNames(expr)
 		typeName, packagePath := pa.parseExprTypeInfo(expr.Type)
 		varInfos.Add(names, typeName)
-		importPaths.Insert(packagePath)
+		if packagePath != "" {
+			importPaths.Insert(packagePath)
+		}
 	}
 	return importPaths, varInfos
 }
@@ -104,7 +217,7 @@ func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackRequestInfo {
 	}
 	for _, d := range requestAST.Decls {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
-			if pa.checkValidFunc(fn, "*gophercloud.ServiceClient") {
+			if pa.checkValidFunc(fn, "gophercloud.ServiceClient") {
 				log.Println("******************handle function***************** :", fn.Name)
 				actionInfo := NewOpenstackActionInfo(fn.Name.String())
 				paramsImportPaths, paramsVarInfos := pa.Field2VarInfos(fn.Type.Params.List)
@@ -114,8 +227,8 @@ func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackRequestInfo {
 				actionInfo.AddVarInfos(paramsVarInfos, "parameters")
 				actionInfo.AddVarInfos(returnsVarInfos, "returns")
 				if succeed := requestInfo.AddAction(actionInfo); succeed {
-					requestInfo.AddImportPaths(paramsImportPaths)
-					requestInfo.AddImportPaths(returnsImportPaths)
+					requestInfo.RequestImportPaths.Add(paramsImportPaths)
+					requestInfo.RequestImportPaths.Add(returnsImportPaths)
 				}
 			}
 		}
@@ -124,25 +237,29 @@ func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackRequestInfo {
 }
 
 func (pa *PackageAnalyzer) AnalyseResultFile() *OpenstackResultInfo {
-	ori := NewOpenstackResultInfo(pa.pkg.Name, pa.pkg.PkgPath)
-	log.Printf("-----------analyze requestfile:  %s-----------\n", pa.pkg.Name)
+	log.Printf("-----------analyze resultfile:  %s-----------\n", pa.pkg.Name)
 	resultAST := pa.GetASTFile("results.go")
 	if resultAST == nil {
-		return ori
+		return nil
 	}
+	ori := NewOpenstackResultInfo(pa.pkg.Name, pa.pkg.PkgPath)
 	for _, d := range resultAST.Decls {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
 			fnName := fn.Name.String()
-			log.Println(fnName)
+			log.Println("handle result function", fnName)
 			if pa.checkValidFunc(fn, "pagination.Page") &&
 				strings.HasPrefix(fnName, "Extract") &&
+				!strings.HasSuffix(fnName, "Into") &&
+				!strings.HasSuffix(fnName, "Base") &&
+				len(fn.Type.Params.List) == 1 &&
 				fnName != "Extract" {
 				pageExtractInfo := NewPageExtractInfo(fnName)
 				importPaths, returnVarInfos := pa.Field2VarInfos(fn.Type.Results.List)
-				ori.AddImportPaths(importPaths)
-				ori.AddPageExtractInfos(pageExtractInfo)
-				pageExtractInfo.ReturnInfo = returnVarInfos
 
+				pageExtractInfo.ReturnInfo = returnVarInfos
+				log.Println("Add import path: ", importPaths)
+				ori.ImportPaths.Add(importPaths)
+				ori.AddPageExtractInfos(pageExtractInfo)
 			}
 		}
 	}
@@ -179,7 +296,11 @@ func (pa *PackageAnalyzer) interface2struct(ifaceType *types.Type, iface *types.
 				log.Println(ty.Type.String())
 				log.Println((*ifaceType).String())
 				log.Printf("struct %v implements interface %v\n", ty.Type, *ifaceType)
-				return pa.parseTypeInfo(ty.Type)
+				//return pa.parseTypeInfo(ty.Type)
+				tyName, packagePath := pa.parseTypeInfo(ty.Type)
+				if tyName != "" {
+					return tyName, packagePath
+				}
 			}
 		}
 	}
@@ -219,6 +340,9 @@ func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr) (tyName string, pack
 	//ifaceType, iface := pa.getInterface(tyName, pkg.Types)
 	if ifaceType != nil {
 		tyName, packagePath = pa.interface2struct(ifaceType, iface)
+		if tyName == "" {
+			log.Println("error, not find struct for interface", ifaceType)
+		}
 		if isSlice {
 			tyName = "[]" + tyName
 		}
@@ -238,9 +362,10 @@ func (pa *PackageAnalyzer) checkValidFunc(fn *ast.FuncDecl, paraName string) boo
 		return false
 	}
 	if fn.Recv == nil { //function's Recv filed is nil, method is not
-		if len(fn.Type.Params.List) != 1 {
+		if len(fn.Type.Params.List) != 0 {
 			typeName, _ := pa.parseExprTypeInfo(fn.Type.Params.List[0].Type)
-			if typeName == paraName {
+			//if typeName == paraName {
+			if strings.Contains(typeName, paraName) {
 				return true
 			}
 		}
@@ -268,7 +393,15 @@ func (pa *PackageAnalyzer) parseTypeInfo(ty types.Type) (string, string) {
 	case *types.Slice:
 		typeName, packagePath := pa.parseTypeInfo(tyType.Elem())
 		return "[]" + typeName, packagePath
-
+	case *types.Map:
+		log.Println(tyType)
+		keyName, keyPath := pa.parseTypeInfo(tyType.Key())
+		valueName, valuePath := pa.parseTypeInfo(tyType.Elem())
+		//todo keyPath and valuePath may be different
+		return "map[" + keyName + "]" + valueName, keyPath + valuePath
+	case *types.Interface:
+		log.Println("interface type: ", tyType)
+		return "interface{}", ""
 	default:
 		log.Println("error! unhandled type: ", tyType)
 		return "", ""

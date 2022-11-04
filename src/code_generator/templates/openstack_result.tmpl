@@ -1,1 +1,25 @@
-package templates
+package {{Param "packageName"}}
+{{GetCodeHeader}}
+
+{{$ResourcePackageName := .ResourcePackageName}}
+{{$ResourceName := .ResourceName}}
+
+import (
+{{- range $Key, $Value := .ResultImportPaths}}
+    "{{$Key}}"
+{{- end}}
+)
+{{- range .ActionInfos}}
+{{- if .PageExtractInfo}}
+{{$ActionName := .ActionName}}
+{{$PageExtractInfo := .PageExtractInfo}}
+//extract response info from pager for {{$ActionName}}{{$ResourceName}}
+func Extract{{$ActionName}}{{$ResourceName}}Response(response *{{$ActionName}}{{$ResourceName}}Response)({{GetReturnsList $PageExtractInfo.ReturnInfo}}){
+	page, err := response.Pager.AllPages()
+	if err != nil {
+		return nil, err
+	}
+	return {{$ResourcePackageName}}.{{$PageExtractInfo.FuncName}}(page)
+}
+{{- end}}
+{{- end}}

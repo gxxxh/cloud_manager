@@ -10,6 +10,30 @@ import (
     "github.com/gophercloud/gophercloud/openstack/identity/v2/users"
     "github.com/gophercloud/gophercloud/pagination"
 )
+//request struct for the ListIdentityV2Users
+type ListIdentityV2UsersRequest struct{
+}
+
+func NewListIdentityV2UsersRequest()*ListIdentityV2UsersRequest{
+    return &ListIdentityV2UsersRequest{}
+}
+
+//response struct for the ListIdentityV2Users
+type ListIdentityV2UsersResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListIdentityV2UsersResponse(pager pagination.Pager,)*ListIdentityV2UsersResponse {
+    return &ListIdentityV2UsersResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListIdentityV2Users(req *ListIdentityV2UsersRequest)(*ListIdentityV2UsersResponse){
+    return NewListIdentityV2UsersResponse(users.List(oc.Client, ))
+
+}
 //request struct for the CreateIdentityV2Users
 type CreateIdentityV2UsersRequest struct{
     Opts users.CreateOpts

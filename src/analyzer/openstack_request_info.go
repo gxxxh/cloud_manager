@@ -15,18 +15,22 @@ type OpenstackRequestInfo struct {
 	ResourceName        string //resouce name of the request file
 	ResourcePath        string //dir to save the resource Code
 	ActionInfos         []*OpenStackActionInfo
-	ImportPaths         utils.Set
+	HasResultFile       bool
+	RequestImportPaths  utils.Set
+	ResultImportPaths   utils.Set
 }
 
 func NewOpenstackRequestInfo(requestPackageName string, requestPath string) *OpenstackRequestInfo {
 	ri := &OpenstackRequestInfo{
 		ResourcePackageName: requestPackageName,
 		ResourcePath:        requestPath,
+		HasResultFile:       false,
 	}
 	ri.ResourceName = utils.JoinName(requestPath, "openstack", "")
 	ri.ActionInfos = make([]*OpenStackActionInfo, 0)
-	ri.ImportPaths = utils.NewSet()
-	ri.ImportPaths.Insert(requestPath)
+	ri.RequestImportPaths = utils.NewSet()
+	ri.ResultImportPaths = utils.NewSet()
+	ri.RequestImportPaths.Insert(requestPath)
 	return ri
 }
 
@@ -61,13 +65,13 @@ func (ri *OpenstackRequestInfo) AddAction(actionInfo *OpenStackActionInfo) bool 
 	return false
 }
 
-func (ri *OpenstackRequestInfo) AddImportPaths(packagePaths utils.Set) {
-	for packagePath, _ := range packagePaths {
-		if packagePath != "" {
-			ri.ImportPaths.Insert(packagePath)
-		}
-	}
-}
+//func (ri *OpenstackRequestInfo) AddImportPaths(packagePaths utils.Set) {
+//	for packagePath, _ := range packagePaths {
+//		if packagePath != "" {
+//			ri.RequestImportPaths.Insert(packagePath)
+//		}
+//	}
+//}
 
 type VarInfo struct {
 	Name     string
@@ -100,13 +104,15 @@ func (vi *VarInfos) Add(names []string, typeName string) {
 // list, get, create ...
 type OpenStackActionInfo struct {
 	ActionName       string
-	ActionParameters VarInfos //TypeName, name
-	ActionReturns    VarInfos //TypeName, name
+	ActionParameters VarInfos         //TypeName, name
+	ActionReturns    VarInfos         //TypeName, name
+	PageExtractInfo  *PageExtractInfo //for action start with list
 }
 
 func NewOpenstackActionInfo(actionName string) *OpenStackActionInfo {
 	ai := &OpenStackActionInfo{
-		ActionName: actionName,
+		ActionName:      actionName,
+		PageExtractInfo: nil,
 	}
 	ai.ActionParameters = NewVarInfos()
 	ai.ActionReturns = NewVarInfos()
@@ -127,7 +133,7 @@ func (ai *OpenStackActionInfo) AddVarInfos(varInfos VarInfos, kind string) {
 
 }
 
-func GetParasList(paraInfo VarInfos) string {
+func GetParamsLsit(paraInfo VarInfos) string {
 	var paras = ""
 	for i := 0; i < len(paraInfo); i++ {
 		name := paraInfo[i].Name
@@ -140,7 +146,7 @@ func GetParasList(paraInfo VarInfos) string {
 	return paras[:len(paras)-1]
 }
 
-func GetParasCallList(paraInfo VarInfos) string {
+func GetParamsCallList(paraInfo VarInfos) string {
 	var paras = ""
 	for i := 0; i < len(paraInfo); i++ {
 		name := paraInfo[i].Name

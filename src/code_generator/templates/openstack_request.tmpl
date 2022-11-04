@@ -5,7 +5,7 @@ package {{Param "packageName"}}
 {{$ResourceName := .ResourceName}}
 
 import (
-{{- range $Key, $Value := .ImportPaths}}
+{{- range $Key, $Value := .RequestImportPaths}}
     "{{$Key}}"
 {{- end}}
 )

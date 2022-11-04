@@ -116,6 +116,30 @@ func (oc *OpenstackClient) MetadataOrchestrationV1Stackresources(req *MetadataOr
     return NewMetadataOrchestrationV1StackresourcesResponse(stackresources.Metadata(oc.Client,req.StackName,req.StackID,req.ResourceName, ))
 
 }
+//request struct for the ListTypesOrchestrationV1Stackresources
+type ListTypesOrchestrationV1StackresourcesRequest struct{
+}
+
+func NewListTypesOrchestrationV1StackresourcesRequest()*ListTypesOrchestrationV1StackresourcesRequest{
+    return &ListTypesOrchestrationV1StackresourcesRequest{}
+}
+
+//response struct for the ListTypesOrchestrationV1Stackresources
+type ListTypesOrchestrationV1StackresourcesResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListTypesOrchestrationV1StackresourcesResponse(pager pagination.Pager,)*ListTypesOrchestrationV1StackresourcesResponse {
+    return &ListTypesOrchestrationV1StackresourcesResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListTypesOrchestrationV1Stackresources(req *ListTypesOrchestrationV1StackresourcesRequest)(*ListTypesOrchestrationV1StackresourcesResponse){
+    return NewListTypesOrchestrationV1StackresourcesResponse(stackresources.ListTypes(oc.Client, ))
+
+}
 //request struct for the SchemaOrchestrationV1Stackresources
 type SchemaOrchestrationV1StackresourcesRequest struct{
     ResourceType string

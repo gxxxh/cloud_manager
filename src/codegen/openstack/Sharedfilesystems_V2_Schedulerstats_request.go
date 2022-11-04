@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListSharedfilesystemsV2Schedulerstats
 type ListSharedfilesystemsV2SchedulerstatsRequest struct{
-    Opts schedulerstats.ListOpts
+    Opts schedulerstats.ListDetailOpts
 }
 
 func NewListSharedfilesystemsV2SchedulerstatsRequest()*ListSharedfilesystemsV2SchedulerstatsRequest{

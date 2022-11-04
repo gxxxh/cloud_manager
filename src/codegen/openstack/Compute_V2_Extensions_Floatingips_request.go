@@ -8,7 +8,32 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/compute/v2/extensions/floatingips"
+    "github.com/gophercloud/gophercloud/pagination"
 )
+//request struct for the ListComputeV2ExtensionsFloatingips
+type ListComputeV2ExtensionsFloatingipsRequest struct{
+}
+
+func NewListComputeV2ExtensionsFloatingipsRequest()*ListComputeV2ExtensionsFloatingipsRequest{
+    return &ListComputeV2ExtensionsFloatingipsRequest{}
+}
+
+//response struct for the ListComputeV2ExtensionsFloatingips
+type ListComputeV2ExtensionsFloatingipsResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListComputeV2ExtensionsFloatingipsResponse(pager pagination.Pager,)*ListComputeV2ExtensionsFloatingipsResponse {
+    return &ListComputeV2ExtensionsFloatingipsResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListComputeV2ExtensionsFloatingips(req *ListComputeV2ExtensionsFloatingipsRequest)(*ListComputeV2ExtensionsFloatingipsResponse){
+    return NewListComputeV2ExtensionsFloatingipsResponse(floatingips.List(oc.Client, ))
+
+}
 //request struct for the CreateComputeV2ExtensionsFloatingips
 type CreateComputeV2ExtensionsFloatingipsRequest struct{
     Opts floatingips.CreateOpts

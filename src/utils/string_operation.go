@@ -18,6 +18,14 @@ func LowerFirst(s string) string {
 	return first + s[1:]
 }
 
+// 删除函数名称的actionName(list, Create)等，若没有宾语则返回原名称
+func ParseResourceName(funcName string, actionName string) string {
+	if strings.HasPrefix(funcName, actionName) && funcName != actionName {
+		return strings.ToLower(funcName[len(actionName):])
+	}
+	return strings.ToLower(funcName)
+}
+
 /*
 check if the first character is lower
 */
@@ -65,4 +73,37 @@ func TypeName2LocalVarName(typeName string) string {
 	//todo check basic type
 	localVarName := GetStructName(typeName)
 	return LowerFirst(localVarName)
+}
+
+func CompareSlice(s1 []string, s2 []string) bool {
+	if len(s1) != len(s2) {
+		return false
+	}
+	tmp := NewSet()
+	for _, s := range s1 {
+		tmp.Insert(s)
+	}
+	for _, s := range s2 {
+		if tmp.Has(s) {
+			tmp.Delete(s)
+		} else {
+			return false
+		}
+	}
+	return len(tmp) == 0
+}
+
+func DiffSlice(s1, s2 []string) Set {
+	res := NewSet()
+	for _, s := range s1 {
+		res.Insert(s)
+	}
+	for _, s := range s2 {
+		if res.Has(s) {
+			res.Delete(s)
+		} else {
+			res.Insert(s)
+		}
+	}
+	return res
 }

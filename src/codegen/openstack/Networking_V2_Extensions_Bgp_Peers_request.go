@@ -8,7 +8,32 @@ package openstack
 
 import (
     "github.com/gophercloud/gophercloud/openstack/networking/v2/extensions/bgp/peers"
+    "github.com/gophercloud/gophercloud/pagination"
 )
+//request struct for the ListNetworkingV2ExtensionsBgpPeers
+type ListNetworkingV2ExtensionsBgpPeersRequest struct{
+}
+
+func NewListNetworkingV2ExtensionsBgpPeersRequest()*ListNetworkingV2ExtensionsBgpPeersRequest{
+    return &ListNetworkingV2ExtensionsBgpPeersRequest{}
+}
+
+//response struct for the ListNetworkingV2ExtensionsBgpPeers
+type ListNetworkingV2ExtensionsBgpPeersResponse struct{
+    Pager pagination.Pager
+}
+
+func NewListNetworkingV2ExtensionsBgpPeersResponse(pager pagination.Pager,)*ListNetworkingV2ExtensionsBgpPeersResponse {
+    return &ListNetworkingV2ExtensionsBgpPeersResponse{
+            Pager:pager,
+    }
+}
+
+// action function
+func (oc *OpenstackClient) ListNetworkingV2ExtensionsBgpPeers(req *ListNetworkingV2ExtensionsBgpPeersRequest)(*ListNetworkingV2ExtensionsBgpPeersResponse){
+    return NewListNetworkingV2ExtensionsBgpPeersResponse(peers.List(oc.Client, ))
+
+}
 //request struct for the GetNetworkingV2ExtensionsBgpPeers
 type GetNetworkingV2ExtensionsBgpPeersRequest struct{
     Id string

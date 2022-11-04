@@ -21,3 +21,9 @@ func (s Set) Insert(item t) {
 func (s Set) Delete(item t) {
 	delete(s, item)
 }
+
+func (s Set) Add(s1 Set) {
+	for item, _ := range s1 {
+		s.Insert(item)
+	}
+}
