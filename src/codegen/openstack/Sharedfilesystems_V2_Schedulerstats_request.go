@@ -12,7 +12,7 @@ import (
 )
 //request struct for the ListSharedfilesystemsV2Schedulerstats
 type ListSharedfilesystemsV2SchedulerstatsRequest struct{
-    Opts schedulerstats.ListDetailOpts
+    Opts schedulerstats.ListOpts
 }
 
 func NewListSharedfilesystemsV2SchedulerstatsRequest()*ListSharedfilesystemsV2SchedulerstatsRequest{
@@ -37,7 +37,7 @@ func (oc *OpenstackClient) ListSharedfilesystemsV2Schedulerstats(req *ListShared
 }
 //request struct for the ListDetailSharedfilesystemsV2Schedulerstats
 type ListDetailSharedfilesystemsV2SchedulerstatsRequest struct{
-    Opts schedulerstats.ListDetailOpts
+    Opts schedulerstats.ListOpts
 }
 
 func NewListDetailSharedfilesystemsV2SchedulerstatsRequest()*ListDetailSharedfilesystemsV2SchedulerstatsRequest{

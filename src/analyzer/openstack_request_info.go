@@ -31,7 +31,34 @@ func NewOpenstackRequestInfo(requestPackageName string, requestPath string) *Ope
 	ri.RequestImportPaths = utils.NewSet()
 	ri.ResultImportPaths = utils.NewSet()
 	ri.RequestImportPaths.Insert(requestPath)
+	ri.ResultImportPaths.Insert(requestPath)
 	return ri
+}
+
+// get import path for request file
+func (ori *OpenstackRequestInfo) GenRequestImportPaths() {
+	ori.RequestImportPaths.Insert(ori.ResourcePath)
+	for _, actionInfo := range ori.ActionInfos {
+		paramsImportPath := actionInfo.ActionParameters.GetImportPaths()
+		paramsImportPath.Delete("github.com/gophercloud/gophercloud")
+		ori.RequestImportPaths.Add(paramsImportPath)
+		ori.RequestImportPaths.Add(actionInfo.ActionReturns.GetImportPaths())
+	}
+	ori.RequestImportPaths.Delete("")
+}
+
+// get import path for result files
+func (ori *OpenstackRequestInfo) GenResultImportPaths() {
+	ori.ResultImportPaths.Insert(ori.ResourcePath)
+	for _, actionInfo := range ori.ActionInfos {
+		if actionInfo.PageExtractInfo != nil {
+			ori.ResultImportPaths.Add(actionInfo.PageExtractInfo.ReturnInfo.GetImportPaths())
+		}
+		if actionInfo.ResultExtractInfo != nil {
+			ori.ResultImportPaths.Add(actionInfo.ResultExtractInfo.ReturnInfo.GetImportPaths())
+		}
+	}
+	ori.ResultImportPaths.Delete("")
 }
 
 // delete unsupport action
@@ -74,14 +101,16 @@ func (ri *OpenstackRequestInfo) AddAction(actionInfo *OpenStackActionInfo) bool 
 //}
 
 type VarInfo struct {
-	Name     string
-	TypeName string
+	Name       string
+	TypeName   string
+	ImportPath string
 }
 
-func NewVarInfo(name, typeName string) VarInfo {
+func NewVarInfo(name, typeName, importPath string) VarInfo {
 	return VarInfo{
-		Name:     name,
-		TypeName: typeName,
+		Name:       name,
+		TypeName:   typeName,
+		ImportPath: importPath,
 	}
 }
 
@@ -94,25 +123,35 @@ func NewVarInfos() VarInfos {
 func (vi *VarInfos) AddVarInfo(varInfo VarInfo) {
 	*vi = append(*vi, varInfo)
 }
-func (vi *VarInfos) Add(names []string, typeName string) {
+func (vi *VarInfos) Add(names []string, typeName string, importPath string) {
 	for _, name := range names {
-		*vi = append(*vi, NewVarInfo(name, typeName))
+		*vi = append(*vi, NewVarInfo(name, typeName, importPath))
 	}
+}
+
+func (vi *VarInfos) GetImportPaths() utils.Set {
+	importPaths := utils.NewSet()
+	for _, varinfo := range *vi {
+		importPaths.Insert(varinfo.ImportPath)
+	}
+	return importPaths
 }
 
 // describe an action to the resource
 // list, get, create ...
 type OpenStackActionInfo struct {
-	ActionName       string
-	ActionParameters VarInfos         //TypeName, name
-	ActionReturns    VarInfos         //TypeName, name
-	PageExtractInfo  *PageExtractInfo //for action start with list
+	ActionName        string
+	ActionParameters  VarInfos           //TypeName, name
+	ActionReturns     VarInfos           //TypeName, name
+	PageExtractInfo   *PageExtractInfo   //for action start with list
+	ResultExtractInfo *ResultExtractInfo // for action return a result type with an extract method
 }
 
 func NewOpenstackActionInfo(actionName string) *OpenStackActionInfo {
 	ai := &OpenStackActionInfo{
-		ActionName:      actionName,
-		PageExtractInfo: nil,
+		ActionName:        actionName,
+		PageExtractInfo:   nil,
+		ResultExtractInfo: nil,
 	}
 	ai.ActionParameters = NewVarInfos()
 	ai.ActionReturns = NewVarInfos()

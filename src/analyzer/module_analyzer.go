@@ -57,8 +57,6 @@ func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackRequestInfo, error)
 		if resultInfo := packageAnalyzer.AnalyseResultFile(); resultInfo != nil {
 			flag := ma.MapPageExtractInfo2Action(pkg.PkgPath, pkg.Name, resultInfo.PageExtractInfos, requestInfo.ActionInfos)
 			requestInfo.HasResultFile = flag
-			requestInfo.ResultImportPaths.Add(resultInfo.ImportPaths)
-			//resultInfos = append(resultInfos, resultInfo)
 		}
 		requestInfos = append(requestInfos, requestInfo)
 	}
@@ -192,19 +190,14 @@ func (pa *PackageAnalyzer) GetASTFile(fileName string) *ast.File {
 	return nil
 }
 
-// todo save constants into a filter struct
-func (pa *PackageAnalyzer) Field2VarInfos(fieldList []*ast.Field) (utils.Set, VarInfos) {
-	importPaths := utils.NewSet()
+func (pa *PackageAnalyzer) Field2VarInfos(fieldList []*ast.Field) VarInfos {
 	varInfos := NewVarInfos()
 	for _, expr := range fieldList {
 		names := pa.parseFieldNames(expr)
 		typeName, packagePath := pa.parseExprTypeInfo(expr.Type)
-		varInfos.Add(names, typeName)
-		if packagePath != "" {
-			importPaths.Insert(packagePath)
-		}
+		varInfos.Add(names, typeName, packagePath)
 	}
-	return importPaths, varInfos
+	return varInfos
 }
 
 // analyze packages and parse info
@@ -220,20 +213,84 @@ func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackRequestInfo {
 			if pa.checkValidFunc(fn, "gophercloud.ServiceClient") {
 				log.Println("******************handle function***************** :", fn.Name)
 				actionInfo := NewOpenstackActionInfo(fn.Name.String())
-				paramsImportPaths, paramsVarInfos := pa.Field2VarInfos(fn.Type.Params.List)
+				paramsVarInfos := pa.Field2VarInfos(fn.Type.Params.List)
 				//no need to import
-				paramsImportPaths.Delete("github.com/gophercloud/gophercloud")
-				returnsImportPaths, returnsVarInfos := pa.Field2VarInfos(fn.Type.Results.List)
+				//paramsImportPaths.Delete("github.com/gophercloud/gophercloud")
+				returnsVarInfos := pa.Field2VarInfos(fn.Type.Results.List)
 				actionInfo.AddVarInfos(paramsVarInfos, "parameters")
 				actionInfo.AddVarInfos(returnsVarInfos, "returns")
-				if succeed := requestInfo.AddAction(actionInfo); succeed {
-					requestInfo.RequestImportPaths.Add(paramsImportPaths)
-					requestInfo.RequestImportPaths.Add(returnsImportPaths)
+				// analyze result extract func
+				// todo check if all return var info's len is 1
+				if len(returnsVarInfos) >= 1 &&
+					strings.HasSuffix(returnsVarInfos[0].TypeName, "Result") {
+					actionInfo.ResultExtractInfo = pa.ParseResultExtractInfo(fn.Type.Results.List[0].Type)
 				}
+				//todo 生成importPath, 注意paramsImportPaths要删除一个
+				requestInfo.AddAction(actionInfo)
 			}
 		}
 	}
+	requestInfo.GenRequestImportPaths()
+	requestInfo.GenResultImportPaths()
 	return requestInfo
+}
+
+// get result's extract function's return info
+func (pa *PackageAnalyzer) ParseResultExtractReturns(ty *types.Named) VarInfos {
+	varInfos := NewVarInfos()
+	for i := 0; i < ty.NumMethods(); i++ {
+		tmpMethod := ty.Method(i)
+		if tmpMethod.Name() == "Extract" ||
+			tmpMethod.Name() == "ExtractErr" {
+			methodType, ok := tmpMethod.Type().(*types.Signature)
+			if !ok {
+				log.Println("error, the extract function can't turned to a signaure", ty)
+			}
+			for i := 0; i < methodType.Results().Len(); i++ {
+				result := methodType.Results().At(i)
+				typeName, typeImportPath := pa.parseTypeInfo(result.Type())
+				varInfo := NewVarInfo("", typeName, typeImportPath)
+				varInfos.AddVarInfo(varInfo)
+			}
+		}
+	}
+	return varInfos
+}
+func (pa *PackageAnalyzer) ParseResultExtractInfo(expr ast.Expr) *ResultExtractInfo {
+	log.Println("parse result extract info for ", expr)
+	ty := pa.pkg.TypesInfo.Types[expr].Type
+	tyNamed, ok := ty.(*types.Named)
+	if !ok {
+		log.Println("error, the result type should be a named type", ty)
+		return nil
+	}
+	resultExtractInfo := NewResultExtractInfo()
+	if tyNamed.NumMethods() != 0 {
+		varInfos := pa.ParseResultExtractReturns(tyNamed)
+		log.Println("find result extract info for ", expr)
+		resultExtractInfo.ReturnInfo = varInfos
+		return resultExtractInfo
+	} else {
+		tyStruct, ok := tyNamed.Underlying().(*types.Struct)
+		if !ok {
+			log.Println("error, the result underlying type is not struct", ty)
+		}
+		for i := 0; i < tyStruct.NumFields(); i++ {
+			fieldType := tyStruct.Field(i).Type()
+			fieldTypeNamed, ok := fieldType.(*types.Named)
+			if ok && fieldTypeNamed.NumMethods() > 0 && strings.Contains(fieldTypeNamed.Obj().Name(), "Result") {
+				varInfos := pa.ParseResultExtractReturns(fieldTypeNamed)
+				log.Println("find result extract info for ", expr)
+				if resultExtractInfo.ReturnInfo != nil {
+					log.Println("error, too many extract method for ", expr)
+				} else {
+					resultExtractInfo.ReturnInfo = varInfos
+				}
+			}
+		}
+		return resultExtractInfo
+	}
+	return nil
 }
 
 func (pa *PackageAnalyzer) AnalyseResultFile() *OpenstackResultInfo {
@@ -254,22 +311,20 @@ func (pa *PackageAnalyzer) AnalyseResultFile() *OpenstackResultInfo {
 				len(fn.Type.Params.List) == 1 &&
 				fnName != "Extract" {
 				pageExtractInfo := NewPageExtractInfo(fnName)
-				importPaths, returnVarInfos := pa.Field2VarInfos(fn.Type.Results.List)
-
+				returnVarInfos := pa.Field2VarInfos(fn.Type.Results.List)
 				pageExtractInfo.ReturnInfo = returnVarInfos
-				log.Println("Add import path: ", importPaths)
-				ori.ImportPaths.Add(importPaths)
 				ori.AddPageExtractInfos(pageExtractInfo)
 			}
 		}
 	}
+
 	return ori
 }
 
 // get interface type from the pkg
-func (pa *PackageAnalyzer) getInterface(interfaceName string, pkg *types.Package) (*types.Type, *types.Interface) {
+func (pa *PackageAnalyzer) getInterface(interfaceName string, pkg *types.Package) *types.Interface {
 	if pkg == nil || !strings.Contains(pkg.Path(), "openstack") {
-		return nil, nil
+		return nil
 	}
 	interfaceName = utils.GetStructName(interfaceName)
 	obj := pkg.Scope().Lookup(interfaceName)
@@ -277,25 +332,23 @@ func (pa *PackageAnalyzer) getInterface(interfaceName string, pkg *types.Package
 		objType := obj.Type()
 		ifaceType, ok := objType.Underlying().(*types.Interface)
 		if ok {
-			return &objType, ifaceType
+			return ifaceType
 		}
 	}
-	return nil, nil
+	return nil
 }
 
 // find the struct type that implement the interface
-func (pa *PackageAnalyzer) interface2struct(ifaceType *types.Type, iface *types.Interface) (string, string) {
+func (pa *PackageAnalyzer) interface2struct(iface *types.Interface) (string, string) {
 	tinfo := pa.pkg.TypesInfo
-	log.Println("find struct for interface ", *ifaceType)
+	log.Println("find struct for interface ", iface)
 	for _, ty := range tinfo.Types {
 		if types.Implements(ty.Type, iface) {
 			//if ty.Type.String() != (*ifaceType).String() {
 			log.Println(ty.Type)
 			_, isInterface := ty.Type.Underlying().(*types.Interface)
 			if !isInterface {
-				log.Println(ty.Type.String())
-				log.Println((*ifaceType).String())
-				log.Printf("struct %v implements interface %v\n", ty.Type, *ifaceType)
+				log.Printf("struct %v implements interface %v\n", ty.Type, iface)
 				//return pa.parseTypeInfo(ty.Type)
 				tyName, packagePath := pa.parseTypeInfo(ty.Type)
 				if tyName != "" {
@@ -336,12 +389,12 @@ func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr) (tyName string, pack
 		isSlice = true
 	}
 	typesPkg := pa.GetPackage(ty)
-	ifaceType, iface := pa.getInterface(tyName, typesPkg)
+	iface := pa.getInterface(tyName, typesPkg)
 	//ifaceType, iface := pa.getInterface(tyName, pkg.Types)
-	if ifaceType != nil {
-		tyName, packagePath = pa.interface2struct(ifaceType, iface)
+	if iface != nil {
+		tyName, packagePath = pa.interface2struct(iface)
 		if tyName == "" {
-			log.Println("error, not find struct for interface", ifaceType)
+			log.Println("error, not find struct for interface", iface)
 		}
 		if isSlice {
 			tyName = "[]" + tyName
@@ -394,7 +447,6 @@ func (pa *PackageAnalyzer) parseTypeInfo(ty types.Type) (string, string) {
 		typeName, packagePath := pa.parseTypeInfo(tyType.Elem())
 		return "[]" + typeName, packagePath
 	case *types.Map:
-		log.Println(tyType)
 		keyName, keyPath := pa.parseTypeInfo(tyType.Key())
 		valueName, valuePath := pa.parseTypeInfo(tyType.Elem())
 		//todo keyPath and valuePath may be different

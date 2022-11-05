@@ -5,20 +5,12 @@ import (
 )
 
 // info using to generate extract function
-
-//1. Action return page should call extract, hard
-
-//todo analyzer results.go
 //1. CheckFunction: function, not method; start with extract; parameter type is pagination.Pate
 
-// 2. struct, endwith result, has method extract
-// 2. GenDecl, specs is typespce, specs name is endwith result. get the type and methods
-// todo 抽象出统一的接口
 type OpenstackResultInfo struct {
 	PackageName      string
 	ResourceName     string
 	ResourcePath     string
-	ImportPaths      utils.Set
 	PageExtractInfos []*PageExtractInfo
 }
 
@@ -28,8 +20,6 @@ func NewOpenstackResultInfo(packageName, packagePath string) *OpenstackResultInf
 		ResourcePath: packagePath,
 	}
 	ori.ResourceName = utils.JoinName(packagePath, "openstack", "")
-	ori.ImportPaths = utils.NewSet()
-	ori.ImportPaths.Insert(packagePath)
 	ori.PageExtractInfos = make([]*PageExtractInfo, 0)
 	return ori
 }
@@ -45,10 +35,10 @@ func (ori *OpenstackResultInfo) AddPageExtractInfos(pageExtractInfo *PageExtract
 	ori.PageExtractInfos = append(ori.PageExtractInfos, pageExtractInfo)
 }
 
+// info using to describe page extract function
 type PageExtractInfo struct {
-	//todo add action info
 	FuncName   string
-	ReturnInfo []VarInfo
+	ReturnInfo VarInfos
 }
 
 func NewPageExtractInfo(funcName string) *PageExtractInfo {
@@ -56,6 +46,20 @@ func NewPageExtractInfo(funcName string) *PageExtractInfo {
 		FuncName:   funcName,
 		ReturnInfo: nil,
 	}
-	pei.ReturnInfo = make([]VarInfo, 0)
+	pei.ReturnInfo = NewVarInfos()
 	return pei
+}
+
+//info using to describe result.extract function
+// 1. 类型以Result结尾
+// 2. 类型存在Extract()函数
+// 3. 分析 Extract()函数，进行封装
+
+type ResultExtractInfo struct {
+	ReturnInfo VarInfos
+}
+
+func NewResultExtractInfo() *ResultExtractInfo {
+	rei := &ResultExtractInfo{}
+	return rei
 }

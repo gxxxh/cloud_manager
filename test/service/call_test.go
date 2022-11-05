@@ -8,6 +8,7 @@ import (
 	"github.com/gophercloud/gophercloud/openstack"
 	"github.com/gophercloud/gophercloud/openstack/compute/v2/images"
 	"github.com/gophercloud/gophercloud/pagination"
+	"log"
 	"reflect"
 	"testing"
 )
@@ -67,7 +68,7 @@ func TestOpenstackSDK(t *testing.T) {
 			fmt.Errorf("Fatal error Extract Images:  %s \n", err)
 		}
 		for _, i := range imageList {
-			// "i" will be a images.Image
+			// "i" will be an images.Image
 			fmt.Printf("images is %v \n", i)
 		}
 		return false, err
@@ -101,16 +102,21 @@ func TestOpenstackCodeGen(t *testing.T) {
 	request := openstack2.NewListDetailComputeV2ImagesRequest()
 	res := oc.ListDetailComputeV2Images(request)
 	fmt.Println("direct: ", res)
-	//todo handle page type
-	err = res.Pager.EachPage(func(page pagination.Page) (bool, error) {
-		imageList, err := images.ExtractImages(page)
-		if err != nil {
-			fmt.Errorf("Fatal error Extract Images:  %s \n", err)
-		}
-		for _, i := range imageList {
-			// "i" will be a images.Image
-			fmt.Printf("images is %v \n", i)
-		}
-		return false, err
-	})
+	info, err := openstack2.ExtractListDetailComputeV2ImagesResponse(res)
+	if err != nil {
+		t.Error(err)
+	}
+	log.Println(info)
+	////todo handle page type
+	//err = res.Pager.EachPage(func(page pagination.Page) (bool, error) {
+	//	imageList, err := images.ExtractImages(page)
+	//	if err != nil {
+	//		fmt.Errorf("Fatal error Extract Images:  %s \n", err)
+	//	}
+	//	for _, i := range imageList {
+	//		// "i" will be a images.Image
+	//		fmt.Printf("images is %v \n", i)
+	//	}
+	//	return false, err
+	//})
 }
