@@ -1,0 +1,14 @@
+package {{Param "packageName"}}
+{{GetCodeHeader}}
+
+import (
+{{- range .ImportPaths}}
+    "{{.}}"
+{{- end}}
+)
+
+var {{Param "kind"}}{{Param "action"}}{{Param "type"}}Registry = map[string]interface{}{
+{{- range .RequestInfos}}
+	"{{RemoveRequestSuffix .RequestName}}":{{.CreateFunctionName}},
+{{- end}}
+}

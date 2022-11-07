@@ -27,6 +27,9 @@ func GenerateTemplate(templateText string, templateData interface{}, params map[
 		"GenMemberName":     utils.TypeName2MemberName,   // 大写首字母作为成员变量
 		"GenLocalVarName":   utils.TypeName2LocalVarName, // 针对返回值生成针对类型的成员变量名称
 		"UpperFirst":        utils.UpperFirst,
+		"RemoveRequestSuffix": func(key string) string {
+			return key[0 : len(key)-len("Request")]
+		},
 		"Param": func(name string) interface{} {
 			if v, ok := params[name]; ok {
 				return v

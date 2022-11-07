@@ -9,6 +9,7 @@ import (
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -18,12 +19,14 @@ func TestGenAliyunRequestRegistry(t *testing.T) {
 	analyzer.ExtractCloudAPIs(client)
 	requestRegistryInfo := analyzer.ExtractRequestInfos("Create")
 
-	templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\request_map.tmpl"
+	templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\registry.tmpl"
 	requestRegistryInfo.ImportPaths = []string{"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"}
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := map[string]interface{}{
 		"packageName": "registry",
 		"kind":        "Aliyun",
+		"action":      "Create",
+		"type":        "Request",
 	}
 	code, err := code_generator.GenCode(templatePath, data, params)
 	if err != nil {
@@ -43,18 +46,51 @@ func TestGenOpenstackRequestRegistry(t *testing.T) {
 	analyzer.ExtractCloudAPIs(client)
 	requestRegistryInfo := analyzer.ExtractRequestInfos("New")
 
-	templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\request_map.tmpl"
+	templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\registry.tmpl"
 	requestRegistryInfo.ImportPaths = []string{"cloud_manager/src/codegen/openstack"}
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := map[string]interface{}{
 		"packageName": "registry",
 		"kind":        "Openstack",
+		"action":      "Create",
+		"type":        "Request",
 	}
 	code, err := code_generator.GenCode(templatePath, data, params)
 	if err != nil {
 		t.Error(err)
 	}
 	filePtr, err := os.Create("E:\\gopath\\src\\cloud_manager\\src\\codegen\\registry\\openstack_create_request_registry.go")
+	if err != nil {
+		fmt.Println(err)
+		t.Error(err)
+	}
+	defer filePtr.Close()
+	filePtr.Write(code)
+}
+
+func TestGenOpenstackResponseRegistry(t *testing.T) {
+	client := openstack.OpenstackClient{}
+	analyzer := cloud_manager.NewCloudAPIAnalyzer()
+	analyzer.ExtractCloudAPIs(client)
+	requestRegistryInfo := analyzer.ExtractRequestInfos("New")
+	for _, requestInfo := range requestRegistryInfo.RequestInfos {
+		requestInfo.CreateFunctionName = strings.Replace(requestInfo.CreateFunctionName, "New", "Extract", -1)
+		requestInfo.CreateFunctionName = requestInfo.CreateFunctionName[0:len(requestInfo.CreateFunctionName)-len("Request")] + "Response"
+	}
+	templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\registry.tmpl"
+	requestRegistryInfo.ImportPaths = []string{"cloud_manager/src/codegen/openstack"}
+	data := utils.Struct2Map(requestRegistryInfo)
+	params := map[string]interface{}{
+		"packageName": "registry",
+		"kind":        "Openstack",
+		"action":      "Extract",
+		"type":        "Response",
+	}
+	code, err := code_generator.GenCode(templatePath, data, params)
+	if err != nil {
+		t.Error(err)
+	}
+	filePtr, err := os.Create("E:\\gopath\\src\\cloud_manager\\src\\codegen\\registry\\openstack_extract_response_registry.go")
 	if err != nil {
 		fmt.Println(err)
 		t.Error(err)
