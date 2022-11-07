@@ -56,6 +56,7 @@ func NewPageExtractInfo(funcName string) *PageExtractInfo {
 // 3. 分析 Extract()函数，进行封装
 
 type ResultExtractInfo struct {
+	FuncName   string // Extract or ExtractErr
 	ReturnInfo VarInfos
 }
 

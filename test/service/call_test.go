@@ -2,6 +2,7 @@ package service
 
 import (
 	openstack2 "cloud_manager/src/codegen/openstack"
+	"encoding/json"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	"github.com/gophercloud/gophercloud"
@@ -13,6 +14,28 @@ import (
 	"testing"
 )
 
+func InitOpenstackClient(kind string) (*openstack2.OpenstackClient, error) {
+	authInfo := map[string]string{
+		"projectName":      "admin",
+		"domainName":       "Default",
+		"identityEndpoint": "http://133.133.135.136:5000/v3",
+		"username":         "admin",
+		"password":         "ef1aa1ad78c442e1",
+	}
+	params := map[string]interface{}{
+		"kind":     "Openstack",
+		"authInfo": authInfo,
+	}
+	params["kind"] = "openstack"
+	oc, err := openstack2.NewOpenstackClient(authInfo)
+	if err != nil {
+		return nil, err
+	}
+	oc.InitClient(kind, gophercloud.EndpointOpts{
+		Region: "RegionOne",
+	})
+	return oc, nil
+}
 func TestAliyunSDK(t *testing.T) {
 	regionId := "cn-beijing"
 	accessKeyId := "LTAI5tJKWj6qWB7t4VooErRx"
@@ -36,7 +59,7 @@ func TestConstructErr(t *testing.T) {
 	fmt.Println(nerr)
 }
 
-func TestOpenstackSDK(t *testing.T) {
+func TestOpenstackListFunc(t *testing.T) {
 	scope := gophercloud.AuthScope{
 		ProjectName: "admin",
 		DomainName:  "Default",
@@ -79,34 +102,18 @@ func TestOpenstackSDK(t *testing.T) {
 }
 
 func TestOpenstackCodeGen(t *testing.T) {
-	authInfo := map[string]string{
-		"projectName":      "admin",
-		"domainName":       "Default",
-		"identityEndpoint": "http://133.133.135.136:5000/v3",
-		"username":         "admin",
-		"password":         "ef1aa1ad78c442e1",
-	}
-	params := map[string]interface{}{
-		"kind":     "Openstack",
-		"authInfo": authInfo,
-	}
-	params["kind"] = "openstack"
-	oc, err := openstack2.NewOpenstackClient(authInfo)
+	oc, err := InitOpenstackClient("compute")
 	if err != nil {
 		t.Error(err)
 	}
-	oc.InitClient("compute", gophercloud.EndpointOpts{
-		//Region: os.Getenv("OS_REGION_NAME"),
-		Region: "RegionOne",
-	})
 	request := openstack2.NewListDetailComputeV2ImagesRequest()
 	res := oc.ListDetailComputeV2Images(request)
 	fmt.Println("direct: ", res)
-	info, err := openstack2.ExtractListDetailComputeV2ImagesResponse(res)
-	if err != nil {
-		t.Error(err)
-	}
-	log.Println(info)
+	//info, err := openstack2.ExtractListDetailComputeV2ImagesResponse(res)
+	//if err != nil {
+	//	t.Error(err)
+	//}
+	//log.Println(info)
 	////todo handle page type
 	//err = res.Pager.EachPage(func(page pagination.Page) (bool, error) {
 	//	imageList, err := images.ExtractImages(page)
@@ -119,4 +126,19 @@ func TestOpenstackCodeGen(t *testing.T) {
 	//	}
 	//	return false, err
 	//})
+}
+
+func TestOpenstackReturnResultFunc(t *testing.T) {
+	oc, err := InitOpenstackClient("identityv3")
+	if err != nil {
+		t.Error(err)
+	}
+	request := openstack2.NewGetIdentityV3TokensRequest()
+	request.Token = "gAAAAABjaHDUAoj_Wm7VRB44rYFk89y0Otqz4A9CgsDrvvN-sEqnSvk7hZBVM5i23oFQEYGKex6L2x54MnXK8iyUFldo3lX0WtD6ejUa1av5oKTkImRUVW-x_M5qgFPkklVuHDMy3njXUQqLzOO79ipKGSt0JWHX0C7gs-PLf63bvJ4iPWBRczg"
+	res := oc.GetIdentityV3Tokens(request)
+	content, err := json.Marshal(res.GetResult.Body)
+	if err != nil {
+		log.Println(err)
+	}
+	log.Println(string(content))
 }

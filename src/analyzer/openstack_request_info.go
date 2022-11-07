@@ -182,6 +182,9 @@ func GetParamsLsit(paraInfo VarInfos) string {
 		}
 		paras += name + " " + typeName + ","
 	}
+	if paras == "" {
+		return paras
+	}
 	return paras[:len(paras)-1]
 }
 
@@ -194,6 +197,9 @@ func GetParamsCallList(paraInfo VarInfos) string {
 			continue
 		}
 		paras += name + ","
+	}
+	if paras == "" {
+		return paras
 	}
 	return paras[:len(paras)-1]
 }
@@ -208,6 +214,9 @@ func GetReturnsList(returnInfo VarInfos) string {
 		} else {
 			paras += name + " " + typeName + ","
 		}
+	}
+	if paras == "" {
+		return paras
 	}
 	return paras[:len(paras)-1]
 }

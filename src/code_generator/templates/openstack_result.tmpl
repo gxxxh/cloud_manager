@@ -9,9 +9,10 @@ import (
     "{{$Key}}"
 {{- end}}
 )
+
 {{- range .ActionInfos}}
-{{- if .PageExtractInfo}}
 {{$ActionName := .ActionName}}
+{{- if .PageExtractInfo}}
 {{$PageExtractInfo := .PageExtractInfo}}
 //extract response info from pager for {{$ActionName}}{{$ResourceName}}
 func Extract{{$ActionName}}{{$ResourceName}}Response(response *{{$ActionName}}{{$ResourceName}}Response)({{GetReturnsList $PageExtractInfo.ReturnInfo}}){
@@ -20,6 +21,13 @@ func Extract{{$ActionName}}{{$ResourceName}}Response(response *{{$ActionName}}{{
 		return nil, err
 	}
 	return {{$ResourcePackageName}}.{{$PageExtractInfo.FuncName}}(page)
+}
+{{- end}}
+{{- if .ResultExtractInfo}}
+{{$ResultExtractInfo := .ResultExtractInfo}}
+// call result's extract function
+func Extract{{$ActionName}}{{$ResourceName}}Response(response *{{$ActionName}}{{$ResourceName}}Response)({{GetReturnsList $ResultExtractInfo.ReturnInfo}}){
+    return response.{{GenMemberName (index .ActionReturns 0).TypeName}}.{{$ResultExtractInfo.FuncName}}()
 }
 {{- end}}
 {{- end}}

@@ -236,26 +236,39 @@ func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackRequestInfo {
 }
 
 // get result's extract function's return info
-func (pa *PackageAnalyzer) ParseResultExtractReturns(ty *types.Named) VarInfos {
-	varInfos := NewVarInfos()
+func (pa *PackageAnalyzer) ParseResultExtractReturns(ty *types.Named) *ResultExtractInfo {
+	resultExtractInfo := NewResultExtractInfo()
 	for i := 0; i < ty.NumMethods(); i++ {
 		tmpMethod := ty.Method(i)
 		if tmpMethod.Name() == "Extract" ||
-			tmpMethod.Name() == "ExtractErr" {
+			tmpMethod.Name() == "ExtractErr" ||
+			strings.Contains(tmpMethod.Name(), "Extract") && !strings.HasSuffix(tmpMethod.Name(), "Into") {
 			methodType, ok := tmpMethod.Type().(*types.Signature)
 			if !ok {
 				log.Println("error, the extract function can't turned to a signaure", ty)
 			}
+			if resultExtractInfo.FuncName != "" {
+				log.Println("error, not only one Extract/ExtractErr func for thies result ", ty)
+			}
+			varInfos := NewVarInfos()
 			for i := 0; i < methodType.Results().Len(); i++ {
 				result := methodType.Results().At(i)
 				typeName, typeImportPath := pa.parseTypeInfo(result.Type())
 				varInfo := NewVarInfo("", typeName, typeImportPath)
 				varInfos.AddVarInfo(varInfo)
 			}
+			resultExtractInfo.FuncName = tmpMethod.Name()
+			resultExtractInfo.ReturnInfo = varInfos
 		}
 	}
-	return varInfos
+	if resultExtractInfo.FuncName == "" {
+		log.Printf("error, no extract func for type %v in package %v", ty, pa.pkg.PkgPath)
+	}
+	return resultExtractInfo
 }
+
+// input: result Type
+// ouput: result Type's extract function
 func (pa *PackageAnalyzer) ParseResultExtractInfo(expr ast.Expr) *ResultExtractInfo {
 	log.Println("parse result extract info for ", expr)
 	ty := pa.pkg.TypesInfo.Types[expr].Type
@@ -264,11 +277,9 @@ func (pa *PackageAnalyzer) ParseResultExtractInfo(expr ast.Expr) *ResultExtractI
 		log.Println("error, the result type should be a named type", ty)
 		return nil
 	}
-	resultExtractInfo := NewResultExtractInfo()
 	if tyNamed.NumMethods() != 0 {
-		varInfos := pa.ParseResultExtractReturns(tyNamed)
+		resultExtractInfo := pa.ParseResultExtractReturns(tyNamed)
 		log.Println("find result extract info for ", expr)
-		resultExtractInfo.ReturnInfo = varInfos
 		return resultExtractInfo
 	} else {
 		tyStruct, ok := tyNamed.Underlying().(*types.Struct)
@@ -279,16 +290,11 @@ func (pa *PackageAnalyzer) ParseResultExtractInfo(expr ast.Expr) *ResultExtractI
 			fieldType := tyStruct.Field(i).Type()
 			fieldTypeNamed, ok := fieldType.(*types.Named)
 			if ok && fieldTypeNamed.NumMethods() > 0 && strings.Contains(fieldTypeNamed.Obj().Name(), "Result") {
-				varInfos := pa.ParseResultExtractReturns(fieldTypeNamed)
+				resultExtractInfo := pa.ParseResultExtractReturns(fieldTypeNamed)
 				log.Println("find result extract info for ", expr)
-				if resultExtractInfo.ReturnInfo != nil {
-					log.Println("error, too many extract method for ", expr)
-				} else {
-					resultExtractInfo.ReturnInfo = varInfos
-				}
+				return resultExtractInfo
 			}
 		}
-		return resultExtractInfo
 	}
 	return nil
 }
