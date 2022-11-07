@@ -55,9 +55,11 @@ func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackRequestInfo, error)
 		}
 
 		if resultInfo := packageAnalyzer.AnalyseResultFile(); resultInfo != nil {
-			flag := ma.MapPageExtractInfo2Action(pkg.PkgPath, pkg.Name, resultInfo.PageExtractInfos, requestInfo.ActionInfos)
-			requestInfo.HasResultFile = flag
+			ma.MapPageExtractInfo2Action(pkg.PkgPath, pkg.Name, resultInfo.PageExtractInfos, requestInfo.ActionInfos)
 		}
+		requestInfo.RemoveInvalidActions()
+		requestInfo.GenRequestImportPaths()
+		requestInfo.GenResultImportPaths()
 		requestInfos = append(requestInfos, requestInfo)
 	}
 	return requestInfos, err
@@ -230,8 +232,7 @@ func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackRequestInfo {
 			}
 		}
 	}
-	requestInfo.GenRequestImportPaths()
-	requestInfo.GenResultImportPaths()
+
 	return requestInfo
 }
 

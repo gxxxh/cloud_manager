@@ -1,9 +1,8 @@
 package {{Param "packageName"}}
 {{GetCodeHeader}}
 
-{{$ResourcePackageName := .ResourcePackageName}}
-{{$ResourceName := .ResourceName}}
-
+{{- $ResourcePackageName := .ResourcePackageName}}
+{{- $ResourceName := .ResourceName}}
 import (
 {{- range $Key, $Value := .ResultImportPaths}}
     "{{$Key}}"
@@ -12,6 +11,7 @@ import (
 
 {{- range .ActionInfos}}
 {{$ActionName := .ActionName}}
+
 {{- if .PageExtractInfo}}
 {{$PageExtractInfo := .PageExtractInfo}}
 //extract response info from pager for {{$ActionName}}{{$ResourceName}}
@@ -22,12 +22,18 @@ func Extract{{$ActionName}}{{$ResourceName}}Response(response *{{$ActionName}}{{
 	}
 	return {{$ResourcePackageName}}.{{$PageExtractInfo.FuncName}}(page)
 }
-{{- end}}
-{{- if .ResultExtractInfo}}
+
+{{- else if .ResultExtractInfo}}
 {{$ResultExtractInfo := .ResultExtractInfo}}
 // call result's extract function
-func Extract{{$ActionName}}{{$ResourceName}}Response(response *{{$ActionName}}{{$ResourceName}}Response)({{GetReturnsList $ResultExtractInfo.ReturnInfo}}){
-    return response.{{GenMemberName (index .ActionReturns 0).TypeName}}.{{$ResultExtractInfo.FuncName}}()
+func Extract{{$ActionName}}{{$ResourceName}}Response(response *{{$ActionName}}{{$ResourceName}}Response)(interface{}, error){
+    return response.{{GenMemberName (index .ActionReturns 0).TypeName}}.Body, response.{{GenMemberName (index .ActionReturns 0).TypeName}}.Err
+}
+{{else}}
+// call result's extract function
+func Extract{{$ActionName}}{{$ResourceName}}Response(response *{{$ActionName}}{{$ResourceName}}Response)(interface{}, error){
+    return response.{{GenMemberName (index .ActionReturns 0).TypeName}}, response.Error
 }
 {{- end}}
+
 {{- end}}

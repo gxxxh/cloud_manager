@@ -1,9 +1,8 @@
 package {{Param "packageName"}}
 {{GetCodeHeader}}
 
-{{$ResourcePackageName := .ResourcePackageName}}
-{{$ResourceName := .ResourceName}}
-
+{{- $ResourcePackageName := .ResourcePackageName}}
+{{- $ResourceName := .ResourceName}}
 import (
 {{- range $Key, $Value := .RequestImportPaths}}
     "{{$Key}}"

@@ -15,7 +15,6 @@ type OpenstackRequestInfo struct {
 	ResourceName        string //resouce name of the request file
 	ResourcePath        string //dir to save the resource Code
 	ActionInfos         []*OpenStackActionInfo
-	HasResultFile       bool
 	RequestImportPaths  utils.Set
 	ResultImportPaths   utils.Set
 }
@@ -24,14 +23,11 @@ func NewOpenstackRequestInfo(requestPackageName string, requestPath string) *Ope
 	ri := &OpenstackRequestInfo{
 		ResourcePackageName: requestPackageName,
 		ResourcePath:        requestPath,
-		HasResultFile:       false,
 	}
 	ri.ResourceName = utils.JoinName(requestPath, "openstack", "")
 	ri.ActionInfos = make([]*OpenStackActionInfo, 0)
 	ri.RequestImportPaths = utils.NewSet()
 	ri.ResultImportPaths = utils.NewSet()
-	ri.RequestImportPaths.Insert(requestPath)
-	ri.ResultImportPaths.Insert(requestPath)
 	return ri
 }
 
@@ -49,16 +45,31 @@ func (ori *OpenstackRequestInfo) GenRequestImportPaths() {
 
 // get import path for result files
 func (ori *OpenstackRequestInfo) GenResultImportPaths() {
-	ori.ResultImportPaths.Insert(ori.ResourcePath)
+	//ori.ResultImportPaths.Insert(ori.ResourcePath)
 	for _, actionInfo := range ori.ActionInfos {
 		if actionInfo.PageExtractInfo != nil {
 			ori.ResultImportPaths.Add(actionInfo.PageExtractInfo.ReturnInfo.GetImportPaths())
+			ori.ResultImportPaths.Insert(ori.ResourcePath)
 		}
-		if actionInfo.ResultExtractInfo != nil {
-			ori.ResultImportPaths.Add(actionInfo.ResultExtractInfo.ReturnInfo.GetImportPaths())
-		}
+		//if actionInfo.ResultExtractInfo != nil {
+		//	ori.ResultImportPaths.Add(actionInfo.ResultExtractInfo.ReturnInfo.GetImportPaths())
+		//}
 	}
 	ori.ResultImportPaths.Delete("")
+}
+
+// remove action which return is neither a pager or a result
+// db/v1/configuration/ListInstance
+// identity/v3/tokens/validate
+// objectstorage/v1/objects/CreateTempURL
+func (ori *OpenstackRequestInfo) RemoveInvalidActions() {
+	actionInfos := make([]*OpenStackActionInfo, 0, len(ori.ActionInfos))
+	for _, actionInfo := range ori.ActionInfos {
+		if !(actionInfo.PageExtractInfo == nil && actionInfo.ResultExtractInfo == nil) {
+			actionInfos = append(actionInfos, actionInfo)
+		}
+	}
+	ori.ActionInfos = actionInfos
 }
 
 // delete unsupport action
