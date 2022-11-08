@@ -10,7 +10,7 @@ import (
 // resource in openstack
 // server, img ...
 // 一个request file对应多个action
-type OpenstackRequestInfo struct {
+type OpenstackResourceInfo struct {
 	ResourcePackageName string //package name
 	ResourceName        string //resouce name of the request file
 	ResourcePath        string //dir to save the resource Code
@@ -19,12 +19,12 @@ type OpenstackRequestInfo struct {
 	ResultImportPaths   utils.Set
 }
 
-func NewOpenstackRequestInfo(requestPackageName string, requestPath string) *OpenstackRequestInfo {
-	ri := &OpenstackRequestInfo{
-		ResourcePackageName: requestPackageName,
-		ResourcePath:        requestPath,
+func NewOpenstackResourceInfo(resourcePackageName string, resourcePackagePath string) *OpenstackResourceInfo {
+	ri := &OpenstackResourceInfo{
+		ResourcePackageName: resourcePackageName,
+		ResourcePath:        resourcePackagePath,
 	}
-	ri.ResourceName = utils.JoinName(requestPath, "openstack", "")
+	ri.ResourceName = utils.JoinName(resourcePackagePath, "openstack", "")
 	ri.ActionInfos = make([]*OpenStackActionInfo, 0)
 	ri.RequestImportPaths = utils.NewSet()
 	ri.ResultImportPaths = utils.NewSet()
@@ -32,7 +32,7 @@ func NewOpenstackRequestInfo(requestPackageName string, requestPath string) *Ope
 }
 
 // get import path for request file
-func (ori *OpenstackRequestInfo) GenRequestImportPaths() {
+func (ori *OpenstackResourceInfo) GenRequestImportPaths() {
 	ori.RequestImportPaths.Insert(ori.ResourcePath)
 	for _, actionInfo := range ori.ActionInfos {
 		paramsImportPath := actionInfo.ActionParameters.GetImportPaths()
@@ -44,7 +44,7 @@ func (ori *OpenstackRequestInfo) GenRequestImportPaths() {
 }
 
 // get import path for result files
-func (ori *OpenstackRequestInfo) GenResultImportPaths() {
+func (ori *OpenstackResourceInfo) GenResultImportPaths() {
 	//ori.ResultImportPaths.Insert(ori.ResourcePath)
 	for _, actionInfo := range ori.ActionInfos {
 		if actionInfo.PageExtractInfo != nil {
@@ -62,7 +62,7 @@ func (ori *OpenstackRequestInfo) GenResultImportPaths() {
 // db/v1/configuration/ListInstance
 // identity/v3/tokens/validate
 // objectstorage/v1/objects/CreateTempURL
-func (ori *OpenstackRequestInfo) RemoveInvalidActions() {
+func (ori *OpenstackResourceInfo) RemoveInvalidActions() {
 	actionInfos := make([]*OpenStackActionInfo, 0, len(ori.ActionInfos))
 	for _, actionInfo := range ori.ActionInfos {
 		if !(actionInfo.PageExtractInfo == nil && actionInfo.ResultExtractInfo == nil) {
@@ -73,7 +73,7 @@ func (ori *OpenstackRequestInfo) RemoveInvalidActions() {
 }
 
 // delete unsupport action
-func (ri *OpenstackRequestInfo) checkValidAction(actionInfo *OpenStackActionInfo) bool {
+func (ri *OpenstackResourceInfo) checkValidAction(actionInfo *OpenStackActionInfo) bool {
 	checkVarInfo := func(varInfos VarInfos) bool {
 		for _, varInfo := range varInfos {
 			//the action should be exported
@@ -93,7 +93,7 @@ func (ri *OpenstackRequestInfo) checkValidAction(actionInfo *OpenStackActionInfo
 	return checkVarInfo(actionInfo.ActionParameters) && checkVarInfo(actionInfo.ActionReturns)
 }
 
-func (ri *OpenstackRequestInfo) AddAction(actionInfo *OpenStackActionInfo) bool {
+func (ri *OpenstackResourceInfo) AddAction(actionInfo *OpenStackActionInfo) bool {
 	if ri.checkValidAction(actionInfo) {
 		ri.ActionInfos = append(ri.ActionInfos, actionInfo)
 		return true
@@ -103,7 +103,7 @@ func (ri *OpenstackRequestInfo) AddAction(actionInfo *OpenStackActionInfo) bool 
 	return false
 }
 
-//func (ri *OpenstackRequestInfo) AddImportPaths(packagePaths utils.Set) {
+//func (ri *OpenstackResourceInfo) AddImportPaths(packagePaths utils.Set) {
 //	for packagePath, _ := range packagePaths {
 //		if packagePath != "" {
 //			ri.RequestImportPaths.Insert(packagePath)
@@ -230,4 +230,36 @@ func GetReturnsList(returnInfo VarInfos) string {
 		return paras
 	}
 	return paras[:len(paras)-1]
+}
+
+// info using to generate extract function
+// 1. CheckFunction: function, not method; start with extract; parameter type is pagination.Pate
+// info using to describe page extract function
+type PageExtractInfo struct {
+	FuncName   string
+	ReturnInfo VarInfos
+}
+
+func NewPageExtractInfo(funcName string) *PageExtractInfo {
+	pei := &PageExtractInfo{
+		FuncName:   funcName,
+		ReturnInfo: nil,
+	}
+	pei.ReturnInfo = NewVarInfos()
+	return pei
+}
+
+//info using to describe result.extract function
+// 1. 类型以Result结尾
+// 2. 类型存在Extract()函数
+// 3. 分析 Extract()函数，进行封装
+
+type ResultExtractInfo struct {
+	FuncName   string // Extract or ExtractErr
+	ReturnInfo VarInfos
+}
+
+func NewResultExtractInfo() *ResultExtractInfo {
+	rei := &ResultExtractInfo{}
+	return rei
 }

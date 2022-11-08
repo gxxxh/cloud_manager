@@ -2,7 +2,7 @@ package code_generator
 
 import (
 	cloud_manager "cloud_manager/src/analyzer"
-	"cloud_manager/src/code_generator"
+	"cloud_manager/src/code_generator/gen"
 	"cloud_manager/src/codegen/openstack"
 	"cloud_manager/src/utils"
 	"fmt"
@@ -28,7 +28,7 @@ func TestGenAliyunRequestRegistry(t *testing.T) {
 		"action":      "Create",
 		"type":        "Request",
 	}
-	code, err := code_generator.GenCode(templatePath, data, params)
+	code, err := gen.GenCode(templatePath, data, params)
 	if err != nil {
 		t.Error(err)
 	}
@@ -55,7 +55,7 @@ func TestGenOpenstackRequestRegistry(t *testing.T) {
 		"action":      "Create",
 		"type":        "Request",
 	}
-	code, err := code_generator.GenCode(templatePath, data, params)
+	code, err := gen.GenCode(templatePath, data, params)
 	if err != nil {
 		t.Error(err)
 	}
@@ -86,7 +86,7 @@ func TestGenOpenstackResponseRegistry(t *testing.T) {
 		"action":      "Extract",
 		"type":        "Response",
 	}
-	code, err := code_generator.GenCode(templatePath, data, params)
+	code, err := gen.GenCode(templatePath, data, params)
 	if err != nil {
 		t.Error(err)
 	}
@@ -124,7 +124,7 @@ func TestGenOpenstackCode(t *testing.T) {
 		params := map[string]interface{}{
 			"packageName": "openstack",
 		}
-		code, err := code_generator.GenCode(templatePath, data, params)
+		code, err := gen.GenCode(templatePath, data, params)
 		if err != nil {
 			t.Error(err)
 		}
@@ -168,7 +168,7 @@ func TestGenOpenstackResultCode(t *testing.T) {
 		params := map[string]interface{}{
 			"packageName": "openstack",
 		}
-		code, err := code_generator.GenCode(templatePath, data, params)
+		code, err := gen.GenCode(templatePath, data, params)
 		if err != nil {
 			t.Error(err)
 		}
@@ -182,5 +182,15 @@ func TestGenOpenstackResultCode(t *testing.T) {
 		}
 		defer filePtr.Close()
 		filePtr.Write(code)
+	}
+}
+
+func TestGenCloudCode(t *testing.T) {
+	//configPath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\configs\\aliyun.json"
+	configPath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\configs\\openstack.json"
+	config := gen.LoadCloudConfig(configPath)
+	err := gen.GenCloudCode(config)
+	if err != nil {
+		t.Error(err)
 	}
 }

@@ -1,0 +1,43 @@
+{
+  "Kind": "Openstack",
+  "RegistryConfigs": [
+    {
+      "CodeGenConfig": {
+        "TemplatePath":"E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\registry.tmpl",
+        "CodePath":"E:\\gopath\\src\\cloud_manager\\src\\codegen\\registry\\"
+      },
+      "RegistryImportPaths": ["cloud_manager/src/codegen/openstack"],
+      "CreateFuncPre": "New",
+      "FuncAction": "Create",
+      "CodeType":"Request"
+    },
+    {
+      "CodeGenConfig": {
+        "TemplatePath":"E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\registry.tmpl",
+        "CodePath":"E:\\gopath\\src\\cloud_manager\\src\\codegen\\registry\\"
+      },
+      "RegistryImportPaths": ["cloud_manager/src/codegen/openstack"],
+      "CreateFuncPre": "New",
+      "FuncAction": "Extract",
+      "CodeType":"Response"
+    }
+  ],
+  "APICodeConfigs": [
+    {
+      "CodeGenConfig": {
+        "TemplatePath":"E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\openstack_request.tmpl",
+        "CodePath":"E:\\gopath\\src\\cloud_manager\\src\\codegen\\openstack\\"
+      },
+      "SourceCodePath": "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack",
+      "CodeType": "Request"
+    },
+    {
+      "CodeGenConfig": {
+        "TemplatePath":"E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\openstack_result.tmpl",
+        "CodePath":"E:\\gopath\\src\\cloud_manager\\src\\codegen\\openstack\\"
+      },
+      "SourceCodePath": "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack",
+      "CodeType": "Result"
+    }
+  ]
+}

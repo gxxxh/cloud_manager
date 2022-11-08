@@ -1,4 +1,4 @@
-package code_generator
+package gen
 
 import (
 	"bytes"

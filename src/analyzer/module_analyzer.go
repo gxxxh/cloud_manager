@@ -37,32 +37,32 @@ func NewModuleAnalyzer() *ModuleAnalyzer {
 }
 
 // parse all the packages in the module
-func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackRequestInfo, error) {
-	requestInfos := make([]*OpenstackRequestInfo, 0)
+func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackResourceInfo, error) {
+	resourceInfos := make([]*OpenstackResourceInfo, 0)
 	ma.Config.Dir = dir
 	pkgs, err := packages.Load(ma.Config, "./...")
 	if err != nil {
 		log.Println(err)
-		return requestInfos, err
+		return resourceInfos, err
 	}
 
 	for _, pkg := range pkgs {
 		packageAnalyzer := NewPackageAnalyzer(pkg)
 		////analyzing request file
-		requestInfo := packageAnalyzer.AnalyzeRequestFile()
-		if requestInfo == nil {
+		resourceInfo := packageAnalyzer.AnalyzeRequestFile()
+		if resourceInfo == nil {
 			continue
 		}
 
-		if resultInfo := packageAnalyzer.AnalyseResultFile(); resultInfo != nil {
-			ma.MapPageExtractInfo2Action(pkg.PkgPath, pkg.Name, resultInfo.PageExtractInfos, requestInfo.ActionInfos)
+		if pageExtractInfos := packageAnalyzer.AnalyseResultFile(); len(pageExtractInfos) != 0 {
+			ma.MapPageExtractInfo2Action(pkg.PkgPath, pkg.Name, pageExtractInfos, resourceInfo.ActionInfos)
 		}
-		requestInfo.RemoveInvalidActions()
-		requestInfo.GenRequestImportPaths()
-		requestInfo.GenResultImportPaths()
-		requestInfos = append(requestInfos, requestInfo)
+		resourceInfo.RemoveInvalidActions()
+		resourceInfo.GenRequestImportPaths()
+		resourceInfo.GenResultImportPaths()
+		resourceInfos = append(resourceInfos, resourceInfo)
 	}
-	return requestInfos, err
+	return resourceInfos, err
 }
 
 func (ma *ModuleAnalyzer) MapPageExtractInfo2Action(pkgPath string, pkgName string, pageExtractInfos []*PageExtractInfo, actionInfos []*OpenStackActionInfo) bool {
@@ -203,9 +203,9 @@ func (pa *PackageAnalyzer) Field2VarInfos(fieldList []*ast.Field) VarInfos {
 }
 
 // analyze packages and parse info
-func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackRequestInfo {
+func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackResourceInfo {
 	log.Printf("-----------analyze requestfile:  %s-----------\n", pa.pkg.Name)
-	requestInfo := NewOpenstackRequestInfo(pa.pkg.Name, pa.pkg.PkgPath)
+	resourceInfo := NewOpenstackResourceInfo(pa.pkg.Name, pa.pkg.PkgPath)
 	requestAST := pa.GetASTFile("requests.go")
 	if requestAST == nil {
 		return nil
@@ -228,12 +228,12 @@ func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackRequestInfo {
 					actionInfo.ResultExtractInfo = pa.ParseResultExtractInfo(fn.Type.Results.List[0].Type)
 				}
 				//todo 生成importPath, 注意paramsImportPaths要删除一个
-				requestInfo.AddAction(actionInfo)
+				resourceInfo.AddAction(actionInfo)
 			}
 		}
 	}
 
-	return requestInfo
+	return resourceInfo
 }
 
 // get result's extract function's return info
@@ -300,13 +300,13 @@ func (pa *PackageAnalyzer) ParseResultExtractInfo(expr ast.Expr) *ResultExtractI
 	return nil
 }
 
-func (pa *PackageAnalyzer) AnalyseResultFile() *OpenstackResultInfo {
+func (pa *PackageAnalyzer) AnalyseResultFile() []*PageExtractInfo {
 	log.Printf("-----------analyze resultfile:  %s-----------\n", pa.pkg.Name)
+	pageExtractInfos := make([]*PageExtractInfo, 0)
 	resultAST := pa.GetASTFile("results.go")
 	if resultAST == nil {
-		return nil
+		return pageExtractInfos
 	}
-	ori := NewOpenstackResultInfo(pa.pkg.Name, pa.pkg.PkgPath)
 	for _, d := range resultAST.Decls {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
 			fnName := fn.Name.String()
@@ -320,12 +320,12 @@ func (pa *PackageAnalyzer) AnalyseResultFile() *OpenstackResultInfo {
 				pageExtractInfo := NewPageExtractInfo(fnName)
 				returnVarInfos := pa.Field2VarInfos(fn.Type.Results.List)
 				pageExtractInfo.ReturnInfo = returnVarInfos
-				ori.AddPageExtractInfos(pageExtractInfo)
+				pageExtractInfos = append(pageExtractInfos, pageExtractInfo)
 			}
 		}
 	}
 
-	return ori
+	return pageExtractInfos
 }
 
 // get interface type from the pkg

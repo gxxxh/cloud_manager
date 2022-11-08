@@ -1,0 +1,15 @@
+{
+  "Kind": "Aliyun",
+  "RegistryConfigs": [
+    {
+      "CodeGenConfig": {
+        "TemplatePath":"E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\registry.tmpl",
+        "CodePath":"E:\\gopath\\src\\cloud_manager\\src\\codegen\\registry\\"
+      },
+      "RegistryImportPaths": ["github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"],
+      "CreateFuncPre": "Create",
+      "FuncAction": "Create",
+      "CodeType":"Request"
+    }
+  ]
+}
