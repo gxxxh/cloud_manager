@@ -1,5 +1,5 @@
 {
-  "Kind": "Aliyun",
+  "CloudType": "Aliyun",
   "RegistryConfigs": [
     {
       "CodeGenConfig": {

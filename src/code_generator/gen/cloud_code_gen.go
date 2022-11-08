@@ -13,12 +13,12 @@ import (
 
 func GenCloudCode(config *CloudConfig) error {
 	analyzer := cloud_manager.NewCloudAPIAnalyzer()
-	switch config.Kind {
+	switch config.CloudType {
 	case "Aliyun":
 		client := ecs.Client{}
 		analyzer.ExtractCloudAPIs(client)
 		for _, registryConfig := range config.RegistryConfigs {
-			GenRegistryCode(config.Kind, analyzer, registryConfig)
+			GenRegistryCode(config.CloudType, analyzer, registryConfig)
 		}
 	case "Openstack":
 		for _, apiCodeConfig := range config.APICodeConfigs {
@@ -27,17 +27,17 @@ func GenCloudCode(config *CloudConfig) error {
 		client := openstack.OpenstackClient{}
 		analyzer.ExtractCloudAPIs(client)
 		for _, registryConfig := range config.RegistryConfigs {
-			GenRegistryCode(config.Kind, analyzer, registryConfig)
+			GenRegistryCode(config.CloudType, analyzer, registryConfig)
 		}
 	default:
-		log.Fatalln("unsupport cloud kind, ", config.Kind)
+		log.Fatalln("unsupport cloud kind, ", config.CloudType)
 	}
 	return nil
 }
 
 func GenRegistryCode(cloudKind string, analyzer *cloud_manager.CloudAPIAnalyzer, registryConfig *RegistryConfig) {
 	requestRegistryInfo := analyzer.ExtractRequestInfos(registryConfig.CreateFuncPre)
-	if cloudKind == "Openstack" && registryConfig.CodeType == "Result" {
+	if cloudKind == "Openstack" && registryConfig.CodeType == "Response" {
 		for _, requestInfo := range requestRegistryInfo.RequestInfos {
 			requestInfo.CreateFunctionName = strings.Replace(requestInfo.CreateFunctionName, "New", "Extract", -1)
 			requestInfo.CreateFunctionName = requestInfo.CreateFunctionName[0:len(requestInfo.CreateFunctionName)-len("Request")] + "Response"

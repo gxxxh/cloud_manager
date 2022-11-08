@@ -1,5 +1,5 @@
 {
-  "Kind": "Openstack",
+  "CloudType": "Openstack",
   "RegistryConfigs": [
     {
       "CodeGenConfig": {

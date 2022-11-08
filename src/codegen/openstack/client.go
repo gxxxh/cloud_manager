@@ -31,6 +31,9 @@ func NewOpenstackClient(params map[string]string) (oc *OpenstackClient, err erro
 		Scope:            &scope,
 	}
 	oc.ProviderClient, err = openstack.AuthenticatedClient(opts)
+	oc.InitClient(params["openstackClientType"], gophercloud.EndpointOpts{
+		Region: params["region"],
+	})
 	return
 }
 

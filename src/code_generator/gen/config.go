@@ -7,7 +7,7 @@ import (
 )
 
 type CloudConfig struct {
-	Kind            string            `json:"Kind"`
+	CloudType       string            `json:"CloudType"`
 	RegistryConfigs []*RegistryConfig `json:"RegistryConfigs"`
 	APICodeConfigs  []*APICodeConfig  `json:"APICodeConfigs"`
 }

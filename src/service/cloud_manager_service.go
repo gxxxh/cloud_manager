@@ -10,34 +10,37 @@ import (
 )
 
 type MultiCloudManager struct {
-	Kind            string
-	Client          interface{}
-	requestRegistry map[string]interface{}
+	CloudType        string
+	Client           interface{}
+	requestRegistry  map[string]interface{}
+	responseRegistry map[string]interface{}
 }
 
 func NewMultiCloudManager(params map[string]string) (mcm *MultiCloudManager, err error) {
-	kind, ok := params["kind"]
+	cloudType, ok := params["cloudType"]
 	if !ok {
-		err = fmt.Errorf("Error, the kind can't be empty")
+		err = fmt.Errorf("Error, the cloudType can't be empty")
 		return
 	}
 	mcm = &MultiCloudManager{
-		Kind: kind,
+		CloudType: cloudType,
 	}
 	err = mcm.Init(params)
 	return
 }
 
 func (m *MultiCloudManager) Init(params map[string]string) (err error) {
-	switch m.Kind {
+	switch m.CloudType {
 	case "aliyun":
 		//regionId, accessId, accessKeySecret
 		m.Client, err = ecs.NewClientWithAccessKey(params["regionId"], params["accessId"], params["accessKeySecret"])
 		m.requestRegistry = registry.AliyunCreateRequestRegistry
+		m.responseRegistry = nil
 	case "openstack":
 		//IdentityEndPoint, Username, Password
 		m.Client, err = openstack.NewOpenstackClient(params)
 		m.requestRegistry = registry.OpenstackCreateRequestRegistry
+		m.responseRegistry = registry.OpenstackExtractResponseRegistry
 	default:
 		err = fmt.Errorf("unsupport cloud type")
 	}
@@ -51,7 +54,7 @@ func (m *MultiCloudManager) Init(params map[string]string) (err error) {
 using reflect to construct the parameters and call
 */
 func (m *MultiCloudManager) CallCloudAPI(cloudAPIName string, requestParameters []byte) (string, error) {
-	requestName := cloudAPIName + "Request"
+	requestName := cloudAPIName
 	request, err := utils.CallFunction(requestName, m.requestRegistry)
 	if len(request) != 1 {
 		err := fmt.Errorf("error, CreateRequestFunction return more than one value!, cloudAPIName is:%v", cloudAPIName)
@@ -76,8 +79,20 @@ func (m *MultiCloudManager) doRequest(actionName string, request interface{}) (s
 	if err != nil {
 		return "", err
 	}
+	switch m.CloudType {
+	case "aliyun":
+
+	case "openstack":
+		if len(ret) != 1 {
+			err = fmt.Errorf("the action %s in aliyun should only return two result\n", actionName)
+			log.Println("doRequest Error: ", err)
+			return "", err
+		}
+		// extract response
+		ret, err = utils.CallFunction(actionName, m.responseRegistry, ret[0])
+	}
 	if len(ret) != 2 {
-		err = fmt.Errorf("the action %s should only return two result\n", actionName)
+		err = fmt.Errorf("the action %s in aliyun should only return two result\n", actionName)
 		log.Println("doRequest Error: ", err)
 		return "", err
 	}
@@ -86,14 +101,15 @@ func (m *MultiCloudManager) doRequest(actionName string, request interface{}) (s
 		err = ret[1].(error)
 		log.Println("sdk do request error: ", err)
 	}
+	str := fmt.Sprintf("%v", ret[0])
+	return str, err
 	//retValue := reflect.ValueOf(ret[0]).Elem()
 	//fmt.Println(retValue.NumField())
 	//tmp1 := retValue.Field(0).Interface()
 	////fmt.Println(tmp1)
 	//tmp2 := reflect.ValueOf(tmp1).Elem()
-	//fmt.Println(tmp2.Kind())
+	//fmt.Println(tmp2.CloudType())
 	//fmt.Println(tmp2.NumField())
 	//fmt.Println(tmp2.Interface())
-	str := fmt.Sprintf("%v", ret[0])
-	return str, err
+
 }
