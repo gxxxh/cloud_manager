@@ -3,10 +3,10 @@ package service
 import (
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
+	"github.com/kube-stack/multicloud_service/src/codegen/openstack"
+	"github.com/kube-stack/multicloud_service/src/codegen/registry"
+	"github.com/kube-stack/multicloud_service/src/utils"
 	"log"
-	"multicloud_service/src/codegen/openstack"
-	"multicloud_service/src/codegen/registry"
-	"multicloud_service/src/utils"
 )
 
 type MultiCloudService struct {

@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
-	"multicloud_service/src/codegen/openstack"
-	"multicloud_service/src/service"
+	"github.com/kube-stack/multicloud_service/src/codegen/openstack"
+	"github.com/kube-stack/multicloud_service/src/service"
 	"testing"
 )
 

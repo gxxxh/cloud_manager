@@ -2,10 +2,10 @@ package gen
 
 import (
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
+	multicloud_service "github.com/kube-stack/multicloud_service/src/analyzer"
+	openstack "github.com/kube-stack/multicloud_service/src/codegen/openstack"
+	"github.com/kube-stack/multicloud_service/src/utils"
 	"log"
-	multicloud_service "multicloud_service/src/analyzer"
-	openstack "multicloud_service/src/codegen/openstack"
-	"multicloud_service/src/utils"
 	"os"
 	"path/filepath"
 	"strings"

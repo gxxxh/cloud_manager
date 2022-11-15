@@ -1,4 +1,4 @@
-module multicloud_service
+module github.com/kube-stack/multicloud_service
 
 go 1.19
 

@@ -1,8 +1,8 @@
 package cloud_api_analyzer_test
 
 import (
-	multicloud_service "multicloud_service/src/analyzer"
-	"multicloud_service/src/codegen/openstack"
+	multicloud_service "github.com/kube-stack/multicloud_service/src/analyzer"
+	"github.com/kube-stack/multicloud_service/src/codegen/openstack"
 	"testing"
 )
 

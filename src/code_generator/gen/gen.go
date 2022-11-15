@@ -2,9 +2,9 @@ package gen
 
 import (
 	"bytes"
+	"github.com/kube-stack/multicloud_service/src/analyzer"
+	"github.com/kube-stack/multicloud_service/src/utils"
 	"log"
-	"multicloud_service/src/analyzer"
-	"multicloud_service/src/utils"
 	"strings"
 	"text/template"
 )

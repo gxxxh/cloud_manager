@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/kube-stack/multicloud_service/src/service"
 	"log"
-	"multicloud_service/src/service"
 )
 
 func main() {

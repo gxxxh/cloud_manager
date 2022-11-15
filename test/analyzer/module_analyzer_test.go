@@ -1,8 +1,8 @@
 package cloud_api_analyzer
 
 import (
+	"github.com/kube-stack/multicloud_service/src/analyzer"
 	"log"
-	"multicloud_service/src/analyzer"
 	"testing"
 )
 

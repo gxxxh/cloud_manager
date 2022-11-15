@@ -2,7 +2,7 @@ package utils
 
 import (
 	"fmt"
-	"multicloud_service/src/utils"
+	"github.com/kube-stack/multicloud_service/src/utils"
 	"reflect"
 	"testing"
 )

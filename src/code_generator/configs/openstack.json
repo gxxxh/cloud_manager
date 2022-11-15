@@ -6,7 +6,7 @@
         "TemplatePath":"E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl",
         "CodePath":"E:\\gopath\\src\\multicloud_service\\src\\codegen\\registry\\"
       },
-      "RegistryImportPaths": ["multicloud_service/src/codegen/openstack"],
+      "RegistryImportPaths": ["github.com/kube-stack/multicloud_service/src/codegen/openstack"],
       "CreateFuncPre": "New",
       "FuncAction": "Create",
       "CodeType":"Request"
@@ -16,7 +16,7 @@
         "TemplatePath":"E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl",
         "CodePath":"E:\\gopath\\src\\multicloud_service\\src\\codegen\\registry\\"
       },
-      "RegistryImportPaths": ["multicloud_service/src/codegen/openstack"],
+      "RegistryImportPaths": ["github.com/kube-stack/multicloud_service/src/codegen/openstack"],
       "CreateFuncPre": "New",
       "FuncAction": "Extract",
       "CodeType":"Response"

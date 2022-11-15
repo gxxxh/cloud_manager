@@ -8,8 +8,8 @@ import (
 	"github.com/gophercloud/gophercloud/openstack"
 	"github.com/gophercloud/gophercloud/openstack/compute/v2/images"
 	"github.com/gophercloud/gophercloud/pagination"
+	openstack2 "github.com/kube-stack/multicloud_service/src/codegen/openstack"
 	"log"
-	openstack2 "multicloud_service/src/codegen/openstack"
 	"reflect"
 	"testing"
 )

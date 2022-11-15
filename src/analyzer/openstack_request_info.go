@@ -1,8 +1,8 @@
 package analyzer
 
 import (
+	"github.com/kube-stack/multicloud_service/src/utils"
 	"log"
-	"multicloud_service/src/utils"
 	"strings"
 )
 

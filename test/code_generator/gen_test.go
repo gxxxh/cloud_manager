@@ -3,10 +3,10 @@ package code_generator
 import (
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
-	multicloud_service "multicloud_service/src/analyzer"
-	"multicloud_service/src/code_generator/gen"
-	"multicloud_service/src/codegen/openstack"
-	"multicloud_service/src/utils"
+	multicloud_service "github.com/kube-stack/multicloud_service/src/analyzer"
+	"github.com/kube-stack/multicloud_service/src/code_generator/gen"
+	"github.com/kube-stack/multicloud_service/src/codegen/openstack"
+	"github.com/kube-stack/multicloud_service/src/utils"
 	"os"
 	"path/filepath"
 	"strings"
@@ -47,7 +47,7 @@ func TestGenOpenstackRequestRegistry(t *testing.T) {
 	requestRegistryInfo := analyzer.ExtractRequestInfos("New")
 
 	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl"
-	requestRegistryInfo.ImportPaths = []string{"multicloud_service/src/codegen/openstack"}
+	requestRegistryInfo.ImportPaths = []string{"github.com/kube-stack/multicloud_service/src/codegen/openstack"}
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := map[string]interface{}{
 		"packageName": "registry",
@@ -78,7 +78,7 @@ func TestGenOpenstackResponseRegistry(t *testing.T) {
 		requestInfo.CreateFunctionName = requestInfo.CreateFunctionName[0:len(requestInfo.CreateFunctionName)-len("Request")] + "Response"
 	}
 	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl"
-	requestRegistryInfo.ImportPaths = []string{"multicloud_service/src/codegen/openstack"}
+	requestRegistryInfo.ImportPaths = []string{"github.com/kube-stack/multicloud_service/src/codegen/openstack"}
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := map[string]interface{}{
 		"packageName": "registry",
