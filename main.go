@@ -1,8 +1,14 @@
 package main
 
-import cloud_manager "cloud_manager/src/analyzer"
+import (
+	"cloud_manager/src/service"
+	"log"
+)
 
 func main() {
-	analyzer, _ := cloud_manager.NewCloudAPIAnalyzer("aliyun")
-	analyzer.ExtractCloudAPIs()
+	mcm, err := service.NewMultiCloudManager(nil)
+	if err != nil {
+		log.Println(err)
+	}
+	log.Println(mcm)
 }
