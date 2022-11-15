@@ -9,27 +9,27 @@ import (
 	"log"
 )
 
-type MultiCloudManager struct {
+type MultiCloudService struct {
 	CloudType        string
 	Client           interface{}
 	requestRegistry  map[string]interface{}
 	responseRegistry map[string]interface{}
 }
 
-func NewMultiCloudManager(params map[string]string) (mcm *MultiCloudManager, err error) {
+func NewMultiCloudService(params map[string]string) (mcm *MultiCloudService, err error) {
 	cloudType, ok := params["cloudType"]
 	if !ok {
 		err = fmt.Errorf("Error, the cloudType can't be empty")
 		return
 	}
-	mcm = &MultiCloudManager{
+	mcm = &MultiCloudService{
 		CloudType: cloudType,
 	}
 	err = mcm.Init(params)
 	return
 }
 
-func (m *MultiCloudManager) Init(params map[string]string) (err error) {
+func (m *MultiCloudService) Init(params map[string]string) (err error) {
 	switch m.CloudType {
 	case "aliyun":
 		//regionId, accessId, accessKeySecret
@@ -45,7 +45,7 @@ func (m *MultiCloudManager) Init(params map[string]string) (err error) {
 		err = fmt.Errorf("unsupport cloud type")
 	}
 	if err != nil {
-		log.Println("Init MultiCloudManager error: ", err)
+		log.Println("Init MultiCloudService error: ", err)
 	}
 	return
 }
@@ -53,7 +53,7 @@ func (m *MultiCloudManager) Init(params map[string]string) (err error) {
 /*
 using reflect to construct the parameters and call
 */
-func (m *MultiCloudManager) CallCloudAPI(cloudAPIName string, requestParameters []byte) (string, error) {
+func (m *MultiCloudService) CallCloudAPI(cloudAPIName string, requestParameters []byte) (string, error) {
 	requestName := cloudAPIName
 	request, err := utils.CallFunction(requestName, m.requestRegistry)
 	if len(request) != 1 {
@@ -73,7 +73,7 @@ func (m *MultiCloudManager) CallCloudAPI(cloudAPIName string, requestParameters 
 	return m.doRequest(cloudAPIName, request[0])
 }
 
-func (m *MultiCloudManager) doRequest(actionName string, request interface{}) (string, error) {
+func (m *MultiCloudService) doRequest(actionName string, request interface{}) (string, error) {
 	//find the client's method
 	ret, err := utils.CallMethod(m.Client, actionName, request)
 	if err != nil {

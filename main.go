@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	mcm, err := service.NewMultiCloudManager(nil)
+	mcm, err := service.NewMultiCloudService(nil)
 	if err != nil {
 		log.Println(err)
 	}

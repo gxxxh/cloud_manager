@@ -18,7 +18,7 @@ func TestCallAliyunAPI(t *testing.T) {
 	params["accessId"] = accessKeyId
 	params["accessKeySecret"] = accessKeySecret
 	params["cloudType"] = "aliyun"
-	mcm, _ := service.NewMultiCloudManager(params)
+	mcm, _ := service.NewMultiCloudService(params)
 	request := ecs.CreateDescribeRegionsRequest()
 	jsonBytes, err := json.Marshal(request)
 	if err != nil {
@@ -43,7 +43,7 @@ func TestCallOpenstackReturnPager(t *testing.T) {
 		"openstackClientType": "compute",
 		"cloudType":           "openstack",
 	}
-	mcm, err := service.NewMultiCloudManager(authInfo)
+	mcm, err := service.NewMultiCloudService(authInfo)
 	request := openstack.NewListDetailComputeV2ImagesRequest()
 	jsonBytes, err := json.Marshal(request)
 	if err != nil {
@@ -68,7 +68,7 @@ func TestCallOpenstackReturnResult(t *testing.T) {
 		"openstackClientType": "identityv3",
 		"cloudType":           "openstack",
 	}
-	mcm, err := service.NewMultiCloudManager(authInfo)
+	mcm, err := service.NewMultiCloudService(authInfo)
 	request := openstack.NewGetIdentityV3TokensRequest()
 	request.Token = "gAAAAABjafSUjIpPSF8EzOierSPpMsFZP8tcOOKvrzG_0f_VsThXWULt0pt9aFavxYcCdyLrCECg7EBauwMMQT84TkfHNF1W3WC-COnoyDSjPDoP3X2QzqqFfMRRDqRlIYrC8eHmnZoYOpnEnkeofSMk3oNqHNO-C5X2WopJ00PlZLvG-BSwX9w"
 	jsonBytes, err := json.Marshal(request)
