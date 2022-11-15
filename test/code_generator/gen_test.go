@@ -1,12 +1,12 @@
 package code_generator
 
 import (
-	cloud_manager "cloud_manager/src/analyzer"
-	"cloud_manager/src/code_generator/gen"
-	"cloud_manager/src/codegen/openstack"
-	"cloud_manager/src/utils"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
+	multicloud_service "multicloud_service/src/analyzer"
+	"multicloud_service/src/code_generator/gen"
+	"multicloud_service/src/codegen/openstack"
+	"multicloud_service/src/utils"
 	"os"
 	"path/filepath"
 	"strings"
@@ -15,7 +15,7 @@ import (
 
 func TestGenAliyunRequestRegistry(t *testing.T) {
 	client := ecs.Client{}
-	analyzer := cloud_manager.NewCloudAPIAnalyzer()
+	analyzer := multicloud_service.NewCloudAPIAnalyzer()
 	analyzer.ExtractCloudAPIs(client)
 	requestRegistryInfo := analyzer.ExtractRequestInfos("Create")
 
@@ -42,7 +42,7 @@ func TestGenAliyunRequestRegistry(t *testing.T) {
 }
 func TestGenOpenstackRequestRegistry(t *testing.T) {
 	client := openstack.OpenstackClient{}
-	analyzer := cloud_manager.NewCloudAPIAnalyzer()
+	analyzer := multicloud_service.NewCloudAPIAnalyzer()
 	analyzer.ExtractCloudAPIs(client)
 	requestRegistryInfo := analyzer.ExtractRequestInfos("New")
 
@@ -70,7 +70,7 @@ func TestGenOpenstackRequestRegistry(t *testing.T) {
 
 func TestGenOpenstackResponseRegistry(t *testing.T) {
 	client := openstack.OpenstackClient{}
-	analyzer := cloud_manager.NewCloudAPIAnalyzer()
+	analyzer := multicloud_service.NewCloudAPIAnalyzer()
 	analyzer.ExtractCloudAPIs(client)
 	requestRegistryInfo := analyzer.ExtractRequestInfos("New")
 	for _, requestInfo := range requestRegistryInfo.RequestInfos {
@@ -109,7 +109,7 @@ func TestGenOpenstackCode(t *testing.T) {
 	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\identity\\v3\\catalog"
 	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack"
 	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute\\v2\\servers"
-	ma := cloud_manager.NewModuleAnalyzer()
+	ma := multicloud_service.NewModuleAnalyzer()
 	resourceInfos, err := ma.DoAnalyze(dir)
 	if err != nil {
 		t.Error(err)
@@ -153,7 +153,7 @@ func TestGenOpenstackResultCode(t *testing.T) {
 	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\clustering\\v1\\profiletypes"
 	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\container\\v1\\capsules"
 	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack"
-	ma := cloud_manager.NewModuleAnalyzer()
+	ma := multicloud_service.NewModuleAnalyzer()
 	resourceInfos, err := ma.DoAnalyze(dir)
 	if err != nil {
 		t.Error(err)

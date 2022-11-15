@@ -1,18 +1,18 @@
 package gen
 
 import (
-	cloud_manager "cloud_manager/src/analyzer"
-	openstack "cloud_manager/src/codegen/openstack"
-	"cloud_manager/src/utils"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	"log"
+	multicloud_service "multicloud_service/src/analyzer"
+	openstack "multicloud_service/src/codegen/openstack"
+	"multicloud_service/src/utils"
 	"os"
 	"path/filepath"
 	"strings"
 )
 
 func GenCloudCode(config *CloudConfig) error {
-	analyzer := cloud_manager.NewCloudAPIAnalyzer()
+	analyzer := multicloud_service.NewCloudAPIAnalyzer()
 	switch config.CloudType {
 	case "Aliyun":
 		client := ecs.Client{}
@@ -35,7 +35,7 @@ func GenCloudCode(config *CloudConfig) error {
 	return nil
 }
 
-func GenRegistryCode(cloudKind string, analyzer *cloud_manager.CloudAPIAnalyzer, registryConfig *RegistryConfig) {
+func GenRegistryCode(cloudKind string, analyzer *multicloud_service.CloudAPIAnalyzer, registryConfig *RegistryConfig) {
 	requestRegistryInfo := analyzer.ExtractRequestInfos(registryConfig.CreateFuncPre)
 	if cloudKind == "Openstack" && registryConfig.CodeType == "Response" {
 		for _, requestInfo := range requestRegistryInfo.RequestInfos {
@@ -55,7 +55,7 @@ func GenRegistryCode(cloudKind string, analyzer *cloud_manager.CloudAPIAnalyzer,
 }
 
 func GenAPICode(config *APICodeConfig) {
-	ma := cloud_manager.NewModuleAnalyzer()
+	ma := multicloud_service.NewModuleAnalyzer()
 	resourceInfos, err := ma.DoAnalyze(config.SourceCodePath)
 	if err != nil {
 		log.Fatalln("analyze source code error, ", err)

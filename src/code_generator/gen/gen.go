@@ -2,9 +2,9 @@ package gen
 
 import (
 	"bytes"
-	"cloud_manager/src/analyzer"
-	"cloud_manager/src/utils"
 	"log"
+	"multicloud_service/src/analyzer"
+	"multicloud_service/src/utils"
 	"strings"
 	"text/template"
 )

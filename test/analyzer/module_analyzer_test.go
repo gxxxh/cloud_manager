@@ -1,8 +1,8 @@
 package cloud_api_analyzer
 
 import (
-	"cloud_manager/src/analyzer"
 	"log"
+	"multicloud_service/src/analyzer"
 	"testing"
 )
 

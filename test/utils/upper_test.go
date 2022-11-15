@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"cloud_manager/src/utils"
 	"fmt"
+	"multicloud_service/src/utils"
 	"testing"
 )
 

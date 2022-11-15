@@ -1,12 +1,12 @@
 package service
 
 import (
-	"cloud_manager/src/codegen/openstack"
-	"cloud_manager/src/codegen/registry"
-	"cloud_manager/src/utils"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	"log"
+	"multicloud_service/src/codegen/openstack"
+	"multicloud_service/src/codegen/registry"
+	"multicloud_service/src/utils"
 )
 
 type MultiCloudService struct {

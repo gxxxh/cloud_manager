@@ -1,7 +1,7 @@
 package analyzer
 
 import (
-	"cloud_manager/src/utils"
+	"multicloud_service/src/utils"
 	"reflect"
 )
 

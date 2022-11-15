@@ -1,12 +1,12 @@
 package analyzer
 
 import (
-	"cloud_manager/src/utils"
 	"go/ast"
 	"go/token"
 	"go/types"
 	"golang.org/x/tools/go/packages"
 	"log"
+	"multicloud_service/src/utils"
 	"strings"
 )
 

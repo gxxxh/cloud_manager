@@ -1,11 +1,11 @@
 package service
 
 import (
-	"cloud_manager/src/codegen/openstack"
-	"cloud_manager/src/service"
 	"encoding/json"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
+	"multicloud_service/src/codegen/openstack"
+	"multicloud_service/src/service"
 	"testing"
 )
 

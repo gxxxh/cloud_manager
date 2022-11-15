@@ -1,7 +1,6 @@
 package service
 
 import (
-	openstack2 "cloud_manager/src/codegen/openstack"
 	"encoding/json"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
@@ -10,6 +9,7 @@ import (
 	"github.com/gophercloud/gophercloud/openstack/compute/v2/images"
 	"github.com/gophercloud/gophercloud/pagination"
 	"log"
+	openstack2 "multicloud_service/src/codegen/openstack"
 	"reflect"
 	"testing"
 )

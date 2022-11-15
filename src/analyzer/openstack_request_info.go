@@ -1,8 +1,8 @@
 package analyzer
 
 import (
-	"cloud_manager/src/utils"
 	"log"
+	"multicloud_service/src/utils"
 	"strings"
 )
 

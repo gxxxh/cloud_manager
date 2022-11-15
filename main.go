@@ -1,8 +1,8 @@
 package main
 
 import (
-	"cloud_manager/src/service"
 	"log"
+	"multicloud_service/src/service"
 )
 
 func main() {

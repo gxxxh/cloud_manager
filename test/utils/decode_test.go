@@ -1,9 +1,9 @@
 package utils
 
 import (
-	"cloud_manager/src/utils"
 	"encoding/json"
 	"fmt"
+	"multicloud_service/src/utils"
 	"reflect"
 	"testing"
 )
