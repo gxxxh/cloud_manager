@@ -1,4 +1,4 @@
-module cloud_manager
+module multicloud_service
 
 go 1.19
 
