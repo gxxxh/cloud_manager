@@ -19,7 +19,7 @@ func TestGenAliyunRequestRegistry(t *testing.T) {
 	analyzer.ExtractCloudAPIs(client)
 	requestRegistryInfo := analyzer.ExtractRequestInfos("Create")
 
-	templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\registry.tmpl"
+	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl"
 	requestRegistryInfo.ImportPaths = []string{"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"}
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := map[string]interface{}{
@@ -32,7 +32,7 @@ func TestGenAliyunRequestRegistry(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	filePtr, err := os.Create("E:\\gopath\\src\\cloud_manager\\src\\codegen\\registry\\aliyun_create_request_registry.go")
+	filePtr, err := os.Create("E:\\gopath\\src\\multicloud_service\\src\\codegen\\registry\\aliyun_create_request_registry.go")
 	if err != nil {
 		fmt.Println(err)
 		t.Error(err)
@@ -46,8 +46,8 @@ func TestGenOpenstackRequestRegistry(t *testing.T) {
 	analyzer.ExtractCloudAPIs(client)
 	requestRegistryInfo := analyzer.ExtractRequestInfos("New")
 
-	templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\registry.tmpl"
-	requestRegistryInfo.ImportPaths = []string{"cloud_manager/src/codegen/openstack"}
+	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl"
+	requestRegistryInfo.ImportPaths = []string{"multicloud_service/src/codegen/openstack"}
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := map[string]interface{}{
 		"packageName": "registry",
@@ -59,7 +59,7 @@ func TestGenOpenstackRequestRegistry(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	filePtr, err := os.Create("E:\\gopath\\src\\cloud_manager\\src\\codegen\\registry\\openstack_create_request_registry.go")
+	filePtr, err := os.Create("E:\\gopath\\src\\multicloud_service\\src\\codegen\\registry\\openstack_create_request_registry.go")
 	if err != nil {
 		fmt.Println(err)
 		t.Error(err)
@@ -77,8 +77,8 @@ func TestGenOpenstackResponseRegistry(t *testing.T) {
 		requestInfo.CreateFunctionName = strings.Replace(requestInfo.CreateFunctionName, "New", "Extract", -1)
 		requestInfo.CreateFunctionName = requestInfo.CreateFunctionName[0:len(requestInfo.CreateFunctionName)-len("Request")] + "Response"
 	}
-	templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\registry.tmpl"
-	requestRegistryInfo.ImportPaths = []string{"cloud_manager/src/codegen/openstack"}
+	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl"
+	requestRegistryInfo.ImportPaths = []string{"multicloud_service/src/codegen/openstack"}
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := map[string]interface{}{
 		"packageName": "registry",
@@ -90,7 +90,7 @@ func TestGenOpenstackResponseRegistry(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	filePtr, err := os.Create("E:\\gopath\\src\\cloud_manager\\src\\codegen\\registry\\openstack_extract_response_registry.go")
+	filePtr, err := os.Create("E:\\gopath\\src\\multicloud_service\\src\\codegen\\registry\\openstack_extract_response_registry.go")
 	if err != nil {
 		fmt.Println(err)
 		t.Error(err)
@@ -119,7 +119,7 @@ func TestGenOpenstackCode(t *testing.T) {
 			continue
 		}
 		fmt.Printf("gen code for actions in resource %s\n", resourceInfo.ResourcePackageName)
-		templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\openstack_request.tmpl"
+		templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\openstack_request.tmpl"
 		data := utils.Struct2Map(resourceInfo)
 		params := map[string]interface{}{
 			"packageName": "openstack",
@@ -128,7 +128,7 @@ func TestGenOpenstackCode(t *testing.T) {
 		if err != nil {
 			t.Error(err)
 		}
-		basePath := "E:\\gopath\\src\\cloud_manager\\src\\codegen\\openstack"
+		basePath := "E:\\gopath\\src\\multicloud_service\\src\\codegen\\openstack"
 		fileName := utils.JoinName(resourceInfo.ResourcePath, "openstack", "_") + "_request.go"
 		filePath := filepath.Join(basePath, fileName)
 		filePtr, err := os.Create(filePath)
@@ -163,7 +163,7 @@ func TestGenOpenstackResultCode(t *testing.T) {
 			continue
 		}
 		fmt.Printf("gen code for actions in resource %s\n", resourceInfo.ResourcePackageName)
-		templatePath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\templates\\openstack_result.tmpl"
+		templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\openstack_result.tmpl"
 		data := utils.Struct2Map(resourceInfo)
 		params := map[string]interface{}{
 			"packageName": "openstack",
@@ -172,7 +172,7 @@ func TestGenOpenstackResultCode(t *testing.T) {
 		if err != nil {
 			t.Error(err)
 		}
-		basePath := "E:\\gopath\\src\\cloud_manager\\src\\codegen\\openstack"
+		basePath := "E:\\gopath\\src\\multicloud_service\\src\\codegen\\openstack"
 		fileName := utils.JoinName(resourceInfo.ResourcePath, "openstack", "_") + "_result.go"
 		filePath := filepath.Join(basePath, fileName)
 		filePtr, err := os.Create(filePath)
@@ -186,8 +186,8 @@ func TestGenOpenstackResultCode(t *testing.T) {
 }
 
 func TestGenCloudCode(t *testing.T) {
-	//configPath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\configs\\aliyun.json"
-	configPath := "E:\\gopath\\src\\cloud_manager\\src\\code_generator\\configs\\openstack.json"
+	//configPath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\configs\\aliyun.json"
+	configPath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\configs\\openstack.json"
 	config := gen.LoadCloudConfig(configPath)
 	err := gen.GenCloudCode(config)
 	if err != nil {
