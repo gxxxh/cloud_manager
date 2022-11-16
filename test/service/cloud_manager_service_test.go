@@ -19,13 +19,17 @@ func TestCallAliyunAPI(t *testing.T) {
 	params["accessKeySecret"] = accessKeySecret
 	params["cloudType"] = "aliyun"
 	mcm, _ := service.NewMultiCloudService(params)
-	request := ecs.CreateDescribeRegionsRequest()
+	request := ecs.CreateDescribeInstancesRequest()
+	request.InstanceIds = "[\"i-2zegiq87g0txkt1bvrb5\"]"
+	//request.RegionId = "cn-beijing"
+	//request := ecs.CreateDescribeRegionsRequest()
 	jsonBytes, err := json.Marshal(request)
 	if err != nil {
 		t.Error(err)
 	}
 	fmt.Println(string(jsonBytes))
-	ret, err := mcm.CallCloudAPI("DescribeRegions", jsonBytes)
+	//ret, err := mcm.CallCloudAPI("DescribeRegions", jsonBytes)
+	ret, err := mcm.CallCloudAPI("DescribeInstances", jsonBytes)
 	if err != nil {
 		t.Error(err)
 	}

@@ -102,10 +102,10 @@ func (m *MultiCloudService) doRequest(actionName string, request interface{}) ([
 		err = ret[1].(error)
 		log.Println("sdk do request error: ", err)
 	}
-	jsonBytes, err := json.Marshal(ret[0])
-	if err != nil {
+	jsonBytes, jsonErr := json.Marshal(ret[0])
+	if jsonErr != nil {
 		log.Println("marshal response error: ", err)
-		return nil, err
+		return nil, jsonErr
 	}
 	return jsonBytes, err
 	//retValue := reflect.ValueOf(ret[0]).Elem()
