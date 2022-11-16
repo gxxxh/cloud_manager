@@ -29,7 +29,7 @@ func TestCallAliyunAPI(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(ret)
+	fmt.Println(string(ret))
 }
 
 func TestCallOpenstackReturnPager(t *testing.T) {

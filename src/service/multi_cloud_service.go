@@ -1,6 +1,7 @@
 package service
 
 import (
+	"encoding/json"
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	"github.com/kube-stack/multicloud_service/src/codegen/openstack"
@@ -53,31 +54,31 @@ func (m *MultiCloudService) Init(params map[string]string) (err error) {
 /*
 using reflect to construct the parameters and call
 */
-func (m *MultiCloudService) CallCloudAPI(cloudAPIName string, requestParameters []byte) (string, error) {
+func (m *MultiCloudService) CallCloudAPI(cloudAPIName string, requestParameters []byte) ([]byte, error) {
 	requestName := cloudAPIName
 	request, err := utils.CallFunction(requestName, m.requestRegistry)
 	if len(request) != 1 {
 		err := fmt.Errorf("error, CreateRequestFunction return more than one value!, cloudAPIName is:%v", cloudAPIName)
 		log.Println("CallCloudAPI error: ", err)
-		return "", err
+		return nil, err
 	}
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	err = utils.ConstructStructOfPtr(request[0], requestParameters)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	//fmt.Printf("%v", request)
 	//createRequest only has one return value
 	return m.doRequest(cloudAPIName, request[0])
 }
 
-func (m *MultiCloudService) doRequest(actionName string, request interface{}) (string, error) {
+func (m *MultiCloudService) doRequest(actionName string, request interface{}) ([]byte, error) {
 	//find the client's method
 	ret, err := utils.CallMethod(m.Client, actionName, request)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	switch m.CloudType {
 	case "aliyun":
@@ -86,7 +87,7 @@ func (m *MultiCloudService) doRequest(actionName string, request interface{}) (s
 		if len(ret) != 1 {
 			err = fmt.Errorf("the action %s in aliyun should only return two result\n", actionName)
 			log.Println("doRequest Error: ", err)
-			return "", err
+			return nil, err
 		}
 		// extract response
 		ret, err = utils.CallFunction(actionName, m.responseRegistry, ret[0])
@@ -94,15 +95,19 @@ func (m *MultiCloudService) doRequest(actionName string, request interface{}) (s
 	if len(ret) != 2 {
 		err = fmt.Errorf("the action %s in aliyun should only return two result\n", actionName)
 		log.Println("doRequest Error: ", err)
-		return "", err
+		return nil, err
 	}
 	//ret[1] should be a error
 	if ret[1] != nil {
 		err = ret[1].(error)
 		log.Println("sdk do request error: ", err)
 	}
-	str := fmt.Sprintf("%v", ret[0])
-	return str, err
+	jsonBytes, err := json.Marshal(ret[0])
+	if err != nil {
+		log.Println("marshal response error: ", err)
+		return nil, err
+	}
+	return jsonBytes, err
 	//retValue := reflect.ValueOf(ret[0]).Elem()
 	//fmt.Println(retValue.NumField())
 	//tmp1 := retValue.Field(0).Interface()
