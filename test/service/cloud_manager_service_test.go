@@ -6,6 +6,7 @@ import (
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	"github.com/kube-stack/multicloud_service/src/codegen/openstack"
 	"github.com/kube-stack/multicloud_service/src/service"
+	"github.com/tidwall/gjson"
 	"testing"
 )
 
@@ -33,6 +34,8 @@ func TestCallAliyunAPI(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
+	instanceId := gjson.GetBytes(ret, "Instances.Instance.0.InstanceId")
+	fmt.Println(instanceId)
 	fmt.Println(string(ret))
 }
 
@@ -85,4 +88,56 @@ func TestCallOpenstackReturnResult(t *testing.T) {
 		t.Error(err)
 	}
 	fmt.Println(ret)
+}
+func TestCallOpenstacCreateServer(t *testing.T) {
+	authInfo := map[string]string{
+		"projectName":         "admin",
+		"domainName":          "Default",
+		"identityEndpoint":    "http://133.133.135.136:5000/v3",
+		"username":            "admin",
+		"password":            "ef1aa1ad78c442e1",
+		"Region":              "RegionOne",
+		"openstackClientType": "compute",
+		"cloudType":           "openstack",
+	}
+	mcm, err := service.NewMultiCloudService(authInfo)
+	request := openstack.NewCreateComputeV2ServersRequest()
+	request.Opts.Name = "test"
+	request.Opts.ImageRef = "952b386b-6f30-46f6-b019-f522b157aa3a"
+	request.Opts.FlavorRef = "2"
+	jsonBytes, err := json.Marshal(request)
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(string(jsonBytes))
+	ret, err := mcm.CallCloudAPI("CreateComputeV2Servers", jsonBytes)
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(ret)
+}
+func TestCallOpenstacGetServer(t *testing.T) {
+	authInfo := map[string]string{
+		"projectName":         "admin",
+		"domainName":          "Default",
+		"identityEndpoint":    "http://133.133.135.136:5000/v3",
+		"username":            "admin",
+		"password":            "ef1aa1ad78c442e1",
+		"Region":              "RegionOne",
+		"openstackClientType": "compute",
+		"cloudType":           "openstack",
+	}
+	mcm, err := service.NewMultiCloudService(authInfo)
+	request := openstack.NewGetComputeV2ServersRequest()
+	request.Id = "ddf4da9b-84fc-436d-86b4-5378c8b7a80f"
+	jsonBytes, err := json.Marshal(request)
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(string(jsonBytes))
+	ret, err := mcm.CallCloudAPI("GetComputeV2Servers", jsonBytes)
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(string(ret))
 }
