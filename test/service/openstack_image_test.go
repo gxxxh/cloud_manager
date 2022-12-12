@@ -65,7 +65,50 @@ func TestOpenstackUpdateImage(t *testing.T) {
 	service := InitByOpenstackType("image")
 	request := openstack.UpdateImageserviceV2ImagesRequest{}
 	request.Id = "e7db3b45-8db7-47ad-8109-3fb55c2c24fd"
-	request.Opts = []images.Patch{images.ReplaceImageName{"image-create-update"}}
+	updateVisibility := images.UpdateImageProperty{
+		Op:    "replace",
+		Name:  "/visibility",
+		Value: string(images.ImageVisibilityPublic),
+	}
+	newHidden := true
+	updateImageHidden := images.UpdateImageProperty{
+		Op:    "replace",
+		Name:  "/os_hidden",
+		Value: fmt.Sprintf("%v", newHidden),
+	}
+	updateImageName := images.UpdateImageProperty{
+		Op:    "replace",
+		Name:  "/name",
+		Value: "updated-name",
+	}
+	//updateImageChecksum := images.UpdateImageProperty{
+	//	Op:    "replace",
+	//	Name:  "/checksum",
+	//	Value: "",
+	//}
+	updateImageTags := images.UpdateImageProperty{
+		Op:    "replace",
+		Name:  "/tags",
+		Value: fmt.Sprintf("%v", []string{"windows"}),
+	}
+	//updateImageMinDisk := images.UpdateImageProperty{
+	//	Op:    "replace",
+	//	Name:  "/min_disk",
+	//	Value: "1",
+	//}
+
+	//updateImageMinRam := images.UpdateImageProperty{
+	//	Op:    "replace",
+	//	Name:  "/min_ram",
+	//	Value: "1",
+	//}
+	//updateImageTags := images.UpdateImageProperty{
+	//	Op:    "replace",
+	//	Name:  "/protected",
+	//	Value: "true",
+	//}
+	request.Opts = []images.UpdateImageProperty{updateVisibility, updateImageHidden, updateImageName, updateImageTags}
+
 	requestByte, err := json.Marshal(request)
 	//{"Id":"e7db3b45-8db7-47ad-8109-3fb55c2c24fd","Opts":[{"NewName":"image-create-update"}]}
 	fmt.Println(string(requestByte))

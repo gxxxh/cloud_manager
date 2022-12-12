@@ -45,7 +45,22 @@ func TestOpenstackGetSnapshot(t *testing.T) {
 }
 
 func TestOpenstackUpdateSnapshot(t *testing.T) {
-
+	service := InitByOpenstackType("volumev3")
+	request := openstack.UpdateBlockstorageV3SnapshotsRequest{}
+	request.Id = "0a509ed0-36e5-49c5-bdfa-ca4ef53d72c6"
+	newName := "updated_snapshot"
+	request.Opts.Name = &newName
+	requestByte, err := json.Marshal(request)
+	fmt.Println(string(requestByte))
+	if err != nil {
+		t.Error(err)
+	}
+	//{"snapshot:":{}}
+	resp, err := service.CallCloudAPI("DeleteBlockstorageV3Snapshots", requestByte)
+	if err != nil {
+		t.Error(err)
+	}
+	fmt.Println(string(resp))
 }
 
 func TestOpenstackDeleteSnapshot(t *testing.T) {

@@ -55,6 +55,7 @@ func (m *MultiCloudService) Init(params map[string]string) (err error) {
 using reflect to construct the parameters and call
 */
 func (m *MultiCloudService) CallCloudAPI(cloudAPIName string, requestParameters []byte) ([]byte, error) {
+	//build request
 	requestName := cloudAPIName
 	request, err := utils.CallFunction(requestName, m.requestRegistry)
 	if len(request) != 1 {
