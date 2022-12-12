@@ -31,7 +31,7 @@ func TestOpenstackCreateImage(t *testing.T) {
 	service := InitByOpenstackType("image")
 	request := openstack.CreateImageserviceV2ImagesRequest{}
 	request.Opts.Name = "test-create"
-	request.Opts.ID = "e7db3b45-8db7-47ad-8109-3fb55c2c24fd"
+	request.Opts.ID = "e7db3b45-8db7-47ad-8109-3fb55c2c24fe"
 	request.Opts.Properties = map[string]string{
 		"architecture": "x86_64",
 	}
@@ -40,74 +40,81 @@ func TestOpenstackCreateImage(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
+	//{"Opts":{"name":"test-create","id":"e7db3b45-8db7-47ad-8109-3fb55c2c24fd","tags":["ubuntu","quantal"]}}
+	fmt.Println(string(requestByte))
 	resp, err := service.CallCloudAPI("CreateImageserviceV2Images", requestByte)
 	if err != nil {
 		t.Error(err)
 	}
+	//{"checksum":null,"container_format":null,"created_at":"2022-12-12T14:24:25Z","disk_format":null,"file":"/v2/images/e7db3b45-8db7-47ad-810
 	fmt.Println(string(resp))
 }
 func TestOpenstackGetImage(t *testing.T) {
 	service := InitByOpenstackType("image")
 	request := openstack.GetImageserviceV2ImagesRequest{}
-	request.Id = "e7db3b45-8db7-47ad-8109-3fb55c2c24fd"
+	request.Id = "e7db3b45-8db7-47ad-8109-3fb55c2c24fe"
 	requestByte, err := json.Marshal(request)
 	if err != nil {
 		t.Error(err)
 	}
+	//{"Id":"e7db3b45-8db7-47ad-8109-3fb55c2c24fe"}
+	fmt.Println(string(requestByte))
 	resp, err := service.CallCloudAPI("GetImageserviceV2Images", requestByte)
 	if err != nil {
 		t.Error(err)
 	}
+	//{"checksum":null,"container_format":null,"created_at":"2022-12-12T14:24:25Z","disk_format"
 	fmt.Println(string(resp))
 }
 
 func TestOpenstackUpdateImage(t *testing.T) {
 	service := InitByOpenstackType("image")
 	request := openstack.UpdateImageserviceV2ImagesRequest{}
-	request.Id = "e7db3b45-8db7-47ad-8109-3fb55c2c24fd"
-	updateVisibility := images.UpdateImageProperty{
+	request.Id = "e7db3b45-8db7-47ad-8109-3fb55c2c24fe"
+	updateVisibility := openstack.UpdateImageserviceV2ImagesProperty{
 		Op:    "replace",
-		Name:  "/visibility",
-		Value: string(images.ImageVisibilityPublic),
+		Name:  "visibility",
+		Value: images.ImageVisibilityPublic,
 	}
-	newHidden := true
-	updateImageHidden := images.UpdateImageProperty{
+	//newHidden := true
+	//updateImageHidden := images.UpdateImageProperty{
+	//	Op:    "replace",
+	//	Name:  "os_hidden",
+	//	Value: fmt.Sprintf("%v", newHidden),
+	//}
+	updateImageName := openstack.UpdateImageserviceV2ImagesProperty{
 		Op:    "replace",
-		Name:  "/os_hidden",
-		Value: fmt.Sprintf("%v", newHidden),
-	}
-	updateImageName := images.UpdateImageProperty{
-		Op:    "replace",
-		Name:  "/name",
+		Name:  "name",
 		Value: "updated-name",
 	}
 	//updateImageChecksum := images.UpdateImageProperty{
 	//	Op:    "replace",
-	//	Name:  "/checksum",
+	//	Name:  "checksum",
 	//	Value: "",
 	//}
-	updateImageTags := images.UpdateImageProperty{
+
+	updateImageTags := openstack.UpdateImageserviceV2ImagesProperty{
 		Op:    "replace",
 		Name:  "/tags",
-		Value: fmt.Sprintf("%v", []string{"windows"}),
+		Value: []string{"windows"},
 	}
 	//updateImageMinDisk := images.UpdateImageProperty{
 	//	Op:    "replace",
-	//	Name:  "/min_disk",
+	//	Name:  "min_disk",
 	//	Value: "1",
 	//}
 
 	//updateImageMinRam := images.UpdateImageProperty{
 	//	Op:    "replace",
-	//	Name:  "/min_ram",
+	//	Name:  "min_ram",
 	//	Value: "1",
 	//}
 	//updateImageTags := images.UpdateImageProperty{
 	//	Op:    "replace",
-	//	Name:  "/protected",
+	//	Name:  "protected",
 	//	Value: "true",
 	//}
-	request.Opts = []images.UpdateImageProperty{updateVisibility, updateImageHidden, updateImageName, updateImageTags}
+	request.Opts = []openstack.UpdateImageserviceV2ImagesProperty{updateVisibility, updateImageName, updateImageTags}
 
 	requestByte, err := json.Marshal(request)
 	//{"Id":"e7db3b45-8db7-47ad-8109-3fb55c2c24fd","Opts":[{"NewName":"image-create-update"}]}
@@ -115,7 +122,6 @@ func TestOpenstackUpdateImage(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	//todo using updateProperties to write the info into it
 	resp, err := service.CallCloudAPI("UpdateImageserviceV2Images", requestByte)
 	if err != nil {
 		t.Error(err)
@@ -126,13 +132,13 @@ func TestOpenstackUpdateImage(t *testing.T) {
 func TestOpenstackDeleteImage(t *testing.T) {
 	service := InitByOpenstackType("image")
 	request := openstack.DeleteImageserviceV2ImagesRequest{}
-	request.Id = "e7db3b45-8db7-47ad-8109-3fb55c2c24fd"
+	request.Id = "e7db3b45-8db7-47ad-8109-3fb55c2c24fe"
 	requestByte, err := json.Marshal(request)
 	fmt.Println(string(requestByte))
 	if err != nil {
 		t.Error(err)
 	}
-	//todo using updateProperties to write the info into it
+	//{"Id":"e7db3b45-8db7-47ad-8109-3fb55c2c24fe"}
 	resp, err := service.CallCloudAPI("DeleteImageserviceV2Images", requestByte)
 	if err != nil {
 		t.Error(err)
