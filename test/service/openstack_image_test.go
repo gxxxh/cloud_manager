@@ -31,7 +31,7 @@ func TestOpenstackCreateImage(t *testing.T) {
 	service := InitByOpenstackType("image")
 	request := openstack.CreateImageserviceV2ImagesRequest{}
 	request.Opts.Name = "test-create"
-	request.Opts.ID = "e7db3b45-8db7-47ad-8109-3fb55c2c24fe"
+	//request.Opts.ID = "e7db3b45-8db7-47ad-8109-3fb55c2c24fe"
 	request.Opts.Properties = map[string]string{
 		"architecture": "x86_64",
 	}
@@ -40,19 +40,19 @@ func TestOpenstackCreateImage(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	//{"Opts":{"name":"test-create","id":"e7db3b45-8db7-47ad-8109-3fb55c2c24fd","tags":["ubuntu","quantal"]}}
+	// {"Opts":{"name":"test-create","tags":["ubuntu","quantal"]}}
 	fmt.Println(string(requestByte))
 	resp, err := service.CallCloudAPI("CreateImageserviceV2Images", requestByte)
 	if err != nil {
 		t.Error(err)
 	}
-	//{"checksum":null,"container_format":null,"created_at":"2022-12-12T14:24:25Z","disk_format":null,"file":"/v2/images/e7db3b45-8db7-47ad-810
+	//{"checksum":null,"container_format":null,"created_at":"2022-12-14T08:40:59Z","disk_format":null,"file":"/v2/images/87911a0d-c9af-406e-9fd2-6e5b80402fee/file","id":"87911a0d-c9af-406e-9fd2-6e5b80402fee","min_disk":0,"min_ram":0,"name":"test-create","os_hash_algo":null,"os_hash_value":null,"os_hidden":false,"owner":"aac94320146c464ab84146e35aa61c77","protected":false,"schema":"/v2/schemas/image","self":"/v2/images/87911a0d-c9af-406e-9fd2-6e5b80402fee","size":null,"status":"queued","tags":["quantal","ubuntu"],"updated_at":"2022-12-14T08:40:59Z","virtual_size":null,"visibility":"shared"}
 	fmt.Println(string(resp))
 }
 func TestOpenstackGetImage(t *testing.T) {
 	service := InitByOpenstackType("image")
 	request := openstack.GetImageserviceV2ImagesRequest{}
-	request.Id = "e7db3b45-8db7-47ad-8109-3fb55c2c24fe"
+	request.Id = "87911a0d-c9af-406e-9fd2-6e5b80402fee"
 	requestByte, err := json.Marshal(request)
 	if err != nil {
 		t.Error(err)
@@ -70,7 +70,7 @@ func TestOpenstackGetImage(t *testing.T) {
 func TestOpenstackUpdateImage(t *testing.T) {
 	service := InitByOpenstackType("image")
 	request := openstack.UpdateImageserviceV2ImagesRequest{}
-	request.Id = "e7db3b45-8db7-47ad-8109-3fb55c2c24fe"
+	request.Id = "87911a0d-c9af-406e-9fd2-6e5b80402fee"
 	updateVisibility := openstack.UpdateImageserviceV2ImagesProperty{
 		Op:    "replace",
 		Name:  "visibility",
@@ -117,7 +117,7 @@ func TestOpenstackUpdateImage(t *testing.T) {
 	request.Opts = []openstack.UpdateImageserviceV2ImagesProperty{updateVisibility, updateImageName, updateImageTags}
 
 	requestByte, err := json.Marshal(request)
-	//{"Id":"e7db3b45-8db7-47ad-8109-3fb55c2c24fd","Opts":[{"NewName":"image-create-update"}]}
+	//{"Id":"87911a0d-c9af-406e-9fd2-6e5b80402fee","Opts":[{"Op":"replace","Name":"visibility","Value":"public"},{"Op":"replace","Name":"name","Value":"updated-name"},{"Op":"replace","Name":"/tags","Value":["windows"]}]}
 	fmt.Println(string(requestByte))
 	if err != nil {
 		t.Error(err)
@@ -126,13 +126,14 @@ func TestOpenstackUpdateImage(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
+	//{"checksum":null,"container_format":null,"created_at":"2022-12-14T08:40:59Z","disk_format":null,"file":"/v2/images/87911a0d-c9af-406e-9fd2-6e5b80402fee/file","id":"87911a0d-c9af-406e-9fd2-6e5b80402fee","min_disk":0,"min_ram":0,"name":"updated-name","os_hash_algo":null,"os_hash_value":null,"os_hidden":false,"owner":"aac94320146c464ab84146e35aa61c77","protected":false,"schema":"/v2/schemas/image","self":"/v2/images/87911a0d-c9af-406e-9fd2-6e5b80402fee","size":null,"status":"queued","tags":["windows"],"updated_at":"2022-12-14T08:50:02Z","virtual_size":null,"visibility":"public"}
 	fmt.Println(string(resp))
 }
 
 func TestOpenstackDeleteImage(t *testing.T) {
 	service := InitByOpenstackType("image")
 	request := openstack.DeleteImageserviceV2ImagesRequest{}
-	request.Id = "e7db3b45-8db7-47ad-8109-3fb55c2c24fe"
+	request.Id = "87911a0d-c9af-406e-9fd2-6e5b80402fee"
 	requestByte, err := json.Marshal(request)
 	fmt.Println(string(requestByte))
 	if err != nil {
