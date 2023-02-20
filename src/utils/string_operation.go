@@ -26,6 +26,15 @@ func ParseResourceName(funcName string, actionName string) string {
 	return strings.ToLower(funcName)
 }
 
+// 删除复数的s
+func GetJavaResourceName(cloudType, resourceName string) string {
+	tmp := cloudType + UpperFirst(resourceName)
+	if tmp[len(tmp)-1:] == "s" {
+		tmp = tmp[:len(tmp)-1]
+	}
+	return tmp
+}
+
 /*
 check if the first character is lower
 */

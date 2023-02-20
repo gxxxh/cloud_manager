@@ -10,6 +10,7 @@ type CloudConfig struct {
 	CloudType       string            `json:"CloudType"`
 	RegistryConfigs []*RegistryConfig `json:"RegistryConfigs"`
 	APICodeConfigs  []*APICodeConfig  `json:"APICodeConfigs"`
+	JavaCodeConfig  *JavaCodeConfig   `json:"JavaCodeConfig"`
 }
 
 type RegistryConfig struct {
@@ -28,6 +29,14 @@ type APICodeConfig struct {
 type CodeGenConfig struct {
 	TemplatePath string `json:"TemplatePath"`
 	CodePath     string `json:"CodePath"`
+}
+
+type JavaCodeConfig struct {
+	Class     CodeGenConfig `json:"Class"`
+	Domain    CodeGenConfig `json:"Domain"`
+	Impl      CodeGenConfig `json:"Impl"`
+	Lifecycle CodeGenConfig `json:"Lifecycle"`
+	Spec      CodeGenConfig `json:"Spec"`
 }
 
 func LoadCloudConfig(configPath string) *CloudConfig {

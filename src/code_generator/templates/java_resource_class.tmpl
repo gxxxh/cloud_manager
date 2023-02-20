@@ -1,0 +1,25 @@
+/**
+* Code Generator by multicloud_service
+*/
+package io.github.kubestack.client.api.models.openstack;
+
+import io.github.kubestack.client.api.specs.openstack.{{.JavaResourceName}}Spec;
+
+/**
+ * @Description openstack Ojbect definition
+ * @Date {{Date}}
+ * @Author guohao
+ **/
+public class {{.JavaResourceName}} extends OpenstackModel {
+    protected {{.JavaResourceName}}Spec spec;
+
+    public {{.JavaResourceName}}() {}
+
+    public {{.JavaResourceName}}Spec getSpec() {
+        return spec;
+    }
+
+    public void setSpec({{.JavaResourceName}}Spec spec) {
+        this.spec = spec;
+    }
+}

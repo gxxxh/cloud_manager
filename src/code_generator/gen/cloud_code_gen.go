@@ -6,7 +6,6 @@ import (
 	openstack "github.com/kube-stack/multicloud_service/src/codegen/openstack"
 	"github.com/kube-stack/multicloud_service/src/utils"
 	"log"
-	"os"
 	"path/filepath"
 	"strings"
 )
@@ -72,26 +71,5 @@ func GenAPICode(config *APICodeConfig) {
 		filenName := utils.JoinName(resourceInfo.ResourcePath, "openstack", "_") + "_" + strings.ToLower(config.CodeType) + ".go"
 		codePath := filepath.Join(config.CodeGenConfig.CodePath, filenName)
 		GenAndSaveCode(config.CodeGenConfig.TemplatePath, codePath, data, params)
-	}
-}
-
-func GenAndSaveCode(templatePath, codePath string, data, params map[string]interface{}) {
-	code, err := GenCode(templatePath, data, params)
-	if err != nil {
-		log.Fatalln("Gen Registry Code error, ", err)
-	}
-	file, err := os.Create(codePath)
-	if err != nil {
-		log.Fatalln("Create Code File for registry error, ", err)
-	}
-	defer func(file *os.File) {
-		err := file.Close()
-		if err != nil {
-			log.Fatalln("Close Code File error, ", err)
-		}
-	}(file)
-	_, err = file.Write(code)
-	if err != nil {
-		log.Fatalln("Write registry code to file error, ", err)
 	}
 }

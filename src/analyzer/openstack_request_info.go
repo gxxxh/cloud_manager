@@ -2,6 +2,7 @@ package analyzer
 
 import (
 	"github.com/kube-stack/multicloud_service/src/utils"
+	"go/types"
 	"log"
 	"strings"
 )
@@ -115,13 +116,15 @@ type VarInfo struct {
 	Name       string
 	TypeName   string
 	ImportPath string
+	Type       types.Type
 }
 
-func NewVarInfo(name, typeName, importPath string) VarInfo {
+func NewVarInfo(name, typeName, importPath string, ty types.Type) VarInfo {
 	return VarInfo{
 		Name:       name,
 		TypeName:   typeName,
 		ImportPath: importPath,
+		Type:       ty,
 	}
 }
 
@@ -134,9 +137,9 @@ func NewVarInfos() VarInfos {
 func (vi *VarInfos) AddVarInfo(varInfo VarInfo) {
 	*vi = append(*vi, varInfo)
 }
-func (vi *VarInfos) Add(names []string, typeName string, importPath string) {
+func (vi *VarInfos) Add(names []string, typeName string, importPath string, ty types.Type) {
 	for _, name := range names {
-		*vi = append(*vi, NewVarInfo(name, typeName, importPath))
+		*vi = append(*vi, NewVarInfo(name, typeName, importPath, ty))
 	}
 }
 

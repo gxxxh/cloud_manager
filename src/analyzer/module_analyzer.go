@@ -196,8 +196,8 @@ func (pa *PackageAnalyzer) Field2VarInfos(fieldList []*ast.Field) VarInfos {
 	varInfos := NewVarInfos()
 	for _, expr := range fieldList {
 		names := pa.parseFieldNames(expr)
-		typeName, packagePath := pa.parseExprTypeInfo(expr.Type)
-		varInfos.Add(names, typeName, packagePath)
+		typeName, packagePath, ty := pa.parseExprTypeInfo(expr.Type)
+		varInfos.Add(names, typeName, packagePath, ty)
 	}
 	return varInfos
 }
@@ -255,7 +255,7 @@ func (pa *PackageAnalyzer) ParseResultExtractReturns(ty *types.Named) *ResultExt
 			for i := 0; i < methodType.Results().Len(); i++ {
 				result := methodType.Results().At(i)
 				typeName, typeImportPath := pa.parseTypeInfo(result.Type())
-				varInfo := NewVarInfo("", typeName, typeImportPath)
+				varInfo := NewVarInfo("", typeName, typeImportPath, result.Type())
 				varInfos.AddVarInfo(varInfo)
 			}
 			resultExtractInfo.FuncName = tmpMethod.Name()
@@ -346,10 +346,10 @@ func (pa *PackageAnalyzer) getInterface(interfaceName string, pkg *types.Package
 }
 
 // find the struct type that implement the interface
-func (pa *PackageAnalyzer) interface2struct(iface *types.Interface) (string, string) {
-	tinfo := pa.pkg.TypesInfo
+func (pa *PackageAnalyzer) interface2struct(iface *types.Interface) (string, string, types.Type) {
+	typeinfos := pa.pkg.TypesInfo
 	log.Println("find struct for interface ", iface)
-	for _, ty := range tinfo.Types {
+	for _, ty := range typeinfos.Types {
 		if types.Implements(ty.Type, iface) {
 			//if ty.Type.String() != (*ifaceType).String() {
 			log.Println(ty.Type)
@@ -359,12 +359,12 @@ func (pa *PackageAnalyzer) interface2struct(iface *types.Interface) (string, str
 				//return pa.parseTypeInfo(ty.Type)
 				tyName, packagePath := pa.parseTypeInfo(ty.Type)
 				if tyName != "" {
-					return tyName, packagePath
+					return tyName, packagePath, ty.Type
 				}
 			}
 		}
 	}
-	return "", ""
+	return "", "", nil
 }
 
 func (pa *PackageAnalyzer) GetPackage(ty types.Type) *types.Package {
@@ -387,8 +387,8 @@ func (pa *PackageAnalyzer) GetPackage(ty types.Type) *types.Package {
 	}
 }
 
-func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr) (tyName string, packagePath string) {
-	ty := pa.pkg.TypesInfo.Types[expr].Type
+func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr) (tyName string, packagePath string, ty types.Type) {
+	ty = pa.pkg.TypesInfo.Types[expr].Type
 	//check if  type is interface,
 	tyName, packagePath = pa.parseTypeInfo(ty)
 	isSlice := false
@@ -399,7 +399,7 @@ func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr) (tyName string, pack
 	iface := pa.getInterface(tyName, typesPkg)
 	//ifaceType, iface := pa.getInterface(tyName, pkg.Types)
 	if iface != nil {
-		tyName, packagePath = pa.interface2struct(iface)
+		tyName, packagePath, ty = pa.interface2struct(iface)
 		if tyName == "" {
 			log.Println("error, not find struct for interface", iface)
 		}
@@ -423,7 +423,7 @@ func (pa *PackageAnalyzer) checkValidFunc(fn *ast.FuncDecl, paraName string) boo
 	}
 	if fn.Recv == nil { //function's Recv filed is nil, method is not
 		if len(fn.Type.Params.List) != 0 {
-			typeName, _ := pa.parseExprTypeInfo(fn.Type.Params.List[0].Type)
+			typeName, _, _ := pa.parseExprTypeInfo(fn.Type.Params.List[0].Type)
 			//if typeName == paraName {
 			if strings.Contains(typeName, paraName) {
 				return true
