@@ -34,6 +34,8 @@ func NewOpenstackClient(params map[string]string) (oc *OpenstackClient, err erro
 	oc.InitClient(params["openstackClientType"], gophercloud.EndpointOpts{
 		Region: params["region"],
 	})
+	fmt.Println(oc.Client.Microversion)
+	oc.Client.Microversion = "2.61"
 	return
 }
 
