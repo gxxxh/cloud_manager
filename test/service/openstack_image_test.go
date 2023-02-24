@@ -79,7 +79,7 @@ func TestOpenstackUpdateImage(t *testing.T) {
 	//newHidden := true
 	//updateImageHidden := images.UpdateImageProperty{
 	//	Op:    "replace",
-	//	Name:  "os_hidden",
+	//	ClassName:  "os_hidden",
 	//	Value: fmt.Sprintf("%v", newHidden),
 	//}
 	updateImageName := openstack.UpdateImageserviceV2ImagesProperty{
@@ -89,7 +89,7 @@ func TestOpenstackUpdateImage(t *testing.T) {
 	}
 	//updateImageChecksum := images.UpdateImageProperty{
 	//	Op:    "replace",
-	//	Name:  "checksum",
+	//	ClassName:  "checksum",
 	//	Value: "",
 	//}
 
@@ -100,24 +100,24 @@ func TestOpenstackUpdateImage(t *testing.T) {
 	}
 	//updateImageMinDisk := images.UpdateImageProperty{
 	//	Op:    "replace",
-	//	Name:  "min_disk",
+	//	ClassName:  "min_disk",
 	//	Value: "1",
 	//}
 
 	//updateImageMinRam := images.UpdateImageProperty{
 	//	Op:    "replace",
-	//	Name:  "min_ram",
+	//	ClassName:  "min_ram",
 	//	Value: "1",
 	//}
 	//updateImageTags := images.UpdateImageProperty{
 	//	Op:    "replace",
-	//	Name:  "protected",
+	//	ClassName:  "protected",
 	//	Value: "true",
 	//}
 	request.Opts = []openstack.UpdateImageserviceV2ImagesProperty{updateVisibility, updateImageName, updateImageTags}
 
 	requestByte, err := json.Marshal(request)
-	//{"Id":"87911a0d-c9af-406e-9fd2-6e5b80402fee","Opts":[{"Op":"replace","Name":"visibility","Value":"public"},{"Op":"replace","Name":"name","Value":"updated-name"},{"Op":"replace","Name":"/tags","Value":["windows"]}]}
+	//{"Id":"87911a0d-c9af-406e-9fd2-6e5b80402fee","Opts":[{"Op":"replace","ClassName":"visibility","Value":"public"},{"Op":"replace","ClassName":"name","Value":"updated-name"},{"Op":"replace","ClassName":"/tags","Value":["windows"]}]}
 	fmt.Println(string(requestByte))
 	if err != nil {
 		t.Error(err)

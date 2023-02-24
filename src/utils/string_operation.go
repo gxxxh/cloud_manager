@@ -1,6 +1,9 @@
 package utils
 
-import "strings"
+import (
+	"strings"
+	"unicode"
+)
 
 func UpperFirst(s string) string {
 	first := strings.ToUpper(s[0:1])
@@ -26,13 +29,65 @@ func ParseResourceName(funcName string, actionName string) string {
 	return strings.ToLower(funcName)
 }
 
-// 删除复数的s
+// 删除复数的s，java中类名称，也是crd的名称
 func GetJavaResourceName(cloudType, resourceName string) string {
-	tmp := cloudType + UpperFirst(resourceName)
-	if tmp[len(tmp)-1:] == "s" {
-		tmp = tmp[:len(tmp)-1]
+	return UpperFirst(cloudType) + UpperFirst(resourceName)
+}
+
+// 从request名称中获取资源名称
+// requestName中第一个单词表示动作，删除即可
+func GetResourceNameFromRequestName(requestName string) string {
+	for i := 1; i < len(requestName); i++ {
+		if unicode.IsUpper(rune(requestName[i])) {
+			return requestName[i:]
+		}
 	}
-	return tmp
+	return ""
+}
+
+// CreateComputeV2ServersRequest
+// 返回actionName="Create", resourceName = "server", cloudResourceName="ComputeV2Servers"
+func ParseRequestName(requestName string) (actionName, cloudResourceName, resourceName string) {
+	requestName = requestName[0 : len(requestName)-len("Request")]
+	pathPrefixes := [...]string{"Baremetal", "Baremetalintrospection", "Blockstorage", "Cdn", "Clustering", "Common", "Compute", "Container", "Containerinfra", "Db", "Dns", "Identity", "Imageservice", "Keymanager", "Loadbalancer", "Messaging", "Networking", "Objectstorage", "Orchestration", "Placement", "Sharedfilesystems", "Testing", "Utils", "Workflow"}
+	for _, pathPrefix := range pathPrefixes {
+		if pos := strings.Index(requestName, pathPrefix); pos != -1 {
+			actionName = requestName[:pos]
+			cloudResourceName = requestName[pos:]
+			break
+		}
+	}
+	j := 0
+	for i := 0; i < len(requestName); i++ {
+		if unicode.IsUpper(rune(requestName[i])) {
+			j = i
+		}
+	}
+	resourceName = strings.ToLower(requestName[j : len(requestName)-1])
+	return
+}
+
+// 获取ComputeV2Servers中的Servers，即最后一个单词
+func GetResourcePackageName(resourceName string) string {
+	j := 0
+	for i := 0; i < len(resourceName); i++ {
+		if unicode.IsUpper(rune(resourceName[i])) {
+			j = i
+		}
+	}
+	return strings.ToLower(resourceName[j:])
+}
+
+// 获取A.B中的A
+func GetPackageName(name string) string {
+	packageName := ""
+	for _, ch := range name {
+		if ch == '.' {
+			break
+		}
+		packageName += string(ch)
+	}
+	return packageName
 }
 
 /*

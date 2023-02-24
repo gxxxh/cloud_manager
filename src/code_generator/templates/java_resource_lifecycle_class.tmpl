@@ -1,0 +1,31 @@
+{{ define "classTemplate" }}
+{{- $depth := .Depth -}}
+{{- $preDepth := GetPreDepth .Depth -}}
+{{- range .Annotations}}
+{{GetTab $preDepth}}{{.}}
+{{- end }}
+{{GetTab $preDepth}}public class {{.ClassName}} {
+{{ range .MemberVariables }}
+{{GetTab $depth}}@JsonProperty("{{.JsonName}}")
+{{GetTab $depth}}protected {{GenJavaType .TypeName .MemberKind}} {{LowerFirst .Name}}
+{{end}}
+
+{{GetTab $depth}}public {{.ClassName}}(){
+
+{{GetTab $depth}}}
+    {{- range .MemberVariables}}
+{{GetTab $depth}}public {{GenJavaType .TypeName .MemberKind}} get{{.Name}}(){
+{{GetTab $depth}}    return {{LowerFirst .Name}};
+{{GetTab $depth}}}
+
+{{GetTab $depth}}public void set{{.Name}}({{GenJavaType .TypeName .MemberKind}} {{LowerFirst .Name}}){
+{{GetTab $depth}}    this.{{LowerFirst .Name}} = {{LowerFirst .Name}};
+{{GetTab $depth}}}
+    {{ end }}
+
+    {{ range .MemberClasses}}
+        {{template "classTemplate" .}}
+    {{ end}}
+{{GetTab $preDepth}}}
+{{ end }}
+{{- template "classTemplate" . -}}

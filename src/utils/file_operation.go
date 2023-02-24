@@ -35,17 +35,7 @@ func Readfile(path string) (string, error) {
 	return string(content), err
 }
 
-func GetPackageName(name string) string {
-	packageName := ""
-	for _, ch := range name {
-		if ch == '.' {
-			break
-		}
-		packageName += string(ch)
-	}
-	return packageName
-}
-
+// 资源前添加上路径名称
 func JoinName(packagePath, packageName, split string) string {
 	dirs := strings.Split(packagePath, "/")
 	flag := false
@@ -65,6 +55,22 @@ func JoinName(packagePath, packageName, split string) string {
 	return name
 }
 
+func Save(data []byte, path string) {
+	file, err := os.Create(path)
+	if err != nil {
+		log.Fatalln("Create Code File  error, ", err)
+	}
+	defer func(file *os.File) {
+		err := file.Close()
+		if err != nil {
+			log.Fatalln("Close Code File error, ", err)
+		}
+	}(file)
+	_, err = file.Write(data)
+	if err != nil {
+		log.Fatalln("Write code to file error, ", err)
+	}
+}
 func CreateDirByPackagePath(basePath, packagePath, packageName string) string {
 	dirs := strings.Split(packagePath, "/")
 	flag := false

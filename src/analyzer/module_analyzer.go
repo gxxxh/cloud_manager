@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-// using to analyze openstack module staticly
+// using to analyze openstack package staticly
 // info was saved to openstack_resource_info
 type ModuleAnalyzer struct {
 	*packages.Config
@@ -434,7 +434,7 @@ func (pa *PackageAnalyzer) checkValidFunc(fn *ast.FuncDecl, paraName string) boo
 }
 
 /*
-type Name, type package path
+type ClassName, type package path
 */
 func (pa *PackageAnalyzer) parseTypeInfo(ty types.Type) (string, string) {
 	switch tyType := ty.(type) {

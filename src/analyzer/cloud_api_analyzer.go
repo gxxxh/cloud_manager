@@ -9,11 +9,10 @@ import (
 )
 
 // todo, 是针对每个ecs生成一个代码，编译后只能针对该云操作，
-// 还是将所有云的包编译在一起
 // using to analyze cloudapi by reflect(dynamically)
 type CloudAPIAnalyzer struct {
-	MethodMap  map[string]reflect.Method
-	RequestMap map[string]reflect.Type
+	MethodMap  map[string]reflect.Method //控制云资源的方法
+	RequestMap map[string]reflect.Type   //方法相关的request类型
 	//RequestInfos []RequestInfo
 }
 

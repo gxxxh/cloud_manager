@@ -32,11 +32,12 @@ type CodeGenConfig struct {
 }
 
 type JavaCodeConfig struct {
-	Class     CodeGenConfig `json:"Class"`
-	Domain    CodeGenConfig `json:"Domain"`
-	Impl      CodeGenConfig `json:"Impl"`
-	Lifecycle CodeGenConfig `json:"Lifecycle"`
-	Spec      CodeGenConfig `json:"Spec"`
+	Class           CodeGenConfig `json:"Class"`
+	Domain          CodeGenConfig `json:"Domain"`
+	Impl            CodeGenConfig `json:"Impl"`
+	LifecycleHeader CodeGenConfig `json:"LifecycleHeader"`
+	LifecycleClass  CodeGenConfig `json:"LifecycleClass"`
+	Spec            CodeGenConfig `json:"Spec"`
 }
 
 func LoadCloudConfig(configPath string) *CloudConfig {
