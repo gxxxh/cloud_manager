@@ -137,7 +137,7 @@ func (j *JavaSDKGenerator) GenResourceSpec(target string) {
 	}
 	data["JavaResourceName"] = javaResource.Name
 	templatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceSpecTemplate)
-	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "api", "specs", strings.ToLower(j.Config.CloudType), strings.ToLower(javaResource.Name)+"Spec.java")
+	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "api", "specs", strings.ToLower(j.Config.CloudType), javaResource.Name+"Spec.java")
 	params := make(map[string]interface{})
 	params["CloudName"] = j.Config.CloudType
 	GenAndSaveCode(templatePath, codePath, data, params)
@@ -238,8 +238,10 @@ func (j *JavaSDKGenerator) genMemberVariable(name string, t reflect.Type, jsonIn
 			valueType = valueType.Elem()
 		}
 		return NewMemberVariable(name, valueType.Name(), jsonInfo, Map)
-	default:
+	case reflect.Struct:
 		return NewMemberVariable(name, t.Name(), jsonInfo, Basic)
+	default:
+		return NewMemberVariable(name, t.Kind().String(), jsonInfo, Basic)
 	}
 	return nil
 }

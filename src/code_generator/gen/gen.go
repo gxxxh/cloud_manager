@@ -67,11 +67,7 @@ func GenerateTemplate(templateText string, templateData interface{}, params map[
 			case Map:
 				return fmt.Sprintf("HashMap<String, %s>", javaTypeName)
 			}
-			switch typeName {
-			case "Time":
-				return "Date"
-			}
-			return typeName
+			return utils.TypeConvert(typeName)
 		},
 		"Date": func() string {
 			now := time.Now()

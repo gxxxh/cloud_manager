@@ -9,6 +9,8 @@ func TypeConvert(typeName string) string {
 		return "Boolean"
 	case "int", "int8", "int16", "int32", "int64", "uint", "uint8", "uint16", "uint32", "uint64":
 		return "Integer"
+	case "Time":
+		return "Date"
 	default:
 		return typeName
 

@@ -7,7 +7,7 @@
 {{GetTab $preDepth}}public class {{.ClassName}} {
 {{ range .MemberVariables }}
 {{GetTab $depth}}@JsonProperty("{{.JsonName}}")
-{{GetTab $depth}}protected {{GenJavaType .TypeName .MemberKind}} {{LowerFirst .Name}}
+{{GetTab $depth}}protected {{GenJavaType .TypeName .MemberKind}} {{LowerFirst .Name}}_;
 {{end}}
 
 {{GetTab $depth}}public {{.ClassName}}(){
@@ -15,11 +15,11 @@
 {{GetTab $depth}}}
     {{- range .MemberVariables}}
 {{GetTab $depth}}public {{GenJavaType .TypeName .MemberKind}} get{{.Name}}(){
-{{GetTab $depth}}    return {{LowerFirst .Name}};
+{{GetTab $depth}}    return {{LowerFirst .Name}}_;
 {{GetTab $depth}}}
 
-{{GetTab $depth}}public void set{{.Name}}({{GenJavaType .TypeName .MemberKind}} {{LowerFirst .Name}}){
-{{GetTab $depth}}    this.{{LowerFirst .Name}} = {{LowerFirst .Name}};
+{{GetTab $depth}}public void set{{.Name}}_({{GenJavaType .TypeName .MemberKind}} {{LowerFirst .Name}}_){
+{{GetTab $depth}}    this.{{LowerFirst .Name}}_ = {{LowerFirst .Name}}_;
 {{GetTab $depth}}}
     {{ end }}
 

@@ -43,5 +43,9 @@ func TestGenAll(t *testing.T) {
 	configPath := "E:\\gopath\\src\\multicloud_service\\test\\code_generator\\test_config.json"
 	config := gen.LoadCloudConfig(configPath)
 	java_generator := gen.NewJavaSDKGenerator(config)
-	java_generator.GenAll("ComputeV2Servers")
+	//java_generator.GenAll("ComputeV2Servers")
+	java_generator.GenAll("ImageserviceV2Images")
+	java_generator.GenAll("BlockstorageV3Snapshots")
+	java_generator.GenAll("NetworkingV2Networks")
+	java_generator.GenAll("NetworkingV2ExtensionsLayer3Routers")
 }

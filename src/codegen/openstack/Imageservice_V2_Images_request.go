@@ -112,10 +112,11 @@ func (oc *OpenstackClient) GetImageserviceV2Images(req *GetImageserviceV2ImagesR
 
 }
 
+// 手动添加
 type UpdateImageserviceV2ImagesProperty struct {
 	Op    images.UpdateOp
 	Name  string
-	Value interface{}
+	Value string
 }
 
 func (r UpdateImageserviceV2ImagesProperty) ToImagePatchMap() map[string]interface{} {

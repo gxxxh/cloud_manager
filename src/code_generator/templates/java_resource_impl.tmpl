@@ -26,7 +26,7 @@ public class {{.Name}}Impl extends AbstractImpl<{{.Name}}, {{.Name}}Spec> {
         super(client, kind);
     }
 
-    {{- range .MemberVariables}}
+    {{range .MemberVariables}}
     {{- $ActionName := LowerFirst .Name -}}
     public boolean {{$ActionName}}(String name, Lifecycle.{{.Name}} {{$ActionName}}, SecretRef secretRef) throws Exception{
         Pattern pattern = Pattern.compile(RegExpUtils.NAME_PATTERN);
