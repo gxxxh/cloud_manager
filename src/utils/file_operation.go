@@ -55,10 +55,32 @@ func JoinName(packagePath, packageName, split string) string {
 	return name
 }
 
+// 递归创建多级目录
+func CreateMultiDir(dirPath string) error {
+	pathExists, err := PathExists(dirPath)
+	if err != nil {
+		return err
+	}
+	if !pathExists {
+		err := os.MkdirAll(dirPath, os.ModePerm)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+// this path must be a file instead of directory
 func Save(data []byte, path string) {
+	dirPath := filepath.Dir(path)
+	err := CreateMultiDir(dirPath)
+	if err != nil {
+		log.Println("create dir failed, error info: ", err)
+	}
+
 	file, err := os.Create(path)
 	if err != nil {
-		log.Fatalln("Create Code File  error, ", err)
+		log.Fatalln("Open Code File  error, ", err)
 	}
 	defer func(file *os.File) {
 		err := file.Close()
@@ -71,6 +93,7 @@ func Save(data []byte, path string) {
 		log.Fatalln("Write code to file error, ", err)
 	}
 }
+
 func CreateDirByPackagePath(basePath, packagePath, packageName string) string {
 	dirs := strings.Split(packagePath, "/")
 	flag := false

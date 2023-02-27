@@ -7,10 +7,11 @@ import (
 )
 
 const (
-	JSON_INCLOUDE_ANNOTATION    = "@JsonInclude(JsonInclude.Include.NON_NULL)"
-	JSON_DESERIALIZE_ANNOTATION = "@JsonDeserialize(using = com.fasterxml.jackson.databind.JsonDeserializer.None.class)"
-	JSON_ROOT_NAME_ANNOTATION   = "@JsonRootName(\"%s\")"
-	JSON_PROPERTY_ANNOTATION    = "@JsonProperty(\"%s\")"
+	JSON_INCLOUDE_ANNOTATION          = "@JsonInclude(JsonInclude.Include.NON_NULL)"
+	JSON_DESERIALIZE_ANNOTATION       = "@JsonDeserialize(using = com.fasterxml.jackson.databind.JsonDeserializer.None.class)"
+	JSON_IGNORE_Properties_ANNOTATION = "@JsonIgnoreProperties(ignoreUnknown = true)"
+	JSON_ROOT_NAME_ANNOTATION         = "@JsonRootName(\"%s\")"
+	JSON_PROPERTY_ANNOTATION          = "@JsonProperty(\"%s\")"
 )
 
 // 用于描述一个java资源，比如OpenstackServer
@@ -46,6 +47,7 @@ func NewJavaClass(name, jsonRootName string, depth int) *JavaClass {
 	}
 	jc.Annotations = append(jc.Annotations, JSON_INCLOUDE_ANNOTATION)
 	jc.Annotations = append(jc.Annotations, JSON_DESERIALIZE_ANNOTATION)
+	jc.Annotations = append(jc.Annotations, JSON_IGNORE_Properties_ANNOTATION)
 	if jsonRootName != "" {
 		jc.Annotations = append(jc.Annotations, fmt.Sprintf(JSON_ROOT_NAME_ANNOTATION, jsonRootName))
 	} else {
@@ -60,6 +62,7 @@ const (
 	Basic MemberKind = iota //基础类型和自定义类型，不需要翻译
 	Array
 	Map
+	Time
 )
 
 // 若为map,保存value的类型，默认key为string
@@ -90,7 +93,8 @@ func NewMemberVariable(name, typename, jsonName string, memberKind MemberKind) *
 func (jc *JavaClass) Add(mv *MemberVariable, mc *JavaClass) {
 	if mv.TypeName == "" {
 		log.Printf("member %v type is interface, deleted\n", mv.Name)
-		return
+		mv.TypeName = "Object"
+		//return
 	}
 	if mv != nil {
 		jc.MemberVariables = append(jc.MemberVariables, mv)

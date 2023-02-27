@@ -6,11 +6,22 @@ import (
 	"os"
 )
 
+const (
+	JavaResourceClassTemplate           = "java_resource_class.tmpl"
+	JavaResourceDomainHeaderTemplate    = "java_resource_domain_header.tmpl"
+	JavaResourceLifecycleHeaderTemplate = "java_resource_lifecycle_header.tmpl"
+	JavaResourceSpecTemplate            = "java_resource_spec.tmpl"
+	JavaResourceImalTemplate            = "java_resource_impl.tmpl"
+)
+
+// 递归生成Class
+const JavaClassTemplate = "java_class.tmpl"
+
 type CloudConfig struct {
 	CloudType       string            `json:"CloudType"`
 	RegistryConfigs []*RegistryConfig `json:"RegistryConfigs"`
 	APICodeConfigs  []*APICodeConfig  `json:"APICodeConfigs"`
-	JavaCodeConfig  *JavaCodeConfig   `json:"JavaCodeConfig"`
+	JavaCodeConfig  CodeGenConfig     `json:"JavaCodeConfig"`
 }
 
 type RegistryConfig struct {
@@ -29,15 +40,6 @@ type APICodeConfig struct {
 type CodeGenConfig struct {
 	TemplatePath string `json:"TemplatePath"`
 	CodePath     string `json:"CodePath"`
-}
-
-type JavaCodeConfig struct {
-	Class           CodeGenConfig `json:"Class"`
-	Domain          CodeGenConfig `json:"Domain"`
-	Impl            CodeGenConfig `json:"Impl"`
-	LifecycleHeader CodeGenConfig `json:"LifecycleHeader"`
-	LifecycleClass  CodeGenConfig `json:"LifecycleClass"`
-	Spec            CodeGenConfig `json:"Spec"`
 }
 
 func LoadCloudConfig(configPath string) *CloudConfig {

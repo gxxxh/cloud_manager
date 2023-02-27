@@ -45,29 +45,7 @@
     }
   ],
   "JavaCodeConfig": {
-    "Class": {
-      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\java_resource_class.tmpl",
-      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
-    },
-    "Domain": {
-      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\java_resource_domain.tmpl",
-      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
-    },
-    "Impl": {
-      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\java_resource_impl.tmpl",
-      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
-    },
-    "LifecycleHeader": {
-      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\java_resource_lifecycle_header.tmpl",
-      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
-    },
-    "LifecycleClass": {
-      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\java_resource_lifecycle_class.tmpl",
-      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
-    },
-    "Spec": {
-      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\java_resource_spec.tmpl",
-      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
-    }
+    "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\",
+    "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
   }
 }

@@ -1,7 +1,6 @@
 package gen
 
 import (
-	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	multicloud_service "github.com/kube-stack/multicloud_service/src/analyzer"
 	"github.com/kube-stack/multicloud_service/src/codegen/openstack"
@@ -9,6 +8,7 @@ import (
 	"log"
 	"path/filepath"
 	"reflect"
+	"strings"
 )
 
 var TypeMap = map[string]string{
@@ -42,6 +42,35 @@ func NewJavaSDKGenerator(config *CloudConfig) *JavaSDKGenerator {
 	return javaSDKGenerator
 }
 
+func (j *JavaSDKGenerator) getDomain(target string) *JavaClass {
+	for methodName, method := range j.CloudAPIAnalyzer.MethodMap {
+		actionName, cloudResourceName, _ := utils.ParseRequestName(methodName)
+		methodType := method.Type
+		//思路；get方法（GetComputeV2Servers） → 返回类型（GetComputeV2ServersResponse）
+		// → result类型（GetResult） → extract方法（serverResult.Extract） → server类型
+		if actionName == "Get" && cloudResourceName == target {
+			log.Println(methodType.Name())
+			returnType := methodType.Out(0)
+			for returnType.Kind() == reflect.Ptr {
+				returnType = returnType.Elem()
+			}
+			for i := 0; i < returnType.NumField(); i++ {
+				structField := returnType.Field(i)
+				if strings.Contains(structField.Name, "Result") {
+					getResultType := structField.Type
+					for k := 0; k < getResultType.NumMethod(); k++ {
+						if getResultType.Method(k).Name == "Extract" && getResultType.Method(k).Type.NumOut() > 0 {
+							domainType := getResultType.Method(k).Type.Out(0)
+							return j.genJavaClass(domainType, cloudResourceName, 1)
+						}
+					}
+				}
+			}
+		}
+	}
+	return nil
+}
+
 func (j *JavaSDKGenerator) initJavaResources() {
 	j.JavaResources = make(map[string]*JavaResource)
 	for requestName, requestType := range j.CloudAPIAnalyzer.RequestMap {
@@ -49,9 +78,6 @@ func (j *JavaSDKGenerator) initJavaResources() {
 		//todo 删除不支持的操作
 		if actionName == "List" {
 			continue
-		}
-		if actionName == "Create" && cloudResourceName == "ComputeV2Servers" {
-			fmt.Println("break")
 		}
 		if _, ok := j.JavaResources[cloudResourceName]; !ok {
 
@@ -86,8 +112,9 @@ func (j *JavaSDKGenerator) GenResourceClass(target string) {
 		log.Panicf("no resource for %v in %v\n", target, j.Config.CloudType)
 	}
 	data["JavaResourceName"] = javaResource.Name
-	codePath := filepath.Join(j.Config.JavaCodeConfig.Class.CodePath, javaResource.Name+".java")
-	GenAndSaveCode(j.Config.JavaCodeConfig.Class.TemplatePath, codePath, data, nil)
+	templatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceClassTemplate)
+	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "api", "models", strings.ToLower(j.Config.CloudType), javaResource.Name+".java")
+	GenAndSaveCode(templatePath, codePath, data, nil)
 
 }
 
@@ -99,12 +126,41 @@ func (j *JavaSDKGenerator) GenResourceSpec(target string) {
 		log.Panicf("no resource for %v in %v\n", target, j.Config.CloudType)
 	}
 	data["JavaResourceName"] = javaResource.Name
-	codePath := filepath.Join(j.Config.JavaCodeConfig.Spec.CodePath, javaResource.Name+"Spec.java")
-	GenAndSaveCode(j.Config.JavaCodeConfig.Spec.TemplatePath, codePath, data, nil)
+	templatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceSpecTemplate)
+	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "api", "specs", strings.ToLower(j.Config.CloudType), strings.ToLower(javaResource.Name)+"Spec.java")
+	GenAndSaveCode(templatePath, codePath, data, nil)
+
 }
 
-func (j *JavaSDKGenerator) GenResourceDomain() {
+func (j *JavaSDKGenerator) GenResourceDomain(target string) {
 
+	javaResource, ok := j.JavaResources[target]
+	if !ok {
+		log.Panicf("no resource for %v in %v\n", target, j.Config.CloudType)
+	}
+	//generate header
+	headerData := utils.Struct2Map(javaResource)
+	params := make(map[string]interface{})
+	params["CloudName"] = j.Config.CloudType
+	headerTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceDomainHeaderTemplate)
+	headerCode, err := GenCode(headerTemplatePath, headerData, params)
+	if err != nil {
+		log.Panicf("Gen Lifecycle Header err, %v\n", err)
+	}
+	//generate lifecycle class
+	domainClass := j.getDomain(target)
+	domainClass.ClassName = "Domain"
+
+	classData := utils.Struct2Map(domainClass)
+	classTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaClassTemplate)
+	classCode, err := GenCode(classTemplatePath, classData, nil)
+	if err != nil {
+		log.Panicf("Gen Lifecycle Class err, %v\n", err)
+	}
+	//save lifecycle code
+	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "api", "specs", strings.ToLower(j.Config.CloudType), strings.ToLower(javaResource.Name), "Domain.java")
+	content := append(headerCode, classCode...)
+	utils.Save(content, codePath)
 }
 
 func (j *JavaSDKGenerator) GenResourceLifecycle(target string) {
@@ -116,18 +172,20 @@ func (j *JavaSDKGenerator) GenResourceLifecycle(target string) {
 	headerData := utils.Struct2Map(javaResource)
 	params := make(map[string]interface{})
 	params["CloudName"] = j.Config.CloudType
-	headerCode, err := GenCode(j.Config.JavaCodeConfig.LifecycleHeader.TemplatePath, headerData, params)
+	headerTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceDomainHeaderTemplate)
+	headerCode, err := GenCode(headerTemplatePath, headerData, params)
 	if err != nil {
 		log.Panicf("Gen Lifecycle Header err, %v\n", err)
 	}
 	//generate lifecycle class
 	classData := utils.Struct2Map(javaResource.JavaClass)
-	classCode, err := GenCode(j.Config.JavaCodeConfig.LifecycleClass.TemplatePath, classData, nil)
+	classTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaClassTemplate)
+	classCode, err := GenCode(classTemplatePath, classData, nil)
 	if err != nil {
 		log.Panicf("Gen Lifecycle Class err, %v\n", err)
 	}
 	//save lifecycle code
-	codePath := filepath.Join(j.Config.JavaCodeConfig.Spec.CodePath, "Lifecycle.java")
+	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "api", "specs", strings.ToLower(j.Config.CloudType), strings.ToLower(javaResource.Name), "Lifecycle.java")
 	content := append(headerCode, classCode...)
 	utils.Save(content, codePath)
 }
@@ -162,6 +220,10 @@ func (j *JavaSDKGenerator) genMemberVariable(name string, t reflect.Type, jsonIn
 func (j *JavaSDKGenerator) genJavaClass(t reflect.Type, jsonInfo string, depth int) *JavaClass {
 	for t.Kind() == reflect.Ptr {
 		t = t.Elem()
+	}
+
+	if t.Name() == "Time" {
+		return nil
 	}
 	switch t.Kind() {
 	case reflect.Struct:
@@ -202,7 +264,4 @@ func (j *JavaSDKGenerator) genMapClass(t reflect.Type, jsonInfo string, depth in
 	//todo key一般为string，略过
 	valueType := t.Elem()
 	return j.genJavaClass(valueType, jsonInfo, depth)
-}
-func (j *JavaSDKGenerator) genGetterSetter() {
-
 }

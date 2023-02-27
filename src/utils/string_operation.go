@@ -47,23 +47,25 @@ func GetResourceNameFromRequestName(requestName string) string {
 
 // CreateComputeV2ServersRequest
 // 返回actionName="Create", resourceName = "server", cloudResourceName="ComputeV2Servers"
-func ParseRequestName(requestName string) (actionName, cloudResourceName, resourceName string) {
-	requestName = requestName[0 : len(requestName)-len("Request")]
+func ParseRequestName(name string) (actionName, cloudResourceName, resourceName string) {
+	if strings.HasSuffix(name, "Request") {
+		name = name[0 : len(name)-len("Request")]
+	}
 	pathPrefixes := [...]string{"Baremetal", "Baremetalintrospection", "Blockstorage", "Cdn", "Clustering", "Common", "Compute", "Container", "Containerinfra", "Db", "Dns", "Identity", "Imageservice", "Keymanager", "Loadbalancer", "Messaging", "Networking", "Objectstorage", "Orchestration", "Placement", "Sharedfilesystems", "Testing", "Utils", "Workflow"}
 	for _, pathPrefix := range pathPrefixes {
-		if pos := strings.Index(requestName, pathPrefix); pos != -1 {
-			actionName = requestName[:pos]
-			cloudResourceName = requestName[pos:]
+		if pos := strings.Index(name, pathPrefix); pos != -1 {
+			actionName = name[:pos]
+			cloudResourceName = name[pos:]
 			break
 		}
 	}
 	j := 0
-	for i := 0; i < len(requestName); i++ {
-		if unicode.IsUpper(rune(requestName[i])) {
+	for i := 0; i < len(name); i++ {
+		if unicode.IsUpper(rune(name[i])) {
 			j = i
 		}
 	}
-	resourceName = strings.ToLower(requestName[j : len(requestName)-1])
+	resourceName = strings.ToLower(name[j : len(name)-1])
 	return
 }
 
