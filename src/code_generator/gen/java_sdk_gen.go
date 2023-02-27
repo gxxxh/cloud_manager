@@ -114,7 +114,9 @@ func (j *JavaSDKGenerator) GenResourceClass(target string) {
 	data["JavaResourceName"] = javaResource.Name
 	templatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceClassTemplate)
 	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "api", "models", strings.ToLower(j.Config.CloudType), javaResource.Name+".java")
-	GenAndSaveCode(templatePath, codePath, data, nil)
+	params := make(map[string]interface{})
+	params["CloudName"] = j.Config.CloudType
+	GenAndSaveCode(templatePath, codePath, data, params)
 
 }
 
@@ -128,8 +130,17 @@ func (j *JavaSDKGenerator) GenResourceSpec(target string) {
 	data["JavaResourceName"] = javaResource.Name
 	templatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceSpecTemplate)
 	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "api", "specs", strings.ToLower(j.Config.CloudType), strings.ToLower(javaResource.Name)+"Spec.java")
-	GenAndSaveCode(templatePath, codePath, data, nil)
+	params := make(map[string]interface{})
+	params["CloudName"] = j.Config.CloudType
+	GenAndSaveCode(templatePath, codePath, data, params)
 
+}
+
+func (j *JavaSDKGenerator) GenAll(target string) {
+	j.GenResourceClass(target)
+	j.GenResourceSpec(target)
+	j.GenResourceLifecycle(target)
+	j.GenResourceDomain(target)
 }
 
 func (j *JavaSDKGenerator) GenResourceDomain(target string) {
@@ -153,7 +164,7 @@ func (j *JavaSDKGenerator) GenResourceDomain(target string) {
 
 	classData := utils.Struct2Map(domainClass)
 	classTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaClassTemplate)
-	classCode, err := GenCode(classTemplatePath, classData, nil)
+	classCode, err := GenCode(classTemplatePath, classData, params)
 	if err != nil {
 		log.Panicf("Gen Lifecycle Class err, %v\n", err)
 	}
@@ -180,7 +191,7 @@ func (j *JavaSDKGenerator) GenResourceLifecycle(target string) {
 	//generate lifecycle class
 	classData := utils.Struct2Map(javaResource.JavaClass)
 	classTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaClassTemplate)
-	classCode, err := GenCode(classTemplatePath, classData, nil)
+	classCode, err := GenCode(classTemplatePath, classData, params)
 	if err != nil {
 		log.Panicf("Gen Lifecycle Class err, %v\n", err)
 	}

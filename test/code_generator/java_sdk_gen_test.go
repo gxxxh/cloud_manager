@@ -32,3 +32,10 @@ func TestGenResourceDomain(t *testing.T) {
 	java_generator := gen.NewJavaSDKGenerator(config)
 	java_generator.GenResourceDomain("ComputeV2Servers")
 }
+
+func TestGenAll(t *testing.T) {
+	configPath := "E:\\gopath\\src\\multicloud_service\\test\\code_generator\\test_config.json"
+	config := gen.LoadCloudConfig(configPath)
+	java_generator := gen.NewJavaSDKGenerator(config)
+	java_generator.GenAll("ComputeV2Servers")
+}

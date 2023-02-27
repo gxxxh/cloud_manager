@@ -1,5 +1,9 @@
 {{- $CloudName := Param "CloudName" -}}
-package io.github.kubestack.client.api.specs.{{ToLower $CloudName}}.{{ToLower .Name}};p
+/**
+* Code Generator by multicloud_service
+*/
+
+package io.github.kubestack.client.api.specs.{{ToLower $CloudName}}.{{ToLower .Name}};
 
 import java.util.Date;
 import java.util.HashMap;
@@ -12,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
- * @Description OpenstackServer Json
+ * @Description {{.Name}} Json
  * @Date {{Date}}
  * @Author guohao
  */

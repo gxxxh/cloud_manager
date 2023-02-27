@@ -1,7 +1,8 @@
+{{- $CloudName := Param "CloudName" -}}
 /**
 * Code Generator by multicloud_service
 */
-package io.github.kubestack.client.api.specs.openstack;
+package io.github.kubestack.client.api.specs.{{ToLower $CloudName}};
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -9,8 +10,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import io.fabric8.kubernetes.api.model.Status;
 import io.github.kubestack.client.api.specs.KubeStackSpec;
-import io.github.kubestack.client.api.specs.openstack.{{ToLower .JavaResourceName}}.Domain;
-import io.github.kubestack.client.api.specs.openstack.{{ToLower .JavaResourceName}}.Lifecycle;
+import io.github.kubestack.client.api.specs.{{ToLower $CloudName}}.{{ToLower .JavaResourceName}}.Domain;
+import io.github.kubestack.client.api.specs.{{ToLower $CloudName}}.{{ToLower .JavaResourceName}}.Lifecycle;
 
 /**
  * @Description {{.JavaResourceName}} Json

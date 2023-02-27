@@ -1,16 +1,17 @@
+{{- $CloudName := Param "CloudName" -}}
 /**
 * Code Generator by multicloud_service
 */
-package io.github.kubestack.client.api.models.openstack;
+package io.github.kubestack.client.api.models.{{ToLower $CloudName}};
 
-import io.github.kubestack.client.api.specs.openstack.{{.JavaResourceName}}Spec;
+import io.github.kubestack.client.api.specs.{{ToLower $CloudName}}.{{.JavaResourceName}}Spec;
 
 /**
- * @Description openstack Ojbect definition
+ * @Description {{$CloudName}} Ojbect definition
  * @Date {{Date}}
  * @Author guohao
  **/
-public class {{.JavaResourceName}} extends OpenstackModel {
+public class {{.JavaResourceName}} extends {{$CloudName}}Model {
     protected {{.JavaResourceName}}Spec spec;
 
     public {{.JavaResourceName}}() {}

@@ -1,4 +1,8 @@
 {{- $CloudName := Param "CloudName" -}}
+/**
+* Code Generator by multicloud_service
+*/
+
 package io.github.kubestack.client.api.specs.{{ToLower $CloudName}}.{{ToLower .Name}};
 
 import java.util.HashMap;
@@ -15,7 +19,7 @@ import io.github.kubestack.core.annotations.FunctionDescriber;
 import io.github.kubestack.core.utils.AnnotationUtils;
 
 /**
- * @Description openstack function support
+ * @Description {{$CloudName}} function support
  * @Date {{Date}}
  * @Author guohao
  **/
