@@ -42,35 +42,6 @@ func NewJavaSDKGenerator(config *CloudConfig) *JavaSDKGenerator {
 	return javaSDKGenerator
 }
 
-func (j *JavaSDKGenerator) getDomain(target string) *JavaClass {
-	for methodName, method := range j.CloudAPIAnalyzer.MethodMap {
-		actionName, cloudResourceName, _ := utils.ParseRequestName(methodName)
-		methodType := method.Type
-		//思路；get方法（GetComputeV2Servers） → 返回类型（GetComputeV2ServersResponse）
-		// → result类型（GetResult） → extract方法（serverResult.Extract） → server类型
-		if actionName == "Get" && cloudResourceName == target {
-			log.Println(methodType.Name())
-			returnType := methodType.Out(0)
-			for returnType.Kind() == reflect.Ptr {
-				returnType = returnType.Elem()
-			}
-			for i := 0; i < returnType.NumField(); i++ {
-				structField := returnType.Field(i)
-				if strings.Contains(structField.Name, "Result") {
-					getResultType := structField.Type
-					for k := 0; k < getResultType.NumMethod(); k++ {
-						if getResultType.Method(k).Name == "Extract" && getResultType.Method(k).Type.NumOut() > 0 {
-							domainType := getResultType.Method(k).Type.Out(0)
-							return j.genJavaClass(domainType, cloudResourceName, 1)
-						}
-					}
-				}
-			}
-		}
-	}
-	return nil
-}
-
 func (j *JavaSDKGenerator) initJavaResources() {
 	j.JavaResources = make(map[string]*JavaResource)
 	for requestName, requestType := range j.CloudAPIAnalyzer.RequestMap {
@@ -104,6 +75,43 @@ func (j *JavaSDKGenerator) initJavaResources() {
 	}
 }
 
+func (j *JavaSDKGenerator) getDomain(target string) *JavaClass {
+	for methodName, method := range j.CloudAPIAnalyzer.MethodMap {
+		actionName, cloudResourceName, _ := utils.ParseRequestName(methodName)
+		methodType := method.Type
+		//思路；get方法（GetComputeV2Servers） → 返回类型（GetComputeV2ServersResponse）
+		// → result类型（GetResult） → extract方法（serverResult.Extract） → server类型
+		if actionName == "Get" && cloudResourceName == target {
+			log.Println(methodType.Name())
+			returnType := methodType.Out(0)
+			for returnType.Kind() == reflect.Ptr {
+				returnType = returnType.Elem()
+			}
+			for i := 0; i < returnType.NumField(); i++ {
+				structField := returnType.Field(i)
+				if strings.Contains(structField.Name, "Result") {
+					getResultType := structField.Type
+					for k := 0; k < getResultType.NumMethod(); k++ {
+						if getResultType.Method(k).Name == "Extract" && getResultType.Method(k).Type.NumOut() > 0 {
+							domainType := getResultType.Method(k).Type.Out(0)
+							return j.genJavaClass(domainType, cloudResourceName, 1)
+						}
+					}
+				}
+			}
+		}
+	}
+	return nil
+}
+
+func (j *JavaSDKGenerator) GenAll(target string) {
+	j.GenResourceClass(target)
+	j.GenResourceSpec(target)
+	j.GenResourceLifecycle(target)
+	j.GenResourceDomain(target)
+	j.GenResourceImpl(target)
+}
+
 // class code → java_resource_class.tmpl
 func (j *JavaSDKGenerator) GenResourceClass(target string) {
 	data := make(map[string]interface{})
@@ -134,13 +142,6 @@ func (j *JavaSDKGenerator) GenResourceSpec(target string) {
 	params["CloudName"] = j.Config.CloudType
 	GenAndSaveCode(templatePath, codePath, data, params)
 
-}
-
-func (j *JavaSDKGenerator) GenAll(target string) {
-	j.GenResourceClass(target)
-	j.GenResourceSpec(target)
-	j.GenResourceLifecycle(target)
-	j.GenResourceDomain(target)
 }
 
 func (j *JavaSDKGenerator) GenResourceDomain(target string) {
@@ -201,8 +202,23 @@ func (j *JavaSDKGenerator) GenResourceLifecycle(target string) {
 	utils.Save(content, codePath)
 }
 
-func (j *JavaSDKGenerator) GenResourceImpl() {
-
+func (j *JavaSDKGenerator) GenResourceImpl(target string) {
+	javaResource, ok := j.JavaResources[target]
+	if !ok {
+		log.Panicf("no resource for %v in %v\n", target, j.Config.CloudType)
+	}
+	data := utils.Struct2Map(javaResource.JavaClass)
+	data["Name"] = javaResource.Name
+	data["ResourceName"] = javaResource.ResourceName
+	params := make(map[string]interface{})
+	params["CloudName"] = j.Config.CloudType
+	implTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceImalTemplate)
+	code, err := GenCode(implTemplatePath, data, params)
+	if err != nil {
+		log.Panicf("Gen Lifecycle Class err, %v\n", err)
+	}
+	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "impl", strings.ToLower(j.Config.CloudType), javaResource.Name+"Impl.java")
+	utils.Save(code, codePath)
 }
 
 func (j *JavaSDKGenerator) genMemberVariable(name string, t reflect.Type, jsonInfo string) *MemberVariable {
