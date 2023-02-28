@@ -10,6 +10,10 @@ import (
 	"strings"
 )
 
+/**
+通过静态分析的方式分析openstack go sdk，抽取其中的资源信息
+*/
+
 // using to analyze openstack package staticly
 // info was saved to openstack_resource_info
 type ModuleAnalyzer struct {
@@ -53,7 +57,7 @@ func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackResourceInfo, error
 		if resourceInfo == nil {
 			continue
 		}
-
+		//如果是List方法，需要调用pageExtract函数
 		if pageExtractInfos := packageAnalyzer.AnalyseResultFile(); len(pageExtractInfos) != 0 {
 			ma.MapPageExtractInfo2Action(pkg.PkgPath, pkg.Name, pageExtractInfos, resourceInfo.ActionInfos)
 		}
@@ -62,7 +66,53 @@ func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackResourceInfo, error
 		resourceInfo.GenResultImportPaths()
 		resourceInfos = append(resourceInfos, resourceInfo)
 	}
+	resourceInfos = ma.mergeResourceInfos(resourceInfos)
 	return resourceInfos, err
+}
+
+// compute server的部分操作被实现在extentsion中，需要合并
+func (ma *ModuleAnalyzer) mergeResourceInfos(resourceInfos []*OpenstackResourceInfo) []*OpenstackResourceInfo {
+	serverResource := func(name string) *OpenstackResourceInfo {
+		for i := 0; i < len(resourceInfos); i++ {
+			if resourceInfos[i].ResourceName == name {
+				return resourceInfos[i]
+			}
+		}
+		return nil
+	}("ComputeV2Servers")
+	if serverResource == nil {
+		return resourceInfos
+	}
+	//包含get/create/delete/list等方法的是资源,不包含这些，且操作中包含id参数的才是可以融合的方法
+	checkServerActions := func(resourceInfo *OpenstackResourceInfo) bool {
+		for _, actionInfo := range resourceInfo.ActionInfos {
+			if strings.Contains(actionInfo.ActionName, "Create") ||
+				strings.Contains(actionInfo.ActionName, "Get") ||
+				strings.Contains(actionInfo.ActionName, "Update") ||
+				strings.Contains(actionInfo.ActionName, "Delete") {
+				return true
+			}
+		}
+
+		return false
+	}
+	newResourceInfos := make([]*OpenstackResourceInfo, 0, len(resourceInfos))
+	for _, resourceInfo := range resourceInfos {
+		if strings.Contains(resourceInfo.ResourceName, "ComputeV2Extensions") && !checkServerActions(resourceInfo) {
+			// 把extension中控制server的action添加到serverResource中
+			serverResource = func(resource1, resource2 *OpenstackResourceInfo) *OpenstackResourceInfo {
+				resource1.ActionInfos = append(resource1.ActionInfos, resource2.ActionInfos...)
+				resource1.RequestImportPaths.Add(resource2.RequestImportPaths)
+				resource1.ResultImportPaths.Add(resource2.ResultImportPaths)
+				return resource1
+			}(serverResource, resourceInfo)
+		} else if resourceInfo.ResourceName != "ComputeV2Servers" {
+			//其他的直接加入新数组
+			newResourceInfos = append(newResourceInfos, resourceInfo)
+		}
+	}
+	newResourceInfos = append(newResourceInfos, serverResource)
+	return newResourceInfos
 }
 
 func (ma *ModuleAnalyzer) MapPageExtractInfo2Action(pkgPath string, pkgName string, pageExtractInfos []*PageExtractInfo, actionInfos []*OpenStackActionInfo) bool {
@@ -171,6 +221,7 @@ func (ma *ModuleAnalyzer) MapPageExtractInfo2Action(pkgPath string, pkgName stri
 	return false
 }
 
+// 分析一个package
 type PackageAnalyzer struct {
 	pkg *packages.Package
 }
@@ -192,6 +243,7 @@ func (pa *PackageAnalyzer) GetASTFile(fileName string) *ast.File {
 	return nil
 }
 
+// 解析函数的参数（Params）/返回值（Results）
 func (pa *PackageAnalyzer) Field2VarInfos(fieldList []*ast.Field) VarInfos {
 	varInfos := NewVarInfos()
 	for _, expr := range fieldList {
@@ -300,6 +352,7 @@ func (pa *PackageAnalyzer) ParseResultExtractInfo(expr ast.Expr) *ResultExtractI
 	return nil
 }
 
+// 分析Result文件
 func (pa *PackageAnalyzer) AnalyseResultFile() []*PageExtractInfo {
 	log.Printf("-----------analyze resultfile:  %s-----------\n", pa.pkg.Name)
 	pageExtractInfos := make([]*PageExtractInfo, 0)
@@ -387,6 +440,7 @@ func (pa *PackageAnalyzer) GetPackage(ty types.Type) *types.Package {
 	}
 }
 
+// 从表达式中获取类型的信息，
 func (pa *PackageAnalyzer) parseExprTypeInfo(expr ast.Expr) (tyName string, packagePath string, ty types.Type) {
 	ty = pa.pkg.TypesInfo.Types[expr].Type
 	//check if  type is interface,

@@ -24,8 +24,12 @@ func (oc *OpenstackClient) CreateComputeV2Servers(req *CreateComputeV2ServersReq
 For users of this pacakge, the only work they need to do is writing a right json of the underlying API, which can be
 find from the document of those cloud SDKs.
 
-## Usage
+## Code Generate
+### Golang SDK
 
+### Java SDK
+
+## Usage
 This abstraction of API only accept json format of input. The support action and corresponding prarmeters can be find
 from the doc of this repository. The detail meaning and correct values of those parameters can be find from those cloud
 providers' document website.
@@ -82,3 +86,8 @@ if err != nil {
 |-----------------------|-----------------------------------------------------------------------------------|----------------|
 | Aliyun                | [alibaba-cloud-sdk-go(\>=1.62.0)](https://github.com/aliyun/alibaba-cloud-sdk-go) | [Aliyun ECS](https://help.aliyun.com/document_detail/25485.html) |
 | Openstack  | [gophercloud](https://github.com/gophercloud/gophercloud)                                                                   |https://docs.openstack.org/zed/api/|
+
+## 下一步计划
+1. 对compute/extentsion中不包含list/get/create等方法的，归类到server方法中
+2. 提供cli代码生成接口
+3. 代码重构，注释添加

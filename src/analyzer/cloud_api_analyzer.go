@@ -8,6 +8,10 @@ import (
 	"strings"
 )
 
+/**
+基于反射的方式，动态的分析client包含的方法，并能解析方法对应的参数。
+*/
+
 // todo, 是针对每个ecs生成一个代码，编译后只能针对该云操作，
 // using to analyze cloudapi by reflect(dynamically)
 type CloudAPIAnalyzer struct {
