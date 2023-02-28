@@ -155,15 +155,17 @@ func (vi *VarInfos) GetImportPaths() utils.Set {
 // list, get, create ...
 type OpenStackActionInfo struct {
 	ActionName        string
+	ActionPackageName string
 	ActionParameters  VarInfos           //TypeName, name
 	ActionReturns     VarInfos           //TypeName, name
 	PageExtractInfo   *PageExtractInfo   //for action start with list
 	ResultExtractInfo *ResultExtractInfo // for action return a result type with an extract method
 }
 
-func NewOpenstackActionInfo(actionName string) *OpenStackActionInfo {
+func NewOpenstackActionInfo(actionName, actionPackageName string) *OpenStackActionInfo {
 	ai := &OpenStackActionInfo{
 		ActionName:        actionName,
+		ActionPackageName: actionPackageName,
 		PageExtractInfo:   nil,
 		ResultExtractInfo: nil,
 	}

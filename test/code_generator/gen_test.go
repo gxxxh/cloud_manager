@@ -40,6 +40,7 @@ func TestGenAliyunRequestRegistry(t *testing.T) {
 	defer filePtr.Close()
 	filePtr.Write(code)
 }
+
 func TestGenOpenstackRequestRegistry(t *testing.T) {
 	client := openstack.OpenstackClient{}
 	analyzer := multicloud_service.NewCloudAPIAnalyzer()
@@ -108,7 +109,7 @@ func TestGenOpenstackCode(t *testing.T) {
 	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute"
 	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\identity\\v3\\catalog"
 	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack"
-	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute\\v2\\servers"
+	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute\\v2\\"
 	ma := multicloud_service.NewModuleAnalyzer()
 	resourceInfos, err := ma.DoAnalyze(dir)
 	if err != nil {
@@ -152,7 +153,8 @@ func TestGenOpenstackResultCode(t *testing.T) {
 	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute\\v2\\extensions\\quotasets"
 	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\clustering\\v1\\profiletypes"
 	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\container\\v1\\capsules"
-	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack"
+	//dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack"
+	dir := "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack\\compute\\v2\\"
 	ma := multicloud_service.NewModuleAnalyzer()
 	resourceInfos, err := ma.DoAnalyze(dir)
 	if err != nil {

@@ -174,3 +174,129 @@ func ExtractGetPasswordComputeV2ServersResponse(response *GetPasswordComputeV2Se
 func ExtractShowConsoleOutputComputeV2ServersResponse(response *ShowConsoleOutputComputeV2ServersResponse)(interface{}, error){
     return response.ShowConsoleOutputResult.Body, response.ShowConsoleOutputResult.Err
 }
+
+
+
+// call result's extract function
+func ExtractEvacuateComputeV2ServersResponse(response *EvacuateComputeV2ServersResponse)(interface{}, error){
+    return response.EvacuateResult.Body, response.EvacuateResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractSuspendComputeV2ServersResponse(response *SuspendComputeV2ServersResponse)(interface{}, error){
+    return response.SuspendResult.Body, response.SuspendResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractResumeComputeV2ServersResponse(response *ResumeComputeV2ServersResponse)(interface{}, error){
+    return response.UnsuspendResult.Body, response.UnsuspendResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractStartComputeV2ServersResponse(response *StartComputeV2ServersResponse)(interface{}, error){
+    return response.StartResult.Body, response.StartResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractStopComputeV2ServersResponse(response *StopComputeV2ServersResponse)(interface{}, error){
+    return response.StopResult.Body, response.StopResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractShelveComputeV2ServersResponse(response *ShelveComputeV2ServersResponse)(interface{}, error){
+    return response.ShelveResult.Body, response.ShelveResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractShelveOffloadComputeV2ServersResponse(response *ShelveOffloadComputeV2ServersResponse)(interface{}, error){
+    return response.ShelveOffloadResult.Body, response.ShelveOffloadResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractUnshelveComputeV2ServersResponse(response *UnshelveComputeV2ServersResponse)(interface{}, error){
+    return response.UnshelveResult.Body, response.UnshelveResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractResetStateComputeV2ServersResponse(response *ResetStateComputeV2ServersResponse)(interface{}, error){
+    return response.ResetResult.Body, response.ResetResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractResetNetworkComputeV2ServersResponse(response *ResetNetworkComputeV2ServersResponse)(interface{}, error){
+    return response.ResetResult.Body, response.ResetResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractRescueComputeV2ServersResponse(response *RescueComputeV2ServersResponse)(interface{}, error){
+    return response.RescueResult.Body, response.RescueResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractUnrescueComputeV2ServersResponse(response *UnrescueComputeV2ServersResponse)(interface{}, error){
+    return response.UnrescueResult.Body, response.UnrescueResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractPauseComputeV2ServersResponse(response *PauseComputeV2ServersResponse)(interface{}, error){
+    return response.PauseResult.Body, response.PauseResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractUnpauseComputeV2ServersResponse(response *UnpauseComputeV2ServersResponse)(interface{}, error){
+    return response.UnpauseResult.Body, response.UnpauseResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractLockComputeV2ServersResponse(response *LockComputeV2ServersResponse)(interface{}, error){
+    return response.LockResult.Body, response.LockResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractUnlockComputeV2ServersResponse(response *UnlockComputeV2ServersResponse)(interface{}, error){
+    return response.UnlockResult.Body, response.UnlockResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractMigrateComputeV2ServersResponse(response *MigrateComputeV2ServersResponse)(interface{}, error){
+    return response.MigrateResult.Body, response.MigrateResult.Err
+}
+
+
+
+// call result's extract function
+func ExtractLiveMigrateComputeV2ServersResponse(response *LiveMigrateComputeV2ServersResponse)(interface{}, error){
+    return response.MigrateResult.Body, response.MigrateResult.Err
+}

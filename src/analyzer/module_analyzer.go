@@ -72,42 +72,44 @@ func (ma *ModuleAnalyzer) DoAnalyze(dir string) ([]*OpenstackResourceInfo, error
 
 // compute server的部分操作被实现在extentsion中，需要合并
 func (ma *ModuleAnalyzer) mergeResourceInfos(resourceInfos []*OpenstackResourceInfo) []*OpenstackResourceInfo {
-	serverResource := func(name string) *OpenstackResourceInfo {
+	serverResourceName := "ComputeV2Servers"
+	extensionNames := []string{"ComputeV2ExtensionsEvacuate", "ComputeV2ExtensionsSuspendresume", "ComputeV2ExtensionsStartstop", "ComputeV2ExtensionsShelveunshelve", "ComputeV2ExtensionsResetstate", "ComputeV2ExtensionsResetnetwork", "ComputeV2ExtensionsRescueunrescue", "ComputeV2ExtensionsPauseunpause", "ComputeV2ExtensionsLockunlock", "ComputeV2ExtensionsMigrate"}
+	getResourceByName := func(name string) *OpenstackResourceInfo {
 		for i := 0; i < len(resourceInfos); i++ {
 			if resourceInfos[i].ResourceName == name {
 				return resourceInfos[i]
 			}
 		}
 		return nil
-	}("ComputeV2Servers")
+	}
+	serverResource := getResourceByName(serverResourceName)
 	if serverResource == nil {
 		return resourceInfos
 	}
-	//包含get/create/delete/list等方法的是资源,不包含这些，且操作中包含id参数的才是可以融合的方法
-	checkServerActions := func(resourceInfo *OpenstackResourceInfo) bool {
-		for _, actionInfo := range resourceInfo.ActionInfos {
-			if strings.Contains(actionInfo.ActionName, "Create") ||
-				strings.Contains(actionInfo.ActionName, "Get") ||
-				strings.Contains(actionInfo.ActionName, "Update") ||
-				strings.Contains(actionInfo.ActionName, "Delete") {
+	for _, extensionName := range extensionNames {
+		extensionResource := getResourceByName(extensionName)
+		if extensionResource == nil {
+			log.Println("Warning, no resource ", extensionName)
+			continue
+		}
+		serverResource = func(resource1, resource2 *OpenstackResourceInfo) *OpenstackResourceInfo {
+			resource1.ActionInfos = append(resource1.ActionInfos, resource2.ActionInfos...)
+			resource1.RequestImportPaths.Add(resource2.RequestImportPaths)
+			resource1.ResultImportPaths.Add(resource2.ResultImportPaths)
+			return resource1
+		}(serverResource, extensionResource)
+	}
+	isExisted := func(names []string, name string) bool {
+		for i := 0; i < len(names); i++ {
+			if name == names[i] {
 				return true
 			}
 		}
-
 		return false
 	}
 	newResourceInfos := make([]*OpenstackResourceInfo, 0, len(resourceInfos))
 	for _, resourceInfo := range resourceInfos {
-		if strings.Contains(resourceInfo.ResourceName, "ComputeV2Extensions") && !checkServerActions(resourceInfo) {
-			// 把extension中控制server的action添加到serverResource中
-			serverResource = func(resource1, resource2 *OpenstackResourceInfo) *OpenstackResourceInfo {
-				resource1.ActionInfos = append(resource1.ActionInfos, resource2.ActionInfos...)
-				resource1.RequestImportPaths.Add(resource2.RequestImportPaths)
-				resource1.ResultImportPaths.Add(resource2.ResultImportPaths)
-				return resource1
-			}(serverResource, resourceInfo)
-		} else if resourceInfo.ResourceName != "ComputeV2Servers" {
-			//其他的直接加入新数组
+		if resourceInfo.ResourceName != serverResourceName && !isExisted(extensionNames, resourceInfo.ResourceName) {
 			newResourceInfos = append(newResourceInfos, resourceInfo)
 		}
 	}
@@ -266,7 +268,7 @@ func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackResourceInfo {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
 			if pa.checkValidFunc(fn, "gophercloud.ServiceClient") {
 				log.Println("******************handle function***************** :", fn.Name)
-				actionInfo := NewOpenstackActionInfo(fn.Name.String())
+				actionInfo := NewOpenstackActionInfo(fn.Name.String(), pa.pkg.Name)
 				paramsVarInfos := pa.Field2VarInfos(fn.Type.Params.List)
 				//no need to import
 				//paramsImportPaths.Delete("github.com/gophercloud/gophercloud")

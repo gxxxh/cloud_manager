@@ -38,7 +38,7 @@ func New{{.ActionName}}{{$ResourceName}}Response({{- range .ActionReturns}}{{Gen
 
 // action function
 func (oc *OpenstackClient) {{.ActionName}}{{$ResourceName}}(req *{{.ActionName}}{{$ResourceName}}Request)(*{{.ActionName}}{{$ResourceName}}Response){
-    return New{{.ActionName}}{{$ResourceName}}Response({{$ResourcePackageName}}.{{.ActionName}}(oc.Client,{{- range .ActionParameters}}req.{{UpperFirst .Name}},{{- end}} ))
+    return New{{.ActionName}}{{$ResourceName}}Response({{.ActionPackageName}}.{{.ActionName}}(oc.Client,{{- range .ActionParameters}}req.{{UpperFirst .Name}},{{- end}} ))
 
 }
 {{- end}}
