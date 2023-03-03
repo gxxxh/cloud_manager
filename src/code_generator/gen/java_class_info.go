@@ -17,7 +17,7 @@ const (
 // 用于描述一个java资源，比如OpenstackServer
 type JavaResource struct {
 	Name         string //crd name, eg: OpenstackServer
-	ResourceName string //resource name in code gen, eg: ComputeV2Servers
+	ResourceName string //resource name in code gen.go, eg: ComputeV2Servers
 	JavaClass
 }
 

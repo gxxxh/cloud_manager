@@ -119,7 +119,7 @@ func TestGenOpenstackCode(t *testing.T) {
 		if len(resourceInfo.ActionInfos) == 0 {
 			continue
 		}
-		fmt.Printf("gen code for actions in resource %s\n", resourceInfo.ResourcePackageName)
+		fmt.Printf("gen.go code for actions in resource %s\n", resourceInfo.ResourcePackageName)
 		templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\openstack_request.tmpl"
 		data := utils.Struct2Map(resourceInfo)
 		params := map[string]interface{}{
@@ -164,7 +164,7 @@ func TestGenOpenstackResultCode(t *testing.T) {
 		if len(resourceInfo.ActionInfos) == 0 {
 			continue
 		}
-		fmt.Printf("gen code for actions in resource %s\n", resourceInfo.ResourcePackageName)
+		fmt.Printf("gen.go code for actions in resource %s\n", resourceInfo.ResourcePackageName)
 		templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\openstack_result.tmpl"
 		data := utils.Struct2Map(resourceInfo)
 		params := map[string]interface{}{

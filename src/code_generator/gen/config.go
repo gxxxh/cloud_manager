@@ -54,3 +54,30 @@ func LoadCloudConfig(configPath string) *CloudConfig {
 	}
 	return config
 }
+
+// 填充一些需要的字段
+func InitCloudConfig(config *CloudConfig) *CloudConfig {
+	switch config.CloudType {
+	case "Aliyun":
+		config.RegistryConfigs[0].RegistryImportPaths = append(config.RegistryConfigs[0].RegistryImportPaths, "github.com/aliyun/alibaba-cloud-sdk-go/services/ecs")
+		config.RegistryConfigs[0].CreateFuncPre = "Create"
+		config.RegistryConfigs[0].FuncAction = "Create"
+		config.RegistryConfigs[0].CodeType = "Request"
+	case "Openstack":
+		// Request registry config
+		config.RegistryConfigs[0].RegistryImportPaths = append(config.RegistryConfigs[0].RegistryImportPaths, "github.com/kube-stack/multicloud_service/src/codegen/openstack")
+		config.RegistryConfigs[0].CreateFuncPre = "New"
+		config.RegistryConfigs[0].FuncAction = "Create"
+		config.RegistryConfigs[0].CodeType = "Request"
+		//Response registry config
+		config.RegistryConfigs = append(config.RegistryConfigs, &RegistryConfig{})
+		config.RegistryConfigs[1].CodeGenConfig = config.RegistryConfigs[0].CodeGenConfig
+		config.RegistryConfigs[0].RegistryImportPaths = append(config.RegistryConfigs[0].RegistryImportPaths, "github.com/kube-stack/multicloud_service/src/codegen/openstack")
+		config.RegistryConfigs[0].CreateFuncPre = "New"
+		config.RegistryConfigs[0].FuncAction = "Extract"
+		config.RegistryConfigs[0].CodeType = "Response"
+		//api code config
+
+	}
+	return config
+}

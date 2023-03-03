@@ -63,7 +63,7 @@ func GenAPICode(config *APICodeConfig) {
 		if len(resourceInfo.ActionInfos) == 0 {
 			continue
 		}
-		log.Printf("gen %s code for actions in resource %s\n", config.CodeType, resourceInfo.ResourcePackageName)
+		log.Printf("gen.go %s code for actions in resource %s\n", config.CodeType, resourceInfo.ResourcePackageName)
 		data := utils.Struct2Map(resourceInfo)
 		params := map[string]interface{}{
 			"packageName": "openstack",
