@@ -13,8 +13,7 @@ For details of this code, see [design](https://github.com/kube-stack/multicloud_
 
 ## Code Genrate Usage
 
-In order to call the cloud sdk api in the same way, we format different cloud code into the same pattern. For example, in openstack, there are cloud resources like server and image, and each resource is related to a lot of operation(create, update, delete...). So we generate a function for each operation separately, the function takes a xxxRequest struct as input
- and a xxxResponse struct as returns. 
+In order to call the cloud sdk api in the same way, we format different cloud code into the same pattern(`Std API`). For example, in openstack, there are cloud resources like server and image, and each resource is related to a lot of operation(create, update, delete...). So we generate a function for each operation separately, the function takes a xxxRequest struct as input and a xxxResponse struct as returns. 
 
 ```go
 // action function
