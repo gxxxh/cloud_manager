@@ -1,14 +1,13 @@
 package main
 
-import (
-	"github.com/kube-stack/multicloud_service/src/service"
-	"log"
-)
+import "github.com/kube-stack/multicloud_service/src/code_generator/cmd"
 
 func main() {
-	mcm, err := service.NewMultiCloudService(nil)
-	if err != nil {
-		log.Println(err)
-	}
-	log.Println(mcm)
+	cmd.Init()
+	cmd.Execute()
+	//mcm, err := service.NewMultiCloudService(nil)
+	//if err != nil {
+	//	log.Println(err)
+	//}
+	//log.Println(mcm)
 }

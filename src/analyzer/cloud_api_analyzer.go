@@ -47,8 +47,8 @@ func (c *CloudAPIAnalyzer) ExtractCloudAPIs(client interface{}) {
 			c.ExtractMethodParameters(method)
 		}
 	}
-	//fmt.Println("num of methods: ", len(MethodMap))
-
+	log.Printf("extract %v methods\n", len(c.MethodMap))
+	log.Println("CloudAPIAnalyzer: analyzer client's method done")
 }
 
 func (c *CloudAPIAnalyzer) ExtractMethodParameters(method reflect.Method) {
@@ -59,7 +59,7 @@ func (c *CloudAPIAnalyzer) ExtractMethodParameters(method reflect.Method) {
 	}
 	// filter by parameter name
 	if _, ok := c.RequestMap[paraType.Name()]; !ok && strings.HasSuffix(paraType.Name(), "Request") && paraType.Name() != "CommonRequest" {
-		log.Printf("extract parameter type for method:%v, num parameters:%v, package path: %v\n", method.Name, method.Type.NumIn(), method.Type.String())
+		//log.Printf("extract parameter type for method:%v, num parameters:%v, package path: %v\n", method.Name, method.Type.NumIn(), method.Type.String())
 		c.MethodMap[method.Name] = method
 		c.RequestMap[paraType.Name()] = paraType
 	}

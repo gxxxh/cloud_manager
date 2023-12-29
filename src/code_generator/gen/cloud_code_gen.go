@@ -1,6 +1,7 @@
 package gen
 
 import (
+	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	multicloud_service "github.com/kube-stack/multicloud_service/src/analyzer"
 	openstack "github.com/kube-stack/multicloud_service/src/codegen/openstack"
@@ -11,6 +12,7 @@ import (
 )
 
 func GenCloudCode(config *CloudConfig) error {
+	log.Printf("start to generate all cloud code for %s", config.CloudType)
 	analyzer := multicloud_service.NewCloudAPIAnalyzer()
 	switch config.CloudType {
 	case "Aliyun":
@@ -20,18 +22,57 @@ func GenCloudCode(config *CloudConfig) error {
 			GenRegistryCode(config.CloudType, analyzer, registryConfig)
 		}
 	case "Openstack":
+		GenRequestCode(config)
+		GenBasicCode(config)
+	default:
+		log.Fatalln("unsupport cloud kind, ", config.CloudType)
+	}
+	log.Printf("generate all cloud code for %s done", config.CloudType)
+	return nil
+}
+
+func GenRequestCode(config *CloudConfig) error {
+	log.Printf("start to generate request code for %s", config.CloudType)
+	analyzer := multicloud_service.NewCloudAPIAnalyzer()
+	switch config.CloudType {
+	case "Aliyun":
+		client := ecs.Client{}
+		analyzer.ExtractCloudAPIs(client)
+		fmt.Println("Gen Aliyun Request Code Done")
+	case "Openstack":
 		for _, apiCodeConfig := range config.APICodeConfigs {
 			GenAPICode(apiCodeConfig)
 		}
+	default:
+		log.Fatalln("unsupport cloud kind, ", config.CloudType)
+	}
+	log.Printf("generate request code for %s done", config.CloudType)
+	return nil
+}
+
+func GenBasicCode(config *CloudConfig) error {
+	analyzer := multicloud_service.NewCloudAPIAnalyzer()
+	log.Printf("Gen Basic for %s Code", config.CloudType)
+	switch config.CloudType {
+	case "Aliyun":
+		client := ecs.Client{}
+		analyzer.ExtractCloudAPIs(client)
+		for _, registryConfig := range config.RegistryConfigs {
+			GenRegistryCode(config.CloudType, analyzer, registryConfig)
+		}
+	case "Openstack":
 		client := openstack.OpenstackClient{}
 		analyzer.ExtractCloudAPIs(client)
 		for _, registryConfig := range config.RegistryConfigs {
 			GenRegistryCode(config.CloudType, analyzer, registryConfig)
 		}
+
 	default:
 		log.Fatalln("unsupport cloud kind, ", config.CloudType)
 	}
+	log.Printf("Gen Basic for %s Code done", config.CloudType)
 	return nil
+
 }
 
 func GenRegistryCode(cloudKind string, analyzer *multicloud_service.CloudAPIAnalyzer, registryConfig *RegistryConfig) {
@@ -63,7 +104,7 @@ func GenAPICode(config *APICodeConfig) {
 		if len(resourceInfo.ActionInfos) == 0 {
 			continue
 		}
-		log.Printf("gen.go %s code for actions in resource %s\n", config.CodeType, resourceInfo.ResourcePackageName)
+		log.Printf("cmd.go %s code for actions in resource %s\n", config.CodeType, resourceInfo.ResourcePackageName)
 		data := utils.Struct2Map(resourceInfo)
 		params := map[string]interface{}{
 			"packageName": "openstack",

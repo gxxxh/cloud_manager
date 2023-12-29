@@ -23,14 +23,26 @@ func Execute() {
 		fmt.Fprintf(os.Stderr, err.Error())
 		os.Exit(1)
 	} else {
-		fmt.Fprintf(os.Stdout, "generate code success!")
+		os.Exit(0)
 	}
 }
 
-func init() {
+func Init() {
 	rootCmd.AddCommand(versionCmd)
 
-	rootCmd.AddCommand(genCmd)
-	genCmd.Flags().StringVarP(&configFile, "configFile", "f", "", "config file")
-	genCmd.MarkFlagRequired("configFile")
+	rootCmd.AddCommand(analyzeCmd)
+	analyzeCmd.Flags().StringVarP(&sdkFilePath, "sdkFilePath", "f", "", "sdk file path")
+	analyzeCmd.MarkFlagRequired("sdkFilePath")
+
+	rootCmd.AddCommand(genBasicCmd)
+	genBasicCmd.Flags().StringVarP(&configFile, "configFile", "f", "", "config file")
+	genBasicCmd.MarkFlagRequired("configFile")
+
+	rootCmd.AddCommand(GenRequestCmd)
+	GenRequestCmd.Flags().StringVarP(&configFile, "configFile", "f", "", "config file")
+	GenRequestCmd.MarkFlagRequired("configFile")
+
+	rootCmd.AddCommand(GenAllCmd)
+	GenAllCmd.Flags().StringVarP(&configFile, "configFile", "f", "", "config file")
+	GenAllCmd.MarkFlagRequired("configFile")
 }
