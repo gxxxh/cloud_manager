@@ -32,7 +32,7 @@ func (c *CloudAPIAnalyzer) Init() {
 }
 
 func (c *CloudAPIAnalyzer) ExtractCloudAPIs(client interface{}) {
-	log.Println("CloudAPIAnalyzer: analyzer client's method")
+	//log.Println("CloudAPIAnalyzer: analyzer client's method")
 	// Notice the *Type can access all the Type Methods. But Type cannot access to *Type Methods.
 	clientType := reflect.TypeOf(client)
 	//use reflect.PtrTo(Type) to convert from Type to *Type
@@ -47,8 +47,8 @@ func (c *CloudAPIAnalyzer) ExtractCloudAPIs(client interface{}) {
 			c.ExtractMethodParameters(method)
 		}
 	}
-	log.Printf("extract %v methods\n", len(c.MethodMap))
-	log.Println("CloudAPIAnalyzer: analyzer client's method done")
+	//log.Printf("extract %v methods\n", len(c.MethodMap))
+	//log.Println("CloudAPIAnalyzer: analyzer client's method done")
 }
 
 func (c *CloudAPIAnalyzer) ExtractMethodParameters(method reflect.Method) {

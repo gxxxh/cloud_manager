@@ -3,7 +3,6 @@ package analyzer
 import (
 	"github.com/kube-stack/multicloud_service/src/utils"
 	"go/types"
-	"log"
 	"strings"
 )
 
@@ -99,7 +98,7 @@ func (ri *OpenstackResourceInfo) AddAction(actionInfo *OpenStackActionInfo) bool
 		ri.ActionInfos = append(ri.ActionInfos, actionInfo)
 		return true
 	} else {
-		log.Println("invalid action: ", actionInfo)
+		//log.Println("invalid action: ", actionInfo)
 	}
 	return false
 }

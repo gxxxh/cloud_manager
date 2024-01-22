@@ -89,7 +89,7 @@ func (ma *ModuleAnalyzer) mergeResourceInfos(resourceInfos []*OpenstackResourceI
 	for _, extensionName := range extensionNames {
 		extensionResource := getResourceByName(extensionName)
 		if extensionResource == nil {
-			log.Println("Warning, no resource ", extensionName)
+			//log.Println("Warning, no resource ", extensionName)
 			continue
 		}
 		serverResource = func(resource1, resource2 *OpenstackResourceInfo) *OpenstackResourceInfo {
@@ -218,7 +218,7 @@ func (ma *ModuleAnalyzer) MapPageExtractInfo2Action(pkgPath string, pkgName stri
 		resource2actionInfo["types"].PageExtractInfo = resource2pageExtractInfo["resourcetypes"]
 		return true
 	default:
-		log.Println("no rules mapped for package ", pkgPath)
+		//log.Println("no rules mapped for package ", pkgPath)
 	}
 	return false
 }
@@ -258,7 +258,7 @@ func (pa *PackageAnalyzer) Field2VarInfos(fieldList []*ast.Field) VarInfos {
 
 // analyze packages and parse info
 func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackResourceInfo {
-	log.Printf("-----------analyze requestfile:  %s-----------\n", pa.pkg.Name)
+	//log.Printf("-----------analyze requestfile:  %s-----------\n", pa.pkg.Name)
 	resourceInfo := NewOpenstackResourceInfo(pa.pkg.Name, pa.pkg.PkgPath)
 	requestAST := pa.GetASTFile("requests.go")
 	if requestAST == nil {
@@ -267,7 +267,7 @@ func (pa *PackageAnalyzer) AnalyzeRequestFile() *OpenstackResourceInfo {
 	for _, d := range requestAST.Decls {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
 			if pa.checkValidFunc(fn, "gophercloud.ServiceClient") {
-				log.Println("******************handle function***************** :", fn.Name)
+				//log.Println("******************handle function***************** :", fn.Name)
 				actionInfo := NewOpenstackActionInfo(fn.Name.String(), pa.pkg.Name)
 				paramsVarInfos := pa.Field2VarInfos(fn.Type.Params.List)
 				//no need to import
@@ -302,9 +302,9 @@ func (pa *PackageAnalyzer) ParseResultExtractReturns(ty *types.Named) *ResultExt
 			if !ok {
 				log.Println("error, the extract function can't turned to a signaure", ty)
 			}
-			if resultExtractInfo.FuncName != "" {
-				log.Println("error, not only one Extract/ExtractErr func for thies result ", ty)
-			}
+			//if resultExtractInfo.FuncName != "" {
+			//	log.Println("error, not only one Extract/ExtractErr func for thies result ", ty)
+			//}
 			varInfos := NewVarInfos()
 			for i := 0; i < methodType.Results().Len(); i++ {
 				result := methodType.Results().At(i)
@@ -325,7 +325,7 @@ func (pa *PackageAnalyzer) ParseResultExtractReturns(ty *types.Named) *ResultExt
 // input: result Type
 // ouput: result Type's extract function
 func (pa *PackageAnalyzer) ParseResultExtractInfo(expr ast.Expr) *ResultExtractInfo {
-	log.Println("parse result extract info for ", expr)
+	//log.Println("parse result extract info for ", expr)
 	ty := pa.pkg.TypesInfo.Types[expr].Type
 	tyNamed, ok := ty.(*types.Named)
 	if !ok {
@@ -334,7 +334,7 @@ func (pa *PackageAnalyzer) ParseResultExtractInfo(expr ast.Expr) *ResultExtractI
 	}
 	if tyNamed.NumMethods() != 0 {
 		resultExtractInfo := pa.ParseResultExtractReturns(tyNamed)
-		log.Println("find result extract info for ", expr)
+		//log.Println("find result extract info for ", expr)
 		return resultExtractInfo
 	} else {
 		tyStruct, ok := tyNamed.Underlying().(*types.Struct)
@@ -346,7 +346,7 @@ func (pa *PackageAnalyzer) ParseResultExtractInfo(expr ast.Expr) *ResultExtractI
 			fieldTypeNamed, ok := fieldType.(*types.Named)
 			if ok && fieldTypeNamed.NumMethods() > 0 && strings.Contains(fieldTypeNamed.Obj().Name(), "Result") {
 				resultExtractInfo := pa.ParseResultExtractReturns(fieldTypeNamed)
-				log.Println("find result extract info for ", expr)
+				//log.Println("find result extract info for ", expr)
 				return resultExtractInfo
 			}
 		}
@@ -356,7 +356,7 @@ func (pa *PackageAnalyzer) ParseResultExtractInfo(expr ast.Expr) *ResultExtractI
 
 // 分析Result文件
 func (pa *PackageAnalyzer) AnalyseResultFile() []*PageExtractInfo {
-	log.Printf("-----------analyze resultfile:  %s-----------\n", pa.pkg.Name)
+	//log.Printf("-----------analyze resultfile:  %s-----------\n", pa.pkg.Name)
 	pageExtractInfos := make([]*PageExtractInfo, 0)
 	resultAST := pa.GetASTFile("results.go")
 	if resultAST == nil {
@@ -365,7 +365,7 @@ func (pa *PackageAnalyzer) AnalyseResultFile() []*PageExtractInfo {
 	for _, d := range resultAST.Decls {
 		if fn, isFn := d.(*ast.FuncDecl); isFn {
 			fnName := fn.Name.String()
-			log.Println("handle result function", fnName)
+			//log.Println("handle result function", fnName)
 			if pa.checkValidFunc(fn, "pagination.Page") &&
 				strings.HasPrefix(fnName, "Extract") &&
 				!strings.HasSuffix(fnName, "Into") &&
@@ -403,14 +403,14 @@ func (pa *PackageAnalyzer) getInterface(interfaceName string, pkg *types.Package
 // find the struct type that implement the interface
 func (pa *PackageAnalyzer) interface2struct(iface *types.Interface) (string, string, types.Type) {
 	typeinfos := pa.pkg.TypesInfo
-	log.Println("find struct for interface ", iface)
+	//log.Println("find struct for interface ", iface)
 	for _, ty := range typeinfos.Types {
 		if types.Implements(ty.Type, iface) {
 			//if ty.Type.String() != (*ifaceType).String() {
-			log.Println(ty.Type)
+			//log.Println(ty.Type)
 			_, isInterface := ty.Type.Underlying().(*types.Interface)
 			if !isInterface {
-				log.Printf("struct %v implements interface %v\n", ty.Type, iface)
+				//log.Printf("struct %v implements interface %v\n", ty.Type, iface)
 				//return pa.parseTypeInfo(ty.Type)
 				tyName, packagePath := pa.parseTypeInfo(ty.Type)
 				if tyName != "" {
@@ -515,10 +515,10 @@ func (pa *PackageAnalyzer) parseTypeInfo(ty types.Type) (string, string) {
 		//todo keyPath and valuePath may be different
 		return "map[" + keyName + "]" + valueName, keyPath + valuePath
 	case *types.Interface:
-		log.Println("interface type: ", tyType)
+		//log.Println("interface type: ", tyType)
 		return "interface{}", ""
 	default:
-		log.Println("error! unhandled type: ", tyType)
+		//log.Println("error! unhandled type: ", tyType)
 		return "", ""
 	}
 }

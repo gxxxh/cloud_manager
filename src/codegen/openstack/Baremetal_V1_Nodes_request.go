@@ -210,7 +210,7 @@ func (oc *OpenstackClient) InjectNMIBaremetalV1Nodes(req *InjectNMIBaremetalV1No
 //request struct for the SetBootDeviceBaremetalV1Nodes
 type SetBootDeviceBaremetalV1NodesRequest struct{
     Id string
-    BootDevice nodes.BootDeviceOpts
+    BootDevice *nodes.BootDeviceOpts
 }
 
 func NewSetBootDeviceBaremetalV1NodesRequest()*SetBootDeviceBaremetalV1NodesRequest{

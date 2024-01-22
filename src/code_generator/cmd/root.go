@@ -45,4 +45,11 @@ func Init() {
 	rootCmd.AddCommand(GenAllCmd)
 	GenAllCmd.Flags().StringVarP(&configFile, "configFile", "f", "", "config file")
 	GenAllCmd.MarkFlagRequired("configFile")
+
+	rootCmd.AddCommand(GenCmd)
+	GenCmd.Flags().StringVarP(&resource, "resource", "t", "", "cloud resource type")
+	GenCmd.MarkFlagRequired("resource")
+	GenCmd.Flags().StringVarP(&cloudtype, "cloud", "c", "", "cloud type")
+	GenCmd.MarkFlagRequired("cloud")
+
 }
