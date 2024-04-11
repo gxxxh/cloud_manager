@@ -11,21 +11,27 @@ import (
 	"time"
 )
 
-func GenAndSaveCode(templatePath, codePath string, data, params map[string]interface{}) {
-	code, err := GenCode(templatePath, data, params)
+type CodeGenerator struct {
+}
+
+func NewCodeGenerator() *CodeGenerator {
+	return &CodeGenerator{}
+}
+func (cg *CodeGenerator) GenAndSaveCode(templatePath, codePath string, data, params map[string]interface{}) {
+	code, err := cg.GenCode(templatePath, data, params)
 	if err != nil {
 		log.Fatalln("Gen Code error, ", err)
 	}
 	utils.Save(code, codePath)
 }
 
-func GenCode(templatePath string, data map[string]interface{}, params map[string]interface{}) ([]byte, error) {
+func (cg *CodeGenerator) GenCode(templatePath string, data map[string]interface{}, params map[string]interface{}) ([]byte, error) {
 	createRequestRegistryTemplate, err := NewCustomerTemplate(templatePath)
 	if err != nil {
 		log.Println(err)
 		return nil, err
 	}
-	code, err := GenerateTemplate(createRequestRegistryTemplate.GetTemplateBody(),
+	code, err := cg.GenerateTemplate(createRequestRegistryTemplate.GetTemplateBody(),
 		data, params)
 	if err != nil {
 		log.Println(err)
@@ -38,7 +44,7 @@ func GenCode(templatePath string, data map[string]interface{}, params map[string
 templateData is data used for template
 params are extra info used by param function
 */
-func GenerateTemplate(templateText string, templateData interface{}, params map[string]interface{}) ([]byte, error) {
+func (cg *CodeGenerator) GenerateTemplate(templateText string, templateData interface{}, params map[string]interface{}) ([]byte, error) {
 	// functions used in template
 	t, err := template.New("tableTemplate").Funcs(template.FuncMap{
 		"GetParamsList":     analyzer.GetParamsLsit,

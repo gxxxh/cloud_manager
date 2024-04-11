@@ -1,0 +1,56 @@
+{
+  "CloudType": "Openstack",
+  "GoCodeConfig": {
+    "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates",
+    "CodePath": "E:\\gopath\\src\\multicloud_service\\src\\codegen"
+  },
+  "SourceCodePath": "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack",
+  "RegistryConfigs": [
+    {
+      "RegistryImportPath": "github.com/kube-stack/multicloud_service/src/codegen/openstack",
+      "CreateFuncPre": "New",
+      "FuncAction": "Create",
+      "CodeType": "Request"
+    },
+    {
+      "RegistryImportPath": "github.com/kube-stack/multicloud_service/src/codegen/openstack",
+      "CreateFuncPre": "New",
+      "FuncAction": "Extract",
+      "CodeType": "Response"
+    }
+  ],
+  "APICodeConfigs": [
+    {
+      "CodeType": "Request"
+    },
+    {
+      "CodeType": "Result"
+    }
+  ],
+  "JavaCodeConfig": {
+    "Class": {
+      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\java_resource_class.tmpl",
+      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
+    },
+    "Domain": {
+      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\java_resource_domain.tmpl",
+      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
+    },
+    "Impl": {
+      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\java_resource_impl.tmpl",
+      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
+    },
+    "LifecycleHeader": {
+      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\java_resource_lifecycle_header.tmpl",
+      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
+    },
+    "LifecycleClass": {
+      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\java_resource_lifecycle_class.tmpl",
+      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
+    },
+    "Spec": {
+      "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\java_resource_spec.tmpl",
+      "CodePath": "E:\\gopath\\src\\multicloud_service\\out\\"
+    }
+  }
+}

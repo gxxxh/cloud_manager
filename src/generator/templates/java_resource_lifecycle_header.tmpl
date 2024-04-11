@@ -1,0 +1,25 @@
+{{- $CloudName := Param "CloudName" -}}
+/**
+* Code Generator by multicloud_service
+*/
+
+package io.github.kubestack.client.api.specs.{{ToLower $CloudName}}.{{ToLower .Name}};
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import io.github.kubestack.core.annotations.ClassDescriber;
+import io.github.kubestack.core.annotations.FunctionDescriber;
+import io.github.kubestack.core.utils.AnnotationUtils;
+
+/**
+ * @Description {{$CloudName}} function support
+ * @Date {{Date}}
+ * @Author guohao
+ **/

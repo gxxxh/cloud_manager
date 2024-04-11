@@ -1,11 +1,11 @@
-package code_generator
+package generator_test
 
 import (
 	"fmt"
 	"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"
 	multicloud_service "github.com/kube-stack/multicloud_service/src/analyzer"
-	"github.com/kube-stack/multicloud_service/src/code_generator/gen"
 	"github.com/kube-stack/multicloud_service/src/codegen/openstack"
+	"github.com/kube-stack/multicloud_service/src/generator/gen"
 	"github.com/kube-stack/multicloud_service/src/utils"
 	"os"
 	"path/filepath"
@@ -19,7 +19,7 @@ func TestGenAliyunRequestRegistry(t *testing.T) {
 	analyzer.ExtractCloudAPIs(client)
 	requestRegistryInfo := analyzer.ExtractRequestInfos("Create")
 
-	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl"
+	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\registry.tmpl"
 	requestRegistryInfo.ImportPaths = []string{"github.com/aliyun/alibaba-cloud-sdk-go/services/ecs"}
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := map[string]interface{}{
@@ -28,7 +28,8 @@ func TestGenAliyunRequestRegistry(t *testing.T) {
 		"action":      "Create",
 		"type":        "Request",
 	}
-	code, err := gen.GenCode(templatePath, data, params)
+	generator := gen.NewCodeGenerator()
+	code, err := generator.GenCode(templatePath, data, params)
 	if err != nil {
 		t.Error(err)
 	}
@@ -47,7 +48,7 @@ func TestGenOpenstackRequestRegistry(t *testing.T) {
 	analyzer.ExtractCloudAPIs(client)
 	requestRegistryInfo := analyzer.ExtractRequestInfos("New")
 
-	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl"
+	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\registry.tmpl"
 	requestRegistryInfo.ImportPaths = []string{"github.com/kube-stack/multicloud_service/src/codegen/openstack"}
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := map[string]interface{}{
@@ -56,7 +57,8 @@ func TestGenOpenstackRequestRegistry(t *testing.T) {
 		"action":      "Create",
 		"type":        "Request",
 	}
-	code, err := gen.GenCode(templatePath, data, params)
+	generator := gen.NewCodeGenerator()
+	code, err := generator.GenCode(templatePath, data, params)
 	if err != nil {
 		t.Error(err)
 	}
@@ -78,7 +80,7 @@ func TestGenOpenstackResponseRegistry(t *testing.T) {
 		requestInfo.CreateFunctionName = strings.Replace(requestInfo.CreateFunctionName, "New", "Extract", -1)
 		requestInfo.CreateFunctionName = requestInfo.CreateFunctionName[0:len(requestInfo.CreateFunctionName)-len("Request")] + "Response"
 	}
-	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl"
+	templatePath := "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\registry.tmpl"
 	requestRegistryInfo.ImportPaths = []string{"github.com/kube-stack/multicloud_service/src/codegen/openstack"}
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := map[string]interface{}{
@@ -87,7 +89,8 @@ func TestGenOpenstackResponseRegistry(t *testing.T) {
 		"action":      "Extract",
 		"type":        "Response",
 	}
-	code, err := gen.GenCode(templatePath, data, params)
+	generator := gen.NewCodeGenerator()
+	code, err := generator.GenCode(templatePath, data, params)
 	if err != nil {
 		t.Error(err)
 	}
@@ -119,13 +122,14 @@ func TestGenOpenstackCode(t *testing.T) {
 		if len(resourceInfo.ActionInfos) == 0 {
 			continue
 		}
-		fmt.Printf("cmd.go code for actions in resource %s\n", resourceInfo.ResourcePackageName)
-		templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\openstack_request.tmpl"
+		fmt.Printf("gen.go code for actions in resource %s\n", resourceInfo.ResourcePackageName)
+		templatePath := "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\openstack_request.tmpl"
 		data := utils.Struct2Map(resourceInfo)
 		params := map[string]interface{}{
 			"packageName": "openstack",
 		}
-		code, err := gen.GenCode(templatePath, data, params)
+		generator := gen.NewCodeGenerator()
+		code, err := generator.GenCode(templatePath, data, params)
 		if err != nil {
 			t.Error(err)
 		}
@@ -164,13 +168,14 @@ func TestGenOpenstackResultCode(t *testing.T) {
 		if len(resourceInfo.ActionInfos) == 0 {
 			continue
 		}
-		fmt.Printf("cmd.go code for actions in resource %s\n", resourceInfo.ResourcePackageName)
-		templatePath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\openstack_result.tmpl"
+		fmt.Printf("gen.go code for actions in resource %s\n", resourceInfo.ResourcePackageName)
+		templatePath := "E:\\gopath\\src\\multicloud_service\\src\\generator\\templates\\openstack_result.tmpl"
 		data := utils.Struct2Map(resourceInfo)
 		params := map[string]interface{}{
 			"packageName": "openstack",
 		}
-		code, err := gen.GenCode(templatePath, data, params)
+		generator := gen.NewCodeGenerator()
+		code, err := generator.GenCode(templatePath, data, params)
 		if err != nil {
 			t.Error(err)
 		}
@@ -188,10 +193,11 @@ func TestGenOpenstackResultCode(t *testing.T) {
 }
 
 func TestGenCloudCode(t *testing.T) {
-	//configPath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\configs\\aliyun.json"
-	configPath := "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\configs\\openstack.json"
+	//configPath := "E:\\gopath\\src\\multicloud_service\\src\\generator\\configs\\aliyun.json"
+	configPath := "E:\\gopath\\src\\multicloud_service\\src\\generator\\configs\\openstack.json"
 	config := gen.LoadCloudConfig(configPath)
-	err := gen.GenCloudCode(config)
+	generator := gen.NewCloudAPIGenerator(config.CloudType)
+	err := generator.DoGen(config)
 	if err != nil {
 		t.Error(err)
 	}

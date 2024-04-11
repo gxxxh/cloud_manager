@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"github.com/kube-stack/multicloud_service/src/analyzer"
-	"github.com/kube-stack/multicloud_service/src/code_generator/gen"
+	"github.com/kube-stack/multicloud_service/src/generator/gen"
 	"github.com/spf13/cobra"
 	"log"
 )
@@ -27,7 +27,7 @@ func AnalyzeCloudSDK(cmd *cobra.Command, args []string) error {
 }
 
 // flags
-var configFile string
+//var configFile string
 
 var genBasicCmd = &cobra.Command{
 	Use:   "gen_basic -f configFile",
@@ -38,7 +38,8 @@ var genBasicCmd = &cobra.Command{
 
 func GenBasicCode(cmd *cobra.Command, args []string) error {
 	config := gen.LoadCloudConfig(configFile)
-	err := gen.GenBasicCode(config)
+	generator := gen.NewCloudAPIGenerator(config.CloudType)
+	err := generator.GenBasicCode(config)
 	if err != nil {
 		return err
 	}
@@ -54,7 +55,8 @@ var GenRequestCmd = &cobra.Command{
 
 func GenRequestCode(cmd *cobra.Command, args []string) error {
 	config := gen.LoadCloudConfig(configFile)
-	err := gen.GenRequestCode(config)
+	generator := gen.NewCloudAPIGenerator(config.CloudType)
+	err := generator.GenRequestCode(config)
 	if err != nil {
 		return err
 	}
@@ -81,11 +83,12 @@ var GenCmd = &cobra.Command{
 
 func GenAllCode(cmd *cobra.Command, args []string) error {
 	if cloudtype == "openstack" {
-		configFile = "/mnt/e/gopath/src/multicloud_service/src/code_generator/configs/openstack_linux.json"
+		configFile = "/mnt/e/gopath/src/multicloud_service/src/generator_test/configs/openstack_linux.json"
 	}
 	log.Println("start gen code for resource:", resource, " cloud:", cloudtype)
 	config := gen.LoadCloudConfig(configFile)
-	err := gen.GenCloudCode(config)
+	generator := gen.NewCloudAPIGenerator(config.CloudType)
+	err := generator.DoGen(config)
 	if err != nil {
 		return err
 	}

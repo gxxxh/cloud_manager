@@ -28,7 +28,7 @@ make cloudcodegen
 ```
 or
 ```shell
-go build -o cloudcodegen ./src/code_generator/main.go
+go build -o cloudcodegen ./src/generator/main.go
 ```
 Then you can generate code by
 ```shell

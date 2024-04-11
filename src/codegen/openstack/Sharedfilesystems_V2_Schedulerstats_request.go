@@ -33,7 +33,7 @@ func (oc *OpenstackClient) ListSharedfilesystemsV2Schedulerstats(req *ListShared
 }
 //request struct for the ListDetailSharedfilesystemsV2Schedulerstats
 type ListDetailSharedfilesystemsV2SchedulerstatsRequest struct{
-    Opts schedulerstats.ListOpts
+    Opts schedulerstats.ListDetailOpts
 }
 
 func NewListDetailSharedfilesystemsV2SchedulerstatsRequest()*ListDetailSharedfilesystemsV2SchedulerstatsRequest{

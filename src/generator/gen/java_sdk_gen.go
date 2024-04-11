@@ -21,6 +21,7 @@ type JavaSDKGenerator struct {
 	Config           *CloudConfig
 	CloudAPIAnalyzer *multicloud_service.CloudAPIAnalyzer
 	JavaResources    map[string]*JavaResource
+	CodeGenerator    *CodeGenerator
 }
 
 func NewJavaSDKGenerator(config *CloudConfig) *JavaSDKGenerator {
@@ -37,6 +38,7 @@ func NewJavaSDKGenerator(config *CloudConfig) *JavaSDKGenerator {
 		Config:           config,
 		CloudAPIAnalyzer: cloudAPIAnalyzer,
 		JavaResources:    nil,
+		CodeGenerator:    NewCodeGenerator(),
 	}
 	javaSDKGenerator.initJavaResources()
 	return javaSDKGenerator
@@ -124,7 +126,7 @@ func (j *JavaSDKGenerator) GenResourceClass(target string) {
 	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "api", "models", strings.ToLower(j.Config.CloudType), javaResource.Name+".java")
 	params := make(map[string]interface{})
 	params["CloudName"] = j.Config.CloudType
-	GenAndSaveCode(templatePath, codePath, data, params)
+	j.CodeGenerator.GenAndSaveCode(templatePath, codePath, data, params)
 
 }
 
@@ -140,7 +142,7 @@ func (j *JavaSDKGenerator) GenResourceSpec(target string) {
 	codePath := filepath.Join(j.Config.JavaCodeConfig.CodePath, "api", "specs", strings.ToLower(j.Config.CloudType), javaResource.Name+"Spec.java")
 	params := make(map[string]interface{})
 	params["CloudName"] = j.Config.CloudType
-	GenAndSaveCode(templatePath, codePath, data, params)
+	j.CodeGenerator.GenAndSaveCode(templatePath, codePath, data, params)
 
 }
 
@@ -155,7 +157,7 @@ func (j *JavaSDKGenerator) GenResourceDomain(target string) {
 	params := make(map[string]interface{})
 	params["CloudName"] = j.Config.CloudType
 	headerTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceDomainHeaderTemplate)
-	headerCode, err := GenCode(headerTemplatePath, headerData, params)
+	headerCode, err := j.CodeGenerator.GenCode(headerTemplatePath, headerData, params)
 	if err != nil {
 		log.Panicf("Gen Lifecycle Header err, %v\n", err)
 	}
@@ -165,7 +167,7 @@ func (j *JavaSDKGenerator) GenResourceDomain(target string) {
 
 	classData := utils.Struct2Map(domainClass)
 	classTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaClassTemplate)
-	classCode, err := GenCode(classTemplatePath, classData, params)
+	classCode, err := j.CodeGenerator.GenCode(classTemplatePath, classData, params)
 	if err != nil {
 		log.Panicf("Gen Lifecycle Class err, %v\n", err)
 	}
@@ -185,14 +187,14 @@ func (j *JavaSDKGenerator) GenResourceLifecycle(target string) {
 	params := make(map[string]interface{})
 	params["CloudName"] = j.Config.CloudType
 	headerTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceDomainHeaderTemplate)
-	headerCode, err := GenCode(headerTemplatePath, headerData, params)
+	headerCode, err := j.CodeGenerator.GenCode(headerTemplatePath, headerData, params)
 	if err != nil {
 		log.Panicf("Gen Lifecycle Header err, %v\n", err)
 	}
 	//generate lifecycle class
 	classData := utils.Struct2Map(javaResource.JavaClass)
 	classTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaClassTemplate)
-	classCode, err := GenCode(classTemplatePath, classData, params)
+	classCode, err := j.CodeGenerator.GenCode(classTemplatePath, classData, params)
 	if err != nil {
 		log.Panicf("Gen Lifecycle Class err, %v\n", err)
 	}
@@ -213,7 +215,7 @@ func (j *JavaSDKGenerator) GenResourceImpl(target string) {
 	params := make(map[string]interface{})
 	params["CloudName"] = j.Config.CloudType
 	implTemplatePath := filepath.Join(j.Config.JavaCodeConfig.TemplatePath, JavaResourceImalTemplate)
-	code, err := GenCode(implTemplatePath, data, params)
+	code, err := j.CodeGenerator.GenCode(implTemplatePath, data, params)
 	if err != nil {
 		log.Panicf("Gen Lifecycle Class err, %v\n", err)
 	}
