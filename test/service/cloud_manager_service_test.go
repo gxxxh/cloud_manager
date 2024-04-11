@@ -12,8 +12,8 @@ import (
 
 func TestCallAliyunAPI(t *testing.T) {
 	regionId := "cn-beijing"
-	accessKeyId := "LTAI5tJKWj6qWB7t4VooErRx"
-	accessKeySecret := "FsCABqUiecxe2NQmjlJl1321RcfxFV"
+	accessKeyId := ""
+	accessKeySecret := ""
 	params := make(map[string]string)
 	params["regionId"] = regionId
 	params["accessId"] = accessKeyId

@@ -35,8 +35,8 @@ func InitOpenstackClient(openstackClientType string) (*openstack2.OpenstackClien
 }
 func TestAliyunSDK(t *testing.T) {
 	regionId := "cn-beijing"
-	accessKeyId := "LTAI5tJKWj6qWB7t4VooErRx"
-	accessKeySecret := "FsCABqUiecxe2NQmjlJl1321RcfxFV"
+	accessKeyId := ""
+	accessKeySecret := ""
 	client, err := ecs.NewClientWithAccessKey(regionId, accessKeyId, accessKeySecret)
 	if err != nil {
 		t.Error(err)

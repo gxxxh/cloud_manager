@@ -6,6 +6,10 @@ import (
 	"github.com/gophercloud/gophercloud/openstack"
 )
 
+type Client interface {
+	InitClient()
+}
+
 type OpenstackClient struct {
 	ProviderClient *gophercloud.ProviderClient
 	Client         *gophercloud.ServiceClient
