@@ -1,26 +1,19 @@
 {
   "CloudType": "Openstack",
+  "GoCodeConfig": {
+    "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates",
+    "CodePath": "E:\\gopath\\src\\multicloud_service\\src\\codegen"
+  },
+  "SourceCodePath": "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack",
   "RegistryConfigs": [
     {
-      "CodeGenConfig": {
-        "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl",
-        "CodePath": "E:\\gopath\\src\\multicloud_service\\src\\codegen\\registry\\"
-      },
-      "RegistryImportPaths": [
-        "github.com/kube-stack/multicloud_service/src/codegen/openstack"
-      ],
+      "RegistryImportPath": "github.com/kube-stack/multicloud_service/src/codegen/openstack",
       "CreateFuncPre": "New",
       "FuncAction": "Create",
       "CodeType": "Request"
     },
     {
-      "CodeGenConfig": {
-        "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\registry.tmpl",
-        "CodePath": "E:\\gopath\\src\\multicloud_service\\src\\codegen\\registry\\"
-      },
-      "RegistryImportPaths": [
-        "github.com/kube-stack/multicloud_service/src/codegen/openstack"
-      ],
+      "RegistryImportPath": "github.com/kube-stack/multicloud_service/src/codegen/openstack",
       "CreateFuncPre": "New",
       "FuncAction": "Extract",
       "CodeType": "Response"
@@ -28,19 +21,9 @@
   ],
   "APICodeConfigs": [
     {
-      "CodeGenConfig": {
-        "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\openstack_request.tmpl",
-        "CodePath": "E:\\gopath\\src\\multicloud_service\\src\\codegen\\openstack\\"
-      },
-      "SourceCodePath": "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack",
       "CodeType": "Request"
     },
     {
-      "CodeGenConfig": {
-        "TemplatePath": "E:\\gopath\\src\\multicloud_service\\src\\code_generator\\templates\\openstack_result.tmpl",
-        "CodePath": "E:\\gopath\\src\\multicloud_service\\src\\codegen\\openstack\\"
-      },
-      "SourceCodePath": "E:\\gopath\\pkg\\mod\\github.com\\gophercloud\\gophercloud@v1.0.0\\openstack",
       "CodeType": "Result"
     }
   ],

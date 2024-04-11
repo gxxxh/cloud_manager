@@ -83,7 +83,7 @@ func GenRegistryCode(cloudKind string, analyzer *multicloud_service.CloudAPIAnal
 			requestInfo.CreateFunctionName = requestInfo.CreateFunctionName[0:len(requestInfo.CreateFunctionName)-len("Request")] + "Response"
 		}
 	}
-	requestRegistryInfo.ImportPaths = registryConfig.RegistryImportPaths
+	requestRegistryInfo.ImportPaths = append(requestRegistryInfo.ImportPaths, registryConfig.RegistryImportPath)
 	data := utils.Struct2Map(requestRegistryInfo)
 	params := make(map[string]interface{})
 	params["packageName"] = "registry"

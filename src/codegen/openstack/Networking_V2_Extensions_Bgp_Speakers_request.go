@@ -134,7 +134,7 @@ func (oc *OpenstackClient) UpdateNetworkingV2ExtensionsBgpSpeakers(req *UpdateNe
 //request struct for the AddBGPPeerNetworkingV2ExtensionsBgpSpeakers
 type AddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest struct{
     BgpSpeakerID string
-    Opts speakers.AddBGPPeerOpts
+    Opts *speakers.AddBGPPeerOpts
 }
 
 func NewAddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest()*AddBGPPeerNetworkingV2ExtensionsBgpSpeakersRequest{
