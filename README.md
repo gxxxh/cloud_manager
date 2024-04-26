@@ -30,10 +30,15 @@ or
 ```shell
 go build -o cloudcodegen ./src/generator/main.go
 ```
-Then you can generate code by
+Then you can generate code for resource server by
 ```shell
-cloudcodegen gen -f configFile.json
+./cloudcodegen gen -t $ResrouceType$ -c $CloudType$ -f $ConfigFile$
 ```
+or you can generate all resources by
+```shell
+./cloudcodegen gen_all -f $ConfigFile$
+```
+
 ### Generate Golang SDK Config
 #### Aliyun
 Here is an example of json config file for aliyun. RegistryConfigs is used to genereate request registry for the 
@@ -41,16 +46,21 @@ cloud. The `CodeGenConfig` include the [registry template](https://github.com/ku
 want to save the registry code generated. 
 ```json
 {
-  "CloudType": "Aliyun",
-  "RegistryConfigs": [
-    {
-      "CodeGenConfig": {
-        "TemplatePath":"",
-        "CodePath":""
+   "CloudType": "Aliyun",
+   "GoCodeConfig": {
+      "TemplatePath": "", # code template path
+      "CodePath": "" # generated code path
+   },
+   "RegistryConfigs": [
+      {
+         "RegistryImportPath": "github.com/aliyun/alibaba-cloud-sdk-go/services/ecs",
+         "CreateFuncPre": "Create",
+         "FuncAction": "Create",
+         "CodeType": "Request"
       }
-    }
-  ]
+   ]
 }
+{
 ```
 
 #### Openstack Config
@@ -62,33 +72,34 @@ want to save the registry code generated.
       CodeType should be `Request` and `Result`.
 ```json
 {
-  "CloudType": "Openstack",
-  "RegistryConfigs": [
-    {
-      "CodeGenConfig": {
-        "TemplatePath": "",
-        "CodePath": ""
+   "CloudType": "Openstack",
+   "GoCodeConfig": {
+      "TemplatePath": "", # code template path
+      "CodePath": "" # generated code path
+   },
+   "SourceCodePath": "", # sdk path
+   "RegistryConfigs": [
+      {
+         "RegistryImportPaths": "github.com/kube-stack/multicloud_service/src/codegen/openstack",
+         "CreateFuncPre": "New",
+         "FuncAction": "Create",
+         "CodeType": "Request"
+      },
+      {
+         "RegistryImportPaths": "github.com/kube-stack/multicloud_service/src/codegen/openstack",
+         "CreateFuncPre": "New",
+         "FuncAction": "Extract",
+         "CodeType": "Response"
       }
-    }
-  ],
-  "APICodeConfigs": [
-    {
-      "CodeGenConfig": {
-        "TemplatePath": "",
-        "CodePath": ""
+   ],
+   "APICodeConfigs": [
+      {
+         "CodeType": "Request"
       },
-      "SourceCodePath": "",
-      "CodeType": ""
-    },
-    {
-      "CodeGenConfig": {
-        "TemplatePath": "",
-        "CodePath": ""
-      },
-      "SourceCodePath": "",
-      "CodeType": ""
-    }
-  ]
+      {
+         "CodeType": "Result"
+      }
+   ]
 }
 ```
 ### Generate JAVA SDK
