@@ -34,6 +34,7 @@ func (g *CloudAPIGenerator) DoGen(config *CloudConfig) error {
 		}
 	case "Openstack":
 		g.GenRequestCode(config)
+		// basic code即registry code
 		g.GenBasicCode(config)
 	default:
 		log.Fatalln("unsupport cloud kind, ", config.CloudType)

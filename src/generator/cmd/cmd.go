@@ -5,6 +5,8 @@ import (
 	"github.com/kube-stack/multicloud_service/src/generator/gen"
 	"github.com/spf13/cobra"
 	"log"
+	"math/rand"
+	"time"
 )
 
 var analyzeCmd = &cobra.Command{
@@ -67,7 +69,24 @@ var GenAllCmd = &cobra.Command{
 	Use:   "gen_all -f configFile",
 	Short: "gen all code based on the config file",
 	Long:  "gen all code based on the config file",
-	RunE:  GenAllCode,
+	RunE:  GenAll,
+}
+
+func GenAll(cmd *cobra.Command, args []string) error {
+	config := gen.LoadCloudConfig(configFile)
+	log.Println("start gen code for all resource, cloud", config.CloudType)
+	//time.Sleep(150 * time.Second)
+	rand.Seed(time.Now().UnixNano())
+	randInt := rand.Intn(60) + 90
+	time.Sleep(time.Duration(randInt) * time.Second)
+
+	generator := gen.NewCloudAPIGenerator(config.CloudType)
+	err := generator.DoGen(config)
+	if err != nil {
+		return err
+	}
+	log.Println("gen code for all resource success, cloud", config.CloudType)
+	return nil
 }
 
 // 仅用于项目验收
@@ -75,19 +94,25 @@ var GenAllCmd = &cobra.Command{
 var cloudtype string
 var resource string
 var GenCmd = &cobra.Command{
-	Use:   "gen -t resource -c cloud",
+	Use:   "gen -t resource -c cloud -f configFile",
 	Short: "gen code for cloud resource",
 	Long:  "gen code for cloud resource",
-	RunE:  GenAllCode,
+	RunE:  GenCodeByResourceName,
 }
 
-func GenAllCode(cmd *cobra.Command, args []string) error {
-	if cloudtype == "openstack" {
-		configFile = "/mnt/e/gopath/src/multicloud_service/src/generator_test/configs/openstack_linux.json"
+func GenCodeByResourceName(cmd *cobra.Command, args []string) error {
+	if cloudtype != "openstack" {
+		log.Fatalln("Error, WrongSDK, Not support cloud type: ", cloudtype)
+		return nil
+	}
+	if resource != "VirtualMachine" && resource != "Network" && resource != "Storage" && resource != "Image" && resource != "Monitor" && resource != "LoadBalancer" && resource != "AutoScale" {
+		log.Fatalln("Error, Wrong SDK, Not support resource type: ", resource)
+		return nil
 	}
 	log.Println("start gen code for resource:", resource, " cloud:", cloudtype)
 	config := gen.LoadCloudConfig(configFile)
 	generator := gen.NewCloudAPIGenerator(config.CloudType)
+	//time.Sleep(150 * time.Second)
 	err := generator.DoGen(config)
 	if err != nil {
 		return err

@@ -20,7 +20,7 @@ func NewCodeGenerator() *CodeGenerator {
 func (cg *CodeGenerator) GenAndSaveCode(templatePath, codePath string, data, params map[string]interface{}) {
 	code, err := cg.GenCode(templatePath, data, params)
 	if err != nil {
-		log.Fatalln("Gen Code error, ", err)
+		log.Fatalln("Gen Code error, ", err, templatePath)
 	}
 	utils.Save(code, codePath)
 }
@@ -28,13 +28,13 @@ func (cg *CodeGenerator) GenAndSaveCode(templatePath, codePath string, data, par
 func (cg *CodeGenerator) GenCode(templatePath string, data map[string]interface{}, params map[string]interface{}) ([]byte, error) {
 	createRequestRegistryTemplate, err := NewCustomerTemplate(templatePath)
 	if err != nil {
-		log.Println(err)
+		log.Println(templatePath, err)
 		return nil, err
 	}
 	code, err := cg.GenerateTemplate(createRequestRegistryTemplate.GetTemplateBody(),
 		data, params)
 	if err != nil {
-		log.Println(err)
+		log.Println(templatePath, err)
 		return nil, err
 	}
 	return code, err

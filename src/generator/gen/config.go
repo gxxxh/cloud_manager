@@ -2,6 +2,7 @@ package gen
 
 import (
 	"encoding/json"
+	"github.com/kube-stack/multicloud_service/src/utils"
 	"log"
 	"os"
 	"path/filepath"
@@ -63,10 +64,66 @@ func LoadCloudConfig(configPath string) *CloudConfig {
 	}
 	err = json.Unmarshal(bytes, config)
 	if err != nil {
-		log.Fatal("json unmarshal error, ", err)
+		log.Fatal("Wrong Format: json unmarshal error, ", err)
 	}
+	CheckSDK(config)
+	CheckFormat(config)
+	CheckParameters(config)
 	InitCloudConfig(config)
+	existed, err := utils.PathExists(config.SourceCodePath)
+	if err != nil {
+		log.Fatal("check source code path error, err=", err)
+	}
+	if config.SourceCodePath == "" || !existed {
+		log.Fatal("source code path is empty")
+	}
 	return config
+}
+func CheckSDK(config *CloudConfig) {
+	existed, err := utils.PathExists(config.SourceCodePath)
+	if err != nil {
+		log.Fatal("Wrong SDK, check SDK path error, err=", err)
+	}
+	if !existed {
+		log.Fatal("Wrong SDK: SDK code path is not existed, ", config.SourceCodePath)
+	}
+
+}
+
+func CheckFormat(config *CloudConfig) {
+	if config.CloudType == "" {
+		log.Fatal("Wrong Format: cloud type is empty")
+	}
+	if config.GoCodeConfig.TemplatePath == "" {
+		log.Fatal("Wrong Format: go code template path is empty")
+	}
+	if config.GoCodeConfig.CodePath == "" {
+		log.Fatal("Wrong Format: go code path is empty")
+	}
+	if config.SourceCodePath == "" {
+		log.Fatal("Wrong Format: source code path is empty")
+	}
+}
+
+func CheckParameters(config *CloudConfig) {
+	if config.CloudType != "Aliyun" && config.CloudType != "Openstack" {
+		log.Fatal("Wrong Parameters: cloud type is not supported")
+	}
+	existed, _ := utils.PathExists(config.GoCodeConfig.TemplatePath)
+	if !existed {
+		log.Fatal("Wrong Parameters: go code template path is not existed, ", config.GoCodeConfig.TemplatePath)
+	}
+	existed, _ = utils.PathExists(config.GoCodeConfig.CodePath)
+	if !existed {
+		log.Fatal("Wrong Parameters: go code path is not existed, ", config.GoCodeConfig.CodePath)
+	}
+
+	if len(config.RegistryConfigs) != len(config.APICodeConfigs) {
+		log.Fatal("Wrong Parameters: registry config and api code config is not matched")
+	}
+	if config.RegistryConfigs == nil || config.APICodeConfigs == nil {
+		log.Fatal("Wrong Parameters: registry config or api code config is nil")
+	}
 }
 
 // 填充一些需要的字段

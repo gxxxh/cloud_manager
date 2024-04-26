@@ -14,11 +14,13 @@ func TestOpenstackCreateServer(t *testing.T) {
 	request.Opts.ImageRef = "952b386b-6f30-46f6-b019-f522b157aa3a"
 	request.Opts.FlavorRef = "3"
 	requestByte, err := json.Marshal(request)
+	//{"Opts":{"name":"test-service-create","imageRef":"952b386b-6f30-46f6-b019-f522b157aa3a","flavorRef":"3"}}
 	fmt.Println(string(requestByte))
 	if err != nil {
 		t.Error(err)
 	}
 	resp, err := service.CallCloudAPI("CreateComputeV2Servers", requestByte)
+	//{"server":{"OS-DCF:diskConfig":"MANUAL","adminPass":"ZTodV26JvRt5","id":"4b7fd536-147c-4d1e-893f-58a1ed337e98","links":[{"href":"http://133.133.135.136:8774/v2.1/aac94320146c464ab84146e35aa61c77/servers/4b7fd536-147c-4d1e-893f-58a1ed337e98","rel":"self"},{"href":"http://133.133.135.136:8774/aac94320146c464ab84146e35aa61c77/servers/4b7fd536-147c-4d1e-893f-58a1ed337e98","rel":"bookmark"}],"security_groups":[{"name":"default"}]}}
 	if err != nil {
 		t.Error(err)
 	}
@@ -28,8 +30,8 @@ func TestOpenstackCreateServer(t *testing.T) {
 func TestOpenstackGetServer(t *testing.T) {
 	service := InitByOpenstackType("compute")
 	request := openstack.GetComputeV2ServersRequest{}
-	request.Id = "65992d97-a29c-4b6c-b2b4-c12e5bfd475f"
-
+	request.Id = "4b7fd536-147c-4d1e-893f-58a1ed337e98"
+	//{"Id":"4b7fd536-147c-4d1e-893f-58a1ed337e98"}
 	requestByte, err := json.Marshal(request)
 	fmt.Println(string(requestByte))
 	if err != nil {
@@ -45,7 +47,7 @@ func TestOpenstackGetServer(t *testing.T) {
 func TestOpenstackServerResize(t *testing.T) {
 	service := InitByOpenstackType("compute")
 	request := openstack.ResizeComputeV2ServersRequest{}
-	request.Id = "8cec0165-f1a9-4224-8e45-aca635c84562"
+	request.Id = "4b7fd536-147c-4d1e-893f-58a1ed337e98"
 	request.Opts.FlavorRef = "4"
 	requestByte, err := json.Marshal(request)
 	fmt.Println(string(requestByte))
@@ -64,7 +66,7 @@ func TestGetFlavor(t *testing.T) {
 	service := InitByOpenstackType("compute")
 	request := openstack.GetComputeV2FlavorsRequest{}
 
-	request.Id = "60ac07db-8435-4526-bbda-7bb91365f908"
+	request.Id = "4b7fd536-147c-4d1e-893f-58a1ed337e98"
 	requestByte, err := json.Marshal(request)
 	fmt.Println(string(requestByte))
 	//{"Id":"8cec0165-f1a9-4224-8e45-aca635c84562","Opts":{"flavorRef":"4"}}
