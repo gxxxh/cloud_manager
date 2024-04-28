@@ -8,7 +8,7 @@ import (
 )
 
 func TestOpenstackCreateServer(t *testing.T) {
-	service := InitByOpenstackType("compute")
+	service := InitByOpenstackType("compute", "2.7")
 	request := openstack.CreateComputeV2ServersRequest{}
 	request.Opts.Name = "test-service-create"
 	request.Opts.ImageRef = "952b386b-6f30-46f6-b019-f522b157aa3a"
@@ -28,9 +28,9 @@ func TestOpenstackCreateServer(t *testing.T) {
 }
 
 func TestOpenstackGetServer(t *testing.T) {
-	service := InitByOpenstackType("compute")
+	service := InitByOpenstackType("compute", "2.7")
 	request := openstack.GetComputeV2ServersRequest{}
-	request.Id = "4b7fd536-147c-4d1e-893f-58a1ed337e98"
+	request.Id = "cd6c9a35-4ce1-4a0a-a075-41e7cbfaa248"
 	//{"Id":"4b7fd536-147c-4d1e-893f-58a1ed337e98"}
 	requestByte, err := json.Marshal(request)
 	fmt.Println(string(requestByte))
@@ -45,7 +45,7 @@ func TestOpenstackGetServer(t *testing.T) {
 }
 
 func TestOpenstackServerResize(t *testing.T) {
-	service := InitByOpenstackType("compute")
+	service := InitByOpenstackType("compute", "2.7")
 	request := openstack.ResizeComputeV2ServersRequest{}
 	request.Id = "4b7fd536-147c-4d1e-893f-58a1ed337e98"
 	request.Opts.FlavorRef = "4"
@@ -63,7 +63,7 @@ func TestOpenstackServerResize(t *testing.T) {
 }
 
 func TestGetFlavor(t *testing.T) {
-	service := InitByOpenstackType("compute")
+	service := InitByOpenstackType("compute", "2.7")
 	request := openstack.GetComputeV2FlavorsRequest{}
 
 	request.Id = "4b7fd536-147c-4d1e-893f-58a1ed337e98"

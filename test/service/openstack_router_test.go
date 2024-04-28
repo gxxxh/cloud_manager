@@ -9,7 +9,7 @@ import (
 )
 
 func TestOpenstackCreateRouter(t *testing.T) {
-	service := InitByOpenstackType("network")
+	service := InitByOpenstackType("network", "2.61")
 	request := openstack.CreateNetworkingV2ExtensionsLayer3RoutersRequest{}
 
 	asu := false
@@ -47,7 +47,7 @@ func TestOpenstackCreateRouter(t *testing.T) {
 }
 
 func TestOpenstackGetRouter(t *testing.T) {
-	service := InitByOpenstackType("network")
+	service := InitByOpenstackType("network", "2.61")
 	request := openstack.GetNetworkingV2ExtensionsLayer3RoutersRequest{}
 	request.Id = "928f9b5e-0bce-4a99-a653-c341b866f92a"
 	requestByte, err := json.Marshal(request)
@@ -66,7 +66,7 @@ func TestOpenstackGetRouter(t *testing.T) {
 }
 
 func TestOpenstackUpdateRouter(t *testing.T) {
-	service := InitByOpenstackType("network")
+	service := InitByOpenstackType("network", "2.61")
 	request := openstack.UpdateNetworkingV2ExtensionsLayer3RoutersRequest{}
 	request.Id = "928f9b5e-0bce-4a99-a653-c341b866f92a"
 	request.Opts.Name = "update-router-name"
@@ -86,7 +86,7 @@ func TestOpenstackUpdateRouter(t *testing.T) {
 }
 
 func TestOpenstackDeleteRouter(t *testing.T) {
-	service := InitByOpenstackType("network")
+	service := InitByOpenstackType("network", "2.61")
 	request := openstack.DeleteNetworkingV2ExtensionsLayer3RoutersRequest{}
 	request.Id = "928f9b5e-0bce-4a99-a653-c341b866f92a"
 	requestByte, err := json.Marshal(request)

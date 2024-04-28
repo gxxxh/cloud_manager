@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-func InitByOpenstackType(openstackClientType string) *service.MultiCloudService {
+func InitByOpenstackType(openstackClientType string, micro_version string) *service.MultiCloudService {
 	authInfo := map[string]string{
 		"projectName":         "admin",
 		"domainName":          "Default",
@@ -18,6 +18,7 @@ func InitByOpenstackType(openstackClientType string) *service.MultiCloudService 
 		"Region":              "RegionOne",
 		"openstackClientType": openstackClientType,
 		"cloudType":           "openstack",
+		"microVersion":        micro_version,
 	}
 	mcm, err := service.NewMultiCloudService(authInfo)
 	if err != nil {
@@ -27,7 +28,7 @@ func InitByOpenstackType(openstackClientType string) *service.MultiCloudService 
 }
 
 func TestOpenstackCreateImage(t *testing.T) {
-	service := InitByOpenstackType("image")
+	service := InitByOpenstackType("image", "2.61")
 	request := openstack.CreateImageserviceV2ImagesRequest{}
 	request.Opts.Name = "test-create"
 	//request.Opts.ID = "e7db3b45-8db7-47ad-8109-3fb55c2c24fe"
@@ -49,7 +50,7 @@ func TestOpenstackCreateImage(t *testing.T) {
 	fmt.Println(string(resp))
 }
 func TestOpenstackGetImage(t *testing.T) {
-	service := InitByOpenstackType("image")
+	service := InitByOpenstackType("image", "2.61")
 	request := openstack.GetImageserviceV2ImagesRequest{}
 	request.Id = "87911a0d-c9af-406e-9fd2-6e5b80402fee"
 	requestByte, err := json.Marshal(request)
@@ -130,7 +131,7 @@ func TestOpenstackGetImage(t *testing.T) {
 //}
 
 func TestOpenstackDeleteImage(t *testing.T) {
-	service := InitByOpenstackType("image")
+	service := InitByOpenstackType("image", "2.61")
 	request := openstack.DeleteImageserviceV2ImagesRequest{}
 	request.Id = "87911a0d-c9af-406e-9fd2-6e5b80402fee"
 	requestByte, err := json.Marshal(request)

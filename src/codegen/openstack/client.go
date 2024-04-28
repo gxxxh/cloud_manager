@@ -38,12 +38,18 @@ func NewOpenstackClient(params map[string]string) (oc *OpenstackClient, err erro
 	err = oc.InitClient(params["openstackClientType"], gophercloud.EndpointOpts{
 		Region: params["region"],
 	})
-	fmt.Println(oc.Client.Microversion)
-	if params["openstackClientType"] == "volumev3" {
-		oc.Client.Microversion = "3.0"
+	micro_version, ok := params["microVersion"]
+	if ok {
+		oc.Client.Microversion = micro_version
 	} else {
-		oc.Client.Microversion = "2.65"
+		oc.Client.Microversion = "2.61"
 	}
+	//fmt.Println(oc.Client.Microversion)
+	//if params["openstackClientType"] == "volumev3" {
+	//	oc.Client.Microversion = "3.0"
+	//} else {
+	//	oc.Client.Microversion = "2.69"
+	//}
 	return
 }
 

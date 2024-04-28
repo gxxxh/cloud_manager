@@ -8,7 +8,7 @@ import (
 )
 
 func TestOpenstackCreateNetwork(t *testing.T) {
-	service := InitByOpenstackType("network")
+	service := InitByOpenstackType("network", "2.61")
 	request := openstack.CreateNetworkingV2NetworksRequest{}
 	request.Opts.Name = "test-create-private"
 	itrue := true
@@ -29,7 +29,7 @@ func TestOpenstackCreateNetwork(t *testing.T) {
 }
 
 func TestOpenstackGetNetwork(t *testing.T) {
-	service := InitByOpenstackType("network")
+	service := InitByOpenstackType("network", "2.61")
 	request := openstack.GetNetworkingV2NetworksRequest{}
 	request.Id = "c8af2a45-8226-4c61-8a7f-d5b556f9215f"
 	requestByte, err := json.Marshal(request)
@@ -48,7 +48,7 @@ func TestOpenstackGetNetwork(t *testing.T) {
 }
 
 func TestOpenstackUpdateNetwork(t *testing.T) {
-	service := InitByOpenstackType("network")
+	service := InitByOpenstackType("network", "2.61")
 	request := openstack.UpdateNetworkingV2NetworksRequest{}
 	request.NetworkID = "c8af2a45-8226-4c61-8a7f-d5b556f9215f"
 	ifalse := false
@@ -69,7 +69,7 @@ func TestOpenstackUpdateNetwork(t *testing.T) {
 }
 
 func TestOpenstackDeleteNetwork(t *testing.T) {
-	service := InitByOpenstackType("network")
+	service := InitByOpenstackType("network", "2.61")
 	request := openstack.DeleteNetworkingV2NetworksRequest{}
 	request.NetworkID = "c8af2a45-8226-4c61-8a7f-d5b556f9215f"
 	requestByte, err := json.Marshal(request)

@@ -8,7 +8,7 @@ import (
 )
 
 func TestOpenstackCreateServerGroup(t *testing.T) {
-	service := InitByOpenstackType("compute")
+	service := InitByOpenstackType("compute", "2.65")
 	request := openstack.CreateComputeV2ExtensionsServergroupsRequest{}
 	request.Opts.Name = "auto scale group"
 	request.Opts.Policy = "anti-affinity"
@@ -28,9 +28,9 @@ func TestOpenstackCreateServerGroup(t *testing.T) {
 }
 
 func TestOpenstackGetServerGroup(t *testing.T) {
-	service := InitByOpenstackType("compute")
+	service := InitByOpenstackType("compute", "2.65")
 	request := openstack.GetComputeV2ExtensionsServergroupsRequest{}
-	request.Id = "5e79ae3f-7601-4be0-a6f6-5e9bd448f89c"
+	request.Id = "0b1bfe00-2cdf-4bec-8c47-9c2317b694f2"
 
 	requestByte, err := json.Marshal(request)
 	fmt.Println(string(requestByte))
@@ -46,9 +46,9 @@ func TestOpenstackGetServerGroup(t *testing.T) {
 }
 
 func TestOpenstackDeleteServerGroup(t *testing.T) {
-	service := InitByOpenstackType("compute")
+	service := InitByOpenstackType("compute", "2.65")
 	request := openstack.DeleteComputeV2ExtensionsServergroupsRequest{}
-	request.Id = "5e79ae3f-7601-4be0-a6f6-5e9bd448f89c"
+	request.Id = "0b1bfe00-2cdf-4bec-8c47-9c2317b694f2"
 
 	requestByte, err := json.Marshal(request)
 	fmt.Println(string(requestByte))

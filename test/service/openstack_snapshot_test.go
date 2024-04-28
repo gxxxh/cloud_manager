@@ -9,7 +9,7 @@ import (
 )
 
 func TestOpenstackCreateSnapshot(t *testing.T) {
-	service := InitByOpenstackType("volumev3")
+	service := InitByOpenstackType("volumev3", "3.0")
 	request := openstack.CreateBlockstorageV3SnapshotsRequest{}
 	request.Opts.Name = "test-create"
 	request.Opts.VolumeID = "3fd158d7-4800-4c64-9058-05f8d71a0e27"
@@ -29,7 +29,7 @@ func TestOpenstackCreateSnapshot(t *testing.T) {
 }
 
 func TestOpenstackGetSnapshot(t *testing.T) {
-	service := InitByOpenstackType("volumev3")
+	service := InitByOpenstackType("volumev3", "3.0")
 	request := openstack.GetBlockstorageV3SnapshotsRequest{}
 	request.Id = "2b868ade-1c76-42c3-92c7-8aa27fcd096a"
 	requestByte, err := json.Marshal(request)
@@ -45,7 +45,7 @@ func TestOpenstackGetSnapshot(t *testing.T) {
 	fmt.Println(string(resp))
 }
 func TestOpenstackUpdateMetaSnapshot(t *testing.T) {
-	service := InitByOpenstackType("volumev3")
+	service := InitByOpenstackType("volumev3", "3.0")
 	request := openstack.UpdateMetadataBlockstorageV3SnapshotsRequest{}
 	request.Id = "e5e6eb1d-ee04-4c4a-8cf8-0b1bef12ada3"
 	request.Opts = snapshots.UpdateMetadataOpts{Metadata: map[string]interface{}{
@@ -65,7 +65,7 @@ func TestOpenstackUpdateMetaSnapshot(t *testing.T) {
 	fmt.Println(string(resp))
 }
 func TestOpenstackUpdateSnapshot(t *testing.T) {
-	service := InitByOpenstackType("volumev3")
+	service := InitByOpenstackType("volumev3", "3.0")
 	request := openstack.UpdateBlockstorageV3SnapshotsRequest{}
 	request.Id = "e5e6eb1d-ee04-4c4a-8cf8-0b1bef12ada3"
 	newName := "updated_snapshot"
@@ -85,7 +85,7 @@ func TestOpenstackUpdateSnapshot(t *testing.T) {
 }
 
 func TestOpenstackDeleteSnapshot(t *testing.T) {
-	service := InitByOpenstackType("volumev3")
+	service := InitByOpenstackType("volumev3", "3.0")
 	request := openstack.DeleteBlockstorageV3SnapshotsRequest{}
 	request.Id = "0a509ed0-36e5-49c5-bdfa-ca4ef53d72c6"
 	requestByte, err := json.Marshal(request)

@@ -8,7 +8,7 @@ import (
 )
 
 func TestOpenstackCreateVolume(t *testing.T) {
-	service := InitByOpenstackType("volumev3")
+	service := InitByOpenstackType("volumev3", "3.0")
 	request := openstack.CreateBlockstorageV3VolumesRequest{}
 
 	request.Opts.Name = "volume-test"
@@ -32,7 +32,7 @@ func TestOpenstackCreateVolume(t *testing.T) {
 }
 
 func TestOpenstackGetVolume(t *testing.T) {
-	service := InitByOpenstackType("volumev3")
+	service := InitByOpenstackType("volumev3", "3.0")
 	request := openstack.GetBlockstorageV3VolumesRequest{}
 	request.Id = "404d836b-8420-45f2-9308-d5091efa0091"
 	requestByte, err := json.Marshal(request)
@@ -49,7 +49,7 @@ func TestOpenstackGetVolume(t *testing.T) {
 }
 
 func TestOpenstackUpdateVolume(t *testing.T) {
-	service := InitByOpenstackType("volumev3")
+	service := InitByOpenstackType("volumev3", "3.0")
 	request := openstack.UpdateBlockstorageV3VolumesRequest{}
 	request.Id = "404d836b-8420-45f2-9308-d5091efa0091"
 	newName := "volueme updated"
@@ -69,7 +69,7 @@ func TestOpenstackUpdateVolume(t *testing.T) {
 }
 
 func TestOpenstackDeleteVolume(t *testing.T) {
-	service := InitByOpenstackType("volumev3")
+	service := InitByOpenstackType("volumev3", "3.0")
 	request := openstack.DeleteBlockstorageV3VolumesRequest{}
 	request.Id = "404d836b-8420-45f2-9308-d5091efa0091"
 	requestByte, err := json.Marshal(request)
