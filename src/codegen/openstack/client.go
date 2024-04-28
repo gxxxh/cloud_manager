@@ -42,7 +42,7 @@ func NewOpenstackClient(params map[string]string) (oc *OpenstackClient, err erro
 	if params["openstackClientType"] == "volumev3" {
 		oc.Client.Microversion = "3.0"
 	} else {
-		oc.Client.Microversion = "2.7"
+		oc.Client.Microversion = "2.65"
 	}
 	return
 }

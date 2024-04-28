@@ -49,7 +49,7 @@ func TestOpenstackDeleteServerGroup(t *testing.T) {
 	service := InitByOpenstackType("compute")
 	request := openstack.DeleteComputeV2ExtensionsServergroupsRequest{}
 	request.Id = "5e79ae3f-7601-4be0-a6f6-5e9bd448f89c"
-	//{"Id":"5e79ae3f-7601-4be0-a6f6-5e9bd448f89c"}
+
 	requestByte, err := json.Marshal(request)
 	fmt.Println(string(requestByte))
 	if err != nil {
