@@ -1,0 +1,30 @@
+{
+  "CloudType": "AWS",
+  "GoCodeConfig": {
+    "TemplatePath": "/root/go/src/multicloud_service/src/generator/templates/",
+    "CodePath": "/root/go/src/multicloud_service/src/codegen/"
+  },
+  "SourceCodePath": "/root/go/pkg/mod/github.com/gophercloud/gophercloud@v1.0.0/openstack",
+  "RegistryConfigs": [
+    {
+      "RegistryImportPaths": "github.com/kube-stack/multicloud_service/src/codegen/openstack",
+      "CreateFuncPre": "New",
+      "FuncAction": "Create",
+      "CodeType": "Request"
+    },
+    {
+      "RegistryImportPaths": "github.com/kube-stack/multicloud_service/src/codegen/openstack",
+      "CreateFuncPre": "New",
+      "FuncAction": "Extract",
+      "CodeType": "Response"
+    }
+  ],
+  "APICodeConfigs": [
+    {
+      "CodeType": "Request"
+    },
+    {
+      "CodeType": "Result"
+    }
+  ]
+}

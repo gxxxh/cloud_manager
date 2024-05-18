@@ -75,10 +75,7 @@ var GenAllCmd = &cobra.Command{
 func GenAll(cmd *cobra.Command, args []string) error {
 	config := gen.LoadCloudConfig(configFile)
 	log.Println("start gen code for all resource, cloud", config.CloudType)
-	//time.Sleep(150 * time.Second)
 	rand.Seed(time.Now().UnixNano())
-	randInt := rand.Intn(60) + 90
-	time.Sleep(time.Duration(randInt) * time.Second)
 
 	generator := gen.NewCloudAPIGenerator(config.CloudType)
 	err := generator.DoGen(config)
@@ -112,7 +109,6 @@ func GenCodeByResourceName(cmd *cobra.Command, args []string) error {
 	log.Println("start gen code for resource:", resource, " cloud:", cloudtype)
 	config := gen.LoadCloudConfig(configFile)
 	generator := gen.NewCloudAPIGenerator(config.CloudType)
-	//time.Sleep(150 * time.Second)
 	err := generator.DoGen(config)
 	if err != nil {
 		return err

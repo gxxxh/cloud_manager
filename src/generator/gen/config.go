@@ -2,6 +2,7 @@ package gen
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/kube-stack/multicloud_service/src/utils"
 	"log"
 	"os"
@@ -107,7 +108,7 @@ func CheckFormat(config *CloudConfig) {
 
 func CheckParameters(config *CloudConfig) {
 	if config.CloudType != "Aliyun" && config.CloudType != "Openstack" {
-		log.Fatal("Wrong Parameters: cloud type is not supported")
+		log.Fatal(fmt.Sprintf("Wrong Parameters: cloud type is not supported, %s", config.CloudType))
 	}
 	existed, _ := utils.PathExists(config.GoCodeConfig.TemplatePath)
 	if !existed {
